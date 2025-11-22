@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>飄揚在夜空中的藍絲帶 - 青島餃子專賣店感恩抽獎</title>
+    <meta name="description" content="三商虎迷站出來！飄揚在夜空中的藍絲帶，青島餃子專賣店感恩抽獎活動開跑。愛棒球的餃子粉絲團，懷念那場比賽，祝福教練老闆，贏取暖心餃子。">
+    <meta name="keywords" content="三商虎, 藍絲帶, 青島餃子, 抽獎, 棒球, 美食, 高雄仁武">
+    <meta property="og:title" content="飄揚在夜空中的藍絲帶 - 感恩抽獎">
+    <meta property="og:image" content="33544146840-25.jpg">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --tiger-orange: #FF9900;
+            --tiger-black: #111111;
+            --night-blue: #001a33;
+            --ribbon-blue: #0066cc;
+            --text-white: #ffffff;
+            --gold: #ffd700;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--tiger-black);
+            color: var(--text-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* 背景動畫 - 夜空與藍絲帶 */
+        .bg-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: radial-gradient(circle at center, #0a2e52 0%, #020c1b 100%);
+        }
+        
+        .blue-ribbon {
+            position: absolute;
+            width: 200%;
+            height: 200%;
+            top: -50%;
+            left: -50%;
+            background: conic-gradient(from 90deg at 50% 50%, transparent 0%, var(--ribbon-blue) 15%, transparent 30%, transparent 100%);
+            opacity: 0.2;
+            animation: rotateRibbon 20s linear infinite;
+            filter: blur(80px);
+        }
+
+        @keyframes rotateRibbon {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* 通用容器 */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section - 氣勢磅礡 */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 50px 0;
+        }
+
+        .hero-logo {
+            width: 250px;
+            max-width: 80%;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 20px rgba(255, 153, 0, 0.6));
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        h1 {
+            font-size: clamp(3rem, 8vw, 6rem); /* RWD 字體 */
+            font-weight: 900;
+            color: var(--text-white);
+            text-transform: uppercase;
+            text-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+            letter-spacing: 5px;
+            margin-bottom: 10px;
+            line-height: 1.1;
+        }
+
+        h1 span {
+            color: var(--tiger-orange);
+            display: block;
+            font-size: 0.5em;
+            letter-spacing: 10px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: clamp(1.2rem, 3vw, 2rem);
+            color: var(--ribbon-blue);
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-shadow: 0 0 10px var(--ribbon-blue);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--tiger-orange);
+            color: var(--tiger-black);
+            font-size: 1.5rem;
+            font-weight: 900;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            border: 2px solid var(--tiger-orange);
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.4);
+        }
+
+        .cta-btn:hover {
+            background: transparent;
+            color: var(--tiger-orange);
+            transform: scale(1.05);
+            box-shadow: 0 0 40px rgba(255, 153, 0, 0.8);
+        }
+
+        /* 活動內容區塊 */
+        section {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60%;
+            height: 5px;
+            background: var(--tiger-orange);
+            margin: 10px auto 0;
+            box-shadow: 0 0 10px var(--tiger-orange);
+        }
+
+        /* 抽獎卡片設計 */
+        .event-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 40px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            transition: transform 0.3s ease;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--tiger-orange);
+        }
+
+        .event-img {
+            width: 100%;
+            border-radius: 15px;
+            border: 3px solid var(--tiger-orange);
+            box-shadow: 0 0 20px rgba(255, 153, 0, 0.3);
+        }
+
+        .event-details h3 {
+            font-size: 2rem;
+            color: var(--tiger-orange);
+            margin-bottom: 20px;
+        }
+
+        .prize-box {
+            background: rgba(255, 153, 0, 0.1);
+            border-left: 5px solid var(--tiger-orange);
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+
+        .prize-box p {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .steps-list {
+            list-style: none;
+            counter-reset: step-counter;
+        }
+
+        .steps-list li {
+            position: relative;
+            padding-left: 50px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .steps-list li::before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 35px;
+            height: 35px;
+            background: var(--ribbon-blue);
+            color: white;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 35px;
+            font-weight: bold;
+            box-shadow: 0 0 10px var(--ribbon-blue);
+        }
+
+        .deadline {
+            margin-top: 30px;
+            font-size: 1.5rem;
+            color: #ff4444;
+            font-weight: bold;
+            text-align: center;
+            border: 2px dashed #ff4444;
+            padding: 15px;
+            border-radius: 10px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.7; }
+            100% { opacity: 1; }
+        }
+
+        /* 店家資訊 Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .info-item {
+            background: rgba(10, 46, 82, 0.6);
+            padding: 25px;
+            border-radius: 15px;
+            text-align: center;
+            border-bottom: 3px solid var(--ribbon-blue);
+            transition: 0.3s;
+        }
+
+        .info-item:hover {
+            background: rgba(10, 46, 82, 0.9);
+            border-bottom: 3px solid var(--tiger-orange);
+        }
+
+        .info-item i {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--tiger-orange);
+        }
+
+        .info-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            background: #000;
+            padding: 30px 0;
+            text-align: center;
+            color: #888;
+            margin-top: 50px;
+            border-top: 1px solid #333;
+        }
+
+        /* RWD 調整 */
+        @media (max-width: 768px) {
+            .event-card {
+                grid-template-columns: 1fr;
+            }
+            
+            header {
+                padding: 100px 0;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* 連結樣式 */
+        a.text-link {
+            color: var(--tiger-orange);
+            text-decoration: none;
+            border-bottom: 1px dashed var(--tiger-orange);
+        }
+        a.text-link:hover {
+            color: white;
+            border-bottom: 1px solid white;
+        }
+
+        /* Scroll Animation Class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-container">
+        <div class="blue-ribbon"></div>
+    </div>
+
+    <header>
+        <div class="container">
+            <img src="33544146840-25.jpg" alt="Mercuries Tigers Logo" class="hero-logo">
+            
+            <h1>
+                <span>Mercuries Tigers</span>
+                飄揚在夜空中的<br>藍絲帶
+            </h1>
+            <p class="subtitle">青島餃子專賣店 x 永遠的虎迷</p>
+            
+            <a href="https://www.facebook.com/mercuries.tigers" target="_blank" class="cta-btn">
+                進入粉絲團
+            </a>
+        </div>
+    </header>
+
+    <section id="event">
+        <div class="container">
+            <h2 class="section-title">感恩抽獎活動開跑</h2>
+            
+            <div class="event-card reveal">
+                <div class="event-img-wrapper">
+                    <img src="ChatGPT Image 2025年5月8日 上午08_12_14.jpg" alt="Cute Tiger Baseball" class="event-img">
+                </div>
+                
+                <div class="event-details">
+                    <h3>愛棒球的餃子粉絲看過來！</h3>
+                    <p>希望這份暖心能陪虎迷們度過冷冷的冬天。<br>結束後將抽出 <strong>5位</strong> 幸運好朋友！</p>
+                    
+                    <div class="prize-box">
+                        <h4>🎁 感恩禮 (5名)</h4>
+                        <p>青江菜豬肉餃子一包（50入）</p>
+                    </div>
+
+                    <h4>👇 抽獎辦法</h4>
+                    <ul class="steps-list">
+                        <li>按讚並追蹤 <a href="#" class="text-link">青島餃子專賣店</a> 與 <a href="https://www.facebook.com/mercuries.tigers" target="_blank" class="text-link">愛棒球的餃子粉絲團</a></li>
+                        <li>按讚本貼文</li>
+                        <li>留言寫下：<strong>「#最懷念的一場比賽」</strong> 或 <strong>「#祝福教練老闆的一句話」</strong></li>
+                    </ul>
+
+                    <div class="deadline">
+                        ⏰ 活動時間：即日起 ～ 11/30 止
+                    </div>
+                    <p style="font-size: 0.9rem; margin-top: 10px; color: #ccc;">*別忘了回覆收件資料以利配送禮物喔！</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="info">
+        <div class="container reveal">
+            <h2 class="section-title">店家資訊</h2>
+            <p style="text-align: center; font-size: 1.2rem; margin-bottom: 20px;">青島餃子專賣店</p>
+            
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>📍 地址</h4>
+                    <p>高雄市仁武區八德南路100巷65號</p>
+                    <br>
+                    <a href="https://www.google.com/maps/search/?api=1&query=高雄市仁武區八德南路100巷65號" target="_blank" class="text-link">開啟地圖</a>
+                </div>
+                <div class="info-item">
+                    <h4>📞 電話</h4>
+                    <p>07-3725656</p>
+                    <br>
+                    <a href="tel:073725656" class="text-link">點擊撥打</a>
+                </div>
+                <div class="info-item">
+                    <h4>📅 營業時間</h4>
+                    <p>店休日：每週三、四、日 (3天)</p>
+                    <p style="font-size: 0.9em; color: #aaa;">+ 不定期休假</p>
+                </div>
+                <div class="info-item">
+                    <h4>🚚 宅配資訊</h4>
+                    <p>冷凍餃子宅配滿 <strong>$4500</strong> 免運費</p>
+                    <p>未滿額運費 $200</p>
+                    <p style="font-size: 0.9em;">貨到收款手續費 $60 (訂購請私訊)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 青島餃子專賣店 & Mercuries Tigers Fan Club. All Rights Reserved.</p>
+            <p style="font-size: 0.8rem; margin-top: 10px;">Designed for the Love of Baseball.</p>
+        </div>
+    </footer>
+
+    <script>
+        // 簡單的 Scroll Reveal 動畫
+        window.addEventListener('scroll', reveal);
+
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+
+            for(var i = 0; i < reveals.length; i++){
+                var windowHeight = window.innerHeight;
+                var revealTop = reveals[i].getBoundingClientRect().top;
+                var revealPoint = 150;
+
+                if(revealTop < windowHeight - revealPoint){
+                    reveals[i].classList.add('active');
+                }
+                else{
+                    reveals[i].classList.remove('active');
+                }
+            }
+        }
+        
+        // 初始觸發一次以顯示可見內容
+        reveal();
+    </script>
+</body>
+</html>
