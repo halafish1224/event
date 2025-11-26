@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>⚡️ AI 運算・破盤清倉 | Lenovo Ultra 7 商務旗艦 ⚡️</title>
-    <meta name="description" content="全新未拆！Lenovo ThinkBook 14 G7 (U7) Ultra 7 AI 商用筆電，限時現金破盤價 $26,000 含稅！Win 11 Pro + 3年原廠頂級保固。">
+    <title>⚠️ 緊急釋出 | Lenovo Ultra 7 商務旗艦・地下專案 ⚠️</title>
+    <meta name="description" content="客戶臨時取消，保留庫存緊急釋出！Lenovo ThinkBook 14 G7 (U7) Ultra 7 AI，限時現金破盤價 $26,000 含稅！錯過不再。">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -12,353 +12,354 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
     <style>
-        /* CSS Variables - Cyberpunk AI Theme */
+        /* --- CSS Variables - The "Flaked Client" Underground Theme --- */
         :root {
-            --color-bg: #050505;
-            --color-card-bg: #121212;
-            --color-neon-blue: #00f3ff; /* 配合圖片的青藍色 */
-            --color-neon-pink: #ff0055; /* 配合圖片的洋紅色 */
-            --color-text-main: #ffffff;
-            --color-text-dim: #a0a0a0;
+            --color-bg-dark: #0a0a0a;
+            --color-accent-red: #ff0000; /* 強烈、純粹的警示紅 */
+            --color-text-white: #ffffff;
+            --color-text-gray: #b3b3b3;
             --font-main: 'Noto Sans TC', sans-serif;
-            --font-price: 'Oswald', sans-serif;
+            --font-display: 'Oswald', sans-serif;
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
         body {
             font-family: var(--font-main);
-            background-color: var(--color-bg);
-            /* 添加一點科技感的背景網格 */
-            background-image: 
-                linear-gradient(rgba(0, 243, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(0, 243, 255, 0.03) 1px, transparent 1px);
-            background-size: 30px 30px;
-            color: var(--color-text-main);
+            background-color: var(--color-bg-dark);
+            color: var(--color-text-white);
             line-height: 1.6;
-            text-align: center;
             overflow-x: hidden;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* --- 背景處理：全螢幕沉浸式 --- */
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -2;
+            /* 使用新照片作為背景 */
+            background: url('https://64.media.tumblr.com/fb265360409333689db82c932619abd6/5aa421e1aa99d03e-5c/s1280x1920/c97f42e063763d1102b2aaf808526f2eaced0e2b.jpg') no-repeat center center/cover;
+            filter: grayscale(30%) contrast(120%) brightness(60%); /* 調整照片氛圍 */
+        }
+
+        .bg-gradient {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            /* 加上紅黑漸層，強化戲劇感 */
+            background: linear-gradient(to bottom, rgba(0,0,0,0.5) 0%, rgba(20,0,0,0.9) 60%, #000 100%);
         }
 
         .container {
-            max-width: 800px;
-            margin: 0 auto;
-            padding: 20px;
+            max-width: 700px;
+            width: 95%;
+            margin: 40px auto;
+            /* 內容容器：深色毛玻璃效果 */
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 0, 0, 0.3);
+            padding: 40px 30px;
+            box-shadow: 0 0 50px rgba(0, 0, 0, 0.8);
             position: relative;
-            z-index: 2;
+            overflow: hidden;
         }
 
-        /* --- 視覺特效 --- */
-        .neon-text-blue {
-            color: var(--color-neon-blue);
-            text-shadow: 0 0 10px rgba(0, 243, 255, 0.7);
+        /* --- 頂部「放鳥」警示條 --- */
+        .alert-banner {
+            position: absolute;
+            top: 0; left: 0; width: 100%;
+            background: var(--color-accent-red);
+            color: white;
+            text-align: center;
+            font-weight: 900;
+            padding: 8px 0;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transform: skewY(-2deg) translateY(-10px); /* 傾斜造型 */
+            box-shadow: 0 5px 15px rgba(255,0,0,0.3);
         }
-        
-        .neon-text-pink {
-            color: var(--color-neon-pink);
-            text-shadow: 0 0 10px rgba(255, 0, 85, 0.7);
+        .alert-banner span {
+            display: block;
+            transform: skewY(2deg); /* 文字轉正 */
         }
 
         /* --- 標題區 --- */
         header {
-            padding: 40px 0 20px;
+            text-align: center;
+            margin-top: 30px;
+            margin-bottom: 40px;
         }
 
         h1 {
-            font-size: clamp(2.2rem, 8vw, 3.8rem);
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 10px;
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 10vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 15px;
             text-transform: uppercase;
-            letter-spacing: 2px;
+            color: var(--color-text-white);
+            /* 文字故障效果 */
+            text-shadow: 2px 2px 0px var(--color-accent-red), -2px -2px 0px rgba(0,0,0,0.5);
         }
 
         h2 {
-            font-size: clamp(1rem, 4vw, 1.5rem);
+            font-size: 1.3rem;
             font-weight: 500;
-            color: var(--color-text-dim);
-            background: rgba(255,255,255,0.1);
+            color: var(--color-text-gray);
+            border-left: 4px solid var(--color-accent-red);
+            padding-left: 15px;
             display: inline-block;
-            padding: 5px 15px;
-            border-radius: 50px;
-            margin-bottom: 30px;
+            text-align: left;
         }
 
-        /* --- 圖片展示區 (新增) --- */
-        .visual-container {
-            margin: 0 auto 30px;
-            max-width: 100%;
-            width: 300px; /* 限制寬度讓排版更緊湊 */
-            position: relative;
-        }
-
-        .visual-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 20px;
-            /* 圖片發光效果 */
-            box-shadow: 0 0 30px rgba(0, 243, 255, 0.2), 
-                        0 0 0 2px var(--color-neon-blue);
-            transition: transform 0.3s ease;
-        }
-
-        .visual-container:hover img {
-            transform: scale(1.02);
-            box-shadow: 0 0 50px rgba(255, 0, 85, 0.4), 
-                        0 0 0 3px var(--color-neon-pink);
-        }
-
-        /* --- 價格核心區 --- */
-        .price-card {
-            background: rgba(18, 18, 18, 0.9);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            padding: 40px 20px;
-            border-radius: 20px;
+        /* --- 價格核心區：大鳴大放 --- */
+        .price-impact-zone {
+            text-align: center;
+            border-top: 2px dashed rgba(255,255,255,0.2);
+            border-bottom: 2px dashed rgba(255,255,255,0.2);
+            padding: 30px 0;
             margin-bottom: 40px;
-            position: relative;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
         }
 
-        /* 裝飾線條 */
-        .price-card::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 50%;
-            transform: translateX(-50%);
-            width: 80%;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--color-neon-blue), transparent);
-        }
-
-        .momo-ref {
-            font-size: 1.1rem;
-            color: var(--color-text-dim);
+        .ref-price {
+            font-size: 1.2rem;
+            color: var(--color-text-gray);
             text-decoration: line-through;
-            margin-bottom: 10px;
-        }
-
-        .main-price-label {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #fff;
             margin-bottom: 5px;
         }
 
-        .final-price {
-            font-family: var(--font-price);
-            font-size: clamp(4rem, 15vw, 7rem); /* 超大字體 */
-            line-height: 1;
-            font-weight: 700;
-            background: linear-gradient(180deg, #ffffff, var(--color-neon-blue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(0, 243, 255, 0.5));
-            margin: 10px 0;
-        }
-
-        .savings-badge {
-            display: inline-block;
-            background: var(--color-neon-pink);
-            color: #fff;
-            font-size: 1.2rem;
+        .price-label {
+            font-size: 1.5rem;
             font-weight: 900;
-            padding: 8px 20px;
-            border-radius: 4px;
-            transform: skew(-10deg); /* 傾斜造型更具動感 */
-            box-shadow: 0 0 20px rgba(255, 0, 85, 0.4);
-            margin-top: 10px;
+            color: var(--color-accent-red);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .savings-badge span {
-            display: block;
-            transform: skew(10deg); /* 文字轉正 */
+        .final-price {
+            font-family: var(--font-display);
+            font-size: clamp(5rem, 18vw, 8rem); /* 極大字體 */
+            line-height: 0.9;
+            font-weight: 700;
+            color: var(--color-text-white);
+            margin: 10px 0;
+            /* 價格強調效果 */
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
         }
 
-        /* --- 規格列表 --- */
-        .specs-section {
-            text-align: left;
+        .price-note {
+            background: var(--color-accent-red);
+            color: #fff;
+            display: inline-block;
+            padding: 5px 15px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transform: rotate(-2deg); /* 微傾斜增加動感 */
+        }
+
+        /* --- 規格清單：戰術數據風格 --- */
+        .specs-container {
             margin-bottom: 40px;
         }
 
-        .specs-section h3 {
-            font-size: 1.8rem;
+        .specs-title {
+            font-size: 1.5rem;
+            color: var(--color-accent-red);
+            font-weight: 900;
             margin-bottom: 20px;
-            border-bottom: 2px solid var(--color-neon-pink);
+            text-transform: uppercase;
+            border-bottom: 3px solid var(--color-accent-red);
             display: inline-block;
-            padding-bottom: 5px;
         }
 
-        .specs-list {
-            list-style: none;
+        .specs-grid {
             display: grid;
+            grid-template-columns: 1fr;
             gap: 15px;
         }
 
-        .specs-list li {
+        .spec-item {
             background: rgba(255, 255, 255, 0.05);
-            padding: 15px 20px;
-            border-radius: 10px;
-            border-left: 4px solid #333;
-            transition: all 0.3s;
+            padding: 15px;
+            border-left: 5px solid #333;
             display: flex;
-            align-items: center;
-        }
-        
-        /* 特別強調的項目 */
-        .specs-list li.highlight-spec {
-            border-left: 4px solid var(--color-neon-blue);
-            background: linear-gradient(90deg, rgba(0, 243, 255, 0.1), transparent);
+            align-items: flex-start;
+            transition: all 0.3s;
         }
 
-        .specs-list li.pro-spec {
-            border-left: 4px solid var(--color-neon-pink);
-            background: linear-gradient(90deg, rgba(255, 0, 85, 0.1), transparent);
+        .spec-item.pro {
+            border-left-color: var(--color-accent-red);
+            background: linear-gradient(90deg, rgba(255,0,0,0.1), transparent);
         }
 
-        .specs-list i {
-            width: 30px;
-            font-size: 1.3rem;
-            margin-right: 10px;
+        .spec-icon {
+            font-size: 1.4rem;
+            color: var(--color-accent-red);
+            margin-right: 15px;
+            margin-top: 2px;
         }
 
-        .highlight-spec i { color: var(--color-neon-blue); }
-        .pro-spec i { color: var(--color-neon-pink); }
+        .spec-content strong {
+            display: block;
+            font-size: 1.1rem;
+            margin-bottom: 3px;
+        }
+        .spec-content span {
+            font-size: 0.9rem;
+            color: var(--color-text-gray);
+        }
 
-        /* --- CTA 按鈕 --- */
-        .cta-container {
-            margin: 40px 0 60px;
+        /* --- CTA 按鈕：熱血響應 --- */
+        .cta-zone {
+            text-align: center;
         }
 
         .cta-btn {
             display: block;
             width: 100%;
-            background: linear-gradient(45deg, var(--color-neon-pink), #ff5e00);
+            background-color: var(--color-accent-red);
             color: #fff;
             text-decoration: none;
-            padding: 25px 20px;
-            border-radius: 12px;
-            font-size: clamp(1.5rem, 5vw, 2rem);
-            font-weight: 900;
+            padding: 25px;
+            font-family: var(--font-display);
+            font-size: clamp(1.8rem, 6vw, 2.2rem);
+            font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 30px rgba(255, 0, 85, 0.4);
-            border: 2px solid rgba(255,255,255,0.2);
+            letter-spacing: 2px;
+            border: none;
+            /* 強烈的按鈕陰影 */
+            box-shadow: 0 10px 30px -5px rgba(255, 0, 0, 0.6);
+            transition: all 0.2s ease;
             position: relative;
             overflow: hidden;
         }
 
-        /* 按鈕流光特效 */
+        /* 按鈕掃光動畫 */
         .cta-btn::after {
             content: '';
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
+            top: 0; left: -100%;
+            width: 100%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: 0.5s;
         }
-
-        @keyframes shine {
-            0% { transform: translateX(-100%) rotate(45deg); }
-            100% { transform: translateX(100%) rotate(45deg); }
-        }
+        .cta-btn:hover::after { left: 100%; }
 
         .cta-btn:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 50px rgba(255, 0, 85, 0.6);
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 15px 40px -5px rgba(255, 0, 0, 0.8);
+            background-color: #ff1a1a;
         }
 
-        .cta-subtext {
-            margin-top: 15px;
-            color: var(--color-text-dim);
+        .footer-note {
+            margin-top: 25px;
             font-size: 0.9rem;
-        }
-        
-        .footer-link {
-            color: var(--color-text-dim);
-            font-size: 0.9rem;
+            color: #666;
             border-top: 1px solid #333;
-            padding-top: 20px;
+            padding-top: 15px;
+            text-align: center;
         }
-        .footer-link a { color: var(--color-neon-blue); }
+        .footer-note a { color: var(--color-accent-red); text-decoration: none;}
+
+        /* RWD */
+        @media (min-width: 600px) {
+            .specs-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
 
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <header>
-            <h1 class="neon-text-blue">FUTURE READY</h1>
-            <h2>Lenovo ThinkBook 14 G7 <span style="color:white">Ultra 7 AI</span></h2>
-        </header>
+    <div class="bg-overlay"></div>
+    <div class="bg-gradient"></div>
 
-        <div class="visual-container">
-            <img src="https://64.media.tumblr.com/5f814a39ffa886ad6904c8a55057e067/5aa421e1aa99d03e-96/s1280x1920/888bfbe934e25b2d588164df5c1119f4a031d5d6.jpg" alt="AI Future Tech">
+    <div class="container">
+        <div class="alert-banner">
+            <span>⚠️ CLIENT FLAKED // 庫存緊急釋出 ⚠️</span>
         </div>
 
-        <div class="price-card">
-            <p class="momo-ref">市價行情 $30,990</p>
-            <p class="main-price-label">⚡️ 好友限定・含稅專案價 ⚡️</p>
-            
+        <header>
+            <h2>別人的損失，你的機會。</h2>
+            <h1>THEIR LOSS<br>YOUR GAIN.</h1>
+        </header>
+
+        <div class="price-impact-zone">
+            <p class="ref-price">市價行情 $30,990</p>
+            <p class="price-label">🔥🔥 地下接盤・含稅現金價 🔥🔥</p>
             <div class="final-price">$26,000</div>
-            
-            <div class="savings-badge">
-                <span><i class="fas fa-arrow-down"></i> 現省 $4,990 + 免費升級 Pro 版</span>
+            <div class="price-note">
+                現省 $4,990 + 獨家免費升級 Pro 版
             </div>
         </div>
 
-        <div class="specs-section">
-            <h3 class="neon-text-pink">🚀 極致效能與獨家升級</h3>
-            <ul class="specs-list">
-                <li class="pro-spec">
-                    <i class="fas fa-crown"></i>
-                    <div>
-                        <strong>獨家升級 Windows 11 Pro</strong>
-                        <div style="font-size:0.85rem; opacity:0.8">價值 $2,000 商用專業版，資安更強</div>
+        <div class="specs-container">
+            <div class="specs-title">// 旗艦規格數據 //</div>
+            <div class="specs-grid">
+                <div class="spec-item pro">
+                    <i class="fas fa-crown spec-icon"></i>
+                    <div class="spec-content">
+                        <strong>Windows 11 Pro (獨家升級)</strong>
+                        <span>價值 $2,000 商用專業版</span>
                     </div>
-                </li>
-                <li class="pro-spec">
-                    <i class="fas fa-shield-cat"></i>
-                    <div>
-                        <strong>3年 Premier Support 頂級保固</strong>
-                        <div style="font-size:0.85rem; opacity:0.8">含原廠包包 + 滑鼠</div>
+                </div>
+                <div class="spec-item pro">
+                    <i class="fas fa-shield-alt spec-icon"></i>
+                    <div class="spec-content">
+                        <strong>3年 Premier 頂級保固</strong>
+                        <span>含原廠包包 + 滑鼠</span>
                     </div>
-                </li>
-                <li class="highlight-spec">
-                    <i class="fas fa-brain"></i>
-                    <strong>Core Ultra 7-155H 處理器 (AI NPU)</strong>
-                </li>
-                <li>
-                    <i class="fas fa-memory"></i>
-                    <strong>16G DDR5-5600 (可擴充雙通道)</strong>
-                </li>
-                <li>
-                    <i class="fas fa-hdd"></i>
-                    <strong>512G PCle 4.0 SSD (雙 M.2 插槽)</strong>
-                </li>
-                <li>
-                    <i class="fas fa-file-invoice"></i>
-                    <strong>全新未拆封・含稅開發票・可統編</strong>
-                </li>
-            </ul>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-microchip spec-icon"></i>
+                    <div class="spec-content">
+                        <strong>Intel Ultra 7-155H</strong>
+                        <span>最新 AI NPU 處理器</span>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-memory spec-icon"></i>
+                    <div class="spec-content">
+                        <strong>16G DDR5-5600</strong>
+                        <span>可擴充雙通道</span>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-hdd spec-icon"></i>
+                    <div class="spec-content">
+                        <strong>512G PCle 4.0 SSD</strong>
+                        <span>雙 M.2 插槽可再擴充</span>
+                    </div>
+                </div>
+                <div class="spec-item">
+                    <i class="fas fa-box-open spec-icon"></i>
+                    <div class="spec-content">
+                        <strong>全新未拆封</strong>
+                        <span>含稅開發票・可統編</span>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="cta-container">
-            <a href="mailto:halafish@gmail.com?subject=【我要購買】Lenovo%20ThinkBook%2014%20U7%20專案價$26000" class="cta-btn">
-                <i class="fas fa-envelope"></i> 立即 Email 搶購
-                <div style="font-size: 1rem; font-weight: normal; margin-top: 5px; opacity: 0.9">數量有限，售完為止</div>
+        <div class="cta-zone">
+            <a href="mailto:halafish@gmail.com?subject=【我要接盤】Lenovo%20ThinkBook%20U7%20專案價$26000" class="cta-btn">
+                <i class="fas fa-bolt"></i> 立即攔胡搶購
             </a>
-            <p class="cta-subtext">點擊按鈕將自動開啟郵件軟體，或寄信至 halafish@gmail.com</p>
+            <p style="margin-top: 15px; color: #999; font-size: 0.9rem;">
+                * 僅此一批，售完即止。點擊按鈕發送 Email。
+            </p>
         </div>
 
-        <div class="footer-link">
-            比價參考 (Win 11 Home 版)：
-            <a href="https://momo.dm/YYJqyI" target="_blank" rel="noopener">Momo 賣場連結 $30,990</a>
+        <div class="footer-note">
+            比價參考 (Win 11 Home 版)：<a href="https://momo.dm/YYJqyI" target="_blank" rel="noopener">Momo 賣場連結 $30,990</a>
         </div>
+
     </div>
 
 </body>
