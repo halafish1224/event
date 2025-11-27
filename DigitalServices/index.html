@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>串流服務比較與整合建議</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            background-color: #f4f7f6;
+            padding: 20px;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #E50914; /* Netflix Red */
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            border-bottom: 3px solid #E50914;
+            padding-bottom: 10px;
+        }
+        h2 {
+            color: #1DB954; /* Spotify Green */
+            margin-top: 40px;
+            font-size: 1.8em;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f0f0f0;
+            font-weight: bold;
+        }
+        .netflix-color { color: #E50914; font-weight: bold; }
+        .friday-color { color: #FFA500; font-weight: bold; } /* Orange */
+        .youtube-color { color: #FF0000; font-weight: bold; } /* Red */
+        .spotify-color { color: #1DB954; font-weight: bold; } /* Green */
+        .highlight-row { background-color: #fffacd; } /* Light yellow for total */
+        .recommendation {
+            background-color: #e0f7fa;
+            border-left: 5px solid #00bcd4;
+            padding: 15px;
+            margin-top: 25px;
+            border-radius: 8px;
+        }
+        .plan-price {
+            font-size: 1.1em;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🎬 台灣串流影音與音樂方案 📊 整合比較表</h1>
+
+    <p>以下是台灣四大主流串流服務的資費與功能比較，協助您找到最適合的組合。</p>
+
+    <h2>🚀 服務與資費方案一覽</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>服務 (代表色)</th>
+                <th>方案名稱</th>
+                <th>月費 (NT$)</th>
+                <th>最高畫質/音質</th>
+                <th>同時觀看/使用數</th>
+                <th>主要特色與內容</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="netflix-color">Netflix</td>
+                <td>高級方案</td>
+                <td class="plan-price netflix-color">460</td>
+                <td>4K + HDR</td>
+                <td>4 台 (可加購 2 位非同住額外成員)</td>
+                <td>全球頂級原創影集、歐美電影、沉浸式音效。</td>
+            </tr>
+            <tr>
+                <td class="netflix-color"></td>
+                <td>標準方案</td>
+                <td class="plan-price netflix-color">380</td>
+                <td>1080p (Full HD)</td>
+                <td>2 台 (可加購 1 位非同住額外成員)</td>
+                <td></td>
+            </tr>
+             <tr>
+                <td class="friday-color">friDay 影音</td>
+                <td>影劇暢看方案</td>
+                <td class="plan-price friday-color">199</td>
+                <td>Full HD</td>
+                <td>2 台</td>
+                <td>主打台劇、日韓劇、動漫、新院線片單點。內容與 Netflix 互補。</td>
+            </tr>
+            <tr>
+                <td class="youtube-color">YouTube</td>
+                <td>家庭方案</td>
+                <td class="plan-price youtube-color">269</td>
+                <td>最高 4K</td>
+                <td>6 位 (獨立帳號)</td>
+                <td>**無廣告** YT 觀看、背景播放、下載影片、**內含 YouTube Music Premium**。</td>
+            </tr>
+            <tr>
+                <td class="youtube-color"></td>
+                <td>個人方案</td>
+                <td class="plan-price youtube-color">199</td>
+                <td>最高 4K</td>
+                <td>1 位</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td class="spotify-color">Spotify</td>
+                <td>家庭方案 (Family)</td>
+                <td class="plan-price spotify-color">268</td>
+                <td>高音質串流</td>
+                <td>6 位 (獨立帳號)</td>
+                <td>廣泛的全球音樂庫、個人化推薦、專屬歌單。</td>
+            </tr>
+            <tr>
+                <td class="spotify-color"></td>
+                <td>雙人方案 (Duo)</td>
+                <td class="plan-price spotify-color">198</td>
+                <td>高音質串流</td>
+                <td>2 位</td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>🎯 整合方案與建議購買策略</h2>
+
+    <p>考量到多人共享、畫質需求與內容互補性，建議以下兩組整合方案：</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>方案名稱</th>
+                <th>涵蓋功能</th>
+                <th>建議方案組合</th>
+                <th>月總費用 (NT$)</th>
+                <th>效益分析</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="highlight-row">
+                <td>**高 CP 值家庭影音組合**</td>
+                <td>✅ 影劇 (國際) ✅ 影音無廣告 ✅ 音樂串流</td>
+                <td>
+                    <span class="netflix-color">Netflix 標準方案 (NT$380)</span><br>
+                    <span class="youtube-color">+ YouTube Premium 家庭方案 (NT$269)</span>
+                </td>
+                <td class="plan-price">**649**</td>
+                <td>
+                    **最划算的入門組合**。可供 2 人同時看 Netflix + 6 人使用 YT 無廣告和 YT Music。
+                </td>
+            </tr>
+            <tr class="highlight-row">
+                <td>**極致畫質與全方位內容**</td>
+                <td>✅ 影劇 (4K) ✅ 亞洲內容 ✅ 影音無廣告 ✅ 音樂串流</td>
+                <td>
+                    <span class="netflix-color">Netflix 高級方案 (NT$460)</span><br>
+                    <span class="youtube-color">+ YouTube Premium 家庭方案 (NT$269)</span><br>
+                    <span class="friday-color">+ friDay 影音 (NT$199)</span> (選配)
+                </td>
+                <td class="plan-price">**729** (無friDay) / **928** (含friDay)</td>
+                <td>
+                    滿足 4K 畫質，以及最多 4 人同時看 Netflix。YT 家庭方案解決無廣告與音樂需求。適合追求極致體驗的大家庭。
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="recommendation">
+        <h3>💡 關於非同住者與大量觀看建議</h3>
+        <ul>
+            <li>**非同住家人 (Netflix)：** 建議訂閱 <span class="netflix-color">Netflix 高級方案 (NT$460)</span>，然後為非同住家人**加購「額外成員」** (每位 NT$100)，這是目前最合規的方式。</li>
+            <li>**家庭超過 4 台觀看 (同住者)：** Netflix 單一方案僅支援 4 台同時觀看。若需 6 台以上，必須<span class="netflix-color">購買兩個 Netflix 帳號</span> (例如：兩個高級方案，月費約 NT$920)。</li>
+        </ul>
+    </div>
+
+</div>
+
+</body>
+</html>
