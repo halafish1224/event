@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini 家居學習指南 | 為您的家庭組裝智慧生活</title>
+    <title>Gemini 家庭全能指南 | 為您的生活組裝智慧</title>
     <style>
         :root {
             --ikea-blue: #0051ba;
@@ -13,6 +13,7 @@
             --bg-light: #f5f5f5;
             --white: #ffffff;
             --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --highlight-bg: #fff9c4; /* 淡黃色強調 */
         }
 
         * {
@@ -123,6 +124,9 @@
             transition: transform 0.3s ease;
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
@@ -157,11 +161,22 @@
             margin-bottom: 4rem;
         }
 
+        /* Scrollable Tabs for multiple categories */
         .tabs {
             display: flex;
             gap: 1rem;
             margin-bottom: 2rem;
-            flex-wrap: wrap;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            -webkit-overflow-scrolling: touch; /* smooth scroll on iOS */
+        }
+        
+        .tabs::-webkit-scrollbar {
+            height: 6px;
+        }
+        .tabs::-webkit-scrollbar-thumb {
+            background-color: #ccc;
+            border-radius: 4px;
         }
 
         .tab-btn {
@@ -173,6 +188,13 @@
             font-weight: 700;
             font-size: 1rem;
             transition: all 0.3s;
+            white-space: nowrap; /* Prevent text wrapping */
+            flex-shrink: 0; /* Prevent shrinking */
+        }
+
+        .tab-btn:hover {
+            border-color: var(--ikea-blue);
+            color: var(--ikea-blue);
         }
 
         .tab-btn.active {
@@ -195,6 +217,12 @@
             padding: 2rem;
             background: #fafafa;
             border-radius: 12px;
+        }
+
+        .instruction-card h4 {
+            color: var(--ikea-blue);
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
         }
 
         .instruction-step {
@@ -225,6 +253,7 @@
             color: var(--ikea-blue);
             margin-top: 0.5rem;
             display: block;
+            border-left: 4px solid var(--ikea-yellow);
         }
 
         /* Experts Grid */
@@ -260,33 +289,7 @@
             text-align: right;
         }
 
-        /* Comparison Table */
-        .comparison-table {
-            width: 100%;
-            border-collapse: collapse;
-            background: var(--white);
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: var(--card-shadow);
-        }
-
-        .comparison-table th, .comparison-table td {
-            padding: 1.2rem;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-
-        .comparison-table th {
-            background: var(--text-main);
-            color: var(--white);
-        }
-
-        .check-icon {
-            color: var(--ikea-blue);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
+        /* Footer */
         footer {
             background: #333;
             color: #fff;
@@ -302,7 +305,7 @@
 
         @media (max-width: 768px) {
             .hero h2 { font-size: 2rem; }
-            .tabs { overflow-x: auto; white-space: nowrap; padding-bottom: 10px; }
+            .tabs { padding-bottom: 15px; } /* More space for scrollbar */
         }
     </style>
 </head>
@@ -310,64 +313,61 @@
 
     <header>
         <h1>GEMINI</h1>
-        <span>家用旗艦版</span>
+        <span>家庭全能版</span>
     </header>
 
     <section class="hero">
-        <h2>組裝您孩子的「超級家教」</h2>
-        <p>不只是工具，而是讓家庭學習更輕鬆的模組化解決方案。<br>適合所有國中小家長，無需專業技術，即開即用。</p>
+        <h2>組裝您家庭的「第二大腦」</h2>
+        <p>從孩子學習、主婦持家、到退休樂活。<br>Gemini 是適合 0 到 99 歲的模組化生活助手。</p>
         <a href="https://gemini.google.com/" target="_blank" class="btn-cta">開始免費試用 ›</a>
     </section>
 
     <div class="container">
 
-        <h2 class="section-title">認識產品系列</h2>
+        <h2 class="section-title">認識產品功能</h2>
         <div class="intro-grid">
             <div class="card">
-                <h3>🧠 LÄRNING (學習)</h3>
-                <p>Gemini 就像一位 24 小時待命的虛擬家教。它可以解數學題、檢查英文文法，並耐心地解釋觀念，直到孩子聽懂為止。</p>
+                <h3>🎓 學生家教</h3>
+                <p>24 小時待命，協助數學解題、英文對話、作文靈感，是孩子最強的學習後盾。</p>
+            </div>
+            <div class="card">
+                <h3>🏠 生活管家</h3>
+                <p>利用現有食材設計食譜、規劃收納空間、或是撰寫禮貌的親師溝通書信。</p>
             </div>
             <div class="card">
                 <div class="price-tag">推薦</div>
-                <h3>🚀 ADVANCED (進階)</h3>
-                <p>訂閱版專屬。擁有更大的記憶容量（可讀整本講義）、更強的邏輯推理，還能直接與 Google Docs 連動寫作。</p>
-            </div>
-            <div class="card">
-                <h3>🛡️ PÄRENTS (家長)</h3>
-                <p>為您減壓的神隊友。幫您規劃週末行程、撰寫親師溝通書信，甚至幫您複習現在的數學教法。</p>
+                <h3>🌏 樂活顧問</h3>
+                <p>為退休生活增添色彩。解釋複雜的健康資訊、規劃深度旅遊、學習新興趣。</p>
             </div>
         </div>
 
-        <h2 class="section-title">情境組裝說明書 (請點選卡片)</h2>
+        <h2 class="section-title">情境組裝說明書 (請左右滑動選擇)</h2>
         <div class="assembly-section">
             <div class="tabs">
-                <button class="tab-btn active" onclick="openTab('math')">🧮 數學卡關時</button>
-                <button class="tab-btn" onclick="openTab('english')">🗣️ 英文沒環境</button>
-                <button class="tab-btn" onclick="openTab('plan')">📅 考前一團亂</button>
-                <button class="tab-btn" onclick="openTab('trip')">🚗 週末去哪玩</button>
+                <button class="tab-btn active" onclick="openTab('math')">🧮 數學卡關</button>
+                <button class="tab-btn" onclick="openTab('english')">🗣️ 英文家教</button>
+                
+                <button class="tab-btn" onclick="openTab('life')">🏠 主婦智慧</button>
+                <button class="tab-btn" onclick="openTab('travel')">✈️ 旅遊達人</button>
+                
+                <button class="tab-btn" onclick="openTab('senior')">🍵 樂活退休</button>
+                <button class="tab-btn" onclick="openTab('knowledge')">📖 萬事通</button>
             </div>
 
             <div id="math" class="instruction-panel active">
                 <div class="instruction-card">
-                    <h4>🔨 組裝目標：解決「爸媽不會教、孩子聽不懂」的數學題</h4>
-                    <br>
+                    <h4>🔨 組裝目標：解決「爸媽不會教」的數學題</h4>
                     <div class="instruction-step">
                         <div class="step-num">1</div>
                         <div>
-                            <p><strong>拍照上傳：</strong> 用手機拍下卡住的數學題目。</p>
+                            <p><strong>拍照上傳：</strong> 用手機拍下卡住的題目。</p>
                         </div>
                     </div>
                     <div class="instruction-step">
                         <div class="step-num">2</div>
                         <div>
-                            <p><strong>輸入指令配件：</strong> 複製以下對話給 Gemini</p>
+                            <p><strong>輸入指令配件：</strong></p>
                             <span class="code-block">「這題數學我不懂，請扮演蘇格拉底，不要直接給我答案。請一步一步引導我思考解題的關鍵是什麼？並用國小五年級能懂的語言解釋。」</span>
-                        </div>
-                    </div>
-                    <div class="instruction-step">
-                        <div class="step-num">3</div>
-                        <div>
-                            <p><strong>完成：</strong> 孩子獲得解題邏輯，而非單純的答案。</p>
                         </div>
                     </div>
                 </div>
@@ -376,126 +376,135 @@
             <div id="english" class="instruction-panel">
                 <div class="instruction-card">
                     <h4>🔨 組裝目標：免費的一對一外籍家教</h4>
-                    <br>
                     <div class="instruction-step">
                         <div class="step-num">1</div>
                         <div>
-                            <p><strong>開啟語音：</strong> 按下 Gemini App 的麥克風圖示。</p>
+                            <p><strong>開啟語音：</strong> 按下 Gemini App 的麥克風。</p>
                         </div>
                     </div>
                     <div class="instruction-step">
                         <div class="step-num">2</div>
                         <div>
                             <p><strong>輸入指令配件：</strong></p>
-                            <span class="code-block">「我想練習英文口說。請你扮演一位美國的圖書館員，我要去借書。請跟我進行對話，如果我文法有錯，請在回應後溫柔地糾正我。」</span>
+                            <span class="code-block">「我想練習英文口說。請扮演一位咖啡廳店員，我要點餐。請跟我對話，如果我有文法錯誤，請在回應後溫柔地糾正我。」</span>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <div id="plan" class="instruction-panel">
+            <div id="life" class="instruction-panel">
                 <div class="instruction-card">
-                    <h4>🔨 組裝目標：建立孩子的自主讀書計畫</h4>
-                    <br>
+                    <h4>🔨 組裝目標：清冰箱大師 & 家事救星</h4>
                     <div class="instruction-step">
                         <div class="step-num">1</div>
                         <div>
-                            <p><strong>資料準備：</strong> 拍下這次段考的範圍表。</p>
+                            <p><strong>拍照或列出食材：</strong> 拍下冰箱剩下的食材（例如：半顆洋蔥、雞蛋、過熟的香蕉）。</p>
                         </div>
                     </div>
                     <div class="instruction-step">
                         <div class="step-num">2</div>
                         <div>
                             <p><strong>輸入指令配件：</strong></p>
-                            <span class="code-block">「下週二要段考，範圍是這張照片。現在是週五晚上。請幫我規劃這三天的複習進度表，要包含休息時間，並將大單元拆解成小的複習任務。」</span>
+                            <span class="code-block">「我有這些食材（照片中），請幫我設計三道適合全家人吃的晚餐食譜，要求簡單快速，並附上烹飪步驟。」</span>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">3</div>
+                        <div>
+                            <p><strong>延伸應用：</strong> 也可以問「這件衣服沾到醬油怎麼洗？」</p>
                         </div>
                     </div>
                 </div>
             </div>
 
-             <div id="trip" class="instruction-panel">
+            <div id="travel" class="instruction-panel">
                 <div class="instruction-card">
-                    <h4>🔨 組裝目標：家長放鬆計畫</h4>
-                    <br>
+                    <h4>🔨 組裝目標：無痛產生旅遊行程表</h4>
                     <div class="instruction-step">
                         <div class="step-num">1</div>
                         <div>
+                            <p><strong>確認需求：</strong> 決定地點、天數、旅伴。</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">2</div>
+                        <div>
                             <p><strong>輸入指令配件：</strong></p>
-                            <span class="code-block">「請幫我規劃台中地區適合國小生的半日遊。要求：要有冷氣的科學類室內活動，以及一個可以奔跑的戶外公園，請附上交通與停車建議。」</span>
+                            <span class="code-block">「請幫我規劃 5 天 4 夜的日本京都孝親之旅。旅伴有 70 歲長輩，要求：每天步數不要太多、包含經典寺廟與當地市場、午餐要安排好消化的餐廳。請以表格呈現行程與交通方式。」</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div id="senior" class="instruction-panel">
+                <div class="instruction-card">
+                    <h4>🔨 組裝目標：健康資訊翻譯 & 科技小幫手</h4>
+                    <div class="instruction-step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <p><strong>場景：</strong> 看不懂健檢報告上的紅字，或想學怎麼用 LINE Pay。</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <p><strong>輸入指令配件：</strong></p>
+                            <span class="code-block">「請用簡單的比喻解釋什麼是『三酸甘油脂』過高？平常飲食要注意什麼？」</span>
+                            <br>
+                            <span class="code-block">「我想教我朋友用手機視訊，請給我一步一步的教學步驟，讓我照著念給他聽。」</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="knowledge" class="instruction-panel">
+                <div class="instruction-card">
+                    <h4>🔨 組裝目標：任何知識的快速入門</h4>
+                    <div class="instruction-step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <p><strong>場景：</strong> 突然想了解「AI 是什麼」或「如何開始種多肉植物」。</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <p><strong>輸入指令配件：</strong></p>
+                            <span class="code-block">「我是園藝新手，想在陽台種多肉植物。請給我一份『新手入門指南』，包含推薦品種、澆水頻率、以及防蟲技巧。」</span>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <h2 class="section-title">專家評測報告</h2>
+        <h2 class="section-title">使用者見證</h2>
         <div class="experts-grid">
             <div class="expert-card">
-                <div class="expert-title">教育科技專家</div>
-                <p class="quote">「Gemini Advanced 最強大的是『邏輯引導』。它不是作弊工具，而是引發孩子好奇心的催化劑。」</p>
-                <p class="expert-name">Dr. Chen</p>
+                <div class="expert-title">資深家庭主婦</div>
+                <p class="quote">「以前想不到晚餐煮什麼很頭痛，現在我都直接拍冰箱給 Gemini 看，它連食譜都幫我寫好了，省下超多時間！」</p>
+                <p class="expert-name">Mrs. Lin</p>
             </div>
             <div class="expert-card">
-                <div class="expert-title">資深語文教師</div>
-                <p class="quote">「寫作最難的是『開始』。Gemini 是最好的靈感庫，能引導孩子構思大綱，而不是直接代寫。」</p>
-                <p class="expert-name">Teacher Sarah</p>
+                <div class="expert-title">退休公務員</div>
+                <p class="quote">「兒女忙，不好意思一直問手機怎麼用。現在我都問 Gemini，它很有耐心，還會提醒我防詐騙資訊，很安心。」</p>
+                <p class="expert-name">Mr. Wang</p>
             </div>
             <div class="expert-card">
-                <div class="expert-title">兒童心理師</div>
-                <p class="quote">「許多學習焦慮來自於『不知道怎麼整理重點』。Gemini 的文件分析功能可以大大減輕這種認知負荷。」</p>
-                <p class="expert-name">Coach Lin</p>
+                <div class="expert-title">自助旅行愛好者</div>
+                <p class="quote">「規劃行程最累的是查交通。Gemini 可以直接幫我算出點對點的交通時間，還能推薦順路的景點。」</p>
+                <p class="expert-name">Traveler Ken</p>
             </div>
         </div>
 
         <br><br>
 
-        <h2 class="section-title">規格比較表</h2>
-        <div style="overflow-x:auto;">
-            <table class="comparison-table">
-                <thead>
-                    <tr>
-                        <th>功能特性</th>
-                        <th>免費版 Gemini</th>
-                        <th>Gemini Advanced (訂閱版)</th>
-                        <th>對學生的好處</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>基礎問答與創作</td>
-                        <td><span class="check-icon">✓</span></td>
-                        <td><span class="check-icon">✓</span></td>
-                        <td>日常作業輔助、靈感發想</td>
-                    </tr>
-                    <tr>
-                        <td><strong>超大記憶容量</strong></td>
-                        <td>-</td>
-                        <td><span class="check-icon">✓</span> (100萬 Tokens)</td>
-                        <td><strong>可讀完整本複習講義或 PDF 教科書</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Python 程式運算</strong></td>
-                        <td>-</td>
-                        <td><span class="check-icon">✓</span></td>
-                        <td><strong>精準解決複雜數學運算與科學圖表</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Google Docs 連動</strong></td>
-                        <td>-</td>
-                        <td><span class="check-icon">✓</span></td>
-                        <td>在打報告時直接呼叫 AI 潤飾文章</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
     </div>
 
     <footer>
-        <h3>準備好升級您的家庭教育了嗎？</h3>
-        <p>Gemini - 讓陪伴孩子學習，變成一件簡單又快樂的事。</p>
+        <h3>準備好升級您的生活了嗎？</h3>
+        <p>Gemini - 讓全家人的生活更簡單、更聰明。</p>
         <br>
-        <p style="font-size: 0.8rem; color: #888;">*本網頁為 Gemini 功能介紹模擬，實際功能以 Google 官方公告為準。</p>
+        <p style="font-size: 0.8rem; color: #888;">*本網頁為 Gemini 功能情境模擬，實際回答效果依問題內容而定。</p>
     </footer>
 
     <script>
@@ -510,6 +519,9 @@
 
             // Show selected panel and activate button
             document.getElementById(tabId).classList.add('active');
+            
+            // Find the button that was clicked and add active class
+            // Using event.currentTarget ensures we get the button even if child elements exist
             event.currentTarget.classList.add('active');
         }
     </script>
