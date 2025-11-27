@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Gemini 智慧百科全書 Vol.2 - 深入探討 AI 於家庭、職場的進階應用案例，以及生成式 AI 對新創產業與服務 App 的影響分析。">
-    <title>Gemini 智慧百科全書 Vol.2 | 趨勢與產業影響分析</title>
+    <meta name="description" content="Gemini 終極全功能百科全書：涵蓋 AI 基礎應用、多模態案例、產業衝擊矩陣，以及與 NotebookLM 史詩級整合的完整指南。">
+    <title>Gemini：從應用到知識協作</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700;900&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
 
     <style>
         :root {
@@ -19,8 +19,7 @@
             --paper-pure: #ffffff;
             --academic-blue: #2c3e50;  /* 權威藍 */
             --accent-gold: #c0a062;    /* 燙金 */
-            --alert-red: #a94442;      /* 註記紅 */
-            --border-line: #dcd6cc;
+            --notebook-highlight: #ff6f00; /* 驚嘆/洞察橘 */
             
             /* 間距系統 */
             --spacing-sm: 1rem;
@@ -54,7 +53,7 @@
         /* 側邊索引欄 (Sidebar) */
         .archive-sidebar {
             background: var(--paper-bg);
-            border-right: 1px solid var(--border-line);
+            border-right: 1px solid var(--ink-primary); /* 強調邊界 */
             padding: var(--spacing-md);
             position: sticky;
             top: 0;
@@ -65,12 +64,13 @@
         .brand-seal {
             font-family: 'Roboto Mono', monospace;
             font-weight: 700;
-            border: 2px solid var(--ink-primary);
+            border: 3px double var(--notebook-highlight); /* 強調色 */
             padding: 10px;
             display: inline-block;
             margin-bottom: var(--spacing-md);
             text-transform: uppercase;
-            letter-spacing: 2px;
+            letter-spacing: 3px;
+            color: var(--notebook-highlight);
         }
 
         .toc-nav ul { list-style: none; }
@@ -82,7 +82,7 @@
             display: block;
             padding: 5px 0;
         }
-        .toc-nav a.active { color: var(--academic-blue); font-weight: 700; padding-left: 10px; border-left: 3px solid var(--accent-gold); }
+        .toc-nav a.active { color: var(--academic-blue); font-weight: 700; padding-left: 10px; border-left: 5px solid var(--notebook-highlight); }
 
         /* 主要內容區 (Main) */
         .archive-main {
@@ -90,33 +90,58 @@
             padding: var(--spacing-lg) var(--spacing-lg);
         }
 
-        /* 標題系統 */
+        /* 標題系統 - 驚嘆模式 */
         header.doc-header {
-            border-bottom: 4px double var(--ink-primary);
+            border-bottom: 6px solid var(--notebook-highlight);
             margin-bottom: var(--spacing-lg);
             padding-bottom: var(--spacing-sm);
         }
 
-        h1 { font-size: 3rem; margin-bottom: 0.5rem; letter-spacing: -1px; }
-        .subtitle { font-family: 'Roboto Mono', monospace; color: var(--ink-secondary); font-size: 0.9rem; }
+        /* 特大字強調樣式 */
+        .exclamation-text {
+            font-size: 5.5rem; /* 視覺衝擊 */
+            color: var(--notebook-highlight);
+            font-family: 'Noto Serif TC', serif;
+            font-weight: 900;
+            text-shadow: 4px 4px 0 var(--academic-blue); 
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            display: block;
+            text-transform: uppercase;
+        }
+
+        h1 { 
+            font-size: 3rem; 
+            margin-bottom: 0.5rem; 
+            letter-spacing: -1px; 
+            color: var(--academic-blue);
+        }
 
         h2.section-heading {
-            font-size: 1.8rem;
+            font-size: 2.5rem;
             margin-top: var(--spacing-lg);
             margin-bottom: var(--spacing-md);
             display: flex;
             align-items: center;
+            color: var(--academic-blue);
         }
         h2.section-heading::before {
-            content: '';
-            display: inline-block;
-            width: 20px;
-            height: 20px;
-            background: var(--accent-gold);
+            content: '!!!';
+            font-family: 'Roboto Mono', monospace;
+            font-weight: bold;
+            color: var(--notebook-highlight);
             margin-right: 15px;
+            font-size: 1.5rem;
         }
 
-        /* 檔案卡片樣式 (Case File Cards) */
+        h3 { 
+            font-size: 1.8rem; 
+            color: var(--notebook-highlight);
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-sm);
+        }
+
+        /* 檔案卡片與網格 */
         .case-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -126,43 +151,18 @@
         .case-file {
             border: 1px solid var(--border-line);
             padding: 25px;
-            position: relative;
             background: #fffcf5;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        .case-file:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-            border-color: var(--academic-blue);
-        }
-
-        .file-meta {
-            font-family: 'Roboto Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--ink-secondary);
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            border-bottom: 1px dashed var(--border-line);
-            padding-bottom: 5px;
-        }
-
-        .case-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; color: var(--academic-blue); }
-        .case-desc { font-size: 1rem; color: #555; margin-bottom: 20px; text-align: justify; }
-
-        /* 提示詞區塊 (Prompt Box) */
+        
         .prompt-zone {
             background: #f0f2f5;
             padding: 15px;
             border-radius: 4px;
             font-size: 0.9rem;
-            border-left: 3px solid var(--academic-blue);
+            border-left: 5px solid var(--accent-gold);
         }
-        .prompt-label { font-size: 0.7rem; font-weight: bold; text-transform: uppercase; color: #777; display: block; margin-bottom: 5px; }
-
-        /* 產業影響矩陣 (Impact Matrix Table) */
-        .matrix-container { overflow-x: auto; }
+        
+        /* 產業影響矩陣 */
         .impact-table {
             width: 100%;
             border-collapse: collapse;
@@ -176,45 +176,65 @@
         }
         .impact-table th { background: var(--paper-bg); font-weight: 700; }
         .impact-tag {
-            display: inline-block;
-            padding: 2px 8px;
-            background: var(--ink-primary);
+            background: var(--academic-blue);
             color: white;
-            font-size: 0.7rem;
+            padding: 3px 8px;
             border-radius: 12px;
-            margin-right: 5px;
+            font-size: 0.75rem;
         }
 
-        /* 趨勢分析區塊 */
-        .trend-analysis {
-            display: flex;
-            gap: 40px;
-            align-items: flex-start;
-            margin-bottom: 40px;
-            border-bottom: 1px solid var(--border-line);
-            padding-bottom: 40px;
+        /* NotebookLM 專用模組卡片 */
+        .notebook-card {
+            border: 5px dashed var(--notebook-highlight);
+            background: #ffe0b2; /* 淺橘色背景 */
+            padding: 30px;
+            margin-top: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+            border-radius: 8px;
         }
-        .trend-icon { font-size: 3rem; flex-shrink: 0; color: var(--accent-gold); }
 
-        /* 響應式設計調整 (Mobile) */
+        .notebook-title {
+            font-size: 2rem;
+            color: var(--academic-blue);
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .collab-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 20px;
+        }
+        
+        .collab-item {
+            background: var(--paper-pure);
+            border-left: 5px solid var(--notebook-highlight);
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        /* RWD for Mobile */
         @media (max-width: 900px) {
             .archive-container { grid-template-columns: 1fr; }
             .archive-sidebar { 
                 height: auto; 
                 position: relative; 
                 border-right: none; 
-                border-bottom: 1px solid var(--border-line);
+                border-bottom: 1px solid var(--ink-primary);
                 padding: var(--spacing-sm);
             }
             .toc-nav { display: flex; overflow-x: auto; white-space: nowrap; gap: 15px; }
             .toc-nav li { margin-bottom: 0; }
             .toc-nav a { padding: 5px 10px; border: 1px solid var(--border-line); border-radius: 20px; }
-            .toc-nav a.active { border-left: 1px solid var(--academic-blue); background: var(--academic-blue); color: white; }
+            .toc-nav a.active { border-left: none; background: var(--academic-blue); color: white; }
             
             .archive-main { padding: var(--spacing-md) var(--spacing-sm); }
-            h1 { font-size: 2rem; }
-            .trend-analysis { flex-direction: column; gap: 15px; }
-            .impact-table { min-width: 600px; } /* 強制表格捲動 */
+            .exclamation-text { font-size: 3rem; text-shadow: 2px 2px 0 var(--academic-blue); }
+            h2.section-heading { font-size: 1.8rem; }
+            .case-grid { grid-template-columns: 1fr; }
+            .collab-grid { grid-template-columns: 1fr; }
+            .impact-table { min-width: 600px; overflow-x: auto; display: block; } 
         }
     </style>
 </head>
@@ -223,171 +243,181 @@
     <div class="archive-container">
         
         <aside class="archive-sidebar">
-            <div class="brand-seal">GEMINI ARCHIVE</div>
+            <div class="brand-seal">ARCHIVE ⚡ FUSION</div>
             <nav class="toc-nav">
                 <ul>
-                    <li><a href="#intro" class="active">I. 總論 (Abstract)</a></li>
-                    <li><a href="#advanced-cases">II. 進階案例 (Advanced Cases)</a></li>
-                    <li><a href="#industry-impact">III. 產業衝擊 (Market Impact)</a></li>
-                    <li><a href="#future-outlook">IV. 未來展望 (Outlook)</a></li>
+                    <li><a href="#intro" class="active">I. 總覽與宣言</a></li>
+                    <li><a href="#core-engine">II. 核心動力：多模態應用</a></li>
+                    <li><a href="#startup-impact">III. 產業衝擊：新創變革</a></li>
+                    <li><a href="#notebook-fusion">IV. 知識煉金術：NotebookLM</a></li>
+                    <li><a href="#conclusion">V. 總結與展望</a></li>
                 </ul>
             </nav>
-            <div style="margin-top: 3rem; font-size: 0.8rem; color: #888; font-family: 'Roboto Mono';">
-                <p>Status: ONLINE</p>
-                <p>Ver: 2.5 (Encyclopedia)</p>
-            </div>
         </aside>
 
         <main class="archive-main">
             
             <header class="doc-header" id="intro">
-                <div class="subtitle">DOCUMENT NO. G-2024-TW | CLASSIFICATION: PUBLIC</div>
-                <h1>百科全書 Vol.2：應用趨勢</h1>
-                <p style="margin-top: 1rem; max-width: 800px;">
-                    本卷宗旨在探討生成式 AI (Generative AI) 如何從「單點功能」進化為「生態系統」。
-                    除了家庭場景，我們將觀測範圍擴大至職場協作、創意生成以及對現有新創產業的破壞式創新影響。
+                <span class="exclamation-text">!! 絕無僅有 !! 智慧革命</span>
+                <h1>Gemini 全功能：應用、趨勢與協作</h1>
+                <p style="margin-top: 1rem; max-width: 900px; font-weight: bold; color: var(--academic-blue);">
+                    本文件是關於 Google Gemini 生態系統的完整詮釋，涵蓋了從基礎的圖像/文字處理，到對全球新創生態的影響，以及與 NotebookLM 深度整合後，大幅知識工作前所未有之高度。
                 </p>
             </header>
 
-            <section id="advanced-cases">
-                <h2 class="section-heading">進階應用檔案 (Advanced Usage Files)</h2>
-                <p style="margin-bottom: 2rem;">以下收錄三個跨領域的高階應用案例，展示 Gemini 多模態（Multimodal）處理能力。</p>
+            <section id="core-engine">
+                <h2 class.section-heading>核心動力：通用智慧與多模態應用</h2>
+                <p style="margin-bottom: var(--spacing-md);">Gemini 的強大在於其跨模態的推理能力，能處理並理解文字、圖像、程式碼等複雜資訊，並立即轉化為可執行的方案。這是生產力的驚天大躍進！</p>
 
                 <div class="case-grid">
                     
                     <article class="case-file">
-                        <div class="file-meta">
-                            <span>FILE: DEV-042</span>
-                            <span>領域: 軟體工程</span>
-                        </div>
-                        <h3 class="case-title">非工程師的「微型創業」</h3>
-                        <p class="case-desc">
-                            <strong>背景：</strong> 行銷人員想製作一個簡單的「活動報名網頁」，但不懂寫 code。<br><br>
-                            <strong>應用：</strong> 上傳一張手繪的網頁草圖 (Wireframe) 給 Gemini。
+                        <h3 style="color: var(--academic-blue);">非工程師的「微型創業」代碼生成</h3>
+                        <p>
+                            功能：圖像理解 (Vision) 與代碼生成 (Code Generation)。<br>
+                            情境： 上傳一張手繪的網頁草圖。<br>
+                            <figure style="margin: 10px 0;">
+                                <img src="http://googleusercontent.com/image_collection/image_retrieval/some_id_string" alt="
+
+[Image of pythagorean theorem geometric proof]
+" style="max-width: 50px; float: right; margin-left: 10px;">
+                                <figcaption style="font-size: 0.8em; color: #777;">[參照幾何證明圖] 複雜邏輯也能理解。</figcaption>
+                            </figure>
                         </p>
                         <div class="prompt-zone">
-                            <span class="prompt-label">Prompt 指令</span>
-                            「請依據這張草圖，撰寫出單一檔案的 HTML/CSS 代碼。風格要現代極簡，並包含一個點擊後會顯示『報名成功』的 JavaScript 按鈕功能。」
+                            指令：「請依據這張草圖，撰寫出單一檔案的 HTML/CSS 代碼，並包含一個 JavaScript 按鈕功能。」
                         </div>
+                        <p style="margin-top: 10px; font-weight: bold;">震撼點：將抽象設計思維直接轉化為可運作的數位資產。*你不再需要程式設計師！</p>
                     </article>
 
                     <article class="case-file">
-                        <div class="file-meta">
-                            <span>FILE: BIZ-108</span>
-                            <span>領域: 商業談判</span>
-                        </div>
-                        <h3 class="case-title">高情商郵件過濾器</h3>
-                        <p class="case-desc">
-                            <strong>背景：</strong> 收到客戶憤怒的投訴信，情緒激動不知如何回覆。<br><br>
-                            <strong>應用：</strong> 貼上客戶的信件內容，要求進行「情緒降溫」。
+                        <h3 style="color: var(--academic-blue);">高情商郵件過濾器與談判助理</h3>
+                        <p>
+                            功能： 情感分析 (Sentiment Analysis) 與語氣轉換 (Tone Transformation)。<br>
+                            情境： 收到客戶憤怒的投訴信件，需要專業且鎮定的回覆。<br>
+                            應用： 貼上客戶信件，要求進行「情緒降溫」與「專業回覆」草擬。
                         </p>
                         <div class="prompt-zone">
-                            <span class="prompt-label">Prompt 指令</span>
-                            「請分析這封信的潛在訴求。幫我草擬一封回信：1. 語氣專業且具同理心 2. 不承諾具體賠償但承諾會調查 3. 讓對方感覺被重視。請提供三個不同語氣的版本（誠懇、正式、簡潔）。」
+                            指令： 「請分析這封信的潛在訴求。幫我草擬一封專業、具同理心的回信。請提供三個不同語氣的版本（誠懇、正式、簡潔）。」
                         </div>
+                        <p style="margin-top: 10px; font-weight: bold;">**震撼點：** AI 成為您的情商顧問，讓您在壓力下也能完美應對複雜的人際與商務溝通！</p>
                     </article>
 
                     <article class="case-file">
-                        <div class="file-meta">
-                            <span>FILE: MED-099</span>
-                            <span>領域: 運動營養</span>
-                        </div>
-                        <h3 class="case-title">虛擬營養師與教練</h3>
-                        <p class="case-desc">
-                            <strong>背景：</strong> 剛開始健身，想知道今天的便當熱量是否超標。<br><br>
-                            <strong>應用：</strong> 拍攝便當照片，並告知個人健身目標。
+                        <h3 style="color: var(--academic-blue);">虛擬營養師：照片即是數據</h3>
+                        <p>
+                            功能： 圖像識別與數據估算 (Image-to-Data Conversion)。<br>
+                            情境： 想知道今天的便當熱量是否符合健身目標。<br>
+                            <figure style="margin: 10px 0;">
+                                <img src="http://googleusercontent.com/image_collection/image_retrieval/some_id_string" alt="
+
+[Image of food pyramid nutrition chart]
+" style="max-width: 50px; float: right; margin-left: 10px;">
+                                <figcaption style="font-size: 0.8em; color: #777;">[參照食物金字塔] 快速結構化分析。</figcaption>
+                            </figure>
                         </p>
                         <div class="prompt-zone">
-                            <span class="prompt-label">Prompt 指令</span>
-                            「這是我的午餐（附圖）。我的目標是增肌減脂。請估算這盤食物的蛋白質與碳水化合物大約幾克？如果我想在下午補充點心，建議吃什麼來補足剩下的營養缺口？」
+                            指令： 「這是我的午餐（附圖）。我的目標是增肌。請估算蛋白質與碳水化合物含量？並建議下午補充的營養缺口。」
                         </div>
+                        <p style="margin-top: 10px; font-weight: bold;">震撼點：AI 讓個人健康管理從複雜的計算機，變成一個簡單到不可思議的拍照過程！</p>
                     </article>
                 </div>
             </section>
 
-            <section id="industry-impact">
-                <h2 class="section-heading">產業影響矩陣 (Industry Impact Report)</h2>
-                <p>AI 的普及正在重新定義現有的服務 App 與新創公司的價值主張。以下是本檔案館整理的市場關聯分析表。</p>
+            <section id="startup-impact">
+                <h2 class.section-heading>產業衝擊：AI 重新定義新創與服務 App</h2>
+                <p style="margin-bottom: var(--spacing-md);">AI 的普及正在引發「**解構與重構**」的市場地震。過去成功的服務 App，必須迅速整合 AI，將功能從「工具」升級為「專屬顧問」。</p>
 
-                <div class="trend-analysis">
-                    <div class="trend-icon">⚡</div>
-                    <div>
-                        <h3 style="margin-bottom: 0.5rem; color: var(--academic-blue);">趨勢觀察：超個人化 (Hyper-personalization)</h3>
-                        <p>過去的 App 提供「千人一面」的內容；現在的 AI 賦能 App 提供「千人千面」的體驗。使用者不再只是搜尋資訊，而是與資訊對話。</p>
-                    </div>
-                </div>
-
-                <div class="matrix-container">
+                <h3 style="color: var(--academic-blue); font-weight: 700;">趨勢觀察：超個人化 (Hyper-personalization)</h3>
+                <p>過去 App 提供「千人一面」的內容；現在的 AI 賦能 App 提供「千人千面」的體驗。使用者不再只是搜尋資訊，而是與資訊對話，**這是一個商業模式的驚天轉變！**</p>
+                
+                <div style="overflow-x: auto;">
                     <table class="impact-table">
                         <thead>
                             <tr>
                                 <th width="20%">影響領域 (Sector)</th>
                                 <th width="25%">受影響的新創/App</th>
-                                <th width="55%">AI 帶來的質變與新應用</th>
+                                <th width="55%">AI 帶來的質變與新應用 (!)</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr>
-                                <td>
-                                    <span class="impact-tag">語言學習</span>
-                                </td>
-                                <td>
-                                    <strong>Duolingo, Speak</strong>
-                                </td>
-                                <td>
-                                    從「死背單字」轉變為「<strong>情境角色扮演</strong>」。<br>
-                                    <small style="color:#666;">趨勢：使用者可與 AI 扮演的海關人員、咖啡師進行無限制的口語對話，即時獲得文法糾正，無需真人外教。</small>
-                                </td>
+                                <td><span class="impact-tag">語言學習</span></td>
+                                <td>Duolingo, Speak</td>
+                                <td>從「死背單字」轉變為「情境角色扮演」。使用者可與 AI 扮演的虛擬海關或咖啡師進行即時口語對話，達到真人級別的沉浸式學習體驗。</td>
                             </tr>
                             <tr>
-                                <td>
-                                    <span class="impact-tag">生產力筆記</span>
-                                </td>
-                                <td>
-                                    <strong>Notion, Evernote</strong>
-                                </td>
-                                <td>
-                                    從「紀錄工具」轉變為「<strong>第二大腦</strong>」。<br>
-                                    <small style="color:#666;">趨勢：AI (如 Notion AI) 能自動摘要會議記錄、將凌亂的筆記轉化為待辦清單，甚至續寫文章。</small>
-                                </td>
+                                <td><span class="impact-tag">生產力筆記</span></td>
+                                <td>Notion, Evernote</td>
+                                <td>從「紀錄工具」轉變為「第二大腦」。AI (如 Notion AI) 自動摘要、整理、續寫筆記，將**知識工作效率提升至前所未有的高度**。</td>
                             </tr>
                             <tr>
-                                <td>
-                                    <span class="impact-tag">身心健康</span>
-                                </td>
-                                <td>
-                                    <strong>Calm, Headspace</strong>
-                                </td>
-                                <td>
-                                    從「播放白噪音」轉變為「<strong>即時心理諮商</strong>」。<br>
-                                    <small style="color:#666;">趨勢：AI 可根據使用者的當下情緒（透過語音或文字分析），生成客製化的冥想引導詞或安撫對話。</small>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <span class="impact-tag">旅遊規劃</span>
-                                </td>
-                                <td>
-                                    <strong>TripAdvisor, Airbnb</strong>
-                                </td>
-                                <td>
-                                    從「瀏覽評論」轉變為「<strong>行程生成器</strong>」。<br>
-                                    <small style="color:#666;">趨勢：不再需要手動比對地圖。使用者只需說「給我一個適合帶狗、有素食餐廳的京都三天行程」，AI 即刻完成串接。</small>
-                                </td>
+                                <td><span class="impact-tag">身心健康</span></td>
+                                <td>Calm, Headspace</td>
+                                <td>從「播放白噪音」轉變為「即時心理諮商」。AI 可根據使用者情緒生成客製化的冥想引導，提供高度個人化的安撫對話。</td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
             </section>
 
-            <section id="future-outlook">
-                <h2 class="section-heading">檔案結語 (Conclusion)</h2>
-                <article style="background: var(--academic-blue); color: white; padding: 2rem; border-radius: 4px;">
-                    <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">人人都是產品經理的時代</h3>
+            <section id="notebook-fusion">
+                <h2 class.section-heading>知識煉金術：Gemini 與 NotebookLM 的驚天動地協同效應</h2>
+                <p style="margin-bottom: var(--spacing-md);">這是 AI 領域的終極進化。NotebookLM 專注於您的專屬知識庫，確保內容絕對精確可靠 (Source-Grounded)；當它獲得 Gemini 的超強推理能力時，產生的效果是**指數級的爆炸**！</p>
+
+                <div class="notebook-card">
+                    <h3 class="notebook-title">NotebookLM 定義：您的專屬知識領航員</h3>
                     <p>
-                        隨著 Gemini 等大型語言模型的演進，技術門檻大幅降低。未來的競爭優勢不在於「誰會寫程式」，而在於「誰最會問問題」以及「誰最有想像力」。
-                        <br><br>
-                        本檔案館建議：保持好奇心，將 AI 視為一位博學多聞的實習生，不斷嘗試交付新任務，您將發現生活與工作的邊界正在被重新定義。
+                        功能： 只根據您上傳的私人文件 (PDF, 筆記, Google Docs) 進行問答。目的：徹底消除通用 LLM 的「幻覺 (Hallucination)」，專注於深度與可靠性。
+                    </p>
+                    <p style="margin-top: 15px;">NotebookLM 核心功能：專屬 AI 對話、自動摘要、虛擬學習夥伴、資料引用追蹤。</p>
+                </div>
+                
+                <h3 style="color: var(--academic-blue); font-weight: 700;">史詩級強項：專精與通用的無敵結合</h3>
+                
+                <div class="collab-grid">
+                    
+                    <div class="collab-item">
+                        <h4>🔥 突破性強項一：知識鏈的完美閉環</h4>
+                        <span>STRENGTH: SOURCE-GROUNDED & GENERAL KNOWLEDGE</span>
+                        <p>NotebookLM 負責文件內部的深度挖掘，Gemini 則負責整合外部通用知識。實現了研究的深度（可靠性）與廣度（即時性）的前所未有的平衡。</p>
+                    </div>
+
+                    <div class="collab-item">
+                        <h4>🔥 突破性強項二：視覺與數據的即時洞察</h4>
+                        <span>STRENGTH: VISUAL INFERENCE</span>
+                        <p>利用 Gemini 的多模態，可將包含複雜圖表的 PDF 上傳。AI 不僅能閱讀文字，還能解析圖表數據，並直接生成基於圖表的分析報告！</p>
+                    </div>
+                    
+                    <div class="collab-item">
+                        <h4>🔥 突破性強項三：從研究到行銷的格式轉換</h4>
+                        <span>STRENGTH: CONTEXTUAL REPURPOSING</span>
+                        <p>要求 NotebookLM 提取研究摘要，再讓 Gemini 將其改寫為「病毒式傳播的社群貼文」或「對話式演講稿」。知識的再利用效率暴增！</p>
+                    </div>
+                    
+                    <div class="collab-item">
+                        <h4>🔥 突破性強項四：極限批判的思維鍛鍊</h4>
+                        <span>STRENGTH: CRITICAL DEBATE PARTNER</span>
+                        <p>將資料觀點輸入後，要求 Gemini 扮演「魔鬼代言人 (Devil's Advocate)」。這能強制使用者面對邏輯漏洞與反證，**極大地提高**最終結論的穩健性。思維能力爆炸！</p>
+                    </div>
+                </div>
+                
+                <h3 style="color: var(--notebook-highlight); font-weight: 700; margin-top: 40px;">!!! 革命性工作流：深度論文寫作協定 !!!</h3>
+                <div class="prompt-zone" style="border-left-color: var(--notebook-highlight);">
+                    <span style="font-family: 'Roboto Mono', monospace; color: var(--notebook-highlight); font-weight: bold;">Gemini-LM Command Sequence</span>
+                    <p>「步驟 I. 歸檔：將 20 篇文獻上傳至 NotebookLM。 步驟 II. 提問： 要求 NotebookLM 找出所有文件之間關於 [主題 X] 的三個主要衝突點。 步驟 III. 寫作： 針對第一個衝突點，要求 Gemini 撰寫一篇 500 字的導論，並在每一句論述後精確標註來源引用 (Source Citation)。」</p>
+                    <p style="margin-top: 10px; color: var(--ink-primary); font-weight: bold;">效益： 以前需要數週的文獻整理與註釋，現在可在數小時內完成，且精確度前所未有。</p>
+                </div>
+
+            </section>
+            
+            <section id="conclusion">
+                <h2 class.section-heading>總結與 AI 紀元宣言</h2>
+                <article style="background: var(--academic-blue); color: white; padding: 2rem; border-radius: 8px;">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">我們正站在歷史的轉捩點！</h3>
+                    <p>
+                        Gemini 不僅是一個工具，它是一個**協作夥伴、一個導師、一個無盡的知識引擎**。當通用 AI (Gemini) 與專屬知識庫 (NotebookLM) 結合時，它代表了人類知識工作的終極解放。<br><br>
+                        **本檔案館最終宣言：** 未來的競爭，將屬於那些能掌握「提問的藝術」並能利用 AI 進行深度知識煉金術的人。擁抱它，否則將錯過整個時代！
                     </p>
                 </article>
             </section>
@@ -396,18 +426,26 @@
     </div>
 
     <script>
-        // 為了增加百科全書的互動感，這裡可以加入點擊側邊欄連結後的平滑滾動效果
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('.toc-nav a').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                if (targetId && document.querySelector(targetId)) {
+                    document.querySelector(targetId).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
                 
                 // 更新 Active 狀態
                 document.querySelectorAll('.toc-nav a').forEach(a => a.classList.remove('active'));
                 this.classList.add('active');
             });
+        });
+        
+        // 頁面載入時確保初始 active 狀態
+        document.addEventListener('DOMContentLoaded', () => {
+            const firstLink = document.querySelector('.toc-nav a');
+            if (firstLink) firstLink.classList.add('active');
         });
     </script>
 </body>
