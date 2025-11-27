@@ -3,344 +3,435 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎄 2025 聖誕破盤・年終最後一檔 | Lenovo Ultra 7 🎄</title>
-    <meta name="description" content="今年聖誕最好的禮物！Lenovo ThinkBook 14 G7 (U7) Ultra 7 AI，聖誕破盤價 $26,000 含稅！Win 11 Pro + 3年保固。">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Noto+Sans+TC:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
+    <title>虎友嚴選 | ThinkBook 14 G7 AI 商務筆電特賣</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* --- 2025 Christmas Theme Variables --- */
         :root {
-            --color-xmas-red: #c0392b;
-            --color-xmas-green: #145a32;
-            --color-gold: #f1c40f;
-            --color-snow: #ffffff;
-            --color-bg-gradient: linear-gradient(135deg, #1a2a1d 0%, #4a0e0e 100%);
-            --font-title: 'Cinzel', serif; /* 典雅的節慶字體 */
-            --font-body: 'Noto Sans TC', sans-serif;
+            /* JR East Green Style */
+            --jr-green: #008631; 
+            --jr-green-dark: #005e22;
+            --jr-grey-bg: #f2f2f2;
+            --jr-text-main: #222222;
+            --jr-text-sub: #555555;
+            --jr-white: #ffffff;
+            --alert-red: #d32f2f;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
-            font-family: var(--font-body);
-            background: var(--color-bg-gradient);
-            color: #333;
-            min-height: 100vh;
-            overflow-x: hidden;
-            position: relative;
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--jr-grey-bg);
+            color: var(--jr-text-main);
+            line-height: 1.6;
         }
 
-        /* --- CSS Snow Effect (飄雪特效) --- */
-        .snowflake {
-            position: fixed;
-            top: -10px;
-            color: #fff;
-            font-size: 1em;
-            font-family: Arial;
-            text-shadow: 0 0 1px #000;
-            z-index: 1;
-            animation: fall linear infinite;
-        }
-        
-        @keyframes fall {
-            0% { transform: translateY(-10vh) translateX(0); opacity: 1; }
-            100% { transform: translateY(105vh) translateX(20px); opacity: 0.3; }
-        }
-
-        /* 產生隨機雪花 */
-        .snowflake:nth-child(1) { left: 10%; animation-duration: 10s; animation-delay: 0s; }
-        .snowflake:nth-child(2) { left: 20%; animation-duration: 15s; animation-delay: 1s; font-size: 0.8em; }
-        .snowflake:nth-child(3) { left: 30%; animation-duration: 7s; animation-delay: 2s; }
-        .snowflake:nth-child(4) { left: 40%; animation-duration: 12s; animation-delay: 0s; font-size: 1.2em; }
-        .snowflake:nth-child(5) { left: 60%; animation-duration: 9s; animation-delay: 3s; }
-        .snowflake:nth-child(6) { left: 70%; animation-duration: 11s; animation-delay: 1s; font-size: 0.9em; }
-        .snowflake:nth-child(7) { left: 80%; animation-duration: 13s; animation-delay: 2s; }
-        .snowflake:nth-child(8) { left: 90%; animation-duration: 8s; animation-delay: 0s; }
-
-        /* --- 主要容器卡片 (Glassmorphism) --- */
-        .card-container {
-            max-width: 800px;
-            margin: 40px auto;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(10px);
-            border-radius: 20px;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-            padding: 40px;
-            position: relative;
-            z-index: 2;
-            border: 2px solid rgba(255,215,0,0.3); /* 金色邊框 */
-        }
-
-        /* 裝飾性紅絲帶 */
-        .ribbon {
-            position: absolute;
-            top: -10px; right: 30px;
-            width: 60px;
-            height: 100px;
-            background: var(--color-xmas-red);
-            border-radius: 5px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-        }
-        .ribbon::after {
-            content: '';
-            position: absolute;
-            bottom: 0; left: 0;
-            border-left: 30px solid var(--color-xmas-red);
-            border-right: 30px solid var(--color-xmas-red);
-            border-bottom: 20px solid transparent;
-        }
-
-        /* --- Header --- */
+        /* --- Header / Station Sign Style --- */
         header {
+            background-color: var(--jr-white);
+            border-bottom: 8px solid var(--jr-green);
+            padding: 20px;
             text-align: center;
-            margin-bottom: 30px;
-            border-bottom: 2px dashed #ddd;
-            padding-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
-        h1 {
-            font-family: var(--font-title);
-            color: var(--color-xmas-red);
-            font-size: clamp(2rem, 6vw, 3.5rem);
-            margin-bottom: 10px;
-            text-shadow: 1px 1px 0px rgba(0,0,0,0.1);
+        .station-sign {
+            border: 2px solid var(--jr-text-main);
+            display: inline-block;
+            padding: 10px 40px;
+            background: var(--jr-white);
+            position: relative;
         }
 
-        h2 {
-            font-size: 1.2rem;
-            color: var(--color-xmas-green);
-            font-weight: 700;
-            text-transform: uppercase;
+        .station-sign h1 {
+            font-size: 2rem;
+            font-weight: 900;
             letter-spacing: 2px;
         }
 
-        /* --- 圖片與裝飾 --- */
-        .visual-area {
-            position: relative;
-            margin: 20px auto 40px;
-            width: fit-content;
-        }
-
-        .product-img {
-            max-width: 100%;
-            width: 350px;
-            border-radius: 15px;
-            border: 5px solid #fff;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-            /* 讓原本偏暗紅的照片更融入節慶感 */
-            filter: brightness(1.1) contrast(1.1); 
-        }
-
-        .sticker-2025 {
-            position: absolute;
-            bottom: -20px;
-            right: -20px;
-            background: var(--color-gold);
-            color: var(--color-xmas-red);
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            font-family: var(--font-title);
-            font-size: 1.5rem;
-            transform: rotate(-15deg);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border: 3px solid #fff;
-        }
-
-        /* --- 價格區 --- */
-        .price-section {
-            text-align: center;
-            margin-bottom: 40px;
-            background: linear-gradient(to right, rgba(20, 90, 50, 0.05), rgba(20, 90, 50, 0.1), rgba(20, 90, 50, 0.05));
-            padding: 30px;
-            border-radius: 15px;
-        }
-
-        .momo-price {
-            text-decoration: line-through;
-            color: #999;
-            font-size: 1.1rem;
-        }
-
-        .final-price {
-            font-family: var(--font-title);
-            font-size: clamp(3rem, 10vw, 5rem);
-            color: var(--color-xmas-red);
-            font-weight: 900;
-            margin: 10px 0;
-            text-shadow: 2px 2px 0px rgba(0,0,0,0.1);
-        }
-
-        .save-tag {
-            display: inline-block;
-            background-color: var(--color-xmas-green);
-            color: #fff;
-            padding: 8px 20px;
-            border-radius: 50px;
-            font-weight: 700;
-            box-shadow: 0 4px 10px rgba(20, 90, 50, 0.3);
-        }
-
-        /* --- 規格列表 --- */
-        .specs-list {
-            list-style: none;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 15px;
-            margin-bottom: 40px;
-        }
-
-        .specs-list li {
-            background: #fff;
-            border: 1px solid #eee;
-            padding: 15px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            transition: transform 0.3s;
-        }
-        
-        .specs-list li:hover {
-            transform: translateY(-3px);
-            border-color: var(--color-gold);
-        }
-
-        .specs-list i {
-            font-size: 1.5rem;
-            margin-right: 15px;
-            color: var(--color-xmas-green);
-            width: 30px;
-            text-align: center;
-        }
-
-        .spec-highlight {
-            border: 1px solid var(--color-gold) !important;
-            background: rgba(241, 196, 15, 0.1) !important;
-        }
-        .spec-highlight i { color: #d35400; }
-
-        /* --- CTA 按鈕 --- */
-        .cta-container {
-            text-align: center;
-        }
-
-        .cta-btn {
-            background: var(--color-xmas-red);
-            color: white;
-            text-decoration: none;
-            padding: 20px 50px;
-            font-size: 1.5rem;
-            font-weight: 700;
-            border-radius: 50px;
-            display: inline-block;
-            transition: all 0.3s;
-            box-shadow: 0 10px 25px rgba(192, 57, 43, 0.4);
-            border: 2px solid white;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .cta-btn:hover {
-            background: #a93226;
-            transform: scale(1.05);
-            box-shadow: 0 15px 30px rgba(192, 57, 43, 0.5);
-        }
-        
-        .footer-info {
-            margin-top: 30px;
+        .station-sign .tagline {
             font-size: 0.9rem;
-            color: #777;
-            text-align: center;
+            color: var(--jr-text-sub);
+            font-weight: 500;
         }
-        .footer-info a { color: var(--color-xmas-green); font-weight: bold;}
 
+        /* --- Container --- */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* --- Sections --- */
+        .card {
+            background: var(--jr-white);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            border-left: 6px solid var(--jr-green);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--jr-text-main);
+        }
+
+        /* --- Story Section --- */
+        .story-box {
+            background-color: #e8f5e9;
+            border: 1px solid var(--jr-green);
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .story-icon {
+            font-size: 2rem;
+            color: var(--jr-green);
+        }
+
+        /* --- Product Hero --- */
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            color: var(--jr-green);
+            font-weight: 900;
+            margin: 15px 0;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--jr-text-sub);
+            background: #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
+        }
+
+        /* --- Specs Grid --- */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .spec-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border-bottom: 3px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .spec-item:hover {
+            border-bottom: 3px solid var(--jr-green);
+            transform: translateY(-2px);
+        }
+
+        .spec-icon {
+            font-size: 1.5rem;
+            color: var(--jr-text-sub);
+            margin-bottom: 8px;
+        }
+
+        .spec-title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* --- Comparison Table --- */
+        .comparison-table {
+            width: 1000px; /* Force scroll on mobile */
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table th {
+            background-color: var(--jr-text-main);
+            color: var(--jr-white);
+            font-weight: 500;
+        }
+
+        .highlight-row {
+            background-color: #e8f5e9;
+            font-weight: 700;
+        }
+
+        .winner-col {
+            border: 2px solid var(--jr-green);
+            background-color: #fff;
+            position: relative;
+        }
+        
+        .winner-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--jr-green);
+            color: white;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            border-radius: 10px;
+        }
+
+        /* --- Pro Features --- */
+        .pro-list {
+            list-style: none;
+        }
+        .pro-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .pro-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--jr-green);
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- Footer / CTA --- */
+        .cta-section {
+            background: var(--jr-text-main);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--jr-green);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-top: 15px;
+            transition: 0.3s;
+            box-shadow: 0 4px 10px rgba(0,134,49,0.3);
+        }
+
+        .btn:hover {
+            background-color: var(--jr-green-dark);
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 768px) {
+            .product-hero {
+                grid-template-columns: 1fr;
+            }
+            .station-sign h1 {
+                font-size: 1.5rem;
+            }
+        }
     </style>
 </head>
 <body>
 
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❆</div>
-    <div class="snowflake">❅</div>
-    <div class="snowflake">❄</div>
-    <div class="snowflake">❆</div>
+<header>
+    <div class="station-sign">
+        <div class="tagline">Johnny's Special Selection</div>
+        <h1>強尼嚴選・在庫急售</h1>
+        <div class="tagline">Lenovo ThinkBook 14 G7 AI</div>
+    </div>
+</header>
 
-    <div class="card-container">
-        <div class="ribbon"></div>
+<div class="container">
 
-        <header>
-            <h1>Merry Christmas</h1>
-            <h2>2025 聖誕專案・年終最後一檔</h2>
-        </header>
+    <div class="card">
+        <div class="story-box">
+            <i class="fa-solid fa-user-clock story-icon"></i>
+            <div>
+                <strong>急售原因：</strong> 好友強尼被客戶放鴿子，全新商務庫存壓力大！
+                <br>
+                <span style="font-size:0.9rem; color:var(--jr-text-sub);">這不是福利品，這是「全新未拆」的正規公司貨。幫朋友清庫存，價格直接回饋，剛好需要筆電的朋友真的賺到。</span>
+            </div>
+        </div>
+    </div>
 
-        <div style="text-align: center;">
-            <div class="visual-area">
-                <img src="https://64.media.tumblr.com/fb265360409333689db82c932619abd6/5aa421e1aa99d03e-5c/s1280x1920/c97f42e063763d1102b2aaf808526f2eaced0e2b.jpg" alt="Christmas Gift Laptop" class="product-img">
-                <div class="sticker-2025">2025<br>SALE</div>
+    <div class="card">
+        <h2><i class="fa-solid fa-laptop"></i> 商品重點資訊</h2>
+        <div class="product-hero">
+            <div style="text-align: center;">
+                <div style="background:#eee; height:200px; display:flex; align-items:center; justify-content:center; color:#aaa; border-radius:8px;">
+                    <i class="fa-solid fa-image fa-3x"></i>
+                    <span style="margin-left:10px;">Lenovo ThinkBook 14 G7</span>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>Lenovo ThinkBook 14 G7 (U7)</h3>
+                <p>14吋 AI 商務筆電 | Ultra 7 處理器</p>
+                <div class="price-tag">NT$ 26,000 <span style="font-size:1rem; color:#555;">(含稅)</span></div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 全新未拆封</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 含發票 (可開統編)</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 附原廠包 + 滑鼠</div>
             </div>
         </div>
 
-        <div class="price-section">
-            <p style="font-size: 1.2rem; margin-bottom: 5px;">🎁 最好的聖誕禮物，是生產力 🎁</p>
-            <p class="momo-price">Momo 原價 $30,990</p>
-            <div class="final-price">$26,000</div>
-            <span class="save-tag">✨ 現省 $4,990 + 免費升級 Pro 版 ✨</span>
+        <div class="specs-grid">
+            <div class="spec-item">
+                <i class="fa-solid fa-microchip spec-icon"></i>
+                <span class="spec-title">處理器 CPU</span>
+                Core Ultra 7 155H<br>(AI NPU 搭載)
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-memory spec-icon"></i>
+                <span class="spec-title">記憶體 RAM</span>
+                16GB DDR5<br>(可擴充第二條)
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-hard-drive spec-icon"></i>
+                <span class="spec-title">硬碟 SSD</span>
+                512GB PCIe 4.0<br>(可擴充第二條)
+            </div>
+            <div class="spec-item">
+                <i class="fa-brands fa-windows spec-icon"></i>
+                <span class="spec-title">作業系統 OS</span>
+                Win 11 <strong style="color:var(--jr-green);">Pro 專業版</strong><br>(商務資安強化)
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-shield-halved spec-icon"></i>
+                <span class="spec-title">保固 Service</span>
+                <strong style="color:var(--jr-green);">3年 Premier Support</strong><br>(頂級到府/專線)
+            </div>
         </div>
-
-        <ul class="specs-list">
-            <li class="spec-highlight">
-                <i class="fas fa-gift"></i>
-                <div>
-                    <strong>獨家聖誕禮遇</strong>
-                    <div style="font-size: 0.9rem; color:#666">升級 Win 11 Pro 專業版</div>
-                </div>
-            </li>
-            <li class="spec-highlight">
-                <i class="fas fa-shield-halved"></i>
-                <div>
-                    <strong>安心保障 3 年</strong>
-                    <div style="font-size: 0.9rem; color:#666">Premier Support 頂級保固</div>
-                </div>
-            </li>
-            <li>
-                <i class="fas fa-microchip"></i>
-                <span>Intel Ultra 7-155H (AI NPU)</span>
-            </li>
-            <li>
-                <i class="fas fa-memory"></i>
-                <span>16G DDR5 記憶體 (可擴充)</span>
-            </li>
-            <li>
-                <i class="fas fa-hard-drive"></i>
-                <span>512G PCle 4.0 SSD (雙槽)</span>
-            </li>
-            <li>
-                <i class="fas fa-check-circle"></i>
-                <span>全新未拆・含稅發票</span>
-            </li>
-        </ul>
-
-        <div class="cta-container">
-            <a href="mailto:halafish@gmail.com?subject=【聖誕禮物】Lenovo%20ThinkBook%20U7%20專案價$26000" class="cta-btn">
-                <i class="fas fa-envelope-open-text"></i> 領取聖誕優惠
-            </a>
-            <p class="footer-info">
-                🎄 數量有限，售完為止｜點擊按鈕發送 Email 🎄<br>
-                比價參考：<a href="https://momo.dm/YYJqyI" target="_blank">Momo 賣場連結 (Win11 Home)</a>
-            </p>
-        </div>
-
     </div>
+
+    <div class="card">
+        <h2><i class="fa-solid fa-chart-simple"></i> 達人比價與分析</h2>
+        <p style="margin-bottom: 15px;">
+            市面上的通路（如 Momo, PChome）同型號機種，通常預載的是家用版系統與一般保固。強尼這批是專案機，因此規格更好。
+        </p>
+        
+        <div class="table-responsive">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">比較項目</th>
+                        <th style="width: 30%; background:var(--jr-green);" class="winner-col">
+                            <span class="winner-badge">強尼好友價</span>
+                            強尼 (現貨)
+                        </th>
+                        <th style="width: 25%; background:#777;">知名電商 M</th>
+                        <th style="width: 25%; background:#777;">知名電商 P</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>價格 (含稅)</strong></td>
+                        <td class="winner-col" style="color:var(--alert-red); font-size:1.2rem; font-weight:900;">$26,000</td>
+                        <td>$30,990</td>
+                        <td>$31,900</td>
+                    </tr>
+                    <tr>
+                        <td>CPU</td>
+                        <td class="winner-col">Ultra 7 155H</td>
+                        <td>Ultra 7 155H</td>
+                        <td>Ultra 7 155H</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>作業系統</td>
+                        <td class="winner-col" style="color:var(--jr-green);">Windows 11 Pro<br><span style="font-size:0.8rem; font-weight:normal;">(價值 +$2000)</span></td>
+                        <td>Windows 11 Home</td>
+                        <td>Windows 11 Home</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>保固服務</td>
+                        <td class="winner-col" style="color:var(--jr-green);">3年 Premier Support<br><span style="font-size:0.8rem; font-weight:normal;">(價值 +$3000)</span></td>
+                        <td>1-2年 一般保固</td>
+                        <td>1-2年 一般保固</td>
+                    </tr>
+                    <tr>
+                        <td>擴充潛力</td>
+                        <td class="winner-col">雙 RAM / 雙 SSD</td>
+                        <td>雙 RAM / 雙 SSD</td>
+                        <td>雙 RAM / 雙 SSD</td>
+                    </tr>
+                    <tr>
+                        <td>贈品</td>
+                        <td class="winner-col">原廠包 + 鼠</td>
+                        <td>視活動而定</td>
+                        <td>無 / 視活動</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fa-solid fa-magnifying-glass"></i> 為什麼這台值得買？</h2>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+            <div>
+                <h4 style="margin-bottom:10px; color:var(--jr-green);">1. AI 效能解鎖 (Meteor Lake)</h4>
+                <p style="font-size:0.95rem; color:#444;">
+                    Intel Ultra 7 155H 內建 NPU，這不是舊款 i7 改名，而是全新的架構。對於未來執行 AI 降噪、背景模糊、甚至本地端 AI 運算都有專門加速，且更省電。
+                </p>
+            </div>
+            <div>
+                <h4 style="margin-bottom:10px; color:var(--jr-green);">2. 商務規格沒在省</h4>
+                <p style="font-size:0.95rem; color:#444;">
+                    一般輕薄本為了省空間會把記憶體焊死。這台 ThinkBook 14 G7 <strong>可以插兩條 RAM、兩條 SSD</strong>。買來 26000，未來覺得不夠用隨時可以升級，不用整台換掉。
+                </p>
+            </div>
+            <div>
+                <h4 style="margin-bottom:10px; color:var(--jr-green);">3. 專業版 OS + 頂規保固</h4>
+                <p style="font-size:0.95rem; color:#444;">
+                    Pro 版系統支援 BitLocker 加密與遠端桌面，對工作資料更有保障。Premier Support 是聯想最高級服務，有專線、隔日到府維修，不用去維修中心抽號碼牌。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2 style="border:none; color:white; margin-bottom:10px;">有興趣請直接聯繫</h2>
+        <p>這批庫存數量有限，走完就沒了。現金交易，含稅開發票。</p>
+        <a href="#" class="btn"><i class="fa-solid fa-phone"></i> 聯絡強尼 (點擊撥打/加Line)</a>
+    </div>
+
+    <footer style="text-align:center; padding:20px; color:#999; font-size:0.8rem;">
+        &copy; Johnny's Special Sale. All rights reserved. <br>
+        以上規格僅供參考，以實際交機型號為主。
+    </footer>
+
+</div>
 
 </body>
 </html>
