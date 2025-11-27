@@ -3,515 +3,410 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gemini 智慧百科全書 | 家庭知識庫索引</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <meta name="description" content="Gemini 智慧百科全書 Vol.2 - 深入探討 AI 於家庭、職場的進階應用案例，以及生成式 AI 對新創產業與服務 App 的影響分析。">
+    <title>Gemini 智慧百科全書 Vol.2 | 趨勢與產業影響分析</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+
     <style>
         :root {
-            --academic-blue: #1a237e; /* 深邃的學術藍 */
-            --paper-bg: #f9f7f1;      /* 仿舊紙張色 */
-            --pure-white: #ffffff;
-            --ink-black: #2c2c2c;
-            --gold-accent: #c5a96f;   /* 燙金質感 */
-            --gray-line: #e0e0e0;
-            --shadow-elevation: 0 2px 8px rgba(0,0,0,0.06);
+            /* 視覺系統：學術、檔案館風格 */
+            --ink-primary: #1a1a1a;
+            --ink-secondary: #4a4a4a;
+            --paper-bg: #f4f1ea;       /* 羊皮紙白 */
+            --paper-pure: #ffffff;
+            --academic-blue: #2c3e50;  /* 權威藍 */
+            --accent-gold: #c0a062;    /* 燙金 */
+            --alert-red: #a94442;      /* 註記紅 */
+            --border-line: #dcd6cc;
+            
+            /* 間距系統 */
+            --spacing-sm: 1rem;
+            --spacing-md: 2rem;
+            --spacing-lg: 4rem;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Noto Serif TC', serif; /* 全域襯線體 */
-        }
-
+        /* 基礎重置 */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        
         body {
             background-color: var(--paper-bg);
-            color: var(--ink-black);
-            line-height: 1.8;
+            color: var(--ink-primary);
+            font-family: 'Noto Serif TC', serif;
+            line-height: 1.7;
+            font-size: 16px;
         }
 
-        /* Layout Structure */
-        .wrapper {
-            max-width: 1200px;
+        a { color: var(--academic-blue); text-decoration: none; border-bottom: 1px dotted var(--academic-blue); transition: 0.3s; }
+        a:hover { background-color: var(--academic-blue); color: var(--paper-pure); }
+
+        /* RWD 佈局框架 */
+        .archive-container {
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 40px 20px;
             display: grid;
-            grid-template-columns: 250px 1fr; /* 左側索引，右側內容 */
-            gap: 40px;
+            grid-template-columns: 280px 1fr; /* 左索引，右內容 */
+            min-height: 100vh;
         }
 
-        /* Sidebar / Index Column */
-        aside {
-            border-right: 1px solid var(--gray-line);
-            padding-right: 20px;
-            height: fit-content;
+        /* 側邊索引欄 (Sidebar) */
+        .archive-sidebar {
+            background: var(--paper-bg);
+            border-right: 1px solid var(--border-line);
+            padding: var(--spacing-md);
             position: sticky;
-            top: 40px;
+            top: 0;
+            height: 100vh;
+            overflow-y: auto;
         }
 
-        .index-title {
-            font-size: 0.9rem;
-            color: var(--academic-blue);
+        .brand-seal {
+            font-family: 'Roboto Mono', monospace;
+            font-weight: 700;
+            border: 2px solid var(--ink-primary);
+            padding: 10px;
+            display: inline-block;
+            margin-bottom: var(--spacing-md);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 20px;
-            font-weight: 700;
-            border-bottom: 2px solid var(--gold-accent);
-            padding-bottom: 10px;
         }
 
-        .toc-list {
-            list-style: none;
-        }
-
-        .toc-list li {
-            margin-bottom: 15px;
-        }
-
-        .toc-list a {
-            text-decoration: none;
-            color: var(--text-light);
-            font-size: 1rem;
-            transition: color 0.3s;
+        .toc-nav ul { list-style: none; }
+        .toc-nav li { margin-bottom: 0.8rem; }
+        .toc-nav a {
+            border: none;
+            color: var(--ink-secondary);
+            font-size: 0.95rem;
             display: block;
-            border-left: 2px solid transparent;
-            padding-left: 10px;
+            padding: 5px 0;
+        }
+        .toc-nav a.active { color: var(--academic-blue); font-weight: 700; padding-left: 10px; border-left: 3px solid var(--accent-gold); }
+
+        /* 主要內容區 (Main) */
+        .archive-main {
+            background: var(--paper-pure);
+            padding: var(--spacing-lg) var(--spacing-lg);
         }
 
-        .toc-list a:hover, .toc-list a.active-link {
-            color: var(--academic-blue);
-            border-left-color: var(--gold-accent);
-            font-weight: 700;
+        /* 標題系統 */
+        header.doc-header {
+            border-bottom: 4px double var(--ink-primary);
+            margin-bottom: var(--spacing-lg);
+            padding-bottom: var(--spacing-sm);
         }
 
-        /* Main Content */
-        main {
-            padding-bottom: 60px;
-        }
+        h1 { font-size: 3rem; margin-bottom: 0.5rem; letter-spacing: -1px; }
+        .subtitle { font-family: 'Roboto Mono', monospace; color: var(--ink-secondary); font-size: 0.9rem; }
 
-        /* Header Area within Main */
-        .encyclopedia-header {
-            text-align: left;
-            margin-bottom: 60px;
-            border-bottom: 1px solid var(--ink-black);
-            padding-bottom: 20px;
-        }
-
-        .encyclopedia-header h1 {
-            font-size: 3.5rem;
-            color: var(--academic-blue);
-            margin-bottom: 10px;
-            letter-spacing: -1px;
-        }
-
-        .encyclopedia-header .subtitle {
-            font-family: 'Roboto', sans-serif;
-            font-size: 1.2rem;
-            color: #555;
-            font-weight: 300;
-        }
-
-        /* Section Styling */
-        section {
-            margin-bottom: 60px;
-        }
-
-        .section-header {
-            display: flex;
-            align-items: baseline;
-            margin-bottom: 30px;
-            border-bottom: 1px solid var(--gray-line);
-            padding-bottom: 10px;
-        }
-
-        .section-number {
-            font-family: 'Roboto', sans-serif;
-            font-size: 3rem;
-            color: var(--gold-accent);
-            margin-right: 20px;
-            opacity: 0.5;
-            font-weight: 300;
-        }
-
-        .section-title {
+        h2.section-heading {
             font-size: 1.8rem;
-            color: var(--ink-black);
+            margin-top: var(--spacing-lg);
+            margin-bottom: var(--spacing-md);
+            display: flex;
+            align-items: center;
+        }
+        h2.section-heading::before {
+            content: '';
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            background: var(--accent-gold);
+            margin-right: 15px;
         }
 
-        /* Cards / Entries */
-        .entry-grid {
+        /* 檔案卡片樣式 (Case File Cards) */
+        .case-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
-        .entry-card {
-            background: var(--pure-white);
-            border: 1px solid var(--gray-line);
-            padding: 30px;
-            box-shadow: var(--shadow-elevation);
+        .case-file {
+            border: 1px solid var(--border-line);
+            padding: 25px;
             position: relative;
+            background: #fffcf5;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .entry-card::before { /* 裝飾線 */
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 4px;
-            background: var(--academic-blue);
+        .case-file:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+            border-color: var(--academic-blue);
         }
 
-        .entry-header {
+        .file-meta {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 0.75rem;
+            color: var(--ink-secondary);
+            margin-bottom: 15px;
             display: flex;
             justify-content: space-between;
-            margin-bottom: 15px;
-            font-family: 'Roboto', sans-serif;
-            font-size: 0.8rem;
-            color: #888;
+            border-bottom: 1px dashed var(--border-line);
+            padding-bottom: 5px;
         }
 
-        .entry-card h3 {
-            font-size: 1.4rem;
-            margin-bottom: 15px;
-            color: var(--academic-blue);
-        }
+        .case-title { font-size: 1.4rem; font-weight: 700; margin-bottom: 10px; color: var(--academic-blue); }
+        .case-desc { font-size: 1rem; color: #555; margin-bottom: 20px; text-align: justify; }
 
-        .entry-ref {
-            margin-top: 20px;
+        /* 提示詞區塊 (Prompt Box) */
+        .prompt-zone {
+            background: #f0f2f5;
+            padding: 15px;
+            border-radius: 4px;
             font-size: 0.9rem;
-            color: var(--academic-blue);
-            font-style: italic;
-            border-top: 1px dotted #ccc;
-            padding-top: 10px;
+            border-left: 3px solid var(--academic-blue);
         }
+        .prompt-label { font-size: 0.7rem; font-weight: bold; text-transform: uppercase; color: #777; display: block; margin-bottom: 5px; }
 
-        /* Protocol / Tabs Section */
-        .protocol-container {
-            background: var(--pure-white);
-            border: 1px solid var(--gray-line);
-            padding: 40px;
-        }
-
-        .protocol-tabs {
-            display: flex;
-            gap: 20px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--gray-line);
-            overflow-x: auto;
-        }
-
-        .protocol-tab {
-            background: none;
-            border: none;
-            padding: 10px 0;
-            font-size: 1.1rem;
-            cursor: pointer;
-            color: #888;
-            font-family: 'Noto Serif TC', serif;
-            transition: 0.3s;
-            margin-right: 15px;
-            white-space: nowrap;
-        }
-
-        .protocol-tab.active {
-            color: var(--academic-blue);
-            font-weight: 700;
-            border-bottom: 4px solid var(--gold-accent);
-        }
-
-        .protocol-content {
-            display: none;
-            animation: fadeIn 0.8s ease;
-        }
-
-        .protocol-content.active {
-            display: block;
-        }
-
-        .case-study {
-            display: flex;
-            gap: 30px;
-        }
-
-        .case-details {
-            flex: 1;
-        }
-
-        .prompt-box {
-            background: #f4f4f4;
-            border-left: 4px solid var(--academic-blue);
-            padding: 20px;
-            font-family: 'Roboto', monospace; /* 使用等寬字體模擬打字機 */
-            color: #333;
-            margin: 20px 0;
+        /* 產業影響矩陣 (Impact Matrix Table) */
+        .matrix-container { overflow-x: auto; }
+        .impact-table {
+            width: 100%;
+            border-collapse: collapse;
             font-size: 0.95rem;
-            line-height: 1.6;
+            margin-top: 20px;
         }
-        
-        .diagram-placeholder {
-            margin: 15px 0;
-            font-style: italic;
-            color: #666;
-            font-size: 0.9rem;
+        .impact-table th, .impact-table td {
+            border: 1px solid var(--border-line);
+            padding: 15px;
+            text-align: left;
         }
-
-        /* Footnotes Style for Testimonials */
-        .footnotes {
-            margin-top: 40px;
-            font-size: 0.9rem;
-        }
-
-        .citation {
-            margin-bottom: 20px;
-            padding-left: 20px;
-            border-left: 2px solid var(--gold-accent);
+        .impact-table th { background: var(--paper-bg); font-weight: 700; }
+        .impact-tag {
+            display: inline-block;
+            padding: 2px 8px;
+            background: var(--ink-primary);
+            color: white;
+            font-size: 0.7rem;
+            border-radius: 12px;
+            margin-right: 5px;
         }
 
-        .citation p {
-            font-style: italic;
+        /* 趨勢分析區塊 */
+        .trend-analysis {
+            display: flex;
+            gap: 40px;
+            align-items: flex-start;
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border-line);
+            padding-bottom: 40px;
         }
+        .trend-icon { font-size: 3rem; flex-shrink: 0; color: var(--accent-gold); }
 
-        .citation cite {
-            display: block;
-            margin-top: 5px;
-            font-weight: 700;
-            color: var(--academic-blue);
-            font-style: normal;
-        }
-
-        /* Mobile Adjustments */
-        @media (max-width: 768px) {
-            .wrapper { grid-template-columns: 1fr; }
-            aside { display: none; } /* Mobile hide sidebar or move to hamburger */
-            .encyclopedia-header h1 { font-size: 2.5rem; }
-            .case-study { flex-direction: column; }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(5px); }
-            to { opacity: 1; transform: translateY(0); }
+        /* 響應式設計調整 (Mobile) */
+        @media (max-width: 900px) {
+            .archive-container { grid-template-columns: 1fr; }
+            .archive-sidebar { 
+                height: auto; 
+                position: relative; 
+                border-right: none; 
+                border-bottom: 1px solid var(--border-line);
+                padding: var(--spacing-sm);
+            }
+            .toc-nav { display: flex; overflow-x: auto; white-space: nowrap; gap: 15px; }
+            .toc-nav li { margin-bottom: 0; }
+            .toc-nav a { padding: 5px 10px; border: 1px solid var(--border-line); border-radius: 20px; }
+            .toc-nav a.active { border-left: 1px solid var(--academic-blue); background: var(--academic-blue); color: white; }
+            
+            .archive-main { padding: var(--spacing-md) var(--spacing-sm); }
+            h1 { font-size: 2rem; }
+            .trend-analysis { flex-direction: column; gap: 15px; }
+            .impact-table { min-width: 600px; } /* 強制表格捲動 */
         }
     </style>
 </head>
 <body>
 
-    <div class="wrapper">
-        <aside>
-            <div class="index-title">Index 索引目錄</div>
-            <ul class="toc-list">
-                <li><a href="#intro" class="active-link">I. 總論 (Abstract)</a></li>
-                <li><a href="#modules">II. 核心模組 (Modules)</a></li>
-                <li><a href="#protocols">III. 應用協定 (Protocols)</a></li>
-                <li><a href="#citations">IV. 案例引註 (Citations)</a></li>
-            </ul>
-            <div style="margin-top: 40px; font-size: 0.8rem; color: #888;">
-                <p>Gemini Archive<br>Vol. 2024-TW</p>
+    <div class="archive-container">
+        
+        <aside class="archive-sidebar">
+            <div class="brand-seal">GEMINI ARCHIVE</div>
+            <nav class="toc-nav">
+                <ul>
+                    <li><a href="#intro" class="active">I. 總論 (Abstract)</a></li>
+                    <li><a href="#advanced-cases">II. 進階案例 (Advanced Cases)</a></li>
+                    <li><a href="#industry-impact">III. 產業衝擊 (Market Impact)</a></li>
+                    <li><a href="#future-outlook">IV. 未來展望 (Outlook)</a></li>
+                </ul>
+            </nav>
+            <div style="margin-top: 3rem; font-size: 0.8rem; color: #888; font-family: 'Roboto Mono';">
+                <p>Status: ONLINE</p>
+                <p>Ver: 2.5 (Encyclopedia)</p>
             </div>
         </aside>
 
-        <main>
-            <div class="encyclopedia-header" id="intro">
-                <h1>GEMINI</h1>
-                <div class="subtitle">通用型家庭人工智慧整合系統 | The Domestic Intelligence Integration</div>
-            </div>
+        <main class="archive-main">
+            
+            <header class="doc-header" id="intro">
+                <div class="subtitle">DOCUMENT NO. G-2024-TW | CLASSIFICATION: PUBLIC</div>
+                <h1>百科全書 Vol.2：應用趨勢</h1>
+                <p style="margin-top: 1rem; max-width: 800px;">
+                    本卷宗旨在探討生成式 AI (Generative AI) 如何從「單點功能」進化為「生態系統」。
+                    除了家庭場景，我們將觀測範圍擴大至職場協作、創意生成以及對現有新創產業的破壞式創新影響。
+                </p>
+            </header>
 
-            <p style="font-size: 1.2rem; margin-bottom: 40px; max-width: 800px;">
-                <span style="font-size: 3rem; float: left; line-height: 0.8; padding-right: 10px; color: var(--academic-blue);">本</span>系統旨在構建家庭單位的「第二大腦」。透過模組化的知識處理能力，將複雜的運算力轉化為從幼兒教育至樂齡生活的具體解決方案。本手冊將詳述其運作機制與交互應用。
-                <br><br>
-                <a href="https://gemini.google.com/" style="color: var(--academic-blue); text-decoration: underline;">參閱官方文獻與試用 ›</a>
-            </p>
+            <section id="advanced-cases">
+                <h2 class="section-heading">進階應用檔案 (Advanced Usage Files)</h2>
+                <p style="margin-bottom: 2rem;">以下收錄三個跨領域的高階應用案例，展示 Gemini 多模態（Multimodal）處理能力。</p>
 
-            <section id="modules">
-                <div class="section-header">
-                    <span class="section-number">01</span>
-                    <h2 class="section-title">核心功能模組 (Functional Modules)</h2>
-                </div>
-                
-                <div class="entry-grid">
-                    <div class="entry-card">
-                        <div class="entry-header">
-                            <span>REF: EDU-001</span>
-                            <span>學術輔助</span>
+                <div class="case-grid">
+                    
+                    <article class="case-file">
+                        <div class="file-meta">
+                            <span>FILE: DEV-042</span>
+                            <span>領域: 軟體工程</span>
                         </div>
-                        <h3>教育支援系統</h3>
-                        <p>針對K-12至高等教育階段，提供即時的邏輯推演與語言結構分析。非單純給予答案，而是建構使用者的解題路徑。</p>
-                        
-
-[Image of bloom's taxonomy diagram]
-
-                        <div class="entry-ref">參見：邏輯訓練、語言習得</div>
-                    </div>
-
-                    <div class="entry-card">
-                        <div class="entry-header">
-                            <span>REF: DOM-002</span>
-                            <span>資源管理</span>
+                        <h3 class="case-title">非工程師的「微型創業」</h3>
+                        <p class="case-desc">
+                            <strong>背景：</strong> 行銷人員想製作一個簡單的「活動報名網頁」，但不懂寫 code。<br><br>
+                            <strong>應用：</strong> 上傳一張手繪的網頁草圖 (Wireframe) 給 Gemini。
+                        </p>
+                        <div class="prompt-zone">
+                            <span class="prompt-label">Prompt 指令</span>
+                            「請依據這張草圖，撰寫出單一檔案的 HTML/CSS 代碼。風格要現代極簡，並包含一個點擊後會顯示『報名成功』的 JavaScript 按鈕功能。」
                         </div>
-                        <h3>家務後勤中樞</h3>
-                        <p>優化家庭資源配置（如食材庫存演算），並處理人際溝通文本（如書信草擬）。將繁瑣的家務決策轉化為結構化數據。</p>
-                        <div class="entry-ref">參見：庫存管理、社交禮儀</div>
-                    </div>
+                    </article>
 
-                    <div class="entry-card" style="border-top: 4px solid var(--gold-accent);">
-                        <div class="entry-header">
-                            <span>REF: GER-003</span>
-                            <span>樂齡生活</span>
+                    <article class="case-file">
+                        <div class="file-meta">
+                            <span>FILE: BIZ-108</span>
+                            <span>領域: 商業談判</span>
                         </div>
-                        <h3>全齡樂活顧問</h3>
-                        <p>專為高齡使用者設計的資訊轉譯層。將複雜的醫療術語、數位科技操作，轉化為直觀的語義理解。</p>
-                        <div class="entry-ref">參見：預防醫學資訊、數位落差縮減</div>
-                    </div>
-                </div>
-            </section>
-
-            <section id="protocols">
-                <div class="section-header">
-                    <span class="section-number">02</span>
-                    <h2 class="section-title">情境應用協定 (Application Protocols)</h2>
-                </div>
-                <p style="margin-bottom: 20px; color: #666;">請由下方索引標籤選擇對應之操作協定：</p>
-
-                <div class="protocol-container">
-                    <div class="protocol-tabs">
-                        <button class="protocol-tab active" onclick="openTab('math')">No.1 數理邏輯</button>
-                        <button class="protocol-tab" onclick="openTab('english')">No.2 語言習得</button>
-                        <button class="protocol-tab" onclick="openTab('life')">No.3 資源決策</button>
-                        <button class="protocol-tab" onclick="openTab('travel')">No.4 路徑規劃</button>
-                        <button class="protocol-tab" onclick="openTab('knowledge')">No.5 知識拓撲</button>
-                    </div>
-
-                    <div id="math" class="protocol-content active">
-                        <h4 style="color: var(--academic-blue); margin-bottom: 15px;">協定目標：蘇格拉底式教學法 (Socratic Method)</h4>
-                        <div class="case-study">
-                            <div class="case-details">
-                                <p><strong>操作步驟：</strong>上傳視覺圖像（題目照片）至系統，並執行以下指令，觸發引導式教學模式。</p>
-                                
-
-[Image of pythagorean theorem geometric proof]
-
-                                <div class="prompt-box">
-                                    指令輸入：<br>
-                                    「這題幾何題目我不懂。請扮演蘇格拉底，禁止直接提供數值答案。請一步一步引導我思考圖形中的輔助線關係，並使用國小五年級的認知詞彙進行解釋。」
-                                </div>
-                                <p style="font-size: 0.9rem;">註：此模式有助於培養元認知能力 (Metacognition)。</p>
-                            </div>
+                        <h3 class="case-title">高情商郵件過濾器</h3>
+                        <p class="case-desc">
+                            <strong>背景：</strong> 收到客戶憤怒的投訴信，情緒激動不知如何回覆。<br><br>
+                            <strong>應用：</strong> 貼上客戶的信件內容，要求進行「情緒降溫」。
+                        </p>
+                        <div class="prompt-zone">
+                            <span class="prompt-label">Prompt 指令</span>
+                            「請分析這封信的潛在訴求。幫我草擬一封回信：1. 語氣專業且具同理心 2. 不承諾具體賠償但承諾會調查 3. 讓對方感覺被重視。請提供三個不同語氣的版本（誠懇、正式、簡潔）。」
                         </div>
-                    </div>
+                    </article>
 
-                    <div id="english" class="protocol-content">
-                        <h4 style="color: var(--academic-blue); margin-bottom: 15px;">協定目標：沉浸式語言模擬 (Immersive Simulation)</h4>
-                        <div class="case-details">
-                            <p><strong>操作步驟：</strong>啟動語音輸入介面，建立特定社交場景模型。</p>
-                            <div class="prompt-box">
-                                指令輸入：<br>
-                                「啟動英語會話練習模式。請建構一個『倫敦咖啡廳』場景，你扮演店員。若我在對話中出現語法偏誤，請在回應結束後進行修正與說明。」
-                            </div>
+                    <article class="case-file">
+                        <div class="file-meta">
+                            <span>FILE: MED-099</span>
+                            <span>領域: 運動營養</span>
                         </div>
-                    </div>
-
-                    <div id="life" class="protocol-content">
-                        <h4 style="color: var(--academic-blue); margin-bottom: 15px;">協定目標：剩餘物資最佳化演算 (Inventory Optimization)</h4>
-                        <div class="case-details">
-                            <p><strong>操作步驟：</strong>輸入現有食材參數（或影像辨識），要求系統生成解決方案。</p>
-                            
-
-[Image of food pyramid nutrition chart]
-
-                            <div class="prompt-box">
-                                指令輸入：<br>
-                                「基於圖像中的現有食材（洋蔥、蛋、香蕉），請根據營養均衡原則，演算出三套晚餐方案。限制條件：烹飪時間需小於 20 分鐘，並附帶詳細執行步驟。」
-                            </div>
+                        <h3 class="case-title">虛擬營養師與教練</h3>
+                        <p class="case-desc">
+                            <strong>背景：</strong> 剛開始健身，想知道今天的便當熱量是否超標。<br><br>
+                            <strong>應用：</strong> 拍攝便當照片，並告知個人健身目標。
+                        </p>
+                        <div class="prompt-zone">
+                            <span class="prompt-label">Prompt 指令</span>
+                            「這是我的午餐（附圖）。我的目標是增肌減脂。請估算這盤食物的蛋白質與碳水化合物大約幾克？如果我想在下午補充點心，建議吃什麼來補足剩下的營養缺口？」
                         </div>
-                    </div>
-
-                    <div id="travel" class="protocol-content">
-                        <h4 style="color: var(--academic-blue); margin-bottom: 15px;">協定目標：多變量路徑規劃 (Logistical Planning)</h4>
-                        <div class="case-details">
-                            <p><strong>操作步驟：</strong>定義地理座標、時間跨度與成員生理限制。</p>
-                            
-
-[Image of kyoto city topographic map]
-
-                            <div class="prompt-box">
-                                指令輸入：<br>
-                                「規劃日本京都 5 日行程。參數設定：成員包含 70 歲長者（需低步行負擔）、興趣點包含歷史古蹟與在地市集。請輸出為結構化表格，並計算點對點交通時間與替代方案。」
-                            </div>
-                        </div>
-                    </div>
-
-                    <div id="knowledge" class="protocol-content">
-                        <h4 style="color: var(--academic-blue); margin-bottom: 15px;">協定目標：知識本體構建 (Ontology Construction)</h4>
-                        <div class="case-details">
-                            <p><strong>操作步驟：</strong>針對未知領域建立快速認知框架。</p>
-                            <div class="prompt-box">
-                                指令輸入：<br>
-                                「我希望建立關於『多肉植物養殖』的知識體系。請提供一份初學者指南，包含分類學基礎、環境控制（水分/光照）變量，以及常見病蟲害的防治機制。」
-                            </div>
-                            <p style="font-size: 0.9rem;">關聯索引：植物學、環境控制學。</p>
-                        </div>
-                    </div>
-
+                    </article>
                 </div>
             </section>
 
-            <section id="citations">
-                <div class="section-header">
-                    <span class="section-number">03</span>
-                    <h2 class="section-title">田野調查引註 (Field Citations)</h2>
+            <section id="industry-impact">
+                <h2 class="section-heading">產業影響矩陣 (Industry Impact Report)</h2>
+                <p>AI 的普及正在重新定義現有的服務 App 與新創公司的價值主張。以下是本檔案館整理的市場關聯分析表。</p>
+
+                <div class="trend-analysis">
+                    <div class="trend-icon">⚡</div>
+                    <div>
+                        <h3 style="margin-bottom: 0.5rem; color: var(--academic-blue);">趨勢觀察：超個人化 (Hyper-personalization)</h3>
+                        <p>過去的 App 提供「千人一面」的內容；現在的 AI 賦能 App 提供「千人千面」的體驗。使用者不再只是搜尋資訊，而是與資訊對話。</p>
+                    </div>
                 </div>
-                
-                <div class="footnotes">
-                    <div class="citation">
-                        <p>「以前晚餐決策耗費大量認知資源。透過圖像識別輸入冰箱庫存，系統生成的食譜極大化了時間效率。」</p>
-                        <cite>— Mrs. Lin, 資深家務管理者</cite>
-                    </div>
-                    <div class="citation">
-                        <p>「針對數位操作障礙，該系統展現了高度的解釋耐心，並主動提供資安防護建議，具備高度可靠性。」</p>
-                        <cite>— Mr. Wang, 退休公務人員</cite>
-                    </div>
-                    <div class="citation">
-                        <p>「在複雜的交通路徑演算上，其準確度與景點推薦的邏輯關聯性，超越了傳統搜尋引擎的效率。」</p>
-                        <cite>— Traveler Ken, 獨立旅行者</cite>
-                    </div>
+
+                <div class="matrix-container">
+                    <table class="impact-table">
+                        <thead>
+                            <tr>
+                                <th width="20%">影響領域 (Sector)</th>
+                                <th width="25%">受影響的新創/App</th>
+                                <th width="55%">AI 帶來的質變與新應用</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <span class="impact-tag">語言學習</span>
+                                </td>
+                                <td>
+                                    <strong>Duolingo, Speak</strong>
+                                </td>
+                                <td>
+                                    從「死背單字」轉變為「<strong>情境角色扮演</strong>」。<br>
+                                    <small style="color:#666;">趨勢：使用者可與 AI 扮演的海關人員、咖啡師進行無限制的口語對話，即時獲得文法糾正，無需真人外教。</small>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="impact-tag">生產力筆記</span>
+                                </td>
+                                <td>
+                                    <strong>Notion, Evernote</strong>
+                                </td>
+                                <td>
+                                    從「紀錄工具」轉變為「<strong>第二大腦</strong>」。<br>
+                                    <small style="color:#666;">趨勢：AI (如 Notion AI) 能自動摘要會議記錄、將凌亂的筆記轉化為待辦清單，甚至續寫文章。</small>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="impact-tag">身心健康</span>
+                                </td>
+                                <td>
+                                    <strong>Calm, Headspace</strong>
+                                </td>
+                                <td>
+                                    從「播放白噪音」轉變為「<strong>即時心理諮商</strong>」。<br>
+                                    <small style="color:#666;">趨勢：AI 可根據使用者的當下情緒（透過語音或文字分析），生成客製化的冥想引導詞或安撫對話。</small>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <span class="impact-tag">旅遊規劃</span>
+                                </td>
+                                <td>
+                                    <strong>TripAdvisor, Airbnb</strong>
+                                </td>
+                                <td>
+                                    從「瀏覽評論」轉變為「<strong>行程生成器</strong>」。<br>
+                                    <small style="color:#666;">趨勢：不再需要手動比對地圖。使用者只需說「給我一個適合帶狗、有素食餐廳的京都三天行程」，AI 即刻完成串接。</small>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </section>
+
+            <section id="future-outlook">
+                <h2 class="section-heading">檔案結語 (Conclusion)</h2>
+                <article style="background: var(--academic-blue); color: white; padding: 2rem; border-radius: 4px;">
+                    <h3 style="color: var(--accent-gold); margin-bottom: 1rem;">人人都是產品經理的時代</h3>
+                    <p>
+                        隨著 Gemini 等大型語言模型的演進，技術門檻大幅降低。未來的競爭優勢不在於「誰會寫程式」，而在於「誰最會問問題」以及「誰最有想像力」。
+                        <br><br>
+                        本檔案館建議：保持好奇心，將 AI 視為一位博學多聞的實習生，不斷嘗試交付新任務，您將發現生活與工作的邊界正在被重新定義。
+                    </p>
+                </article>
+            </section>
+
         </main>
     </div>
 
     <script>
-        function openTab(tabId) {
-            // Hide all panels
-            const panels = document.querySelectorAll('.protocol-content');
-            panels.forEach(panel => panel.classList.remove('active'));
-
-            // Deactivate all buttons
-            const buttons = document.querySelectorAll('.protocol-tab');
-            buttons.forEach(btn => btn.classList.remove('active'));
-
-            // Show selected panel and activate button
-            document.getElementById(tabId).classList.add('active');
-            event.currentTarget.classList.add('active');
-        }
-
-        // Simple TOC Highlighting logic (Optional enhancement)
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section, .encyclopedia-header');
-            const navLi = document.querySelectorAll('.toc-list a');
-            let current = '';
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLi.forEach(a => {
-                a.classList.remove('active-link');
-                if (a.getAttribute('href').includes(current)) {
-                    a.classList.add('active-link');
-                }
+        // 為了增加百科全書的互動感，這裡可以加入點擊側邊欄連結後的平滑滾動效果
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // 更新 Active 狀態
+                document.querySelectorAll('.toc-nav a').forEach(a => a.classList.remove('active'));
+                this.classList.add('active');
             });
         });
     </script>
