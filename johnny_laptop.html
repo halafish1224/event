@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>強尼嚴選 | Lenovo ThinkBook 14 G7 清倉特急</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --jr-green: #008631; /* JR East Green */
+            --jr-grey: #E6E6E6;
+            --jr-dark: #333333;
+            --jr-accent: #FFC20E; /* Warning/Highlight Yellow */
+            --white: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Roboto', 'Noto Sans TC', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: var(--jr-dark);
+            line-height: 1.6;
+        }
+
+        /* Station Header Style */
+        header {
+            background-color: var(--jr-green);
+            color: var(--white);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 8px solid var(--white);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        .station-sign {
+            background: var(--white);
+            color: var(--jr-dark);
+            display: inline-block;
+            padding: 10px 40px;
+            border: 4px solid var(--jr-dark);
+            font-weight: 700;
+            font-size: 1.5rem;
+            position: relative;
+        }
+        
+        .station-sign::before, .station-sign::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 10px;
+            background: var(--jr-green);
+            transform: translateY(-50%);
+        }
+        .station-sign::before { left: -24px; }
+        .station-sign::after { right: -24px; }
+
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-left: 10px solid var(--jr-green);
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            margin-bottom: 10px;
+            color: var(--jr-dark);
+        }
+
+        .price-tag {
+            font-size: 3rem;
+            color: #d32f2f;
+            font-weight: 800;
+            display: block;
+            margin: 10px 0;
+        }
+        
+        .price-sub {
+            font-size: 1rem;
+            color: #666;
+            background: #eee;
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+
+        /* Spec Grid */
+        .specs-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .spec-card {
+            background: var(--white);
+            padding: 20px;
+            border-top: 5px solid var(--jr-green);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .spec-card h3 {
+            margin-top: 0;
+            color: var(--jr-green);
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 10px;
+        }
+
+        .highlight-badge {
+            background: var(--jr-green);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 0.8em;
+            vertical-align: middle;
+            margin-left: 5px;
+        }
+
+        /* Comparison Table - Timetable Style */
+        .comparison-section {
+            background: var(--white);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .comparison-title {
+            text-align: center;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        th {
+            background-color: var(--jr-grey);
+            color: var(--jr-dark);
+            padding: 15px;
+            text-align: center;
+            border-bottom: 3px solid var(--jr-green);
+        }
+
+        td {
+            padding: 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .our-deal {
+            background-color: #e8f5e9;
+            font-weight: 700;
+            border: 2px solid var(--jr-green);
+        }
+        
+        .winner-text {
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        /* Expert Comment */
+        .expert-box {
+            background: var(--jr-dark);
+            color: var(--white);
+            padding: 25px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .expert-box::before {
+            content: '3C 達人點評';
+            position: absolute;
+            top: -15px;
+            left: 20px;
+            background: var(--jr-accent);
+            color: var(--jr-dark);
+            padding: 5px 15px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        /* CTA */
+        .cta-section {
+            text-align: center;
+            padding: 40px 20px;
+            background: var(--jr-green);
+            color: white;
+            border-radius: 8px;
+        }
+
+        .btn {
+            background: var(--white);
+            color: var(--jr-green);
+            padding: 15px 40px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            display: inline-block;
+            margin-top: 15px;
+            transition: transform 0.2s;
+        }
+
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        ul {
+            padding-left: 20px;
+        }
+        li {
+            margin-bottom: 8px;
+        }
+
+        @media (max-width: 600px) {
+            .price-tag { font-size: 2.5rem; }
+            td, th { padding: 10px 5px; font-size: 0.9rem; }
+            .station-sign { padding: 10px 20px; font-size: 1.2rem; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="station-sign">庫存清倉站</div>
+    <p>ThinkBook 14 G7 • 僅此一批 • 售完不補</p>
+</header>
+
+<div class="container">
+
+    <div class="hero">
+        <span style="background: var(--jr-accent); padding: 5px 10px; font-weight: bold; border-radius: 4px;">全新未拆封</span>
+        <h1>Lenovo ThinkBook 14 G7 (AI 商務版)</h1>
+        <p>虎迷好友被放鴿子，含淚出清！這不是普通的筆電，這是你的 AI 生產力神機。</p>
+        <div class="price-tag">NT$ 26,000</div>
+        <span class="price-sub">含稅開發票 • 原廠包包 • 原廠滑鼠</span>
+    </div>
+
+    <div class="specs-container">
+        <div class="spec-card">
+            <h3>核心動力 Engine</h3>
+            <ul>
+                <li><strong>CPU:</strong> Intel Core Ultra 7 155H <span class="highlight-badge">AI NPU</span></li>
+                <li><strong>RAM:</strong> 16GB DDR5-5600 (可擴充)</li>
+                <li><strong>SSD:</strong> 512GB PCIe 4.0 (可擴充)</li>
+                <li><strong>系統:</strong> Windows 11 <span style="color:#d32f2f; font-weight:bold;">Pro 商用版</span></li>
+            </ul>
+        </div>
+        <div class="spec-card">
+            <h3>商務配備 Equipment</h3>
+            <ul>
+                <li><strong>螢幕:</strong> 14" WUXGA (1920x1200) 16:10 黃金比例</li>
+                <li><strong>連接:</strong> RJ45 網孔, HDMI, Type-C (全配)</li>
+                <li><strong>保固:</strong> <span style="color:#d32f2f; font-weight:bold;">3年 Premier Support</span></li>
+                <li><strong>重量:</strong> 僅 1.4 kg (好攜帶)</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="comparison-section">
+        <div class="comparison-title">市場價格對照表 (Price Check)</div>
+        <p style="text-align: center; margin-bottom: 20px; font-size: 0.9rem; color: #666;">*比較基準：同為 Ultra 7 處理器機型</p>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">項目</th>
+                    <th style="width: 25%;">MOMO/PChome</th>
+                    <th style="width: 25%;">Yahoo 購物</th>
+                    <th class="our-deal" style="width: 25%;">強尼好友價</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>價格</td>
+                    <td>$30,990</td>
+                    <td>$31,500</td>
+                    <td class="our-deal winner-text">$26,000</td>
+                </tr>
+                <tr>
+                    <td>作業系統</td>
+                    <td>Win 11 Home</td>
+                    <td>Win 11 Home</td>
+                    <td class="our-deal winner-text">Win 11 Pro</td>
+                </tr>
+                <tr>
+                    <td>原廠保固</td>
+                    <td>1~2 年標準保固</td>
+                    <td>2 年標準保固</td>
+                    <td class="our-deal winner-text">3 年 Premier</td>
+                </tr>
+                <tr>
+                    <td>贈品</td>
+                    <td>需看活動</td>
+                    <td>需看活動</td>
+                    <td class="our-deal">包包+滑鼠+發票</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="expert-box">
+        <p><strong>為什麼這台值得買？</strong></p>
+        <p>這台機器的核心價值在於 <strong>Core Ultra 7 155H</strong>，它是 Intel 專為 AI 時代設計的處理器，內建 NPU，跑 AI 運算比舊款省電且快速。</p>
+        <p>另外，ThinkBook G7 保留了<strong>「雙記憶體插槽」與「雙 SSD 插槽」</strong>，這在 14 吋輕薄筆電中非常罕見。加上它附帶的是 <strong>Windows 11 Pro 專業版</strong>（支援 BitLocker 加密、遠端桌面）以及 <strong>3年 Premier Support</strong>（聯想最高等級保固，通常包含隔日到府維修），光是軟體和保固的價差就超過 $5,000 元。</p>
+        <p style="margin-top:10px; color: var(--jr-accent);">結論：如果您是大學生、工程師、業務，預算 2 萬 5 左右，這台 CP 值完全輾壓市面所有機種。</p>
+    </div>
+
+    <div class="cta-section">
+        <h2>不要再觀望了，庫存壓力大！</h2>
+        <p>現金交易 • 可開統編 • 全新現貨</p>
+        <a href="#" class="btn">立即聯繫強尼 (點擊私訊)</a>
+        <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.8;">請直接私訊告知您是朋友介紹，優先保留。</p>
+    </div>
+
+</div>
+
+</body>
+</html>
