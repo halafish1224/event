@@ -3,13 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>串流服務比較與整合建議</title>
+    <title>串流服務比較與整合建議 (2025 最新)</title>
     <style>
+        /* 整體風格配色參考 Expedia (藍綠色、深藍、白、中性灰) */
+        :root {
+            --expedia-blue-green: #008299; /* Expedia 主色 */
+            --expedia-dark-blue: #0A2859;
+            --expedia-light-gray: #f4f7f6;
+            --netflix-color: #E50914;
+            --friday-color: #FFA500; /* 遠傳/friDay Orange */
+            --youtube-color: #FF0000;
+            --spotify-color: #1DB954;
+        }
+
         body {
             font-family: 'Helvetica Neue', Arial, sans-serif;
-            background-color: #f4f7f6;
+            background-color: var(--expedia-light-gray);
             padding: 20px;
             color: #333;
+            line-height: 1.6;
         }
         .container {
             max-width: 1200px;
@@ -17,65 +29,112 @@
             background: #fff;
             padding: 30px;
             border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
         }
         h1 {
-            color: #E50914; /* Netflix Red */
+            color: var(--expedia-dark-blue);
             text-align: center;
             margin-bottom: 30px;
             font-size: 2.5em;
-            border-bottom: 3px solid #E50914;
-            padding-bottom: 10px;
+            border-bottom: 4px solid var(--expedia-blue-green);
+            padding-bottom: 15px;
+            font-weight: 700;
         }
         h2 {
-            color: #1DB954; /* Spotify Green */
+            color: var(--expedia-dark-blue);
             margin-top: 40px;
             font-size: 1.8em;
+            border-left: 5px solid var(--expedia-blue-green);
+            padding-left: 15px;
+            font-weight: 600;
         }
         table {
             width: 100%;
             border-collapse: collapse;
             margin-top: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            overflow: hidden;
         }
         th, td {
             padding: 15px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
+            border-bottom: 1px solid #eee;
         }
         th {
-            background-color: #f0f0f0;
+            background-color: var(--expedia-blue-green);
+            color: #fff;
             font-weight: bold;
+            text-transform: uppercase;
         }
-        .netflix-color { color: #E50914; font-weight: bold; }
-        .friday-color { color: #FFA500; font-weight: bold; } /* Orange */
-        .youtube-color { color: #FF0000; font-weight: bold; } /* Red */
-        .spotify-color { color: #1DB954; font-weight: bold; } /* Green */
-        .highlight-row { background-color: #fffacd; } /* Light yellow for total */
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+
+        /* 平台代表色強調 */
+        .platform-name {
+            font-weight: bold;
+            color: #333;
+            position: relative;
+        }
+        .platform-indicator {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 3px;
+            margin-right: 8px;
+            vertical-align: middle;
+        }
+        .netflix-bg { background-color: var(--netflix-color); }
+        .friday-bg { background-color: var(--friday-color); }
+        .youtube-bg { background-color: var(--youtube-color); }
+        .spotify-bg { background-color: var(--spotify-color); }
+
+        .netflix-color { color: var(--netflix-color); }
+        .friday-color { color: var(--friday-color); }
+        .youtube-color { color: var(--youtube-color); }
+        .spotify-color { color: var(--spotify-color); }
+
+        .highlight-row { 
+            background-color: #e0f7fa !important; /* Light cyan from Expedia look */
+            border-left: 5px solid var(--expedia-blue-green);
+        }
         .recommendation {
-            background-color: #e0f7fa;
-            border-left: 5px solid #00bcd4;
-            padding: 15px;
+            background-color: #f0f8ff; /* Very light blue */
+            border: 1px solid #b3e5fc;
+            padding: 20px;
             margin-top: 25px;
             border-radius: 8px;
+        }
+        .recommendation h3 {
+            color: var(--expedia-dark-blue);
+            margin-top: 0;
+            font-size: 1.5em;
         }
         .plan-price {
             font-size: 1.1em;
             font-weight: bold;
+            color: var(--expedia-dark-blue); /* 讓價格在表格中更醒目 */
+        }
+        .note {
+            font-size: 0.9em;
+            color: #666;
+            margin-top: 15px;
         }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>🎬 台灣串流影音與音樂方案 📊 整合比較表</h1>
+    <h1>🎬 台灣主流串流影音與音樂方案 📊 權威整合比較 (2025 最新)</h1>
 
-    <p>以下是台灣四大主流串流服務的資費與功能比較，協助您找到最適合的組合。</p>
+    <p>以下是根據各平台官方網站資訊整理的台灣串流服務資費與功能比較，協助您找到最符合高 CP 值的方案組合。**費用皆為網頁/電腦訂閱價，iOS App Store 價格會更高。**</p>
 
     <h2>🚀 服務與資費方案一覽</h2>
     <table>
         <thead>
             <tr>
-                <th>服務 (代表色)</th>
+                <th>服務平台</th>
                 <th>方案名稱</th>
                 <th>月費 (NT$)</th>
                 <th>最高畫質/音質</th>
@@ -85,67 +144,71 @@
         </thead>
         <tbody>
             <tr>
-                <td class="netflix-color">Netflix</td>
-                <td>高級方案</td>
+                <td class="platform-name"><span class="platform-indicator netflix-bg"></span>Netflix</td>
+                <td>**高級方案**</td>
                 <td class="plan-price netflix-color">460</td>
-                <td>4K + HDR</td>
-                <td>4 台 (可加購 2 位非同住額外成員)</td>
-                <td>全球頂級原創影集、歐美電影、沉浸式音效。</td>
+                <td>**4K** + HDR / 沉浸式音效</td>
+                <td>**4 台** (可加購 2 位非同住額外成員)</td>
+                <td>全球頂級原創影集、歐美電影、強檔紀錄片。</td>
             </tr>
             <tr>
-                <td class="netflix-color"></td>
+                <td class="platform-name"></td>
                 <td>標準方案</td>
                 <td class="plan-price netflix-color">380</td>
                 <td>1080p (Full HD)</td>
                 <td>2 台 (可加購 1 位非同住額外成員)</td>
                 <td></td>
             </tr>
-             <tr>
-                <td class="friday-color">friDay 影音</td>
+            <tr>
+                <td class="platform-name"><span class="platform-indicator friday-bg"></span>friDay 影音</td>
                 <td>影劇暢看方案</td>
                 <td class="plan-price friday-color">199</td>
                 <td>Full HD</td>
                 <td>2 台</td>
-                <td>主打台劇、日韓劇、動漫、新院線片單點。內容與 Netflix 互補。</td>
+                <td>主打**台劇、日韓劇、動漫**、多元新聞直播。內容與國際平台互補。</td>
             </tr>
             <tr>
-                <td class="youtube-color">YouTube</td>
-                <td>家庭方案</td>
-                <td class="plan-price youtube-color">269</td>
+                <td class="platform-name"><span class="platform-indicator youtube-bg"></span>YouTube Premium</td>
+                <td>**家庭方案**</td>
+                <td class="plan-price youtube-color">**479**</td>
                 <td>最高 4K</td>
-                <td>6 位 (獨立帳號)</td>
+                <td>**6 位** (獨立帳號)</td>
                 <td>**無廣告** YT 觀看、背景播放、下載影片、**內含 YouTube Music Premium**。</td>
             </tr>
             <tr>
-                <td class="youtube-color"></td>
+                <td class="platform-name"></td>
                 <td>個人方案</td>
                 <td class="plan-price youtube-color">199</td>
                 <td>最高 4K</td>
                 <td>1 位</td>
                 <td></td>
             </tr>
-            <tr>
-                <td class="spotify-color">Spotify</td>
-                <td>家庭方案 (Family)</td>
-                <td class="plan-price spotify-color">268</td>
-                <td>高音質串流</td>
-                <td>6 位 (獨立帳號)</td>
-                <td>廣泛的全球音樂庫、個人化推薦、專屬歌單。</td>
+             <tr>
+                <td class="platform-name"><span class="platform-indicator spotify-bg"></span>Spotify Premium</td>
+                <td>**家庭方案 (Family)**</td>
+                <td class="plan-price spotify-color">**298**</td>
+                <td>高音質串流 (320 kbps)</td>
+                <td>**6 位** (獨立帳號)</td>
+                <td>廣泛的全球音樂庫、個人化推薦歌單、Podcast。需**同住地址**。</td>
             </tr>
             <tr>
-                <td class="spotify-color"></td>
+                <td class="platform-name"></td>
                 <td>雙人方案 (Duo)</td>
-                <td class="plan-price spotify-color">198</td>
-                <td>高音質串流</td>
+                <td class="plan-price spotify-color">228</td>
+                <td>高音質串流 (320 kbps)</td>
                 <td>2 位</td>
                 <td></td>
             </tr>
         </tbody>
     </table>
 
-    <h2>🎯 整合方案與建議購買策略</h2>
+    <div class="note">
+        <p>※ **重要提醒：** YouTube Premium 家庭方案網頁價已調整為 NT$479/月 (可供 6 人)，Spotify 家庭方案已調整為 NT$298/月 (可供 6 人)。</p>
+    </div>
 
-    <p>考量到多人共享、畫質需求與內容互補性，建議以下兩組整合方案：</p>
+    <h2>🎯 整合方案與建議購買策略 (多人共享效益最大化)</h2>
+
+    <p>以下方案考量「國際內容」、「影音無廣告」、「音樂串流」與「多人共享」四個維度，建議搭配：</p>
 
     <table>
         <thead>
@@ -159,38 +222,40 @@
         </thead>
         <tbody>
             <tr class="highlight-row">
-                <td>**高 CP 值家庭影音組合**</td>
-                <td>✅ 影劇 (國際) ✅ 影音無廣告 ✅ 音樂串流</td>
+                <td>**高 CP 值全能影音組合 (6人音樂/2人影劇)**</td>
+                <td>✅ 影劇 (國際, 1080p) ✅ 影音無廣告 (6人) ✅ 音樂串流 (6人)</td>
                 <td>
                     <span class="netflix-color">Netflix 標準方案 (NT$380)</span><br>
-                    <span class="youtube-color">+ YouTube Premium 家庭方案 (NT$269)</span>
+                    <span class="youtube-color">+ YouTube Premium 家庭方案 (NT$479)</span>
                 </td>
-                <td class="plan-price">**649**</td>
+                <td class="plan-price">**859**</td>
                 <td>
-                    **最划算的入門組合**。可供 2 人同時看 Netflix + 6 人使用 YT 無廣告和 YT Music。
+                    **最均衡的入門組合**。可供 **2 人**同時看 Netflix (1080p) + **6 人**使用 YT 無廣告和 YT Music。平均每人每月約 **NT$143** (以 6 人計)。
                 </td>
             </tr>
             <tr class="highlight-row">
-                <td>**極致畫質與全方位內容**</td>
-                <td>✅ 影劇 (4K) ✅ 亞洲內容 ✅ 影音無廣告 ✅ 音樂串流</td>
+                <td>**極致畫質與內容全餐 (4K/亞洲/無廣告)**</td>
+                <td>✅ 影劇 (國際, **4K**) ✅ 亞洲內容 ✅ 影音無廣告 (6人) ✅ 音樂串流 (6人)</td>
                 <td>
                     <span class="netflix-color">Netflix 高級方案 (NT$460)</span><br>
-                    <span class="youtube-color">+ YouTube Premium 家庭方案 (NT$269)</span><br>
-                    <span class="friday-color">+ friDay 影音 (NT$199)</span> (選配)
+                    <span class="youtube-color">+ YouTube Premium 家庭方案 (NT$479)</span><br>
+                    <span class="friday-color">+ friDay 影音暢看方案 (NT$199)</span> (選配)
                 </td>
-                <td class="plan-price">**729** (無friDay) / **928** (含friDay)</td>
+                <td class="plan-price">**939** (無friDay) / **1138** (含friDay)</td>
                 <td>
-                    滿足 4K 畫質，以及最多 4 人同時看 Netflix。YT 家庭方案解決無廣告與音樂需求。適合追求極致體驗的大家庭。
+                    滿足 **4K 畫質**，最多 **4 人**同時看 Netflix。YT 家庭方案解決無廣告與音樂需求。若需韓/台劇或獨家國片，再加 friDay 影音。
                 </td>
             </tr>
         </tbody>
     </table>
 
     <div class="recommendation">
-        <h3>💡 關於非同住者與大量觀看建議</h3>
+        <h3>💡 關於帳號共用與非同住者規定</h3>
         <ul>
-            <li>**非同住家人 (Netflix)：** 建議訂閱 <span class="netflix-color">Netflix 高級方案 (NT$460)</span>，然後為非同住家人**加購「額外成員」** (每位 NT$100)，這是目前最合規的方式。</li>
-            <li>**家庭超過 4 台觀看 (同住者)：** Netflix 單一方案僅支援 4 台同時觀看。若需 6 台以上，必須<span class="netflix-color">購買兩個 Netflix 帳號</span> (例如：兩個高級方案，月費約 NT$920)。</li>
+            <li>**Netflix 非同住者：** 嚴格執行「同住者」規定，非同住者需**加購「額外成員」** (每位 NT$100)，這是目前最合規且官方推薦的方式。</li>
+            <li>**YouTube / Spotify 家庭方案：** 官方規定需為**同住地址**。系統可能偶爾要求驗證地址，若無法配合，可能會有被停權的風險。</li>
+            <li>**friDay 影音：** 可同時在 **2 台**裝置觀看，且沒有嚴格的同住者限制。</li>
+            <li>**純音樂需求：** 若您不需要 YT 無廣告，僅需音樂串流，則選擇 **Spotify 家庭方案 (NT$298)** 比 YT Music (包含在 YT Premium $479/月內) 更省。</li>
         </ul>
     </div>
 
