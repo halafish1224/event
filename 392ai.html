@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemini 家居學習指南 | 為您的家庭組裝智慧生活</title>
+    <style>
+        :root {
+            --ikea-blue: #0051ba;
+            --ikea-yellow: #ffda1a;
+            --text-main: #111111;
+            --text-light: #666666;
+            --bg-light: #f5f5f5;
+            --white: #ffffff;
+            --card-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Noto Sans TC', 'Roboto', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-light);
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--ikea-blue);
+            color: var(--ikea-yellow);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        header h1 {
+            font-weight: 900;
+            letter-spacing: -1px;
+            font-size: 2rem;
+        }
+
+        header span {
+            font-weight: 700;
+            font-size: 1rem;
+            background: var(--ikea-yellow);
+            color: var(--ikea-blue);
+            padding: 4px 12px;
+            border-radius: 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: var(--white);
+            padding: 4rem 2rem;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn-cta {
+            background-color: var(--ikea-blue);
+            color: var(--white);
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 40px;
+            transition: transform 0.2s;
+            display: inline-block;
+        }
+
+        .btn-cta:hover {
+            transform: scale(1.05);
+            background-color: #003e8f;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1.5rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-left: 1rem;
+            border-left: 6px solid var(--ikea-yellow);
+        }
+
+        /* What is Gemini Cards */
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .card {
+            background: var(--white);
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            color: var(--ikea-blue);
+        }
+
+        .price-tag {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background: var(--ikea-yellow);
+            color: var(--ikea-blue);
+            padding: 5px 40px;
+            transform: rotate(45deg);
+            font-weight: bold;
+            font-size: 0.9rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Interactive "Assembly" Section */
+        .assembly-section {
+            background: var(--white);
+            padding: 3rem;
+            border-radius: 16px;
+            box-shadow: var(--card-shadow);
+            margin-bottom: 4rem;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 1.5rem;
+            border: 2px solid #eee;
+            background: none;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            background: var(--ikea-blue);
+            color: var(--white);
+            border-color: var(--ikea-blue);
+        }
+
+        .instruction-panel {
+            display: none;
+            animation: fadeIn 0.5s;
+        }
+
+        .instruction-panel.active {
+            display: block;
+        }
+
+        .instruction-card {
+            border: 2px dashed #ccc;
+            padding: 2rem;
+            background: #fafafa;
+            border-radius: 12px;
+        }
+
+        .instruction-step {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-num {
+            background: var(--text-main);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .code-block {
+            background: #eef;
+            padding: 1rem;
+            border-radius: 8px;
+            font-family: monospace;
+            color: var(--ikea-blue);
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        /* Experts Grid */
+        .experts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .expert-card {
+            background: var(--white);
+            border-bottom: 4px solid var(--ikea-yellow);
+            padding: 1.5rem;
+        }
+
+        .expert-title {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            color: var(--text-light);
+            letter-spacing: 1px;
+            margin-bottom: 0.5rem;
+        }
+
+        .quote {
+            font-size: 1.1rem;
+            font-style: italic;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .expert-name {
+            font-weight: bold;
+            text-align: right;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 1.2rem;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+
+        .comparison-table th {
+            background: var(--text-main);
+            color: var(--white);
+        }
+
+        .check-icon {
+            color: var(--ikea-blue);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        footer {
+            background: #333;
+            color: #fff;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @media (max-width: 768px) {
+            .hero h2 { font-size: 2rem; }
+            .tabs { overflow-x: auto; white-space: nowrap; padding-bottom: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>GEMINI</h1>
+        <span>家用旗艦版</span>
+    </header>
+
+    <section class="hero">
+        <h2>組裝您孩子的「超級家教」</h2>
+        <p>不只是工具，而是讓家庭學習更輕鬆的模組化解決方案。<br>適合所有國中小家長，無需專業技術，即開即用。</p>
+        <a href="https://gemini.google.com/" target="_blank" class="btn-cta">開始免費試用 ›</a>
+    </section>
+
+    <div class="container">
+
+        <h2 class="section-title">認識產品系列</h2>
+        <div class="intro-grid">
+            <div class="card">
+                <h3>🧠 LÄRNING (學習)</h3>
+                <p>Gemini 就像一位 24 小時待命的虛擬家教。它可以解數學題、檢查英文文法，並耐心地解釋觀念，直到孩子聽懂為止。</p>
+            </div>
+            <div class="card">
+                <div class="price-tag">推薦</div>
+                <h3>🚀 ADVANCED (進階)</h3>
+                <p>訂閱版專屬。擁有更大的記憶容量（可讀整本講義）、更強的邏輯推理，還能直接與 Google Docs 連動寫作。</p>
+            </div>
+            <div class="card">
+                <h3>🛡️ PÄRENTS (家長)</h3>
+                <p>為您減壓的神隊友。幫您規劃週末行程、撰寫親師溝通書信，甚至幫您複習現在的數學教法。</p>
+            </div>
+        </div>
+
+        <h2 class="section-title">情境組裝說明書 (請點選卡片)</h2>
+        <div class="assembly-section">
+            <div class="tabs">
+                <button class="tab-btn active" onclick="openTab('math')">🧮 數學卡關時</button>
+                <button class="tab-btn" onclick="openTab('english')">🗣️ 英文沒環境</button>
+                <button class="tab-btn" onclick="openTab('plan')">📅 考前一團亂</button>
+                <button class="tab-btn" onclick="openTab('trip')">🚗 週末去哪玩</button>
+            </div>
+
+            <div id="math" class="instruction-panel active">
+                <div class="instruction-card">
+                    <h4>🔨 組裝目標：解決「爸媽不會教、孩子聽不懂」的數學題</h4>
+                    <br>
+                    <div class="instruction-step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <p><strong>拍照上傳：</strong> 用手機拍下卡住的數學題目。</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <p><strong>輸入指令配件：</strong> 複製以下對話給 Gemini</p>
+                            <span class="code-block">「這題數學我不懂，請扮演蘇格拉底，不要直接給我答案。請一步一步引導我思考解題的關鍵是什麼？並用國小五年級能懂的語言解釋。」</span>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">3</div>
+                        <div>
+                            <p><strong>完成：</strong> 孩子獲得解題邏輯，而非單純的答案。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="english" class="instruction-panel">
+                <div class="instruction-card">
+                    <h4>🔨 組裝目標：免費的一對一外籍家教</h4>
+                    <br>
+                    <div class="instruction-step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <p><strong>開啟語音：</strong> 按下 Gemini App 的麥克風圖示。</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <p><strong>輸入指令配件：</strong></p>
+                            <span class="code-block">「我想練習英文口說。請你扮演一位美國的圖書館員，我要去借書。請跟我進行對話，如果我文法有錯，請在回應後溫柔地糾正我。」</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="plan" class="instruction-panel">
+                <div class="instruction-card">
+                    <h4>🔨 組裝目標：建立孩子的自主讀書計畫</h4>
+                    <br>
+                    <div class="instruction-step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <p><strong>資料準備：</strong> 拍下這次段考的範圍表。</p>
+                        </div>
+                    </div>
+                    <div class="instruction-step">
+                        <div class="step-num">2</div>
+                        <div>
+                            <p><strong>輸入指令配件：</strong></p>
+                            <span class="code-block">「下週二要段考，範圍是這張照片。現在是週五晚上。請幫我規劃這三天的複習進度表，要包含休息時間，並將大單元拆解成小的複習任務。」</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+             <div id="trip" class="instruction-panel">
+                <div class="instruction-card">
+                    <h4>🔨 組裝目標：家長放鬆計畫</h4>
+                    <br>
+                    <div class="instruction-step">
+                        <div class="step-num">1</div>
+                        <div>
+                            <p><strong>輸入指令配件：</strong></p>
+                            <span class="code-block">「請幫我規劃台中地區適合國小生的半日遊。要求：要有冷氣的科學類室內活動，以及一個可以奔跑的戶外公園，請附上交通與停車建議。」</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title">專家評測報告</h2>
+        <div class="experts-grid">
+            <div class="expert-card">
+                <div class="expert-title">教育科技專家</div>
+                <p class="quote">「Gemini Advanced 最強大的是『邏輯引導』。它不是作弊工具，而是引發孩子好奇心的催化劑。」</p>
+                <p class="expert-name">Dr. Chen</p>
+            </div>
+            <div class="expert-card">
+                <div class="expert-title">資深語文教師</div>
+                <p class="quote">「寫作最難的是『開始』。Gemini 是最好的靈感庫，能引導孩子構思大綱，而不是直接代寫。」</p>
+                <p class="expert-name">Teacher Sarah</p>
+            </div>
+            <div class="expert-card">
+                <div class="expert-title">兒童心理師</div>
+                <p class="quote">「許多學習焦慮來自於『不知道怎麼整理重點』。Gemini 的文件分析功能可以大大減輕這種認知負荷。」</p>
+                <p class="expert-name">Coach Lin</p>
+            </div>
+        </div>
+
+        <br><br>
+
+        <h2 class="section-title">規格比較表</h2>
+        <div style="overflow-x:auto;">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>功能特性</th>
+                        <th>免費版 Gemini</th>
+                        <th>Gemini Advanced (訂閱版)</th>
+                        <th>對學生的好處</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>基礎問答與創作</td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>日常作業輔助、靈感發想</td>
+                    </tr>
+                    <tr>
+                        <td><strong>超大記憶容量</strong></td>
+                        <td>-</td>
+                        <td><span class="check-icon">✓</span> (100萬 Tokens)</td>
+                        <td><strong>可讀完整本複習講義或 PDF 教科書</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Python 程式運算</strong></td>
+                        <td>-</td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td><strong>精準解決複雜數學運算與科學圖表</strong></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Google Docs 連動</strong></td>
+                        <td>-</td>
+                        <td><span class="check-icon">✓</span></td>
+                        <td>在打報告時直接呼叫 AI 潤飾文章</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <footer>
+        <h3>準備好升級您的家庭教育了嗎？</h3>
+        <p>Gemini - 讓陪伴孩子學習，變成一件簡單又快樂的事。</p>
+        <br>
+        <p style="font-size: 0.8rem; color: #888;">*本網頁為 Gemini 功能介紹模擬，實際功能以 Google 官方公告為準。</p>
+    </footer>
+
+    <script>
+        function openTab(tabId) {
+            // Hide all panels
+            const panels = document.querySelectorAll('.instruction-panel');
+            panels.forEach(panel => panel.classList.remove('active'));
+
+            // Deactivate all buttons
+            const buttons = document.querySelectorAll('.tab-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+
+            // Show selected panel and activate button
+            document.getElementById(tabId).classList.add('active');
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
