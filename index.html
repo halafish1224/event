@@ -238,23 +238,21 @@
             margin-top: 30px;
         }
 
-        .btn {
-            display: inline-block;
-            background-color: var(--jr-green);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.2rem;
-            margin-top: 15px;
-            transition: 0.3s;
-            box-shadow: 0 4px 10px rgba(0,134,49,0.3);
+        /* 新增大型聯繫圖片的樣式 */
+        .contact-image-link {
+            display: block;
+            margin-top: 20px;
         }
-
-        .btn:hover {
-            background-color: var(--jr-green-dark);
-            transform: scale(1.05);
+        .contact-image-link img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* 白色發光效果強調 */
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .contact-image-link img:hover {
+            transform: scale(1.02);
         }
 
         @media (max-width: 768px) {
@@ -425,9 +423,13 @@
     </div>
 
     <div class="cta-section">
-        <h2 style="border:none; color:white; margin-bottom:10px;">有興趣請直接聯繫</h2>
+        <h2 style="border:none; color:white; margin-bottom:10px;">有興趣請直接聯繫！</h2>
         <p>這批庫存數量有限，走完就沒了。現金交易，含稅開發票。</p>
-        <a href="mailto:Halafish@gmail.com" class="btn">發送 Email 聯繫 (Halafish@gmail.com)</a>
+        
+        <a href="https://event.itigre.com/IMG_1343.jpeg" target="_blank" class="contact-image-link">
+            <img src="https://event.itigre.com/IMG_1343.jpeg" alt="聯繫方式截圖，可直接加Line洽談" title="點擊放大查看聯繫方式">
+        </a>
+        <p style="font-size:0.9rem; margin-top:10px; color:#ccc;">(點擊圖片可放大，內含 Line ID 等聯繫方式)</p>
     </div>
 
     <footer style="text-align:center; padding:20px; color:#999; font-size:0.8rem;">
