@@ -67,7 +67,7 @@
             padding: 0 15px;
         }
 
-        /* --- Sections --- */
+        /* --- Cards --- */
         .card {
             background: var(--jr-white);
             border-radius: 8px;
@@ -99,10 +99,35 @@
             color: var(--jr-green);
         }
 
+        /* --- 更新說明 --- */
+        .update-card {
+            background: #fff8e1;
+            border-left: 5px solid var(--alert-red);
+            padding: 18px 18px 15px;
+            border-radius: 8px;
+        }
+        .update-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--alert-red);
+        }
+        .update-date {
+            font-size: 0.85rem;
+            color: var(--jr-text-sub);
+            margin-bottom: 8px;
+        }
+        .update-list {
+            margin-left: 1.2em;
+            font-size: 0.95rem;
+        }
+        .update-list li {
+            margin-bottom: 4px;
+        }
+
         /* --- Product Hero --- */
         .product-hero {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: 1.1fr 1fr;
             gap: 30px;
             align-items: center;
         }
@@ -128,6 +153,33 @@
             display: inline-block;
             margin-right: 5px;
             margin-bottom: 5px;
+        }
+
+        /* --- Gallery --- */
+        .main-photo {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 100%;
+            height: auto;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .gallery-caption {
+            font-size: 0.85rem;
+            color: var(--jr-text-sub);
+            margin-top: 6px;
         }
 
         /* --- Specs Grid --- */
@@ -210,7 +262,7 @@
             border-radius: 10px;
         }
 
-        /* --- Pro Features --- */
+        /* --- Pro Features / Explanation --- */
         .pro-list {
             list-style: none;
         }
@@ -228,6 +280,21 @@
             left: 0;
         }
 
+        .explain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .explain-block h4 {
+            margin-bottom: 8px;
+            color: var(--jr-green);
+            font-size: 1rem;
+        }
+        .explain-block p {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
         /* --- Footer / CTA --- */
         .cta-section {
             background: var(--jr-text-main);
@@ -238,7 +305,6 @@
             margin-top: 30px;
         }
 
-        /* 新增大型聯繫圖片的樣式 */
         .contact-image-link {
             display: block;
             margin-top: 20px;
@@ -247,7 +313,7 @@
             max-width: 100%;
             height: auto;
             border-radius: 8px;
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* 白色發光效果強調 */
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
             cursor: pointer;
             transition: transform 0.3s;
         }
@@ -275,36 +341,74 @@
     <div class="station-sign">
         <div class="tagline">Johnny's Special Selection</div>
         <h1>虎友嚴選・在庫急售</h1>
-        <div class="tagline">Lenovo ThinkBook 14 G7 AI</div>
+        <div class="tagline">Lenovo ThinkBook 14 G7 AI 商務筆電</div>
     </div>
 </header>
 
 <div class="container">
 
+    <!-- 急售故事 -->
     <div class="card">
         <div class="story-box">
             <i class="fa-solid fa-user-clock story-icon"></i>
             <div>
-                <strong>急售原因：</strong> 虎迷好友被客戶放鴿子，全新商務庫存壓力大！
+                <strong>急售原因：</strong> 虎迷好友被客戶放鴿子，全新商務庫存壓力大，只好咬牙釋出。
                 <br>
-                <span style="font-size:0.9rem; color:var(--jr-text-sub);">這不是福利品，這是「全新未拆」的正規公司貨。幫朋友清庫存，價格直接回饋，剛好需要筆電的朋友真的賺到。</span>
+                <span style="font-size:0.9rem; color:var(--jr-text-sub);">
+                    這不是福利品，也不是展示機，而是「全新未拆封」的公司貨專案機種。幫朋友清庫存，用接近成本的價格回饋，有需要商務筆電的真的剛好撿到寶。
+                </span>
             </div>
         </div>
     </div>
 
+    <!-- 活動更新說明 2025/12/3 -->
+    <div class="card">
+        <div class="update-card">
+            <div class="update-title"><i class="fa-solid fa-bullhorn"></i> 活動訊息 2025/12/3 更新</div>
+            <div class="update-date">最近大家私訊問最多的幾件事，我統一在這裡說明：</div>
+            <ul class="update-list">
+                <li><strong>外殼顏色：</strong>商用電腦鎖定商務人士，需要穩重、專業形象，所以主流幾乎都是黑／灰／銀三色。你在網路上看到白色、藍色、紅色等彩色外殼，我敢說 95% 都是家用機，不是這種商務等級。</li>
+                <li><strong>作業系統：</strong>這批預載的是 <strong>Windows 11 Pro</strong> 專業版，跟各大網購常見的 Win 11 Home 不同。Pro 多了資料安全（例如 BitLocker 加密）、網路分享與網域支援，還有遠端桌面等功能，家用版都沒有。</li>
+                <li><strong>螢幕與鍵盤：</strong>配備防眩光霧面螢幕，辦公環境不容易反光；鍵盤是標準尺寸，打字手感紮實不卡鍵，並完整附上注音／倉頡標示，日常工作輸入很順手。</li>
+                <li><strong>擴充性：</strong>我特地拆開底蓋拍照，給大家看雙 RAM / 雙 SSD 擴充槽的實際位置。未來如果覺得系統變卡，只要加 RAM 或換更大的 SSD，就能讓效能整個「回春」，不需要為了容量或速度再整台換新。</li>
+            </ul>
+            <p style="font-size:0.9rem; margin-top:8px;">
+                以上如果還有看不懂、想確認的地方，都可以直接私訊我慢慢聊。也再次謝謝很多朋友幫忙分享，真的心裡滿滿感謝。🙏
+            </p>
+        </div>
+    </div>
+
+    <!-- 商品重點資訊 + 實機照片 -->
     <div class="card">
         <h2><i class="fa-solid fa-laptop"></i> 商品重點資訊</h2>
         <div class="product-hero">
-            <div style="text-align: center;">
-                <img src="https://64.media.tumblr.com/f20b30391ac87082efb665385e85fef1/5aa421e1aa99d03e-b5/s2048x3072/773c3fc6b48e843ba8b6517eff2a264fc0a18460.jpg" alt="Lenovo ThinkBook 14 G7 AI 商務筆電" style="max-width:100%; height:auto; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            <div>
+                <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1764809291/593579527_26302134846042472_7936923505210090111_n_zii0rm.jpg" alt="Lenovo ThinkBook 14 G7 AI 商務筆電實拍外觀" class="main-photo">
+                <div class="gallery-caption">
+                    ▲ 實機外觀實拍：沉穩的商務銀色機身，走進會議室不會搶戲，但放在桌上很有質感。
+                </div>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1764809291/593706473_26302135859375704_432821197905746653_n_gzsipp.jpg" alt="Lenovo ThinkBook 14 G7 鍵盤與輸入區實拍">
+                        <div class="gallery-caption">實拍鍵盤區：標準鍵帽尺寸，附注音／倉頡標示，長時間打字也好適應。</div>
+                    </div>
+                    <div>
+                        <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1764809292/593870468_26302135779375712_7170820568527856010_n_sd1xwk.jpg" alt="Lenovo ThinkBook 14 G7 底蓋拆解展示擴充槽">
+                        <div class="gallery-caption">底蓋拆解展示：雙 RAM / 雙 SSD 擴充槽清楚可見，後續升級空間非常大。</div>
+                    </div>
+                </div>
             </div>
             <div class="product-info">
                 <h3>Lenovo ThinkBook 14 G7 (U7)</h3>
-                <p>14吋 AI 商務筆電 | Ultra 7 處理器</p>
+                <p>14 吋 AI 商務筆電｜Intel Core Ultra 7 處理器｜商務專案機</p>
                 <div class="price-tag">NT$ 26,000 <span style="font-size:1rem; color:#555;">(含稅)</span></div>
-                <div class="price-note"><i class="fa-solid fa-check"></i> 全新未拆封</div>
-                <div class="price-note"><i class="fa-solid fa-check"></i> 含發票 (可開統編)</div>
-                <div class="price-note"><i class="fa-solid fa-check"></i> 附原廠包 + 滑鼠</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 全新未拆封公司貨</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 含發票，可開統編</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 附原廠包包＋滑鼠</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> Windows 11 Pro 專業版</div>
+                <p style="font-size:0.9rem; margin-top:10px; color:var(--jr-text-sub);">
+                    現金交易、數量有限，售完就沒有同條件專案價了。
+                </p>
             </div>
         </div>
 
@@ -312,35 +416,85 @@
             <div class="spec-item">
                 <i class="fa-solid fa-microchip spec-icon"></i>
                 <span class="spec-title">處理器 CPU</span>
-                Core Ultra 7 155H<br>(AI NPU 搭載)
+                Intel Core Ultra 7 155H<br>(內建 AI NPU 加速)
             </div>
             <div class="spec-item">
                 <i class="fa-solid fa-memory spec-icon"></i>
                 <span class="spec-title">記憶體 RAM</span>
-                16GB DDR5<br>(可擴充第二條)
+                16GB DDR5<br>(預留第二條插槽可擴充)
             </div>
             <div class="spec-item">
                 <i class="fa-solid fa-hard-drive spec-icon"></i>
                 <span class="spec-title">硬碟 SSD</span>
-                512GB PCIe 4.0<br>(可擴充第二條)
+                512GB PCIe 4.0<br>(可再加裝第二顆 SSD)
             </div>
             <div class="spec-item">
                 <i class="fa-brands fa-windows spec-icon"></i>
                 <span class="spec-title">作業系統 OS</span>
-                Win 11 <strong style="color:var(--jr-green);">Pro 專業版</strong><br>(商務資安強化)
+                Windows 11 <strong style="color:var(--jr-green);">Pro 專業版</strong><br>（商務資安強化）
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-display spec-icon"></i>
+                <span class="spec-title">螢幕</span>
+                14" FHD 霧面防眩光<br>辦公燈光不易反射
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-keyboard spec-icon"></i>
+                <span class="spec-title">鍵盤配置</span>
+                標準尺寸鍵盤<br>附注音／倉頡標示
             </div>
             <div class="spec-item">
                 <i class="fa-solid fa-shield-halved spec-icon"></i>
                 <span class="spec-title">保固 Service</span>
-                <strong style="color:var(--jr-green);">3年 Premier Support</strong><br>(頂級到府/專線)
+                <strong style="color:var(--jr-green);">3 年 Premier Support</strong><br>（到府／專線服務）
             </div>
         </div>
     </div>
 
+    <!-- 系統差異與商務設計說明 -->
+    <div class="card">
+        <h2><i class="fa-solid fa-circle-info"></i> 商務機 vs 家用機：差在哪？</h2>
+        <div class="explain-grid">
+            <div class="explain-block">
+                <h4>1. 外觀配色：為何沒有白色、粉色？</h4>
+                <p>
+                    商用機主打會議室、簡報場域，品牌設計會刻意選用黑／灰／銀這類沉穩色系，
+                    讓整體看起來專業、不搶畫面。你在購物網站上看到的白色、藍色、紅色、粉色外殼，
+                    幾乎都是家用型機種，並非這種企業採購用的專案商務機。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>2. Windows 11 Pro 專業版</h4>
+                <p>
+                    一般通路多數是 <strong>Windows 11 Home</strong>，而這批直接上 <strong>Windows 11 Pro</strong>。
+                    Pro 比 Home 多的功能包括：BitLocker 磁碟加密、網域與群組原則支援、遠端桌面主機端、
+                    更完整的企業網路與權限管理能力。對需要處理工作檔、公司資料的人來說，是很實際的升級。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>3. 霧面防眩螢幕、鍵盤好打</h4>
+                <p>
+                    螢幕採用防眩霧面設計，在辦公室白燈、咖啡廳窗邊都比較不會反光刺眼；
+                    鍵盤則是標準尺寸搭配注音／倉頡標示，長時間打報告、寫企劃書，不容易誤按。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>4. 擴充性：雙 RAM / 雙 SSD</h4>
+                <p>
+                    很多輕薄本的記憶體是「焊死」在主機板上，買錯規格就只能忍受。
+                    這台 ThinkBook 14 G7 則是雙 RAM 插槽＋雙 SSD，未來只要覺得有點卡，
+                    加一條記憶體或換更大 SSD，就能明顯感受到速度「回春」，效能用好用滿。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 比價與分析 -->
     <div class="card">
         <h2><i class="fa-solid fa-chart-simple"></i> 達人比價與分析</h2>
         <p style="margin-bottom: 15px;">
-            市面上的通路（如 Momo, PChome）同型號機種，通常預載的是家用版系統與一般保固。虎迷友人這批是專案機，因此規格更好。
+            以市面上常見電商通路（如 Momo、PChome）同級機種來看，多半是家用版系統＋一般保固。
+            虎迷好友這批為企業專案機，除了價格壓得更低之外，系統與保固等級都直接拉滿。
         </p>
         
         <div class="table-responsive">
@@ -371,15 +525,19 @@
                     </tr>
                     <tr class="highlight-row">
                         <td>作業系統</td>
-                        <td class="winner-col" style="color:var(--jr-green);">Windows 11 Pro<br><span style="font-size:0.8rem; font-weight:normal;">(價值 +$2000)</span></td>
+                        <td class="winner-col" style="color:var(--jr-green);">
+                            Windows 11 Pro<br><span style="font-size:0.8rem; font-weight:normal;">(價值約 +$2,000)</span>
+                        </td>
                         <td>Windows 11 Home</td>
                         <td>Windows 11 Home</td>
                     </tr>
                     <tr class="highlight-row">
                         <td>保固服務</td>
-                        <td class="winner-col" style="color:var(--jr-green);">3年 Premier Support<br><span style="font-size:0.8rem; font-weight:normal;">(價值 +$3000)</span></td>
-                        <td>1-2年 一般保固</td>
-                        <td>1-2年 一般保固</td>
+                        <td class="winner-col" style="color:var(--jr-green);">
+                            3 年 Premier Support<br><span style="font-size:0.8rem; font-weight:normal;">(價值約 +$3,000)</span>
+                        </td>
+                        <td>1–2 年一般保固</td>
+                        <td>1–2 年一般保固</td>
                     </tr>
                     <tr>
                         <td>擴充潛力</td>
@@ -389,7 +547,7 @@
                     </tr>
                     <tr>
                         <td>贈品</td>
-                        <td class="winner-col">原廠包 + 鼠</td>
+                        <td class="winner-col">原廠包＋滑鼠</td>
                         <td>視活動而定</td>
                         <td>無 / 視活動</td>
                     </tr>
@@ -398,43 +556,60 @@
         </div>
     </div>
 
+    <!-- 為什麼值得買 -->
     <div class="card">
         <h2><i class="fa-solid fa-magnifying-glass"></i> 為什麼這台值得買？</h2>
-        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
-            <div>
-                <h4 style="margin-bottom:10px; color:var(--jr-green);">1. AI 效能解鎖 (Meteor Lake)</h4>
-                <p style="font-size:0.95rem; color:#444;">
-                    Intel Ultra 7 155H 內建 NPU，這不是舊款 i7 改名，而是全新的架構。對於未來執行 AI 降噪、背景模糊、甚至本地端 AI 運算都有專門加速，且更省電。
+        <div class="explain-grid">
+            <div class="explain-block">
+                <h4>1. 新世代 Ultra 7 + NPU</h4>
+                <p>
+                    Intel Core Ultra 7 155H 不是舊款 i7 改名，而是新架構，內建 NPU，
+                    能為 AI 降噪、視訊背景模糊、部分本地端 AI 應用提供硬體加速，同時兼顧續航。
                 </p>
             </div>
-            <div>
-                <h4 style="margin-bottom:10px; color:var(--jr-green);">2. 商務規格沒在省</h4>
-                <p style="font-size:0.95rem; color:#444;">
-                    一般輕薄本為了省空間會把記憶體焊死。這台 ThinkBook 14 G7 <strong>可以插兩條 RAM、兩條 SSD</strong>。買來 26000，未來覺得不夠用隨時可以升級，不用整台換掉。
+            <div class="explain-block">
+                <h4>2. 可升級，不是一次性消耗品</h4>
+                <p>
+                    很多筆電買來「規格鎖死」，這台則是設計給長期使用：雙 RAM 插槽＋雙 SSD，
+                    未來只要覺得慢，就加記憶體／換 SSD，等於幫自己預留了一次「回春升級」的選項。
                 </p>
             </div>
-            <div>
-                <h4 style="margin-bottom:10px; color:var(--jr-green);">3. 專業版 OS + 頂規保固</h4>
-                <p style="font-size:0.95rem; color:#444;">
-                    Pro 版系統支援 BitLocker 加密與遠端桌面，對工作資料更有保障。Premier Support 是聯想最高級服務，有專線、隔日到府維修，不用去維修中心抽號碼牌。
+            <div class="explain-block">
+                <h4>3. Pro 系統 + 頂規保固，一次到位</h4>
+                <p>
+                    Windows 11 Pro 加上 3 年 Premier Support，是一般家用機很少配的組合。
+                    遇到問題有專線可以問，必要時還有到府服務，對需要穩定使用的上班族來說非常省心。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>4. 真實實拍，有疑問歡迎問到懂</h4>
+                <p>
+                    網頁上的照片全部是實機現場拍攝，包含外觀、鍵盤、底蓋拆解。
+                    如果你不熟硬體、看規格表覺得頭痛，也可以直接私訊，用白話方式跟你說明哪裡適合你、哪裡不適合。
                 </p>
             </div>
         </div>
     </div>
 
+    <!-- CTA 聯繫方式 -->
     <div class="cta-section">
         <h2 style="border:none; color:white; margin-bottom:10px;">有興趣請直接聯繫！</h2>
-        <p>這批庫存數量有限，走完就沒了。現金交易，含稅開發票。</p>
+        <p>
+            這批是朋友被放鴿子的商務庫存，不是常態販售商品。<br>
+            售完就沒有同條件的 Ultra 7 + Win 11 Pro + 3 年 Premier Support 組合。
+        </p>
         
         <a href="https://event.itigre.com/IMG_1343.jpeg" target="_blank" class="contact-image-link">
-            <img src="https://event.itigre.com/IMG_1343.jpeg" alt="聯繫方式截圖，可直接加Line洽談" title="點擊放大查看聯繫方式">
+            <img src="https://event.itigre.com/IMG_1343.jpeg" alt="聯繫方式截圖，可直接加 Line 洽談" title="點擊放大查看聯繫方式">
         </a>
-        <p style="font-size:0.9rem; margin-top:10px; color:#ccc;">(點擊圖片可放大，內含 Line ID 等聯繫方式)</p>
+        <p style="font-size:0.9rem; margin-top:10px; color:#ccc;">
+            （點擊圖片可放大查看聯繫方式，有任何不懂的地方也可以先聊聊再決定。）
+        </p>
     </div>
 
     <footer style="text-align:center; padding:20px; color:#999; font-size:0.8rem;">
         &copy; Johnny's Special Sale. All rights reserved. <br>
-        以上規格僅供參考，以實際交機型號為主。
+        規格以實際交機型號為主，如有調整會再於頁面更新。
     </footer>
 
 </div>
