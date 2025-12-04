@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虎友嚴選 | ThinkBook 14 G7 AI 商務筆電特賣</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* JR East Green Style */
+            --jr-green: #008631; 
+            --jr-green-dark: #005e22;
+            --jr-grey-bg: #f2f2f2;
+            --jr-text-main: #222222;
+            --jr-text-sub: #555555;
+            --jr-white: #ffffff;
+            --alert-red: #d32f2f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--jr-grey-bg);
+            color: var(--jr-text-main);
+            line-height: 1.6;
+        }
+
+        /* --- Header / Station Sign Style --- */
+        header {
+            background-color: var(--jr-white);
+            border-bottom: 8px solid var(--jr-green);
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .station-sign {
+            border: 2px solid var(--jr-text-main);
+            display: inline-block;
+            padding: 10px 40px;
+            background: var(--jr-white);
+            position: relative;
+        }
+
+        .station-sign h1 {
+            font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .station-sign .tagline {
+            font-size: 0.9rem;
+            color: var(--jr-text-sub);
+            font-weight: 500;
+        }
+
+        /* --- Container --- */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* --- Sections --- */
+        .card {
+            background: var(--jr-white);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            border-left: 6px solid var(--jr-green);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--jr-text-main);
+        }
+
+        /* --- Story Section --- */
+        .story-box {
+            background-color: #e8f5e9;
+            border: 1px solid var(--jr-green);
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .story-icon {
+            font-size: 2rem;
+            color: var(--jr-green);
+        }
+
+        /* --- Product Hero --- */
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+        }
+
+        .price-tag {
+            font-size: 2.5rem;
+            color: var(--jr-green);
+            font-weight: 900;
+            margin: 15px 0;
+        }
+        
+        .price-note {
+            font-size: 0.9rem;
+            color: var(--jr-text-sub);
+            background: #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+
+        /* --- Specs Grid --- */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .spec-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border-bottom: 3px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .spec-item:hover {
+            border-bottom: 3px solid var(--jr-green);
+            transform: translateY(-2px);
+        }
+
+        .spec-icon {
+            font-size: 1.5rem;
+            color: var(--jr-text-sub);
+            margin-bottom: 8px;
+        }
+
+        .spec-title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* --- Comparison Table --- */
+        .comparison-table {
+            width: 100%; 
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table th {
+            background-color: var(--jr-text-main);
+            color: var(--jr-white);
+            font-weight: 500;
+        }
+
+        .highlight-row {
+            background-color: #e8f5e9;
+            font-weight: 700;
+        }
+
+        .winner-col {
+            border: 2px solid var(--jr-green);
+            background-color: #fff;
+            position: relative;
+        }
+        
+        .winner-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--jr-green);
+            color: white;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            border-radius: 10px;
+        }
+
+        /* --- Pro Features --- */
+        .pro-list {
+            list-style: none;
+        }
+        .pro-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .pro-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--jr-green);
+            position: absolute;
+            left: 0;
+        }
+
+        /* --- Footer / CTA --- */
+        .cta-section {
+            background: var(--jr-text-main);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        /* 新增大型聯繫圖片的樣式 */
+        .contact-image-link {
+            display: block;
+            margin-top: 20px;
+        }
+        .contact-image-link img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5); /* 白色發光效果強調 */
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .contact-image-link img:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .product-hero {
+                grid-template-columns: 1fr;
+            }
+            .station-sign h1 {
+                font-size: 1.5rem;
+            }
+            .comparison-table th, .comparison-table td {
+                padding: 10px 8px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="station-sign">
+        <div class="tagline">Johnny's Special Selection</div>
+        <h1>虎友嚴選・在庫急售</h1>
+        <div class="tagline">Lenovo ThinkBook 14 G7 AI</div>
+    </div>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <div class="story-box">
+            <i class="fa-solid fa-user-clock story-icon"></i>
+            <div>
+                <strong>急售原因：</strong> 虎迷好友被客戶放鴿子，全新商務庫存壓力大！
+                <br>
+                <span style="font-size:0.9rem; color:var(--jr-text-sub);">這不是福利品，這是「全新未拆」的正規公司貨。幫朋友清庫存，價格直接回饋，剛好需要筆電的朋友真的賺到。</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fa-solid fa-laptop"></i> 商品重點資訊</h2>
+        <div class="product-hero">
+            <div style="text-align: center;">
+                <img src="https://64.media.tumblr.com/f20b30391ac87082efb665385e85fef1/5aa421e1aa99d03e-b5/s2048x3072/773c3fc6b48e843ba8b6517eff2a264fc0a18460.jpg" alt="Lenovo ThinkBook 14 G7 AI 商務筆電" style="max-width:100%; height:auto; border-radius:8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+            </div>
+            <div class="product-info">
+                <h3>Lenovo ThinkBook 14 G7 (U7)</h3>
+                <p>14吋 AI 商務筆電 | Ultra 7 處理器</p>
+                <div class="price-tag">NT$ 26,000 <span style="font-size:1rem; color:#555;">(含稅)</span></div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 全新未拆封</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 含發票 (可開統編)</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 附原廠包 + 滑鼠</div>
+            </div>
+        </div>
+
+        <div class="specs-grid">
+            <div class="spec-item">
+                <i class="fa-solid fa-microchip spec-icon"></i>
+                <span class="spec-title">處理器 CPU</span>
+                Core Ultra 7 155H<br>(AI NPU 搭載)
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-memory spec-icon"></i>
+                <span class="spec-title">記憶體 RAM</span>
+                16GB DDR5<br>(可擴充第二條)
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-hard-drive spec-icon"></i>
+                <span class="spec-title">硬碟 SSD</span>
+                512GB PCIe 4.0<br>(可擴充第二條)
+            </div>
+            <div class="spec-item">
+                <i class="fa-brands fa-windows spec-icon"></i>
+                <span class="spec-title">作業系統 OS</span>
+                Win 11 <strong style="color:var(--jr-green);">Pro 專業版</strong><br>(商務資安強化)
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-shield-halved spec-icon"></i>
+                <span class="spec-title">保固 Service</span>
+                <strong style="color:var(--jr-green);">3年 Premier Support</strong><br>(頂級到府/專線)
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fa-solid fa-chart-simple"></i> 達人比價與分析</h2>
+        <p style="margin-bottom: 15px;">
+            市面上的通路（如 Momo, PChome）同型號機種，通常預載的是家用版系統與一般保固。虎迷友人這批是專案機，因此規格更好。
+        </p>
+        
+        <div class="table-responsive">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">比較項目</th>
+                        <th style="width: 30%; background:var(--jr-green);" class="winner-col">
+                            <span class="winner-badge">虎迷好友價</span>
+                            虎迷友人 (現貨)
+                        </th>
+                        <th style="width: 25%; background:#777;">知名電商 M</th>
+                        <th style="width: 25%; background:#777;">知名電商 P</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>價格 (含稅)</strong></td>
+                        <td class="winner-col" style="color:var(--alert-red); font-size:1.2rem; font-weight:900;">$26,000</td>
+                        <td>$30,990</td>
+                        <td>$31,900</td>
+                    </tr>
+                    <tr>
+                        <td>CPU</td>
+                        <td class="winner-col">Ultra 7 155H</td>
+                        <td>Ultra 7 155H</td>
+                        <td>Ultra 7 155H</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>作業系統</td>
+                        <td class="winner-col" style="color:var(--jr-green);">Windows 11 Pro<br><span style="font-size:0.8rem; font-weight:normal;">(價值 +$2000)</span></td>
+                        <td>Windows 11 Home</td>
+                        <td>Windows 11 Home</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>保固服務</td>
+                        <td class="winner-col" style="color:var(--jr-green);">3年 Premier Support<br><span style="font-size:0.8rem; font-weight:normal;">(價值 +$3000)</span></td>
+                        <td>1-2年 一般保固</td>
+                        <td>1-2年 一般保固</td>
+                    </tr>
+                    <tr>
+                        <td>擴充潛力</td>
+                        <td class="winner-col">雙 RAM / 雙 SSD</td>
+                        <td>雙 RAM / 雙 SSD</td>
+                        <td>雙 RAM / 雙 SSD</td>
+                    </tr>
+                    <tr>
+                        <td>贈品</td>
+                        <td class="winner-col">原廠包 + 鼠</td>
+                        <td>視活動而定</td>
+                        <td>無 / 視活動</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2><i class="fa-solid fa-magnifying-glass"></i> 為什麼這台值得買？</h2>
+        <div style="display:grid; grid-template-columns: 1fr 1fr; gap:20px;">
+            <div>
+                <h4 style="margin-bottom:10px; color:var(--jr-green);">1. AI 效能解鎖 (Meteor Lake)</h4>
+                <p style="font-size:0.95rem; color:#444;">
+                    Intel Ultra 7 155H 內建 NPU，這不是舊款 i7 改名，而是全新的架構。對於未來執行 AI 降噪、背景模糊、甚至本地端 AI 運算都有專門加速，且更省電。
+                </p>
+            </div>
+            <div>
+                <h4 style="margin-bottom:10px; color:var(--jr-green);">2. 商務規格沒在省</h4>
+                <p style="font-size:0.95rem; color:#444;">
+                    一般輕薄本為了省空間會把記憶體焊死。這台 ThinkBook 14 G7 <strong>可以插兩條 RAM、兩條 SSD</strong>。買來 26000，未來覺得不夠用隨時可以升級，不用整台換掉。
+                </p>
+            </div>
+            <div>
+                <h4 style="margin-bottom:10px; color:var(--jr-green);">3. 專業版 OS + 頂規保固</h4>
+                <p style="font-size:0.95rem; color:#444;">
+                    Pro 版系統支援 BitLocker 加密與遠端桌面，對工作資料更有保障。Premier Support 是聯想最高級服務，有專線、隔日到府維修，不用去維修中心抽號碼牌。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="cta-section">
+        <h2 style="border:none; color:white; margin-bottom:10px;">有興趣請直接聯繫！</h2>
+        <p>這批庫存數量有限，走完就沒了。現金交易，含稅開發票。</p>
+        
+        <a href="https://event.itigre.com/IMG_1343.jpeg" target="_blank" class="contact-image-link">
+            <img src="https://event.itigre.com/IMG_1343.jpeg" alt="聯繫方式截圖，可直接加Line洽談" title="點擊放大查看聯繫方式">
+        </a>
+        <p style="font-size:0.9rem; margin-top:10px; color:#ccc;">(點擊圖片可放大，內含 Line ID 等聯繫方式)</p>
+    </div>
+
+    <footer style="text-align:center; padding:20px; color:#999; font-size:0.8rem;">
+        &copy; Johnny's Special Sale. All rights reserved. <br>
+        以上規格僅供參考，以實際交機型號為主。
+    </footer>
+
+</div>
+
+</body>
+</html>
