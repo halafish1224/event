@@ -3,21 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>【活動結束】虎友嚴選 | ThinkBook 14 G7 AI 商務筆電完售</title>
+    <title>🎄 聖誕完售感謝！| Lenovo ThinkBook 14 G7 AI 商務筆電專案結束</title>
+        <meta name="description" content="感謝支持！虎友嚴選 Lenovo ThinkBook 14 G7 AI 商務筆電已全數完售。歲末年終，感謝所有客戶在聖誕佳節前的熱烈響應！本頁資訊將於 2025/12/31 前關閉。">
+    
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* JR East Green Style */
-            --jr-green: #008631; 
-            --jr-green-dark: #005e22;
+            /* 聖誕感謝配色 */
+            --christmas-red: #C62828; /* 深紅 */
+            --christmas-green: #388E3C; /* 聖誕綠 (次要) */
+            --christmas-gold: #FFC107; /* 金色 (點綴) */
             --jr-grey-bg: #f2f2f2;
             --jr-text-main: #222222;
             --jr-text-sub: #555555;
             --jr-white: #ffffff;
             --alert-red: #d32f2f;
-            /* 新增完售專用色 */
-            --soldout-blue: #304ffe; 
         }
 
         * {
@@ -36,15 +37,15 @@
         /* --- Header / Station Sign Style --- */
         header {
             background-color: var(--jr-white);
-            /* 將底部顏色改為完售藍色 */
-            border-bottom: 8px solid var(--soldout-blue); 
+            /* 底部顏色改為聖誕紅 */
+            border-bottom: 8px solid var(--christmas-red); 
             padding: 20px;
             text-align: center;
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .station-sign {
-            border: 2px solid var(--jr-text-main);
+            border: 2px solid var(--christmas-red); /* 邊框改為聖誕紅 */
             display: inline-block;
             padding: 10px 40px;
             background: var(--jr-white);
@@ -55,7 +56,7 @@
             font-size: 2rem;
             font-weight: 900;
             letter-spacing: 2px;
-            color: var(--soldout-blue); /* 標題顏色改為完售藍色 */
+            color: var(--christmas-red); /* 標題顏色改為聖誕紅 */
         }
 
         .station-sign .tagline {
@@ -80,19 +81,10 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
         }
 
-        h2 {
-            /* 標題左側改為完售藍色 */
-            border-left: 6px solid var(--soldout-blue); 
-            padding-left: 15px;
-            margin-bottom: 20px;
-            font-size: 1.5rem;
-            color: var(--jr-text-main);
-        }
-
-        /* --- 完售通知專用樣式 --- */
+        /* --- 完售通知專用樣式 (聖誕版) --- */
         .soldout-notice-card {
-            background: #e3f2fd; /* 淺藍色背景 */
-            border: 5px solid var(--soldout-blue); /* 完售藍色邊框 */
+            background: #fffde7; /* 淺黃/白色背景 */
+            border: 5px solid var(--christmas-red); /* 聖誕紅邊框 */
             padding: 30px;
             border-radius: 12px;
             text-align: center;
@@ -100,7 +92,7 @@
         }
         .soldout-notice-card h2 {
             border: none;
-            color: var(--soldout-blue);
+            color: var(--christmas-red);
             font-size: 2.5rem;
             margin-bottom: 15px;
             font-weight: 900;
@@ -118,12 +110,9 @@
             font-weight: 500;
         }
 
-        /* 移除所有不需要的舊樣式，例如：story-box, update-card, product-hero, specs-grid, comparison-table 等 */
-        /* 僅保留基本通用樣式 */
-
-        /* --- Footer / CTA --- */
+        /* --- Footer / CTA (聖誕紅/綠) --- */
         .cta-section {
-            background: var(--jr-text-main);
+            background: var(--christmas-green); /* 底部採用聖誕綠 */
             color: white;
             padding: 30px;
             text-align: center;
@@ -132,10 +121,10 @@
         }
         .cta-section h2 {
             border: none;
-            color: white;
+            color: var(--christmas-gold); /* 標題採用金色 */
             margin-bottom: 10px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
         }
-        /* 移除聯繫圖片樣式 */
         .contact-image-link { display: none; }
 
         @media (max-width: 768px) {
@@ -152,35 +141,39 @@
 
 <header>
     <div class="station-sign">
-        <div class="tagline">活動已圓滿結束</div>
-        <h1>🔥 完售感謝！🔥</h1>
-        <div class="tagline">Lenovo ThinkBook 14 G7 AI 商務筆電專案</div>
+        <div class="tagline">歲末年終・感謝有您</div>
+                <h1>🎅 聖誕節前夕，ThinkBook 14 G7 AI 筆電完售！</h1>
+        <div class="tagline">虎友嚴選專案圓滿結束</div>
     </div>
 </header>
 
 <div class="container">
 
         <div class="card soldout-notice-card">
-        <i class="fa-solid fa-circle-check" style="font-size:3rem; color:var(--soldout-blue); margin-bottom:15px;"></i>
-        <h2>全數完售！</h2>
+        <i class="fa-solid fa-gift" style="font-size:3rem; color:var(--christmas-red); margin-bottom:15px;"></i>
+        <h2>【完售感謝】全數結案！</h2>
         <p>
-            **感謝大家熱烈支持！** <br>
-            經統計，這批 **ThinkBook 14 G7 AI 商務筆電** 現貨已全數售罄。<br>
-            再次感謝所有朋友的信任與支持！
+            **感謝各位朋友的熱烈支持與信任！** <br>
+            虎友嚴選這批 **Lenovo ThinkBook 14 G7 AI 商務筆電** 現貨已全數售罄。<br>
+            感謝在歲末年終前將這批優質的 AI 筆電帶回家！
         </p>
-        <p style="font-size:1rem; color:var(--alert-red); font-weight:700;">
-            頁面資訊將於 **2025/12/31** 前關閉。
+        <p style="font-size:1rem; color:var(--christmas-red); font-weight:700;">
+            恭喜所有搶到的朋友，願這台新夥伴為您的工作帶來更多效率！
         </p>
+        <span class="soldout-date">
+            本頁面資訊將於 **2025/12/31** 前關閉。
+        </span>
     </div>
-
-        
+    
         <div class="cta-section">
-        <h2 style="border:none; color:white; margin-bottom:10px;"><i class="fa-solid fa-handshake"></i> 期待下次合作！</h2>
-        <p>
-            由於這是朋友被客戶放鴿子的專案庫存，屬非經常性活動。<br>
-            暫時沒有後續同條件的筆電專案，感謝您的詢問與支持！
+        <h2><i class="fa-solid fa-tree"></i> 聖誕佳節愉快！期待下次相聚</h2>
+        <p style="color:var(--christmas-gold);">
+            **衷心感謝**所有朋友的熱情響應，讓這次的專案圓滿成功。<br>
+            祝大家聖誕佳節愉快，新的一年工作順利！
         </p>
-                <a href="#" class="contact-image-link"></a>
+        <p style="font-size:0.9rem; margin-top:15px; color:#ddd;">
+            （本專案屬朋友緊急庫存協助，非經常性販售。若有其他硬體需求，歡迎私訊洽詢。）
+        </p>
     </div>
 
     <footer style="text-align:center; padding:20px; color:#999; font-size:0.8rem;">
