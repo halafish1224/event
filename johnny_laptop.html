@@ -3,330 +3,614 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>強尼嚴選 | Lenovo ThinkBook 14 G7 清倉特急</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>虎友嚴選 | ThinkBook 14 G7 AI 商務筆電特賣</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --jr-green: #008631; /* JR East Green */
-            --jr-grey: #E6E6E6;
-            --jr-dark: #333333;
-            --jr-accent: #FFC20E; /* Warning/Highlight Yellow */
-            --white: #FFFFFF;
+            /* JR East Green Style */
+            --jr-green: #008631; 
+            --jr-green-dark: #005e22;
+            --jr-grey-bg: #f2f2f2;
+            --jr-text-main: #222222;
+            --jr-text-sub: #555555;
+            --jr-white: #ffffff;
+            --alert-red: #d32f2f;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
         }
 
         body {
-            font-family: 'Roboto', 'Noto Sans TC', sans-serif;
-            background-color: #f4f4f4;
-            margin: 0;
-            padding: 0;
-            color: var(--jr-dark);
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--jr-grey-bg);
+            color: var(--jr-text-main);
             line-height: 1.6;
         }
 
-        /* Station Header Style */
+        /* --- Header / Station Sign Style --- */
         header {
-            background-color: var(--jr-green);
-            color: var(--white);
+            background-color: var(--jr-white);
+            border-bottom: 8px solid var(--jr-green);
             padding: 20px;
             text-align: center;
-            border-bottom: 8px solid var(--white);
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
 
         .station-sign {
-            background: var(--white);
-            color: var(--jr-dark);
+            border: 2px solid var(--jr-text-main);
             display: inline-block;
             padding: 10px 40px;
-            border: 4px solid var(--jr-dark);
-            font-weight: 700;
-            font-size: 1.5rem;
+            background: var(--jr-white);
             position: relative;
         }
-        
-        .station-sign::before, .station-sign::after {
-            content: '';
-            position: absolute;
-            top: 50%;
-            width: 20px;
-            height: 10px;
-            background: var(--jr-green);
-            transform: translateY(-50%);
-        }
-        .station-sign::before { left: -24px; }
-        .station-sign::after { right: -24px; }
 
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: var(--white);
-            padding: 30px;
-            border-radius: 8px;
-            text-align: center;
-            margin-bottom: 20px;
-            border-left: 10px solid var(--jr-green);
-        }
-
-        .hero h1 {
+        .station-sign h1 {
             font-size: 2rem;
+            font-weight: 900;
+            letter-spacing: 2px;
+        }
+
+        .station-sign .tagline {
+            font-size: 0.9rem;
+            color: var(--jr-text-sub);
+            font-weight: 500;
+        }
+
+        /* --- Container --- */
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* --- Cards --- */
+        .card {
+            background: var(--jr-white);
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        h2 {
+            border-left: 6px solid var(--jr-green);
+            padding-left: 15px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: var(--jr-text-main);
+        }
+
+        /* --- Story Section --- */
+        .story-box {
+            background-color: #e8f5e9;
+            border: 1px solid var(--jr-green);
+            padding: 15px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        .story-icon {
+            font-size: 2rem;
+            color: var(--jr-green);
+        }
+
+        /* --- 更新說明 --- */
+        .update-card {
+            background: #fff8e1;
+            border-left: 5px solid var(--alert-red);
+            padding: 18px 18px 15px;
+            border-radius: 8px;
+        }
+        .update-title {
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--alert-red);
+        }
+        .update-date {
+            font-size: 0.85rem;
+            color: var(--jr-text-sub);
+            margin-bottom: 8px;
+        }
+        .update-list {
+            margin-left: 1.2em;
+            font-size: 0.95rem;
+        }
+        .update-list li {
+            margin-bottom: 4px;
+        }
+
+        /* --- Product Hero --- */
+        .product-hero {
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .product-info h3 {
+            font-size: 1.8rem;
             margin-bottom: 10px;
-            color: var(--jr-dark);
         }
 
         .price-tag {
-            font-size: 3rem;
-            color: #d32f2f;
-            font-weight: 800;
-            display: block;
-            margin: 10px 0;
-        }
-        
-        .price-sub {
-            font-size: 1rem;
-            color: #666;
-            background: #eee;
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-
-        /* Spec Grid */
-        .specs-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-            margin-bottom: 30px;
-        }
-
-        .spec-card {
-            background: var(--white);
-            padding: 20px;
-            border-top: 5px solid var(--jr-green);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-
-        .spec-card h3 {
-            margin-top: 0;
+            font-size: 2.5rem;
             color: var(--jr-green);
-            border-bottom: 1px solid #ddd;
-            padding-bottom: 10px;
-        }
-
-        .highlight-badge {
-            background: var(--jr-green);
-            color: white;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            vertical-align: middle;
-            margin-left: 5px;
-        }
-
-        /* Comparison Table - Timetable Style */
-        .comparison-section {
-            background: var(--white);
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-        }
-
-        .comparison-title {
-            text-align: center;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-family: 'Roboto', sans-serif;
-        }
-
-        th {
-            background-color: var(--jr-grey);
-            color: var(--jr-dark);
-            padding: 15px;
-            text-align: center;
-            border-bottom: 3px solid var(--jr-green);
-        }
-
-        td {
-            padding: 15px;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-        }
-
-        .our-deal {
-            background-color: #e8f5e9;
-            font-weight: 700;
-            border: 2px solid var(--jr-green);
+            font-weight: 900;
+            margin: 15px 0;
         }
         
-        .winner-text {
-            color: #d32f2f;
-            font-weight: bold;
-        }
-
-        /* Expert Comment */
-        .expert-box {
-            background: var(--jr-dark);
-            color: var(--white);
-            padding: 25px;
-            border-radius: 8px;
-            margin-bottom: 30px;
-            position: relative;
-        }
-
-        .expert-box::before {
-            content: '3C 達人點評';
-            position: absolute;
-            top: -15px;
-            left: 20px;
-            background: var(--jr-accent);
-            color: var(--jr-dark);
-            padding: 5px 15px;
-            font-weight: bold;
+        .price-note {
             font-size: 0.9rem;
-        }
-
-        /* CTA */
-        .cta-section {
-            text-align: center;
-            padding: 40px 20px;
-            background: var(--jr-green);
-            color: white;
-            border-radius: 8px;
-        }
-
-        .btn {
-            background: var(--white);
-            color: var(--jr-green);
-            padding: 15px 40px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 1.2rem;
-            border-radius: 50px;
+            color: var(--jr-text-sub);
+            background: #eee;
+            padding: 4px 8px;
+            border-radius: 4px;
             display: inline-block;
-            margin-top: 15px;
-            transition: transform 0.2s;
+            margin-right: 5px;
+            margin-bottom: 5px;
         }
 
-        .btn:hover {
-            transform: scale(1.05);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        /* --- Gallery --- */
+        .main-photo {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            max-width: 100%;
+            height: auto;
         }
 
-        ul {
-            padding-left: 20px;
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
         }
-        li {
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+        }
+        .gallery-caption {
+            font-size: 0.85rem;
+            color: var(--jr-text-sub);
+            margin-top: 6px;
+        }
+
+        /* --- Specs Grid --- */
+        .specs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .spec-item {
+            background: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+            border-bottom: 3px solid #ddd;
+            transition: 0.3s;
+        }
+
+        .spec-item:hover {
+            border-bottom: 3px solid var(--jr-green);
+            transform: translateY(-2px);
+        }
+
+        .spec-icon {
+            font-size: 1.5rem;
+            color: var(--jr-text-sub);
             margin-bottom: 8px;
         }
 
-        @media (max-width: 600px) {
-            .price-tag { font-size: 2.5rem; }
-            td, th { padding: 10px 5px; font-size: 0.9rem; }
-            .station-sign { padding: 10px 20px; font-size: 1.2rem; }
+        .spec-title {
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        /* --- Comparison Table --- */
+        .comparison-table {
+            width: 100%; 
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        
+        .table-responsive {
+            overflow-x: auto;
+        }
+
+        .comparison-table th, .comparison-table td {
+            padding: 12px 15px;
+            text-align: center;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .comparison-table th {
+            background-color: var(--jr-text-main);
+            color: var(--jr-white);
+            font-weight: 500;
+        }
+
+        .highlight-row {
+            background-color: #e8f5e9;
+            font-weight: 700;
+        }
+
+        .winner-col {
+            border: 2px solid var(--jr-green);
+            background-color: #fff;
+            position: relative;
+        }
+        
+        .winner-badge {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--jr-green);
+            color: white;
+            padding: 2px 10px;
+            font-size: 0.8rem;
+            border-radius: 10px;
+        }
+
+        /* --- Pro Features / Explanation --- */
+        .pro-list {
+            list-style: none;
+        }
+        .pro-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .pro-list li::before {
+            content: '\f00c';
+            font-family: 'Font Awesome 6 Free';
+            font-weight: 900;
+            color: var(--jr-green);
+            position: absolute;
+            left: 0;
+        }
+
+        .explain-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+        }
+        .explain-block h4 {
+            margin-bottom: 8px;
+            color: var(--jr-green);
+            font-size: 1rem;
+        }
+        .explain-block p {
+            font-size: 0.95rem;
+            color: #444;
+        }
+
+        /* --- Footer / CTA --- */
+        .cta-section {
+            background: var(--jr-text-main);
+            color: white;
+            padding: 30px;
+            text-align: center;
+            border-radius: 8px;
+            margin-top: 30px;
+        }
+
+        .contact-image-link {
+            display: block;
+            margin-top: 20px;
+        }
+        .contact-image-link img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+        .contact-image-link img:hover {
+            transform: scale(1.02);
+        }
+
+        @media (max-width: 768px) {
+            .product-hero {
+                grid-template-columns: 1fr;
+            }
+            .station-sign h1 {
+                font-size: 1.5rem;
+            }
+            .comparison-table th, .comparison-table td {
+                padding: 10px 8px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="station-sign">庫存清倉站</div>
-    <p>ThinkBook 14 G7 • 僅此一批 • 售完不補</p>
+    <div class="station-sign">
+        <div class="tagline">Johnny's Special Selection</div>
+        <h1>虎友嚴選・在庫急售</h1>
+        <div class="tagline">Lenovo ThinkBook 14 G7 AI 商務筆電</div>
+    </div>
 </header>
 
 <div class="container">
 
-    <div class="hero">
-        <span style="background: var(--jr-accent); padding: 5px 10px; font-weight: bold; border-radius: 4px;">全新未拆封</span>
-        <h1>Lenovo ThinkBook 14 G7 (AI 商務版)</h1>
-        <p>虎迷好友被放鴿子，含淚出清！這不是普通的筆電，這是你的 AI 生產力神機。</p>
-        <div class="price-tag">NT$ 26,000</div>
-        <span class="price-sub">含稅開發票 • 原廠包包 • 原廠滑鼠</span>
-    </div>
-
-    <div class="specs-container">
-        <div class="spec-card">
-            <h3>核心動力 Engine</h3>
-            <ul>
-                <li><strong>CPU:</strong> Intel Core Ultra 7 155H <span class="highlight-badge">AI NPU</span></li>
-                <li><strong>RAM:</strong> 16GB DDR5-5600 (可擴充)</li>
-                <li><strong>SSD:</strong> 512GB PCIe 4.0 (可擴充)</li>
-                <li><strong>系統:</strong> Windows 11 <span style="color:#d32f2f; font-weight:bold;">Pro 商用版</span></li>
-            </ul>
-        </div>
-        <div class="spec-card">
-            <h3>商務配備 Equipment</h3>
-            <ul>
-                <li><strong>螢幕:</strong> 14" WUXGA (1920x1200) 16:10 黃金比例</li>
-                <li><strong>連接:</strong> RJ45 網孔, HDMI, Type-C (全配)</li>
-                <li><strong>保固:</strong> <span style="color:#d32f2f; font-weight:bold;">3年 Premier Support</span></li>
-                <li><strong>重量:</strong> 僅 1.4 kg (好攜帶)</li>
-            </ul>
+    <!-- 急售故事 -->
+    <div class="card">
+        <div class="story-box">
+            <i class="fa-solid fa-user-clock story-icon"></i>
+            <div>
+                <strong>急售原因：</strong> 虎迷好友被客戶放鴿子，全新商務庫存壓力大，只好咬牙釋出。
+                <br>
+                <span style="font-size:0.9rem; color:var(--jr-text-sub);">
+                    這不是福利品，也不是展示機，而是「全新未拆封」的公司貨專案機種。幫朋友清庫存，用接近成本的價格回饋，有需要商務筆電的真的剛好撿到寶。
+                </span>
+            </div>
         </div>
     </div>
 
-    <div class="comparison-section">
-        <div class="comparison-title">市場價格對照表 (Price Check)</div>
-        <p style="text-align: center; margin-bottom: 20px; font-size: 0.9rem; color: #666;">*比較基準：同為 Ultra 7 處理器機型</p>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 25%;">項目</th>
-                    <th style="width: 25%;">MOMO/PChome</th>
-                    <th style="width: 25%;">Yahoo 購物</th>
-                    <th class="our-deal" style="width: 25%;">強尼好友價</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>價格</td>
-                    <td>$30,990</td>
-                    <td>$31,500</td>
-                    <td class="our-deal winner-text">$26,000</td>
-                </tr>
-                <tr>
-                    <td>作業系統</td>
-                    <td>Win 11 Home</td>
-                    <td>Win 11 Home</td>
-                    <td class="our-deal winner-text">Win 11 Pro</td>
-                </tr>
-                <tr>
-                    <td>原廠保固</td>
-                    <td>1~2 年標準保固</td>
-                    <td>2 年標準保固</td>
-                    <td class="our-deal winner-text">3 年 Premier</td>
-                </tr>
-                <tr>
-                    <td>贈品</td>
-                    <td>需看活動</td>
-                    <td>需看活動</td>
-                    <td class="our-deal">包包+滑鼠+發票</td>
-                </tr>
-            </tbody>
-        </table>
+    <!-- 活動更新說明 2025/12/3 -->
+    <div class="card">
+        <div class="update-card">
+            <div class="update-title"><i class="fa-solid fa-bullhorn"></i> 活動訊息 2025/12/3 更新</div>
+            <div class="update-date">最近大家私訊問最多的幾件事，我統一在這裡說明：</div>
+            <ul class="update-list">
+                <li><strong>外殼顏色：</strong>商用電腦鎖定商務人士，需要穩重、專業形象，所以主流幾乎都是黑／灰／銀三色。你在網路上看到白色、藍色、紅色等彩色外殼，我敢說 95% 都是家用機，不是這種商務等級。</li>
+                <li><strong>作業系統：</strong>這批預載的是 <strong>Windows 11 Pro</strong> 專業版，跟各大網購常見的 Win 11 Home 不同。Pro 多了資料安全（例如 BitLocker 加密）、網路分享與網域支援，還有遠端桌面等功能，家用版都沒有。</li>
+                <li><strong>螢幕與鍵盤：</strong>配備防眩光霧面螢幕，辦公環境不容易反光；鍵盤是標準尺寸，打字手感紮實不卡鍵，並完整附上注音／倉頡標示，日常工作輸入很順手。</li>
+                <li><strong>擴充性：</strong>我特地拆開底蓋拍照，給大家看雙 RAM / 雙 SSD 擴充槽的實際位置。未來如果覺得系統變卡，只要加 RAM 或換更大的 SSD，就能讓效能整個「回春」，不需要為了容量或速度再整台換新。</li>
+            </ul>
+            <p style="font-size:0.9rem; margin-top:8px;">
+                以上如果還有看不懂、想確認的地方，都可以直接私訊我慢慢聊。也再次謝謝很多朋友幫忙分享，真的心裡滿滿感謝。🙏
+            </p>
+        </div>
     </div>
 
-    <div class="expert-box">
-        <p><strong>為什麼這台值得買？</strong></p>
-        <p>這台機器的核心價值在於 <strong>Core Ultra 7 155H</strong>，它是 Intel 專為 AI 時代設計的處理器，內建 NPU，跑 AI 運算比舊款省電且快速。</p>
-        <p>另外，ThinkBook G7 保留了<strong>「雙記憶體插槽」與「雙 SSD 插槽」</strong>，這在 14 吋輕薄筆電中非常罕見。加上它附帶的是 <strong>Windows 11 Pro 專業版</strong>（支援 BitLocker 加密、遠端桌面）以及 <strong>3年 Premier Support</strong>（聯想最高等級保固，通常包含隔日到府維修），光是軟體和保固的價差就超過 $5,000 元。</p>
-        <p style="margin-top:10px; color: var(--jr-accent);">結論：如果您是大學生、工程師、業務，預算 2 萬 5 左右，這台 CP 值完全輾壓市面所有機種。</p>
+    <!-- 商品重點資訊 + 實機照片 -->
+    <div class="card">
+        <h2><i class="fa-solid fa-laptop"></i> 商品重點資訊</h2>
+        <div class="product-hero">
+            <div>
+                <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1764809291/593579527_26302134846042472_7936923505210090111_n_zii0rm.jpg" alt="Lenovo ThinkBook 14 G7 AI 商務筆電實拍外觀" class="main-photo">
+                <div class="gallery-caption">
+                    ▲ 實機外觀實拍：沉穩的商務銀色機身，走進會議室不會搶戲，但放在桌上很有質感。
+                </div>
+                <div class="gallery-grid">
+                    <div>
+                        <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1764809291/593706473_26302135859375704_432821197905746653_n_gzsipp.jpg" alt="Lenovo ThinkBook 14 G7 鍵盤與輸入區實拍">
+                        <div class="gallery-caption">實拍鍵盤區：標準鍵帽尺寸，附注音／倉頡標示，長時間打字也好適應。</div>
+                    </div>
+                    <div>
+                        <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1764809292/593870468_26302135779375712_7170820568527856010_n_sd1xwk.jpg" alt="Lenovo ThinkBook 14 G7 底蓋拆解展示擴充槽">
+                        <div class="gallery-caption">底蓋拆解展示：雙 RAM / 雙 SSD 擴充槽清楚可見，後續升級空間非常大。</div>
+                    </div>
+                </div>
+            </div>
+            <div class="product-info">
+                <h3>Lenovo ThinkBook 14 G7 (U7)</h3>
+                <p>14 吋 AI 商務筆電｜Intel Core Ultra 7 處理器｜商務專案機</p>
+                <div class="price-tag">NT$ 26,000 <span style="font-size:1rem; color:#555;">(含稅)</span></div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 全新未拆封公司貨</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 含發票，可開統編</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> 附原廠包包＋滑鼠</div>
+                <div class="price-note"><i class="fa-solid fa-check"></i> Windows 11 Pro 專業版</div>
+                <p style="font-size:0.9rem; margin-top:10px; color:var(--jr-text-sub);">
+                    現金交易、數量有限，售完就沒有同條件專案價了。
+                </p>
+            </div>
+        </div>
+
+        <div class="specs-grid">
+            <div class="spec-item">
+                <i class="fa-solid fa-microchip spec-icon"></i>
+                <span class="spec-title">處理器 CPU</span>
+                Intel Core Ultra 7 155H<br>(內建 AI NPU 加速)
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-memory spec-icon"></i>
+                <span class="spec-title">記憶體 RAM</span>
+                16GB DDR5<br>(預留第二條插槽可擴充)
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-hard-drive spec-icon"></i>
+                <span class="spec-title">硬碟 SSD</span>
+                512GB PCIe 4.0<br>(可再加裝第二顆 SSD)
+            </div>
+            <div class="spec-item">
+                <i class="fa-brands fa-windows spec-icon"></i>
+                <span class="spec-title">作業系統 OS</span>
+                Windows 11 <strong style="color:var(--jr-green);">Pro 專業版</strong><br>（商務資安強化）
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-display spec-icon"></i>
+                <span class="spec-title">螢幕</span>
+                14" FHD 霧面防眩光<br>辦公燈光不易反射
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-keyboard spec-icon"></i>
+                <span class="spec-title">鍵盤配置</span>
+                標準尺寸鍵盤<br>附注音／倉頡標示
+            </div>
+            <div class="spec-item">
+                <i class="fa-solid fa-shield-halved spec-icon"></i>
+                <span class="spec-title">保固 Service</span>
+                <strong style="color:var(--jr-green);">3 年 Premier Support</strong><br>（到府／專線服務）
+            </div>
+        </div>
     </div>
 
+    <!-- 系統差異與商務設計說明 -->
+    <div class="card">
+        <h2><i class="fa-solid fa-circle-info"></i> 商務機 vs 家用機：差在哪？</h2>
+        <div class="explain-grid">
+            <div class="explain-block">
+                <h4>1. 外觀配色：為何沒有白色、粉色？</h4>
+                <p>
+                    商用機主打會議室、簡報場域，品牌設計會刻意選用黑／灰／銀這類沉穩色系，
+                    讓整體看起來專業、不搶畫面。你在購物網站上看到的白色、藍色、紅色、粉色外殼，
+                    幾乎都是家用型機種，並非這種企業採購用的專案商務機。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>2. Windows 11 Pro 專業版</h4>
+                <p>
+                    一般通路多數是 <strong>Windows 11 Home</strong>，而這批直接上 <strong>Windows 11 Pro</strong>。
+                    Pro 比 Home 多的功能包括：BitLocker 磁碟加密、網域與群組原則支援、遠端桌面主機端、
+                    更完整的企業網路與權限管理能力。對需要處理工作檔、公司資料的人來說，是很實際的升級。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>3. 霧面防眩螢幕、鍵盤好打</h4>
+                <p>
+                    螢幕採用防眩霧面設計，在辦公室白燈、咖啡廳窗邊都比較不會反光刺眼；
+                    鍵盤則是標準尺寸搭配注音／倉頡標示，長時間打報告、寫企劃書，不容易誤按。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>4. 擴充性：雙 RAM / 雙 SSD</h4>
+                <p>
+                    很多輕薄本的記憶體是「焊死」在主機板上，買錯規格就只能忍受。
+                    這台 ThinkBook 14 G7 則是雙 RAM 插槽＋雙 SSD，未來只要覺得有點卡，
+                    加一條記憶體或換更大 SSD，就能明顯感受到速度「回春」，效能用好用滿。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 比價與分析 -->
+    <div class="card">
+        <h2><i class="fa-solid fa-chart-simple"></i> 達人比價與分析</h2>
+        <p style="margin-bottom: 15px;">
+            以市面上常見電商通路（如 Momo、PChome）同級機種來看，多半是家用版系統＋一般保固。
+            虎迷好友這批為企業專案機，除了價格壓得更低之外，系統與保固等級都直接拉滿。
+        </p>
+        
+        <div class="table-responsive">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th style="width: 20%;">比較項目</th>
+                        <th style="width: 30%; background:var(--jr-green);" class="winner-col">
+                            <span class="winner-badge">虎迷好友價</span>
+                            虎迷友人 (現貨)
+                        </th>
+                        <th style="width: 25%; background:#777;">知名電商 M</th>
+                        <th style="width: 25%; background:#777;">知名電商 P</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>價格 (含稅)</strong></td>
+                        <td class="winner-col" style="color:var(--alert-red); font-size:1.2rem; font-weight:900;">$26,000</td>
+                        <td>$30,990</td>
+                        <td>$31,900</td>
+                    </tr>
+                    <tr>
+                        <td>CPU</td>
+                        <td class="winner-col">Ultra 7 155H</td>
+                        <td>Ultra 7 155H</td>
+                        <td>Ultra 7 155H</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>作業系統</td>
+                        <td class="winner-col" style="color:var(--jr-green);">
+                            Windows 11 Pro<br><span style="font-size:0.8rem; font-weight:normal;">(價值約 +$2,000)</span>
+                        </td>
+                        <td>Windows 11 Home</td>
+                        <td>Windows 11 Home</td>
+                    </tr>
+                    <tr class="highlight-row">
+                        <td>保固服務</td>
+                        <td class="winner-col" style="color:var(--jr-green);">
+                            3 年 Premier Support<br><span style="font-size:0.8rem; font-weight:normal;">(價值約 +$3,000)</span>
+                        </td>
+                        <td>1–2 年一般保固</td>
+                        <td>1–2 年一般保固</td>
+                    </tr>
+                    <tr>
+                        <td>擴充潛力</td>
+                        <td class="winner-col">雙 RAM / 雙 SSD</td>
+                        <td>雙 RAM / 雙 SSD</td>
+                        <td>雙 RAM / 雙 SSD</td>
+                    </tr>
+                    <tr>
+                        <td>贈品</td>
+                        <td class="winner-col">原廠包＋滑鼠</td>
+                        <td>視活動而定</td>
+                        <td>無 / 視活動</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 為什麼值得買 -->
+    <div class="card">
+        <h2><i class="fa-solid fa-magnifying-glass"></i> 為什麼這台值得買？</h2>
+        <div class="explain-grid">
+            <div class="explain-block">
+                <h4>1. 新世代 Ultra 7 + NPU</h4>
+                <p>
+                    Intel Core Ultra 7 155H 不是舊款 i7 改名，而是新架構，內建 NPU，
+                    能為 AI 降噪、視訊背景模糊、部分本地端 AI 應用提供硬體加速，同時兼顧續航。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>2. 可升級，不是一次性消耗品</h4>
+                <p>
+                    很多筆電買來「規格鎖死」，這台則是設計給長期使用：雙 RAM 插槽＋雙 SSD，
+                    未來只要覺得慢，就加記憶體／換 SSD，等於幫自己預留了一次「回春升級」的選項。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>3. Pro 系統 + 頂規保固，一次到位</h4>
+                <p>
+                    Windows 11 Pro 加上 3 年 Premier Support，是一般家用機很少配的組合。
+                    遇到問題有專線可以問，必要時還有到府服務，對需要穩定使用的上班族來說非常省心。
+                </p>
+            </div>
+            <div class="explain-block">
+                <h4>4. 真實實拍，有疑問歡迎問到懂</h4>
+                <p>
+                    網頁上的照片全部是實機現場拍攝，包含外觀、鍵盤、底蓋拆解。
+                    如果你不熟硬體、看規格表覺得頭痛，也可以直接私訊，用白話方式跟你說明哪裡適合你、哪裡不適合。
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- CTA 聯繫方式 -->
     <div class="cta-section">
-        <h2>不要再觀望了，庫存壓力大！</h2>
-        <p>現金交易 • 可開統編 • 全新現貨</p>
-        <a href="#" class="btn">立即聯繫強尼 (點擊私訊)</a>
-        <p style="margin-top: 15px; font-size: 0.8rem; opacity: 0.8;">請直接私訊告知您是朋友介紹，優先保留。</p>
+        <h2 style="border:none; color:white; margin-bottom:10px;">有興趣請直接聯繫！</h2>
+        <p>
+            這批是朋友被放鴿子的商務庫存，不是常態販售商品。<br>
+            售完就沒有同條件的 Ultra 7 + Win 11 Pro + 3 年 Premier Support 組合。
+        </p>
+        
+        <a href="https://event.itigre.com/IMG_1343.jpeg" target="_blank" class="contact-image-link">
+            <img src="https://event.itigre.com/IMG_1343.jpeg" alt="聯繫方式截圖，可直接加 Line 洽談" title="點擊放大查看聯繫方式">
+        </a>
+        <p style="font-size:0.9rem; margin-top:10px; color:#ccc;">
+            （點擊圖片可放大查看聯繫方式，有任何不懂的地方也可以先聊聊再決定。）
+        </p>
     </div>
+
+    <footer style="text-align:center; padding:20px; color:#999; font-size:0.8rem;">
+        &copy; Johnny's Special Sale. All rights reserved. <br>
+        規格以實際交機型號為主，如有調整會再於頁面更新。
+    </footer>
 
 </div>
 
