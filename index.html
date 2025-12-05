@@ -3,21 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎄 聖誕完售感謝！| Lenovo ThinkBook 14 G7 AI 商務筆電專案結束</title>
+        <title>🏆 MISSION ACCOMPLISHED | ThinkBook 14 G7 AI 專案已完售</title>
         <meta name="description" content="感謝支持！虎友嚴選 Lenovo ThinkBook 14 G7 AI 商務筆電已全數完售。歲末年終，感謝所有客戶在聖誕佳節前的熱烈響應！本頁資訊將於 2025/12/31 前關閉。">
     
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            /* 聖誕感謝配色 */
-            --christmas-red: #C62828; /* 深紅 */
-            --christmas-green: #388E3C; /* 聖誕綠 (次要) */
-            --christmas-gold: #FFC107; /* 金色 (點綴) */
-            --jr-grey-bg: #f2f2f2;
-            --jr-text-main: #222222;
-            --jr-text-sub: #555555;
-            --jr-white: #ffffff;
+            /* 專業運動/電競風格配色：黑、白、高亮度藍 */
+            --pro-black: #111111; /* 主背景 */
+            --pro-white: #ffffff;
+            --pro-accent: #00BFFF; /* 亮藍色，強調速度與科技感 */
+            --pro-gray: #555555;
+            --pro-light-bg: #222222;
             --alert-red: #d32f2f;
         }
 
@@ -29,91 +27,109 @@
 
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background-color: var(--jr-grey-bg);
-            color: var(--jr-text-main);
+            background-color: var(--pro-black); /* 黑色背景 */
+            color: var(--pro-white); /* 白色文字 */
             line-height: 1.6;
         }
 
-        /* --- Header / Station Sign Style --- */
+        /* --- Header / Station Sign Style (高對比簡潔) --- */
         header {
-            background-color: var(--jr-white);
-            /* 底部顏色改為聖誕紅 */
-            border-bottom: 8px solid var(--christmas-red); 
-            padding: 20px;
+            background-color: var(--pro-black);
+            /* 底部線條採用亮藍色，模擬霓虹或科技感 */
+            border-bottom: 8px solid var(--pro-accent); 
+            padding: 30px 20px 20px;
             text-align: center;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
 
         .station-sign {
-            border: 2px solid var(--christmas-red); /* 邊框改為聖誕紅 */
+            /* 移除邊框，讓版面更俐落 */
             display: inline-block;
-            padding: 10px 40px;
-            background: var(--jr-white);
+            padding: 0 10px;
+            background: transparent; 
             position: relative;
         }
 
         .station-sign h1 {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: 900;
-            letter-spacing: 2px;
-            color: var(--christmas-red); /* 標題顏色改為聖誕紅 */
+            letter-spacing: 3px;
+            color: var(--pro-accent); /* 標題採用亮藍色 */
+            text-transform: uppercase;
+            text-shadow: 0 0 10px rgba(0, 191, 255, 0.6); /* 霓虹效果 */
         }
 
         .station-sign .tagline {
-            font-size: 0.9rem;
-            color: var(--jr-text-sub);
+            font-size: 1rem;
+            color: var(--pro-white);
             font-weight: 500;
+            margin-top: 5px;
         }
 
         /* --- Container --- */
         .container {
-            max-width: 1000px;
-            margin: 20px auto;
+            max-width: 900px; /* 稍微縮窄，更俐落 */
+            margin: 40px auto;
             padding: 0 15px;
         }
 
-        /* --- Cards --- */
+        /* --- Cards (高質感黑色背景) --- */
         .card {
-            background: var(--jr-white);
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-        }
-
-        /* --- 完售通知專用樣式 (聖誕版) --- */
-        .soldout-notice-card {
-            background: #fffde7; /* 淺黃/白色背景 */
-            border: 5px solid var(--christmas-red); /* 聖誕紅邊框 */
+            background: var(--pro-light-bg); /* 淺黑/深灰背景 */
+            border-radius: 12px;
             padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+        }
+        
+        /* --- 完售通知專用樣式 (終極版) --- */
+        .soldout-notice-card {
+            background: var(--pro-light-bg); 
+            border: 3px solid var(--pro-accent); /* 邊框採用亮藍色 */
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
         }
+
+        /* 跑馬燈/動態線條模擬 */
+        .soldout-notice-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, transparent, var(--pro-accent), transparent);
+            opacity: 0.8;
+        }
+
         .soldout-notice-card h2 {
             border: none;
-            color: var(--christmas-red);
-            font-size: 2.5rem;
+            color: var(--pro-accent);
+            font-size: 3rem;
             margin-bottom: 15px;
             font-weight: 900;
+            text-shadow: 0 0 8px rgba(0, 191, 255, 0.8);
         }
         .soldout-notice-card p {
-            font-size: 1.2rem;
-            color: var(--jr-text-main);
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            color: var(--pro-white);
+            margin-bottom: 20px;
         }
         .soldout-date {
             font-size: 1rem;
-            color: var(--jr-text-sub);
+            color: var(--pro-gray);
             display: block;
-            margin-top: 20px;
+            margin-top: 30px;
             font-weight: 500;
         }
 
-        /* --- Footer / CTA (聖誕紅/綠) --- */
+        /* --- Footer / CTA (專業結尾) --- */
         .cta-section {
-            background: var(--christmas-green); /* 底部採用聖誕綠 */
-            color: white;
+            background: var(--pro-light-bg); 
+            border-bottom: 5px solid var(--pro-accent);
+            color: var(--pro-white);
             padding: 30px;
             text-align: center;
             border-radius: 8px;
@@ -121,18 +137,21 @@
         }
         .cta-section h2 {
             border: none;
-            color: var(--christmas-gold); /* 標題採用金色 */
+            color: var(--pro-white);
             margin-bottom: 10px;
-            text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
+            font-size: 1.8rem;
+        }
+        .cta-section p {
+            color: var(--pro-gray);
         }
         .contact-image-link { display: none; }
 
         @media (max-width: 768px) {
             .station-sign h1 {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
             .soldout-notice-card h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
         }
     </style>
@@ -141,44 +160,44 @@
 
 <header>
     <div class="station-sign">
-        <div class="tagline">歲末年終・感謝有您</div>
-                <h1>🎅 聖誕節前夕，ThinkBook 14 G7 AI 筆電完售！</h1>
-        <div class="tagline">虎友嚴選專案圓滿結束</div>
+        <div class="tagline">Final Score: 100% Sold Out</div>
+                <h1>🏆 MISSION ACCOMPLISHED</h1>
+        <div class="tagline">Lenovo ThinkBook 14 G7 AI Project Closure</div>
     </div>
 </header>
 
 <div class="container">
 
         <div class="card soldout-notice-card">
-        <i class="fa-solid fa-gift" style="font-size:3rem; color:var(--christmas-red); margin-bottom:15px;"></i>
-        <h2>【完售感謝】全數結案！</h2>
+        <i class="fa-solid fa-bolt" style="font-size:3rem; color:var(--pro-accent); margin-bottom:15px; text-shadow: 0 0 10px rgba(0, 191, 255, 0.8);"></i>
+        <h2>【PROJECT END】完售封盤！</h2>
         <p>
-            **感謝各位朋友的熱烈支持與信任！** <br>
-            虎友嚴選這批 **Lenovo ThinkBook 14 G7 AI 商務筆電** 現貨已全數售罄。<br>
-            感謝在歲末年終前將這批優質的 AI 筆電帶回家！
+            **效率與信任的完美結合！** <br>
+            感謝所有夥伴在本次 **ThinkBook 14 G7 AI 專案** 中的積極參與。<br>
+            所有現貨已迅速配置完畢，全數售罄！
         </p>
-        <p style="font-size:1rem; color:var(--christmas-red); font-weight:700;">
-            恭喜所有搶到的朋友，願這台新夥伴為您的工作帶來更多效率！
+        <p style="font-size:1.1rem; color:var(--pro-accent); font-weight:700; text-transform: uppercase;">
+            恭喜所有獲得這套頂尖 AI 裝備的精英人士！
         </p>
         <span class="soldout-date">
-            本頁面資訊將於 **2025/12/31** 前關閉。
+            本頁面資訊將於 **2025/12/31** 前從資料庫中移除。
         </span>
     </div>
     
         <div class="cta-section">
-        <h2><i class="fa-solid fa-tree"></i> 聖誕佳節愉快！期待下次相聚</h2>
-        <p style="color:var(--christmas-gold);">
-            **衷心感謝**所有朋友的熱情響應，讓這次的專案圓滿成功。<br>
-            祝大家聖誕佳節愉快，新的一年工作順利！
+        <h2><i class="fa-solid fa-user-tie"></i> 期待下一次的高效率合作！</h2>
+        <p style="color:var(--pro-white); margin-top:10px;">
+            本批次專案為非經常性庫存釋出，屬於一次性任務。<br>
+            感謝您的關注，請期待我們未來為您帶來的更多高效能解決方案。
         </p>
-        <p style="font-size:0.9rem; margin-top:15px; color:#ddd;">
-            （本專案屬朋友緊急庫存協助，非經常性販售。若有其他硬體需求，歡迎私訊洽詢。）
+        <p style="font-size:0.9rem; margin-top:15px; color:var(--pro-gray);">
+            （如需商務硬體採購諮詢，歡迎隨時聯繫。）
         </p>
     </div>
 
-    <footer style="text-align:center; padding:20px; color:#999; font-size:0.8rem;">
-        &copy; Johnny's Special Sale. All rights reserved. <br>
-        本頁面為活動結束後的公告資訊，將於 **2025/12/31** 前關閉。
+    <footer style="text-align:center; padding:20px; color:#444; font-size:0.8rem;">
+        Project Management by Johnny's Team. <br>
+        Data Removal Scheduled: **2025/12/31**.
     </footer>
 
 </div>
