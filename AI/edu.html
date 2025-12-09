@@ -1,0 +1,635 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#16213e" />
+    <title>簡立峰深度解析：AI 時代下的職場、教育與人才變革</title>
+    <style>
+        :root {
+            --primary-color: #1a237e; /* 深藍色 */
+            --accent-color: #e91e63; /* 桃紅色 */
+            --future-bg: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
+            --bg-color: #f8f9fa;
+            --text-color: #212529;
+            --max-width: 900px;
+            --base-font-size: 19px;
+            --neon-glow: 0 0 10px rgba(233, 30, 99, 0.5);
+            --radius: 12px;
+        }
+
+        /* Reset & base */
+        * { box-sizing: border-box; }
+        html, body { height: 100%; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans TC", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.75;
+            margin: 0;
+            padding: 0;
+            font-size: var(--base-font-size);
+            transition: font-size 0.2s ease-out;
+            text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* 未來感背景元素 */
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120,119,198,0.3) 0%, transparent 40%),
+                        radial-gradient(circle at 80% 20%, rgba(255,119,198,0.25) 0%, transparent 40%);
+            z-index: -1;
+            animation: pulse 20s ease-in-out infinite alternate;
+            pointer-events: none;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; transform: scale(1); }
+            100% { opacity: 1; transform: scale(1.02); }
+        }
+
+        header {
+            background: rgba(255,255,255,0.95);
+            backdrop-filter: blur(8px);
+            border-bottom: 1px solid rgba(0,0,0,0.06);
+            padding: 12px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+            transition: all 0.25s ease;
+        }
+
+        header:hover { box-shadow: 0 6px 36px rgba(233,30,99,0.08); }
+
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .brand {
+            font-size: 1.25rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            letter-spacing: -0.5px;
+            text-shadow: 0 0 5px rgba(233,30,99,0.14);
+        }
+
+        .brand span {
+            color: var(--accent-color);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px rgba(233,30,99,0.45); }
+            to { text-shadow: 0 0 18px rgba(233,30,99,0.8); transform: translateY(-1px); }
+        }
+
+        /* Font controls */
+        .font-controls {
+            display: flex;
+            align-items: center;
+            background: rgba(241,243,245,0.85);
+            padding: 6px;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            gap: 8px;
+            backdrop-filter: blur(5px);
+        }
+
+        .font-label { margin-right: 4px; color: #666; font-weight: 600; display: none; }
+        @media (min-width: 600px) { .font-label { display: block; } }
+
+        .font-btn {
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-weight: 600;
+            color: #555;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: all 0.15s ease;
+            font-size: 0.9rem;
+        }
+        .font-btn:hover { background-color: rgba(233,30,99,0.06); color: var(--accent-color); transform: translateY(-1px); }
+        .font-btn[aria-pressed="true"] {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: var(--neon-glow);
+        }
+
+        /* Article */
+        article {
+            background: rgba(255,255,255,0.95);
+            margin-top: 36px;
+            padding: 48px;
+            border-radius: var(--radius);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.06);
+            margin-bottom: 80px;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(255,255,255,0.3);
+        }
+
+        h1 {
+            color: #111;
+            font-size: 2.2rem;
+            margin-bottom: 18px;
+            line-height: 1.2;
+            letter-spacing: -1px;
+            font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .meta {
+            color: #6c757d;
+            font-size: 0.95rem;
+            margin-bottom: 32px;
+            padding-bottom: 18px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            gap: 18px;
+            flex-wrap: wrap;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            font-size: 1.45rem;
+            margin-top: 36px;
+            margin-bottom: 12px;
+            font-weight: 700;
+            position: relative;
+            padding-left: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        h2 .title-text { cursor: pointer; flex: 1; }
+        h2:hover { color: var(--accent-color); text-shadow: var(--neon-glow); }
+
+        h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            bottom: 8px;
+            width: 5px;
+            background: var(--accent-color);
+            border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        h2:hover::before { width: 8px; box-shadow: var(--neon-glow); }
+
+        h3 { font-size: 1.15rem; margin-top: 20px; color: #444; }
+
+        p { margin-bottom: 18px; text-align: justify; color: #333; }
+
+        /* Collapsible */
+        .collapsible {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            width: 100%;
+        }
+
+        .collapsible button.toggle {
+            appearance: none;
+            -webkit-appearance: none;
+            border: none;
+            background: transparent;
+            cursor: pointer;
+            font-size: 1.05rem;
+            padding: 6px 10px;
+            border-radius: 8px;
+            transition: transform 0.15s;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .collapsible button.toggle:focus { outline: 3px solid rgba(26,35,126,0.12); }
+
+        .chev {
+            display: inline-block;
+            transform-origin: 50% 50%;
+            transition: transform 0.25s ease;
+        }
+
+        .content {
+            overflow: hidden;
+            transition: max-height 0.35s cubic-bezier(.2,.8,.2,1), opacity 0.25s ease;
+            max-height: 0;
+            opacity: 0;
+        }
+
+        .content.expanded {
+            opacity: 1;
+        }
+
+        /* Highlight */
+        .highlight-box {
+            background-color: #fce4ec;
+            padding: 24px;
+            border-radius: 12px;
+            margin: 30px 0;
+            border-left: 6px solid var(--accent-color);
+            box-shadow: 0 4px 15px rgba(233,30,99,0.08);
+            transition: transform 0.18s ease, box-shadow 0.18s ease;
+        }
+        .highlight-box:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(233,30,99,0.12); }
+        .highlight-text { font-size: 1.05em; font-weight: 600; color: var(--primary-color); margin: 0; }
+
+        /* Tables */
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 22px 0;
+            font-size: 0.95em;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        .data-table th, .data-table td {
+            padding: 14px 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        .data-table th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .data-table tr:last-child td { border-bottom: none; }
+        .data-table tr:nth-child(even) { background-color: #fafafa; }
+        .data-table tr:hover { background-color: rgba(233,30,99,0.04); }
+
+        /* Industry cards */
+        .industry-section {
+            background: linear-gradient(135deg,#e3f2fd 0%,#f3e5f5 100%);
+            padding: 34px;
+            border-radius: 12px;
+            margin: 36px 0;
+            border: 1px solid rgba(33,150,243,0.12);
+        }
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(280px,1fr));
+            gap: 18px;
+            margin-top: 18px;
+        }
+        .industry-card {
+            background: white;
+            padding: 18px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.04);
+            border-top: 4px solid var(--accent-color);
+            transition: transform 0.18s ease, box-shadow 0.18s;
+        }
+        .industry-card:hover { transform: translateY(-6px); box-shadow: 0 12px 30px rgba(0,0,0,0.08); }
+
+        footer {
+            background: var(--future-bg);
+            color: #c7cdd6;
+            text-align: center;
+            padding: 46px 0;
+            font-size: 0.92rem;
+            margin-top: 20px;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+        }
+
+        /* Responsive tweaks */
+        @media (max-width: 768px) {
+            article { padding: 26px 18px; margin-top: 20px; }
+            h1 { font-size: 1.75rem; }
+            .data-table { display: block; overflow-x: auto; }
+            .meta { flex-direction: column; gap: 6px; }
+            .industry-section { padding: 18px; }
+            .font-controls { gap: 6px; padding: 4px; }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container nav-bar">
+            <div class="brand">NEXT<span>EDU</span> 數位教育觀點</div>
+            <div class="font-controls" role="toolbar" aria-label="調整閱讀字級">
+                <span class="font-label">閱讀字級：</span>
+                <button class="font-btn" id="btn-100" aria-pressed="false" data-scale="100">標準</button>
+                <button class="font-btn" id="btn-130" aria-pressed="false" data-scale="130">大字</button>
+                <button class="font-btn" id="btn-160" aria-pressed="false" data-scale="160">特大</button>
+                <button class="font-btn" id="btn-200" aria-pressed="false" data-scale="200">200%</button>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+        <article>
+            <h1>簡立峰：AI 時代下的職場、教育與人才變革——從焦慮到價值再造</h1>
+            <div class="meta">
+                <span><i style="color:#e91e63">●</i> 深度專題 / 數位教育編輯部</span>
+                <span>2025年12月09日</span>
+                <span>閱讀時間：約 18 分鐘</span>
+            </div>
+
+            <p><strong>前言：</strong>前 Google 台灣董事總經理簡立峰先生不僅是科技趨勢的領航者...（內容略）</p>
+
+            <div class="highlight-box">
+                <p class="highlight-text">簡立峰的核心精神：教育的目標應從訓練「高效率的標準化零件」，轉變為培養「能定義問題、創造價值的獨立思想家」。</p>
+            </div>
+
+            <!-- 範例折疊區 -->
+            <h2>
+                <div class="collapsible" role="presentation">
+                    <button class="toggle" aria-expanded="false" aria-controls="sec-1" id="toggle-1">
+                        <span class="chev" aria-hidden="true">▸</span>
+                        <span class="title-text">一、家長心態：從知識權威到共學夥伴</span>
+                    </button>
+                </div>
+            </h2>
+            <div class="content" id="sec-1" aria-hidden="true">
+                <p>在AI時代，家長的角色從傳統的「知識傳授者」轉變為「學習夥伴」。簡立峰建議家長應主動「示弱」，承認AI在知識檢索上的優勢，讓孩子將AI視為可靠的Copilot。重點在於培養孩子的批判性思考與提問能力，例如透過共同探索AI生成的內容，討論其局限性與真偽辨識。這不僅減輕家長壓力，更能激發孩子的自主學習熱情。</p>
+                <p>實踐建議：每週家庭AI討論會，從簡單問題開始，如「AI為何會犯錯？」，逐步引導孩子建構自己的知識框架。</p>
+            </div>
+
+            <h2>
+                <div class="collapsible" role="presentation">
+                    <button class="toggle" aria-expanded="false" aria-controls="sec-2" id="toggle-2">
+                        <span class="chev" aria-hidden="true">▸</span>
+                        <span class="title-text">二、AI 工具選擇：三大模型的教育應用優勢</span>
+                    </button>
+                </div>
+            </h2>
+            <div class="content" id="sec-2" aria-hidden="true">
+                <p>選擇適合的教育AI工具至關重要。Gemini以多模態整合見長，適合視覺化學習；ChatGPT的對話流暢性利於寫作與腦storm；Grok則強調邏輯推理與幽默互動，激發創意思考。簡立峰在2025 CES中指出，這些模型的優勢在於互補使用，能涵蓋從知識獲取到問題解決的全流程。</p>
+
+                <table class="data-table" role="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">模型</th>
+                            <th scope="col">教育優勢</th>
+                            <th scope="col">應用情境</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="模型">Gemini</td>
+                            <td data-label="優勢">多模態（文字+圖像+音頻）</td>
+                            <td data-label="情境">STEM實驗模擬與視覺解釋</td>
+                        </tr>
+                        <tr>
+                            <td data-label="模型">ChatGPT</td>
+                            <td data-label="優勢">自然語言生成與迭代</td>
+                            <td data-label="情境">作文輔助與歷史故事創作</td>
+                        </tr>
+                        <tr>
+                            <td data-label="模型">Grok</td>
+                            <td data-label="優勢">邏輯推理與跨域連結</td>
+                            <td data-label="情境">哲學辯論與數學證明</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 其餘章節略，保留原結構 -->
+            <h2>
+                <div class="collapsible" role="presentation">
+                    <button class="toggle" aria-expanded="false" aria-controls="sec-3" id="toggle-3">
+                        <span class="chev" aria-hidden="true">▸</span>
+                        <span class="title-text">三、職場變革：未來人才的「新三大標準」</span>
+                    </button>
+                </div>
+            </h2>
+            <div class="content" id="sec-3" aria-hidden="true">
+                <p>簡立峰強調，AI 將取代大部分「效率導向」的白領工作。未來的職場需要的是能將 AI 當作工具，創造出<strong>「超越效率」</strong>的新價值的人才。人才的衡量標準必須從根本上調整，尤其在2025 AI人才高峰會中，他預測AI將催生「1%超級人類」，掌握99%的機會與能力。</p>
+
+                <table class="data-table" role="table">
+                    <thead>
+                        <tr>
+                            <th scope="col" width="30%">舊思維 (AI 可取代)</th>
+                            <th scope="col" width="30%">新標準 (AI 難以取代)</th>
+                            <th scope="col" width="40%">教育培養方向</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="舊思維">知識多寡 (記憶與背誦)</td>
+                            <td data-label="新標準"><strong>價值創造力與實踐力</strong></td>
+                            <td data-label="培養方向">鼓勵孩子從「遊戲、興趣、專題」中學習，給予創造和實踐的自由，減少填鴨。</td>
+                        </tr>
+                        <tr>
+                            <td data-label="舊思維">專業單一性 (T型人才)</td>
+                            <td data-label="新標準"><strong>跨域整合與溝通</strong> (π型人才)</td>
+                            <td data-label="培養方向">鼓勵接觸不同學科，將科技與人文結合，訓練孩子整合複雜、模糊領域知識的能力。</td>
+                        </tr>
+                        <tr>
+                            <td data-label="舊思維">服從性 (聽從指令完成任務)</td>
+                            <td data-label="新標準"><strong>定義問題的能力與提問力</strong></td>
+                            <td data-label="培養方向">訓練孩子對現狀提出質疑，能將一個模糊的需求，清晰化為 AI 可執行的指令 (Prompt)。</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h2>
+                <div class="collapsible" role="presentation">
+                    <button class="toggle" aria-expanded="false" aria-controls="sec-4" id="toggle-4">
+                        <span class="chev" aria-hidden="true">▸</span>
+                        <span class="title-text">四、AI於產業人才培育的整合策略</span>
+                    </button>
+                </div>
+            </h2>
+            <div class="content" id="sec-4" aria-hidden="true">
+                <p>簡立峰在2025年的多場論壇中，強調AI不僅是工具，更是產業轉型的催化劑。面對台灣AI「知用落差」，他提出「三機會六策略」框架，聚焦人才培育：機會包括主權AI應用、軟體輸出全球，以及超高齡社會的智慧解決方案。策略則涵蓋企業AI導入、領導者賦能、跨域教育連結等，讓人才從「使用者」升級為「創造者」。</p>
+
+                <div class="industry-section" aria-hidden="false">
+                    <h3>產業人才培育核心策略</h3>
+                    <div class="industry-grid">
+                        <div class="industry-card">
+                            <h4>賦能（Empowering）員工</h4>
+                            <p>領導者需提供AI技能訓練，如Prompt工程與數據倫理，幫助團隊從AI恐懼轉向創新應用。簡立峰建議企業設立內部AI學院，模擬真實產業情境。</p>
+                        </div>
+                        <div class="industry-card">
+                            <h4>連接（Connecting）跨域</h4>
+                            <p>培養π型人才，連結科技、人文與商業。透過產學合作專案，讓學生參與AI新創創業心法，強化台灣軟體產業的全球競爭力。</p>
+                        </div>
+                        <div class="industry-card">
+                            <h4>主權AI應用防衛</h4>
+                            <p>視AI應用為國防一環，提升使用率與自主模型開發。簡立峰預測，2025後，1%掌握99%機會的人才，將主導產業未來。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h2>
+                <div class="collapsible" role="presentation">
+                    <button class="toggle" aria-expanded="false" aria-controls="sec-5" id="toggle-5">
+                        <span class="chev" aria-hidden="true">▸</span>
+                        <span class="title-text">五、教育體制的迫切變革建議</span>
+                    </button>
+                </div>
+            </h2>
+            <div class="content" id="sec-5" aria-hidden="true">
+                <p>簡立峰認為，體制若不變革，只會讓學生更焦慮、更抗拒新科技。教育體系必須擺脫對「標準答案」的迷戀，轉向AI世代的π型人才培養。</p>
+
+                <h3>1. 課綱鬆綁與時間騰挪：</h3>
+                <ul>
+                    <li><strong>主張：</strong> 國家應大幅減少課本中的「知識灌輸量」，讓課綱更為精簡。</li>
+                    <li><strong>目的：</strong> 騰出時間交還給學校和學生，用於<strong>專題研究 (PBL)</strong>、深度討論和動手實作，培養學生處理「課本外」未知問題的能力。</li>
+                </ul>
+
+                <h3>2. 評量模式徹底轉型：</h3>
+                <ul>
+                    <li><strong>主張：</strong> 徹底改變大學考招與各級評量方式。</li>
+                    <li><strong>目的：</strong> 降低對標準答案、記憶性知識的依賴，提高對<strong>論述能力</strong>與 <strong>應用 AI 解決問題過程</strong> 的權重。</li>
+                </ul>
+
+                <h3>3. 教師轉型為「情境設計師」：</h3>
+                <ul>
+                    <li><strong>主張：</strong> 重新定義教師角色，教師不該與 AI 比知識量。</li>
+                    <li><strong>目的：</strong> 讓教師專注於設計學習情境、引導學生提問、教導如何辨識 AI 輸出的真偽。</li>
+                </ul>
+
+                <div class="highlight-box" style="background-color:#e3f2fd; border-left-color:#2196f3;">
+                    <strong>總結：</strong> 面對 AI，台灣教育的挑戰不是技術落後，而是思維僵化。釋放教育體制的空間與時間，讓孩子有機會培養人類獨有的「價值創造力」，並與產業人才培育無縫整合。
+                </div>
+            </div>
+
+        </article>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 NEXT EDU 數位教育觀點 | 專注於科技與人文的教育對話 | 探索AI未來，培育明日領袖</p>
+    </footer>
+
+    <script>
+        /* ---------- 字級控制 ---------- */
+        (function() {
+            const baseSize = 19;
+            const btns = document.querySelectorAll('.font-btn');
+
+            function applySize(scale) {
+                const newSize = baseSize * (scale / 100);
+                document.documentElement.style.fontSize = newSize + 'px'; // 改變根元素字級，較穩定
+                // 存檔
+                try { localStorage.setItem('readingScale', scale); } catch(e) {}
+                // 更新按鈕狀態
+                btns.forEach(b => {
+                    const s = parseInt(b.getAttribute('data-scale'), 10);
+                    b.setAttribute('aria-pressed', s === scale ? 'true' : 'false');
+                });
+            }
+
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const scale = parseInt(btn.getAttribute('data-scale'), 10);
+                    applySize(scale);
+                });
+
+                // keyboard support
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault();
+                        btn.click();
+                    }
+                });
+            });
+
+            // 初始化：使用 localStorage 或 預設 100
+            const saved = parseInt(localStorage.getItem('readingScale'), 10);
+            applySize(!isNaN(saved) ? saved : 100);
+        })();
+
+        /* ---------- 折疊區行為（含鍵盤/ARIA） ---------- */
+        (function() {
+            function setExpanded(button, content, expanded) {
+                const chev = button.querySelector('.chev');
+                button.setAttribute('aria-expanded', expanded ? 'true' : 'false');
+                content.setAttribute('aria-hidden', expanded ? 'false' : 'true');
+
+                if (expanded) {
+                    content.classList.add('expanded');
+                    // 動態設定 maxHeight
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    // 旋轉箭頭向下
+                    if (chev) chev.style.transform = 'rotate(90deg)';
+                } else {
+                    content.classList.remove('expanded');
+                    // 解除 maxHeight 觸發 CSS transition（延遲清除以利動畫）
+                    content.style.maxHeight = content.scrollHeight + 'px';
+                    // force reflow for transition to work
+                    void content.offsetHeight;
+                    content.style.maxHeight = '0px';
+                    if (chev) chev.style.transform = 'rotate(0deg)';
+                }
+            }
+
+            // 取得所有切換按鈕
+            const toggles = document.querySelectorAll('button.toggle');
+            toggles.forEach(btn => {
+                const cid = btn.getAttribute('aria-controls');
+                const content = document.getElementById(cid);
+                if (!content) return;
+
+                // init collapsed (可依需求改為展開)
+                setExpanded(btn, content, false);
+
+                // click
+                btn.addEventListener('click', () => {
+                    const expanded = btn.getAttribute('aria-expanded') === 'true';
+                    setExpanded(btn, content, !expanded);
+                });
+
+                // keyboard: Enter / Space handled by default on button
+                // allow toggling via left/right arrows for accessibility
+                btn.addEventListener('keydown', (e) => {
+                    if (e.key === 'ArrowLeft') {
+                        setExpanded(btn, content, false);
+                    } else if (e.key === 'ArrowRight') {
+                        setExpanded(btn, content, true);
+                    }
+                });
+            });
+
+            // 當視窗尺寸改變時，若內容為展開狀態，更新 maxHeight（避免內容高度變化後被截斷）
+            window.addEventListener('resize', () => {
+                toggles.forEach(btn => {
+                    const cid = btn.getAttribute('aria-controls');
+                    const content = document.getElementById(cid);
+                    if (!content) return;
+                    if (btn.getAttribute('aria-expanded') === 'true') {
+                        content.style.maxHeight = content.scrollHeight + 'px';
+                    }
+                });
+            });
+
+        })();
+
+        /* ---------- 平滑捲動（若連結內含 hash） ---------- */
+        (function() {
+            if ('scrollBehavior' in document.documentElement.style) {
+                document.documentElement.style.scrollBehavior = 'smooth';
+            }
+        })();
+    </script>
+</body>
+</html>
