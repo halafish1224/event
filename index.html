@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI 時代數位資源導引</title>
+    <style>
+        /* CSS Reset and Global Styles */
+        :root {
+            --primary-color: #007bff; /* 藍色 */
+            --secondary-color: #6c757d; /* 灰色 */
+            --accent-color: #28a745; /* 綠色，用於 New */
+            --dark-color: #343a40;
+            --light-color: #f8f9fa;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            font-family: var(--font-family);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            /* 建議替換為實際的 AI/科技主題圖片 */
+            background-image: url('https://picsum.photos/1920/800?random=1'); 
+            background-size: cover;
+            background-position: center;
+            height: 60vh; /* Hero 區塊高度 */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            color: white;
+            padding: 20px;
+        }
+
+        /* Overlay for better text readability */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.55); /* 深色遮罩 */
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+        }
+
+        /* Main Content and Layout */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .link-section {
+            padding: 40px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .link-section h2 {
+            font-size: 2rem;
+            color: var(--dark-color);
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--primary-color);
+            padding-bottom: 10px;
+            display: inline-block;
+        }
+
+        .link-section.new h2 {
+            border-bottom: 3px solid var(--accent-color);
+            color: var(--accent-color);
+        }
+
+        .link-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        /* Link Card Styling */
+        .card {
+            background: white;
+            border: 1px solid #e0e0e0;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            flex: 1 1 calc(33.33% - 60px / 3); /* 確保每行至少能放三個卡片 */
+            min-width: 300px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-content {
+            padding: 25px;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .card h3 {
+            margin-top: 0;
+            color: var(--dark-color);
+            font-size: 1.4rem;
+        }
+
+        .card p {
+            font-size: 1rem;
+            color: var(--secondary-color);
+            flex-grow: 1;
+        }
+
+        .card a.button {
+            display: block;
+            margin-top: 15px;
+            padding: 10px 15px;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: 600;
+            transition: background-color 0.2s;
+            white-space: nowrap;
+        }
+
+        /* New Link Button Style */
+        .new .button {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .new .button:hover {
+            background-color: #1e7e34;
+        }
+
+        /* Past Link Button Style */
+        .past .button {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+
+        .past .button:hover {
+            background-color: #5a6268;
+        }
+
+        /* Footer Styling */
+        footer {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            text-align: center;
+            padding: 20px 0;
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero {
+                height: 40vh;
+            }
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            .hero p {
+                font-size: 1rem;
+            }
+            .link-grid {
+                flex-direction: column;
+                gap: 20px;
+            }
+            .card {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h1>AI 時代：數位資源導引</h1>
+            <p>彙整簡立峰先生觀點與相關活動資源，掌握未來教育與職場脈動。</p>
+        </div>
+    </section>
+
+    <div class="container">
+
+        <section class="link-section new">
+            <h2>最新資訊 (New Release)</h2>
+            <div class="link-grid">
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>教育專欄：家長如何面對 AI</h3>
+                        <p>探討簡立峰先生關於 AI 時代家長應採取的態度、共學思維與教養方式，提供詳盡的教育方針。</p>
+                        <a href="https://event.itigre.com/ai/edu.hyml" target="_blank" class="button">前往閱讀</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="link-section past">
+            <h2>歷史資源 (Past Events)</h2>
+            <div class="link-grid">
+                
+                <div class="card">
+                    <div class="card-content">
+                        <h3>AI 產業趨勢總覽</h3>
+                        <p>簡立峰先生對於整體 AI 產業發展脈絡、國際競爭態勢與未來商業模式的深入分析。</p>
+                        <a href="https://event.itigre.com/ai/" target="_blank" class="button">了解更多</a>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-content">
+                        <h3>職涯與筆電採購指南</h3>
+                        <p>結合科技趨勢，為職場人士與學生提供的筆電選擇指南與職涯準備建議。</p>
+                        <a href="https://event.itigre.com/johnny_laptop.html" target="_blank" class="button">查閱指南</a>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+        
+    </div>
+
+    <footer>
+        &copy; 2025 數位資源整理。所有外部連結版權歸原作者所有。
+    </footer>
+
+</body>
+</html>
