@@ -3,251 +3,272 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>簡立峰：AI 時代的家長思維 | 數位教育專欄</title>
+    <title>簡立峰：AI 時代的家長思維 | 未來教育週報</title>
     <style>
+        /* 基礎設定 */
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #3498db;
-            --bg-color: #f9f9f9;
-            --text-color: #333;
-            --max-width: 800px;
-            --base-font-size: 18px; /* 預設字體大小 */
+            --primary-color: #b91c1c; /* 新聞紅 */
+            --dark-color: #1f2937;
+            --light-bg: #f3f4f6;
+            --white: #ffffff;
+            --text-main: #374151;
         }
 
         body {
-            font-family: "PingFang TC", "Microsoft JhengHei", "Heiti TC", sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.8;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
+            background-color: var(--light-bg);
+            color: var(--text-main);
             margin: 0;
             padding: 0;
-            font-size: var(--base-font-size);
-            transition: font-size 0.3s ease;
+            /* 預設字體大小，這是基準點 */
+            font-size: 18px; 
+            line-height: 1.7;
+            transition: font-size 0.3s ease; /* 放大縮小時的平滑效果 */
         }
 
-        /* Header Style */
+        /* 導覽列 */
         header {
-            background-color: #fff;
-            border-bottom: 1px solid #ddd;
-            padding: 20px 0;
+            background-color: var(--white);
+            border-bottom: 4px solid var(--primary-color);
+            padding: 1rem 0;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
         }
 
         .container {
-            max-width: var(--max-width);
+            max-width: 900px;
             margin: 0 auto;
             padding: 0 20px;
         }
 
-        .nav-bar {
+        .header-content {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            flex-wrap: wrap;
         }
 
-        .brand {
-            font-size: 1.2rem;
-            font-weight: bold;
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 900;
             color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        /* Font Control Panel */
+        /* 字體控制面板 */
         .font-controls {
             display: flex;
             gap: 10px;
             align-items: center;
-            background: #f0f0f0;
+            background: #eee;
             padding: 5px 15px;
-            border-radius: 20px;
+            border-radius: 50px;
+        }
+
+        .font-label {
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #555;
         }
 
         .font-btn {
             border: none;
-            background: none;
+            background: white;
+            color: #333;
+            padding: 5px 12px;
+            border-radius: 20px;
             cursor: pointer;
             font-weight: bold;
-            color: var(--primary-color);
-            padding: 5px 10px;
-            border-radius: 5px;
-            transition: background 0.2s;
+            font-size: 0.85rem;
+            transition: all 0.2s;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
         }
 
         .font-btn:hover {
-            background-color: #ddd;
+            background: #e2e2e2;
         }
 
         .font-btn.active {
-            background-color: var(--accent-color);
+            background: var(--primary-color);
             color: white;
         }
 
-        /* Article Content */
+        /* 主要內容區 */
         article {
-            background: #fff;
-            margin-top: 30px;
-            padding: 40px;
+            background: var(--white);
+            margin: 30px auto;
+            padding: 50px;
             border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-            margin-bottom: 50px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
         }
 
         h1 {
-            color: var(--primary-color);
-            font-size: 2rem;
+            color: var(--dark-color);
+            font-size: 2.2em; /* 相對單位，會隨 body 字體放大 */
+            line-height: 1.3;
             margin-bottom: 10px;
-            line-height: 1.4;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 20px;
         }
 
-        .meta {
-            color: #777;
-            font-size: 0.9rem;
-            margin-bottom: 30px;
-            padding-bottom: 20px;
-            border-bottom: 1px solid #eee;
+        .meta-info {
+            color: #888;
+            font-size: 0.85em;
+            margin-bottom: 40px;
         }
 
         h2 {
             color: var(--primary-color);
-            font-size: 1.5rem;
-            margin-top: 40px;
-            border-left: 5px solid var(--accent-color);
-            padding-left: 15px;
+            font-size: 1.6em;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        h2::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 1.2em;
+            background-color: var(--primary-color);
+            margin-right: 15px;
+            border-radius: 2px;
         }
 
         p {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             text-align: justify;
         }
 
-        .highlight {
-            background-color: #eaf6ff;
-            padding: 20px;
-            border-radius: 5px;
-            margin: 20px 0;
-            border-left: 4px solid var(--accent-color);
+        /* 重點引言區塊 */
+        .blockquote-wrapper {
+            background-color: #fff5f5;
+            border-left: 5px solid var(--primary-color);
+            padding: 30px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.1em;
+            color: #555;
         }
 
-        .highlight strong {
-            color: var(--accent-color);
+        .highlight {
+            font-weight: bold;
+            background: linear-gradient(120deg, #ffd1d1 0%, #ffd1d1 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 40%;
+            background-position: 0 88%;
         }
 
         ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
+            background: #f9f9f9;
+            padding: 30px 30px 30px 50px;
+            border-radius: 10px;
         }
 
         li {
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            font-weight: 500;
         }
 
-        /* Footer */
         footer {
-            background-color: var(--primary-color);
-            color: #fff;
             text-align: center;
-            padding: 40px 0;
-            font-size: 0.9rem;
+            padding: 40px;
+            color: #666;
+            font-size: 0.9em;
+            border-top: 1px solid #ddd;
         }
 
-        /* Responsive */
+        /* 手機版適配 */
         @media (max-width: 600px) {
-            article {
-                padding: 20px;
-            }
-            h1 {
-                font-size: 1.6rem;
-            }
+            article { padding: 25px; }
+            .header-content { flex-direction: column; gap: 15px; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="container nav-bar">
-            <div class="brand">未來教育觀點</div>
-            <div class="font-controls">
-                <span>字級：</span>
-                <button class="font-btn" onclick="setFontSize(100)" id="btn-100">標準</button>
-                <button class="font-btn" onclick="setFontSize(150)" id="btn-150">大</button>
-                <button class="font-btn" onclick="setFontSize(200)" id="btn-200">特大</button>
-            </div>
+<header>
+    <div class="container header-content">
+        <div class="logo">FUTURE EDU. 週報</div>
+        <div class="font-controls">
+            <span class="font-label">字體大小：</span>
+            <button class="font-btn active" onclick="resizeText(100, this)">標準</button>
+            <button class="font-btn" onclick="resizeText(150, this)">150%</button>
+            <button class="font-btn" onclick="resizeText(200, this)">200%</button>
         </div>
-    </header>
-
-    <div class="container">
-        <article>
-            <h1>簡立峰：AI 時代，家長該給孩子的不是答案，而是「提問」的勇氣</h1>
-            <div class="meta">
-                <span>文 / 數位教育編輯部</span> &nbsp;|&nbsp; 
-                <span>日期：2025-12-09</span> &nbsp;|&nbsp; 
-                <span>閱讀時間：約 5 分鐘</span>
-            </div>
-
-            <p><strong>導言：</strong>在人工智慧（AI）飛速發展的今天，ChatGPT 等工具已經能輕鬆通過許多人類的考試。前 Google 台灣董事總經理簡立峰認為，這是一場教育的「海嘯」，但也是轉機。面對 AI，台灣家長該採取何種態度？</p>
-
-            <div class="highlight">
-                <p>簡立峰的核心觀點可以濃縮為一句話：<strong>「家長要學會『示弱』，從權威者轉變為與孩子一起探索 AI 的『共學者』。」</strong></p>
-            </div>
-
-            <h2>一、別再禁止，擁抱「人機協作」</h2>
-            <p>許多家長擔心孩子使用 AI 會變笨、會依賴。簡立峰指出，這種擔心就像當年計算機剛出現時一樣。未來的世界是「人 + AI」的世界。禁止孩子接觸 AI，等同於剝奪了他們未來的生存工具。</p>
-            <p>正確的思維應該是將 AI 視為：</p>
-            <ul>
-                <li><strong>Copilot（副駕駛）：</strong> 協助導航，但方向盤（決策權）仍在人手中。</li>
-                <li><strong>Tutor（一對一家教）：</strong> 它可以 24 小時不厭其煩地解釋概念，直到孩子聽懂。</li>
-            </ul>
-
-            <h2>二、從「回答問題」轉向「定義問題」</h2>
-            <p>過去的教育體制獎勵「標準答案」。但在生成式 AI 時代，獲得答案的成本趨近於零。簡立峰強調，未來的關鍵能力是<strong>「提問力（Prompt Engineering）」</strong>。</p>
-            <p>家長在引導孩子時，可以改變對話方式：</p>
-            <ul>
-                <li>不問：「這題答案是什麼？」</li>
-                <li>改問：「你會怎麼問 AI 來解決這個問題？」、「你覺得 AI 的回答哪裡怪怪的？」</li>
-            </ul>
-            <p>透過這種方式，訓練孩子的邏輯架構能力與批判性思維（Critical Thinking），因為 AI 常常會「一本正經地胡說八道」，這正是訓練查證能力的最佳時機。</p>
-
-            <h2>三、家長不需要「懂比孩子多」</h2>
-            <p>這是許多現代家長的焦慮來源。簡立峰建議，家長要練習「放下身段」。在這個新科技面前，大人跟小孩其實站在同一個起跑點，甚至小孩學得更快。</p>
-            <p>「共學」的態度是：承認自己也不會，然後邀請孩子一起找答案。這能建立更親密的親子關係，也能培養孩子的主動性。</p>
-
-            <div class="highlight">
-                <strong>總結：</strong> <br>
-                面對 AI，最好的態度不是恐懼被取代，而是好奇如何駕馭。給孩子足夠的空間去探索、去犯錯、去向 AI 提問，這就是家長能給予的最好禮物。
-            </div>
-
-        </article>
     </div>
+</header>
 
-    <footer>
-        <p>&copy; 2025 未來教育觀點 | 專注於科技與人文的教育對話</p>
-    </footer>
+<div class="container">
+    <article>
+        <h1>專訪簡立峰：AI 時代的教養新思維——家長要學會「示弱」與「提問」</h1>
+        
+        <div class="meta-info">
+            <span>記者：數位教育組</span> &bull; 
+            <span>2025年12月9日</span> &bull; 
+            <span>閱讀時間：5分鐘</span>
+        </div>
 
-    <script>
-        function setFontSize(percentage) {
-            // 計算新的字體大小
-            const baseSize = 18; // 基礎字體 18px
-            const newSize = baseSize * (percentage / 100);
-            
-            // 設定 body 的字體大小，利用 CSS 的 em/rem 特性會自動等比放大
-            document.body.style.fontSize = newSize + 'px';
+        <div class="blockquote-wrapper">
+            「未來的孩子，競爭力不在於背誦標準答案，而在於如何向機器提出好問題。家長不必焦慮自己懂太少，因為你的角色是與孩子一起探索的夥伴。」
+        </div>
 
-            // 更新按鈕狀態
-            document.querySelectorAll('.font-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
-            
-            let btnId = 'btn-' + percentage;
-            let activeBtn = document.getElementById(btnId);
-            if(activeBtn) {
-                activeBtn.classList.add('active');
-            }
-        }
+        <p>隨著 ChatGPT 等生成式 AI 工具的普及，許多家長陷入焦慮：我的孩子會不會依賴 AI 而變笨？未來的教育該何去何從？前 Google 台灣董事總經理簡立峰給出了一帖良藥：<strong>從「禁止」轉向「共學」</strong>。</p>
 
-        // 初始化狀態
-        setFontSize(100);
-    </script>
+        <h2>1. 觀念翻轉：家長最好的策略是「示弱」</h2>
+        <p>簡立峰觀察到，許多家長因為覺得自己跟不上科技變化而感到恐慌。但他認為，這反而是一個機會。</p>
+        <p>「家長不需要當全知全能的老師，」簡立峰強調，家長可以嘗試<span class="highlight">對孩子示弱</span>，承認自己也不懂，然後邀請孩子：「我們一起來試試看 AI 能不能幫我們解決這個問題？」這種「共學（Co-learning）」的態度，能激發孩子的主動性，也能消除家長不必要的壓力。</p>
+
+        <h2>2. 核心能力：培養「問問題」的技術</h2>
+        <p>過去的教育重視「解題」，未來的教育重視「提問」。簡立峰指出，AI 的回答品質取決於使用者的提問品質（Prompt Engineering）。</p>
+        <p>家長可以透過日常對話引導孩子：</p>
+        <ul>
+            <li>不要只問：「答案是什麼？」</li>
+            <li>試著問：「如果我們要請機器人幫忙，你覺得要怎麼下指令它才聽得懂？」</li>
+            <li>反思：「你覺得 AI 寫的這篇文章，有沒有哪裡怪怪的？」</li>
+        </ul>
+        <p>透過這樣的訓練，孩子學到的不只是工具的使用，更是邏輯架構與批判性思考的能力。</p>
+
+        <h2>3. 關鍵心態：AI 是副駕駛，不是代駕</h2>
+        <p>對於學校禁止使用 ChatGPT 的現象，簡立峰抱持保留態度。他比喻，這就像計算機發明後，我們不再用算盤一樣。重點在於如何定位工具。</p>
+        <p>他建議將 AI 視為孩子的：</p>
+        <ul>
+            <li><strong>Copilot（副駕駛）：</strong>協助導航、提供資訊，但方向盤（決策）還是在人手上。</li>
+            <li><strong>Tutor（專屬家教）：</strong>它有無限的耐心，可以隨時回答孩子的「為什麼」。</li>
+        </ul>
+
+        <div class="blockquote-wrapper" style="background-color: #f0fdf4; border-color: #22c55e;">
+            <strong>總結：</strong><br>
+            在這個 AI 成為標配的時代，家長能給孩子最好的禮物，不是標準答案，而是探索未知的勇氣與駕馭工具的思維。
+        </div>
+
+    </article>
+</div>
+
+<footer>
+    <p>&copy; 2025 未來教育週報 Digital Education News. All Rights Reserved.</p>
+</footer>
+
+<script>
+    function resizeText(percentage, btnElement) {
+        // 1. 設定 body 的字體大小 (基準為 18px)
+        const baseSize = 18;
+        const newSize = baseSize * (percentage / 100);
+        document.body.style.fontSize = newSize + "px";
+
+        // 2. 處理按鈕的樣式 (Active State)
+        // 先移除所有按鈕的 active class
+        const buttons = document.querySelectorAll('.font-btn');
+        buttons.forEach(btn => btn.classList.remove('active'));
+
+        // 為被點擊的按鈕加上 active class
+        btnElement.classList.add('active');
+    }
+</script>
+
 </body>
 </html>
