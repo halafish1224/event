@@ -7,195 +7,238 @@
     <style>
         /* CSS Reset and Global Styles */
         :root {
-            --primary-color: #007bff; /* 藍色 */
-            --secondary-color: #6c757d; /* 灰色 */
-            --accent-color: #28a745; /* 綠色，用於 New */
-            --dark-color: #343a40;
-            --light-color: #f8f9fa;
-            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --primary-color: #00d4ff;     /* 霓虹藍 */
+            --secondary-color: #b19cd9;   /* 淡紫 */
+            --accent-color: #ff2a6d;      /* 霓虹粉紅，用於 New */
+            --dark-color: #0f1626;       /* 深藍黑（夜空基調） */
+            --light-color: #f0f4f8;
+            --text-light: #e0e7ff;
+            --font-family: 'Segoe UI', 'Microsoft JhengHei', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
             font-family: var(--font-family);
             margin: 0;
             padding: 0;
-            background-color: var(--light-color);
-            color: var(--dark-color);
+            background-color: var(--dark-color);
+            color: var(--text-light);
             line-height: 1.6;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(255, 42, 109, 0.15) 0%, transparent 20%),
+                radial-gradient(circle at 50% 50%, rgba(177, 156, 217, 0.1) 0%, transparent 30%);
+            background-attachment: fixed;
         }
 
-        /* Hero Section Styling */
+        /* Hero Section - 大都會夜景風格 */
         .hero {
-            /* 建議替換為實際的 AI/科技主題圖片 */
-            background-image: url('https://picsum.photos/1920/800?random=1'); 
+            background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4d166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* 可替換成更適合的夜景圖 */
             background-size: cover;
             background-position: center;
-            height: 60vh; /* Hero 區塊高度 */
+            height: 70vh;
+            min-height: 500px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             position: relative;
-            color: white;
             padding: 20px;
         }
 
-        /* Overlay for better text readability */
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.55); /* 深色遮罩 */
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, rgba(15, 22, 38, 0.7), rgba(15, 22, 38, 0.9));
             z-index: 1;
         }
 
         .hero-content {
             position: relative;
             z-index: 2;
+            max-width: 900px;
         }
 
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
-            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+            text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
+            color: #ffffff;
         }
 
         .hero p {
-            font-size: 1.25rem;
-            opacity: 0.9;
+            font-size: 1.5rem;
+            opacity: 0.95;
+            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
         }
 
-        /* Main Content and Layout */
+        /* Main Content */
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 40px 20px;
+            padding: 60px 20px;
         }
 
         .link-section {
-            padding: 40px 0;
-            border-bottom: 1px solid #ddd;
+            padding: 60px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .link-section:last-child {
+            border-bottom: none;
         }
 
         .link-section h2 {
-            font-size: 2rem;
-            color: var(--dark-color);
-            margin-bottom: 30px;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            position: relative;
             display: inline-block;
+            padding-bottom: 15px;
         }
 
-        .link-section.new h2 {
-            border-bottom: 3px solid var(--accent-color);
-            color: var(--accent-color);
+        .link-section h2::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 80px;
+            height: 4px;
+            background: var(--primary-color);
+            box-shadow: 0 0 15px var(--primary-color);
+        }
+
+        .link-section.new h2::after {
+            background: var(--accent-color);
+            box-shadow: 0 0 15px var(--accent-color);
         }
 
         .link-grid {
-            display: flex;
-            flex-wrap: wrap;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 30px;
         }
 
-        /* Link Card Styling */
+        /* Card - 夜景霓虹風格 + 保留圖片位置 */
         .card {
-            background: white;
-            border: 1px solid #e0e0e0;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            flex: 1 1 calc(33.33% - 60px / 3); /* 確保每行至少能放三個卡片 */
-            min-width: 300px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            background: rgba(15, 22, 38, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            border-radius: 12px;
             overflow: hidden;
+            transition: all 0.4s ease;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
         }
 
         .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+            border-color: var(--primary-color);
+            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.3);
+        }
+
+        .card-image {
+            height: 180px;
+            background: #1e293b;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        .card-image::after {
+            content: '圖片位置';
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            color: rgba(255,255,255,0.3);
+            font-size: 1.2rem;
         }
 
         .card-content {
             padding: 25px;
             display: flex;
             flex-direction: column;
-            height: 100%;
         }
 
         .card h3 {
-            margin-top: 0;
-            color: var(--dark-color);
-            font-size: 1.4rem;
+            margin: 0 0 15px 0;
+            font-size: 1.5rem;
+            color: #ffffff;
+            text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
         }
 
         .card p {
-            font-size: 1rem;
-            color: var(--secondary-color);
+            color: var(--text-light);
+            opacity: 0.9;
             flex-grow: 1;
+            margin-bottom: 20px;
         }
 
         .card a.button {
-            display: block;
-            margin-top: 15px;
-            padding: 10px 15px;
-            text-align: center;
+            align-self: flex-start;
+            padding: 12px 28px;
+            background: transparent;
+            border: 2px solid var(--primary-color);
+            color: var(--primary-color);
             text-decoration: none;
-            border-radius: 5px;
+            border-radius: 50px;
             font-weight: 600;
-            transition: background-color 0.2s;
-            white-space: nowrap;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
         }
 
-        /* New Link Button Style */
-        .new .button {
-            background-color: var(--accent-color);
-            color: white;
+        .card a.button:hover {
+            background: var(--primary-color);
+            color: #0f1626;
+            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
         }
 
-        .new .button:hover {
-            background-color: #1e7e34;
+        /* New 標籤專用按鈕顏色 */
+        .new .card a.button {
+            border-color: var(--accent-color);
+            color: var(--accent-color);
+            box-shadow: 0 0 15px rgba(255, 42, 109, 0.3);
         }
 
-        /* Past Link Button Style */
-        .past .button {
-            background-color: var(--secondary-color);
-            color: white;
+        .new .card a.button:hover {
+            background: var(--accent-color);
+            box-shadow: 0 0 25px rgba(255, 42, 109, 0.6);
         }
 
-        .past .button:hover {
-            background-color: #5a6268;
-        }
-
-        /* Footer Styling */
+        /* Footer */
         footer {
-            background-color: var(--dark-color);
-            color: var(--light-color);
+            background: rgba(10, 15, 28, 0.9);
+            color: var(--text-light);
             text-align: center;
-            padding: 20px 0;
-            font-size: 0.9rem;
-            margin-top: 40px;
+            padding: 30px 20px;
+            font-size: 0.95rem;
+            border-top: 1px solid rgba(0, 212, 255, 0.2);
         }
 
-        /* Responsive adjustments */
+        /* Responsive */
         @media (max-width: 768px) {
             .hero {
-                height: 40vh;
+                height: 50vh;
             }
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
             .hero p {
-                font-size: 1rem;
+                font-size: 1.2rem;
+            }
+            .link-section h2 {
+                font-size: 2rem;
             }
             .link-grid {
-                flex-direction: column;
                 gap: 20px;
             }
-            .card {
-                min-width: 100%;
+            .card-image {
+                height: 150px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2.3rem;
             }
         }
     </style>
@@ -216,6 +259,7 @@
             <div class="link-grid">
                 
                 <div class="card">
+                    <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400?text=AI+Education');"></div>
                     <div class="card-content">
                         <h3>教育專欄：家長如何面對 AI</h3>
                         <p>探討簡立峰先生關於 AI 時代家長應採取的態度、共學思維與教養方式，提供詳盡的教育方針。</p>
@@ -226,11 +270,12 @@
             </div>
         </section>
 
-        <section class="link-section past">
+        <section class="link-section">
             <h2>歷史資源 (Past Events)</h2>
             <div class="link-grid">
                 
                 <div class="card">
+                    <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400?text=AI+Daily+Life');"></div>
                     <div class="card-content">
                         <h3>AI可以幹嘛總覽</h3>
                         <p>對於樂齡族群的應用分析。</p>
@@ -239,6 +284,7 @@
                 </div>
 
                 <div class="card">
+                    <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400?text=ThinkBook+Sale');"></div>
                     <div class="card-content">
                         <h3>虎友的筆電清倉（已售完）</h3>
                         <p>銷售完畢，感謝大家。</p>
@@ -252,7 +298,7 @@
     </div>
 
     <footer>
-        &copy; 2025 數位資源整理。所有外部連結版權歸原作者所有。
+        © 2025 數位資源整理。所有外部連結版權歸原作者所有。
     </footer>
 
 </body>
