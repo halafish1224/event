@@ -32,7 +32,7 @@
 
         /* Hero Section - 大都會夜景風格 */
         .hero {
-            background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4d166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80'); /* 可替換成更適合的夜景圖 */
+            background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4d166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
             background-size: cover;
             background-position: center;
             height: 70vh;
@@ -138,19 +138,17 @@
 
         .card-image {
             height: 180px;
-            background: #1e293b;
             background-size: cover;
             background-position: center;
+            background-repeat: no-repeat;
             position: relative;
         }
 
         .card-image::after {
-            content: '圖片位置';
+            content: '';
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            color: rgba(255,255,255,0.3);
-            font-size: 1.2rem;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(15, 22, 38, 0.8));
         }
 
         .card-content {
@@ -259,7 +257,7 @@
             <div class="link-grid">
                 
                 <div class="card">
-                    <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400?text=AI+Education');"></div>
+                    <div class="card-image" style="background-image: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1764809291/ai-education-night_glow.jpg');"></div>
                     <div class="card-content">
                         <h3>教育專欄：家長如何面對 AI</h3>
                         <p>探討簡立峰先生關於 AI 時代家長應採取的態度、共學思維與教養方式，提供詳盡的教育方針。</p>
@@ -275,7 +273,7 @@
             <div class="link-grid">
                 
                 <div class="card">
-                    <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400?text=AI+Daily+Life');"></div>
+                    <div class="card-image" style="background-image: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1764809291/ai-daily-life-night.jpg');"></div>
                     <div class="card-content">
                         <h3>AI可以幹嘛總覽</h3>
                         <p>對於樂齡族群的應用分析。</p>
@@ -284,7 +282,7 @@
                 </div>
 
                 <div class="card">
-                    <div class="card-image" style="background-image: url('https://via.placeholder.com/600x400?text=ThinkBook+Sale');"></div>
+                    <div class="card-image" style="background-image: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1764809291/593579527_26302134846042472_7936923505210090111_n_zii0rm.jpg');"></div>
                     <div class="card-content">
                         <h3>虎友的筆電清倉（已售完）</h3>
                         <p>銷售完畢，感謝大家。</p>
