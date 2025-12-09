@@ -8,10 +8,12 @@
         :root {
             --primary-color: #1a237e; /* 深藍色 */
             --accent-color: #e91e63; /* 桃紅色強調 */
+            --future-bg: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%); /* 未來科技感漸變 */
             --bg-color: #f8f9fa;
             --text-color: #212529;
             --max-width: 900px;
             --base-font-size: 19px;
+            --neon-glow: 0 0 10px rgba(233, 30, 99, 0.5);
         }
 
         body {
@@ -24,17 +26,43 @@
             font-size: var(--base-font-size);
             transition: font-size 0.2s ease-out;
             text-rendering: optimizeLegibility;
+            overflow-x: hidden;
+        }
+
+        /* 未來感背景元素 */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+            z-index: -1;
+            animation: pulse 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 0.5; }
+            100% { opacity: 1; }
         }
 
         /* Header Style */
         header {
-            background-color: #ffffff;
-            border-bottom: 1px solid #e0e0e0;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(0,0,0,0.1);
             padding: 15px 0;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        header:hover {
+            box-shadow: 0 4px 30px rgba(233, 30, 99, 0.2);
         }
 
         .container {
@@ -56,20 +84,28 @@
             font-weight: 800;
             color: var(--primary-color);
             letter-spacing: -0.5px;
+            text-shadow: 0 0 5px rgba(233, 30, 99, 0.3);
         }
 
         .brand span {
             color: var(--accent-color);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { text-shadow: 0 0 5px rgba(233, 30, 99, 0.5); }
+            to { text-shadow: 0 0 20px rgba(233, 30, 99, 0.8); }
         }
 
         /* Font Control Panel */
         .font-controls {
             display: flex;
             align-items: center;
-            background: #f1f3f5;
+            background: rgba(241, 243, 245, 0.8);
             padding: 4px;
             border-radius: 8px;
             font-size: 0.9rem;
+            backdrop-filter: blur(5px);
         }
 
         .font-label {
@@ -97,24 +133,27 @@
         }
 
         .font-btn:hover {
-            background-color: #e9ecef;
-            color: #000;
+            background-color: rgba(233, 30, 99, 0.1);
+            color: var(--accent-color);
+            transform: scale(1.05);
         }
 
         .font-btn.active {
             background-color: var(--accent-color);
             color: white;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            box-shadow: var(--neon-glow);
         }
 
         /* Article Content */
         article {
-            background: #ffffff;
+            background: rgba(255, 255, 255, 0.9);
             margin-top: 40px;
             padding: 60px;
             border-radius: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
             margin-bottom: 80px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
         }
 
         h1 {
@@ -124,6 +163,10 @@
             line-height: 1.3;
             letter-spacing: -1px;
             font-weight: 800;
+            background: linear-gradient(45deg, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
 
         .meta {
@@ -144,6 +187,13 @@
             font-weight: 700;
             position: relative;
             padding-left: 18px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        h2:hover {
+            color: var(--accent-color);
+            text-shadow: var(--neon-glow);
         }
         
         h2::before {
@@ -155,6 +205,12 @@
             width: 5px;
             background: var(--accent-color);
             border-radius: 2px;
+            transition: width 0.3s ease;
+        }
+
+        h2:hover::before {
+            width: 8px;
+            box-shadow: var(--neon-glow);
         }
         
         h3 {
@@ -169,6 +225,22 @@
             color: #333;
         }
 
+        /* 互動折疊部分 */
+        .collapsible {
+            cursor: pointer;
+            user-select: none;
+        }
+
+        .content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+        }
+
+        .content.expanded {
+            max-height: 1000px; /* 調整為足夠大 */
+        }
+
         /* Highlight Section */
         .highlight-box {
             background-color: #fce4ec; /* 淡桃紅色 */
@@ -176,6 +248,13 @@
             border-radius: 12px;
             margin: 35px 0;
             border-left: 6px solid var(--accent-color);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(233, 30, 99, 0.1);
+        }
+
+        .highlight-box:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(233, 30, 99, 0.2);
         }
 
         .highlight-text {
@@ -194,14 +273,20 @@
             box-shadow: 0 4px 6px rgba(0,0,0,0.05);
             border-radius: 8px;
             overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .data-table:hover {
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
         }
         
         .data-table th, .data-table td {
             padding: 15px 12px;
             text-align: left;
             border-bottom: 1px solid #eee;
+            transition: background-color 0.2s;
         }
-        
+
         .data-table th {
             background-color: var(--primary-color);
             color: white;
@@ -216,15 +301,50 @@
         .data-table tr:nth-child(even) {
             background-color: #fafafa;
         }
+
+        .data-table tr:hover {
+            background-color: rgba(233, 30, 99, 0.05);
+        }
         
+        /* 新增產業整合部分樣式 */
+        .industry-section {
+            background: linear-gradient(135deg, #e3f2fd 0%, #f3e5f5 100%);
+            padding: 40px;
+            border-radius: 12px;
+            margin: 40px 0;
+            border: 1px solid rgba(33, 150, 243, 0.2);
+        }
+
+        .industry-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .industry-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--accent-color);
+        }
+
+        .industry-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+        }
+
         /* Footer */
         footer {
-            background-color: #212529;
+            background: var(--future-bg);
             color: #adb5bd;
             text-align: center;
             padding: 60px 0;
             font-size: 0.9rem;
             margin-top: auto;
+            position: relative;
         }
 
         /* Responsive */
@@ -271,6 +391,12 @@
                 flex-direction: column;
                 gap: 5px;
             }
+            .industry-grid {
+                grid-template-columns: 1fr;
+            }
+            .industry-section {
+                padding: 20px;
+            }
         }
     </style>
 </head>
@@ -295,84 +421,144 @@
             <div class="meta">
                 <span><i style="color:#e91e63">●</i> 深度專題 / 數位教育編輯部</span>
                 <span>2025年12月09日</span>
-                <span>閱讀時間：約 12 分鐘</span>
+                <span>閱讀時間：約 18 分鐘</span>
             </div>
 
-            <p><strong>前言：</strong>前 Google 台灣董事總經理簡立峰先生不僅是科技趨勢的領航者，更是台灣教育變革的積極倡議者。他認為 AI 不只改變了學習模式，更徹底顛覆了我們對「人才」的定義以及對「教育體制」的期待。</p>
+            <p><strong>前言：</strong>前 Google 台灣董事總經理簡立峰先生不僅是科技趨勢的領航者，更是台灣教育變革的積極倡議者。他認為 AI 不只改變了學習模式，更徹底顛覆了我們對「人才」的定義以及對「教育體制」的期待。在2025年的AI浪潮中，簡立峰強調，產業人才培育必須從「賦能」（empowering）和「連接」（connecting）出發，讓個人與組織掌握AI應用，創造跨域價值。</p>
 
             <div class="highlight-box">
                 <p class="highlight-text">簡立峰的核心精神：教育的目標應從訓練「高效率的標準化零件」，轉變為培養「能定義問題、創造價值的獨立思想家」。</p>
             </div>
 
-            <h2>一、家長心態：從知識權威到共學夥伴</h2>
-            <p>（此處為原有的家長態度與提問力內容，強調家長應「示弱」、鼓勵孩子將 AI 視為 Copilot，培養批判性思考與提問能力。）</p>
+            <h2 class="collapsible" onclick="toggleSection(this)">一、家長心態：從知識權威到共學夥伴</h2>
+            <div class="content">
+                <p>在AI時代，家長的角色從傳統的「知識傳授者」轉變為「學習夥伴」。簡立峰建議家長應主動「示弱」，承認AI在知識檢索上的優勢，讓孩子將AI視為可靠的Copilot。重點在於培養孩子的批判性思考與提問能力，例如透過共同探索AI生成的內容，討論其局限性與真偽辨識。這不僅減輕家長壓力，更能激發孩子的自主學習熱情。</p>
+                <p>實踐建議：每週家庭AI討論會，從簡單問題開始，如「AI為何會犯錯？」，逐步引導孩子建構自己的知識框架。</p>
+            </div>
 
-            <h2>二、AI 工具選擇：三大模型的教育應用優勢</h2>
-            <p>（此處為原有的 Gemini、ChatGPT、Grok 三大模型優勢比較內容。）</p>
+            <h2 class="collapsible" onclick="toggleSection(this)">二、AI 工具選擇：三大模型的教育應用優勢</h2>
+            <div class="content">
+                <p>選擇適合的教育AI工具至關重要。Gemini以多模態整合見長，適合視覺化學習；ChatGPT的對話流暢性利於寫作與腦storm；Grok則強調邏輯推理與幽默互動，激發創意思考。簡立峰在2025 CES中指出，這些模型的優勢在於互補使用，能涵蓋從知識獲取到問題解決的全流程。</p>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>模型</th>
+                            <th>教育優勢</th>
+                            <th>應用情境</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="模型">Gemini</td>
+                            <td data-label="優勢">多模態（文字+圖像+音頻）</td>
+                            <td data-label="情境">STEM實驗模擬與視覺解釋</td>
+                        </tr>
+                        <tr>
+                            <td data-label="模型">ChatGPT</td>
+                            <td data-label="優勢">自然語言生成與迭代</td>
+                            <td data-label="情境">作文輔助與歷史故事創作</td>
+                        </tr>
+                        <tr>
+                            <td data-label="模型">Grok</td>
+                            <td data-label="優勢">邏輯推理與跨域連結</td>
+                            <td data-label="情境">哲學辯論與數學證明</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
 
-            <h2 id="workplace">三、職場變革：未來人才的「新三大標準」</h2>
-            <p>簡立峰強調，AI 將取代大部分「效率導向」的白領工作。未來的職場需要的是能將 AI 當作工具，創造出**「超越效率」**的新價值的人才。人才的衡量標準必須從根本上調整：</p>
+            <h2 id="workplace" class="collapsible" onclick="toggleSection(this)">三、職場變革：未來人才的「新三大標準」</h2>
+            <div class="content">
+                <p>簡立峰強調，AI 將取代大部分「效率導向」的白領工作。未來的職場需要的是能將 AI 當作工具，創造出**「超越效率」**的新價值的人才。人才的衡量標準必須從根本上調整，尤其在2025 AI人才高峰會中，他預測AI將催生「1%超級人類」，掌握99%的機會與能力。</p>
 
-            <table class="data-table">
-                <thead>
-                    <tr>
-                        <th width="30%">舊思維 (AI 可取代)</th>
-                        <th width="30%">新標準 (AI 難以取代)</th>
-                        <th width="40%">教育培養方向</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td data-label="舊思維">知識多寡 (記憶與背誦)</td>
-                        <td data-label="新標準"><strong>價值創造力與實踐力</strong></td>
-                        <td data-label="培養方向">鼓勵孩子從「遊戲、興趣、專題」中學習，給予創造和實踐的自由，減少填鴨。</td>
-                    </tr>
-                    <tr>
-                        <td data-label="舊思維">專業單一性 (T型人才)</td>
-                        <td data-label="新標準"><strong>跨域整合與溝通</strong> (π型人才)</td>
-                        <td data-label="培養方向">鼓勵接觸不同學科，將科技與人文結合，訓練孩子整合複雜、模糊領域知識的能力。</td>
-                    </tr>
-                    <tr>
-                        <td data-label="舊思維">服從性 (聽從指令完成任務)</td>
-                        <td data-label="新標準"><strong>定義問題的能力與提問力</strong></td>
-                        <td data-label="培養方向">訓練孩子對現狀**提出質疑**，能將一個模糊的需求，清晰化為 AI 可執行的指令 (Prompt)。</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <p><strong>💡 職場警訊：</strong> 「工程師」的定義已經改變，純粹執行程式碼的職位面臨 AI 威脅。有價值的是**「能結合程式，解決跨領域商業或社會問題」**的專業人才。</p>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th width="30%">舊思維 (AI 可取代)</th>
+                            <th width="30%">新標準 (AI 難以取代)</th>
+                            <th width="40%">教育培養方向</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td data-label="舊思維">知識多寡 (記憶與背誦)</td>
+                            <td data-label="新標準"><strong>價值創造力與實踐力</strong></td>
+                            <td data-label="培養方向">鼓勵孩子從「遊戲、興趣、專題」中學習，給予創造和實踐的自由，減少填鴨。</td>
+                        </tr>
+                        <tr>
+                            <td data-label="舊思維">專業單一性 (T型人才)</td>
+                            <td data-label="新標準"><strong>跨域整合與溝通</strong> (π型人才)</td>
+                            <td data-label="培養方向">鼓勵接觸不同學科，將科技與人文結合，訓練孩子整合複雜、模糊領域知識的能力。</td>
+                        </tr>
+                        <tr>
+                            <td data-label="舊思維">服從性 (聽從指令完成任務)</td>
+                            <td data-label="新標準"><strong>定義問題的能力與提問力</strong></td>
+                            <td data-label="培養方向">訓練孩子對現狀**提出質疑**，能將一個模糊的需求，清晰化為 AI 可執行的指令 (Prompt)。</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <p><strong>💡 職場警訊：</strong> 「工程師」的定義已經改變，純粹執行程式碼的職位面臨 AI 威脅。有價值的是**「能結合程式，解決跨領域商業或社會問題」**的專業人才。簡立峰在台灣AI年會中呼籲，產業需培養跨產業AI人才，強化算力與應用整合。</p>
+            </div>
 
-            <h2 id="reform">四、教育體制的迫切變革建議</h2>
-            <p>簡立峰認為，體制若不變革，只會讓學生更焦慮、更抗拒新科技。教育體系必須擺脫對「標準答案」的迷戀。</p>
+            <h2 id="industry" class="collapsible" onclick="toggleSection(this)">四、AI於產業人才培育的整合策略</h2>
+            <div class="content">
+                <p>簡立峰在2025年的多場論壇中，強調AI不僅是工具，更是產業轉型的催化劑。面對台灣AI「知用落差」，他提出「三機會六策略」框架，聚焦人才培育：機會包括主權AI應用、軟體輸出全球，以及超高齡社會的智慧解決方案。策略則涵蓋企業AI導入、領導者賦能、跨域教育連結等，讓人才從「使用者」升級為「創造者」。</p>
 
-            <h3>1. 課綱鬆綁與時間騰挪：</h3>
-            <ul>
-                <li><strong>主張：</strong> 國家應大幅減少課本中的「知識灌輸量」，讓課綱更為精簡。</li>
-                <li><strong>目的：</strong> 騰出時間交還給學校和學生，用於**專題研究 (PBL)**、深度討論和動手實作，培養學生處理「課本外」未知問題的能力。</li>
-            </ul>
+                <div class="industry-section">
+                    <h3>產業人才培育核心策略</h3>
+                    <div class="industry-grid">
+                        <div class="industry-card">
+                            <h4>賦能（Empowering）員工</h4>
+                            <p>領導者需提供AI技能訓練，如Prompt工程與數據倫理，幫助團隊從AI恐懼轉向創新應用。簡立峰建議企業設立內部AI學院，模擬真實產業情境。</p>
+                        </div>
+                        <div class="industry-card">
+                            <h4>連接（Connecting）跨域</h4>
+                            <p>培養π型人才，連結科技、人文與商業。透過產學合作專案，讓學生參與AI新創創業心法，強化台灣軟體產業的全球競爭力。</p>
+                        </div>
+                        <div class="industry-card">
+                            <h4>主權AI應用防衛</h4>
+                            <p>視AI應用為國防一環，提升使用率與自主模型開發。簡立峰預測，2025後，1%掌握99%機會的人才，將主導產業未來。</p>
+                        </div>
+                    </div>
+                </div>
 
-            <h3>2. 評量模式徹底轉型：</h3>
-            <ul>
-                <li><strong>主張：</strong> 徹底改變大學考招與各級評量方式。</li>
-                <li><strong>目的：</strong> 降低對標準答案、記憶性知識的依賴，提高對**「論述能力」、「批判思考」和「應用 AI 解決問題過程」**的權重，讓學習目標與未來價值一致。</li>
-            </ul>
+                <p>這些策略不僅擴大知識廣度，更強調實踐養成，讓AI成為產業人才的「超能力放大器」。</p>
+            </div>
 
-            <h3>3. 教師轉型為「情境設計師」：</h3>
-            <ul>
-                <li><strong>主張：</strong> 重新定義教師角色，教師不該與 AI 比知識量。</li>
-                <li><strong>目的：</strong> 讓教師專注於**設計學習情境**、引導學生提問、激發討論，並教導學生如何辨識 AI 輸出的真偽，成為學生的「學習總教練」。</li>
-            </ul>
-            
-            <div class="highlight-box" style="background-color: #e3f2fd; border-left-color: #2196f3;">
-                <strong>總結：</strong> 
-                面對 AI，台灣教育的挑戰不是技術落後，而是思維僵化。簡立峰的建言核心是：釋放教育體制的空間與時間，讓孩子有機會培養人類獨有的「價值創造力」。
+            <h2 id="reform" class="collapsible" onclick="toggleSection(this)">五、教育體制的迫切變革建議</h2>
+            <div class="content">
+                <p>簡立峰認為，體制若不變革，只會讓學生更焦慮、更抗拒新科技。教育體系必須擺脫對「標準答案」的迷戀，轉向AI世代的π型人才培養。</p>
+
+                <h3>1. 課綱鬆綁與時間騰挪：</h3>
+                <ul>
+                    <li><strong>主張：</strong> 國家應大幅減少課本中的「知識灌輸量」，讓課綱更為精簡。</li>
+                    <li><strong>目的：</strong> 騰出時間交還給學校和學生，用於**專題研究 (PBL)**、深度討論和動手實作，培養學生處理「課本外」未知問題的能力。整合產業AI應用，如模擬跨域專案。</li>
+                </ul>
+
+                <h3>2. 評量模式徹底轉型：</h3>
+                <ul>
+                    <li><strong>主張：</strong> 徹底改變大學考招與各級評量方式。</li>
+                    <li><strong>目的：</strong> 降低對標準答案、記憶性知識的依賴，提高對**「論述能力」、「批判思考」和「應用 AI 解決問題過程」**的權重，讓學習目標與未來價值一致。</li>
+                </ul>
+
+                <h3>3. 教師轉型為「情境設計師」：</h3>
+                <ul>
+                    <li><strong>主張：</strong> 重新定義教師角色，教師不該與 AI 比知識量。</li>
+                    <li><strong>目的：</strong> 讓教師專注於**設計學習情境**、引導學生提問、激發討論，並教導學生如何辨識 AI 輸出的真偽，成為學生的「學習總教練」。同時連結產業資源，提供真實AI應用案例。</li>
+                </ul>
+                
+                <div class="highlight-box" style="background-color: #e3f2fd; border-left-color: #2196f3;">
+                    <strong>總結：</strong> 
+                    面對 AI，台灣教育的挑戰不是技術落後，而是思維僵化。簡立峰的建言核心是：釋放教育體制的空間與時間，讓孩子有機會培養人類獨有的「價值創造力」，並與產業人才培育無縫整合，迎接超級人類時代。
+                </div>
             </div>
 
         </article>
     </div>
 
     <footer>
-        <p>&copy; 2025 NEXT EDU 數位教育觀點 | 專注於科技與人文的教育對話</p>
+        <p>&copy; 2025 NEXT EDU 數位教育觀點 | 專注於科技與人文的教育對話 | 探索AI未來，培育明日領袖</p>
     </footer>
 
     <script>
@@ -396,9 +582,28 @@
                 activeBtn.classList.add('active');
             }
         }
+
+        function toggleSection(element) {
+            const content = element.nextElementSibling;
+            content.classList.toggle('expanded');
+            // 簡單圖示切換（可選）
+            const arrow = element.innerHTML.includes('▼') ? '▲' : '▼';
+            element.innerHTML = element.innerHTML.replace(/▼|▲/g, arrow);
+        }
         
-        // 初始執行一次
-        setFontSize(100);
+        // 初始狀態：添加折疊圖示
+        document.addEventListener('DOMContentLoaded', function() {
+            const collapsibles = document.querySelectorAll('.collapsible');
+            collapsibles.forEach(h => {
+                h.innerHTML += ' ▼';
+                const content = h.nextElementSibling;
+                if (content && content.classList.contains('content')) {
+                    content.classList.add('expanded'); // 初始展開
+                }
+            });
+            setFontSize(100);
+        });
     </script>
 </body>
 </html>
+``` }
