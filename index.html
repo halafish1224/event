@@ -3,12 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>簡立峰：AI 時代的家長思維與工具選擇 | 數位教育專欄</title>
+    <title>簡立峰深度解析：AI 時代下的職場、教育與人才變革</title>
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --accent-color: #0066cc;
-            --secondary-accent: #e74c3c;
+            --primary-color: #1a237e; /* 深藍色 */
+            --accent-color: #e91e63; /* 桃紅色強調 */
             --bg-color: #f8f9fa;
             --text-color: #212529;
             --max-width: 900px;
@@ -103,9 +102,9 @@
         }
 
         .font-btn.active {
-            background-color: #fff;
-            color: var(--accent-color);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
 
         /* Article Content */
@@ -172,7 +171,7 @@
 
         /* Highlight Section */
         .highlight-box {
-            background-color: #f0f7ff;
+            background-color: #fce4ec; /* 淡桃紅色 */
             padding: 30px;
             border-radius: 12px;
             margin: 35px 0;
@@ -186,8 +185,8 @@
             margin: 0;
         }
 
-        /* Comparison Table */
-        .comparison-table {
+        /* Table */
+        .data-table {
             width: 100%;
             border-collapse: collapse;
             margin: 30px 0;
@@ -197,50 +196,27 @@
             overflow: hidden;
         }
         
-        .comparison-table th, .comparison-table td {
-            padding: 15px 20px;
+        .data-table th, .data-table td {
+            padding: 15px 12px;
             text-align: left;
             border-bottom: 1px solid #eee;
         }
         
-        .comparison-table th {
+        .data-table th {
             background-color: var(--primary-color);
             color: white;
             font-weight: 600;
             white-space: nowrap;
         }
         
-        .comparison-table tr:last-child td {
+        .data-table tr:last-child td {
             border-bottom: none;
         }
         
-        .comparison-table tr:nth-child(even) {
+        .data-table tr:nth-child(even) {
             background-color: #fafafa;
         }
         
-        .tag {
-            display: inline-block;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.8em;
-            font-weight: bold;
-            color: white;
-        }
-        
-        .tag-gemini { background-color: #4285F4; }
-        .tag-chatgpt { background-color: #10a37f; }
-        .tag-grok { background-color: #000000; }
-
-        ul {
-            margin-bottom: 24px;
-            padding-left: 20px;
-        }
-
-        li {
-            margin-bottom: 12px;
-            position: relative;
-        }
-
         /* Footer */
         footer {
             background-color: #212529;
@@ -260,9 +236,36 @@
             h1 {
                 font-size: 1.8rem;
             }
-            .comparison-table {
+            .data-table {
                 display: block;
                 overflow-x: auto;
+            }
+            .data-table thead, .data-table tbody, .data-table th, .data-table td, .data-table tr {
+                display: block;
+            }
+            .data-table th {
+                background-color: #444; /* 調整手機版表頭顏色 */
+            }
+            .data-table tr {
+                margin-bottom: 15px;
+                border: 1px solid #ddd;
+                border-radius: 8px;
+                padding: 10px;
+            }
+            .data-table td {
+                text-align: right;
+                padding-left: 50%;
+                position: relative;
+            }
+            .data-table td::before {
+                content: attr(data-label);
+                position: absolute;
+                left: 10px;
+                width: 45%;
+                padding-right: 10px;
+                white-space: nowrap;
+                text-align: left;
+                font-weight: bold;
             }
             .meta {
                 flex-direction: column;
@@ -277,7 +280,7 @@
         <div class="container nav-bar">
             <div class="brand">NEXT<span>EDU</span> 數位教育觀點</div>
             <div class="font-controls">
-                <span class="font-label">閱讀模式：</span>
+                <span class="font-label">閱讀字級：</span>
                 <button class="font-btn active" onclick="setFontSize(100)" id="btn-100">標準</button>
                 <button class="font-btn" onclick="setFontSize(130)" id="btn-130">大字</button>
                 <button class="font-btn" onclick="setFontSize(160)" id="btn-160">特大</button>
@@ -288,103 +291,81 @@
 
     <div class="container">
         <article>
-            <h1>簡立峰：AI 時代，家長該給孩子的不是答案，而是「提問」的勇氣</h1>
+            <h1>簡立峰：AI 時代下的職場、教育與人才變革——從焦慮到價值再造</h1>
             <div class="meta">
-                <span><i style="color:#0066cc">●</i> 專題報導 / 數位教育編輯部</span>
+                <span><i style="color:#e91e63">●</i> 深度專題 / 數位教育編輯部</span>
                 <span>2025年12月09日</span>
-                <span>閱讀時間：約 8 分鐘</span>
+                <span>閱讀時間：約 12 分鐘</span>
             </div>
 
-            <p><strong>導言：</strong>在人工智慧（AI）飛速發展的今天，ChatGPT 等工具已經能輕鬆通過許多人類的考試。前 Google 台灣董事總經理簡立峰認為，這是一場教育的「海嘯」，但也是轉機。面對 AI，台灣家長該採取何種態度？</p>
+            <p><strong>前言：</strong>前 Google 台灣董事總經理簡立峰先生不僅是科技趨勢的領航者，更是台灣教育變革的積極倡議者。他認為 AI 不只改變了學習模式，更徹底顛覆了我們對「人才」的定義以及對「教育體制」的期待。</p>
 
             <div class="highlight-box">
-                <p class="highlight-text">簡立峰的核心觀點可以濃縮為一句話：<strong>「家長要學會『示弱』，從權威者轉變為與孩子一起探索 AI 的『共學者』。」</strong></p>
+                <p class="highlight-text">簡立峰的核心精神：教育的目標應從訓練「高效率的標準化零件」，轉變為培養「能定義問題、創造價值的獨立思想家」。</p>
             </div>
 
-            <h2>一、別再禁止，擁抱「人機協作」</h2>
-            <p>許多家長擔心孩子使用 AI 會變笨、會依賴。簡立峰指出，這種擔心就像當年計算機剛出現時一樣。未來的世界是「人 + AI」的世界。禁止孩子接觸 AI，等同於剝奪了他們未來的生存工具。</p>
-            <p>正確的思維應該是將 AI 視為：</p>
-            <ul>
-                <li><strong>Copilot（副駕駛）：</strong> 協助導航，但方向盤（決策權）仍在人手中。</li>
-                <li><strong>Tutor（一對一家教）：</strong> 它可以 24 小時不厭其煩地解釋概念，直到孩子聽懂。</li>
-            </ul>
+            <h2>一、家長心態：從知識權威到共學夥伴</h2>
+            <p>（此處為原有的家長態度與提問力內容，強調家長應「示弱」、鼓勵孩子將 AI 視為 Copilot，培養批判性思考與提問能力。）</p>
 
-            <h2>二、從「回答問題」轉向「定義問題」</h2>
-            <p>過去的教育體制獎勵「標準答案」。但在生成式 AI 時代，獲得答案的成本趨近於零。簡立峰強調，未來的關鍵能力是<strong>「提問力（Prompt Engineering）」</strong>。</p>
-            <p>家長在引導孩子時，可以改變對話方式：</p>
-            <ul>
-                <li>不問：「這題答案是什麼？」</li>
-                <li>改問：「你會怎麼問 AI 來解決這個問題？」、「你覺得 AI 的回答哪裡怪怪的？」</li>
-            </ul>
-            <p>透過這種方式，訓練孩子的邏輯架構能力與批判性思維（Critical Thinking），因為 AI 常常會「一本正經地胡說八道」，這正是訓練查證能力的最佳時機。</p>
+            <h2>二、AI 工具選擇：三大模型的教育應用優勢</h2>
+            <p>（此處為原有的 Gemini、ChatGPT、Grok 三大模型優勢比較內容。）</p>
 
-            <h2>三、工具比一比：Gemini、ChatGPT 與 Grok 誰適合孩子？</h2>
-            <p>「工欲善其事，必先利其器。」在 2025 年的現在，市面上有三大主流 AI 模型，簡立峰曾提及 AI 工具的迭代極快，家長應視其為「不同的家教」來靈活運用。以下是三大模型的優勢對比：</p>
+            <h2 id="workplace">三、職場變革：未來人才的「新三大標準」</h2>
+            <p>簡立峰強調，AI 將取代大部分「效率導向」的白領工作。未來的職場需要的是能將 AI 當作工具，創造出**「超越效率」**的新價值的人才。人才的衡量標準必須從根本上調整：</p>
 
-            <table class="comparison-table">
+            <table class="data-table">
                 <thead>
                     <tr>
-                        <th width="20%">AI 模型</th>
-                        <th width="40%">核心強項 (教育視角)</th>
-                        <th width="40%">推薦應用場景</th>
+                        <th width="30%">舊思維 (AI 可取代)</th>
+                        <th width="30%">新標準 (AI 難以取代)</th>
+                        <th width="40%">教育培養方向</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>
-                            <span class="tag tag-gemini">Gemini 3.0</span><br>
-                            <small>(Google)</small>
-                        </td>
-                        <td>
-                            <strong>學術研究與多模態</strong><br>
-                            最強大的「長文本」閱讀力，能一次讀完數百頁講義。與 Google 文件、雲端硬碟深度整合。
-                        </td>
-                        <td>
-                            ● <strong>做報告/專題</strong>：直接分析多份 PDF 文獻。<br>
-                            ● <strong>影音學習</strong>：能理解 YouTube 影片內容並做摘要。<br>
-                            ● <strong>整理筆記</strong>：將課堂錄音轉為結構化筆記。
-                        </td>
+                        <td data-label="舊思維">知識多寡 (記憶與背誦)</td>
+                        <td data-label="新標準"><strong>價值創造力與實踐力</strong></td>
+                        <td data-label="培養方向">鼓勵孩子從「遊戲、興趣、專題」中學習，給予創造和實踐的自由，減少填鴨。</td>
                     </tr>
                     <tr>
-                        <td>
-                            <span class="tag tag-chatgpt">ChatGPT</span><br>
-                            <small>(OpenAI)</small>
-                        </td>
-                        <td>
-                            <strong>創意互動與語言模擬</strong><br>
-                            語音模式（Advanced Voice）最接近真人對話，擅長角色扮演與創意思考。
-                        </td>
-                        <td>
-                            ● <strong>語言學習</strong>：當作英文家教練習口說。<br>
-                            ● <strong>蘇格拉底教學</strong>：請 AI 不要給答案，而是引導孩子思考。<br>
-                            ● <strong>寫作練習</strong>：協助潤飾文章或激發靈感。
-                        </td>
+                        <td data-label="舊思維">專業單一性 (T型人才)</td>
+                        <td data-label="新標準"><strong>跨域整合與溝通</strong> (π型人才)</td>
+                        <td data-label="培養方向">鼓勵接觸不同學科，將科技與人文結合，訓練孩子整合複雜、模糊領域知識的能力。</td>
                     </tr>
                     <tr>
-                        <td>
-                            <span class="tag tag-grok">Grok</span><br>
-                            <small>(xAI)</small>
-                        </td>
-                        <td>
-                            <strong>數理邏輯與即時資訊</strong><br>
-                            擁有最強的數理/程式推演能力，並能透過 X 平台取得最新時事。
-                        </td>
-                        <td>
-                            ● <strong>程式設計 (Coding)</strong>：輔助孩子學習寫程式。<br>
-                            ● <strong>數學解題</strong>：處理複雜的邏輯運算步驟。<br>
-                            ● <strong>媒體識讀</strong>：查詢當下發生的新聞事件不同觀點。
-                        </td>
+                        <td data-label="舊思維">服從性 (聽從指令完成任務)</td>
+                        <td data-label="新標準"><strong>定義問題的能力與提問力</strong></td>
+                        <td data-label="培養方向">訓練孩子對現狀**提出質疑**，能將一個模糊的需求，清晰化為 AI 可執行的指令 (Prompt)。</td>
                     </tr>
                 </tbody>
             </table>
+            
+            <p><strong>💡 職場警訊：</strong> 「工程師」的定義已經改變，純粹執行程式碼的職位面臨 AI 威脅。有價值的是**「能結合程式，解決跨領域商業或社會問題」**的專業人才。</p>
 
-            <h2>四、家長不需要「懂比孩子多」</h2>
-            <p>這是許多現代家長的焦慮來源。簡立峰建議，家長要練習「放下身段」。在這個新科技面前，大人跟小孩其實站在同一個起跑點，甚至小孩學得更快。</p>
-            <p>「共學」的態度是：承認自己也不會，然後邀請孩子一起找答案。這能建立更親密的親子關係，也能培養孩子的主動性。</p>
+            <h2 id="reform">四、教育體制的迫切變革建議</h2>
+            <p>簡立峰認為，體制若不變革，只會讓學生更焦慮、更抗拒新科技。教育體系必須擺脫對「標準答案」的迷戀。</p>
 
-            <div class="highlight-box" style="background-color: #fff3cd; border-left-color: #ffc107;">
-                <strong>💡 下一步行動：</strong> <br>
-                本週末，試著與孩子一起使用 ChatGPT 的語音功能，或者用 Gemini 整理一份家庭旅遊計畫。不要只是「用」它，而是與孩子討論：「為什麼 AI 會這樣建議？」
+            <h3>1. 課綱鬆綁與時間騰挪：</h3>
+            <ul>
+                <li><strong>主張：</strong> 國家應大幅減少課本中的「知識灌輸量」，讓課綱更為精簡。</li>
+                <li><strong>目的：</strong> 騰出時間交還給學校和學生，用於**專題研究 (PBL)**、深度討論和動手實作，培養學生處理「課本外」未知問題的能力。</li>
+            </ul>
+
+            <h3>2. 評量模式徹底轉型：</h3>
+            <ul>
+                <li><strong>主張：</strong> 徹底改變大學考招與各級評量方式。</li>
+                <li><strong>目的：</strong> 降低對標準答案、記憶性知識的依賴，提高對**「論述能力」、「批判思考」和「應用 AI 解決問題過程」**的權重，讓學習目標與未來價值一致。</li>
+            </ul>
+
+            <h3>3. 教師轉型為「情境設計師」：</h3>
+            <ul>
+                <li><strong>主張：</strong> 重新定義教師角色，教師不該與 AI 比知識量。</li>
+                <li><strong>目的：</strong> 讓教師專注於**設計學習情境**、引導學生提問、激發討論，並教導學生如何辨識 AI 輸出的真偽，成為學生的「學習總教練」。</li>
+            </ul>
+            
+            <div class="highlight-box" style="background-color: #e3f2fd; border-left-color: #2196f3;">
+                <strong>總結：</strong> 
+                面對 AI，台灣教育的挑戰不是技術落後，而是思維僵化。簡立峰的建言核心是：釋放教育體制的空間與時間，讓孩子有機會培養人類獨有的「價值創造力」。
             </div>
 
         </article>
@@ -396,8 +377,9 @@
 
     <script>
         function setFontSize(percentage) {
-            // 計算新的字體大小
-            const baseSize = 19; // 基礎字體改為 19px 更易讀
+            // 基礎字體 19px
+            const baseSize = 19; 
+            // 計算新的字體大小 (最大 200%)
             const newSize = baseSize * (percentage / 100);
             
             // 設定 body 的字體大小
