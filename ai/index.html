@@ -8,149 +8,202 @@
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;700&family=Noto+Serif+TC:wght@500;700;900&display=swap" rel="stylesheet">
 
     <style>
-        /* CSS 變數：專注於高對比度 */
+        /* --- 全域變數：舒適閱讀配色系統 --- */
         :root {
-            --ink-primary: #000000;      /* 純黑墨水 */
-            --paper-bg: #f8f8f8;        /* 接近白色背景 */
-            --highlight-color: #d9534f; /* 醒目紅色 (提醒與重點) */
-            --card-bg: #ffffff;
-            --border-line: #ccc;
+            /* 視覺色彩 */
+            --bg-color: #FDFBF7;        /* 暖紙白：比純白更護眼 */
+            --text-primary: #2C3333;    /* 深炭灰：清晰但不刺眼 */
+            --text-secondary: #525252;  /* 次要文字 */
+            --accent-color: #D35400;    /* 陶瓦紅：溫暖的強調色 */
+            --accent-bg: rgba(211, 84, 0, 0.08); /* 強調色背景 */
             
-            /* 字體大小調整：專為樂齡族群放大 */
-            --font-size-base: 20px;
-            --font-size-lg: 24px;
-            --font-size-xl: 36px;
+            /* 功能色彩 */
+            --card-bg: #FFFFFF;
+            --card-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            --border-radius: 16px;
+            
+            /* 排版系統 (以 20px 為基準，適合樂齡閱讀) */
+            --font-serif: 'Noto Serif TC', serif;       /* 標題用襯線體 */
+            --font-sans: 'Noto Sans TC', sans-serif;    /* 內文用黑體 (螢幕閱讀更清晰) */
+            --line-height: 1.8;
         }
 
-        /* 基礎樣式與字體放大 */
+        /* --- 基礎設定 --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
         
         body {
-            background-color: var(--paper-bg);
-            color: var(--ink-primary);
-            font-family: 'Noto Serif TC', serif;
-            line-height: 1.8; /* 行高加大，幫助閱讀 */
-            font-size: var(--font-size-base);
-            padding: 20px;
+            background-color: var(--bg-color);
+            color: var(--text-primary);
+            font-family: var(--font-sans); /* 預設使用黑體，易讀性較高 */
+            line-height: var(--line-height);
+            font-size: 20px; /* 基礎字級加大 */
+            -webkit-font-smoothing: antialiased;
         }
 
-        a { color: var(--highlight-color); text-decoration: none; border-bottom: 2px solid var(--highlight-color); transition: 0.3s; }
-        a:hover { background-color: var(--highlight-color); color: var(--paper-bg); }
-
-        /* RWD 佈局框架：單欄置中 */
+        /* --- 容器與佈局 --- */
         .container {
-            max-width: 900px;
+            max-width: 800px; /* 縮減寬度，減少眼球轉動疲勞 */
             margin: 0 auto;
-            padding: 20px;
+            padding: 40px 20px;
         }
 
-        /* 標題系統：親切且醒目 */
+        /* --- 標題設計 --- */
         header.doc-header {
-            border-bottom: 5px solid var(--highlight-color);
-            margin-bottom: 40px;
-            padding-bottom: 10px;
             text-align: center;
+            margin-bottom: 60px;
+            padding-bottom: 40px;
+            border-bottom: 2px dashed #E0E0E0; /* 虛線分隔，較柔和 */
         }
 
-        /* 驚嘆標語：特大且親切 */
-        .exclamation-text {
-            font-size: 48px; 
-            color: var(--highlight-color);
-            font-weight: 900;
-            display: block;
-            margin-bottom: 10px;
-            letter-spacing: 2px;
-        }
-
-        h1 { 
-            font-size: var(--font-size-xl); 
-            margin-bottom: 0.5rem; 
-            color: var(--ink-primary);
-        }
-
-        h2.section-heading {
-            font-size: var(--font-size-lg);
-            margin-top: 40px;
-            margin-bottom: 20px;
-            color: var(--highlight-color);
-            border-left: 8px solid var(--highlight-color);
-            padding-left: 15px;
-        }
-
-        h3 { 
-            font-size: var(--font-size-base); 
+        .tag-pill {
+            display: inline-block;
+            background: var(--text-primary);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 16px;
             font-weight: 700;
-            color: var(--ink-primary);
-            margin-top: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
         }
 
-        /* 功能卡片：簡單大方，強調重點 */
+        h1 {
+            font-family: var(--font-serif);
+            font-size: 42px;
+            font-weight: 900;
+            color: var(--text-primary);
+            line-height: 1.3;
+            margin-bottom: 20px;
+        }
+
+        .header-desc {
+            font-size: 22px;
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* --- 章節標題 --- */
+        h2.section-heading {
+            font-family: var(--font-serif);
+            font-size: 32px;
+            color: var(--accent-color);
+            margin: 60px 0 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        /* 裝飾性標題線條 */
+        h2.section-heading::before {
+            content: '';
+            display: inline-block;
+            width: 8px;
+            height: 32px;
+            background: var(--accent-color);
+            margin-right: 15px;
+            border-radius: 4px;
+        }
+
+        h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        /* --- 閱讀卡片設計 --- */
         .function-card {
             background: var(--card-bg);
-            border: 1px solid var(--border-line);
-            padding: 30px;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--card-shadow);
             margin-bottom: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-            border-radius: 8px;
+            border: 1px solid rgba(0,0,0,0.03);
+            transition: transform 0.3s ease;
         }
 
-        .function-card strong {
-            color: var(--highlight-color);
-        }
-
-        .tip-box {
-            background: #fffbe6; /* 淺黃色背景 */
-            padding: 15px;
-            border-left: 5px solid #ffc107; /* 暖色提示條 */
-            margin-top: 15px;
-            font-size: 0.95em;
-            color: #6a6a6a;
-        }
-
-        .tip-box span {
+        /* 重點文字 (取代原本的 **) */
+        strong {
+            color: var(--accent-color);
             font-weight: 700;
-            color: #d89b00;
+            background: var(--accent-bg); /* 螢光筆效果 */
+            padding: 0 4px;
+            border-radius: 4px;
         }
 
-        /* 特殊樣式：NotebookLM */
-        .notebook-card-simple {
-            background: #e6f7ff; /* 淺藍色背景 */
-            border: 2px solid #5b9bd5;
-            padding: 25px;
-            margin-top: 30px;
+        p { margin-bottom: 20px; }
+
+        /* --- 提示框優化 --- */
+        .tip-box {
+            background: #FFF8E1; /* 溫暖的奶油黃 */
+            border-left: 6px solid #FFC107;
+            padding: 20px;
             border-radius: 8px;
-        }
-        .notebook-card-simple h3 {
-            color: #5b9bd5;
-            font-size: var(--font-size-lg);
-            margin-top: 0;
+            margin-top: 25px;
+            display: flex;
+            gap: 15px;
+            align-items: flex-start;
         }
         
-        /* 表格樣式：簡化易讀 */
-        .simple-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-            font-size: 0.9em;
+        .tip-icon {
+            font-size: 24px;
+            line-height: 1;
         }
-        .simple-table th, .simple-table td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
+
+        /* --- 特殊卡片：NotebookLM --- */
+        .notebook-card {
+            background: #F0F7FF; /* 極淡藍色，保持清爽 */
+            border: 2px solid #BAE3FF;
+            padding: 40px;
+            border-radius: var(--border-radius);
+            position: relative;
+            overflow: hidden;
         }
-        .simple-table th { background-color: #f2f2f2; }
         
-        /* RWD 調整 (即使是手機版，字體依然要大) */
-        @media (max-width: 900px) {
-            .container { padding: 10px; }
-            .exclamation-text { font-size: 38px; }
-            h1 { font-size: 30px; }
-            h2.section-heading { font-size: 22px; }
+        /* 增加一個裝飾性的浮水印圖示感 */
+        .notebook-card::after {
+            content: 'SECRETARY';
+            position: absolute;
+            bottom: -10px;
+            right: 20px;
+            font-size: 60px;
+            font-weight: 900;
+            color: rgba(91, 155, 213, 0.05);
+            pointer-events: none;
+            font-family: var(--font-sans);
+        }
+
+        /* --- 總結區塊 --- */
+        .conclusion-card {
+            background: var(--text-primary);
+            color: #ffffff;
+            text-align: center;
+            padding: 60px 40px;
+            border-radius: var(--border-radius);
+            margin-top: 60px;
+        }
+        
+        .conclusion-card p {
+            font-size: 24px;
+            margin-bottom: 0;
+            line-height: 1.6;
+        }
+
+        /* --- RWD 手機適配 --- */
+        @media (max-width: 768px) {
             body { font-size: 18px; }
+            .container { padding: 20px; }
+            .function-card { padding: 25px; }
+            
+            h1 { font-size: 32px; }
+            .header-desc { font-size: 18px; }
+            h2.section-heading { font-size: 26px; margin-top: 40px; }
+            
+            /* 手機版調整提示框佈局 */
+            .tip-box { flex-direction: column; gap: 10px; }
         }
     </style>
 </head>
@@ -159,113 +212,138 @@
     <div class="container">
         
         <header class="doc-header">
-            <span class="exclamation-text">【哇！超厲害！】生活大小事，AI 幫您搞定！</span>
-            <h1>您的 AI 智慧好幫手：輕鬆過生活指南</h1>
-            <p style="margin-top: 1rem; color: #555;">
-                Gemini 就像一位**聰明又熱心的年輕鄰居**，可以看圖、可以聽話、可以幫您整理資料。它會用最簡單的方式來協助您！
+            <span class="tag-pill">生活小百科</span>
+            <h1>您的 AI 智慧好幫手<br>輕鬆過生活指南</h1>
+            <p class="header-desc">
+                Gemini 就像一位<strong>聰明又熱心的年輕鄰居</strong>，可以看圖、可以聽話、可以幫您整理資料。跟著我們，用最簡單的方式來學會它！
             </p>
         </header>
 
         <section id="daily-life">
-            <h2 class="section-heading">👵🧓 照顧生活：健康、飲食、旅遊超方便</h2>
+            <h2 class="section-heading">👵🧓 照顧生活：吃得健康、玩得開心</h2>
             
             <article class="function-card">
-                <h3 style="color: #007bff;">一、拍照問飲食：您的虛擬營養師</h3>
+                <h3 style="color: #D35400;">一、拍照問飲食：您的虛擬營養師</h3>
                 <p>
-                    您去外面吃飯，不知道這個便當**熱量會不會太高**？或是蛋白質夠不夠？
+                    您去外面吃飯，不知道這個便當<strong>熱量會不會太高</strong>？或是蛋白質夠不夠？
                 </p>
                 <p>
-                    👉 **怎麼做：** 拿出手機，**拍下您的便當照片**，然後問 Gemini 說：「我今天要增強體力，請問這個便當裡的**蛋白質大概有多少**？我下午可以再吃什麼？」
+                    👉 <strong>怎麼做：</strong><br>
+                    拿出手機，<strong>拍下您的便當照片</strong>，然後問 Gemini 說：「我今天要增強體力，請問這個便當裡的<strong>蛋白質大概有多少</strong>？我下午可以再吃什麼？」
                 </p>
                 <div class="tip-box">
-                    <span>💡 提醒您：</span> 它會「看圖」來估計食物種類和份量，告訴您大概的營養。不用再自己辛苦查資料了！
+                    <span class="tip-icon">💡</span>
+                    <div>
+                        <strong>貼心提醒：</strong><br>
+                        它會「看圖」來估計食物種類和份量，告訴您大概的營養。不用再自己辛苦查資料了！
+                    </div>
                 </div>
             </article>
 
             <article class="function-card">
-                <h3 style="color: #007bff;">二、規劃輕鬆遊：量身訂做的行程</h3>
+                <h3 style="color: #D35400;">二、規劃輕鬆遊：量身訂做的行程</h3>
                 <p>
-                    想帶孫子去玩，又不想走太多路，但又要找有**地方可以吃素**的地方。
+                    想帶孫子去玩，又不想走太多路，但又要找有<strong>地方可以吃素</strong>的地方。
                 </p>
                 <p>
-                    👉 **怎麼做：** 您直接問它：「幫我規劃一個適合**帶小孩、不爬山**，而且要有**素食餐廳**的**台南三天兩夜**行程。」
+                    👉 <strong>怎麼做：</strong><br>
+                    您直接問它：「幫我規劃一個適合<strong>帶小孩、不爬山</strong>，而且要有<strong>素食餐廳</strong>的<strong>台南三天兩夜</strong>行程。」
                 </p>
                 <p>
-                    Gemini 會把所有符合條件的景點、餐廳、住宿都幫您找好，**專門為您一家人量身打造**，不會再給您不適合的建議。
+                    Gemini 會把所有符合條件的景點、餐廳、住宿都幫您找好，<strong>專門為您一家人量身打造</strong>，不會再給您不適合的建議。
                 </p>
             </article>
         </section>
 
         <section id="work-assist">
-            <h2 class="section-heading">💼 辦公室幫手：回信不再傷腦筋</h2>
+            <h2 class="section-heading">💼 辦公室幫手：回信、讀書都不累</h2>
 
             <article class="function-card">
-                <h3 style="color: #28a745;">三、高情商回信：語氣馬上變客氣</h3>
+                <h3 style="color: #278E68;">三、高情商回信：語氣馬上變客氣</h3>
                 <p>
-                    收到一封**語氣很衝**的投訴信，或是您自己**心情有點急**，不知道怎麼回覆才不會傷和氣？
+                    收到一封<strong>語氣很衝</strong>的投訴信，或是您自己<strong>心情有點急</strong>，不知道怎麼回覆才不會傷和氣？
                 </p>
                 <p>
-                    👉 **怎麼做：** 把那封信貼給 Gemini，跟它說：「**請你幫我把這封信改成專業、客氣一點的回覆，要讓對方感覺被尊重。**」
+                    👉 <strong>怎麼做：</strong><br>
+                    把那封信貼給 Gemini，跟它說：「<strong>請你幫我把這封信改成專業、客氣一點的回覆，要讓對方感覺被尊重。</strong>」
                 </p>
-                <div class="tip-box">
-                    <span>✉️ 厲害在哪：</span> 它就像一位**很有智慧的秘書**，會把您的意思留下，但把語氣調整到最舒服的狀態，**讓您溝通無往不利！**
+                <div class="tip-box" style="background-color: #E8F5E9; border-color: #278E68;">
+                    <span class="tip-icon">✉️</span>
+                    <div>
+                        <strong>厲害在哪：</strong><br>
+                        它就像一位<strong>很有智慧的秘書</strong>，會把您的意思留下，但把語氣調整到最舒服的狀態，<strong>讓您溝通無往不利！</strong>
+                    </div>
                 </div>
             </article>
             
             <article class="function-card">
-                <h3 style="color: #28a745;">四、看懂複雜文件：不用自己慢慢讀</h3>
+                <h3 style="color: #278E68;">四、看懂複雜文件：不用自己慢慢讀</h3>
                 <p>
-                    遇到一份**很長**的合約、新聞報告，或是**看不懂的專有名詞**，不想花時間看怎麼辦？
+                    遇到一份<strong>很長</strong>的合約、新聞報告，或是<strong>看不懂的專有名詞</strong>，不想花時間看怎麼辦？
                 </p>
                 <p>
-                    👉 **怎麼做：** 請 Gemini 幫您：「請幫我把這份文件**用最簡單的白話文**，**整理出三個最重要的重點**就好。」
+                    👉 <strong>怎麼做：</strong><br>
+                    請 Gemini 幫您：「請幫我把這份文件<strong>用最簡單的白話文</strong>，<strong>整理出三個最重要的重點</strong>就好。」
                 </p>
                 <p>
-                    它會在幾秒內完成，讓您馬上抓到重點，**省下大把時間！**
+                    它會在幾秒內完成，讓您馬上抓到重點，<strong>省下大把時間！</strong>
                 </p>
             </article>
         </section>
         
         <section id="deep-research">
-            <h2 class="section-heading">📚 專業整理秘書：幫您把家裡的文件變聰明！</h2>
-            <p>
-                這就是 **NotebookLM** 的特別功能。它就像一個**專門幫您讀書、整理資料**的秘書，而且它**只看您給它的文件**，不會亂猜，所以更可靠！
+            <h2 class="section-heading">📚 專業整理秘書：NotebookLM</h2>
+            <p style="font-size: 22px; margin-bottom: 30px;">
+                這就是 <strong>NotebookLM</strong> 的特別功能。它就像一個<strong>專門幫您讀書、整理資料</strong>的秘書，而且它<strong>只看您給它的文件</strong>，不會亂猜，所以更可靠！
             </p>
 
-            <div class="notebook-card-simple">
-                <h3 style="color: #5b9bd5;">五、專屬秘書：只讀您給的文件 (最可靠)</h3>
+            <div class="notebook-card">
+                <h3 style="color: #1F6EAD;">五、專屬秘書：只讀您給的文件 (最可靠)</h3>
                 <p>
-                    您有很多家族相簿、醫療紀錄、或是保單文件，堆積如山，**怎麼找都找不到重點**？
+                    您有很多家族相簿、醫療紀錄、或是保單文件，堆積如山，<strong>怎麼找都找不到重點</strong>？
                 </p>
                 <p>
-                    👉 **怎麼做：** 把這些文件（照片、PDF、文字檔案）都上傳給 NotebookLM。然後您可以問它：「**請問在所有文件裡，有沒有提到我爺爺的舊病史？**」
+                    👉 <strong>怎麼做：</strong><br>
+                    把這些文件（照片、PDF、文字檔案）都上傳給 NotebookLM。然後您可以問它：「<strong>請問在所有文件裡，有沒有提到我爺爺的舊病史？</strong>」
                 </p>
-                <div class="tip-box" style="border-color: #5b9bd5;">
-                    <span>⭐ 最棒的是：</span> 這個秘書**只會根據您的文件**來回答，不會去外面亂找資料，所以答案最可靠、最貼近您的情況！
+                <div class="tip-box" style="background-color: #fff; border-color: #1F6EAD;">
+                    <span class="tip-icon">⭐</span>
+                    <div>
+                        <strong>最棒的是：</strong><br>
+                        這個秘書<strong>只會根據您的文件</strong>來回答，不會去外面亂找資料，所以答案最可靠、最貼近您的情況！
+                    </div>
                 </div>
             </div>
 
-            <h3 style="color: var(--highlight-color);">Gemini + 秘書 (NotebookLM) = 力量放大！</h3>
-            <p>
-                當聰明的 **Gemini (什麼都懂)** 遇到只看您家資料的 **NotebookLM (最可靠)**，它們就可以一起做出**更厲害**的事情：
-            </p>
-            
-            <ul style="margin-top: 15px; padding-left: 30px;">
-                <li>**知識雙保險：** 秘書先整理您的資料，再讓 Gemini 看看有沒有新的新聞或常識可以補充，**讓您考慮得更周全**。</li>
-                <li>**直接寫報告：** 您請秘書找出保單裡最有利的條款，然後請 Gemini **直接幫您寫一封申訴信函**。從資料到成果，**一次搞定！**</li>
-            </ul>
+            <article class="function-card" style="margin-top: 30px; border-left: 5px solid var(--accent-color);">
+                <h3>Gemini + 秘書 (NotebookLM) = 力量放大！</h3>
+                <p>
+                    當聰明的 <strong>Gemini (什麼都懂)</strong> 遇到只看您家資料的 <strong>NotebookLM (最可靠)</strong>，它們就可以一起做出<strong>更厲害</strong>的事情：
+                </p>
+                
+                <ul style="margin-top: 15px; padding-left: 20px; list-style: none;">
+                    <li style="margin-bottom: 15px;">
+                        ✅ <strong>知識雙保險：</strong><br>
+                        秘書先整理您的資料，再讓 Gemini 看看有沒有新的新聞或常識可以補充，<strong>讓您考慮得更周全</strong>。
+                    </li>
+                    <li>
+                        ✅ <strong>直接寫報告：</strong><br>
+                        您請秘書找出保單裡最有利的條款，然後請 Gemini <strong>直接幫您寫一封申訴信函</strong>。從資料到成果，<strong>一次搞定！</strong>
+                    </li>
+                </ul>
+            </article>
         </section>
         
         <section id="conclusion">
-            <h2 class="section-heading">🎉 總結：智慧生活，輕鬆上手！</h2>
-            <article class="function-card" style="background: var(--highlight-color); color: white;">
-                <p style="font-size: var(--font-size-lg); font-weight: 700;">
-                    Gemini 不只是一個工具，它是您生活中的**好幫手、好學生、好秘書**。
+            <div class="conclusion-card">
+                <p style="font-weight: 700; margin-bottom: 20px; font-size: 32px;">🎉 總結：智慧生活，輕鬆上手！</p>
+                <p>
+                    Gemini 不只是一個工具，它是您生活中的<br><strong>好幫手、好學生、好秘書</strong>。
                 </p>
-                <p style="margin-top: 20px;">
-                    請您儘管發揮您的好奇心，**大膽地問它問題，請它做事情**。您會發現，生活和學習都會變得**超級輕鬆、超級好玩！**
+                <p style="margin-top: 30px; font-size: 20px; opacity: 0.9;">
+                    請您儘管發揮您的好奇心，<strong>大膽地問它問題，請它做事情</strong>。<br>您會發現，生活和學習都會變得<strong>超級輕鬆、超級好玩！</strong>
                 </p>
-            </article>
+            </div>
         </section>
 
     </div>
