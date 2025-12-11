@@ -3,300 +3,342 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>活動資源導引</title>
+    <title>活動資源導引 | 日系極簡風格</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+
     <style>
-        /* CSS Reset and Global Styles */
+        /* --- 1. 全域變數系統：日系自然色調 --- */
         :root {
-            --primary-color: #00d4ff;     /* 霓虹藍 */
-            --secondary-color: #b19cd9;   /* 淡紫 */
-            --accent-color: #ff2a6d;      /* 霓虹粉紅，用於 New */
-            --dark-color: #0f1626;       /* 深藍黑（夜空基調） */
-            --light-color: #f0f4f8;
-            --text-light: #e0e7ff;
-            --font-family: 'Segoe UI', 'Microsoft JhengHei', Tahoma, Geneva, Verdana, sans-serif;
+            /* 背景色系：溫潤的米白與亞麻色 */
+            --bg-body: #FDFBF7;       /* 暖米白，模擬紙張 */
+            --bg-section: #F4F1EA;    /* 淺亞麻，用於區塊分隔 */
+            --bg-card: #FFFFFF;       /* 純白卡片 */
+            
+            /* 文字色系：墨色與大地色 */
+            --text-primary: #2C2A29;  /* 墨黑，非純黑，較柔和 */
+            --text-secondary: #595755;/* 深灰，用於內文 */
+            --text-muted: #8C8A88;    /* 淺灰，用於輔助資訊 */
+            
+            /* 品牌色系：低飽和度自然色 */
+            --brand-primary: #7A8F83; /* 抹茶綠 (Matcha Green) - 穩重主色 */
+            --brand-accent: #D9A3A3;  /* 櫻花粉 (Sakura Pink) - 柔和強調色 */
+            
+            /* 排版數值 */
+            --radius-sm: 4px;
+            --radius-md: 8px;
+            --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.04); /* 極柔和的陰影 */
+            --font-serif: 'Noto Serif JP', serif; /* 標題用襯線體 */
+            --font-sans: 'Noto Sans JP', sans-serif; /* 內文用無襯線體 */
         }
 
+        /* --- 2. 基礎重置 (Reset) --- */
+        * { box-sizing: border-box; }
+        
         body {
-            font-family: var(--font-family);
+            font-family: var(--font-sans);
             margin: 0;
             padding: 0;
-            background-color: var(--dark-color);
-            color: var(--text-light);
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 10% 20%, rgba(0, 212, 255, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 90% 80%, rgba(255, 42, 109, 0.15) 0%, transparent 20%),
-                radial-gradient(circle at 50% 50%, rgba(177, 156, 217, 0.1) 0%, transparent 30%);
-            background-attachment: fixed;
+            background-color: var(--bg-body);
+            color: var(--text-primary);
+            line-height: 1.8; /* 增加行高，提升閱讀舒適度 */
+            -webkit-font-smoothing: antialiased;
+            letter-spacing: 0.05em; /* 字距微增，增加通透感 */
         }
 
-        /* Hero Section - 大都會夜景風格 */
+        a { text-decoration: none; color: inherit; transition: 0.3s ease; }
+
+        /* --- 3. Hero Section (首屏) --- */
         .hero {
-            background-image: url('https://images.unsplash.com/photo-1477959858617-67f85cf4d166?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            height: 70vh;
-            min-height: 500px;
+            position: relative;
+            height: 60vh;
+            min-height: 400px;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
-            position: relative;
-            padding: 20px;
+            /* 改用明亮、自然的圖片 (這裡用一張富士山與櫻花的示意圖) */
+            background-image: url('https://images.unsplash.com/photo-1490806843957-31f4c9a91c65?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
         }
 
-        .hero::before {
+        /* 使用白色漸層遮罩，讓文字更清晰，同時營造空氣感 */
+        .hero::after {
             content: '';
             position: absolute;
             top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, rgba(15, 22, 38, 0.7), rgba(15, 22, 38, 0.9));
-            z-index: 1;
+            background: linear-gradient(to bottom, rgba(253,251,247,0.3), rgba(253,251,247,0.95));
         }
 
         .hero-content {
-            position: relative;
             z-index: 2;
-            max-width: 900px;
+            max-width: 800px;
+            padding: 40px;
         }
 
         .hero h1 {
-            font-size: 4rem;
-            margin-bottom: 0.5rem;
+            font-family: var(--font-serif);
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
             font-weight: 700;
-            text-shadow: 0 0 20px rgba(0, 212, 255, 0.8);
-            color: #ffffff;
+            color: var(--text-primary);
+            letter-spacing: 0.1em;
         }
 
         .hero p {
-            font-size: 1.5rem;
-            opacity: 0.95;
-            text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+        }
+        
+        /* 裝飾性分隔線 */
+        .hero-divider {
+            width: 60px;
+            height: 2px;
+            background-color: var(--brand-primary);
+            margin: 30px auto 0;
         }
 
-        /* Main Content */
+        /* --- 4. 佈局容器 --- */
         .container {
-            max-width: 1200px;
+            max-width: 1100px;
             margin: 0 auto;
-            padding: 60px 20px;
+            padding: 80px 24px; /* 大幅增加留白 */
         }
 
-        .link-section {
-            padding: 60px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        .link-section:last-child {
-            border-bottom: none;
-        }
-
-        .link-section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 40px;
+        /* --- 5. 分區標題設計 --- */
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
             position: relative;
-            display: inline-block;
-            padding-bottom: 15px;
         }
 
-        .link-section h2::after {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: 0;
-            width: 80px;
-            height: 4px;
-            background: var(--primary-color);
-            box-shadow: 0 0 15px var(--primary-color);
+        .section-header h2 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            color: var(--text-primary);
+            margin: 0 0 10px 0;
+            font-weight: 700;
+        }
+        
+        .section-header span {
+            display: block;
+            font-family: var(--font-sans);
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
         }
 
-        .link-section.new h2::after {
-            background: var(--accent-color);
-            box-shadow: 0 0 15px var(--accent-color);
-        }
-
-        .link-grid {
+        /* --- 6. 卡片設計 (核心優化) --- */
+        .grid-layout {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px; /* 增加卡片間距 */
         }
-
-        /* Card - 夜景霓虹風格 + 保留圖片位置 */
+        
         .card {
-            background: rgba(15, 22, 38, 0.7);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(0, 212, 255, 0.3);
-            border-radius: 12px;
+            background-color: var(--bg-card);
+            border-radius: var(--radius-md);
             overflow: hidden;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+            transition: all 0.3s ease;
+            /* 改用柔和陰影，取消邊框 */
+            box-shadow: var(--shadow-soft);
+            display: flex;
+            flex-direction: column;
+            border: 1px solid rgba(0,0,0,0.03); /* 極細微的邊界感 */
         }
 
         .card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary-color);
-            box-shadow: 0 15px 35px rgba(0, 212, 255, 0.3);
+            transform: translateY(-6px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* 圖片區塊：移除暗色遮罩，展現原圖 */
+        .card-image-wrapper {
+            width: 100%;
+            height: 220px;
+            overflow: hidden;
         }
 
         .card-image {
-            height: 180px;
+            width: 100%;
+            height: 100%;
             background-size: cover;
             background-position: center;
-            background-repeat: no-repeat;
-            position: relative;
+            transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* 更優雅的緩動 */
         }
 
-        .card-image::after {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(to bottom, transparent 60%, rgba(15, 22, 38, 0.8));
+        .card:hover .card-image {
+            transform: scale(1.08); /* 緩慢放大 */
         }
 
+        /* 內容區塊 */
         .card-content {
-            padding: 25px;
+            padding: 32px; /* 增加內部留白 */
+            flex-grow: 1;
             display: flex;
             flex-direction: column;
+            text-align: center; /* 日系常見的置中排版 */
         }
+        
+        /* 類別標籤 */
+        .card-category {
+            font-size: 0.8rem;
+            color: var(--brand-primary);
+            font-weight: 500;
+            margin-bottom: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+        
+        .new-section .card-category { color: var(--brand-accent); }
 
         .card h3 {
-            margin: 0 0 15px 0;
-            font-size: 1.5rem;
-            color: #ffffff;
-            text-shadow: 0 0 10px rgba(0, 212, 255, 0.4);
+            font-family: var(--font-serif);
+            margin: 0 0 16px 0;
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            line-height: 1.4;
         }
 
         .card p {
-            color: var(--text-light);
-            opacity: 0.9;
+            margin: 0 0 32px 0;
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
             flex-grow: 1;
-            margin-bottom: 20px;
         }
 
-        .card a.button {
-            align-self: flex-start;
-            padding: 12px 28px;
+        /* 日系按鈕設計：簡約、細線條 */
+        .card .button {
+            align-self: center;
+            padding: 10px 24px;
             background: transparent;
-            border: 2px solid var(--primary-color);
-            color: var(--primary-color);
+            /* 使用細線框 */
+            border: 1px solid var(--text-primary);
+            color: var(--text-primary);
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 600;
+            border-radius: var(--radius-sm);
+            font-size: 0.9rem;
+            font-weight: 500;
             transition: all 0.3s;
-            box-shadow: 0 0 15px rgba(0, 212, 255, 0.3);
+            letter-spacing: 0.1em;
         }
 
-        .card a.button:hover {
-            background: var(--primary-color);
-            color: #0f1626;
-            box-shadow: 0 0 25px rgba(0, 212, 255, 0.6);
+        .card .button:hover {
+            background: var(--text-primary);
+            color: var(--bg-body);
         }
 
-        /* New 標籤專用按鈕顏色 */
-        .new .card a.button {
-            border-color: var(--accent-color);
-            color: var(--accent-color);
-            box-shadow: 0 0 15px rgba(255, 42, 109, 0.3);
+        /* New 區塊特殊色 */
+        .new-section .card .button {
+            border-color: var(--brand-accent);
+            color: var(--brand-accent);
+        }
+        .new-section .card .button:hover {
+            background: var(--brand-accent);
+            color: #fff;
+        }
+        
+        /* 區塊分隔背景 */
+        .section-divider {
+            background-color: var(--bg-section);
+            padding: 80px 0;
         }
 
-        .new .card a.button:hover {
-            background: var(--accent-color);
-            box-shadow: 0 0 25px rgba(255, 42, 109, 0.6);
-        }
-
-        /* Footer */
+        /* --- 7. Footer --- */
         footer {
-            background: rgba(10, 15, 28, 0.9);
-            color: var(--text-light);
             text-align: center;
-            padding: 30px 20px;
-            font-size: 0.95rem;
-            border-top: 1px solid rgba(0, 212, 255, 0.2);
+            padding: 60px 20px;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            background: var(--bg-body);
+            border-top: 1px solid rgba(0,0,0,0.05);
         }
 
-        /* Responsive */
+        /* --- 8. RWD 調整 --- */
         @media (max-width: 768px) {
-            .hero {
-                height: 50vh;
-            }
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            .hero p {
-                font-size: 1.2rem;
-            }
-            .link-section h2 {
-                font-size: 2rem;
-            }
-            .link-grid {
-                gap: 20px;
-            }
-            .card-image {
-                height: 150px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 2.3rem;
-            }
+            .hero { height: 50vh; min-height: 350px; }
+            .hero h1 { font-size: 2.5rem; }
+            .container { padding: 60px 20px; }
+            .card-content { padding: 24px; }
         }
     </style>
 </head>
 <body>
 
-    <section class="hero">
+    <header class="hero">
         <div class="hero-content">
             <h1>活動資源導引</h1>
-            <p>各項資訊整合發佈區</p>
+            <p>彙整學習資源，探索無限可能</p>
+            <div class="hero-divider"></div>
         </div>
-    </section>
+    </header>
 
-    <div class="container">
+    <div class="container new-section">
+        <div class="section-header">
+            <span>New Release</span>
+            <h2>最新資訊</h2>
+        </div>
 
-        <section class="link-section new">
-            <h2>最新資訊 (New Release)</h2>
-            <div class="link-grid">
-                
-                <div class="card">
+        <div class="grid-layout">
+            <article class="card">
+                <div class="card-image-wrapper">
                     <div class="card-image" style="background-image: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1765285632/IMG_0064_c6pmhc.jpg');"></div>
-                    <div class="card-content">
-                        <h3>教育專欄：家長如何面對 AI</h3>
-                        <p>探討簡立峰先生關於 AI 時代家長應採取的態度、共學思維與教養方式，提供詳盡的教育方針。</p>
-                        <a href="https://event.itigre.com/ai/edu.html" target="_blank" class="button">前往閱讀</a>
-                    </div>
                 </div>
+                <div class="card-content">
+                    <span class="card-category">Education Column</span>
+                    <h3>教育專欄：家長如何面對 AI</h3>
+                    <p>探討 AI 時代下家長應採取的開放態度。深入分析共學思維與現代教養方式，提供具前瞻性的教育方針建議。</p>
+                    <a href="https://event.itigre.com/ai/edu.html" target="_blank" class="button">前往閱讀</a>
+                </div>
+            </article>
+        </div>
+    </div>
 
+    <div class="section-divider">
+        <div class="container">
+            <div class="section-header">
+                <span>Archive</span>
+                <h2>歷史資源</h2>
             </div>
-        </section>
 
-        <section class="link-section">
-            <h2>歷史資源 (Past Events)</h2>
-            <div class="link-grid">
+            <div class="grid-layout">
                 
-                <div class="card">
-                    <div class="card-image" style="background-image: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1765285632/IMG_0064_c6pmhc.jpg');"></div>
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background-image: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1765285632/IMG_0064_c6pmhc.jpg');"></div>
+                    </div>
                     <div class="card-content">
-                        <h3>AI可以幹嘛總覽</h3>
-                        <p>對於樂齡族群的應用分析。</p>
+                        <span class="card-category">Overview</span>
+                        <h3>AI 應用總覽：生活新解方</h3>
+                        <p>專為樂齡族群設計的應用分析，探索科技如何輔助日常生活。</p>
                         <a href="https://event.itigre.com/ai/" target="_blank" class="button">了解更多</a>
                     </div>
-                </div>
+                </article>
 
-                <div class="card">
-                    <div class="card-image" style="background-image: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1764809291/593579527_26302134846042472_7936923505210090111_n_zii0rm.jpg');"></div>
+                <article class="card">
+                    <div class="card-image-wrapper">
+                        <div class="card-image" style="background-image: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1764809291/593579527_26302134846042472_7936923505210090111_n_zii0rm.jpg');"></div>
+                    </div>
                     <div class="card-content">
-                        <h3>虎友的筆電清倉（已售完）</h3>
-                        <p>銷售完畢，感謝大家。</p>
+                        <span class="card-category">Event Sold Out</span>
+                        <h3>虎友筆電清倉（已售完）</h3>
+                        <p>本次特賣活動已圓滿結束，感謝大家的支持。點擊可回顧規格指南。</p>
                         <a href="https://event.itigre.com/johnny_laptop.html" target="_blank" class="button">查閱指南</a>
                     </div>
-                </div>
+                </article>
 
             </div>
-        </section>
-        
+        </div>
     </div>
 
     <footer>
-        © 2025 數位資源整理。所有外部連結版權歸原作者所有。
+        <p>© 2025 數位資源整理 | 內容版權歸原作者所有</p>
     </footer>
 
 </body>
