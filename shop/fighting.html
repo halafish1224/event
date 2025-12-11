@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>【虎魂不滅】Mercuries 精品應援巾｜飄揚在夜空中的藍絲帶</title>
+    <meta name="description" content="Mercuries Tigers 三商虎復刻精品應援巾。120x20cm 特殊規格，天藍色實色設計，乘載1990-1999的職棒記憶。日系工藝，限量製作。">
+    <meta name="keywords" content="三商虎, Mercuries Tigers, 應援巾, 運動毛巾, 中華職棒, 懷舊, 林仲秋, 涂鴻欽, 虎魂不滅, 藍色絲帶">
+    <meta property="og:title" content="飄揚在夜空中的藍絲帶 - Mercuries 精品應援巾">
+    <meta property="og:image" content="https://res.cloudinary.com/dshfj9ace/image/upload/v1765425661/unnamed_8_arz2al.jpg">
+    <meta property="og:description" content="致敬那段汗水與淚水交織的歲月。">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;700&family=Noto+Serif+TC:wght@400;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Reset & Variables --- */
+        :root {
+            --primary-blue: #87CEEB; /* 天藍色 (毛巾主色) */
+            --deep-night: #0B1026;   /* 深夜藍 (背景) */
+            --accent-gold: #C5A059;  /* 冠軍金/精品點綴 */
+            --text-white: #F5F5F5;
+            --text-gray: #B0B0B0;
+            --font-serif: 'Noto Serif TC', serif;
+            --font-sans: 'Noto Sans TC', sans-serif;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: var(--deep-night);
+            color: var(--text-white);
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; height: auto; }
+
+        /* --- Animations --- */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(1deg); }
+            100% { transform: translateY(0px) rotate(0deg); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 1.2s ease-out forwards;
+            opacity: 0; /* JS will trigger this */
+        }
+
+        /* --- Header / Hero Section --- */
+        header {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a2542 0%, var(--deep-night) 80%);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .brand-mark {
+            font-family: var(--font-serif);
+            color: var(--primary-blue);
+            font-size: 0.9rem;
+            letter-spacing: 0.3em;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+            border-bottom: 1px solid var(--primary-blue);
+            padding-bottom: 5px;
+        }
+
+        h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            color: var(--text-white);
+            text-shadow: 0 0 20px rgba(135, 206, 235, 0.4);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-gray);
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+
+        .hero-image-container {
+            width: 100%;
+            max-width: 900px;
+            animation: float 6s ease-in-out infinite;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.6));
+        }
+        
+        .hero-image-container img {
+            border-radius: 10px;
+        }
+
+        /* --- Story Section --- */
+        .section-padding {
+            padding: 5rem 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .story-text h2 {
+            font-family: var(--font-serif);
+            font-size: 2.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        
+        .story-text h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background: var(--accent-gold);
+            margin-top: 10px;
+        }
+
+        .story-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.05rem;
+            text-align: justify;
+        }
+
+        .story-image img {
+            border: 1px solid rgba(255,255,255,0.1);
+            box-shadow: 10px 10px 0px rgba(135, 206, 235, 0.1);
+        }
+
+        /* --- Design Details (Cards) --- */
+        .features-section {
+            background-color: #0F1630;
+            padding: 5rem 2rem;
+        }
+
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.03);
+            padding: 2rem;
+            border-radius: 8px;
+            border-top: 3px solid var(--primary-blue);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.05);
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary-blue);
+        }
+
+        /* --- Full Width Image --- */
+        .full-width-showcase {
+            width: 100%;
+            height: 60vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .full-width-showcase img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        .overlay-text {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 20px;
+            color: var(--accent-gold);
+            font-family: var(--font-serif);
+            border-left: 3px solid var(--primary-blue);
+        }
+
+        /* --- Specs Table --- */
+        .specs-section {
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        
+        .specs-box {
+            display: inline-block;
+            text-align: left;
+            border: 1px solid var(--primary-blue);
+            padding: 2rem;
+            position: relative;
+        }
+
+        .specs-box::before {
+            content: 'SPEC';
+            position: absolute;
+            top: -12px;
+            left: 20px;
+            background: var(--deep-night);
+            padding: 0 10px;
+            color: var(--primary-blue);
+            font-weight: bold;
+        }
+
+        .specs-list li {
+            list-style: none;
+            margin-bottom: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 5px;
+            display: flex;
+            justify-content: space-between;
+            width: 300px;
+        }
+        .specs-list span { color: var(--text-gray); }
+
+        /* --- CTA Footer --- */
+        footer {
+            padding: 4rem 2rem 8rem 2rem; /* Bottom padding for sticky button */
+            text-align: center;
+            background: linear-gradient(to top, #000 0%, var(--deep-night) 100%);
+        }
+
+        .price {
+            font-size: 2rem;
+            font-family: var(--font-serif);
+            color: var(--accent-gold);
+            margin: 1rem 0;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            font-size: 0.8rem;
+            color: #555;
+        }
+
+        /* --- Sticky Button --- */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(11, 16, 38, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 15px;
+            display: flex;
+            justify-content: center;
+            border-top: 1px solid var(--primary-blue);
+            z-index: 1000;
+        }
+
+        .cta-btn {
+            background-color: var(--primary-blue);
+            color: var(--deep-night);
+            font-weight: 900;
+            padding: 12px 50px;
+            border-radius: 30px;
+            font-size: 1.2rem;
+            letter-spacing: 1px;
+            transition: all 0.3s;
+            box-shadow: 0 0 15px rgba(135, 206, 235, 0.5);
+            display: inline-block;
+        }
+
+        .cta-btn:hover {
+            background-color: #fff;
+            transform: scale(1.05);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.8);
+        }
+
+        /* --- RWD Media Queries --- */
+        @media (max-width: 768px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .story-text {
+                order: 2;
+            }
+            .story-image {
+                order: 1;
+            }
+
+            h1 { font-size: 2rem; }
+            
+            .full-width-showcase { height: 40vh; }
+            
+            .specs-list li { width: 100%; }
+            .specs-box { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="brand-mark">MERCURIES TIGERS COLLECTION</div>
+        <div class="hero-image-container fade-on-scroll">
+            <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1765425661/unnamed_8_arz2al.jpg" alt="Mercuries Tigers 藍色應援巾主視覺">
+        </div>
+        <br>
+        <h1 class="fade-on-scroll">飄揚在夜空中的藍絲帶</h1>
+        <p class="subtitle fade-on-scroll">致 那段未曾褪色的職棒歲月 (1990-1999)</p>
+    </header>
+
+    <section class="section-padding">
+        <div class="story-grid">
+            <div class="story-text fade-on-scroll">
+                <h2>虎魂不滅</h2>
+                <p>還記得那個在台北市立棒球場嘶吼的夜晚嗎？</p>
+                <p>三商虎，這支充滿傳奇色彩的球隊，雖然沒有華麗的冠軍戒指，卻擁有最死忠的靈魂。「虎大將」林仲秋的霸氣全壘打弧線、「火車」涂鴻欽燃燒手臂的三振，是我們共同的青春印記。</p>
+                <p>我們將這份記憶，織進了這條 **120公分** 的應援巾裡。它不再是沉重的深藍，而是象徵希望與新生的**「實色天藍」**。當你在球場舉起它，連結的不只是現在的比賽，更是那段輝煌的職棒黃金年代。</p>
+            </div>
+            <div class="story-image fade-on-scroll">
+                <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1765425636/unnamed_6_u7vnbo.jpg" alt="應援巾細節展示 - Mercuries 字樣">
+            </div>
+        </div>
+    </section>
+
+    <section class="features-section">
+        <div class="features-container">
+            <div class="feature-card fade-on-scroll">
+                <h3>01. 極致比例</h3>
+                <p>打破傳統毛巾規格，採用 **W120 x H20 cm** 超長版型。無論是掛在頸間展現俐落感，或是雙手拉開應援，都能呈現最優雅的弧度。</p>
+            </div>
+            <div class="feature-card fade-on-scroll">
+                <h3>02. 實色美學</h3>
+                <p>拒絕模糊的漸層，堅持高飽和度的「實色天藍」。在球場強烈的燈光下，這是最具辨識度、最純粹的信仰之色。</p>
+            </div>
+            <div class="feature-card fade-on-scroll">
+                <h3>03. 經典復刻</h3>
+                <p>重塑 Mercuries Tigers 經典圖騰，保留猛虎神韻，並以現代精品字體重新詮釋，讓懷舊與時尚完美共存。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="full-width-showcase">
+        <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1765425660/unnamed_7_hcfpbc.jpg" alt="Mercuries Tigers 應援巾展開圖">
+        <div class="overlay-text">
+            Legacy in your hands.
+        </div>
+    </section>
+
+    <section class="specs-section fade-on-scroll">
+        <div class="specs-box">
+            <ul class="specs-list">
+                <li>材質 <span>100% 頂級精梳棉</span></li>
+                <li>尺寸 <span>120 x 20 cm</span></li>
+                <li>工法 <span>雙面緹花 / 鎖邊刺繡</span></li>
+                <li>產地 <span>Designed in Taiwan</span></li>
+            </ul>
+        </div>
+        <div class="price">NT$ 590</div>
+    </section>
+
+    <footer>
+        <p class="copyright">
+            &copy; 2025 Mercuries Tigers Fan Collection. <br>
+            這是一個致敬網頁，非官方商品。<br>
+            Images generated by AI.
+        </p>
+    </footer>
+
+    <div class="sticky-cta">
+        <a href="#order" class="cta-btn">立即收藏傳奇</a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-on-scroll');
+            fadeElements.forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
