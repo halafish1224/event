@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>虎魂不滅：MERCURIES TIGERS 頂級復刻系列 | 職人手作橫須賀外套</title>
+    <meta name="description" content="獻給職棒元年的老球迷。結合日系横須賀刺繡工藝與機能材質，重現三商虎隊的傳奇。全台限量預購中。">
+    <meta name="keywords" content="三商虎, 中華職棒, 橫須賀外套, 刺繡外套, 職棒周邊, 復古球衣, MERCURIES TIGERS">
+    
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;700&family=Noto+Sans+TC:wght@300;500&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --tigers-blue: #0f1c3f; /* 午夜藍 */
+            --tigers-gold: #c5a059; /* 古銅金 */
+            --tigers-orange: #ff4500; /* 烈焰橘 */
+            --text-light: #f0f0f0;
+            --bg-dark: #050a14;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Noto Serif TC', serif;
+            letter-spacing: 0.1em;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(to bottom, rgba(5,10,20,0.3), var(--bg-dark)), url('https://res.cloudinary.com/dshfj9ace/image/upload/v1765426640/unnamed_9_zxiifi.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed; /* 視差滾動效果 */
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            padding: 20px;
+            background: rgba(15, 28, 63, 0.7);
+            border: 1px solid var(--tigers-gold);
+            backdrop-filter: blur(5px);
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--tigers-gold);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 20px rgba(197, 160, 89, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            font-weight: 300;
+        }
+
+        /* 飄揚絲帶動畫背景 */
+        .ribbon-bg {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none;
+            background: radial-gradient(circle at 50% 50%, transparent 0%, var(--bg-dark) 90%);
+            z-index: 1;
+        }
+
+        /* Story Section */
+        .section {
+            padding: 80px 20px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .story-text {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .story-text h2 {
+            color: var(--tigers-orange);
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .story-text p {
+            font-size: 1.1rem;
+            color: #ccc;
+            margin-bottom: 20px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Features Grid */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-card {
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-left: 3px solid var(--tigers-gold);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255,255,255,0.08);
+        }
+
+        .feature-card h3 {
+            color: var(--tigers-gold);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 100px 20px;
+            background: linear-gradient(45deg, var(--tigers-blue), #000);
+            border-top: 1px solid var(--tigers-gold);
+        }
+
+        .btn-gold {
+            display: inline-block;
+            padding: 15px 40px;
+            background: var(--tigers-gold);
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+            font-size: 1.2rem;
+            letter-spacing: 2px;
+            border-radius: 2px;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-gold:hover {
+            background: #fff;
+            box-shadow: 0 0 30px var(--tigers-gold);
+        }
+
+        /* SEO Footer */
+        footer {
+            text-align: center;
+            padding: 40px;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #222;
+        }
+
+        /* Mobile Optimization */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2rem; }
+            .section { padding: 50px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="ribbon-bg"></div>
+        <div class="hero-content">
+            <p>1990 - 1999 傳奇再現</p>
+            <h1>虎魂不滅・雙面穿機能スカジャン</h1>
+            <p>在那夜之後，我們將藍色的回憶與火熱的鬥志，<br>以百萬針刺繡，銘刻於身。</p>
+            <a href="#preorder" class="btn-gold">查看詳情</a>
+        </div>
+    </header>
+
+    <article class="section">
+        <div class="story-text">
+            <h2>飄揚在夜空中的藍絲帶</h2>
+            <p>你是否還記得 1999 年的那個秋天？</p>
+            <p>那是三商虎迷心中最長的一夜。我們準備好的藍色勝利彩帶，最終沒有機會在總冠軍賽拋下。那份屬於「虎大將」林仲秋的豪情、哥雅與康雷的強打連線，彷彿隨著球隊的解散，凝結在時間的長河裡。</p>
+            <p>但虎魂，從未熄滅。</p>
+            <p>25 年後的今天，我們邀請日本頂級工坊，將那份未竟的夢想，轉化為實體的工藝。以「午夜藍」紀念那晚的夜色，以「烈焰橘」重燃心中的猛虎。</p>
+        </div>
+    </article>
+
+    <section class="section">
+        <div class="story-text">
+            <h2>職人・機能・二刀流</h2>
+            <p>這不僅是一件球衣，更是一件能陪你走進生活、無懼風雨的現代甲冑。</p>
+        </div>
+
+        <div class="features">
+            <div class="feature-card">
+                <h3>01. 雙面・兩界</h3>
+                <p><strong>REVERSIBLE DESIGN</strong><br>
+                一面是狂野的球場戰袍，高密度金屬線刺繡猛虎；翻轉過來，即是低調內斂的 GORE-TEX Infinium™ 防水機能服。從球場嘶吼到都會通勤，一件切換。</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>02. 刺繡・入魂</h3>
+                <p><strong>HIGH DENSITY EMBROIDERY</strong><br>
+                摒棄廉價印刷，採用日本製醋酸纖維（Acetate Rayon）。老虎毛流混織金屬線，在夜間燈光下流動著生命力，彷彿那是 1990 年第一支全壘打劃過夜空的軌跡。</p>
+            </div>
+
+            <div class="feature-card">
+                <h3>03. 細節・極致</h3>
+                <p><strong>HIDDEN DETAILS</strong><br>
+                左袖口配置「隱形票券袋」，進場過閘不再慌亂；拉鍊頭採用「特注黃銅虎頭」，隨著使用時間氧化，將呈現獨一無二的古董質感。</p>
+            </div>
+        </div>
+    </section>
+
+    <div style="background: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1765426640/unnamed_9_zxiifi.jpg') no-repeat center center/cover; height: 400px; display: flex; align-items: center; justify-content: center; position: relative;">
+        <div style="background: rgba(0,0,0,0.6); padding: 40px; width: 100%;">
+            <h3 style="text-align: center; color: var(--tigers-gold); font-size: 1.8rem; font-family: 'Noto Serif TC', serif;">「只要穿上它，我們就是隊友。」</h3>
+        </div>
+    </div>
+
+    <section id="preorder" class="cta-section">
+        <h2 style="color: #fff; margin-bottom: 20px;">首批限量 300 件・職人預約生產</h2>
+        <p style="color: #aaa; margin-bottom: 40px;">包含：機能刺繡外套 x1、專屬編號雷射軍牌 x1</p>
+        <a href="#" class="btn-gold">立即收藏虎魂</a>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 MERCURIES TIGERS Reborn Project. Designed by Japan Premium Planner.</p>
+        <p style="font-size: 0.8rem; margin-top: 10px; color: #444;">本產品為致敬企劃，圖片僅供設計參考。</p>
+    </footer>
+
+</body>
+</html>
