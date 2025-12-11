@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <title>虎隱・紳士傑作｜三商虎紀念頂級工藝雨傘 - 夜幕下的藍絲帶</title>
+    <meta name="description" content="專為職棒老靈魂設計的精品雨傘。結合三商虎(Mercuries Tigers) 1999年最後戰役的記憶，以深海軍藍提花與古董金內裡，詮釋「虎隱」紳士哲學。採用烘烤楓木手柄與黃銅細節，重現那飄揚在夜空中的藍絲帶傳奇。">
+    <meta name="keywords" content="三商虎雨傘, 職棒紀念傘, 高級紳士傘, Mercuries Tigers, 1999職棒, 藍絲帶">
+    
+    <meta property="og:title" content="虎隱・紳士傑作｜夜幕下的藍絲帶">
+    <meta property="og:description" content="在記憶的夜空中，那條未曾落下的藍絲帶。獻給銘記 1999 那場最後戰役的靈魂。">
+    <meta property="og:image" content="https://res.cloudinary.com/dshfj9ace/image/upload/v1765424346/Gemini_Generated_Image_rgipwurgipwurgip_fx9o6w.png">
+    <meta property="og:type" content="product">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500&family=Noto+Serif+TC:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- CSS Variables & Reset --- */
+        :root {
+            --navy: #0f1c2e;       /* 深海軍藍 */
+            --navy-light: #1a2b42; /* 較淺的藍用於區塊 */
+            --gold: #c5a059;       /* 古董金 */
+            --gold-hover: #e0b86a;
+            --wood: #5c4033;       /* 木質調 */
+            --text-light: #f4f4f4;
+            --text-dim: #aab6c2;
+            --font-serif: 'Noto Serif TC', serif;
+            --font-sans: 'Noto Sans TC', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--navy);
+            color: var(--text-light);
+            font-family: var(--font-sans);
+            line-height: 1.8;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: var(--font-serif);
+            font-weight: 600;
+        }
+
+        a { text-decoration: none; transition: 0.3s; }
+        
+        img { max-width: 100%; display: block; }
+
+        /* --- Utility Classes --- */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        .text-gold { color: var(--gold); }
+
+        /* Animation Classes */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 1s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- Section 1: Hero --- */
+        #hero {
+            height: 100vh;
+            width: 100%;
+            background-image: linear-gradient(rgba(15, 28, 46, 0.3), rgba(15, 28, 46, 0.8)), 
+                              url('https://res.cloudinary.com/dshfj9ace/image/upload/v1765424346/Gemini_Generated_Image_rgipwurgipwurgip_fx9o6w.png');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            z-index: 2;
+            max-width: 800px;
+            padding: 20px;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            letter-spacing: 2px;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+            opacity: 0; 
+            animation: fadeInDown 1.5s ease-out forwards;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            border-top: 1px solid var(--gold);
+            border-bottom: 1px solid var(--gold);
+            display: inline-block;
+            padding: 10px 20px;
+            opacity: 0;
+            animation: fadeInUp 1.5s ease-out 0.5s forwards;
+        }
+
+        /* --- Section 2: Philosophy (外冷內熱) --- */
+        #philosophy {
+            background-color: var(--navy);
+        }
+
+        .split-layout {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .split-content {
+            flex: 1;
+        }
+
+        .split-image {
+            flex: 1;
+            position: relative;
+        }
+        
+        .split-image::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            border: 2px solid var(--gold);
+            z-index: 0;
+            opacity: 0.3;
+        }
+
+        .split-image img {
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+            color: var(--gold);
+        }
+
+        .section-text {
+            color: var(--text-dim);
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* --- Section 3: Origin (1999 藍絲帶) --- */
+        #origin {
+            background: radial-gradient(circle at center, #1a2b42 0%, #0f1c2e 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        /* 模擬絲帶飄揚的背景效果 */
+        #origin::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(11, 44, 91, 0.1) 10px, rgba(11, 44, 91, 0.1) 20px);
+            z-index: 0;
+        }
+
+        .origin-wrapper {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+            border: 1px solid rgba(197, 160, 89, 0.2);
+            padding: 60px 40px;
+            background: rgba(15, 28, 46, 0.8);
+        }
+
+        .year-mark {
+            font-family: var(--font-serif);
+            font-size: 4rem;
+            color: rgba(255,255,255,0.05);
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: -1;
+            white-space: nowrap;
+        }
+
+        /* --- Section 4: Craftsmanship (結構圖) --- */
+        #craft {
+            background-color: #152233;
+        }
+
+        .craft-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 50px;
+        }
+
+        .feature-item {
+            border-left: 3px solid var(--gold);
+            padding-left: 20px;
+            margin-bottom: 30px;
+        }
+
+        .feature-title {
+            color: var(--text-light);
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-desc {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
+
+        /* --- Section 5: CTA --- */
+        #cta {
+            background-image: url('https://res.cloudinary.com/dshfj9ace/image/upload/v1765424346/Gemini_Generated_Image_rgipwurgipwurgip_fx9o6w.png'); /* 復用圖片做模糊背景 */
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 120px 0;
+        }
+
+        #cta::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 28, 46, 0.9); /* 加深遮罩 */
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+            max-width: 700px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background-color: var(--gold);
+            color: var(--navy);
+            font-weight: 700;
+            padding: 15px 40px;
+            margin-top: 30px;
+            border-radius: 2px;
+            letter-spacing: 1px;
+            font-size: 1.1rem;
+            border: 1px solid var(--gold);
+        }
+
+        .cta-btn:hover {
+            background-color: transparent;
+            color: var(--gold);
+            cursor: pointer;
+        }
+
+        footer {
+            background-color: #0a121e;
+            padding: 30px 0;
+            text-align: center;
+            color: #666;
+            font-size: 0.8rem;
+            border-top: 1px solid #1f2f44;
+        }
+
+        /* --- Keyframes --- */
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- Responsive Design --- */
+        @media (max-width: 768px) {
+            .hero-title { font-size: 2rem; }
+            
+            .split-layout {
+                flex-direction: column;
+            }
+            
+            .split-image::after {
+                top: 10px; left: 10px;
+            }
+
+            .craft-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-padding { padding: 50px 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header id="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">在記憶的夜空中<br>那條未曾落下的藍絲帶</h1>
+            <div class="hero-subtitle">虎隱・紳士傑作 —— 獻給銘記 1999 的靈魂</div>
+        </div>
+    </header>
+
+    <section id="philosophy" class="section-padding">
+        <div class="container">
+            <div class="split-layout">
+                <div class="split-image reveal">
+                    <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1765424346/Gemini_Generated_Image_rgipwurgipwurgip_fx9o6w.png" alt="虎隱雨傘外觀展示">
+                </div>
+                <div class="split-content reveal">
+                    <h2 class="section-title">外冷內熱的紳士哲學</h2>
+                    <p class="section-text">
+                        真正的力量，往往不顯山露水。如同真正的紳士，外表是應對世俗的深邃海軍藍，沉穩、內斂，以高密度提花織紋，將鋒芒藏於經緯之間。
+                    </p>
+                    <p class="section-text">
+                        然而，當您撐開傘的那一刻，抬頭仰望，那片古董金色的穹頂，才是您真實的內心世界——那裡藏著不滅的熱血、往昔的榮光，以及一隻蓄勢待發的猛虎。
+                    </p>
+                    <p class="section-text text-gold">
+                        這不是一把傘，而是您穿梭都市叢林時，與自我對話的私密空間。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="origin" class="section-padding">
+        <div class="container">
+            <div class="origin-wrapper reveal">
+                <div class="year-mark">EST. 1999</div>
+                <h2 class="section-title">藍絲帶的羈絆</h2>
+                <p class="section-text">
+                    您是否還記得那一年的細雨？
+                </p>
+                <p class="section-text">
+                    「EST. 1999」，銘刻在黃銅環上的這組數字，對某些人而言，是一個時代的休止符。那一年，藍色的彩帶在球場夜空中交織，是勝利的慶典，卻也成為了許多虎迷心中，最後一次集體仰望的風景。
+                </p>
+                <p class="section-text">
+                    那支球隊雖然走入了歷史，但那份「拼戰到底」的精神，卻如同那晚飄揚的藍絲帶，懸掛在記憶的夜空中，未曾真正落下。我們將那晚的夜色織成傘面，將那份榮耀鑄成金色內裡，讓您在每一次雨天，都能重新撐起那份屬於男人的浪漫與堅持。
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section id="craft" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-center reveal">職人魂的具現</h2>
+            <p class="section-text text-center reveal" style="max-width: 600px; margin: 0 auto 40px auto;">
+                情懷需要載體，而我們選擇了最頂級的工藝來承載這份重量。
+            </p>
+            
+            <div class="craft-grid">
+                <div class="craft-image reveal">
+                    <img src="https://res.cloudinary.com/dshfj9ace/image/upload/v1765424378/unnamed_5_f2tdui.jpg" alt="雨傘結構工藝解析">
+                </div>
+                <div class="craft-features reveal">
+                    <div class="feature-item">
+                        <h3 class="feature-title">隱形提花織紋</h3>
+                        <p class="feature-desc">不只是印花，而是將「T」字隊徽隱密地織入高密度防水緞面，在光線折射下隱約可見，低調而奢華。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 class="feature-title">蝕刻版畫風格內裡</h3>
+                        <p class="feature-desc">以古董金單色重新詮釋猛虎圖騰，去卡通化，更顯成熟韻味，抬頭即見榮耀。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 class="feature-title">烘烤楓木手柄</h3>
+                        <p class="feature-desc">一體成型烘烤楓木，每一把都擁有獨一無二的溫潤木紋，手感極佳，如同每個人獨有的記憶。</p>
+                    </div>
+                    <div class="feature-item">
+                        <h3 class="feature-title">黃銅銘牌環</h3>
+                        <p class="feature-desc">雷射雕刻 Est. 1999 字樣，黃銅材質會隨著時間氧化變色，養出屬於您個人的歲月痕跡。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="cta">
+        <div class="container">
+            <div class="cta-content reveal">
+                <h2 class="section-title">雨天，是城市最誠實的時刻</h2>
+                <p class="section-text">
+                    願這把「虎隱」，能成為您在風雨中的堅實夥伴。<br>
+                    撐起它，不僅是為了擋雨，更是為了在喧囂的現代生活中，<br>
+                    守護那一份心中永不熄滅的藍色火焰。
+                </p>
+                <a href="#" class="cta-btn">收藏這份職棒傳奇 (Pre-order)</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Mercuries Tigers Heritage Collection. All Rights Reserved.</p>
+            <p style="margin-top: 10px; opacity: 0.5;">Designed by Japan Premium Web Planner</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const reveals = document.querySelectorAll('.reveal');
+
+            const revealOnScroll = function() {
+                const windowHeight = window.innerHeight;
+                const elementVisible = 150;
+
+                reveals.forEach((reveal) => {
+                    const elementTop = reveal.getBoundingClientRect().top;
+                    if (elementTop < windowHeight - elementVisible) {
+                        reveal.classList.add('active');
+                    }
+                });
+            };
+
+            window.addEventListener('scroll', revealOnScroll);
+            // Trigger once on load
+            revealOnScroll();
+        });
+    </script>
+</body>
+</html>
