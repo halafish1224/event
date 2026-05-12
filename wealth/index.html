@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>財富護城河決策系統 | 投資學新法</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        :root {
+            --primary-color: #8a1c1c; /* 商周紅 */
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #6c757d;
+            --accent-gold: #c5a059;
+        }
+        body {
+            font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+        }
+        header p {
+            margin: 5px 0 0 0;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 30px auto;
+            padding: 0 20px;
+        }
+        .grid-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+        .card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border-top: 4px solid var(--accent-gold);
+        }
+        .card h2 {
+            margin-top: 0;
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        .input-group input[type="range"] {
+            width: 100%;
+        }
+        .input-group input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .value-display {
+            float: right;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+        .result-box {
+            background: #fdfbf7;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        .result-box h3 {
+            margin: 0;
+            font-size: 1rem;
+            color: var(--text-muted);
+        }
+        .result-box .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 10px 0;
+        }
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #ccc;
+        }
+        .tab {
+            padding: 10px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--text-muted);
+        }
+        .tab.active {
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+            margin-bottom: -2px;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @media (max-width: 768px) {
+            .grid-layout { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>財富護城河決策系統</h1>
+        <p>「將原則寫入程式碼，做自己人生的基金經理人」</p>
+    </header>
+
+    <div class="container">
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('alloc')">核心/衛星資產推演</div>
+            <div class="tab" onclick="switchTab('housing')">買房/租房機會成本</div>
+        </div>
+
+        <div id="alloc" class="tab-content active">
+            <div class="grid-layout">
+                <div class="card">
+                    <h2>戰略參數設定</h2>
+                    <div class="input-group">
+                        <label>目前月薪 (NTD) <span id="salaryVal" class="value-display">40,000</span></label>
+                        <input type="number" id="salary" value="40000" oninput="updateSystem()">
+                    </div>
+                    <div class="input-group">
+                        <label>每月儲蓄率 (%) <span id="savingsRateVal" class="value-display">25%</span></label>
+                        <input type="range" id="savingsRate" min="10" max="60" value="25" oninput="updateSystem()">
+                    </div>
+                    <div class="input-group">
+                        <label>全球核心資產佔比 (%) <span id="coreRatioVal" class="value-display">80%</span></label>
+                        <input type="range" id="coreRatio" min="50" max="100" value="80" oninput="updateSystem()">
+                    </div>
+                    <div class="input-group">
+                        <label>核心年化報酬預期 (%) <span id="coreReturnVal" class="value-display">6%</span></label>
+                        <input type="range" id="coreReturn" min="3" max="10" value="6" step="0.5" oninput="updateSystem()">
+                    </div>
+                    <div class="input-group">
+                        <label>衛星年化報酬預期 (%) <span id="satReturnVal" class="value-display">10%</span></label>
+                        <input type="range" id="satReturn" min="5" max="20" value="10" step="0.5" oninput="updateSystem()">
+                    </div>
+                    <div class="input-group">
+                        <label>推演年限 (年) <span id="yearsVal" class="value-display">20</span></label>
+                        <input type="range" id="years" min="5" max="40" value="20" oninput="updateSystem()">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>護城河水位預測</h2>
+                    <div class="grid-layout" style="gap:10px;">
+                        <div class="result-box">
+                            <h3>防禦基石 (緊急預備金)</h3>
+                            <div class="number" id="emergencyFund">240,000</div>
+                            <span style="font-size:0.8rem; color:#666;">(6個月生活費)</span>
+                        </div>
+                        <div class="result-box">
+                            <h3>每月實際投入</h3>
+                            <div class="number" id="monthlyInvest">10,000</div>
+                            <span style="font-size:0.8rem; color:#666;" id="investSplit">核心 8000 | 衛星 2000</span>
+                        </div>
+                    </div>
+                    <div class="result-box" style="margin-top:10px;">
+                        <h3>期末資本總值 (NTD)</h3>
+                        <div class="number" id="totalWealth">4,620,409</div>
+                    </div>
+                    <canvas id="wealthChart" width="400" height="200"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div id="housing" class="tab-content">
+            <div class="grid-layout">
+                <div class="card">
+                    <h2>機會成本參數設定</h2>
+                    <p style="font-size:0.85rem; color:#666;">扣除情緒，計算將買房頭期款與額外現金流投入市場的「機會成本」。</p>
+                    <div class="input-group">
+                        <label>房屋總價 (萬)</label>
+                        <input type="number" id="housePrice" value="1800" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>自備頭期款 (萬)</label>
+                        <input type="number" id="downPayment" value="360" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>房貸利率 (%)</label>
+                        <input type="number" id="mortgageRate" value="2.1" step="0.1" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>貸款年限 (年)</label>
+                        <input type="number" id="mortgageYears" value="30" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>對比租屋月租金 (元)</label>
+                        <input type="number" id="monthlyRent" value="25000" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>市場預期年化報酬 (%)</label>
+                        <input type="number" id="marketReturn" value="6" step="0.5" oninput="updateHousing()">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>租房投資 vs 買房試算結果</h2>
+                    <div class="result-box">
+                        <h3>買房每月需繳房貸 (本息攤還)</h3>
+                        <div class="number" id="monthlyMortgage">53,952</div>
+                    </div>
+                    <div class="result-box">
+                        <h3>如果租房，期末資產總值</h3>
+                        <div class="number" id="rentingNetWorth">24,500,000</div>
+                        <p style="font-size:0.85rem; color:#666; text-align:left;">
+                            邏輯：將買房的「頭期款」單筆投入市場，並將每月「房貸減去租金的差額」持續定期定額投入市場，計算複利結果。
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let myChart;
+
+        function formatCurrency(num) {
+            return Math.round(num).toLocaleString('zh-TW');
+        }
+
+        // --- 核心與衛星推演邏輯 ---
+        function updateSystem() {
+            const salary = parseFloat(document.getElementById('salary').value);
+            const savingsRate = parseFloat(document.getElementById('savingsRate').value);
+            const coreRatio = parseFloat(document.getElementById('coreRatio').value);
+            const coreReturn = parseFloat(document.getElementById('coreReturn').value);
+            const satReturn = parseFloat(document.getElementById('satReturn').value);
+            const years = parseFloat(document.getElementById('years').value);
+
+            // 更新顯示數值
+            document.getElementById('salaryVal').innerText = formatCurrency(salary);
+            document.getElementById('savingsRateVal').innerText = savingsRate + '%';
+            document.getElementById('coreRatioVal').innerText = coreRatio + '%';
+            document.getElementById('coreReturnVal').innerText = coreReturn + '%';
+            document.getElementById('satReturnVal').innerText = satReturn + '%';
+            document.getElementById('yearsVal').innerText = years;
+
+            // 計算基礎金額
+            const emergencyFund = salary * (1 - savingsRate/100) * 6; // 6個月生活費
+            const monthlyInvest = salary * (savingsRate / 100);
+            const monthlyCore = monthlyInvest * (coreRatio / 100);
+            const monthlySat = monthlyInvest * (1 - coreRatio / 100);
+
+            document.getElementById('emergencyFund').innerText = formatCurrency(emergencyFund);
+            document.getElementById('monthlyInvest').innerText = formatCurrency(monthlyInvest);
+            document.getElementById('investSplit').innerText = `核心 ${formatCurrency(monthlyCore)} | 衛星 ${formatCurrency(monthlySat)}`;
+
+            // 複利計算 (年金終值)
+            const months = years * 12;
+            const rCore = (coreReturn / 100) / 12;
+            const rSat = (satReturn / 100) / 12;
+
+            const fvCore = rCore === 0 ? monthlyCore * months : monthlyCore * ((Math.pow(1 + rCore, months) - 1) / rCore);
+            const fvSat = rSat === 0 ? monthlySat * months : monthlySat * ((Math.pow(1 + rSat, months) - 1) / rSat);
+            const totalWealth = fvCore + fvSat;
+            const totalPrincipal = monthlyInvest * months;
+
+            document.getElementById('totalWealth').innerText = formatCurrency(totalWealth);
+
+            updateChart(totalPrincipal, fvCore - (monthlyCore*months), fvSat - (monthlySat*months));
+        }
+
+        function updateChart(principal, coreProfit, satProfit) {
+            const ctx = document.getElementById('wealthChart').getContext('2d');
+            if (myChart) { myChart.destroy(); }
+            
+            myChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['期末資產結構'],
+                    datasets: [
+                        { label: '投入總本金', data: [principal], backgroundColor: '#6c757d' },
+                        { label: '核心資產獲利', data: [coreProfit], backgroundColor: '#8a1c1c' },
+                        { label: '衛星資產獲利', data: [satProfit], backgroundColor: '#c5a059' }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    scales: { x: { stacked: true }, y: { stacked: true } }
+                }
+            });
+        }
+
+        // --- 買房租房機會成本邏輯 ---
+        function updateHousing() {
+            const housePrice = parseFloat(document.getElementById('housePrice').value) * 10000;
+            const downPayment = parseFloat(document.getElementById('downPayment').value) * 10000;
+            const mortgageRate = parseFloat(document.getElementById('mortgageRate').value) / 100;
+            const mortgageYears = parseFloat(document.getElementById('mortgageYears').value);
+            const monthlyRent = parseFloat(document.getElementById('monthlyRent').value);
+            const marketReturn = parseFloat(document.getElementById('marketReturn').value) / 100;
+
+            const loanAmount = housePrice - downPayment;
+            const monthlyRate = mortgageRate / 12;
+            const totalMonths = mortgageYears * 12;
+
+            // 每月房貸本息攤還公式
+            const monthlyMortgage = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+            document.getElementById('monthlyMortgage').innerText = formatCurrency(monthlyMortgage);
+
+            // 租房投資策略：頭期款單筆投入 + 每月現金流差額定期定額
+            const monthlyDifference = monthlyMortgage - monthlyRent;
+            const mReturn = marketReturn / 12;
+            
+            let rentingNetWorth = 0;
+            if (monthlyDifference > 0) {
+                // 頭期款複利
+                const fvDownPayment = downPayment * Math.pow(1 + marketReturn, mortgageYears);
+                // 每月差額年金終值
+                const fvDifference = mReturn === 0 ? monthlyDifference * totalMonths : monthlyDifference * ((Math.pow(1 + mReturn, totalMonths) - 1) / mReturn);
+                rentingNetWorth = fvDownPayment + fvDifference;
+            } else {
+                rentingNetWorth = downPayment * Math.pow(1 + marketReturn, mortgageYears); // 若租金比房貸貴，只算頭期款投資
+            }
+
+            document.getElementById('rentingNetWorth').innerText = formatCurrency(rentingNetWorth);
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            
+            event.target.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+            
+            if(tabId === 'housing') { updateHousing(); }
+            else { updateSystem(); }
+        }
+
+        // 初始化
+        window.onload = function() {
+            updateSystem();
+            updateHousing();
+        };
+    </script>
+</body>
+</html>
