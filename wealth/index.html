@@ -140,19 +140,32 @@
         }
         
         /* 心法區塊樣式 */
-        .btn-load {
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px 15px;
+        .btn-action {
+            display: inline-block;
+            padding: 8px 15px;
             border-radius: 4px;
             cursor: pointer;
+            font-size: 0.9rem;
             font-weight: bold;
-            width: 100%;
-            margin-top: 10px;
+            text-decoration: none;
+            transition: background 0.3s;
+            border: none;
         }
-        .btn-load:hover {
-            background-color: #6a1515;
+        .btn-write {
+            background-color: var(--accent-gold);
+            color: white;
+            margin-right: 10px;
+        }
+        .btn-write:hover {
+            background-color: #a8884c;
+        }
+        .btn-refresh {
+            background-color: #eee;
+            color: var(--text-main);
+            border: 1px solid #ccc;
+        }
+        .btn-refresh:hover {
+            background-color: #ddd;
         }
         .mindset-grid {
             display: grid;
@@ -194,6 +207,8 @@
 
         @media (max-width: 768px) {
             .grid-layout { grid-template-columns: 1fr; }
+            .header-actions { margin-top: 10px; width: 100%; display: flex; justify-content: space-between; }
+            .btn-action { padding: 8px 10px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -212,13 +227,14 @@
         </div>
 
         <div id="mindset" class="tab-content active">
-            <div class="card" style="margin-bottom: 20px; display: none;">
-                <input type="text" id="csvUrl" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
-            </div>
+            <input type="hidden" id="csvUrl" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
 
-            <div style="display: flex; justify-content: space-between; align-items: center;">
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
                 <h2 style="color: var(--primary-color); margin: 0;">投資戰略大腦覆盤庫</h2>
-                <button onclick="fetchAndDisplayMindset()" style="padding: 5px 15px; background: #eee; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">⟳ 手動刷新</button>
+                <div class="header-actions">
+                    <a href="https://itigre.pse.is/wealth99" target="_blank" class="btn-action btn-write">✍️ 寫入今日覆盤</a>
+                    <button onclick="fetchAndDisplayMindset()" class="btn-action btn-refresh">⟳ 手動刷新</button>
+                </div>
             </div>
 
             <div id="loading" class="loading-text">正在從 Google 戰略資料庫載入最新心法...</div>
@@ -431,7 +447,6 @@
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             
-            // 找到點擊的頁籤並加上 active
             const clickedTab = Array.from(document.querySelectorAll('.tab')).find(t => t.getAttribute('onclick').includes(tabId));
             if(clickedTab) clickedTab.classList.add('active');
             
@@ -474,14 +489,11 @@
                 const data = parseCSV(csvText);
                 loading.style.display = 'none';
 
-                // 假設第一列是表頭，從第二列開始讀取，並反轉陣列讓最新紀錄在最上
                 const records = data.slice(1).reverse(); 
 
                 records.forEach(row => {
                     if (row.length < 2 || (!row[0] && !row[1])) return; 
 
-                    // 根據 Google 表單輸出的預設格式：
-                    // row[0] 是時間戳記，row[1] 是標題，row[2] 是內容
                     const dateStr = row[0] ? row[0] : '未記錄時間';
                     const titleStr = row[1] ? row[1] : '無標題';
                     const contentStr = row[2] ? row[2] : '';
@@ -510,8 +522,6 @@
         window.onload = function() {
             updateSystem();
             updateHousing();
-            
-            // 自動觸發載入你的專屬 Google 表單 CSV
             fetchAndDisplayMindset();
         };
     </script>
