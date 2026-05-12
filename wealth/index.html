@@ -13,6 +13,7 @@
             --text-main: #333333;
             --text-muted: #6c757d;
             --accent-gold: #c5a059;
+            --dimmed-text: #adb5bd;
         }
         body {
             font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
@@ -109,18 +110,27 @@
             display: flex;
             margin-bottom: 20px;
             border-bottom: 2px solid #ccc;
-            flex-wrap: wrap; /* 讓手機版頁籤可以折行 */
+            flex-wrap: wrap;
         }
         .tab {
             padding: 10px 20px;
             cursor: pointer;
             font-weight: bold;
             color: var(--text-muted);
+            transition: all 0.3s;
         }
         .tab.active {
             color: var(--primary-color);
             border-bottom: 3px solid var(--primary-color);
             margin-bottom: -2px;
+        }
+        .tab.dimmed {
+            opacity: 0.6;
+            font-weight: normal;
+        }
+        .tab.dimmed.active {
+            opacity: 1;
+            font-weight: bold;
         }
         .tab-content {
             display: none;
@@ -129,7 +139,7 @@
             display: block;
         }
         
-        /* 新增心法區塊的樣式 */
+        /* 心法區塊樣式 */
         .btn-load {
             background-color: var(--primary-color);
             color: white;
@@ -139,6 +149,7 @@
             cursor: pointer;
             font-weight: bold;
             width: 100%;
+            margin-top: 10px;
         }
         .btn-load:hover {
             background-color: #6a1515;
@@ -171,12 +182,14 @@
             margin: 0;
             font-size: 0.95rem;
             color: var(--text-muted);
-            white-space: pre-wrap; /* 保留換行符號 */
+            white-space: pre-wrap; 
         }
         .loading-text {
             text-align: center;
             color: var(--text-muted);
             display: none;
+            padding: 20px;
+            font-weight: bold;
         }
 
         @media (max-width: 768px) {
@@ -193,12 +206,27 @@
 
     <div class="container">
         <div class="tabs">
-            <div class="tab active" onclick="switchTab('alloc')">核心/衛星資產推演</div>
-            <div class="tab" onclick="switchTab('housing')">買房/租房機會成本</div>
-            <div class="tab" onclick="switchTab('mindset')">紀律與心法積累</div>
+            <div class="tab active" onclick="switchTab('mindset')">紀律與心法積累</div>
+            <div class="tab" onclick="switchTab('alloc')">核心/衛星資產推演</div>
+            <div class="tab dimmed" onclick="switchTab('housing')">買房/租房機會成本 (暫緩)</div>
         </div>
 
-        <div id="alloc" class="tab-content active">
+        <div id="mindset" class="tab-content active">
+            <div class="card" style="margin-bottom: 20px; display: none;">
+                <input type="text" id="csvUrl" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
+            </div>
+
+            <div style="display: flex; justify-content: space-between; align-items: center;">
+                <h2 style="color: var(--primary-color); margin: 0;">投資戰略大腦覆盤庫</h2>
+                <button onclick="fetchAndDisplayMindset()" style="padding: 5px 15px; background: #eee; border: 1px solid #ccc; border-radius: 4px; cursor: pointer; font-size: 0.85rem;">⟳ 手動刷新</button>
+            </div>
+
+            <div id="loading" class="loading-text">正在從 Google 戰略資料庫載入最新心法...</div>
+            <div id="mindset-container" class="mindset-grid">
+                </div>
+        </div>
+
+        <div id="alloc" class="tab-content">
             <div class="grid-layout">
                 <div class="card">
                     <h2>戰略參數設定</h2>
@@ -255,7 +283,7 @@
             <div class="grid-layout">
                 <div class="card">
                     <h2>機會成本參數設定</h2>
-                    <p style="font-size:0.85rem; color:#666;">扣除情緒，計算將買房頭期款與額外現金流投入市場的「機會成本」。</p>
+                    <p style="font-size:0.85rem; color:#666;">近期買房需求較低，此區塊做為長期房產觀察與壓力測試使用。</p>
                     <div class="input-group">
                         <label>房屋總價 (萬)</label>
                         <input type="number" id="housePrice" value="1800" oninput="updateHousing()">
@@ -299,38 +327,16 @@
             </div>
         </div>
 
-        <div id="mindset" class="tab-content">
-            <div class="card" style="margin-bottom: 20px;">
-                <h2>大腦外包：連接你的 Google 表單</h2>
-                <p style="font-size:0.85rem; color:#666;">
-                    請在下方貼上你 Google Sheets 的「發佈為 CSV」網址。每次你在表單寫下覆盤，這裡就會自動更新。<br>
-                    <strong>建議表單欄位順序：</strong> 1. 時間戳記 (系統預設) | 2. 核心標題 (短語) | 3. 覆盤內容
-                </p>
-                <div class="input-group">
-                    <input type="text" id="csvUrl" placeholder="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
-                </div>
-                <button class="btn-load" onclick="fetchAndDisplayMindset()">載入心法紀錄</button>
-            </div>
-
-            <div id="loading" class="loading-text">正在從 Google Sheets 載入資料...</div>
-            <div id="mindset-container" class="mindset-grid">
-                <div class="mindset-item">
-                    <div class="date">系統範例</div>
-                    <h3>AI銳矛藏偽分散與擁擠風險</h3>
-                    <p>絕非防禦核心，僅宜作兩成戰略衛星。面對00403A等高度集中題材，應保持「X光視角」，控制曝險，紀律至上。</p>
-                </div>
-            </div>
-        </div>
     </div>
 
     <script>
-        // === 圖表與計算邏輯 (維持不變) ===
         let myChart;
 
         function formatCurrency(num) {
             return Math.round(num).toLocaleString('zh-TW');
         }
 
+        // --- 核心與衛星推演邏輯 ---
         function updateSystem() {
             const salary = parseFloat(document.getElementById('salary').value);
             const savingsRate = parseFloat(document.getElementById('savingsRate').value);
@@ -390,6 +396,7 @@
             });
         }
 
+        // --- 買房租房機會成本邏輯 ---
         function updateHousing() {
             const housePrice = parseFloat(document.getElementById('housePrice').value) * 10000;
             const downPayment = parseFloat(document.getElementById('downPayment').value) * 10000;
@@ -402,8 +409,6 @@
             const monthlyRate = mortgageRate / 12;
             const totalMonths = mortgageYears * 12;
 
-            const monthlyMortgage = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + Math.pow(1 + monthlyRate, totalMonths) - 1));
-            // 修復上述公式錯誤，正確公式：
             const trueMonthlyMortgage = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
             document.getElementById('monthlyMortgage').innerText = formatCurrency(trueMonthlyMortgage);
 
@@ -426,16 +431,17 @@
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
             
-            event.target.classList.add('active');
+            // 找到點擊的頁籤並加上 active
+            const clickedTab = Array.from(document.querySelectorAll('.tab')).find(t => t.getAttribute('onclick').includes(tabId));
+            if(clickedTab) clickedTab.classList.add('active');
+            
             document.getElementById(tabId).classList.add('active');
             
             if(tabId === 'housing') { updateHousing(); }
             else if(tabId === 'alloc') { updateSystem(); }
         }
 
-        // === 新增：解析與載入 CSV 邏輯 ===
-        
-        // 純 JS 的輕量 CSV 解析器，能正確處理有換行或逗號的儲存格 (Google Sheet 格式)
+        // --- 解析與載入 CSV 邏輯 ---
         function parseCSV(text) {
             let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
             for (l of text) {
@@ -454,15 +460,10 @@
 
         async function fetchAndDisplayMindset() {
             const url = document.getElementById('csvUrl').value;
-            if (!url) {
-                alert("請先貼上 Google Sheets 的 CSV 網址！");
-                return;
-            }
-
             const container = document.getElementById('mindset-container');
             const loading = document.getElementById('loading');
             
-            container.innerHTML = ''; // 清空目前內容
+            container.innerHTML = ''; 
             loading.style.display = 'block';
 
             try {
@@ -470,22 +471,20 @@
                 if (!response.ok) throw new Error('網路回應錯誤');
                 const csvText = await response.text();
                 
-                // 解析 CSV 資料
                 const data = parseCSV(csvText);
-                
                 loading.style.display = 'none';
 
-                // 假設第一列是標題 (Timestamp, Title, Content)，從第二列開始讀取
-                // 並且反轉陣列，讓「最新的紀錄」顯示在最上面
+                // 假設第一列是表頭，從第二列開始讀取，並反轉陣列讓最新紀錄在最上
                 const records = data.slice(1).reverse(); 
 
                 records.forEach(row => {
-                    // 略過完全空白的列
                     if (row.length < 2 || (!row[0] && !row[1])) return; 
 
-                    const dateStr = row[0] || '未記錄時間';
-                    const titleStr = row[1] || '無標題';
-                    const contentStr = row[2] || '';
+                    // 根據 Google 表單輸出的預設格式：
+                    // row[0] 是時間戳記，row[1] 是標題，row[2] 是內容
+                    const dateStr = row[0] ? row[0] : '未記錄時間';
+                    const titleStr = row[1] ? row[1] : '無標題';
+                    const contentStr = row[2] ? row[2] : '';
 
                     const div = document.createElement('div');
                     div.className = 'mindset-item';
@@ -498,28 +497,22 @@
                 });
 
                 if(container.innerHTML === '') {
-                    container.innerHTML = '<p style="text-align:center; color:#666;">目前表單沒有紀錄，快去新增你的第一條心法吧！</p>';
+                    container.innerHTML = '<p style="text-align:center; color:#666; padding: 20px;">目前表單沒有紀錄，快去新增你的第一條心法吧！</p>';
                 }
-
-                // 可以將 URL 存在本機，下次打開就不用重貼
-                localStorage.setItem('savedCsvUrl', url);
 
             } catch (error) {
                 loading.style.display = 'none';
-                container.innerHTML = `<p style="color:red; text-align:center;">載入失敗，請確認網址是否正確，且已設定為「發佈到網路 (CSV格式)」。錯誤代碼: ${error.message}</p>`;
+                container.innerHTML = `<div class="mindset-item" style="border-left-color: red;"><h3 style="color:red;">載入失敗</h3><p>無法讀取你提供的資料庫。請確認網址正確且沒有被 Google 阻擋。錯誤代碼: ${error.message}</p></div>`;
             }
         }
 
-        // 初始化
+        // --- 網頁載入時自動執行 ---
         window.onload = function() {
             updateSystem();
             updateHousing();
             
-            // 如果之前有存過 CSV 網址，自動帶入並載入
-            const savedUrl = localStorage.getItem('savedCsvUrl');
-            if(savedUrl) {
-                document.getElementById('csvUrl').value = savedUrl;
-            }
+            // 自動觸發載入你的專屬 Google 表單 CSV
+            fetchAndDisplayMindset();
         };
     </script>
 </body>
