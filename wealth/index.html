@@ -75,7 +75,7 @@
         .input-group input[type="range"] {
             width: 100%;
         }
-        .input-group input[type="number"] {
+        .input-group input[type="number"], .input-group input[type="text"] {
             width: 100%;
             padding: 8px;
             border: 1px solid #ccc;
@@ -109,6 +109,7 @@
             display: flex;
             margin-bottom: 20px;
             border-bottom: 2px solid #ccc;
+            flex-wrap: wrap; /* 讓手機版頁籤可以折行 */
         }
         .tab {
             padding: 10px 20px;
@@ -127,6 +128,57 @@
         .tab-content.active {
             display: block;
         }
+        
+        /* 新增心法區塊的樣式 */
+        .btn-load {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            width: 100%;
+        }
+        .btn-load:hover {
+            background-color: #6a1515;
+        }
+        .mindset-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .mindset-item {
+            background: #fff;
+            border-left: 5px solid var(--primary-color);
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+        }
+        .mindset-item .date {
+            font-size: 0.8rem;
+            color: var(--accent-gold);
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .mindset-item h3 {
+            margin: 0 0 8px 0;
+            font-size: 1.1rem;
+            color: var(--text-main);
+        }
+        .mindset-item p {
+            margin: 0;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            white-space: pre-wrap; /* 保留換行符號 */
+        }
+        .loading-text {
+            text-align: center;
+            color: var(--text-muted);
+            display: none;
+        }
+
         @media (max-width: 768px) {
             .grid-layout { grid-template-columns: 1fr; }
         }
@@ -143,6 +195,7 @@
         <div class="tabs">
             <div class="tab active" onclick="switchTab('alloc')">核心/衛星資產推演</div>
             <div class="tab" onclick="switchTab('housing')">買房/租房機會成本</div>
+            <div class="tab" onclick="switchTab('mindset')">紀律與心法積累</div>
         </div>
 
         <div id="alloc" class="tab-content active">
@@ -245,16 +298,39 @@
                 </div>
             </div>
         </div>
+
+        <div id="mindset" class="tab-content">
+            <div class="card" style="margin-bottom: 20px;">
+                <h2>大腦外包：連接你的 Google 表單</h2>
+                <p style="font-size:0.85rem; color:#666;">
+                    請在下方貼上你 Google Sheets 的「發佈為 CSV」網址。每次你在表單寫下覆盤，這裡就會自動更新。<br>
+                    <strong>建議表單欄位順序：</strong> 1. 時間戳記 (系統預設) | 2. 核心標題 (短語) | 3. 覆盤內容
+                </p>
+                <div class="input-group">
+                    <input type="text" id="csvUrl" placeholder="例如: https://docs.google.com/spreadsheets/d/e/.../pub?output=csv">
+                </div>
+                <button class="btn-load" onclick="fetchAndDisplayMindset()">載入心法紀錄</button>
+            </div>
+
+            <div id="loading" class="loading-text">正在從 Google Sheets 載入資料...</div>
+            <div id="mindset-container" class="mindset-grid">
+                <div class="mindset-item">
+                    <div class="date">系統範例</div>
+                    <h3>AI銳矛藏偽分散與擁擠風險</h3>
+                    <p>絕非防禦核心，僅宜作兩成戰略衛星。面對00403A等高度集中題材，應保持「X光視角」，控制曝險，紀律至上。</p>
+                </div>
+            </div>
+        </div>
     </div>
 
     <script>
+        // === 圖表與計算邏輯 (維持不變) ===
         let myChart;
 
         function formatCurrency(num) {
             return Math.round(num).toLocaleString('zh-TW');
         }
 
-        // --- 核心與衛星推演邏輯 ---
         function updateSystem() {
             const salary = parseFloat(document.getElementById('salary').value);
             const savingsRate = parseFloat(document.getElementById('savingsRate').value);
@@ -263,7 +339,6 @@
             const satReturn = parseFloat(document.getElementById('satReturn').value);
             const years = parseFloat(document.getElementById('years').value);
 
-            // 更新顯示數值
             document.getElementById('salaryVal').innerText = formatCurrency(salary);
             document.getElementById('savingsRateVal').innerText = savingsRate + '%';
             document.getElementById('coreRatioVal').innerText = coreRatio + '%';
@@ -271,8 +346,7 @@
             document.getElementById('satReturnVal').innerText = satReturn + '%';
             document.getElementById('yearsVal').innerText = years;
 
-            // 計算基礎金額
-            const emergencyFund = salary * (1 - savingsRate/100) * 6; // 6個月生活費
+            const emergencyFund = salary * (1 - savingsRate/100) * 6; 
             const monthlyInvest = salary * (savingsRate / 100);
             const monthlyCore = monthlyInvest * (coreRatio / 100);
             const monthlySat = monthlyInvest * (1 - coreRatio / 100);
@@ -281,7 +355,6 @@
             document.getElementById('monthlyInvest').innerText = formatCurrency(monthlyInvest);
             document.getElementById('investSplit').innerText = `核心 ${formatCurrency(monthlyCore)} | 衛星 ${formatCurrency(monthlySat)}`;
 
-            // 複利計算 (年金終值)
             const months = years * 12;
             const rCore = (coreReturn / 100) / 12;
             const rSat = (satReturn / 100) / 12;
@@ -317,7 +390,6 @@
             });
         }
 
-        // --- 買房租房機會成本邏輯 ---
         function updateHousing() {
             const housePrice = parseFloat(document.getElementById('housePrice').value) * 10000;
             const downPayment = parseFloat(document.getElementById('downPayment').value) * 10000;
@@ -330,23 +402,21 @@
             const monthlyRate = mortgageRate / 12;
             const totalMonths = mortgageYears * 12;
 
-            // 每月房貸本息攤還公式
-            const monthlyMortgage = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
-            document.getElementById('monthlyMortgage').innerText = formatCurrency(monthlyMortgage);
+            const monthlyMortgage = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + Math.pow(1 + monthlyRate, totalMonths) - 1));
+            // 修復上述公式錯誤，正確公式：
+            const trueMonthlyMortgage = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+            document.getElementById('monthlyMortgage').innerText = formatCurrency(trueMonthlyMortgage);
 
-            // 租房投資策略：頭期款單筆投入 + 每月現金流差額定期定額
-            const monthlyDifference = monthlyMortgage - monthlyRent;
+            const monthlyDifference = trueMonthlyMortgage - monthlyRent;
             const mReturn = marketReturn / 12;
             
             let rentingNetWorth = 0;
             if (monthlyDifference > 0) {
-                // 頭期款複利
                 const fvDownPayment = downPayment * Math.pow(1 + marketReturn, mortgageYears);
-                // 每月差額年金終值
                 const fvDifference = mReturn === 0 ? monthlyDifference * totalMonths : monthlyDifference * ((Math.pow(1 + mReturn, totalMonths) - 1) / mReturn);
                 rentingNetWorth = fvDownPayment + fvDifference;
             } else {
-                rentingNetWorth = downPayment * Math.pow(1 + marketReturn, mortgageYears); // 若租金比房貸貴，只算頭期款投資
+                rentingNetWorth = downPayment * Math.pow(1 + marketReturn, mortgageYears); 
             }
 
             document.getElementById('rentingNetWorth').innerText = formatCurrency(rentingNetWorth);
@@ -360,13 +430,96 @@
             document.getElementById(tabId).classList.add('active');
             
             if(tabId === 'housing') { updateHousing(); }
-            else { updateSystem(); }
+            else if(tabId === 'alloc') { updateSystem(); }
+        }
+
+        // === 新增：解析與載入 CSV 邏輯 ===
+        
+        // 純 JS 的輕量 CSV 解析器，能正確處理有換行或逗號的儲存格 (Google Sheet 格式)
+        function parseCSV(text) {
+            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
+            for (l of text) {
+                if ('"' === l) {
+                    if (s && l === p) row[i] += l;
+                    s = !s;
+                } else if (',' === l && s) l = row[++i] = '';
+                else if ('\n' === l && s) {
+                    if ('\r' === p) row[i] = row[i].slice(0, -1);
+                    row = ret[++r] = [l = '']; i = 0;
+                } else row[i] += l;
+                p = l;
+            }
+            return ret;
+        }
+
+        async function fetchAndDisplayMindset() {
+            const url = document.getElementById('csvUrl').value;
+            if (!url) {
+                alert("請先貼上 Google Sheets 的 CSV 網址！");
+                return;
+            }
+
+            const container = document.getElementById('mindset-container');
+            const loading = document.getElementById('loading');
+            
+            container.innerHTML = ''; // 清空目前內容
+            loading.style.display = 'block';
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('網路回應錯誤');
+                const csvText = await response.text();
+                
+                // 解析 CSV 資料
+                const data = parseCSV(csvText);
+                
+                loading.style.display = 'none';
+
+                // 假設第一列是標題 (Timestamp, Title, Content)，從第二列開始讀取
+                // 並且反轉陣列，讓「最新的紀錄」顯示在最上面
+                const records = data.slice(1).reverse(); 
+
+                records.forEach(row => {
+                    // 略過完全空白的列
+                    if (row.length < 2 || (!row[0] && !row[1])) return; 
+
+                    const dateStr = row[0] || '未記錄時間';
+                    const titleStr = row[1] || '無標題';
+                    const contentStr = row[2] || '';
+
+                    const div = document.createElement('div');
+                    div.className = 'mindset-item';
+                    div.innerHTML = `
+                        <div class="date">${dateStr}</div>
+                        <h3>${titleStr}</h3>
+                        <p>${contentStr}</p>
+                    `;
+                    container.appendChild(div);
+                });
+
+                if(container.innerHTML === '') {
+                    container.innerHTML = '<p style="text-align:center; color:#666;">目前表單沒有紀錄，快去新增你的第一條心法吧！</p>';
+                }
+
+                // 可以將 URL 存在本機，下次打開就不用重貼
+                localStorage.setItem('savedCsvUrl', url);
+
+            } catch (error) {
+                loading.style.display = 'none';
+                container.innerHTML = `<p style="color:red; text-align:center;">載入失敗，請確認網址是否正確，且已設定為「發佈到網路 (CSV格式)」。錯誤代碼: ${error.message}</p>`;
+            }
         }
 
         // 初始化
         window.onload = function() {
             updateSystem();
             updateHousing();
+            
+            // 如果之前有存過 CSV 網址，自動帶入並載入
+            const savedUrl = localStorage.getItem('savedCsvUrl');
+            if(savedUrl) {
+                document.getElementById('csvUrl').value = savedUrl;
+            }
         };
     </script>
 </body>
