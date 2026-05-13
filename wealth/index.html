@@ -7,13 +7,15 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         :root {
-            --primary-color: #8a1c1c; 
+            --primary-color: #8a1c1c; /* 商周紅 */
             --bg-color: #f8f9fa;
             --card-bg: #ffffff;
             --text-main: #333333;
             --text-muted: #6c757d;
             --accent-gold: #c5a059;
             --dimmed-text: #adb5bd;
+            --warning-bg: #fffde7;
+            --warning-border: #fbc02d;
         }
         body {
             font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
@@ -138,6 +140,8 @@
         .tab-content.active {
             display: block;
         }
+        
+        /* 心法區塊樣式 */
         .btn-action {
             display: inline-block;
             padding: 8px 15px;
@@ -177,11 +181,29 @@
             padding: 15px;
             border-radius: 4px;
             box-shadow: 0 1px 5px rgba(0,0,0,0.05);
+            transition: background-color 0.3s;
+        }
+        .mindset-item.reminder-highlight {
+            background-color: var(--warning-bg);
+            border-left-color: var(--warning-border);
         }
         .mindset-item .date {
             font-size: 0.8rem;
             color: var(--accent-gold);
             margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .mindset-item.reminder-highlight .date {
+            color: #d32f2f;
+        }
+        .mindset-item .note-tag {
+            display: inline-block;
+            background-color: var(--warning-border);
+            color: #333;
+            font-size: 0.75rem;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 10px;
             font-weight: bold;
         }
         .mindset-item h3 {
@@ -202,6 +224,7 @@
             padding: 20px;
             font-weight: bold;
         }
+
         @media (max-width: 768px) {
             .grid-layout { grid-template-columns: 1fr; }
             .header-actions { margin-top: 10px; width: 100%; display: flex; justify-content: space-between; }
@@ -220,7 +243,7 @@
         <div class="tabs">
             <div class="tab active" onclick="switchTab('alloc')">核心/衛星資產推演</div>
             <div class="tab" onclick="switchTab('mindset')">紀律與心法積累</div>
-            <div class="tab dimmed" onclick="switchTab('housing')">買房/租房機會成本 (暫緩)</div>
+            <div class="tab dimmed" onclick="switchTab('housing')">買房/租房機會成本</div>
         </div>
 
         <div id="alloc" class="tab-content active">
@@ -290,8 +313,51 @@
         </div>
 
         <div id="housing" class="tab-content">
-            <!-- 買房租房代碼維持原樣，此處為節省空間略過細節，請沿用您原本的 HTML 結構 -->
-            <p style="text-align:center; padding: 20px; color:#666;">請沿用您原本的買房/租房機會成本 HTML 結構</p>
+            <div class="grid-layout">
+                <div class="card">
+                    <h2>機會成本參數設定</h2>
+                    <p style="font-size:0.85rem; color:#666;">近期買房需求較低，此區塊做為長期房產觀察與壓力測試使用。</p>
+                    <div class="input-group">
+                        <label>房屋總價 (萬)</label>
+                        <input type="number" id="housePrice" value="1800" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>自備頭期款 (萬)</label>
+                        <input type="number" id="downPayment" value="360" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>房貸利率 (%)</label>
+                        <input type="number" id="mortgageRate" value="2.1" step="0.1" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>貸款年限 (年)</label>
+                        <input type="number" id="mortgageYears" value="30" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>對比租屋月租金 (元)</label>
+                        <input type="number" id="monthlyRent" value="25000" oninput="updateHousing()">
+                    </div>
+                    <div class="input-group">
+                        <label>市場預期年化報酬 (%)</label>
+                        <input type="number" id="marketReturn" value="6" step="0.5" oninput="updateHousing()">
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>租房投資 vs 買房試算結果</h2>
+                    <div class="result-box">
+                        <h3>買房每月需繳房貸 (本息攤還)</h3>
+                        <div class="number" id="monthlyMortgage">53,952</div>
+                    </div>
+                    <div class="result-box">
+                        <h3>如果租房，期末資產總值</h3>
+                        <div class="number" id="rentingNetWorth">24,500,000</div>
+                        <p style="font-size:0.85rem; color:#666; text-align:left;">
+                            邏輯：將買房的「頭期款」單筆投入市場，並將每月「房貸減去租金的差額」持續定期定額投入市場，計算複利結果。
+                        </p>
+                    </div>
+                </div>
+            </div>
         </div>
 
     </div>
@@ -303,7 +369,7 @@
             return Math.round(num).toLocaleString('zh-TW');
         }
 
-        // --- 核心與衛星推演邏輯 (更新版) ---
+        // --- 核心與衛星推演邏輯 ---
         function updateSystem() {
             const salary = parseFloat(document.getElementById('salary').value) || 0;
             const monthlyFX = parseFloat(document.getElementById('monthlyFX').value) || 0;
@@ -363,6 +429,37 @@
             });
         }
 
+        // --- 買房租房機會成本邏輯 ---
+        function updateHousing() {
+            const housePrice = parseFloat(document.getElementById('housePrice').value) * 10000;
+            const downPayment = parseFloat(document.getElementById('downPayment').value) * 10000;
+            const mortgageRate = parseFloat(document.getElementById('mortgageRate').value) / 100;
+            const mortgageYears = parseFloat(document.getElementById('mortgageYears').value);
+            const monthlyRent = parseFloat(document.getElementById('monthlyRent').value);
+            const marketReturn = parseFloat(document.getElementById('marketReturn').value) / 100;
+
+            const loanAmount = housePrice - downPayment;
+            const monthlyRate = mortgageRate / 12;
+            const totalMonths = mortgageYears * 12;
+
+            const trueMonthlyMortgage = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
+            document.getElementById('monthlyMortgage').innerText = formatCurrency(trueMonthlyMortgage);
+
+            const monthlyDifference = trueMonthlyMortgage - monthlyRent;
+            const mReturn = marketReturn / 12;
+            
+            let rentingNetWorth = 0;
+            if (monthlyDifference > 0) {
+                const fvDownPayment = downPayment * Math.pow(1 + marketReturn, mortgageYears);
+                const fvDifference = mReturn === 0 ? monthlyDifference * totalMonths : monthlyDifference * ((Math.pow(1 + mReturn, totalMonths) - 1) / mReturn);
+                rentingNetWorth = fvDownPayment + fvDifference;
+            } else {
+                rentingNetWorth = downPayment * Math.pow(1 + marketReturn, mortgageYears); 
+            }
+
+            document.getElementById('rentingNetWorth').innerText = formatCurrency(rentingNetWorth);
+        }
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
             document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
@@ -373,10 +470,10 @@
             document.getElementById(tabId).classList.add('active');
             
             if(tabId === 'alloc') { updateSystem(); }
-            // 由於省略了 housing 的 JS，此處不呼叫 updateHousing 以免報錯
+            else if(tabId === 'housing') { updateHousing(); }
         }
 
-        // --- 解析與載入 CSV 邏輯維持原樣 ---
+        // --- 解析與載入 CSV 邏輯 ---
         function parseCSV(text) {
             let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
             for (l of text) {
@@ -417,14 +514,27 @@
                     const dateStr = row[0] ? row[0] : '未記錄時間';
                     const titleStr = row[1] ? row[1] : '無標題';
                     const contentStr = row[2] ? row[2] : '';
+                    
+                    // 檢查第四欄 (index 3) 是否有「提醒」註記
+                    const noteStr = row.length > 3 && row[3] ? row[3].trim() : '';
+                    const isReminder = noteStr.includes('提醒');
 
                     const div = document.createElement('div');
-                    div.className = 'mindset-item';
-                    div.innerHTML = `
-                        <div class="date">${dateStr}</div>
+                    // 根據是否有「提醒」套用不同的 CSS class
+                    div.className = isReminder ? 'mindset-item reminder-highlight' : 'mindset-item';
+                    
+                    let htmlContent = `<div class="date">${dateStr}</div>`;
+                    
+                    // 若有提醒，加上獨立的 Tag 標籤
+                    if (isReminder) {
+                        htmlContent += `<div class="note-tag">⚠️ ${noteStr}</div>`;
+                    }
+                    
+                    htmlContent += `
                         <h3>${titleStr}</h3>
                         <p>${contentStr}</p>
                     `;
+                    div.innerHTML = htmlContent;
                     container.appendChild(div);
                 });
 
@@ -434,12 +544,14 @@
 
             } catch (error) {
                 loading.style.display = 'none';
-                container.innerHTML = `<div class="mindset-item" style="border-left-color: red;"><h3 style="color:red;">載入失敗</h3><p>無法讀取你提供的資料庫。錯誤代碼: ${error.message}</p></div>`;
+                container.innerHTML = `<div class="mindset-item" style="border-left-color: red;"><h3 style="color:red;">載入失敗</h3><p>無法讀取你提供的資料庫。請確認網址正確且沒有被 Google 阻擋。錯誤代碼: ${error.message}</p></div>`;
             }
         }
 
+        // --- 網頁載入時自動執行 ---
         window.onload = function() {
             updateSystem();
+            updateHousing();
             fetchAndDisplayMindset();
         };
     </script>
