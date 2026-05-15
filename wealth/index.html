@@ -57,6 +57,13 @@
         .input-group input[type="number"] {
             width: 100%; padding: 10px; border: 1px solid #ccc;
             border-radius: 4px; box-sizing: border-box; font-size: 1rem;
+            background-color: #fafafa;
+        }
+        .input-group input[readonly] {
+            background-color: #eef2f5;
+            color: var(--primary-color);
+            font-weight: bold;
+            border-color: #ddd;
         }
         .value-display { float: right; color: var(--primary-color); font-weight: bold; }
         
@@ -145,7 +152,7 @@
         
         <div class="warning-box">
             <h4>⚠️ 系統核心紀律：機械化再平衡</h4>
-            <p>拋棄「獲利 50% 就賣出」的定錨迷思。將新資金視為修補比例的「填縫劑」。<strong>當衛星資產（高力、上詮）佔比膨脹並偏離預設基準（如 20%）超過 5% 時，系統才無條件觸發賣出，回撥資金至 006208 核心</strong>，以紀律克服人性貪婪。</p>
+            <p>拋棄「獲利多少就賣出」的定錨迷思。<strong>當衛星資產（高力、上詮）的總市值佔比，偏離您設定的 25% 基準超過 5%（即突破 30%）時，系統才無條件觸發賣出，回撥資金至 006208 核心</strong>。將每次投入的新資金視為修補比例的「填縫劑」，低買高賣自然發生。</p>
         </div>
 
         <div class="tabs">
@@ -159,46 +166,45 @@
         <div id="alloc" class="tab-content active">
             <div class="grid-layout">
                 <div class="card">
-                    <h2>系統資金流向設定</h2>
-                    <p style="font-size:0.85rem; color:#666; margin-top:-5px;">將生活所需與投資嚴格切割，確保市場恐慌時不被洗出場。</p>
+                    <h2>系統資金流向設定 (白話版)</h2>
+                    <p style="font-size:0.85rem; color:#666; margin-top:-5px;">將每月的金流具象化，建立由上而下的物理分配漏斗。</p>
                     
-                    <div class="input-group">
-                        <label>每月常規總支出 (NTD)</label>
-                        <span class="note">包含房租、食衣住行等基本生存開銷。</span>
-                        <input type="number" id="monthlyExpense" value="35000" oninput="updateSystem()">
-                    </div>
-                    
-                    <div class="input-group" style="border-top: 1px dashed #ddd; padding-top: 15px;">
+                    <div class="input-group" style="border-bottom: 2px dashed #ddd; padding-bottom: 15px;">
                         <label>每月可支配閒錢總額 (NTD)</label>
-                        <span class="note">扣除常規支出後，可用於佈局未來的絕對閒錢。</span>
-                        <input type="number" id="totalDisposable" value="10000" oninput="updateAllocation()">
+                        <span class="note">扣除所有生活、房租等常規開銷後，可用於「理財規劃」的絕對閒錢。</span>
+                        <input type="number" id="totalDisposable" value="10000" oninput="updateAllocationFlow()">
                     </div>
                     
                     <div class="input-group" style="background: #fdfbf7; padding: 12px; border-radius: 4px; border-left: 4px solid var(--accent-gold);">
-                        <label>保本護城河：定存與體驗金 (NTD/月)</label>
-                        <span class="note">絕對隔離於股市波動。用於累積緊急預備金或不可取代的人生體驗之旅。</span>
-                        <input type="number" id="monthlySafe" value="5000" oninput="calculateFromInputs()">
+                        <label>🛡️ 防禦護城河 (50%)：定存與體驗金</label>
+                        <span class="note">絕對隔離於市場波動之外。用於累積底氣，或為未來的重大體驗（如海外旅行）儲備。</span>
+                        <input type="number" id="monthlySafe" value="5000" readonly>
                     </div>
                     
-                    <div class="input-group">
-                        <label>股市攻擊：核心市值大盤 (75%)</label>
-                        <span class="note">投入 006208。承擔系統性風險，穩健獲取市場平均 Beta 報酬。</span>
-                        <input type="number" id="monthlyCore" value="3750" oninput="calculateFromInputs()">
-                    </div>
-                    
-                    <div class="input-group">
-                        <label>股市攻擊：衛星趨勢科技 (25%)</label>
-                        <span class="note">投入高力/上詮。承擔高波動與非系統風險，挑戰超額 Alpha 報酬。</span>
-                        <input type="number" id="monthlySat" value="1250" oninput="calculateFromInputs()">
+                    <div class="input-group" style="background: #fdfbf7; padding: 12px; border-radius: 4px; border-left: 4px solid var(--primary-color);">
+                        <label>⚔️ 股市作戰總額 (50%)</label>
+                        <span class="note">承擔市場波動以獲取長期複利的資本，將依照 75:25 比例分配至核心與衛星。</span>
+                        <input type="number" id="monthlyStockTotal" value="5000" readonly>
+                        
+                        <div style="display: flex; gap: 10px; margin-top: 15px;">
+                            <div style="flex: 1;">
+                                <label style="font-size: 0.85rem; color: #555;">核心市值大盤 (75%)<br><span style="font-size:0.75rem;">(例：006208)</span></label>
+                                <input type="number" id="monthlyCore" value="3750" readonly>
+                            </div>
+                            <div style="flex: 1;">
+                                <label style="font-size: 0.85rem; color: #555;">衛星趨勢科技 (25%)<br><span style="font-size:0.75rem;">(例：高力/上詮)</span></label>
+                                <input type="number" id="monthlySat" value="1250" readonly>
+                            </div>
+                        </div>
                     </div>
                     
                     <div class="input-group" style="border-top: 1px dashed #ddd; padding-top: 15px;">
-                        <label>核心長期預期年化 (%) <span id="coreReturnVal" class="value-display">6.5%</span></label>
+                        <label>核心大盤預期年化 (%) <span id="coreReturnVal" class="value-display">6.5%</span></label>
                         <input type="range" id="coreReturn" min="3" max="10" value="6.5" step="0.1" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>衛星高波預期年化 (%) <span id="satReturnVal" class="value-display">10%</span></label>
-                        <input type="range" id="satReturn" min="5" max="25" value="10" step="0.5" oninput="updateSystem()">
+                        <label>衛星科技預期年化 (%) <span id="satReturnVal" class="value-display">12.0%</span></label>
+                        <input type="range" id="satReturn" min="5" max="25" value="12" step="0.5" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
                         <label>複利運轉年限 (年) <span id="yearsVal" class="value-display">20</span></label>
@@ -207,27 +213,23 @@
                 </div>
 
                 <div class="card">
-                    <h2>護城河與資本增長推演</h2>
+                    <h2>長期資本增長推演</h2>
                     <div class="grid-layout" style="gap:15px;">
-                        <div class="result-box">
-                            <h3>緊急預備底線</h3>
-                            <div class="number" id="emergencyFundDisplay">0</div>
-                            <span style="font-size:0.8rem; color:#666;">(6個月基礎生存線)</span>
-                        </div>
                         <div class="result-box highlight">
-                            <h3>零風險護城河水位 (期末)</h3>
+                            <h3>零風險防禦總值 (期末)</h3>
                             <div class="number" id="safeFundTotal">0</div>
                             <span style="font-size:0.8rem; color:#666;">專款專用，安心之源</span>
                         </div>
+                        <div class="result-box" style="border-left: 4px solid var(--primary-color);">
+                            <h3>股市風險資本總值 (期末)</h3>
+                            <div class="number" id="totalWealth">0</div>
+                            <span style="font-size:0.8rem; color:#666;">核心與衛星之複利總和</span>
+                        </div>
                     </div>
-                    <div class="result-box" style="margin-top:16px;">
-                        <h3>期末風險資本總值 (股市部位 NTD)</h3>
-                        <div class="number" id="totalWealth">0</div>
-                        <p style="font-size:0.85rem; color:#666; margin:0;">
-                            持續定期投入旨在平均分攤成本，但無法規避最終的市場大跌。嚴守股債/現金比例，才是控制風險的唯一解藥。
-                        </p>
-                    </div>
-                    <canvas id="wealthChart" width="400" height="200" style="margin-top: 15px;"></canvas>
+                    <p style="font-size:0.85rem; color:#666; margin-top: 10px;">
+                        圖表展現的是紀律的價值。定期定額的意義在於「分攤買入成本的時機風險」，但無法免除最終的市場系統性回檔。因此，防禦護城河的存在至關重要。
+                    </p>
+                    <canvas id="wealthChart" width="400" height="200" style="margin-top: 10px;"></canvas>
                 </div>
             </div>
         </div>
@@ -239,26 +241,25 @@
                 <p style="font-size:0.9rem; color:#666; margin-bottom: 20px;">將市場的複雜術語，轉化為指導實踐的底層常識，破解理財迷思。</p>
                 
                 <div class="dict-item">
-                    <h4>雙曲折現 (Hyperbolic Discounting)</h4>
-                    <p><strong>白話解讀：</strong> 人腦的心理偏誤，天生短視近利，會對「當下立即獲利」賦予過高價值。這會導致投資人急於「停利落袋為安」，進而中斷長期資產的複利軌跡，錯失大波段。</p>
-                    <div class="dict-note">防禦機制：堅持資產配置紀律，不隨意因短期帳面數字而賣出。</div>
+                    <h4>動態再平衡 (Dynamic Rebalancing)</h4>
+                    <p><strong>白話解讀：</strong> 不依賴感覺猜測高低點，而是設定一個「資產比例閾值」。當衛星股暴漲導致佔比超過原定計畫時，系統強制要求賣出多餘部分買入大盤。這是唯一具備數學邏輯的「自動低買高賣」機制。</p>
                 </div>
 
                 <div class="dict-item">
                     <h4>均值回歸 (Mean Reversion)</h4>
-                    <p><strong>白話解讀：</strong> 資本市場的萬有引力。漲多的熱門股終究會面臨修正；而跌深且被看壞的市場，只要經濟體質不滅，長期往往會回到歷史平均報酬線。</p>
+                    <p><strong>白話解讀：</strong> 資本市場的萬有引力。漲多的熱門前沿科技終究會面臨籌碼修正；而穩健的大盤指數，長期往往會回到歷史的平均增長軌跡。</p>
                     <div class="dict-note">防禦機制：不單押近期暴漲的單一市場或個股，透過大盤指數廣泛分散才是王道。</div>
                 </div>
 
                 <div class="dict-item">
                     <h4>零成本迷思 (Zero-Cost Fallacy)</h4>
                     <p><strong>白話解讀：</strong> 以為領了股息或是賣出獲利一半後，剩下的股票就是「零成本」，放著不管跌了也沒差。其實留在市場上的每一分錢，都是你真實的資產，跌了就是真虧損。</p>
-                    <div class="dict-note">防禦機制：決策永遠只看「現在的市場狀況」與「未來的預期」，過去的賺賠都是沉沒成本。</div>
+                    <div class="dict-note">防禦機制：決策永遠只看「現在的市場狀況」與「未來的預期」，過去的買入價都是沉沒成本。</div>
                 </div>
                 
                 <div class="dict-item">
-                    <h4>機會成本 (Opportunity Cost)</h4>
-                    <p><strong>白話解讀：</strong> 天下沒有白吃的午餐。當你把一大筆錢拿去付買房頭期款，這筆錢就失去了放在股市裡每年賺取長期平均複利的「機會」。你失去的可能獲利，就是你付出的隱形成本。</p>
+                    <h4>雙曲折現 (Hyperbolic Discounting)</h4>
+                    <p><strong>白話解讀：</strong> 人腦的心理偏誤，天生短視近利，會對「當下立即獲利」賦予過高價值。這會導致投資人急於「停利落袋為安」，進而中斷長期資產的複利軌跡，錯失大波段。</p>
                 </div>
             </div>
         </div>
@@ -286,7 +287,7 @@
             <div class="grid-layout">
                 <div class="card">
                     <h2>資本機會成本探測器</h2>
-                    <p style="font-size:0.85rem; color:#666;">將買房綁死的現金流，視為放棄市場複利的機會成本。</p>
+                    <p style="font-size:0.85rem; color:#666;">將買房綁死的現金流，視為放棄市場大盤長期複利的機會成本。</p>
                     <div class="input-group">
                         <label>標的總價 (萬)</label>
                         <input type="number" id="housePrice" value="1800" oninput="updateHousing()">
@@ -339,22 +340,24 @@
             return Math.round(num).toLocaleString('zh-TW');
         }
 
-        // 當使用者修改總閒錢時，自動分配 50%保本 / 37.5%核心 / 12.5%衛星
-        function updateAllocation() {
+        // 自動分配 10000 -> 5000保本 / 5000股市(3750核心+1250衛星)
+        function updateAllocationFlow() {
             const total = parseFloat(document.getElementById('totalDisposable').value) || 0;
-            document.getElementById('monthlySafe').value = total * 0.5;
-            document.getElementById('monthlyCore').value = total * 0.375;
-            document.getElementById('monthlySat').value = total * 0.125;
-            updateSystem();
-        }
+            
+            const safe = total * 0.5;
+            const stockTotal = total * 0.5;
+            const core = stockTotal * 0.75;
+            const sat = stockTotal * 0.25;
 
-        // 當使用者自行修改保本/核心/衛星數值時觸發
-        function calculateFromInputs() {
+            document.getElementById('monthlySafe').value = safe;
+            document.getElementById('monthlyStockTotal').value = stockTotal;
+            document.getElementById('monthlyCore').value = core;
+            document.getElementById('monthlySat').value = sat;
+            
             updateSystem();
         }
 
         function updateSystem() {
-            const monthlyExpense = parseFloat(document.getElementById('monthlyExpense').value) || 0;
             const monthlySafe = parseFloat(document.getElementById('monthlySafe').value) || 0;
             const monthlyCore = parseFloat(document.getElementById('monthlyCore').value) || 0;
             const monthlySat = parseFloat(document.getElementById('monthlySat').value) || 0;
@@ -367,11 +370,7 @@
             document.getElementById('satReturnVal').innerText = satReturn + '%';
             document.getElementById('yearsVal').innerText = years;
 
-            // 計算緊急預備金 (6個月生活支出)
-            const emergencyFund = monthlyExpense * 6; 
-            document.getElementById('emergencyFundDisplay').innerText = formatCurrency(emergencyFund);
-            
-            // 保本護城河總值 (不計息)
+            // 保本護城河總值 (不計息，視為現金堆疊)
             const months = years * 12;
             const safeFundTotal = monthlySafe * months;
             document.getElementById('safeFundTotal').innerText = formatCurrency(safeFundTotal);
@@ -501,14 +500,14 @@
                     
                     // 偵測備註欄位 (index 3) 是否含有「提醒」
                     const noteStr = row.length > 3 && row[3] ? row[3].trim() : '';
-                    const isReminder = noteStr.includes('提醒');
+                    const isReminder = noteStr.includes('提醒') || titleStr.includes('提醒') || contentStr.includes('提醒');
                     
                     const div = document.createElement('div');
                     div.className = isReminder ? 'mindset-item reminder-highlight' : 'mindset-item';
                     
                     let htmlContent = '';
                     if (isReminder) {
-                        htmlContent += `<h4 style="color:#d32f2f; margin: 0 0 8px 0; font-size: 1rem;">⚠️ 戰略紀律提醒</h4>`;
+                        htmlContent += `<h4 style="color:#d32f2f; margin: 0 0 8px 0; font-size: 1.05rem;">⚠️ 戰略紀律提醒</h4>`;
                     }
                     
                     htmlContent += `
@@ -526,12 +525,12 @@
 
             } catch (error) {
                 loading.style.display = 'none';
-                container.innerHTML = `<div class="mindset-item reminder-highlight"><h4 style="color:red; margin:0;">載入失敗</h4><p style="margin:5px 0 0 0;">無法連接至戰略資料庫。錯誤代碼: ${error.message}</p></div>`;
+                container.innerHTML = `<div class="mindset-item reminder-highlight"><h4 style="color:#d32f2f; margin:0;">載入失敗</h4><p style="margin:5px 0 0 0;">無法連接至戰略資料庫。錯誤代碼: ${error.message}</p></div>`;
             }
         }
 
         window.onload = function() {
-            updateSystem();
+            updateAllocationFlow(); // 初始化漏斗分配
             updateHousing();
             fetchAndDisplayMindset();
         };
