@@ -78,6 +78,25 @@
         }
         .tab-content { display: none; }
         .tab-content.active { display: block; }
+
+        /* 黃色提示區塊 (核心紀律提醒) */
+        .warning-box {
+            background-color: var(--warning-bg);
+            border-left: 5px solid var(--warning-border);
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 4px;
+            color: #333;
+        }
+        .warning-box h4 {
+            margin: 0 0 8px 0;
+            color: #d32f2f;
+            font-size: 1.05rem;
+        }
+        .warning-box p {
+            margin: 0;
+            font-size: 0.95rem;
+        }
         
         /* 字典與心法區塊 */
         .dict-item {
@@ -121,10 +140,17 @@
     </header>
 
     <div class="container">
+        
+        <!-- 全局戰略黃色提醒區塊 -->
+        <div class="warning-box">
+            <h4>⚠️ 系統核心紀律：機械化再平衡</h4>
+            <p>不要被過去的買入成本（如 006208 的 227 元）綁架。將新資金視為「填縫劑」，嚴格監控衛星資產（高力、上詮）的佔比。<strong>當衛星佔比膨脹並偏離目標基準 >5% 時，系統無條件觸發賣出，回撥資金至核心部位</strong>，以此克服人性貪婪與追高殺低的本能。</p>
+        </div>
+
         <div class="tabs">
             <div class="tab active" onclick="switchTab('alloc')">資產配置引擎</div>
-            <div class="tab" onclick="switchTab('mindset')">戰略大腦覆盤</div>
             <div class="tab" onclick="switchTab('dict')">資本物理學字典</div>
+            <div class="tab" onclick="switchTab('mindset')">戰略大腦覆盤</div>
             <div class="tab" onclick="switchTab('housing')">機會成本試算</div>
         </div>
 
@@ -183,7 +209,7 @@
                         <h3>期末風險資本總值 (NTD)</h3>
                         <div class="number" id="totalWealth">0</div>
                         <p style="font-size:0.85rem; color:#666; margin:0;">
-                            紀律提醒：當衛星資產（如上詮、高力）佔比因暴漲而偏離預設風險閾值 >5% 時，系統應無情啟動「再平衡」，將利潤回撥至核心。
+                            持續投入戰勝市場波動。切勿以單筆定期定額比較，重點在資金的長線效率。
                         </p>
                     </div>
                     <canvas id="wealthChart" width="400" height="200" style="margin-top: 15px;"></canvas>
@@ -191,7 +217,43 @@
             </div>
         </div>
 
-        <!-- 模塊二：戰略大腦覆盤 -->
+        <!-- 模塊二：資本物理學字典 (名詞白話解析) -->
+        <div id="dict" class="tab-content">
+            <div class="card">
+                <h2>戰略名詞白話解析</h2>
+                <p style="font-size:0.9rem; color:#666; margin-bottom: 20px;">將華爾街的複雜術語，轉化為指導實踐的常識，破解理財迷思。</p>
+                
+                <div class="warning-box">
+                    <h4>⚠️ 破除「零成本」與「回本」幻覺</h4>
+                    <p>投資人常以為領息或賣出部分獲利後，剩下的股票就是「零成本」，可以放著不管。<strong>事實上，過去的虧損或獲利皆是沉沒成本。</strong>留在市場上的每一塊錢都在承受真實的波動風險與機會成本。決策永遠只能看「現在」與「未來預期」。</p>
+                </div>
+
+                <div class="dict-item">
+                    <h4>雙曲折現 (Hyperbolic Discounting)</h4>
+                    <p><strong>白話解讀：</strong> 人腦的心理偏誤，天生短視近利，會對「當下立即獲利」賦予過高價值。這會導致投資人急於「停利落袋為安」，進而中斷長期資產的複利軌跡，錯失大波段。</p>
+                    <div class="dict-note">防禦機制：堅持資產配置紀律，不隨意因短期帳面數字而賣出。</div>
+                </div>
+
+                <div class="dict-item">
+                    <h4>均值回歸 (Mean Reversion)</h4>
+                    <p><strong>白話解讀：</strong> 資本市場的萬有引力。漲多的熱門股終究會面臨修正；而跌深且被看壞的市場，長期往往會回到歷史平均報酬線。</p>
+                    <div class="dict-note">防禦機制：不單押近期暴漲的單一市場或個股，透過大盤指數廣泛分散才是王道。</div>
+                </div>
+
+                <div class="dict-item">
+                    <h4>非系統性風險 (Unsystematic Risk)</h4>
+                    <p><strong>白話解讀：</strong> 單一公司或單一產業專屬的倒楣事（例如某科技廠高層異動、特定原物料技術被取代）。這是可以透過「分散投資買大盤」來完全消除的無效風險。</p>
+                    <div class="dict-note">防禦機制：將資金主力放在市值型 ETF (如 006208)，排除個股暴雷可能。</div>
+                </div>
+                
+                <div class="dict-item">
+                    <h4>機會成本 (Opportunity Cost)</h4>
+                    <p><strong>白話解讀：</strong> 天下沒有白吃的午餐。當你把 1,000 萬拿去付買房頭期款，這筆錢就失去了放在股市裡每年賺取市場長期平均複利的「機會」。你失去的獲利，就是你付出的隱形成本。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模塊三：戰略大腦覆盤 -->
         <div id="mindset" class="tab-content">
             <div class="card">
                 <input type="hidden" id="csvUrl" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
@@ -199,7 +261,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 20px;">
                     <h2 style="border:none; margin:0; padding:0;">動態決策日誌</h2>
                     <div class="header-actions">
-                        <!-- 保留您的核心功能 -->
+                        <!-- 保留核心寫入功能 -->
                         <a href="https://itigre.pse.is/wealth99" target="_blank" class="btn-action btn-write">✍️ 寫入今日覆盤</a>
                         <button onclick="fetchAndDisplayMindset()" class="btn-action btn-refresh">⟳ 刷新資料庫</button>
                     </div>
@@ -207,47 +269,6 @@
                 
                 <div id="loading" style="text-align:center; padding:20px; color:#888;">正從雲端讀取歷史決策參數...</div>
                 <div id="mindset-container"></div>
-                
-                <div class="external-link-box">
-                    💡 <strong>系統校準指引：</strong> 若需獲取最新的全球指數化投資宏觀數據與市場偏誤剖析，請定期查閱 <a href="https://www.facebook.com/FfaarrFinance/" target="_blank">Ffaarr 投資理財 Facebook 專頁</a>，以保持系統參數的客觀與精準。
-                </div>
-            </div>
-        </div>
-
-        <!-- 模塊三：資本物理學字典 (名詞白話解析) -->
-        <div id="dict" class="tab-content">
-            <div class="card">
-                <h2>戰略名詞白話解析</h2>
-                <p style="font-size:0.9rem; color:#666; margin-bottom: 20px;">將華爾街的複雜術語，轉化為指導實踐的常識，破除理財迷思。</p>
-                
-                <div class="dict-item">
-                    <h4>雙曲折現 (Hyperbolic Discounting)</h4>
-                    <p><strong>白話解讀：</strong> 人性的弱點。大腦天生短視，覺得「現在拿到 1 萬」比「未來拿到 2 萬」更爽。在投資上，這會導致投資人急於「停利入袋為安」，卻錯失了長期複利滾出大財富的機會。</p>
-                    <div class="dict-note">防禦機制：堅持紀律，不隨意中斷長期投資計畫。</div>
-                </div>
-
-                <div class="dict-item">
-                    <h4>均值回歸 (Mean Reversion)</h4>
-                    <p><strong>白話解讀：</strong> 萬物皆有重力。漲多的熱門股終究會面臨修正，跌深且被看壞的市場，只要經濟體質不滅，長期往往會回到歷史平均報酬線。</p>
-                    <div class="dict-note">防禦機制：不單押近期暴漲的單一市場或個股，全球分散才是王道。</div>
-                </div>
-
-                <div class="dict-item">
-                    <h4>非系統性風險 (Unsystematic Risk)</h4>
-                    <p><strong>白話解讀：</strong> 單一公司或單一產業專屬的倒楣事（如：某科技廠專利侵權、某原物料突然被取代）。這是可以透過「分散投資買大盤」來完全消除的風險。</p>
-                    <div class="dict-note">防禦機制：核心部位配置 006208 等市值型 ETF。</div>
-                </div>
-
-                <div class="dict-item">
-                    <h4>零成本迷思 (Zero-Cost Fallacy)</h4>
-                    <p><strong>白話解讀：</strong> 以為領了股息或是賣出獲利一半後，剩下的股票就是「零成本」，放著不管跌了也沒差。其實留在市場上的每一分錢，都是你真實的資產，跌了就是真虧損。</p>
-                    <div class="dict-note">防禦機制：決策永遠只看「現在的市場狀況」與「未來的預期」，不要回頭看買入價格。</div>
-                </div>
-                
-                <div class="dict-item">
-                    <h4>機會成本 (Opportunity Cost)</h4>
-                    <p><strong>白話解讀：</strong> 天下沒有白吃的午餐。當你把 100 萬拿去付買房頭期款，這 100 萬就失去了放在股市裡每年賺取 6% 複利的「機會」。你失去的獲利，就是你付出的隱形成本。</p>
-                </div>
             </div>
         </div>
 
