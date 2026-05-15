@@ -16,6 +16,8 @@
             --dimmed-text: #adb5bd;
             --warning-bg: #fffde7;
             --warning-border: #fbc02d;
+            --danger-bg: #ffebee;
+            --danger-border: #e57373;
         }
         body {
             font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
@@ -59,6 +61,10 @@
             box-shadow: 0 2px 10px rgba(0,0,0,0.05);
             border-top: 4px solid var(--accent-gold);
         }
+        .card-principles {
+            border-top: 4px solid var(--primary-color);
+            background: #fafafa;
+        }
         .card h2 {
             margin-top: 0;
             font-size: 1.2rem;
@@ -96,6 +102,10 @@
             border-radius: 4px;
             margin-bottom: 15px;
             text-align: center;
+            border: 1px solid #eee;
+        }
+        .result-box.highlight {
+            border-left: 4px solid var(--accent-gold);
         }
         .result-box h3 {
             margin: 0;
@@ -126,14 +136,6 @@
             border-bottom: 3px solid var(--primary-color);
             margin-bottom: -2px;
         }
-        .tab.dimmed {
-            opacity: 0.6;
-            font-weight: normal;
-        }
-        .tab.dimmed.active {
-            opacity: 1;
-            font-weight: bold;
-        }
         .tab-content {
             display: none;
         }
@@ -141,94 +143,27 @@
             display: block;
         }
         
-        /* 心法區塊樣式 */
-        .btn-action {
+        /* 守則標籤 */
+        .principle-tag {
             display: inline-block;
-            padding: 8px 15px;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 0.9rem;
-            font-weight: bold;
-            text-decoration: none;
-            transition: background 0.3s;
-            border: none;
-        }
-        .btn-write {
-            background-color: var(--accent-gold);
-            color: white;
-            margin-right: 10px;
-        }
-        .btn-write:hover {
-            background-color: #a8884c;
-        }
-        .btn-refresh {
-            background-color: #eee;
-            color: var(--text-main);
-            border: 1px solid #ccc;
-        }
-        .btn-refresh:hover {
-            background-color: #ddd;
-        }
-        .mindset-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin-top: 20px;
-        }
-        .mindset-item {
-            background: #fff;
-            border-left: 5px solid var(--primary-color);
-            padding: 15px;
-            border-radius: 4px;
-            box-shadow: 0 1px 5px rgba(0,0,0,0.05);
-            transition: background-color 0.3s;
-        }
-        .mindset-item.reminder-highlight {
-            background-color: var(--warning-bg);
-            border-left-color: var(--warning-border);
-        }
-        .mindset-item .date {
+            background: var(--danger-bg);
+            color: var(--primary-color);
             font-size: 0.8rem;
-            color: var(--accent-gold);
-            margin-bottom: 5px;
-            font-weight: bold;
-        }
-        .mindset-item.reminder-highlight .date {
-            color: #d32f2f;
-        }
-        .mindset-item .note-tag {
-            display: inline-block;
-            background-color: var(--warning-border);
-            color: #333;
-            font-size: 0.75rem;
-            padding: 2px 8px;
+            padding: 4px 8px;
             border-radius: 4px;
+            border: 1px solid var(--danger-border);
+            margin-right: 5px;
             margin-bottom: 10px;
             font-weight: bold;
         }
-        .mindset-item h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.1rem;
-            color: var(--text-main);
-        }
-        .mindset-item p {
-            margin: 0;
-            font-size: 0.95rem;
+        .principle-text {
+            font-size: 0.9rem;
             color: var(--text-muted);
-            white-space: pre-wrap; 
-        }
-        .loading-text {
-            text-align: center;
-            color: var(--text-muted);
-            display: none;
-            padding: 20px;
-            font-weight: bold;
+            margin-bottom: 15px;
         }
 
         @media (max-width: 768px) {
             .grid-layout { grid-template-columns: 1fr; }
-            .header-actions { margin-top: 10px; width: 100%; display: flex; justify-content: space-between; }
-            .btn-action { padding: 8px 10px; font-size: 0.85rem; }
         }
     </style>
 </head>
@@ -240,10 +175,28 @@
     </header>
 
     <div class="container">
+        <!-- 戰略底層邏輯橫幅 -->
+        <div class="card card-principles" style="margin-bottom: 20px;">
+            <h2>核心決策演算法 (Ray Dalio's Principles)</h2>
+            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
+                <div>
+                    <span class="principle-tag">對抗雙曲折現</span>
+                    <p class="principle-text">大腦會對近期的獎勵賦予過高價值。拒絕為了短期的「入袋為安」而中斷長期資產的複利軌跡。延遲享樂是累積資本的基石。</p>
+                </div>
+                <div>
+                    <span class="principle-tag">破除零成本迷思</span>
+                    <p class="principle-text">過去的配息與獲利無法改變未來的風險。留在市場的每一分錢都具備機會成本與時間價值。投資決策只看「現在」與「未來預期」。</p>
+                </div>
+                <div>
+                    <span class="principle-tag">機械化再平衡</span>
+                    <p class="principle-text">拋棄情緒化的「下跌加碼」與「摸底」。建立明確的股債偏離閾值（如 5%），由系統觸發資金調度，讓理智主導戰場。</p>
+                </div>
+            </div>
+        </div>
+
         <div class="tabs">
             <div class="tab active" onclick="switchTab('alloc')">核心/衛星資產推演</div>
-            <div class="tab" onclick="switchTab('mindset')">紀律與心法積累</div>
-            <div class="tab dimmed" onclick="switchTab('housing')">買房/租房機會成本</div>
+            <div class="tab" onclick="switchTab('housing')">買房/租房機會成本</div>
         </div>
 
         <div id="alloc" class="tab-content active">
@@ -252,23 +205,27 @@
                     <h2>戰略參數設定</h2>
                     <div class="input-group">
                         <label>目前月薪 (NTD)</label>
-                        <input type="number" id="salary" value="50000" oninput="updateSystem()">
+                        <input type="number" id="salary" value="65000" oninput="updateSystem()">
+                    </div>
+                    <div class="input-group" style="background: #f4f6f8; padding: 10px; border-radius: 4px; border-left: 4px solid #4a90e2;">
+                        <label>短中期人生體驗儲蓄 (NTD/月)<br><span style="font-size:0.8rem; color:#666; font-weight:normal;">[不可取代之體驗：如家族旅遊、海外演場會。絕對隔離於股市風險外]</span></label>
+                        <input type="number" id="monthlyExperience" value="8000" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>每月儲蓄外幣約當 (NTD) <span style="font-size:0.8rem; color:#666; font-weight:normal;">[注資全球核心]</span></label>
-                        <input type="number" id="monthlyFX" value="10000" oninput="updateSystem()">
+                        <label>核心資產投入：大盤指數 (NTD/月) <span style="font-size:0.8rem; color:#666; font-weight:normal;">[獲取市場平均]</span></label>
+                        <input type="number" id="monthlyCore" value="15000" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>每月儲蓄台幣 (NTD) <span style="font-size:0.8rem; color:#666; font-weight:normal;">[注資本土衛星]</span></label>
-                        <input type="number" id="monthlyTWD" value="5000" oninput="updateSystem()">
+                        <label>衛星資產投入：趨勢科技 (NTD/月) <span style="font-size:0.8rem; color:#666; font-weight:normal;">[承擔非系統風險獲取超額]</span></label>
+                        <input type="number" id="monthlySat" value="5000" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>核心年化報酬預期 (%) <span id="coreReturnVal" class="value-display">6%</span></label>
-                        <input type="range" id="coreReturn" min="3" max="10" value="6" step="0.5" oninput="updateSystem()">
+                        <label>核心年化報酬預期 (%) <span id="coreReturnVal" class="value-display">6.5%</span></label>
+                        <input type="range" id="coreReturn" min="3" max="10" value="6.5" step="0.1" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>衛星年化報酬預期 (%) <span id="satReturnVal" class="value-display">10%</span></label>
-                        <input type="range" id="satReturn" min="5" max="20" value="10" step="0.5" oninput="updateSystem()">
+                        <label>衛星年化報酬預期 (%) <span id="satReturnVal" class="value-display">12%</span></label>
+                        <input type="range" id="satReturn" min="5" max="25" value="12" step="0.5" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
                         <label>推演年限 (年) <span id="yearsVal" class="value-display">20</span></label>
@@ -281,42 +238,30 @@
                     <div class="grid-layout" style="gap:10px;">
                         <div class="result-box">
                             <h3>防禦基石 (緊急預備金)</h3>
-                            <div class="number" id="emergencyFund">210,000</div>
-                            <span style="font-size:0.8rem; color:#666;">(6個月生活開銷)</span>
+                            <div class="number" id="emergencyFund">0</div>
+                            <span style="font-size:0.8rem; color:#666;">(6個月必要生活開銷)</span>
                         </div>
-                        <div class="result-box">
-                            <h3>每月實質火力</h3>
-                            <div class="number" id="totalMonthlyInvest">15,000</div>
-                            <span style="font-size:0.8rem; color:#666;" id="investSplit">外幣核心 | 台幣衛星</span>
+                        <div class="result-box highlight">
+                            <h3>人生體驗現金池 (期末)</h3>
+                            <div class="number" id="experienceFundTotal">0</div>
+                            <span style="font-size:0.8rem; color:#666;">零風險·保障未來藍圖</span>
                         </div>
                     </div>
                     <div class="result-box" style="margin-top:10px;">
-                        <h3>期末資本總值 (NTD)</h3>
+                        <h3>期末資本總值 (投資部位 NTD)</h3>
                         <div class="number" id="totalWealth">0</div>
+                        <p style="font-size:0.8rem; color:#666; margin:0;">持續投入戰勝市場波動。切勿以單筆定期定額比較，重點在資金的長線效率。</p>
                     </div>
                     <canvas id="wealthChart" width="400" height="200"></canvas>
                 </div>
             </div>
         </div>
 
-        <div id="mindset" class="tab-content">
-            <input type="hidden" id="csvUrl" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
-            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-                <h2 style="color: var(--primary-color); margin: 0;">投資戰略大腦覆盤庫</h2>
-                <div class="header-actions">
-                    <a href="https://itigre.pse.is/wealth99" target="_blank" class="btn-action btn-write">✍️ 寫入今日覆盤</a>
-                    <button onclick="fetchAndDisplayMindset()" class="btn-action btn-refresh">⟳ 手動刷新</button>
-                </div>
-            </div>
-            <div id="loading" class="loading-text">正在從 Google 戰略資料庫載入最新心法...</div>
-            <div id="mindset-container" class="mindset-grid"></div>
-        </div>
-
         <div id="housing" class="tab-content">
             <div class="grid-layout">
                 <div class="card">
                     <h2>機會成本參數設定</h2>
-                    <p style="font-size:0.85rem; color:#666;">近期買房需求較低，此區塊做為長期房產觀察與壓力測試使用。</p>
+                    <p style="font-size:0.85rem; color:#666;">評估將頭期款與房貸現金流投入指數化配置的長期機會成本。</p>
                     <div class="input-group">
                         <label>房屋總價 (萬)</label>
                         <input type="number" id="housePrice" value="1800" oninput="updateHousing()">
@@ -335,11 +280,11 @@
                     </div>
                     <div class="input-group">
                         <label>對比租屋月租金 (元)</label>
-                        <input type="number" id="monthlyRent" value="25000" oninput="updateHousing()">
+                        <input type="number" id="monthlyRent" value="28000" oninput="updateHousing()">
                     </div>
                     <div class="input-group">
                         <label>市場預期年化報酬 (%)</label>
-                        <input type="number" id="marketReturn" value="6" step="0.5" oninput="updateHousing()">
+                        <input type="number" id="marketReturn" value="6.5" step="0.1" oninput="updateHousing()">
                     </div>
                 </div>
 
@@ -347,13 +292,13 @@
                     <h2>租房投資 vs 買房試算結果</h2>
                     <div class="result-box">
                         <h3>買房每月需繳房貸 (本息攤還)</h3>
-                        <div class="number" id="monthlyMortgage">53,952</div>
+                        <div class="number" id="monthlyMortgage">0</div>
                     </div>
-                    <div class="result-box">
-                        <h3>如果租房，期末資產總值</h3>
-                        <div class="number" id="rentingNetWorth">24,500,000</div>
-                        <p style="font-size:0.85rem; color:#666; text-align:left;">
-                            邏輯：將買房的「頭期款」單筆投入市場，並將每月「房貸減去租金的差額」持續定期定額投入市場，計算複利結果。
+                    <div class="result-box highlight">
+                        <h3>若租房並紀律投資，期末資產總值</h3>
+                        <div class="number" id="rentingNetWorth">0</div>
+                        <p style="font-size:0.85rem; color:#666; text-align:left; margin-bottom:0;">
+                            邏輯：將「頭期款」單筆投入大盤，並將「房貸與租金的差額」持續定期定額投入。天下沒有白吃的午餐，買房鎖定了居住權，但也鎖死了這筆龐大的機會成本。
                         </p>
                     </div>
                 </div>
@@ -372,8 +317,9 @@
         // --- 核心與衛星推演邏輯 ---
         function updateSystem() {
             const salary = parseFloat(document.getElementById('salary').value) || 0;
-            const monthlyFX = parseFloat(document.getElementById('monthlyFX').value) || 0;
-            const monthlyTWD = parseFloat(document.getElementById('monthlyTWD').value) || 0;
+            const monthlyExperience = parseFloat(document.getElementById('monthlyExperience').value) || 0;
+            const monthlyCore = parseFloat(document.getElementById('monthlyCore').value) || 0;
+            const monthlySat = parseFloat(document.getElementById('monthlySat').value) || 0;
             
             const coreReturn = parseFloat(document.getElementById('coreReturn').value);
             const satReturn = parseFloat(document.getElementById('satReturn').value);
@@ -383,29 +329,30 @@
             document.getElementById('satReturnVal').innerText = satReturn + '%';
             document.getElementById('yearsVal').innerText = years;
 
-            // 每月總投入金
-            const monthlyInvest = monthlyFX + monthlyTWD;
-            
-            // 估算生活開銷 = 月薪 - 總投資額 (若投資額大於月薪則以0計)
-            const monthlyExpense = Math.max(0, salary - monthlyInvest);
+            // 每月總支出分配
+            const monthlyInvest = monthlyCore + monthlySat;
+            // 估算必要生活開銷 = 月薪 - 投資額 - 體驗保留金
+            const monthlyExpense = Math.max(0, salary - monthlyInvest - monthlyExperience);
             const emergencyFund = monthlyExpense * 6; 
 
             document.getElementById('emergencyFund').innerText = formatCurrency(emergencyFund);
-            document.getElementById('totalMonthlyInvest').innerText = formatCurrency(monthlyInvest);
-            document.getElementById('investSplit').innerText = `核心 ${formatCurrency(monthlyFX)} | 衛星 ${formatCurrency(monthlyTWD)}`;
-
+            
+            // 體驗池單純存現金 (不計息以示保守)
             const months = years * 12;
+            const expFundTotal = monthlyExperience * months;
+            document.getElementById('experienceFundTotal').innerText = formatCurrency(expFundTotal);
+
             const rCore = (coreReturn / 100) / 12;
             const rSat = (satReturn / 100) / 12;
 
-            const fvCore = rCore === 0 ? monthlyFX * months : monthlyFX * ((Math.pow(1 + rCore, months) - 1) / rCore);
-            const fvSat = rSat === 0 ? monthlyTWD * months : monthlyTWD * ((Math.pow(1 + rSat, months) - 1) / rSat);
+            const fvCore = rCore === 0 ? monthlyCore * months : monthlyCore * ((Math.pow(1 + rCore, months) - 1) / rCore);
+            const fvSat = rSat === 0 ? monthlySat * months : monthlySat * ((Math.pow(1 + rSat, months) - 1) / rSat);
             const totalWealth = fvCore + fvSat;
             const totalPrincipal = monthlyInvest * months;
 
             document.getElementById('totalWealth').innerText = formatCurrency(totalWealth);
 
-            updateChart(totalPrincipal, fvCore - (monthlyFX * months), fvSat - (monthlyTWD * months));
+            updateChart(totalPrincipal, fvCore - (monthlyCore * months), fvSat - (monthlySat * months));
         }
 
         function updateChart(principal, coreProfit, satProfit) {
@@ -415,16 +362,17 @@
             myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['期末資產結構'],
+                    labels: ['期末投資資產結構'],
                     datasets: [
-                        { label: '投入總本金', data: [principal], backgroundColor: '#6c757d' },
-                        { label: '外幣核心獲利', data: [Math.max(0, coreProfit)], backgroundColor: '#8a1c1c' },
-                        { label: '台幣衛星獲利', data: [Math.max(0, satProfit)], backgroundColor: '#c5a059' }
+                        { label: '投入總本金', data: [principal], backgroundColor: '#adb5bd' },
+                        { label: '核心指數獲利', data: [Math.max(0, coreProfit)], backgroundColor: '#8a1c1c' },
+                        { label: '衛星趨勢獲利', data: [Math.max(0, satProfit)], backgroundColor: '#c5a059' }
                     ]
                 },
                 options: {
                     responsive: true,
-                    scales: { x: { stacked: true }, y: { stacked: true } }
+                    scales: { x: { stacked: true }, y: { stacked: true } },
+                    plugins: { legend: { position: 'bottom' } }
                 }
             });
         }
@@ -473,86 +421,10 @@
             else if(tabId === 'housing') { updateHousing(); }
         }
 
-        // --- 解析與載入 CSV 邏輯 ---
-        function parseCSV(text) {
-            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
-            for (l of text) {
-                if ('"' === l) {
-                    if (s && l === p) row[i] += l;
-                    s = !s;
-                } else if (',' === l && s) l = row[++i] = '';
-                else if ('\n' === l && s) {
-                    if ('\r' === p) row[i] = row[i].slice(0, -1);
-                    row = ret[++r] = [l = '']; i = 0;
-                } else row[i] += l;
-                p = l;
-            }
-            return ret;
-        }
-
-        async function fetchAndDisplayMindset() {
-            const url = document.getElementById('csvUrl').value;
-            const container = document.getElementById('mindset-container');
-            const loading = document.getElementById('loading');
-            
-            container.innerHTML = ''; 
-            loading.style.display = 'block';
-
-            try {
-                const response = await fetch(url);
-                if (!response.ok) throw new Error('網路回應錯誤');
-                const csvText = await response.text();
-                
-                const data = parseCSV(csvText);
-                loading.style.display = 'none';
-
-                const records = data.slice(1).reverse(); 
-
-                records.forEach(row => {
-                    if (row.length < 2 || (!row[0] && !row[1])) return; 
-
-                    const dateStr = row[0] ? row[0] : '未記錄時間';
-                    const titleStr = row[1] ? row[1] : '無標題';
-                    const contentStr = row[2] ? row[2] : '';
-                    
-                    // 檢查第四欄 (index 3) 是否有「提醒」註記
-                    const noteStr = row.length > 3 && row[3] ? row[3].trim() : '';
-                    const isReminder = noteStr.includes('提醒');
-
-                    const div = document.createElement('div');
-                    // 根據是否有「提醒」套用不同的 CSS class
-                    div.className = isReminder ? 'mindset-item reminder-highlight' : 'mindset-item';
-                    
-                    let htmlContent = `<div class="date">${dateStr}</div>`;
-                    
-                    // 若有提醒，加上獨立的 Tag 標籤
-                    if (isReminder) {
-                        htmlContent += `<div class="note-tag">⚠️ ${noteStr}</div>`;
-                    }
-                    
-                    htmlContent += `
-                        <h3>${titleStr}</h3>
-                        <p>${contentStr}</p>
-                    `;
-                    div.innerHTML = htmlContent;
-                    container.appendChild(div);
-                });
-
-                if(container.innerHTML === '') {
-                    container.innerHTML = '<p style="text-align:center; color:#666; padding: 20px;">目前表單沒有紀錄，快去新增你的第一條心法吧！</p>';
-                }
-
-            } catch (error) {
-                loading.style.display = 'none';
-                container.innerHTML = `<div class="mindset-item" style="border-left-color: red;"><h3 style="color:red;">載入失敗</h3><p>無法讀取你提供的資料庫。請確認網址正確且沒有被 Google 阻擋。錯誤代碼: ${error.message}</p></div>`;
-            }
-        }
-
-        // --- 網頁載入時自動執行 ---
+        // --- 初始化 ---
         window.onload = function() {
             updateSystem();
             updateHousing();
-            fetchAndDisplayMindset();
         };
     </script>
 </body>
