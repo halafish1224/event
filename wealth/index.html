@@ -8,16 +8,14 @@
     <style>
         :root {
             --primary-color: #8a1c1c; /* 商周紅 */
-            --bg-color: #f8f9fa;
+            --bg-color: #f4f5f7;
             --card-bg: #ffffff;
-            --text-main: #333333;
-            --text-muted: #6c757d;
+            --text-main: #2c3e50;
+            --text-muted: #5a6c7d;
             --accent-gold: #c5a059;
-            --dimmed-text: #adb5bd;
             --warning-bg: #fffde7;
             --warning-border: #fbc02d;
-            --danger-bg: #ffebee;
-            --danger-border: #e57373;
+            --border-line: #e1e4e8;
         }
         body {
             font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
@@ -30,140 +28,88 @@
         header {
             background-color: var(--primary-color);
             color: white;
-            padding: 20px 0;
+            padding: 24px 0;
             text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
         }
-        header h1 {
-            margin: 0;
-            font-size: 1.8rem;
-            letter-spacing: 2px;
-        }
-        header p {
-            margin: 5px 0 0 0;
-            font-size: 0.9rem;
-            opacity: 0.8;
-        }
-        .container {
-            max-width: 1000px;
-            margin: 30px auto;
-            padding: 0 20px;
-        }
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-        }
+        header h1 { margin: 0; font-size: 1.8rem; letter-spacing: 2px; }
+        header p { margin: 8px 0 0 0; font-size: 0.95rem; opacity: 0.85; }
+        .container { max-width: 1050px; margin: 30px auto; padding: 0 20px; }
+        
+        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .card {
             background: var(--card-bg);
             border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            padding: 24px;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.04);
             border-top: 4px solid var(--accent-gold);
         }
-        .card-principles {
-            border-top: 4px solid var(--primary-color);
-            background: #fafafa;
-        }
         .card h2 {
-            margin-top: 0;
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
-        }
-        .input-group {
-            margin-bottom: 15px;
-        }
-        .input-group label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        .input-group input[type="range"] {
-            width: 100%;
-        }
-        .input-group input[type="number"], .input-group input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .value-display {
-            float: right;
-            color: var(--primary-color);
-            font-weight: bold;
-        }
-        .result-box {
-            background: #fdfbf7;
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 15px;
-            text-align: center;
-            border: 1px solid #eee;
-        }
-        .result-box.highlight {
-            border-left: 4px solid var(--accent-gold);
-        }
-        .result-box h3 {
-            margin: 0;
-            font-size: 1rem;
-            color: var(--text-muted);
-        }
-        .result-box .number {
-            font-size: 2rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            margin: 10px 0;
-        }
-        .tabs {
-            display: flex;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #ccc;
-            flex-wrap: wrap;
-        }
-        .tab {
-            padding: 10px 20px;
-            cursor: pointer;
-            font-weight: bold;
-            color: var(--text-muted);
-            transition: all 0.3s;
-        }
-        .tab.active {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--primary-color);
-            margin-bottom: -2px;
-        }
-        .tab-content {
-            display: none;
-        }
-        .tab-content.active {
-            display: block;
+            margin-top: 0; font-size: 1.25rem; color: var(--primary-color);
+            border-bottom: 1px solid var(--border-line); padding-bottom: 12px;
         }
         
-        /* 守則標籤 */
-        .principle-tag {
-            display: inline-block;
-            background: var(--danger-bg);
-            color: var(--primary-color);
-            font-size: 0.8rem;
-            padding: 4px 8px;
-            border-radius: 4px;
-            border: 1px solid var(--danger-border);
-            margin-right: 5px;
-            margin-bottom: 10px;
-            font-weight: bold;
+        /* 表單與數據呈現 */
+        .input-group { margin-bottom: 16px; }
+        .input-group label { display: block; margin-bottom: 6px; font-weight: bold; font-size: 0.95rem; }
+        .input-group input[type="range"] { width: 100%; margin-top: 5px; }
+        .input-group input[type="number"] {
+            width: 100%; padding: 10px; border: 1px solid #ccc;
+            border-radius: 4px; box-sizing: border-box; font-size: 1rem;
         }
-        .principle-text {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
+        .value-display { float: right; color: var(--primary-color); font-weight: bold; }
+        .result-box {
+            background: #fdfbf7; padding: 16px; border-radius: 6px;
+            margin-bottom: 16px; text-align: center; border: 1px solid #eee;
         }
+        .result-box.highlight { border-left: 4px solid var(--accent-gold); }
+        .result-box h3 { margin: 0; font-size: 1.05rem; color: var(--text-muted); }
+        .result-box .number { font-size: 2.2rem; font-weight: bold; color: var(--primary-color); margin: 8px 0; }
+        
+        /* 頁籤導覽 */
+        .tabs { display: flex; margin-bottom: 24px; border-bottom: 2px solid #ccc; flex-wrap: wrap; }
+        .tab {
+            padding: 12px 24px; cursor: pointer; font-weight: bold;
+            color: var(--text-muted); transition: all 0.2s;
+        }
+        .tab.active {
+            color: var(--primary-color); border-bottom: 3px solid var(--primary-color);
+            margin-bottom: -2px;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        
+        /* 字典與心法區塊 */
+        .dict-item {
+            border-left: 4px solid var(--primary-color);
+            background: #fff; padding: 16px; margin-bottom: 16px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-radius: 0 6px 6px 0;
+        }
+        .dict-item h4 { margin: 0 0 8px 0; color: var(--primary-color); font-size: 1.1rem; }
+        .dict-item p { margin: 0; font-size: 0.95rem; color: #444; }
+        .dict-note { font-size: 0.85rem; color: #888; margin-top: 6px; font-style: italic; }
+
+        .btn-action {
+            display: inline-block; padding: 10px 18px; border-radius: 4px;
+            cursor: pointer; font-size: 0.95rem; font-weight: bold;
+            text-decoration: none; transition: background 0.2s; border: none;
+        }
+        .btn-write { background-color: var(--accent-gold); color: white; margin-right: 10px; }
+        .btn-write:hover { background-color: #a8884c; }
+        .btn-refresh { background-color: #eee; color: var(--text-main); border: 1px solid #ccc; }
+        .btn-refresh:hover { background-color: #ddd; }
+        
+        /* 外部連結提示 */
+        .external-link-box {
+            background: #e8f4fd; border: 1px solid #b6d4fe; padding: 12px 16px;
+            border-radius: 6px; margin-top: 20px; font-size: 0.9rem;
+        }
+        .external-link-box a { color: #0056b3; font-weight: bold; text-decoration: none; }
 
         @media (max-width: 768px) {
             .grid-layout { grid-template-columns: 1fr; }
+            .header-actions { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
+            .btn-action { width: 100%; text-align: center; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -171,134 +117,183 @@
 
     <header>
         <h1>財富護城河決策系統</h1>
-        <p>「將原則寫入程式碼，做自己人生的基金經理人」</p>
+        <p>建立反脆弱機制，濾除雜音，執行理性的資本配置</p>
     </header>
 
     <div class="container">
-        <!-- 戰略底層邏輯橫幅 -->
-        <div class="card card-principles" style="margin-bottom: 20px;">
-            <h2>核心決策演算法 (Ray Dalio's Principles)</h2>
-            <div style="display: flex; flex-wrap: wrap; gap: 10px;">
-                <div>
-                    <span class="principle-tag">對抗雙曲折現</span>
-                    <p class="principle-text">大腦會對近期的獎勵賦予過高價值。拒絕為了短期的「入袋為安」而中斷長期資產的複利軌跡。延遲享樂是累積資本的基石。</p>
-                </div>
-                <div>
-                    <span class="principle-tag">破除零成本迷思</span>
-                    <p class="principle-text">過去的配息與獲利無法改變未來的風險。留在市場的每一分錢都具備機會成本與時間價值。投資決策只看「現在」與「未來預期」。</p>
-                </div>
-                <div>
-                    <span class="principle-tag">機械化再平衡</span>
-                    <p class="principle-text">拋棄情緒化的「下跌加碼」與「摸底」。建立明確的股債偏離閾值（如 5%），由系統觸發資金調度，讓理智主導戰場。</p>
-                </div>
-            </div>
-        </div>
-
         <div class="tabs">
-            <div class="tab active" onclick="switchTab('alloc')">核心/衛星資產推演</div>
-            <div class="tab" onclick="switchTab('housing')">買房/租房機會成本</div>
+            <div class="tab active" onclick="switchTab('alloc')">資產配置引擎</div>
+            <div class="tab" onclick="switchTab('mindset')">戰略大腦覆盤</div>
+            <div class="tab" onclick="switchTab('dict')">資本物理學字典</div>
+            <div class="tab" onclick="switchTab('housing')">機會成本試算</div>
         </div>
 
+        <!-- 模塊一：資產配置引擎 -->
         <div id="alloc" class="tab-content active">
             <div class="grid-layout">
                 <div class="card">
-                    <h2>戰略參數設定</h2>
+                    <h2>系統流動性與注資設定</h2>
                     <div class="input-group">
-                        <label>目前月薪 (NTD)</label>
+                        <label>每月常規收入 (NTD)</label>
                         <input type="number" id="salary" value="65000" oninput="updateSystem()">
                     </div>
-                    <div class="input-group" style="background: #f4f6f8; padding: 10px; border-radius: 4px; border-left: 4px solid #4a90e2;">
-                        <label>短中期人生體驗儲蓄 (NTD/月)<br><span style="font-size:0.8rem; color:#666; font-weight:normal;">[不可取代之體驗：如家族旅遊、海外演場會。絕對隔離於股市風險外]</span></label>
-                        <input type="number" id="monthlyExperience" value="8000" oninput="updateSystem()">
+                    <div class="input-group" style="background: #fdfbf7; padding: 12px; border-radius: 4px; border-left: 4px solid var(--accent-gold);">
+                        <label>體驗與流動性護城河 (NTD/月)<br>
+                            <span style="font-size:0.8rem; color:#666; font-weight:normal;">[核心法則：近期重大人生體驗花費，絕對隔離於市場波動之外]</span>
+                        </label>
+                        <input type="number" id="monthlyExperience" value="12000" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>核心資產投入：大盤指數 (NTD/月) <span style="font-size:0.8rem; color:#666; font-weight:normal;">[獲取市場平均]</span></label>
+                        <label>核心基石：市值大盤 (NTD/月) <span style="font-size:0.8rem; color:#666; font-weight:normal;">[Beta 收益]</span></label>
                         <input type="number" id="monthlyCore" value="15000" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>衛星資產投入：趨勢科技 (NTD/月) <span style="font-size:0.8rem; color:#666; font-weight:normal;">[承擔非系統風險獲取超額]</span></label>
+                        <label>衛星前沿：趨勢科技 (NTD/月) <span style="font-size:0.8rem; color:#666; font-weight:normal;">[Alpha 挑戰]</span></label>
                         <input type="number" id="monthlySat" value="5000" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>核心年化報酬預期 (%) <span id="coreReturnVal" class="value-display">6.5%</span></label>
+                        <label>核心長期預期年化 (%) <span id="coreReturnVal" class="value-display">6.5%</span></label>
                         <input type="range" id="coreReturn" min="3" max="10" value="6.5" step="0.1" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>衛星年化報酬預期 (%) <span id="satReturnVal" class="value-display">12%</span></label>
+                        <label>衛星高波預期年化 (%) <span id="satReturnVal" class="value-display">12%</span></label>
                         <input type="range" id="satReturn" min="5" max="25" value="12" step="0.5" oninput="updateSystem()">
                     </div>
                     <div class="input-group">
-                        <label>推演年限 (年) <span id="yearsVal" class="value-display">20</span></label>
+                        <label>複利運轉年限 (年) <span id="yearsVal" class="value-display">20</span></label>
                         <input type="range" id="years" min="5" max="40" value="20" oninput="updateSystem()">
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2>護城河水位預測</h2>
-                    <div class="grid-layout" style="gap:10px;">
+                    <h2>護城河與資本增長推演</h2>
+                    <div class="grid-layout" style="gap:15px;">
                         <div class="result-box">
-                            <h3>防禦基石 (緊急預備金)</h3>
+                            <h3>緊急預備底線</h3>
                             <div class="number" id="emergencyFund">0</div>
-                            <span style="font-size:0.8rem; color:#666;">(6個月必要生活開銷)</span>
+                            <span style="font-size:0.8rem; color:#666;">(6個月基礎生存線)</span>
                         </div>
                         <div class="result-box highlight">
-                            <h3>人生體驗現金池 (期末)</h3>
+                            <h3>獨立體驗資金池 (期末)</h3>
                             <div class="number" id="experienceFundTotal">0</div>
-                            <span style="font-size:0.8rem; color:#666;">零風險·保障未來藍圖</span>
+                            <span style="font-size:0.8rem; color:#666;">零波動·專款專用</span>
                         </div>
                     </div>
-                    <div class="result-box" style="margin-top:10px;">
-                        <h3>期末資本總值 (投資部位 NTD)</h3>
+                    <div class="result-box" style="margin-top:16px;">
+                        <h3>期末風險資本總值 (NTD)</h3>
                         <div class="number" id="totalWealth">0</div>
-                        <p style="font-size:0.8rem; color:#666; margin:0;">持續投入戰勝市場波動。切勿以單筆定期定額比較，重點在資金的長線效率。</p>
+                        <p style="font-size:0.85rem; color:#666; margin:0;">
+                            紀律提醒：當衛星資產（如上詮、高力）佔比因暴漲而偏離預設風險閾值 >5% 時，系統應無情啟動「再平衡」，將利潤回撥至核心。
+                        </p>
                     </div>
-                    <canvas id="wealthChart" width="400" height="200"></canvas>
+                    <canvas id="wealthChart" width="400" height="200" style="margin-top: 15px;"></canvas>
                 </div>
             </div>
         </div>
 
+        <!-- 模塊二：戰略大腦覆盤 -->
+        <div id="mindset" class="tab-content">
+            <div class="card">
+                <input type="hidden" id="csvUrl" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
+                
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 20px;">
+                    <h2 style="border:none; margin:0; padding:0;">動態決策日誌</h2>
+                    <div class="header-actions">
+                        <!-- 保留您的核心功能 -->
+                        <a href="https://itigre.pse.is/wealth99" target="_blank" class="btn-action btn-write">✍️ 寫入今日覆盤</a>
+                        <button onclick="fetchAndDisplayMindset()" class="btn-action btn-refresh">⟳ 刷新資料庫</button>
+                    </div>
+                </div>
+                
+                <div id="loading" style="text-align:center; padding:20px; color:#888;">正從雲端讀取歷史決策參數...</div>
+                <div id="mindset-container"></div>
+                
+                <div class="external-link-box">
+                    💡 <strong>系統校準指引：</strong> 若需獲取最新的全球指數化投資宏觀數據與市場偏誤剖析，請定期查閱 <a href="https://www.facebook.com/FfaarrFinance/" target="_blank">Ffaarr 投資理財 Facebook 專頁</a>，以保持系統參數的客觀與精準。
+                </div>
+            </div>
+        </div>
+
+        <!-- 模塊三：資本物理學字典 (名詞白話解析) -->
+        <div id="dict" class="tab-content">
+            <div class="card">
+                <h2>戰略名詞白話解析</h2>
+                <p style="font-size:0.9rem; color:#666; margin-bottom: 20px;">將華爾街的複雜術語，轉化為指導實踐的常識，破除理財迷思。</p>
+                
+                <div class="dict-item">
+                    <h4>雙曲折現 (Hyperbolic Discounting)</h4>
+                    <p><strong>白話解讀：</strong> 人性的弱點。大腦天生短視，覺得「現在拿到 1 萬」比「未來拿到 2 萬」更爽。在投資上，這會導致投資人急於「停利入袋為安」，卻錯失了長期複利滾出大財富的機會。</p>
+                    <div class="dict-note">防禦機制：堅持紀律，不隨意中斷長期投資計畫。</div>
+                </div>
+
+                <div class="dict-item">
+                    <h4>均值回歸 (Mean Reversion)</h4>
+                    <p><strong>白話解讀：</strong> 萬物皆有重力。漲多的熱門股終究會面臨修正，跌深且被看壞的市場，只要經濟體質不滅，長期往往會回到歷史平均報酬線。</p>
+                    <div class="dict-note">防禦機制：不單押近期暴漲的單一市場或個股，全球分散才是王道。</div>
+                </div>
+
+                <div class="dict-item">
+                    <h4>非系統性風險 (Unsystematic Risk)</h4>
+                    <p><strong>白話解讀：</strong> 單一公司或單一產業專屬的倒楣事（如：某科技廠專利侵權、某原物料突然被取代）。這是可以透過「分散投資買大盤」來完全消除的風險。</p>
+                    <div class="dict-note">防禦機制：核心部位配置 006208 等市值型 ETF。</div>
+                </div>
+
+                <div class="dict-item">
+                    <h4>零成本迷思 (Zero-Cost Fallacy)</h4>
+                    <p><strong>白話解讀：</strong> 以為領了股息或是賣出獲利一半後，剩下的股票就是「零成本」，放著不管跌了也沒差。其實留在市場上的每一分錢，都是你真實的資產，跌了就是真虧損。</p>
+                    <div class="dict-note">防禦機制：決策永遠只看「現在的市場狀況」與「未來的預期」，不要回頭看買入價格。</div>
+                </div>
+                
+                <div class="dict-item">
+                    <h4>機會成本 (Opportunity Cost)</h4>
+                    <p><strong>白話解讀：</strong> 天下沒有白吃的午餐。當你把 100 萬拿去付買房頭期款，這 100 萬就失去了放在股市裡每年賺取 6% 複利的「機會」。你失去的獲利，就是你付出的隱形成本。</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- 模塊四：機會成本試算 -->
         <div id="housing" class="tab-content">
             <div class="grid-layout">
                 <div class="card">
-                    <h2>機會成本參數設定</h2>
-                    <p style="font-size:0.85rem; color:#666;">評估將頭期款與房貸現金流投入指數化配置的長期機會成本。</p>
+                    <h2>資本機會成本探測器</h2>
+                    <p style="font-size:0.85rem; color:#666;">看透金錢背後的代價：將買房綁死的現金流，視為放棄市場複利的機會成本。</p>
                     <div class="input-group">
-                        <label>房屋總價 (萬)</label>
+                        <label>標的總價 (萬)</label>
                         <input type="number" id="housePrice" value="1800" oninput="updateHousing()">
                     </div>
                     <div class="input-group">
-                        <label>自備頭期款 (萬)</label>
+                        <label>自備資本額 (萬)</label>
                         <input type="number" id="downPayment" value="360" oninput="updateHousing()">
                     </div>
                     <div class="input-group">
-                        <label>房貸利率 (%)</label>
+                        <label>槓桿借貸利率 (%)</label>
                         <input type="number" id="mortgageRate" value="2.1" step="0.1" oninput="updateHousing()">
                     </div>
                     <div class="input-group">
-                        <label>貸款年限 (年)</label>
+                        <label>還款期 (年)</label>
                         <input type="number" id="mortgageYears" value="30" oninput="updateHousing()">
                     </div>
                     <div class="input-group">
-                        <label>對比租屋月租金 (元)</label>
+                        <label>對比租屋現金流 (元/月)</label>
                         <input type="number" id="monthlyRent" value="28000" oninput="updateHousing()">
                     </div>
                     <div class="input-group">
-                        <label>市場預期年化報酬 (%)</label>
+                        <label>市場基準年化報酬 (%)</label>
                         <input type="number" id="marketReturn" value="6.5" step="0.1" oninput="updateHousing()">
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2>租房投資 vs 買房試算結果</h2>
+                    <h2>資本流向對比結果</h2>
                     <div class="result-box">
-                        <h3>買房每月需繳房貸 (本息攤還)</h3>
+                        <h3>鎖定資本：每月房貸現金流</h3>
                         <div class="number" id="monthlyMortgage">0</div>
                     </div>
                     <div class="result-box highlight">
-                        <h3>若租房並紀律投資，期末資產總值</h3>
+                        <h3>釋放資本：租房並紀律投資之期末總值</h3>
                         <div class="number" id="rentingNetWorth">0</div>
                         <p style="font-size:0.85rem; color:#666; text-align:left; margin-bottom:0;">
-                            邏輯：將「頭期款」單筆投入大盤，並將「房貸與租金的差額」持續定期定額投入。天下沒有白吃的午餐，買房鎖定了居住權，但也鎖死了這筆龐大的機會成本。
+                            演算法邏輯：將「頭期款」單筆投入大盤，並將「房貸扣除租金後的每月盈餘」執行嚴格的定期定額。此數字即為您選擇買房時，所付出的真實機會成本。
                         </p>
                     </div>
                 </div>
@@ -329,15 +324,12 @@
             document.getElementById('satReturnVal').innerText = satReturn + '%';
             document.getElementById('yearsVal').innerText = years;
 
-            // 每月總支出分配
             const monthlyInvest = monthlyCore + monthlySat;
-            // 估算必要生活開銷 = 月薪 - 投資額 - 體驗保留金
             const monthlyExpense = Math.max(0, salary - monthlyInvest - monthlyExperience);
             const emergencyFund = monthlyExpense * 6; 
 
             document.getElementById('emergencyFund').innerText = formatCurrency(emergencyFund);
             
-            // 體驗池單純存現金 (不計息以示保守)
             const months = years * 12;
             const expFundTotal = monthlyExperience * months;
             document.getElementById('experienceFundTotal').innerText = formatCurrency(expFundTotal);
@@ -362,11 +354,11 @@
             myChart = new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: ['期末投資資產結構'],
+                    labels: ['期末資產矩陣'],
                     datasets: [
-                        { label: '投入總本金', data: [principal], backgroundColor: '#adb5bd' },
-                        { label: '核心指數獲利', data: [Math.max(0, coreProfit)], backgroundColor: '#8a1c1c' },
-                        { label: '衛星趨勢獲利', data: [Math.max(0, satProfit)], backgroundColor: '#c5a059' }
+                        { label: '累積風險本金', data: [principal], backgroundColor: '#a0aab2' },
+                        { label: '核心指數增量', data: [Math.max(0, coreProfit)], backgroundColor: '#8a1c1c' },
+                        { label: '衛星趨勢增量', data: [Math.max(0, satProfit)], backgroundColor: '#c5a059' }
                     ]
                 },
                 options: {
@@ -377,7 +369,7 @@
             });
         }
 
-        // --- 買房租房機會成本邏輯 ---
+        // --- 機會成本邏輯 ---
         function updateHousing() {
             const housePrice = parseFloat(document.getElementById('housePrice').value) * 10000;
             const downPayment = parseFloat(document.getElementById('downPayment').value) * 10000;
@@ -421,10 +413,73 @@
             else if(tabId === 'housing') { updateHousing(); }
         }
 
-        // --- 初始化 ---
+        // --- CSV 覆盤解析邏輯 ---
+        function parseCSV(text) {
+            let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
+            for (l of text) {
+                if ('"' === l) {
+                    if (s && l === p) row[i] += l;
+                    s = !s;
+                } else if (',' === l && s) l = row[++i] = '';
+                else if ('\n' === l && s) {
+                    if ('\r' === p) row[i] = row[i].slice(0, -1);
+                    row = ret[++r] = [l = '']; i = 0;
+                } else row[i] += l;
+                p = l;
+            }
+            return ret;
+        }
+
+        async function fetchAndDisplayMindset() {
+            const url = document.getElementById('csvUrl').value;
+            const container = document.getElementById('mindset-container');
+            const loading = document.getElementById('loading');
+            
+            container.innerHTML = ''; 
+            loading.style.display = 'block';
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('網路回應錯誤');
+                const csvText = await response.text();
+                
+                const data = parseCSV(csvText);
+                loading.style.display = 'none';
+
+                const records = data.slice(1).reverse(); 
+
+                records.forEach(row => {
+                    if (row.length < 2 || (!row[0] && !row[1])) return; 
+
+                    const dateStr = row[0] ? row[0] : '未記錄時間';
+                    const titleStr = row[1] ? row[1] : '無標題';
+                    const contentStr = row[2] ? row[2] : '';
+                    
+                    const div = document.createElement('div');
+                    div.style.cssText = "background:#fff; border-left:4px solid var(--accent-gold); padding:15px; margin-bottom:15px; box-shadow:0 1px 4px rgba(0,0,0,0.05); border-radius:4px;";
+                    
+                    div.innerHTML = `
+                        <div style="font-size:0.8rem; color:#888; font-weight:bold; margin-bottom:6px;">${dateStr}</div>
+                        <h3 style="margin:0 0 8px 0; color:var(--primary-color); font-size:1.1rem;">${titleStr}</h3>
+                        <p style="margin:0; font-size:0.95rem; color:#444; white-space: pre-wrap;">${contentStr}</p>
+                    `;
+                    container.appendChild(div);
+                });
+
+                if(container.innerHTML === '') {
+                    container.innerHTML = '<p style="text-align:center; color:#666; padding: 20px;">目前表單沒有紀錄，落實紀律，寫下今日的戰略覆盤吧。</p>';
+                }
+
+            } catch (error) {
+                loading.style.display = 'none';
+                container.innerHTML = `<div style="border-left: 4px solid red; padding:15px; background:#fff;"><h3 style="color:red; margin:0;">載入失敗</h3><p style="margin:5px 0 0 0;">無法連接至戰略資料庫。錯誤代碼: ${error.message}</p></div>`;
+            }
+        }
+
         window.onload = function() {
             updateSystem();
             updateHousing();
+            fetchAndDisplayMindset();
         };
     </script>
 </body>
