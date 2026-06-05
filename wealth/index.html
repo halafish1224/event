@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>財富護城河決策系統 | 投資學新法</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>財富護城河決策系統 | 戰略覆盤中心</title>
     <style>
         :root {
             --primary-color: #8a1c1c; /* 商周紅 */
@@ -15,7 +14,7 @@
             --accent-gold: #c5a059;
             --warning-bg: #fffde7;
             --warning-border: #fbc02d;
-            --border-line: #e1e4e8;
+            --broker-color: #0056b3; /* 券商藍 */
         }
         body {
             font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
@@ -34,59 +33,20 @@
         }
         header h1 { margin: 0; font-size: 1.8rem; letter-spacing: 2px; }
         header p { margin: 8px 0 0 0; font-size: 0.95rem; opacity: 0.85; }
-        .container { max-width: 1050px; margin: 30px auto; padding: 0 20px; }
+        .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
         
-        .grid-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
         .card {
             background: var(--card-bg);
             border-radius: 8px;
             padding: 24px;
+            margin-bottom: 24px;
             box-shadow: 0 2px 15px rgba(0,0,0,0.04);
             border-top: 4px solid var(--accent-gold);
         }
         .card h2 {
             margin-top: 0; font-size: 1.25rem; color: var(--primary-color);
-            border-bottom: 1px solid var(--border-line); padding-bottom: 12px;
+            border-bottom: 1px solid #e1e4e8; padding-bottom: 12px;
         }
-        
-        /* 表單與數據呈現 */
-        .input-group { margin-bottom: 18px; }
-        .input-group label { display: block; margin-bottom: 6px; font-weight: bold; font-size: 0.95rem; }
-        .input-group .note { display: block; font-size: 0.8rem; color: #777; margin-bottom: 8px; font-weight: normal; }
-        .input-group input[type="range"] { width: 100%; margin-top: 5px; }
-        .input-group input[type="number"] {
-            width: 100%; padding: 10px; border: 1px solid #ccc;
-            border-radius: 4px; box-sizing: border-box; font-size: 1rem;
-            background-color: #fafafa;
-        }
-        .input-group input[readonly] {
-            background-color: #eef2f5;
-            color: var(--primary-color);
-            font-weight: bold;
-            border-color: #ddd;
-        }
-        .value-display { float: right; color: var(--primary-color); font-weight: bold; }
-        
-        .result-box {
-            background: #fdfbf7; padding: 16px; border-radius: 6px;
-            margin-bottom: 16px; text-align: center; border: 1px solid #eee;
-        }
-        .result-box.highlight { border-left: 4px solid var(--accent-gold); }
-        .result-box h3 { margin: 0; font-size: 1.05rem; color: var(--text-muted); }
-        .result-box .number { font-size: 2.2rem; font-weight: bold; color: var(--primary-color); margin: 8px 0; }
-        
-        /* 頁籤導覽 */
-        .tabs { display: flex; margin-bottom: 24px; border-bottom: 2px solid #ccc; flex-wrap: wrap; }
-        .tab {
-            padding: 12px 24px; cursor: pointer; font-weight: bold;
-            color: var(--text-muted); transition: all 0.2s;
-        }
-        .tab.active {
-            color: var(--primary-color); border-bottom: 3px solid var(--primary-color);
-            margin-bottom: -2px;
-        }
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
 
         /* 全局與覆盤黃色提示區塊 */
         .warning-box {
@@ -100,15 +60,29 @@
         .warning-box h4 { margin: 0 0 8px 0; color: #d32f2f; font-size: 1.05rem; }
         .warning-box p { margin: 0; font-size: 0.95rem; }
         
-        /* 字典與心法區塊 */
-        .dict-item {
-            border-left: 4px solid var(--primary-color);
-            background: #fff; padding: 16px; margin-bottom: 16px;
-            box-shadow: 0 1px 3px rgba(0,0,0,0.05); border-radius: 0 6px 6px 0;
+        /* 快捷工具列 */
+        .tools-grid {
+            display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px;
         }
-        .dict-item h4 { margin: 0 0 8px 0; color: var(--primary-color); font-size: 1.1rem; }
-        .dict-item p { margin: 0; font-size: 0.95rem; color: #444; }
-        .dict-note { font-size: 0.85rem; color: #888; margin-top: 6px; font-style: italic; }
+        .tool-btn {
+            flex: 1; min-width: 200px;
+            display: flex; align-items: center; justify-content: center;
+            padding: 12px 15px; border-radius: 6px;
+            text-decoration: none; font-weight: bold; font-size: 0.95rem;
+            transition: transform 0.2s, box-shadow 0.2s;
+            color: white; text-align: center;
+        }
+        .tool-btn:hover { transform: translateY(-2px); box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .btn-broker { background-color: var(--broker-color); border: 1px solid #004494; }
+        .btn-macro { background-color: #4a5568; border: 1px solid #2d3748; }
+
+        /* 靈魂拷問區塊 */
+        .checklist-box {
+            background: #fdfbf7; padding: 15px; border-radius: 6px; border: 1px dashed var(--accent-gold);
+            margin-bottom: 20px;
+        }
+        .checklist-box ul { margin: 0; padding-left: 20px; color: #444; font-size: 0.95rem; }
+        .checklist-box li { margin-bottom: 6px; }
 
         /* 覆盤項目樣式 */
         .mindset-item {
@@ -134,328 +108,67 @@
         .btn-refresh { background-color: #eee; color: var(--text-main); border: 1px solid #ccc; }
         .btn-refresh:hover { background-color: #ddd; }
 
+        .header-actions { display: flex; gap: 10px; }
+
         @media (max-width: 768px) {
-            .grid-layout { grid-template-columns: 1fr; }
-            .header-actions { margin-top: 15px; display: flex; flex-direction: column; gap: 10px; }
-            .btn-action { width: 100%; text-align: center; box-sizing: border-box; }
+            .header-actions { margin-top: 15px; flex-direction: column; width: 100%; }
+            .btn-action { width: 100%; text-align: center; box-sizing: border-box; margin-right: 0; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>財富護城河決策系統</h1>
-        <p>建立反脆弱機制，濾除雜音，執行理性的資本配置</p>
+        <h1>財富護城河 | 戰略覆盤中心</h1>
+        <p>系統化決策，濾除雜音，將經驗轉化為資本紀律</p>
     </header>
 
     <div class="container">
         
         <div class="warning-box">
             <h4>⚠️ 系統核心紀律：機械化再平衡</h4>
-            <p>拋棄「獲利多少就賣出」的定錨迷思。<strong>當衛星資產（高力、上詮）的總市值佔比，偏離您設定的 25% 基準超過 5%（即突破 30%）時，系統才無條件觸發賣出，回撥資金至 006208 核心</strong>。將每次投入的新資金視為修補比例的「填縫劑」，低買高賣自然發生。</p>
+            <p>拋棄「獲利多少就賣出」的定錨迷思。<strong>當衛星資產的總市值佔比突破 30% 時，系統才無條件觸發賣出，回撥資金至 006208 核心</strong>。將每次投入的新資金視為修補比例的「填縫劑」，低買高賣自然發生。</p>
         </div>
 
-        <div class="tabs">
-            <div class="tab active" onclick="switchTab('alloc')">資產配置引擎</div>
-            <div class="tab" onclick="switchTab('dict')">資本物理學字典</div>
-            <div class="tab" onclick="switchTab('mindset')">戰略大腦覆盤</div>
-            <div class="tab" onclick="switchTab('housing')">機會成本試算</div>
+        <!-- 捷徑工具列 -->
+        <div class="tools-grid">
+            <a href="https://aiinvest.sinotrade.com.tw/Account/Asset" target="_blank" class="tool-btn btn-broker">
+                📊 前往永豐大戶投 (檢視資產水位)
+            </a>
+            <a href="https://edition.cnn.com/markets/fear-and-greed" target="_blank" class="tool-btn btn-macro">
+                🧭 CNN 恐懼與貪婪指數 (檢視市場情緒)
+            </a>
         </div>
 
-        <!-- 模塊一：資產配置引擎 (白話優化版) -->
-        <div id="alloc" class="tab-content active">
-            <div class="grid-layout">
-                <div class="card">
-                    <h2>系統資金流向設定 (白話版)</h2>
-                    <p style="font-size:0.85rem; color:#666; margin-top:-5px;">將每月的金流具象化，建立由上而下的物理分配漏斗。</p>
-                    
-                    <div class="input-group" style="border-bottom: 2px dashed #ddd; padding-bottom: 15px;">
-                        <label>每月可支配閒錢總額 (NTD)</label>
-                        <span class="note">扣除所有生活、房租等常規開銷後，可用於「理財規劃」的絕對閒錢。</span>
-                        <input type="number" id="totalDisposable" value="10000" oninput="updateAllocationFlow()">
-                    </div>
-                    
-                    <div class="input-group" style="background: #fdfbf7; padding: 12px; border-radius: 4px; border-left: 4px solid var(--accent-gold);">
-                        <label>🛡️ 防禦護城河 (50%)：定存與體驗金</label>
-                        <span class="note">絕對隔離於市場波動之外。用於累積底氣，或為未來的重大體驗（如海外旅行）儲備。</span>
-                        <input type="number" id="monthlySafe" value="5000" readonly>
-                    </div>
-                    
-                    <div class="input-group" style="background: #fdfbf7; padding: 12px; border-radius: 4px; border-left: 4px solid var(--primary-color);">
-                        <label>⚔️ 股市作戰總額 (50%)</label>
-                        <span class="note">承擔市場波動以獲取長期複利的資本，將依照 75:25 比例分配至核心與衛星。</span>
-                        <input type="number" id="monthlyStockTotal" value="5000" readonly>
-                        
-                        <div style="display: flex; gap: 10px; margin-top: 15px;">
-                            <div style="flex: 1;">
-                                <label style="font-size: 0.85rem; color: #555;">核心市值大盤 (75%)<br><span style="font-size:0.75rem;">(例：006208)</span></label>
-                                <input type="number" id="monthlyCore" value="3750" readonly>
-                            </div>
-                            <div style="flex: 1;">
-                                <label style="font-size: 0.85rem; color: #555;">衛星趨勢科技 (25%)<br><span style="font-size:0.75rem;">(例：高力/上詮)</span></label>
-                                <input type="number" id="monthlySat" value="1250" readonly>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="input-group" style="border-top: 1px dashed #ddd; padding-top: 15px;">
-                        <label>核心大盤預期年化 (%) <span id="coreReturnVal" class="value-display">6.5%</span></label>
-                        <input type="range" id="coreReturn" min="3" max="10" value="6.5" step="0.1" oninput="updateSystem()">
-                    </div>
-                    <div class="input-group">
-                        <label>衛星科技預期年化 (%) <span id="satReturnVal" class="value-display">12.0%</span></label>
-                        <input type="range" id="satReturn" min="5" max="25" value="12" step="0.5" oninput="updateSystem()">
-                    </div>
-                    <div class="input-group">
-                        <label>複利運轉年限 (年) <span id="yearsVal" class="value-display">20</span></label>
-                        <input type="range" id="years" min="5" max="40" value="20" oninput="updateSystem()">
-                    </div>
-                </div>
+        <div class="card">
+            <!-- 投資智慧輔助：交易前自檢 -->
+            <h2>交易與覆盤輔助區</h2>
+            <div class="checklist-box">
+                <strong style="color: var(--primary-color); display: block; margin-bottom: 8px;">寫覆盤或下單前的靈魂拷問：</strong>
+                <ul>
+                    <li>這筆操作是因為市場氣氛（FOMO/恐慌），還是基於原先設定好的紀律與比例？</li>
+                    <li>若大盤明天無預警下跌 20%，我的現金流與防禦護城河是否足以應對？</li>
+                    <li>這次的成功/失敗，是因為運氣，還是系統邏輯的必然結果？</li>
+                </ul>
+            </div>
 
-                <div class="card">
-                    <h2>長期資本增長推演</h2>
-                    <div class="grid-layout" style="gap:15px;">
-                        <div class="result-box highlight">
-                            <h3>零風險防禦總值 (期末)</h3>
-                            <div class="number" id="safeFundTotal">0</div>
-                            <span style="font-size:0.8rem; color:#666;">專款專用，安心之源</span>
-                        </div>
-                        <div class="result-box" style="border-left: 4px solid var(--primary-color);">
-                            <h3>股市風險資本總值 (期末)</h3>
-                            <div class="number" id="totalWealth">0</div>
-                            <span style="font-size:0.8rem; color:#666;">核心與衛星之複利總和</span>
-                        </div>
-                    </div>
-                    <p style="font-size:0.85rem; color:#666; margin-top: 10px;">
-                        圖表展現的是紀律的價值。定期定額的意義在於「分攤買入成本的時機風險」，但無法免除最終的市場系統性回檔。因此，防禦護城河的存在至關重要。
-                    </p>
-                    <canvas id="wealthChart" width="400" height="200" style="margin-top: 10px;"></canvas>
+            <input type="hidden" id="csvUrl" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
+            
+            <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 20px; border-top: 1px solid #e1e4e8; padding-top: 20px;">
+                <h2 style="border:none; margin:0; padding:0;">動態決策日誌</h2>
+                <div class="header-actions">
+                    <a href="https://itigre.pse.is/wealth99" target="_blank" class="btn-action btn-write">✍️ 寫入今日覆盤</a>
+                    <button onclick="fetchAndDisplayMindset()" class="btn-action btn-refresh">⟳ 刷新資料庫</button>
                 </div>
             </div>
-        </div>
-
-        <!-- 模塊二：資本物理學字典 -->
-        <div id="dict" class="tab-content">
-            <div class="card">
-                <h2>戰略名詞白話解析</h2>
-                <p style="font-size:0.9rem; color:#666; margin-bottom: 20px;">將市場的複雜術語，轉化為指導實踐的底層常識，破解理財迷思。</p>
-                
-                <div class="dict-item">
-                    <h4>動態再平衡 (Dynamic Rebalancing)</h4>
-                    <p><strong>白話解讀：</strong> 不依賴感覺猜測高低點，而是設定一個「資產比例閾值」。當衛星股暴漲導致佔比超過原定計畫時，系統強制要求賣出多餘部分買入大盤。這是唯一具備數學邏輯的「自動低買高賣」機制。</p>
-                </div>
-
-                <div class="dict-item">
-                    <h4>均值回歸 (Mean Reversion)</h4>
-                    <p><strong>白話解讀：</strong> 資本市場的萬有引力。漲多的熱門前沿科技終究會面臨籌碼修正；而穩健的大盤指數，長期往往會回到歷史的平均增長軌跡。</p>
-                    <div class="dict-note">防禦機制：不單押近期暴漲的單一市場或個股，透過大盤指數廣泛分散才是王道。</div>
-                </div>
-
-                <div class="dict-item">
-                    <h4>零成本迷思 (Zero-Cost Fallacy)</h4>
-                    <p><strong>白話解讀：</strong> 以為領了股息或是賣出獲利一半後，剩下的股票就是「零成本」，放著不管跌了也沒差。其實留在市場上的每一分錢，都是你真實的資產，跌了就是真虧損。</p>
-                    <div class="dict-note">防禦機制：決策永遠只看「現在的市場狀況」與「未來的預期」，過去的買入價都是沉沒成本。</div>
-                </div>
-                
-                <div class="dict-item">
-                    <h4>雙曲折現 (Hyperbolic Discounting)</h4>
-                    <p><strong>白話解讀：</strong> 人腦的心理偏誤，天生短視近利，會對「當下立即獲利」賦予過高價值。這會導致投資人急於「停利落袋為安」，進而中斷長期資產的複利軌跡，錯失大波段。</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- 模塊三：戰略大腦覆盤 -->
-        <div id="mindset" class="tab-content">
-            <div class="card">
-                <input type="hidden" id="csvUrl" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
-                
-                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 20px;">
-                    <h2 style="border:none; margin:0; padding:0;">動態決策日誌</h2>
-                    <div class="header-actions">
-                        <a href="https://itigre.pse.is/wealth99" target="_blank" class="btn-action btn-write">✍️ 寫入今日覆盤</a>
-                        <button onclick="fetchAndDisplayMindset()" class="btn-action btn-refresh">⟳ 刷新資料庫</button>
-                    </div>
-                </div>
-                
-                <div id="loading" style="text-align:center; padding:20px; color:#888;">正從雲端讀取歷史決策參數...</div>
-                <div id="mindset-container"></div>
-            </div>
-        </div>
-
-        <!-- 模塊四：機會成本試算 -->
-        <div id="housing" class="tab-content">
-            <div class="grid-layout">
-                <div class="card">
-                    <h2>資本機會成本探測器</h2>
-                    <p style="font-size:0.85rem; color:#666;">將買房綁死的現金流，視為放棄市場大盤長期複利的機會成本。</p>
-                    <div class="input-group">
-                        <label>標的總價 (萬)</label>
-                        <input type="number" id="housePrice" value="1800" oninput="updateHousing()">
-                    </div>
-                    <div class="input-group">
-                        <label>自備資本額 (萬)</label>
-                        <input type="number" id="downPayment" value="360" oninput="updateHousing()">
-                    </div>
-                    <div class="input-group">
-                        <label>槓桿借貸利率 (%)</label>
-                        <input type="number" id="mortgageRate" value="2.1" step="0.1" oninput="updateHousing()">
-                    </div>
-                    <div class="input-group">
-                        <label>還款期 (年)</label>
-                        <input type="number" id="mortgageYears" value="30" oninput="updateHousing()">
-                    </div>
-                    <div class="input-group">
-                        <label>對比租屋現金流 (元/月)</label>
-                        <input type="number" id="monthlyRent" value="28000" oninput="updateHousing()">
-                    </div>
-                    <div class="input-group">
-                        <label>市場基準年化報酬 (%)</label>
-                        <input type="number" id="marketReturn" value="6.5" step="0.1" oninput="updateHousing()">
-                    </div>
-                </div>
-
-                <div class="card">
-                    <h2>資本流向對比結果</h2>
-                    <div class="result-box">
-                        <h3>鎖定資本：每月房貸現金流</h3>
-                        <div class="number" id="monthlyMortgage">0</div>
-                    </div>
-                    <div class="result-box highlight">
-                        <h3>釋放資本：租房並紀律投資之期末總值</h3>
-                        <div class="number" id="rentingNetWorth">0</div>
-                        <p style="font-size:0.85rem; color:#666; text-align:left; margin-bottom:0;">
-                            演算法邏輯：將「頭期款」單筆投入大盤，並將「房貸扣除租金後的每月盈餘」執行嚴格的定期定額。此數字即為您選擇買房時，所付出的真實機會成本。
-                        </p>
-                    </div>
-                </div>
-            </div>
+            
+            <div id="loading" style="text-align:center; padding:20px; color:#888;">正從雲端讀取歷史決策參數...</div>
+            <div id="mindset-container"></div>
         </div>
 
     </div>
 
     <script>
-        let myChart;
-
-        function formatCurrency(num) {
-            return Math.round(num).toLocaleString('zh-TW');
-        }
-
-        // 自動分配 10000 -> 5000保本 / 5000股市(3750核心+1250衛星)
-        function updateAllocationFlow() {
-            const total = parseFloat(document.getElementById('totalDisposable').value) || 0;
-            
-            const safe = total * 0.5;
-            const stockTotal = total * 0.5;
-            const core = stockTotal * 0.75;
-            const sat = stockTotal * 0.25;
-
-            document.getElementById('monthlySafe').value = safe;
-            document.getElementById('monthlyStockTotal').value = stockTotal;
-            document.getElementById('monthlyCore').value = core;
-            document.getElementById('monthlySat').value = sat;
-            
-            updateSystem();
-        }
-
-        function updateSystem() {
-            const monthlySafe = parseFloat(document.getElementById('monthlySafe').value) || 0;
-            const monthlyCore = parseFloat(document.getElementById('monthlyCore').value) || 0;
-            const monthlySat = parseFloat(document.getElementById('monthlySat').value) || 0;
-            
-            const coreReturn = parseFloat(document.getElementById('coreReturn').value);
-            const satReturn = parseFloat(document.getElementById('satReturn').value);
-            const years = parseFloat(document.getElementById('years').value);
-
-            document.getElementById('coreReturnVal').innerText = coreReturn + '%';
-            document.getElementById('satReturnVal').innerText = satReturn + '%';
-            document.getElementById('yearsVal').innerText = years;
-
-            // 保本護城河總值 (不計息，視為現金堆疊)
-            const months = years * 12;
-            const safeFundTotal = monthlySafe * months;
-            document.getElementById('safeFundTotal').innerText = formatCurrency(safeFundTotal);
-
-            // 股市投資總值計算
-            const rCore = (coreReturn / 100) / 12;
-            const rSat = (satReturn / 100) / 12;
-
-            const fvCore = rCore === 0 ? monthlyCore * months : monthlyCore * ((Math.pow(1 + rCore, months) - 1) / rCore);
-            const fvSat = rSat === 0 ? monthlySat * months : monthlySat * ((Math.pow(1 + rSat, months) - 1) / rSat);
-            const totalWealth = fvCore + fvSat;
-            
-            const totalInvestPrincipal = (monthlyCore + monthlySat) * months;
-
-            document.getElementById('totalWealth').innerText = formatCurrency(totalWealth);
-
-            updateChart(totalInvestPrincipal, fvCore - (monthlyCore * months), fvSat - (monthlySat * months));
-        }
-
-        function updateChart(principal, coreProfit, satProfit) {
-            const ctx = document.getElementById('wealthChart').getContext('2d');
-            if (myChart) { myChart.destroy(); }
-            
-            myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['期末股市資產矩陣'],
-                    datasets: [
-                        { label: '累積風險本金', data: [principal], backgroundColor: '#a0aab2' },
-                        { label: '核心大盤增量', data: [Math.max(0, coreProfit)], backgroundColor: '#8a1c1c' },
-                        { label: '衛星趨勢增量', data: [Math.max(0, satProfit)], backgroundColor: '#c5a059' }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    scales: { x: { stacked: true }, y: { stacked: true } },
-                    plugins: { legend: { position: 'bottom' } }
-                }
-            });
-        }
-
-        // --- 機會成本邏輯 ---
-        function updateHousing() {
-            const housePrice = parseFloat(document.getElementById('housePrice').value) * 10000;
-            const downPayment = parseFloat(document.getElementById('downPayment').value) * 10000;
-            const mortgageRate = parseFloat(document.getElementById('mortgageRate').value) / 100;
-            const mortgageYears = parseFloat(document.getElementById('mortgageYears').value);
-            const monthlyRent = parseFloat(document.getElementById('monthlyRent').value);
-            const marketReturn = parseFloat(document.getElementById('marketReturn').value) / 100;
-
-            const loanAmount = housePrice - downPayment;
-            const monthlyRate = mortgageRate / 12;
-            const totalMonths = mortgageYears * 12;
-
-            const trueMonthlyMortgage = loanAmount * (monthlyRate * Math.pow(1 + monthlyRate, totalMonths)) / (Math.pow(1 + monthlyRate, totalMonths) - 1);
-            document.getElementById('monthlyMortgage').innerText = formatCurrency(trueMonthlyMortgage);
-
-            const monthlyDifference = trueMonthlyMortgage - monthlyRent;
-            const mReturn = marketReturn / 12;
-            
-            let rentingNetWorth = 0;
-            if (monthlyDifference > 0) {
-                const fvDownPayment = downPayment * Math.pow(1 + marketReturn, mortgageYears);
-                const fvDifference = mReturn === 0 ? monthlyDifference * totalMonths : monthlyDifference * ((Math.pow(1 + mReturn, totalMonths) - 1) / mReturn);
-                rentingNetWorth = fvDownPayment + fvDifference;
-            } else {
-                rentingNetWorth = downPayment * Math.pow(1 + marketReturn, mortgageYears); 
-            }
-
-            document.getElementById('rentingNetWorth').innerText = formatCurrency(rentingNetWorth);
-        }
-
-        function switchTab(tabId) {
-            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
-            
-            const clickedTab = Array.from(document.querySelectorAll('.tab')).find(t => t.getAttribute('onclick').includes(tabId));
-            if(clickedTab) clickedTab.classList.add('active');
-            
-            document.getElementById(tabId).classList.add('active');
-            
-            if(tabId === 'alloc') { updateSystem(); }
-            else if(tabId === 'housing') { updateHousing(); }
-        }
-
         // --- CSV 覆盤解析邏輯 ---
         function parseCSV(text) {
             let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
@@ -530,8 +243,6 @@
         }
 
         window.onload = function() {
-            updateAllocationFlow(); // 初始化漏斗分配
-            updateHousing();
             fetchAndDisplayMindset();
         };
     </script>
