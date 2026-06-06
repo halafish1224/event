@@ -1,0 +1,85 @@
+:root {
+    --primary-color: #8a1c1c;
+    --bg-color: #f4f5f7;
+    --card-bg: #ffffff;
+    --text-main: #2c3e50;
+    --text-muted: #5a6c7d;
+    --accent-gold: #c5a059;
+    --warning-bg: #fffde7;
+    --warning-border: #fbc02d;
+    --broker-color: #0056b3;
+}
+
+body {
+    font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+}
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 24px 0;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+header h1 { margin: 0; font-size: 1.8rem; letter-spacing: 2px; }
+header p { margin: 8px 0 0 0; font-size: 0.95rem; opacity: 0.85; }
+
+.container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
+
+.card {
+    background: var(--card-bg);
+    border-radius: 8px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.04);
+    border-top: 4px solid var(--accent-gold);
+}
+
+.card h2 {
+    margin-top: 0; font-size: 1.25rem; color: var(--primary-color);
+    border-bottom: 1px solid #e1e4e8; padding-bottom: 12px;
+}
+
+.warning-box {
+    background-color: var(--warning-bg);
+    border-left: 5px solid var(--warning-border);
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 4px;
+    color: #333;
+}
+
+.warning-box h4 { margin: 0 0 8px 0; color: #d32f2f; font-size: 1.05rem; }
+
+/* 大師心法區塊 (手繪感邊框) */
+.master-wisdom {
+    background: #fdfbf7;
+    border: 2px solid var(--accent-gold);
+    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+    padding: 20px;
+    margin: 20px 0;
+    text-align: center;
+    font-style: italic;
+    color: var(--text-main);
+}
+.master-name { display: block; margin-top: 10px; font-weight: bold; color: var(--primary-color); }
+
+.tools-grid { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
+.tool-btn {
+    flex: 1; min-width: 200px; padding: 12px 15px; border-radius: 6px;
+    text-decoration: none; font-weight: bold; color: white; text-align: center;
+}
+.btn-broker { background-color: var(--broker-color); }
+.btn-macro { background-color: #4a5568; }
+
+.mindset-item {
+    background: #fff; border-left: 4px solid var(--accent-gold); 
+    padding: 15px; margin-bottom: 15px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+.reminder-highlight { background-color: var(--warning-bg); border-left: 5px solid var(--warning-border); }
