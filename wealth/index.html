@@ -2,43 +2,58 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <title>財富護城河 | 戰略覆盤中心</title>
+    <title>財富護城河 | 戰略覆盤系統</title>
     <style>
-        :root { --primary-color: #8a1c1c; --accent-gold: #c5a059; --bg: #f4f5f7; }
-        body { font-family: 'Helvetica Neue', 'Noto Sans TC', sans-serif; background: var(--bg); padding: 20px; color: #333; }
-        .container { max-width: 800px; margin: auto; }
-        .header { background: var(--primary-color); color: white; padding: 20px; text-align: center; border-radius: 8px; }
-        .quote-box { background: #fffde7; border-left: 5px solid var(--accent-gold); padding: 15px; margin: 20px 0; font-style: italic; }
-        .pdca-box { display: flex; gap: 10px; margin-bottom: 20px; }
-        .pdca-item { flex: 1; padding: 10px; background: #ddd; text-align: center; font-weight: bold; border-radius: 4px; }
+        :root { --primary: #8a1c1c; --gold: #c5a059; --bg: #f4f5f7; --pdca-p: #3498db; --pdca-d: #e67e22; --pdca-c: #9b59b6; --pdca-a: #27ae60; }
+        body { font-family: 'Helvetica Neue', 'Noto Sans TC', sans-serif; background: var(--bg); padding: 15px; color: #333; line-height: 1.5; }
+        .container { max-width: 850px; margin: auto; }
+        .header { background: var(--primary); color: white; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
+        .wisdom-board { background: #1a1a1a; color: var(--gold); padding: 15px; border-radius: 8px; margin-bottom: 20px; text-align: center; border: 1px solid var(--gold); font-size: 0.95rem; }
+        .pdca-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 20px; }
+        .pdca-item { padding: 8px 0; text-align: center; color: white; font-weight: bold; border-radius: 4px; font-size: 0.8rem; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid var(--gold); }
         .btn-group { display: flex; gap: 10px; margin-bottom: 20px; }
-        .btn { flex: 1; padding: 10px; background: #333; color: white; text-align: center; text-decoration: none; border-radius: 4px; }
-        .log-item { background: white; padding: 15px; border-left: 4px solid var(--accent-gold); margin-bottom: 10px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+        .btn { flex: 1; padding: 10px; background: #333; color: white; text-align: center; text-decoration: none; border-radius: 4px; font-size: 0.9rem; font-weight: bold; }
+        .log-item { background: white; padding: 15px; border-bottom: 1px solid #eee; margin-bottom: 10px; border-radius: 4px; }
+        .date { font-size: 0.75rem; color: #888; }
+        h3 { margin: 5px 0; color: var(--primary); font-size: 1.1rem; }
     </style>
 </head>
 <body>
 <div class="container">
-    <div class="header"><h1>財富護城河 | 戰略覆盤中心</h1></div>
-    <div class="quote-box" id="wisdom">正在檢索投資智慧...</div>
-    <div class="pdca-box">
-        <div class="pdca-item">P: 目標</div><div class="pdca-item">D: 紀律</div><div class="pdca-item">C: 覆盤</div><div class="pdca-item">A: 優化</div>
+    <header><h1>財富護城河 | 戰略覆盤中心</h1></header>
+    <div class="wisdom-board" id="master-wisdom">載入大師智慧中...</div>
+    <div class="pdca-grid">
+        <div class="pdca-item" style="background:var(--pdca-p)">P: 戰略配置</div>
+        <div class="pdca-item" style="background:var(--pdca-d)">D: 機械紀律</div>
+        <div class="pdca-item" style="background:var(--pdca-c)">C: 數據覆盤</div>
+        <div class="pdca-item" style="background:var(--pdca-a)">A: 系統優化</div>
     </div>
     <div class="btn-group">
-        <a href="https://gemini.google.com/gem/1TNWK82RGAFQhIKBLjowp67xB4XhJM0T9" class="btn">📊 投資學新法</a>
+        <a href="https://gemini.google.com/gem/1TNWK82RGAFQhIKBLjowp67xB4XhJM0T9" class="btn">📊 投資學新法 AI</a>
         <a href="https://aiinvest.sinotrade.com.tw/Account/Asset" class="btn">👉 永豐大戶投</a>
+    </div>
+    <div class="card">
+        <h2>決策靈魂拷問</h2>
+        <ul style="font-size:0.9rem; padding-left: 20px;">
+            <li>操作是否基於「市值加權」與「再平衡」，還是被價格波動所擾？</li>
+            <li>若發生[span_0](start_span)[span_0](end_span) 所述之市場極端分歧，我的系統是否已備妥應對機制？</li>
+            <li>我是否正試圖用「過去」的績效來決定「現在」的佈局？</li>
+        </ul>
+        <button onclick="fetchAndDisplayMindset()" class="btn" style="width:100%; border:none; cursor:pointer;">⟳ 刷新今日覆盤</button>
     </div>
     <div id="mindset-container"></div>
 </div>
 
 <script>
     const wisdoms = [
-        "「在投資中，最大的風險是自己以為能預測市場。」",
-        "「紀律是財富的護城河，再平衡則是唯一的自動防禦。」",
-        "「像無印良品一樣簡化流程，將 PDCA 內化為投資的呼吸。」"
+        "「紀律是投資人唯一能掌握的勝率。」—— ffaarr",
+        "「將投資系統化，是為了避開人性的深淵。」—— 查理·蒙格",
+        "「不要問這筆交易能賺多少，問這筆交易是否符合你的系統邏輯。」"
     ];
-    document.getElementById('wisdom').innerText = wisdoms[Math.floor(Math.random() * wisdoms.length)];
-
-    // CSV 解析與渲染邏輯 (保持原有 fetchAndDisplayMindset 功能)
+    document.getElementById('master-wisdom').innerText = wisdoms[Math.floor(Math.random() * wisdoms.length)];
+    
+    // 覆盤讀取邏輯請置入此處 (同前次提供的 fetchAndDisplayMindset 函數)
 </script>
 </body>
 </html>
