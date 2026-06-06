@@ -2,94 +2,43 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>財富護城河決策系統 | 戰略覆盤中心</title>
-    <style>
-        :root {
-            --primary-color: #8a1c1c;
-            --bg-color: #f4f5f7;
-            --card-bg: #ffffff;
-            --text-main: #2c3e50;
-            --accent-gold: #c5a059;
-            --warning-border: #fbc02d;
-        }
-        body { font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif; background-color: var(--bg-color); color: var(--text-main); margin: 0; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; }
-        header { background-color: var(--primary-color); color: white; padding: 20px; text-align: center; border-radius: 8px; margin-bottom: 20px; }
-        
-        .mindset-item {
-            background: #fff; border-left: 4px solid var(--accent-gold); 
-            padding: 20px; margin-bottom: 20px; border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: transform 0.3s ease;
-        }
-        /* 高權重卡片：誇張比例與視覺效果 */
-        .high-weight {
-            border-left: 10px solid #d32f2f;
-            background: #fff9f9;
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-        }
-        .high-weight h3 { font-size: 1.5rem !important; color: #d32f2f !important; }
-        
-        .date { font-size: 0.8rem; color: #888; font-weight: bold; }
-        .btn-refresh { background-color: var(--primary-color); color: white; border: none; padding: 12px 24px; border-radius: 5px; cursor: pointer; font-weight: bold; }
-    </style>
+    <link rel="stylesheet" href="style.css">
+    <title>財富護城河決策系統</title>
 </head>
 <body>
-
     <header>
-        <h1>財富護城河 | 大師心法戰略庫</h1>
+        <h1>財富護城河 | 戰略覆盤中心</h1>
     </header>
 
     <div class="container">
-        <div style="text-align: right; margin-bottom: 20px;">
-            <button onclick="fetchAndDisplayMindset()" class="btn-refresh">⟳ 隨機重洗 80 條大師心法</button>
+        <div class="master-wisdom" id="wisdom-box">
+            <div id="wisdom-content">載入中...</div>
+            <span class="master-name" id="wisdom-author"></span>
         </div>
-        <div id="loading" style="text-align:center;">讀取中...</div>
-        <div id="mindset-container"></div>
+
+        <div class="card">
+            <h2>動態決策日誌</h2>
+            <div id="mindset-container"></div>
+        </div>
     </div>
 
     <script>
-        const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv";
+        const wisdomList = [
+            { text: "在手拿鐵鎚的人看來，每個問題都像釘子。", author: "查理·蒙格" },
+            { text: "複利是世界第八大奇蹟。", author: "查理·蒙格" },
+            { text: "如果我知道我會死在哪裡，那我永遠不去那個地方。", author: "查理·蒙格" },
+            { text: "擁抱現實，並處理它。", author: "原則 (Ray Dalio)" },
+            { text: "不要讓情緒左右你的投資決策。", author: "致富心態" }
+            // ... 可在此處繼續添加補滿 80 條
+        ];
 
-        function parseCSV(text) {
-            return text.split('\n').slice(1).map(row => row.split(','));
+        function showRandomWisdom() {
+            const item = wisdomList[Math.floor(Math.random() * wisdomList.length)];
+            document.getElementById('wisdom-content').innerText = `「${item.text}」`;
+            document.getElementById('wisdom-author').innerText = `—— ${item.author}`;
         }
-
-        async function fetchAndDisplayMindset() {
-            const container = document.getElementById('mindset-container');
-            const loading = document.getElementById('loading');
-            container.innerHTML = '';
-            loading.style.display = 'block';
-
-            try {
-                const response = await fetch(csvUrl);
-                const data = parseCSV(await response.text());
-                
-                // 亂序排列
-                const shuffled = data.sort(() => Math.random() - 0.5);
-                loading.style.display = 'none';
-
-                shuffled.forEach(row => {
-                    if (row.length < 2 || !row[1]) return;
-
-                    const isHighWeight = row[3] && row[3].includes('高權重');
-                    const div = document.createElement('div');
-                    div.className = isHighWeight ? 'mindset-item high-weight' : 'mindset-item';
-                    
-                    div.innerHTML = `
-                        <div class="date">${row[0] || '大師心法'}</div>
-                        <h3>${row[1]}</h3>
-                        <p>${row[2] || ''}</p>
-                    `;
-                    container.appendChild(div);
-                });
-            } catch (e) {
-                container.innerHTML = "載入失敗，請檢查網路連線。";
-            }
-        }
-
-        window.onload = fetchAndDisplayMindset;
+        
+        window.onload = () => { showRandomWisdom(); };
     </script>
 </body>
 </html>
