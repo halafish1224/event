@@ -1,17 +1,24 @@
+/* ==========================================================================
+   財富護城河決策系統 - 樣式表
+   風格參考：簡約專業 + 手繪不規則元素 (AIMYON Style)
+   ========================================================================== */
+
 :root {
-    --primary-color: #8a1c1c;
-    --bg-color: #f4f5f7;
-    --card-bg: #ffffff;
-    --text-main: #2c3e50;
-    --text-muted: #5a6c7d;
-    --accent-gold: #c5a059;
-    --warning-bg: #fffde7;
-    --warning-border: #fbc02d;
-    --broker-color: #0056b3;
+    --primary-color: #8a1c1c;    /* 商周紅 */
+    --bg-color: #f4f5f7;        /* 背景灰 */
+    --card-bg: #ffffff;         /* 卡片白 */
+    --text-main: #2c3e50;       /* 主文字深藍 */
+    --text-muted: #5a6c7d;      /* 次文字灰 */
+    --accent-gold: #c5a059;     /* 邊框金 */
+    --warning-bg: #fffde7;      /* 提示黃 */
+    --warning-border: #fbc02d;  /* 警告邊框 */
+    --broker-color: #0056b3;    /* 券商藍 */
+    /* 手繪風格邊框圓角設定 */
+    --hand-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
 }
 
 body {
-    font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', sans-serif;
+    font-family: 'Helvetica Neue', Arial, 'Noto Sans TC', 'Segoe UI', sans-serif;
     background-color: var(--bg-color);
     color: var(--text-main);
     margin: 0;
@@ -32,6 +39,7 @@ header p { margin: 8px 0 0 0; font-size: 0.95rem; opacity: 0.85; }
 
 .container { max-width: 900px; margin: 30px auto; padding: 0 20px; }
 
+/* 卡片設計 */
 .card {
     background: var(--card-bg);
     border-radius: 8px;
@@ -42,10 +50,45 @@ header p { margin: 8px 0 0 0; font-size: 0.95rem; opacity: 0.85; }
 }
 
 .card h2 {
-    margin-top: 0; font-size: 1.25rem; color: var(--primary-color);
-    border-bottom: 1px solid #e1e4e8; padding-bottom: 12px;
+    margin-top: 0; 
+    font-size: 1.25rem; 
+    color: var(--primary-color);
+    border-bottom: 1px solid #e1e4e8; 
+    padding-bottom: 12px;
 }
 
+/* 大師心法區塊：手繪風核心 */
+.master-wisdom {
+    background: #fdfbf7;
+    border: 2px solid var(--accent-gold);
+    border-radius: var(--hand-radius);
+    padding: 25px;
+    margin: 20px 0;
+    text-align: center;
+    color: var(--text-main);
+    box-shadow: 5px 5px 0px rgba(197, 160, 89, 0.2);
+    transform: rotate(-0.5deg); /* 產生手繪隨性感 */
+    transition: transform 0.3s ease;
+}
+
+.master-wisdom:hover { transform: rotate(0deg) scale(1.01); }
+
+.master-wisdom #wisdom-content {
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.8;
+}
+
+.master-name {
+    display: block;
+    margin-top: 12px;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    letter-spacing: 1px;
+}
+
+/* 提示區塊 */
 .warning-box {
     background-color: var(--warning-bg);
     border-left: 5px solid var(--warning-border);
@@ -57,29 +100,40 @@ header p { margin: 8px 0 0 0; font-size: 0.95rem; opacity: 0.85; }
 
 .warning-box h4 { margin: 0 0 8px 0; color: #d32f2f; font-size: 1.05rem; }
 
-/* 大師心法區塊 (手繪感邊框) */
-.master-wisdom {
-    background: #fdfbf7;
-    border: 2px solid var(--accent-gold);
-    border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-    padding: 20px;
-    margin: 20px 0;
-    text-align: center;
-    font-style: italic;
-    color: var(--text-main);
-}
-.master-name { display: block; margin-top: 10px; font-weight: bold; color: var(--primary-color); }
-
+/* 工具列 */
 .tools-grid { display: flex; gap: 15px; flex-wrap: wrap; margin-bottom: 20px; }
 .tool-btn {
     flex: 1; min-width: 200px; padding: 12px 15px; border-radius: 6px;
     text-decoration: none; font-weight: bold; color: white; text-align: center;
+    transition: transform 0.2s;
 }
+.tool-btn:hover { transform: translateY(-2px); }
 .btn-broker { background-color: var(--broker-color); }
 .btn-macro { background-color: #4a5568; }
 
+/* 覆盤項目 */
 .mindset-item {
-    background: #fff; border-left: 4px solid var(--accent-gold); 
-    padding: 15px; margin-bottom: 15px; box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    background: #fff; 
+    border-left: 4px solid var(--accent-gold); 
+    padding: 15px; 
+    margin-bottom: 15px; 
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    border-radius: 2px;
 }
-.reminder-highlight { background-color: var(--warning-bg); border-left: 5px solid var(--warning-border); }
+.reminder-highlight { 
+    background-color: var(--warning-bg); 
+    border-left: 5px solid var(--warning-border); 
+}
+
+/* 按鈕樣式 */
+.btn-action {
+    display: inline-block; padding: 10px 18px; border-radius: 4px;
+    cursor: pointer; font-weight: bold; border: none;
+}
+.btn-write { background-color: var(--accent-gold); color: white; }
+.btn-refresh { background-color: #eee; color: var(--text-main); }
+
+@media (max-width: 768px) {
+    .header-actions { flex-direction: column; }
+    .btn-action { width: 100%; margin-bottom: 10px; }
+}
