@@ -34,7 +34,6 @@
             box-sizing: border-box;
         }
 
-        /* 標題列：電腦版並排、手機版垂直堆疊 */
         .dashboard-header {
             display: flex;
             justify-content: space-between;
@@ -54,13 +53,12 @@
             font-weight: bold;
         }
 
-        /* 更新按鈕：加大觸控面積 (符合 Mobile Touch Targets 規範) */
         .btn-update-proportion {
             display: inline-flex;
             align-items: center;
             justify-content: center;
             gap: 6px;
-            padding: 10px 20px; /* 加大上下左右內邊距，手機更好點擊 */
+            padding: 10px 20px; 
             background-color: transparent;
             color: #1F497D;
             border: 1px solid #1F497D;
@@ -87,20 +85,40 @@
             padding: 16px;
             box-sizing: border-box;
         }
-        .roi-dashboard h4 {
-            margin: 0 0 12px 0;
-            color: #555;
-            font-size: 0.9rem;
-            display: flex;
+
+        /* 🎯 【優化 1】手繪感螢光筆標題特效 */
+        .hand-drawn-title {
+            position: relative;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
+            font-size: 1.15rem;
+            font-weight: bold;
+            color: #1F497D;
+            margin: 0 0 16px 0;
+            z-index: 1;
+            /* 加入輕微的手寫字體 Fallback 增添人味 */
+            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Microsoft JhengHei', cursive, sans-serif;
+            letter-spacing: 0.5px;
+        }
+        .hand-drawn-title::after {
+            content: '';
+            position: absolute;
+            left: -4px;
+            right: -8px;
+            bottom: 3px;
+            height: 12px;
+            background-color: rgba(255, 215, 0, 0.55); /* 螢光黃 */
+            z-index: -1;
+            /* 利用不對稱的圓角與微傾斜，創造出麥克筆畫過的自然筆觸 */
+            border-radius: 3px 12px 4px 8px / 6px 3px 10px 4px; 
+            transform: rotate(-1.5deg);
         }
 
-        /* 【RWD 核心優化 1】表格專用響應式包裹層：超出寬度時自動引導橫向滑動，絕不破版 */
         .roi-table-wrapper {
             width: 100%;
             overflow-x: auto;
-            -webkit-overflow-scrolling: touch; /* 讓 iOS 滑動更流暢 */
+            -webkit-overflow-scrolling: touch; 
             margin-bottom: 4px;
         }
 
@@ -116,72 +134,63 @@
             padding: 10px 14px;
             font-weight: bold;
             border-bottom: 2px solid #e1e4e8;
-            white-space: nowrap; /* 確保標頭不因擠壓而難看地換行 */
+            white-space: nowrap; 
         }
         .roi-table td {
             padding: 12px 14px;
             border-bottom: 1px solid #eee;
             color: #333;
-            /* 【RWD 核心優化 2】確保數字與百分比永遠在同一行，維持財務資料尊嚴 */
             white-space: nowrap; 
         }
         
         .pos-profit { color: #d32f2f; font-weight: bold; }
         .neg-profit { color: #388e3c; font-weight: bold; }
 
-        /* 圖表外殼 */
+        /* 🎯 【優化 2】圖表外殼與 RWD 修復 (解決右側裁切問題) */
         .chart-box {
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            display: block; /* 移除 flex 避免壓縮 */
             width: 100%;
             background: #ffffff; 
             border-radius: 8px;
             border: 1px solid #eaeaea;
-            padding: 12px;
+            padding: 0; /* 歸零內邊距，把所有寬度還給圖表 */
             box-sizing: border-box;
+            overflow: hidden;
         }
 
         .chart-box iframe {
             width: 100%;
-            max-width: 780px;
-            aspect-ratio: 16 / 10; /* 電腦版黃金比例 */
+            height: 450px; /* 給予穩定高度，Google Charts 更好計算空間 */
             border: none;
+            display: block;
         }
 
-        /* ========================================================
-           【RWD 核心優化 3】極致行動裝置斷點調校 (手機平板適用)
-           ======================================================== */
+        /* 行動裝置極致調校 */
         @media (max-width: 768px) {
             .dashboard-container {
-                padding: 16px; /* 縮減外框，把更多空間讓給數據顯示 */
+                padding: 16px; 
             }
             .dashboard-header {
                 flex-direction: column;
-                align-items: stretch; /* 讓標題與按鈕在手機上各佔滿一行 */
+                align-items: stretch; 
                 gap: 12px;
             }
             .dashboard-title {
                 text-align: center;
             }
             .btn-update-proportion {
-                width: 100%; /* 手機上按鈕滿版，極好點擊 */
-                padding: 12px; /* 進一步放大點擊範圍 */
+                width: 100%; 
+                padding: 12px; 
                 box-sizing: border-box;
             }
             .roi-table {
-                font-size: 0.88rem; /* 稍微縮小字體以呈現更多財務資訊 */
+                font-size: 0.88rem; 
             }
             .roi-table th, .roi-table td {
-                padding: 10px 8px; /* 縮減內邊距，防止過度滾動 */
-            }
-            .chart-box {
-                padding: 6px;
+                padding: 10px 8px; 
             }
             .chart-box iframe {
-                /* 手機版改為直式方正比例，防止 Google 圓餅圖的圖例被裁切 */
-                aspect-ratio: 4 / 5; 
-                min-height: 440px;
+                height: 520px; /* 手機版需要更多「垂直空間」來讓圓餅圖與圖例不打架 */
             }
         }
     </style>
@@ -226,7 +235,8 @@
             </div>
           
             <div class="roi-dashboard">
-                <h4>📈 即時戰略報酬率看板</h4>
+                <div class="hand-drawn-title">📈 即時戰略報酬率看板</div>
+                
                 <div id="roi-loading" style="color:#888; font-size:0.9rem;">正在同步雲端報酬率參數...</div>
                 <div class="roi-table-wrapper">
                     <div id="roi-container"></div>
