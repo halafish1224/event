@@ -21,28 +21,28 @@
         .mindset-item h3 { margin: 0 0 8px 0; color: var(--primary-color, #1F497D); font-size: 1.1rem; }
         .mindset-item p { margin: 0; font-size: 0.95rem; color: #444; white-space: pre-wrap; }
 
-        /* --- 整合優化：儀表板與內嵌圖表樣式 --- */
+        /* --- 🛡️ 決策堡壘：終極 RWD 儀表板樣式 --- */
         .dashboard-container {
             max-width: 900px;
             width: 100%;
             margin: 0 auto 30px auto;
-            padding: 25px;
-            background-color: #fdfbf7; /* 修改為與心法、交易區一致的溫潤米白，提升整體感 */
+            padding: 24px;
+            background-color: #fdfbf7; 
             border: 1px solid #e1e4e8;
             border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(31, 73, 125, 0.04); /* 融入主色系的淡淡陰影 */
+            box-shadow: 0 4px 16px rgba(31, 73, 125, 0.04); 
             box-sizing: border-box;
         }
 
-        /* 儀表板頂部區塊：放置標題與權重更新按鈕 */
+        /* 標題列：電腦版並排、手機版垂直堆疊 */
         .dashboard-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
             margin-bottom: 20px;
-            border-bottom: 2px solid #1F497D; /* 用主色系線條劃分 */
+            border-bottom: 2px solid #1F497D; 
             padding-bottom: 12px;
         }
 
@@ -54,66 +54,134 @@
             font-weight: bold;
         }
 
-        /* 完美整合的「占比update」按鈕 */
+        /* 更新按鈕：加大觸控面積 (符合 Mobile Touch Targets 規範) */
         .btn-update-proportion {
             display: inline-flex;
             align-items: center;
+            justify-content: center;
             gap: 6px;
-            padding: 6px 14px;
+            padding: 10px 20px; /* 加大上下左右內邊距，手機更好點擊 */
             background-color: transparent;
             color: #1F497D;
             border: 1px solid #1F497D;
-            border-radius: 20px;
-            font-size: 0.85rem;
+            border-radius: 24px;
+            font-size: 0.88rem;
             font-weight: bold;
             text-decoration: none;
-            transition: all 0.2s ease;
+            transition: all 0.2s ease-in-out;
             font-family: 'Microsoft JhengHei', sans-serif;
         }
         .btn-update-proportion:hover {
             background-color: #1F497D;
             color: #ffffff;
-            box-shadow: 0 2px 6px rgba(31, 73, 125, 0.2);
+            box-shadow: 0 2px 8px rgba(31, 73, 125, 0.15);
         }
 
-        /* 圖表外殼：置中與響應式比例調校 */
+        /* 報酬率看板外殼 */
+        .roi-dashboard {
+            width: 100%;
+            margin-bottom: 20px;
+            background: #ffffff;
+            border: 1px solid #eaeaea;
+            border-radius: 8px;
+            padding: 16px;
+            box-sizing: border-box;
+        }
+        .roi-dashboard h4 {
+            margin: 0 0 12px 0;
+            color: #555;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* 【RWD 核心優化 1】表格專用響應式包裹層：超出寬度時自動引導橫向滑動，絕不破版 */
+        .roi-table-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch; /* 讓 iOS 滑動更流暢 */
+            margin-bottom: 4px;
+        }
+
+        .roi-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            text-align: left;
+        }
+        .roi-table th {
+            background-color: #f8f9fa;
+            color: #1F497D;
+            padding: 10px 14px;
+            font-weight: bold;
+            border-bottom: 2px solid #e1e4e8;
+            white-space: nowrap; /* 確保標頭不因擠壓而難看地換行 */
+        }
+        .roi-table td {
+            padding: 12px 14px;
+            border-bottom: 1px solid #eee;
+            color: #333;
+            /* 【RWD 核心優化 2】確保數字與百分比永遠在同一行，維持財務資料尊嚴 */
+            white-space: nowrap; 
+        }
+        
+        .pos-profit { color: #d32f2f; font-weight: bold; }
+        .neg-profit { color: #388e3c; font-weight: bold; }
+
+        /* 圖表外殼 */
         .chart-box {
             display: flex;
             justify-content: center;
             align-items: center;
             width: 100%;
-            background: #ffffff; /* 圖表背景獨立純白，凸顯圖表內容 */
+            background: #ffffff; 
             border-radius: 8px;
             border: 1px solid #eaeaea;
-            padding: 10px;
+            padding: 12px;
             box-sizing: border-box;
         }
 
         .chart-box iframe {
             width: 100%;
             max-width: 780px;
-            aspect-ratio: 16 / 10; /* 微調比例，更契合 Google 圓餅圖與側邊圖例 */
+            aspect-ratio: 16 / 10; /* 電腦版黃金比例 */
             border: none;
         }
 
-        /* 手機版 RWD 樣式覆蓋 */
+        /* ========================================================
+           【RWD 核心優化 3】極致行動裝置斷點調校 (手機平板適用)
+           ======================================================== */
         @media (max-width: 768px) {
             .dashboard-container {
-                padding: 15px;
+                padding: 16px; /* 縮減外框，把更多空間讓給數據顯示 */
             }
             .dashboard-header {
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 8px;
+                align-items: stretch; /* 讓標題與按鈕在手機上各佔滿一行 */
+                gap: 12px;
+            }
+            .dashboard-title {
+                text-align: center;
             }
             .btn-update-proportion {
-                width: 100%;
-                justify-content: center;
+                width: 100%; /* 手機上按鈕滿版，極好點擊 */
+                padding: 12px; /* 進一步放大點擊範圍 */
                 box-sizing: border-box;
             }
+            .roi-table {
+                font-size: 0.88rem; /* 稍微縮小字體以呈現更多財務資訊 */
+            }
+            .roi-table th, .roi-table td {
+                padding: 10px 8px; /* 縮減內邊距，防止過度滾動 */
+            }
+            .chart-box {
+                padding: 6px;
+            }
             .chart-box iframe {
-                aspect-ratio: 4 / 5; /* 手機上改為直式比例，防止圖例被切到 */
-                min-height: 420px;
+                /* 手機版改為直式方正比例，防止 Google 圓餅圖的圖例被裁切 */
+                aspect-ratio: 4 / 5; 
+                min-height: 440px;
             }
         }
     </style>
@@ -157,6 +225,14 @@
                 </a>
             </div>
           
+            <div class="roi-dashboard">
+                <h4>📈 即時戰略報酬率看板</h4>
+                <div id="roi-loading" style="color:#888; font-size:0.9rem;">正在同步雲端報酬率參數...</div>
+                <div class="roi-table-wrapper">
+                    <div id="roi-container"></div>
+                </div>
+            </div>
+
             <div class="chart-box">
                 <iframe 
                     src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=1927603948&format=interactive" 
@@ -175,7 +251,7 @@
         </div>
 
         <div class="card">
-            <h2>交易與覆盤輔助區</h2>
+            <h2>交易與覆盤輔補區</h2>
             <div class="checklist-box">
                 <strong style="color: var(--primary-color, #1F497D); display: block; margin-bottom: 8px;">寫覆盤或下單前的靈魂拷問：</strong>
                 <ul>
@@ -191,7 +267,7 @@
                 <h2 style="border:none; margin:0; padding:0;">動態決策日誌</h2>
                 <div class="header-actions">
                     <a href="https://itigre.pse.is/wealth99" target="_blank" class="btn-action btn-write">✍️ 寫入今日覆盤</a>
-                    <button onclick="fetchAndDisplayMindset()" class="btn-action btn-refresh">⟳ 刷新資料庫</button>
+                    <button onclick="fetchAndDisplayAll()" class="btn-action btn-refresh">⟳ 刷新資料庫</button>
                 </div>
             </div>
             
@@ -202,6 +278,9 @@
     </div>
 
     <script>
+        // --- 報酬率 CSV 網址定義 ---
+        const roiCsvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pub?gid=404116052&single=true&output=csv";
+
         // --- 1. 大師心法資料庫 ---
         const wisdomList = [
             { text: "在手拿鐵鎚的人看來，每個問題都像釘子。", author: "查理·蒙格" },
@@ -223,7 +302,7 @@
             }
         }
 
-        // --- 2. CSV 覆盤解析邏輯 ---
+        // --- 2. 通用 CSV 解析邏輯 ---
         function parseCSV(text) {
             let p = '', row = [''], ret = [row], i = 0, r = 0, s = !0, l;
             for (l of text) {
@@ -240,7 +319,60 @@
             return ret;
         }
 
-        // --- 3. 抓取表單與渲染 ---
+        // --- 3. 抓取並渲染報酬率資料 ---
+        async function fetchAndDisplayROI() {
+            const container = document.getElementById('roi-container');
+            const loading = document.getElementById('roi-loading');
+            if(!container || !loading) return;
+
+            try {
+                const response = await fetch(roiCsvUrl);
+                if (!response.ok) throw new Error('無法讀取報酬率資料');
+                const csvText = await response.text();
+                const data = parseCSV(csvText);
+                
+                loading.style.display = 'none';
+                container.innerHTML = '';
+
+                if(data.length < 1 || data[0].length < 1) {
+                    container.innerHTML = '<p style="color:#666; font-size:0.9rem;">目前暫無報酬率數據。</p>';
+                    return;
+                }
+
+                const table = document.createElement('table');
+                table.className = 'roi-table';
+
+                data.forEach((row, rowIndex) => {
+                    if(row.length === 0 || (row.length === 1 && row[0] === "")) return;
+
+                    const tr = document.createElement('tr');
+                    
+                    row.forEach(cell => {
+                        const cellElement = rowIndex === 0 ? document.createElement('th') : document.createElement('td');
+                        let cellText = cell.trim();
+                        
+                        cellElement.innerText = cellText;
+
+                        if (rowIndex > 0 && (cellText.includes('%') || !isNaN(cellText.replace('%','')))) {
+                            const num = parseFloat(cellText.replace('%',''));
+                            if(num > 0) cellElement.className = 'pos-profit';
+                            if(num < 0) cellElement.className = 'neg-profit';
+                        }
+
+                        tr.appendChild(cellElement);
+                    });
+                    table.appendChild(tr);
+                });
+
+                container.appendChild(table);
+
+            } catch (error) {
+                loading.style.display = 'none';
+                container.innerHTML = `<p style="color:#d32f2f; font-size:0.9rem;">報酬率模組載入失敗: ${error.message}</p>`;
+            }
+        }
+
+        // --- 4. 抓取日誌表單與渲染 ---
         async function fetchAndDisplayMindset() {
             const urlEl = document.getElementById('csvUrl');
             if(!urlEl) return;
@@ -251,8 +383,6 @@
             
             container.innerHTML = ''; 
             loading.style.display = 'block';
-
-            showRandomWisdom();
 
             try {
                 const response = await fetch(url);
@@ -301,9 +431,16 @@
             }
         }
 
-        // --- 4. 初始化 ---
-        window.onload = function() {
+        // --- 5. 聯動整合控制 ---
+        function fetchAndDisplayAll() {
+            showRandomWisdom();
+            fetchAndDisplayROI();
             fetchAndDisplayMindset();
+        }
+
+        // --- 6. 初始化 ---
+        window.onload = function() {
+            fetchAndDisplayAll();
         };
     </script>
 </body>
