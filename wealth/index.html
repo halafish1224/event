@@ -108,12 +108,34 @@
                 🛡️ 蒙格決策堡壘 </h2> <<a href="https://docs.google.com/spreadsheets/d/1FOE18xjHyh9LoRq5bXVFaJmWVQTeC0p0x2Ipy8iXoPo/edit?usp=sharing">update</a>>
          
             
-            <div class="iframe-wrapper">
-                <iframe 
-                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=1927603948&format=interactive" 
-                    title="戰略配置圓餅圖">
-                </iframe>
-            </div>
+           <div class="iframe-container">
+    <iframe 
+        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=1927603948&format=interactive" 
+        title="戰略配置圓餅圖">
+    </iframe>
+</div>
+
+<style>
+    /* 容器設定：負責置中 */
+    .iframe-container {
+        display: flex;
+        justify-content: center; /* 讓內容水平置中 */
+        align-items: center;     /* 讓內容垂直置中（如果外層有高度的話） */
+        width: 100%;             /* 容器寬度佔滿全螢幕 */
+        padding: 20px;           /* 留一點安全邊距，避免在手機上貼齊邊緣 */
+        box-sizing: border-box;
+    }
+
+    /* iframe 設定：負責自適應大小與外觀 */
+    .iframe-container iframe {
+        width: 100%;             /* 在手機上會佔滿容器寬度 */
+        max-width: 800px;        /* 在大螢幕上，最大寬度限制為 800px，避免圖表被拉得過大 */
+        aspect-ratio: 4 / 3;     /* 設定長寬比為 4:3，非常適合圓餅圖 */
+        border: none;            /* 移除 iframe 預設的醜醜邊框 */
+        border-radius: 8px;      /* (可選) 加上一點圓角讓視覺更現代 */
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* (可選) 加上淡淡的陰影增加立體感 */
+    }
+</style>
             
             <p style="text-align: center; color: #6c757d; font-size: 14px; margin-top: 15px; font-family: 'Microsoft JhengHei', sans-serif;">
                 數據來源：Google Sheets 動態即時同步 | 系統警戒線：衛星資產上限 30%
