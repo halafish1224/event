@@ -21,53 +21,99 @@
         .mindset-item h3 { margin: 0 0 8px 0; color: var(--primary-color, #1F497D); font-size: 1.1rem; }
         .mindset-item p { margin: 0; font-size: 0.95rem; color: #444; white-space: pre-wrap; }
 
-        /* --- 新增：儀表板 RWD 專屬樣式 --- */
+        /* --- 整合優化：儀表板與內嵌圖表樣式 --- */
         .dashboard-container {
-            max-width: 900px; /* 稍微放寬，讓圖表有伸展空間 */
+            max-width: 900px;
             width: 100%;
             margin: 0 auto 30px auto;
-            padding: 20px;
-            background-color: #f8f9fa;
+            padding: 25px;
+            background-color: #fdfbf7; /* 修改為與心法、交易區一致的溫潤米白，提升整體感 */
+            border: 1px solid #e1e4e8;
             border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-            box-sizing: border-box; /* 確保 padding 不會撐破外框 */
+            box-shadow: 0 4px 16px rgba(31, 73, 125, 0.04); /* 融入主色系的淡淡陰影 */
+            box-sizing: border-box;
+        }
+
+        /* 儀表板頂部區塊：放置標題與權重更新按鈕 */
+        .dashboard-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #1F497D; /* 用主色系線條劃分 */
+            padding-bottom: 12px;
         }
 
         .dashboard-title {
-            text-align: center; 
+            margin: 0;
             color: #1F497D; 
             font-family: 'Microsoft JhengHei', sans-serif; 
-            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: bold;
         }
 
-        .iframe-wrapper {
-            position: relative;
+        /* 完美整合的「占比update」按鈕 */
+        .btn-update-proportion {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            background-color: transparent;
+            color: #1F497D;
+            border: 1px solid #1F497D;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: bold;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            font-family: 'Microsoft JhengHei', sans-serif;
+        }
+        .btn-update-proportion:hover {
+            background-color: #1F497D;
+            color: #ffffff;
+            box-shadow: 0 2px 6px rgba(31, 73, 125, 0.2);
+        }
+
+        /* 圖表外殼：置中與響應式比例調校 */
+        .chart-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
+            background: #ffffff; /* 圖表背景獨立純白，凸顯圖表內容 */
             border-radius: 8px;
-            overflow: hidden;
-            /* 電腦版採用寬螢幕比例 */
-            aspect-ratio: 16 / 9; 
-            min-height: 450px; /* 確保至少有基本高度 */
+            border: 1px solid #eaeaea;
+            padding: 10px;
+            box-sizing: border-box;
         }
 
-        .iframe-wrapper iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
+        .chart-box iframe {
             width: 100%;
-            height: 100%;
+            max-width: 780px;
+            aspect-ratio: 16 / 10; /* 微調比例，更契合 Google 圓餅圖與側邊圖例 */
             border: none;
         }
 
-        /* 手機版 RWD 調整 */
+        /* 手機版 RWD 樣式覆蓋 */
         @media (max-width: 768px) {
             .dashboard-container {
-                padding: 10px; /* 手機螢幕小，減少內邊距 */
+                padding: 15px;
             }
-            .iframe-wrapper {
-                /* 手機上改為更方正的比例，避免圓餅圖被上下裁切 */
-                aspect-ratio: 4 / 5; 
-                min-height: 500px; /* 強制給予足夠的高度顯示圖表與圖例 */
+            .dashboard-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 8px;
+            }
+            .btn-update-proportion {
+                width: 100%;
+                justify-content: center;
+                box-sizing: border-box;
+            }
+            .chart-box iframe {
+                aspect-ratio: 4 / 5; /* 手機上改為直式比例，防止圖例被切到 */
+                min-height: 420px;
             }
         }
     </style>
@@ -87,7 +133,7 @@
         </div>
 
         <div class="tools-grid">
-           <a href="https://gemini.google.com/gem/1TNWK82RGAFQhIKBLjowp67xB4XhJM0T9?usp=sharing" target="_blank" class="tool-btn btn-broker">
+            <a href="https://gemini.google.com/gem/1TNWK82RGAFQhIKBLjowp67xB4XhJM0T9?usp=sharing" target="_blank" class="tool-btn btn-broker">
                 📊 投資學新法(AI)
             </a>
             <a href="https://aiinvest.sinotrade.com.tw/Account/Asset" target="_blank" class="tool-btn btn-broker">
@@ -104,47 +150,28 @@
         </div>
 
         <div class="dashboard-container">
-            <h2 class="dashboard-title">
-                🛡️ 蒙格決策堡壘 </h2> 
-         
+            <div class="dashboard-header">
+                <h2 class="dashboard-title">🛡️ 蒙格決策堡壘</h2>
+                <a href="https://docs.google.com/spreadsheets/d/1FOE18xjHyh9LoRq5bXVFaJmWVQTeC0p0x2Ipy8iXoPo/edit?usp=sharing" target="_blank" class="btn-update-proportion">
+                    🔄 進入後台更新資產占比
+                </a>
+            </div>
+          
+            <div class="chart-box">
+                <iframe 
+                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=1927603948&format=interactive" 
+                    title="戰略配置圓餅圖">
+                </iframe>
+            </div>
             
-           <div class="iframe-container">
-    <iframe 
-        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=1927603948&format=interactive" 
-        title="戰略配置圓餅圖">
-    </iframe>
-</div>
-
-<style>
-    /* 容器設定：負責置中 */
-    .iframe-container {
-        display: flex;
-        justify-content: center; /* 讓內容水平置中 */
-        align-items: center;     /* 讓內容垂直置中（如果外層有高度的話） */
-        width: 100%;             /* 容器寬度佔滿全螢幕 */
-        padding: 20px;           /* 留一點安全邊距，避免在手機上貼齊邊緣 */
-        box-sizing: border-box;
-    }
-
-    /* iframe 設定：負責自適應大小與外觀 */
-    .iframe-container iframe {
-        width: 100%;             /* 在手機上會佔滿容器寬度 */
-        max-width: 800px;        /* 在大螢幕上，最大寬度限制為 800px，避免圖表被拉得過大 */
-        aspect-ratio: 4 / 3;     /* 設定長寬比為 4:3，非常適合圓餅圖 */
-        border: none;            /* 移除 iframe 預設的醜醜邊框 */
-        border-radius: 8px;      /* (可選) 加上一點圓角讓視覺更現代 */
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* (可選) 加上淡淡的陰影增加立體感 */
-    }
-</style>
-            
-            <p style="text-align: center; color: #6c757d; font-size: 14px; margin-top: 15px; font-family: 'Microsoft JhengHei', sans-serif;">
-                數據來源：Google Sheets 動態即時同步 | 系統警戒線：衛星資產上限 30%
+            <p style="text-align: center; color: #6c757d; font-size: 13px; margin-top: 15px; font-family: 'Microsoft JhengHei', sans-serif; letter-spacing: 0.5px;">
+                數據來源：Google Sheets 動態即時同步 │ 系統警戒線：衛星資產上限 30%
             </p>
         </div>
 
         <div class="review-content" style="margin-top: 30px;">
             <h3>2026/06/08 史詩級震盪實戰覆盤</h3>
-            <p><a href="https://docs.google.com/spreadsheets/d/1FOE18xjHyh9LoRq5bXVFaJmWVQTeC0p0x2Ipy8iXoPo/edit?usp=sharing">占比update</a></p>
+            <p>在此處記錄您今日面對市場震盪時的心理狀態與實際操作抽離感。維持紀律，對抗波動。</p>
         </div>
 
         <div class="card">
@@ -182,7 +209,6 @@
             { text: "致富與守富是兩種不同的技術。守富需要謙遜與對風險的恐懼。", author: "致富心態" },
             { text: "投資成功與否，不在於你有多聰明，而在於你能否在別人的恐慌中保持理智。", author: "查理·蒙格" },
             { text: "真正的資產是那些能為你持續創造價值的東西，而非價格波動。", author: "原則 (Ray Dalio)" }
-            // (因版面精簡，此處保留您的陣列寫法，您原本的80條依然有效)
         ];
 
         function showRandomWisdom() {
@@ -226,7 +252,6 @@
             container.innerHTML = ''; 
             loading.style.display = 'block';
 
-            // 同時更新隨機心法
             showRandomWisdom();
 
             try {
