@@ -76,14 +76,97 @@
         }
 
         /* 報酬率看板外殼 */
-        .roi-dashboard {
-            width: 100%;
-            margin-bottom: 20px;
-            background: #ffffff;
-            border: 1px solid #eaeaea;
-            border-radius: 8px;
-            padding: 16px;
-            box-sizing: border-box;
+       /* --- 🎯 【新增】雙欄網格佈局 --- */
+.dashboard-grid-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* 左右各佔 50% */
+    gap: 20px;
+    align-items: stretch; /* 讓左右兩邊等高 */
+    margin-bottom: 20px;
+}
+
+/* --- 🎯 【修改】圖表外殼 --- */
+.chart-box {
+    width: 100%;
+    background: #ffffff; 
+    border-radius: 8px;
+    border: 1px solid #eaeaea;
+    box-sizing: border-box;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+.chart-box iframe {
+    width: 100%;
+    height: 100%; /* 填滿外殼高度 */
+    min-height: 350px; /* 確保最小高度 */
+    border: none;
+    display: block;
+}
+
+/* --- 🎯 【改造】指數資訊告示板 (深色科技風) --- */
+.roi-dashboard {
+    width: 100%;
+    background: #111827; /* 深灰黑色背景 */
+    border: 1px solid #374151;
+    border-radius: 8px;
+    padding: 20px;
+    box-sizing: border-box;
+    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3); /* 內陰影營造螢幕感 */
+    display: flex;
+    flex-direction: column;
+}
+
+.roi-dashboard .hand-drawn-title {
+    color: #fcd34d; /* 標題改為鮮明的螢光黃 */
+    text-shadow: 0 0 5px rgba(252, 211, 77, 0.4); /* 微微發光 */
+    border-bottom: 1px solid #374151;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+    width: 100%;
+}
+.roi-dashboard .hand-drawn-title::after {
+    display: none; /* 在深色背景移除原本的螢光筆底色 */
+}
+
+/* 告示板內的表格樣式 */
+.roi-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 1.1rem; /* 字體稍微放大 */
+    text-align: left;
+}
+.roi-table th {
+    background-color: transparent;
+    color: #9ca3af; /* 淡灰色表頭 */
+    padding: 8px 0;
+    font-size: 0.9rem;
+    font-weight: normal;
+    border-bottom: 1px dashed #4b5563;
+}
+.roi-table td {
+    padding: 12px 0;
+    border-bottom: 1px solid #374151;
+    color: #f3f4f6;
+    /* 數字使用等寬字體，更有儀表板的精準感 */
+    font-family: 'Courier New', 'Consolas', monospace; 
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+
+/* 台灣股市習慣：紅漲綠跌 (若需美股綠漲紅跌可互換色碼) */
+.pos-profit { color: #ef4444 !important; text-shadow: 0 0 5px rgba(239, 68, 68, 0.3); } 
+.neg-profit { color: #10b981 !important; text-shadow: 0 0 5px rgba(16, 185, 129, 0.3); }
+
+/* --- 🎯 行動裝置極致調校 (覆蓋原本的手機版設定) --- */
+@media (max-width: 768px) {
+    .dashboard-grid-wrapper {
+        grid-template-columns: 1fr; /* 手機版變回上下排列 */
+    }
+    .chart-box iframe {
+        height: 400px;
+    }
+}
         }
 
         /* 🎯 【優化 1】手繪感螢光筆標題特效 */
@@ -234,21 +317,22 @@
                 </a>
             </div>
           
-            <div class="roi-dashboard">
-                <div class="hand-drawn-title">📈 即時戰略報酬率看板</div>
-                
-                <div id="roi-loading" style="color:#888; font-size:0.9rem;">正在同步雲端報酬率參數...</div>
-                <div class="roi-table-wrapper">
-                    <div id="roi-container"></div>
-                </div>
-            </div>
+            <div class="dashboard-grid-wrapper">
+    <div class="chart-box">
+        <iframe 
+            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=1927603948&format=interactive" 
+            title="戰略配置圓餅圖">
+        </iframe>
+    </div>
 
-            <div class="chart-box">
-                <iframe 
-                    src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=1927603948&format=interactive" 
-                    title="戰略配置圓餅圖">
-                </iframe>
-            </div>
+    <div class="roi-dashboard">
+        <div class="hand-drawn-title">📈 即時戰略報酬率</div>
+        <div id="roi-loading" style="color:#888; font-size:0.9rem;">正在同步雲端參數...</div>
+        <div class="roi-table-wrapper">
+            <div id="roi-container"></div>
+        </div>
+    </div>
+</div>
             
             <p style="text-align: center; color: #6c757d; font-size: 13px; margin-top: 15px; font-family: 'Microsoft JhengHei', sans-serif; letter-spacing: 0.5px;">
                 數據來源：Google Sheets 動態即時同步 │ 系統警戒線：衛星資產上限 30%
