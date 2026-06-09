@@ -4,26 +4,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>護城河決策</title>
-    <link rel="stylesheet" href="style.css">
     
     <style>
         /* --- 原有自訂樣式 --- */
-        .checklist-box {
-            background: #fdfbf7; padding: 15px; border-radius: 6px; border: 1px dashed var(--accent-gold, #d4af37);
-            margin-bottom: 20px;
+        body {
+            font-family: 'Microsoft JhengHei', sans-serif;
+            background-color: #f4f6f8;
+            color: #333;
+            margin: 0;
+            padding: 20px;
         }
+        .container { max-width: 900px; margin: 0 auto; }
+        header { text-align: center; margin-bottom: 30px; }
+        header h1 { color: #1F497D; margin-bottom: 5px; }
+        .warning-box { background: #fff3cd; border-left: 5px solid #ffc107; padding: 15px; margin-bottom: 20px; border-radius: 4px; }
+        .warning-box h4 { margin: 0 0 10px 0; color: #856404; }
+        .warning-box p { margin: 0; color: #856404; font-size: 0.95rem; }
+        
+        .tools-grid { display: flex; gap: 10px; margin-bottom: 20px; flex-wrap: wrap; }
+        .tool-btn { padding: 10px 15px; border-radius: 6px; text-decoration: none; font-weight: bold; font-size: 0.9rem; text-align: center; flex: 1; min-width: 200px; }
+        .btn-broker { background-color: #e3f2fd; color: #1565c0; border: 1px solid #90caf9; }
+        .btn-macro { background-color: #fce4ec; color: #c2185b; border: 1px solid #f48fb1; }
+
+        .master-wisdom { background: #fff; padding: 20px; border-radius: 8px; border-left: 4px solid #1F497D; margin-bottom: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .master-wisdom #wisdom-content { font-size: 1.1rem; font-style: italic; color: #444; }
+        .master-wisdom .master-name { display: block; text-align: right; margin-top: 10px; color: #888; font-weight: bold; }
+
+        .checklist-box { background: #fdfbf7; padding: 15px; border-radius: 6px; border: 1px dashed #d4af37; margin-bottom: 20px; }
         .checklist-box ul { margin: 0; padding-left: 20px; color: #444; font-size: 0.95rem; }
         .checklist-box li { margin-bottom: 6px; }
 
         .header-actions { display: flex; gap: 10px; }
+        .btn-action { padding: 8px 16px; border-radius: 4px; cursor: pointer; text-decoration: none; font-size: 0.9rem; font-weight: bold; text-align: center; border: none; }
+        .btn-write { background-color: #1F497D; color: white; }
+        .btn-refresh { background-color: #f1f3f5; color: #333; border: 1px solid #ced4da; }
 
+        .mindset-item { background: #fff; padding: 15px; border-radius: 8px; margin-bottom: 15px; border-left: 4px solid #4caf50; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .reminder-highlight { border-left-color: #d32f2f; background-color: #fffaf9; }
         .mindset-item .date { font-size: 0.8rem; color: #888; font-weight: bold; margin-bottom: 6px; }
-        .mindset-item h3 { margin: 0 0 8px 0; color: var(--primary-color, #1F497D); font-size: 1.1rem; }
+        .mindset-item h3 { margin: 0 0 8px 0; color: #1F497D; font-size: 1.1rem; }
         .mindset-item p { margin: 0; font-size: 0.95rem; color: #444; white-space: pre-wrap; }
 
         /* --- 🛡️ 決策堡壘：終極 RWD 儀表板樣式 --- */
         .dashboard-container {
-            max-width: 900px;
             width: 100%;
             margin: 0 auto 30px auto;
             padding: 24px;
@@ -48,7 +71,6 @@
         .dashboard-title {
             margin: 0;
             color: #1F497D; 
-            font-family: 'Microsoft JhengHei', sans-serif; 
             font-size: 1.3rem;
             font-weight: bold;
         }
@@ -67,7 +89,6 @@
             font-weight: bold;
             text-decoration: none;
             transition: all 0.2s ease-in-out;
-            font-family: 'Microsoft JhengHei', sans-serif;
         }
         .btn-update-proportion:hover {
             background-color: #1F497D;
@@ -75,206 +96,126 @@
             box-shadow: 0 2px 8px rgba(31, 73, 125, 0.15);
         }
 
-        /* 報酬率看板外殼 */
-       /* --- 🎯 【新增】雙欄網格佈局 --- */
-.dashboard-grid-wrapper {
-    display: grid;
-    grid-template-columns: 1fr 1fr; /* 左右各佔 50% */
-    gap: 20px;
-    align-items: stretch; /* 讓左右兩邊等高 */
-    margin-bottom: 20px;
-}
-
-/* --- 🎯 【修改】圖表外殼 --- */
-.chart-box {
-    width: 100%;
-    background: #ffffff; 
-    border-radius: 8px;
-    border: 1px solid #eaeaea;
-    box-sizing: border-box;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-}
-.chart-box iframe {
-    width: 100%;
-    height: 100%; /* 填滿外殼高度 */
-    min-height: 350px; /* 確保最小高度 */
-    border: none;
-    display: block;
-}
-
-/* --- 🎯 【改造】指數資訊告示板 (深色科技風) --- */
-.roi-dashboard {
-    width: 100%;
-    background: #111827; /* 深灰黑色背景 */
-    border: 1px solid #374151;
-    border-radius: 8px;
-    padding: 20px;
-    box-sizing: border-box;
-    box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3); /* 內陰影營造螢幕感 */
-    display: flex;
-    flex-direction: column;
-}
-
-.roi-dashboard .hand-drawn-title {
-    color: #fcd34d; /* 標題改為鮮明的螢光黃 */
-    text-shadow: 0 0 5px rgba(252, 211, 77, 0.4); /* 微微發光 */
-    border-bottom: 1px solid #374151;
-    padding-bottom: 10px;
-    margin-bottom: 15px;
-    width: 100%;
-}
-.roi-dashboard .hand-drawn-title::after {
-    display: none; /* 在深色背景移除原本的螢光筆底色 */
-}
-
-/* 告示板內的表格樣式 */
-.roi-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 1.1rem; /* 字體稍微放大 */
-    text-align: left;
-}
-.roi-table th {
-    background-color: transparent;
-    color: #9ca3af; /* 淡灰色表頭 */
-    padding: 8px 0;
-    font-size: 0.9rem;
-    font-weight: normal;
-    border-bottom: 1px dashed #4b5563;
-}
-.roi-table td {
-    padding: 12px 0;
-    border-bottom: 1px solid #374151;
-    color: #f3f4f6;
-    /* 數字使用等寬字體，更有儀表板的精準感 */
-    font-family: 'Courier New', 'Consolas', monospace; 
-    font-weight: bold;
-    letter-spacing: 1px;
-}
-
-/* 台灣股市習慣：紅漲綠跌 (若需美股綠漲紅跌可互換色碼) */
-.pos-profit { color: #ef4444 !important; text-shadow: 0 0 5px rgba(239, 68, 68, 0.3); } 
-.neg-profit { color: #10b981 !important; text-shadow: 0 0 5px rgba(16, 185, 129, 0.3); }
-
-/* --- 🎯 行動裝置極致調校 (覆蓋原本的手機版設定) --- */
-@media (max-width: 768px) {
-    .dashboard-grid-wrapper {
-        grid-template-columns: 1fr; /* 手機版變回上下排列 */
-    }
-    .chart-box iframe {
-        height: 400px;
-    }
-}
+        /* --- 🎯 雙欄網格佈局 --- */
+        .dashboard-grid-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* 左右各佔 50% */
+            gap: 20px;
+            align-items: stretch; /* 讓左右兩邊等高 */
+            margin-bottom: 10px;
         }
 
-        /* 🎯 【優化 1】手繪感螢光筆標題特效 */
-        .hand-drawn-title {
-            position: relative;
-            display: inline-flex;
-            align-items: center;
-            gap: 6px;
-            font-size: 1.15rem;
-            font-weight: bold;
-            color: #1F497D;
-            margin: 0 0 16px 0;
-            z-index: 1;
-            /* 加入輕微的手寫字體 Fallback 增添人味 */
-            font-family: 'Comic Sans MS', 'Chalkboard SE', 'Microsoft JhengHei', cursive, sans-serif;
-            letter-spacing: 0.5px;
-        }
-        .hand-drawn-title::after {
-            content: '';
-            position: absolute;
-            left: -4px;
-            right: -8px;
-            bottom: 3px;
-            height: 12px;
-            background-color: rgba(255, 215, 0, 0.55); /* 螢光黃 */
-            z-index: -1;
-            /* 利用不對稱的圓角與微傾斜，創造出麥克筆畫過的自然筆觸 */
-            border-radius: 3px 12px 4px 8px / 6px 3px 10px 4px; 
-            transform: rotate(-1.5deg);
-        }
-
-        .roi-table-wrapper {
-            width: 100%;
-            overflow-x: auto;
-            -webkit-overflow-scrolling: touch; 
-            margin-bottom: 4px;
-        }
-
-        .roi-table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.95rem;
-            text-align: left;
-        }
-        .roi-table th {
-            background-color: #f8f9fa;
-            color: #1F497D;
-            padding: 10px 14px;
-            font-weight: bold;
-            border-bottom: 2px solid #e1e4e8;
-            white-space: nowrap; 
-        }
-        .roi-table td {
-            padding: 12px 14px;
-            border-bottom: 1px solid #eee;
-            color: #333;
-            white-space: nowrap; 
-        }
-        
-        .pos-profit { color: #d32f2f; font-weight: bold; }
-        .neg-profit { color: #388e3c; font-weight: bold; }
-
-        /* 🎯 【優化 2】圖表外殼與 RWD 修復 (解決右側裁切問題) */
+        /* --- 🎯 圖表外殼 --- */
         .chart-box {
-            display: block; /* 移除 flex 避免壓縮 */
             width: 100%;
             background: #ffffff; 
             border-radius: 8px;
             border: 1px solid #eaeaea;
-            padding: 0; /* 歸零內邊距，把所有寬度還給圖表 */
             box-sizing: border-box;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
-
         .chart-box iframe {
             width: 100%;
-            height: 450px; /* 給予穩定高度，Google Charts 更好計算空間 */
+            height: 100%; 
+            min-height: 400px; /* 確保最小高度讓圖表顯示 */
             border: none;
             display: block;
         }
 
-        /* 行動裝置極致調校 */
+        /* --- 🎯 指數資訊告示板 (深色科技風) --- */
+        .roi-dashboard {
+            width: 100%;
+            background: #111827; /* 深灰黑色背景 */
+            border: 1px solid #374151;
+            border-radius: 8px;
+            padding: 20px;
+            box-sizing: border-box;
+            box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.3); /* 內陰影營造螢幕感 */
+            display: flex;
+            flex-direction: column;
+            overflow-x: auto;
+        }
+
+        .roi-dashboard .hand-drawn-title {
+            color: #fcd34d; /* 螢光黃 */
+            text-shadow: 0 0 5px rgba(252, 211, 77, 0.4); 
+            border-bottom: 1px solid #374151;
+            padding-bottom: 10px;
+            margin: 0 0 15px 0;
+            width: 100%;
+            font-size: 1.15rem;
+            font-weight: bold;
+        }
+
+        /* 告示板內的表格樣式 */
+        .roi-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 1.05rem; 
+            text-align: left;
+        }
+        .roi-table th {
+            background-color: transparent;
+            color: #9ca3af; 
+            padding: 8px 10px 8px 0;
+            font-size: 0.9rem;
+            font-weight: normal;
+            border-bottom: 1px dashed #4b5563;
+            white-space: nowrap;
+        }
+        .roi-table td {
+            padding: 12px 10px 12px 0;
+            border-bottom: 1px solid #374151;
+            color: #f3f4f6;
+            font-family: 'Courier New', 'Consolas', monospace; 
+            font-weight: bold;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+
+        .pos-profit { color: #ef4444 !important; text-shadow: 0 0 5px rgba(239, 68, 68, 0.3); } 
+        .neg-profit { color: #10b981 !important; text-shadow: 0 0 5px rgba(16, 185, 129, 0.3); }
+
+        /* --- 🎯 載入呼吸燈與數據閃爍動畫 --- */
+        @keyframes text-glow {
+            0% { opacity: 0.4; }
+            50% { opacity: 1; text-shadow: 0 0 8px rgba(252, 211, 77, 0.6); }
+            100% { opacity: 0.4; }
+        }
+        #roi-loading {
+            animation: text-glow 1.5s infinite ease-in-out;
+            color: #fcd34d !important;
+            font-family: 'Courier New', monospace;
+            font-weight: bold;
+        }
+
+        @keyframes flash-red {
+            0% { background-color: rgba(239, 68, 68, 0.3); text-shadow: 0 0 12px rgba(239, 68, 68, 1); }
+            100% { background-color: transparent; }
+        }
+
+        @keyframes flash-green {
+            0% { background-color: rgba(16, 185, 129, 0.3); text-shadow: 0 0 12px rgba(16, 185, 129, 1); }
+            100% { background-color: transparent; }
+        }
+
+        .update-flash-pos { animation: flash-red 1.5s ease-out; }
+        .update-flash-neg { animation: flash-green 1.5s ease-out; }
+
+        /* --- 🎯 行動裝置極致調校 --- */
         @media (max-width: 768px) {
-            .dashboard-container {
-                padding: 16px; 
-            }
-            .dashboard-header {
-                flex-direction: column;
-                align-items: stretch; 
-                gap: 12px;
-            }
-            .dashboard-title {
-                text-align: center;
-            }
-            .btn-update-proportion {
-                width: 100%; 
-                padding: 12px; 
-                box-sizing: border-box;
-            }
-            .roi-table {
-                font-size: 0.88rem; 
-            }
-            .roi-table th, .roi-table td {
-                padding: 10px 8px; 
+            .dashboard-container { padding: 16px; }
+            .dashboard-grid-wrapper {
+                grid-template-columns: 1fr; /* 手機版變上下排列 */
             }
             .chart-box iframe {
-                height: 520px; /* 手機版需要更多「垂直空間」來讓圓餅圖與圖例不打架 */
+                height: 400px;
             }
+            .dashboard-header { flex-direction: column; align-items: stretch; }
+            .dashboard-title { text-align: center; }
+            .btn-update-proportion { width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -318,36 +259,32 @@
             </div>
           
             <div class="dashboard-grid-wrapper">
-    <div class="chart-box">
-        <iframe 
-            src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=1927603948&format=interactive" 
-            title="戰略配置圓餅圖">
-        </iframe>
-    </div>
+                <div class="chart-box">
+                    <iframe 
+                        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=1927603948&format=interactive" 
+                        title="戰略配置圓餅圖">
+                    </iframe>
+                </div>
 
-    <div class="roi-dashboard">
-        <div class="hand-drawn-title">📈 即時戰略報酬率</div>
-        <div id="roi-loading" style="color:#888; font-size:0.9rem;">正在同步雲端參數...</div>
-        <div class="roi-table-wrapper">
-            <div id="roi-container"></div>
-        </div>
-    </div>
-</div>
+                <div class="roi-dashboard">
+                    <div class="hand-drawn-title">📈 即時戰略報酬率</div>
+                    <div id="roi-loading">正在同步雲端參數...</div>
+                    <div id="roi-container"></div>
+                </div>
+            </div>
             
-            <p style="text-align: center; color: #6c757d; font-size: 13px; margin-top: 15px; font-family: 'Microsoft JhengHei', sans-serif; letter-spacing: 0.5px;">
+            <p style="text-align: center; color: #6c757d; font-size: 13px; margin-top: 15px; letter-spacing: 0.5px;">
                 數據來源：Google Sheets 動態即時同步 │ 系統警戒線：衛星資產上限 30%
             </p>
         </div>
 
         <div class="review-content" style="margin-top: 30px;">
-            <h3>實戰覆盤</h3>
-            <p>在此處記錄您今日面對市場震盪時的心理狀態與實際操作抽離感。維持紀律，對抗波動。</p>
+            <h3 style="color: #1F497D; border-bottom: 2px solid #e1e4e8; padding-bottom: 10px;">實戰覆盤</h3>
         </div>
 
         <div class="card">
-            <h2>交易與覆盤輔補區</h2>
             <div class="checklist-box">
-                <strong style="color: var(--primary-color, #1F497D); display: block; margin-bottom: 8px;">寫覆盤或下單前的靈魂拷問：</strong>
+                <strong style="color: #1F497D; display: block; margin-bottom: 8px;">寫覆盤或下單前的靈魂拷問：</strong>
                 <ul>
                     <li>這筆操作是因為市場氣氛（FOMO/恐慌），還是基於原先設定好的紀律與比例？</li>
                     <li>若大盤明天無預警下跌 20%，我的現金流與防禦護城河是否足以應對？</li>
@@ -358,7 +295,7 @@
             <input type="hidden" id="csvUrl" value="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=528555821&single=true&output=csv">
             
             <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; margin-bottom: 20px; border-top: 1px solid #e1e4e8; padding-top: 20px;">
-                <h2 style="border:none; margin:0; padding:0;">動態決策日誌</h2>
+                <h2 style="border:none; margin:0; padding:0; color:#1F497D; font-size:1.4rem;">動態決策日誌</h2>
                 <div class="header-actions">
                     <a href="https://itigre.pse.is/wealth99" target="_blank" class="btn-action btn-write">✍️ 寫入今日覆盤</a>
                     <button onclick="fetchAndDisplayAll()" class="btn-action btn-refresh">⟳ 刷新資料庫</button>
@@ -377,11 +314,107 @@
 
         // --- 1. 大師心法資料庫 ---
         const wisdomList = [
+            // 原有 5 條
             { text: "在手拿鐵鎚的人看來，每個問題都像釘子。", author: "查理·蒙格" },
             { text: "複利是世界第八大奇蹟。", author: "查理·蒙格" },
             { text: "致富與守富是兩種不同的技術。守富需要謙遜與對風險的恐懼。", author: "致富心態" },
             { text: "投資成功與否，不在於你有多聰明，而在於你能否在別人的恐慌中保持理智。", author: "查理·蒙格" },
-            { text: "真正的資產是那些能為你持續創造價值的東西，而非價格波動。", author: "原則 (Ray Dalio)" }
+            { text: "真正的資產是那些能為你持續創造價值的東西，而非價格波動。", author: "原則 (Ray Dalio)" },
+            
+            // 查理·蒙格 (Charlie Munger)
+            { text: "反過來想，總是反過來想。", author: "查理·蒙格" },
+            { text: "如果你知道自己會死在哪裡，就永遠不要去那裡。", author: "查理·蒙格" },
+            { text: "賺大錢的不是買進與賣出，而是等待。", author: "查理·蒙格" },
+            { text: "承認自己的無知是智慧的開端。", author: "查理·蒙格" },
+            { text: "宏觀是我們必須接受的，微觀才是我們可以有所作為的。", author: "查理·蒙格" },
+            { text: "我這輩子遇到的聰明人沒有不每天閱讀的——沒有，一個都沒有。", author: "查理·蒙格" },
+            { text: "釣魚的第一條規則是：去有魚的地方釣魚。第二條規則是：永遠不要忘記第一條。", author: "查理·蒙格" },
+            { text: "我們盡量少做愚蠢的事，而不是努力做非常聰明的事。", author: "查理·蒙格" },
+            { text: "別因為一樣東西被定價，就以為它有價值。", author: "查理·蒙格" },
+            { text: "能力圈的大小不重要，清楚自己的能力圈邊界才是關鍵。", author: "查理·蒙格" },
+
+            // 華倫·巴菲特 (Warren Buffett)
+            { text: "當別人恐懼時我貪婪，當別人貪婪時我恐懼。", author: "華倫·巴菲特" },
+            { text: "如果你不願意擁有一檔股票十年，那就連十分鐘都不該持有。", author: "華倫·巴菲特" },
+            { text: "投資的第一條準則是不要賠錢；第二條準則是永遠不要忘記第一條。", author: "華倫·巴菲特" },
+            { text: "只有在退潮的時候，你才會知道誰在裸泳。", author: "華倫·巴菲特" },
+            { text: "股市是一個將財富從缺乏耐心的人轉移到有耐心的人手上的機制。", author: "華倫·巴菲特" },
+            { text: "風險來自於你不知道自己在做什麼。", author: "華倫·巴菲特" },
+            { text: "我們不需要比別人聰明，我們只需要比別人更有紀律。", author: "華倫·巴菲特" },
+            { text: "價格是你付出的，價值是你得到的。", author: "華倫·巴菲特" },
+            { text: "時間是好公司的朋友，卻是平庸公司的敵人。", author: "華倫·巴菲特" },
+            { text: "不要把所有雞蛋放在同一個籃子裡，但要看好你的籃子。", author: "華倫·巴菲特" },
+
+            // 致富心態 (Morgan Housel)
+            { text: "財富是你看不見的那些東西。", author: "致富心態" },
+            { text: "計畫中最重要的一環，就是為『計畫趕不上變化』做準備。", author: "致富心態" },
+            { text: "控制你的時間，是金錢能帶給你最高的紅利。", author: "致富心態" },
+            { text: "合理的決策往往比理性的決策更容易堅持。", author: "致富心態" },
+            { text: "歷史上從未發生過的事，每天都在發生。", author: "致富心態" },
+            { text: "沒人像你一樣在乎你自己的錢。", author: "致富心態" },
+            { text: "存錢不需要什麼特定的理由，存錢本身就是最好的防禦。", author: "致富心態" },
+            { text: "你不需要卓越的智商，你需要的是不被情緒左右的紀律。", author: "致富心態" },
+            { text: "最難的財務技能是讓目標停止移動。", author: "致富心態" },
+            { text: "用過去的表現來預測未來，就像看著後照鏡開車。", author: "致富心態" },
+
+            // 霍華·馬克斯 (Howard Marks)
+            { text: "你不能做和別人一樣的事，卻期待得到不同的結果。", author: "霍華·馬克斯" },
+            { text: "投資不是買好的東西，而是買得好。", author: "霍華·馬克斯" },
+            { text: "最大的風險不是市場波動，而是相信沒有風險。", author: "霍華·馬克斯" },
+            { text: "我們無法預測宏觀經濟，但我們可以為此做好準備。", author: "霍華·馬克斯" },
+            { text: "在投資中，過早和錯誤幾乎是無法區分的。", author: "霍華·馬克斯" },
+            { text: "卓越的投資需要第二層次思維——比群眾想得更深一步。", author: "霍華·馬克斯" },
+            { text: "多數人的錯誤在於，把最近發生的事當作未來一定會發生的事。", author: "霍華·馬克斯" },
+            { text: "好時光會帶來壞習慣，壞時光會帶來好決策。", author: "霍華·馬克斯" },
+            { text: "經驗是你得不到你想要的東西時所獲得的東西。", author: "霍華·馬克斯" },
+            { text: "恐懼和貪婪永遠是市場波動的兩大驅動力。", author: "霍華·馬克斯" },
+
+            // 班傑明·葛拉漢 (Benjamin Graham)
+            { text: "市場短期是一台投票機，長期是一台體重計。", author: "班傑明·葛拉漢" },
+            { text: "投資者最大的敵人不是市場，而是自己。", author: "班傑明·葛拉漢" },
+            { text: "防守型投資者必須具備一套自動駕駛的紀律。", author: "班傑明·葛拉漢" },
+            { text: "安全邊際是投資成功的核心基石。", author: "班傑明·葛拉漢" },
+            { text: "就算市場極度悲觀，也不代表現在就是谷底。", author: "班傑明·葛拉漢" },
+
+            // 彼得·林區 (Peter Lynch)
+            { text: "如果你不研究任何公司就投資，就像打撲克牌不看牌一樣。", author: "彼得·林區" },
+            { text: "在股市中，胃通常比大腦更重要。", author: "彼得·林區" },
+            { text: "拋售賺錢的好股票，死抱賠錢的爛股票，就像拔掉鮮花去澆灌雜草。", author: "彼得·林區" },
+            { text: "投資就是你只需要對幾次，就能彌補所有的錯誤。", author: "彼得·林區" },
+            { text: "沒有人能預測利率、經濟或股市的短期走向。", author: "彼得·林區" },
+
+            // 雷·達里歐 (Ray Dalio)
+            { text: "痛苦加上反思等於進步。", author: "雷·達里歐" },
+            { text: "如果你不覺得一年前的自己很愚蠢，代表你這一年沒有學到什麼。", author: "雷·達里歐" },
+            { text: "了解你的弱點，並建立能彌補這些弱點的系統。", author: "雷·達里歐" },
+            { text: "不要被結果所迷惑，要去審視產生結果的決策過程。", author: "雷·達里歐" },
+            { text: "現金是垃圾，但流動性是救命稻草。", author: "雷·達里歐" },
+
+            // 納西姆·塔雷伯 (Nassim Nicholas Taleb)
+            { text: "不要聽別人的建議，除非他對這個建議有切膚之痛。", author: "納西姆·塔雷伯" },
+            { text: "脆弱的事物喜歡安寧，反脆弱的事物從混亂中獲益。", author: "納西姆·塔雷伯" },
+            { text: "我們總是高估自己預測未來的能力。", author: "納西姆·塔雷伯" },
+            { text: "缺席的證據，不等於證明不存在。", author: "納西姆·塔雷伯" },
+            { text: "如果一個策略的失敗會導致毀滅，那麼它的期望值就是負的。", author: "納西姆·塔雷伯" },
+
+            // 安德烈·科斯托蘭尼 (André Kostolany)
+            { text: "股市中，2+2=5-1。", author: "安德烈·科斯托蘭尼" },
+            { text: "買進時要浪漫，賣出時要現實，而在兩者之間要睡覺。", author: "安德烈·科斯托蘭尼" },
+            { text: "狗（股市）跑得比主人（經濟）快，但它終究會回到主人身邊。", author: "安德烈·科斯托蘭尼" },
+            { text: "看重小利的人，永遠賺不到大錢。", author: "安德烈·科斯托蘭尼" },
+            { text: "決定股市行情的只有兩個因素：資金與心理。", author: "安德烈·科斯托蘭尼" },
+
+            // 其他大師與經典法則
+            { text: "投資本來就應該是枯燥的。如果你在投資中尋求刺激，你可能是在賭博。", author: "喬治·索羅斯" },
+            { text: "判斷對錯並不重要，重要的是你對的時候賺了多少，錯的時候賠了多少。", author: "喬治·索羅斯" },
+            { text: "不投資的風險，遠大於投資的風險。", author: "塞斯·卡拉曼" },
+            { text: "在投資中，我們不是在買彩券，而是在買生意的一部分。", author: "塞斯·卡拉曼" },
+            { text: "華爾街沒有新鮮事，因為人性從未改變。", author: "傑西·李佛摩" },
+            { text: "不要去尋找海底的針，直接買下整個乾草堆就好。", author: "約翰·柏格" },
+            { text: "時間是投資者唯一的免費午餐。", author: "約翰·柏格" },
+            { text: "與其嘗試跑贏市場，不如確保自己不要輸給自己。", author: "約翰·柏格" },
+            { text: "致富需要承擔風險，但保住財富需要你極端地避開風險。", author: "致富心態" },
+            { text: "市場能保持非理性的時間，遠比你能保持不破產的時間更長。", author: "約翰·梅納德·凱因斯" }
         ];
 
         function showRandomWisdom() {
@@ -413,11 +446,15 @@
             return ret;
         }
 
-        // --- 3. 抓取並渲染報酬率資料 ---
+        // --- 3. 抓取並渲染報酬率資料 (已加入閃爍動畫) ---
         async function fetchAndDisplayROI() {
             const container = document.getElementById('roi-container');
             const loading = document.getElementById('roi-loading');
             if(!container || !loading) return;
+
+            // 重新觸發載入動畫
+            loading.style.display = 'block';
+            container.innerHTML = '';
 
             try {
                 const response = await fetch(roiCsvUrl);
@@ -426,10 +463,9 @@
                 const data = parseCSV(csvText);
                 
                 loading.style.display = 'none';
-                container.innerHTML = '';
 
                 if(data.length < 1 || data[0].length < 1) {
-                    container.innerHTML = '<p style="color:#666; font-size:0.9rem;">目前暫無報酬率數據。</p>';
+                    container.innerHTML = '<p style="color:#9ca3af; font-size:0.9rem;">目前暫無報酬率數據。</p>';
                     return;
                 }
 
@@ -447,10 +483,14 @@
                         
                         cellElement.innerText = cellText;
 
+                        // 判斷正負並加入對應的 class 與動畫
                         if (rowIndex > 0 && (cellText.includes('%') || !isNaN(cellText.replace('%','')))) {
                             const num = parseFloat(cellText.replace('%',''));
-                            if(num > 0) cellElement.className = 'pos-profit';
-                            if(num < 0) cellElement.className = 'neg-profit';
+                            if(num > 0) {
+                                cellElement.className = 'pos-profit update-flash-pos';
+                            } else if(num < 0) {
+                                cellElement.className = 'neg-profit update-flash-neg';
+                            }
                         }
 
                         tr.appendChild(cellElement);
@@ -462,7 +502,7 @@
 
             } catch (error) {
                 loading.style.display = 'none';
-                container.innerHTML = `<p style="color:#d32f2f; font-size:0.9rem;">報酬率模組載入失敗: ${error.message}</p>`;
+                container.innerHTML = `<p style="color:#ef4444; font-size:0.9rem;">模組載入失敗: ${error.message}</p>`;
             }
         }
 
