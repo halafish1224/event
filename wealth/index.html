@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>護城河決策</title>
+    <!-- 確保 GOOGLE 等搜尋引擎不會索引與追蹤此頁面 -->
+    <meta name="robots" content="noindex, nofollow">
     
     <style>
         /* --- 原有自訂樣式 --- */
@@ -268,6 +270,12 @@
 
                 <div class="roi-dashboard">
                     <div class="hand-drawn-title">📈 即時戰略報酬率</div>
+                    
+                    <!-- 💡 深度整合的 Iframe 區塊 -->
+                    <div style="width: 100%; border-radius: 8px; overflow: hidden; margin-bottom: 15px; background: #fff;">
+                        <iframe width="100%" height="249" seamless frameborder="0" scrolling="no" src="https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubchart?oid=336177268&amp;format=interactive" style="display: block; border: none;"></iframe>
+                    </div>
+                    
                     <div id="roi-loading">正在同步雲端參數...</div>
                     <div id="roi-container"></div>
                 </div>
