@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <meta name="robots" content="noindex, nofollow">
-    
     <title>2026 願望清單總覽</title>
     <meta name="description" content="內部專用願望清單與動態表單系統，不公開於搜尋引擎。">
 
@@ -25,7 +24,6 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Microsoft JhengHei';
         }
 
-        /* 活潑的動態漸層背景 */
         body {
             background: linear-gradient(-45deg, #fbc2eb, #a6c1ee, #ff9a9e, #fecfef);
             background-size: 400% 400%;
@@ -44,15 +42,14 @@
             100% { background-position: 0% 50%; }
         }
 
-        /* 主容器 (毛玻璃面板) */
         .glass-container {
             width: 100%;
             max-width: 1100px;
             background: var(--glass-bg);
             backdrop-filter: blur(15px);
             -webkit-backdrop-filter: blur(15px);
-            border: 2px dashed var(--glass-border); /* 帶有手繪感的虛線外框 */
-            border-radius: 30px 15px 30px 20px; /* 故意不對稱的手繪幾何感 */
+            border: 2px dashed var(--glass-border); 
+            border-radius: 30px 15px 30px 20px; 
             padding: 40px 30px;
             box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.15);
             display: flex;
@@ -76,13 +73,12 @@
             justify-content: center;
         }
 
-        /* 現代感特效按鈕 */
         .wish-button {
             text-decoration: none;
             color: #4a4a4a;
             background: var(--btn-bg);
             padding: 15px 35px;
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; /* 手繪塗鴉感形狀 */
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; 
             border: 2px solid #4a4a4a;
             font-weight: bold;
             font-size: 1.1rem;
@@ -104,7 +100,6 @@
             box-shadow: 2px 2px 0px #4a4a4a;
         }
 
-        /* 讀取中狀態 */
         .loading-status {
             text-align: center;
             font-size: 1.2rem;
@@ -118,18 +113,16 @@
             50% { opacity: 1; }
         }
 
-        /* 動態商品網格 */
         .items-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
         }
 
-        /* 商品圖卡 (不規則邊框手繪風格) */
         .item-card {
             background: rgba(255, 255, 255, 0.25);
             border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 255px 25px 225px 30px / 30px 225px 25px 255px; /* 藝術手繪風邊框 */
+            border-radius: 255px 25px 225px 30px / 30px 225px 25px 255px; 
             padding: 20px;
             display: flex;
             flex-direction: column;
@@ -145,7 +138,6 @@
             background: rgba(255, 255, 255, 0.35);
         }
 
-        /* 照片外框 */
         .image-container {
             width: 100%;
             height: 240px;
@@ -162,7 +154,6 @@
             transition: transform 0.5s ease;
         }
 
-        /* 文字內容區 */
         .item-info {
             display: flex;
             flex-direction: column;
@@ -188,7 +179,6 @@
             word-break: break-all;
         }
 
-        /* 勾選控制區 */
         .item-controls {
             margin-top: auto;
             background: rgba(255, 255, 255, 0.6);
@@ -220,7 +210,6 @@
             accent-color: #e73c7e;
         }
 
-        /* 已購買狀態：呈現灰階、蓋章感 */
         .item-card.purchased {
             opacity: 0.5;
             filter: grayscale(80%);
@@ -233,7 +222,6 @@
             color: #155724;
         }
 
-        /* RWD 響應式 */
         @media (max-width: 600px) {
             .glass-container { padding: 25px 15px; gap: 25px; }
             .header h1 { font-size: 1.7rem; }
@@ -262,10 +250,8 @@
     </main>
 
     <script>
-        // 你提供的 Google Sheets CSV 發佈網址
         const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=215819179&single=true&output=csv";
 
-        // 簡單的 CSV 解析器（處理逗號與換行）
         function parseCSV(text) {
             let lines = [];
             let row = [""];
@@ -292,7 +278,6 @@
             return lines;
         }
 
-        // 初始化載入資料
         async function loadWishList() {
             const container = document.getElementById('items-container');
             const loadingText = document.getElementById('loading');
@@ -311,40 +296,50 @@
 
                 const headers = parsedData[0];
                 
-                // 智能動態找尋對應欄位索引 (避免欄位順序調換出錯)
                 let imgIdx = headers.findIndex(h => h.includes("圖") || h.includes("網址") || h.includes("照片") || h.includes("Url"));
                 let nameIdx = headers.findIndex(h => h.includes("名稱") || h.includes("品項") || h.includes("商品"));
                 let remarkIdx = headers.findIndex(h => h.includes("備註") || h.includes("說明") || h.includes("內容"));
 
-                // 若找不到則給予預設值 (假設最常見的順序: 1=名稱, 2=圖片, 3=備註)
                 if (nameIdx === -1) nameIdx = 1;
                 if (imgIdx === -1) imgIdx = 2;
                 if (remarkIdx === -1) remarkIdx = 3;
 
-                // 渲染所有資料列 (跳過首行標題)
                 for (let i = 1; i < parsedData.length; i++) {
                     const row = parsedData[i];
-                    if (row.length < Math.max(nameIdx, imgIdx) + 1) continue; // 略過空行
+                    if (row.length < Math.max(nameIdx, imgIdx) + 1) continue; 
 
                     const itemName = row[nameIdx]?.trim() || `神秘品項 #${i}`;
-                    const itemImg = row[imgIdx]?.trim() || "https://images.unsplash.com/photo-1594744803329-e58b31de215f?q=80&w=500"; // 預設替代圖
                     const itemRemark = row[remarkIdx]?.trim() || "無備註說明。";
                     
-                    // 產生本筆資料唯一辨識 ID，用來記憶勾選狀態
+                    // --- 核心修正區：智能過濾 Cloudinary 與雜訊網址 ---
+                    let rawImgText = row[imgIdx]?.trim() || "";
+                    let finalImgUrl = "https://images.unsplash.com/photo-1594744803329-e58b31de215f?q=80&w=500"; // 預設替代圖
+                    
+                    // 正則表達式：強制尋找以 https:// 開頭，並且以 jpg, png, webp 等圖檔副檔名結尾的字串
+                    const imageRegex = /(https:\/\/[^\s]+?\.(?:jpg|jpeg|png|gif|webp))/i;
+                    const match = rawImgText.match(imageRegex);
+                    
+                    if (match && match[0]) {
+                        finalImgUrl = match[0]; // 只提取乾淨的圖片網址
+                    } else if (rawImgText.includes("http")) {
+                        // 如果沒有副檔名但有網址，至少把 http 開頭的部分切出來
+                        const httpMatch = rawImgText.match(/(https?:\/\/[^\s]+)/i);
+                        if (httpMatch) finalImgUrl = httpMatch[0];
+                    }
+                    // --------------------------------------------------
+
                     const uniqueId = `wish_2026_${itemName.replace(/\s+/g, '')}_${i}`;
 
-                    // 建立圖卡 HTML 結構
                     const card = document.createElement('article');
                     card.className = 'item-card';
                     card.setAttribute('data-id', uniqueId);
 
-                    // 檢查 LocalStorage 是否曾勾選
                     const isPurchased = localStorage.getItem(`status_${uniqueId}`) === 'true';
                     if (isPurchased) card.classList.add('purchased');
 
                     card.innerHTML = `
                         <div class="image-container">
-                            <img class="item-image" src="${itemImg}" alt="${itemName}" onerror="this.src='https://images.unsplash.com/photo-1594744803329-e58b31de215f?q=80&w=500';">
+                            <img class="item-image" src="${finalImgUrl}" alt="${itemName}" onerror="this.src='https://images.unsplash.com/photo-1594744803329-e58b31de215f?q=80&w=500';">
                         </div>
                         <div class="item-info">
                             <h2 class="item-name">${itemName}</h2>
@@ -358,7 +353,6 @@
                         </div>
                     `;
 
-                    // 綁定勾選事件監聽
                     const checkbox = card.querySelector('.purchase-checkbox');
                     const statusText = card.querySelector('.item-controls span');
                     
@@ -377,7 +371,6 @@
                     container.appendChild(card);
                 }
 
-                // 關閉 Loading，秀出內容
                 loadingText.style.display = 'none';
                 container.style.display = 'grid';
 
