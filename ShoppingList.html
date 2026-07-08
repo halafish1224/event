@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 阻擋搜尋引擎收錄 (達成隱私需求) -->
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- 良好的結構化 Title 與 Description (達成基本 SEO 體質與分享時的呈現) -->
+    <title>2026 願望清單總覽</title>
+    <meta name="description" content="內部專用願望清單與表單系統，不公開於搜尋引擎。">
+
+    <style>
+        /* CSS 變數定義 */
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --text-color: #ffffff;
+            --btn-bg: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            --btn-hover: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+        }
+
+        /* 重置預設樣式 */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Microsoft JhengHei';
+        }
+
+        /* 動態漸層背景 */
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            color: var(--text-color);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* 主容器 (毛玻璃面板) */
+        .glass-container {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* 標題區塊 */
+        .header {
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        /* Google Sheet 嵌入區塊 */
+        .iframe-wrapper {
+            width: 100%;
+            height: 60vh; /* 響應式高度 */
+            border-radius: 12px;
+            overflow: hidden;
+            background: #fff; /* 確保表格底色乾淨 */
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .iframe-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* 按鈕區塊 */
+        .action-area {
+            display: flex;
+            justify-content: center;
+            margin-top: 10px;
+        }
+
+        /* 現代感特效按鈕 */
+        .wish-button {
+            text-decoration: none;
+            color: #333;
+            background: var(--btn-bg);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wish-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(255, 154, 158, 0.6);
+            background: var(--btn-hover);
+        }
+
+        .wish-button:active {
+            transform: translateY(1px);
+        }
+
+        /* 手機版適應 */
+        @media (max-width: 600px) {
+            .glass-container { padding: 15px; }
+            .header h1 { font-size: 1.5rem; }
+            .wish-button { font-size: 1rem; padding: 12px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="glass-container">
+        <!-- 語意化 Header -->
+        <header class="header">
+            <h1>✨ 2026 採購願望清單</h1>
+            <p>即時狀態總覽與新增申請</p>
+        </header>
+
+        <!-- 表格嵌入區 -->
+        <section class="iframe-wrapper">
+            <iframe 
+                src="https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pubhtml?gid=215819179&amp;single=true&amp;widget=true&amp;headers=false" 
+                title="Google Sheets 願望清單"
+                loading="lazy">
+            </iframe>
+        </section>
+
+        <!-- 外部連結按鈕區 -->
+        <section class="action-area">
+            <a href="https://itigre.pse.is/WOW2026" target="_blank" rel="noopener noreferrer" class="wish-button">
+                <span>➕ 新增許願品項</span>
+                <span style="font-size: 0.85em; opacity: 0.8;">(不保證買到 😉)</span>
+            </a>
+        </section>
+    </main>
+
+</body>
+</html>
