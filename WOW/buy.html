@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- 阻擋搜尋引擎收錄 -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>2026 願望清單總覽</title>
+    <meta name="description" content="內部專用願望清單與表單系統，不公開於搜尋引擎。">
+
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.3);
+            --text-color: #ffffff;
+            --btn-bg: linear-gradient(135deg, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+            --btn-hover: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Microsoft JhengHei';
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start; /* 改為靠上對齊，適應內容變長 */
+            padding: 40px 20px;
+            color: var(--text-color);
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .glass-container {
+            width: 100%;
+            max-width: 1000px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .header {
+            text-align: center;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .header h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            letter-spacing: 1px;
+        }
+
+        .action-area {
+            display: flex;
+            justify-content: center;
+        }
+
+        .wish-button {
+            text-decoration: none;
+            color: #333;
+            background: var(--btn-bg);
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .wish-button:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 8px 25px rgba(255, 154, 158, 0.6);
+            background: var(--btn-hover);
+        }
+
+        /* --- 新增：商品圖卡網格排版 --- */
+        .items-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 10px;
+        }
+
+        /* 單個商品圖卡 */
+        .item-card {
+            background: rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--glass-border);
+            border-radius: 15px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: all 0.4s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        /* 照片容器 */
+        .item-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            transition: all 0.4s ease;
+        }
+
+        /* 勾選控制區 */
+        .item-controls {
+            width: 100%;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .item-controls label {
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            user-select: none;
+        }
+
+        /* 自訂勾選框大小 */
+        .item-controls input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+            accent-color: #e73c7e; /* 現代感打勾顏色 */
+        }
+
+        /* 已購買狀態的視覺特效 */
+        .item-card.purchased {
+            opacity: 0.6;
+            transform: scale(0.98);
+        }
+
+        .item-card.purchased .item-image {
+            filter: grayscale(100%) contrast(0.8);
+        }
+
+        .item-card.purchased .item-controls {
+            background: rgba(46, 204, 113, 0.4); /* 購買後變成綠底 */
+            color: #e0f7fa;
+            text-decoration: line-through;
+        }
+
+        @media (max-width: 600px) {
+            .glass-container { padding: 20px 15px; }
+            .header h1 { font-size: 1.5rem; }
+            .wish-button { font-size: 1rem; padding: 12px 20px; }
+            .items-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <main class="glass-container">
+        <header class="header">
+            <h1>✨ 2026 採購願望清單</h1>
+            <p>即時狀態總覽與新增申請</p>
+        </header>
+
+        <section class="action-area">
+            <a href="https://itigre.pse.is/WOW2026" target="_blank" rel="noopener noreferrer" class="wish-button">
+                <span>➕ 新增許願品項</span>
+                <span style="font-size: 0.85em; opacity: 0.8;">(不保證買到 😉)</span>
+            </a>
+        </section>
+
+        <!-- 新增：動態商品展示區 -->
+        <section class="items-grid">
+            
+            <!-- 品項 1：套用你提供的 Cloudinary 圖片 -->
+            <!-- data-id 是讓系統記住這是哪個商品的關鍵 -->
+            <div class="item-card" data-id="item_001">
+                <img class="item-image" src="https://res.cloudinary.com/dshfj9ace/image/upload/v1783472681/ITIGRE_BUY/ghdw2bm8nasl8iv5qwnc.jpg" alt="許願商品圖">
+                <div class="item-controls">
+                    <label>
+                        <input type="checkbox" class="purchase-checkbox">
+                        已買到 ✅
+                    </label>
+                </div>
+            </div>
+
+            <!-- 若有新品項，只需複製上方的 <div class="item-card">...</div> 並更改 img src 與 data-id 即可 -->
+
+        </section>
+    </main>
+
+    <!-- 加入 JavaScript 讓瀏覽器記住你的打勾狀態 -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const checkboxes = document.querySelectorAll('.purchase-checkbox');
+
+            checkboxes.forEach(checkbox => {
+                const card = checkbox.closest('.item-card');
+                const itemId = card.getAttribute('data-id');
+
+                // 1. 讀取 LocalStorage，看看上次是不是已經打勾了
+                const isPurchased = localStorage.getItem(`purchased_${itemId}`);
+                if (isPurchased === 'true') {
+                    checkbox.checked = true;
+                    card.classList.add('purchased');
+                }
+
+                // 2. 監聽打勾動作，即時改變外觀並存入記憶
+                checkbox.addEventListener('change', (e) => {
+                    if (e.target.checked) {
+                        card.classList.add('purchased');
+                        localStorage.setItem(`purchased_${itemId}`, 'true');
+                    } else {
+                        card.classList.remove('purchased');
+                        localStorage.setItem(`purchased_${itemId}`, 'false');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>
