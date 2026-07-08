@@ -1,386 +1,95 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <meta name="robots" content="noindex, nofollow">
-    <title>2026 願望清單總覽</title>
-    <meta name="description" content="內部專用願望清單與動態表單系統，不公開於搜尋引擎。">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>東京冬日紀行 2026 | 願望清單版</title>
     <style>
-        :root {
-            --glass-bg: rgba(255, 255, 255, 0.12);
-            --glass-border: rgba(255, 255, 255, 0.25);
-            --text-color: #ffffff;
-            --btn-bg: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
-            --btn-hover: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
-        }
-
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif, 'Microsoft JhengHei';
-        }
-
-        body {
-            background: linear-gradient(-45deg, #fbc2eb, #a6c1ee, #ff9a9e, #fecfef);
-            background-size: 400% 400%;
-            animation: gradientBG 18s ease infinite;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: flex-start;
-            padding: 40px 20px;
-            color: var(--text-color);
-        }
-
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .glass-container {
-            width: 100%;
-            max-width: 1100px;
-            background: var(--glass-bg);
-            backdrop-filter: blur(15px);
-            -webkit-backdrop-filter: blur(15px);
-            border: 2px dashed var(--glass-border); 
-            border-radius: 30px 15px 30px 20px; 
-            padding: 40px 30px;
-            box-shadow: 0 10px 32px 0 rgba(0, 0, 0, 0.15);
-            display: flex;
-            flex-direction: column;
-            gap: 35px;
-        }
-
-        .header {
-            text-align: center;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        .header h1 {
-            font-size: 2.2rem;
-            margin-bottom: 8px;
-            letter-spacing: 2px;
-        }
-
-        .action-area {
-            display: flex;
-            justify-content: center;
-        }
-
-        .wish-button {
-            text-decoration: none;
-            color: #4a4a4a;
-            background: var(--btn-bg);
-            padding: 15px 35px;
-            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px; 
-            border: 2px solid #4a4a4a;
-            font-weight: bold;
-            font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 4px 4px 0px #4a4a4a;
-            display: inline-flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .wish-button:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px #4a4a4a;
-            background: var(--btn-hover);
-        }
-
-        .wish-button:active {
-            transform: translate(2px, 2px);
-            box-shadow: 2px 2px 0px #4a4a4a;
-        }
-
-        .loading-status {
-            text-align: center;
-            font-size: 1.2rem;
-            padding: 40px;
-            letter-spacing: 1px;
-            animation: pulse 1.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
-        }
-
-        .items-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
-        .item-card {
-            background: rgba(255, 255, 255, 0.25);
-            border: 2px solid rgba(255, 255, 255, 0.4);
-            border-radius: 255px 25px 225px 30px / 30px 225px 25px 255px; 
-            padding: 20px;
-            display: flex;
-            flex-direction: column;
-            gap: 12px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-            position: relative;
-            color: #333333;
-        }
-
-        .item-card:hover {
-            transform: translateY(-5px) rotate(1deg);
-            background: rgba(255, 255, 255, 0.35);
-        }
-
-        .image-container {
-            width: 100%;
-            height: 240px;
-            overflow: hidden;
-            border-radius: 180px 15px 200px 25px / 20px 185px 15px 190px;
-            border: 2px solid rgba(0,0,0,0.1);
-            background: #f7f7f7;
-        }
-
-        .item-image {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-
-        .item-info {
-            display: flex;
-            flex-direction: column;
-            gap: 6px;
-            padding: 0 4px;
-        }
-
-        .item-name {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: #2c3e50;
-            line-height: 1.3;
-        }
-
-        .item-remarks {
-            font-size: 0.95rem;
-            color: #555555;
-            line-height: 1.4;
-            background: rgba(255,255,255,0.4);
-            padding: 8px;
-            border-radius: 6px;
-            border-left: 3px solid #ff9a9e;
-            word-break: break-all;
-        }
-
-        .item-controls {
-            margin-top: auto;
-            background: rgba(255, 255, 255, 0.6);
-            border: 1.5px solid #4a4a4a;
-            padding: 10px;
-            border-radius: 30px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            box-shadow: 2px 2px 0px #4a4a4a;
-            transition: all 0.2s ease;
-        }
-
-        .item-controls label {
-            cursor: pointer;
-            font-size: 1rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            user-select: none;
-        }
-
-        .item-controls input[type="checkbox"] {
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: #e73c7e;
-        }
-
-        .item-card.purchased {
-            opacity: 0.5;
-            filter: grayscale(80%);
-        }
-
-        .item-card.purchased .item-controls {
-            background: #d4edda;
-            border-color: #28a745;
-            box-shadow: none;
-            color: #155724;
-        }
-
-        @media (max-width: 600px) {
-            .glass-container { padding: 25px 15px; gap: 25px; }
-            .header h1 { font-size: 1.7rem; }
-            .wish-button { font-size: 1rem; padding: 12px 25px; }
-            .items-grid { grid-template-columns: 1fr; }
-        }
+        /* ... 此處請沿用你原始語法中的 CSS 設定 ... */
+        .buy-gallery-img { width: 100%; aspect-ratio: 1/1; object-fit: contain; cursor: zoom-in; }
+        .is-checked { opacity: 0.4; filter: grayscale(1); }
     </style>
 </head>
 <body>
 
-    <main class="glass-container">
-        <header class="header">
-            <h1>🎨 2026 許願採購即時清單</h1>
-            <p>即時連線表單回應資料庫 ‧ 本地記憶系統</p>
-        </header>
+<div class="buy-gallery-card">
+    <div class="buy-gallery-head">
+        <div class="buy-gallery-title">🛍️ 許願品項即時總覽</div>
+        <button class="buy-gallery-refresh" onclick="refreshBuyGallery()">🔄 同步最新</button>
+    </div>
+    <div id="buy-gallery-list" class="buy-gallery-grid">
+        <div class="buy-gallery-status">🧳 正在掃描雲端許願清單...</div>
+    </div>
+</div>
 
-        <section class="action-area">
-            <a href="https://itigre.pse.is/WOW2026" target="_blank" rel="noopener noreferrer" class="wish-button">
-                <span>✏️ 我要新增許願品項</span>
-                <span style="font-size: 0.8em; opacity: 0.8;">(不保證買到 📝)</span>
-            </a>
-        </section>
+<script>
+    // 你的試算表 CSV 連結
+    const GOOGLE_SHEET_CSV_URL = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=215819179&single=true&output=csv';
 
-        <div id="loading" class="loading-status">正在翻閱許願本，請稍候... 📖</div>
-        <section class="items-grid" id="items-container" style="display: none;"></section>
-    </main>
+    /**
+     * 智能提取 Cloudinary 正確網址
+     * 專門處理：dshfj9acehttps://res.cloudinary.com/... 這種黏在一起的字串
+     */
+    function extractCloudinaryUrl(str) {
+        if (!str) return "";
+        // 正則解釋：尋找 res.cloudinary.com 開頭到 .jpg/.png/.webp 結尾的完整路徑
+        const match = str.match(/(https:\/\/res\.cloudinary\.com\/dshfj9ace\/image\/upload\/[^\s\?]+\.(?:jpg|jpeg|png|webp))/i);
+        return match ? match[0] : str; // 若解析失敗則回傳原始值
+    }
 
-    <script>
-        const csvUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vRD3xLNcLpXzjHmJ1G76pIIuOcpOthPl58JJ5sACgQdLyUoYhvFQtd1Ym8IjSRgKwOzflgp2kGB_Put/pub?gid=215819179&single=true&output=csv";
+    async function refreshBuyGallery() {
+        const container = document.getElementById('buy-gallery-list');
+        container.innerHTML = '<div class="buy-gallery-status">讀取中...</div>';
 
-        function parseCSV(text) {
-            let lines = [];
-            let row = [""];
-            let inQuotes = false;
+        try {
+            const response = await fetch(GOOGLE_SHEET_CSV_URL);
+            const data = await response.text();
+            const rows = data.split('\n').map(r => r.split(','));
+            const headers = rows[0];
 
-            for (let i = 0; i < text.length; i++) {
-                let c = text[i];
-                let next = text[i+1];
+            // 自動偵測欄位位置
+            const nameIdx = headers.findIndex(h => /名稱|品項|商品/.test(h));
+            const imgIdx = headers.findIndex(h => /網址|圖|照片/.test(h));
+            const noteIdx = headers.findIndex(h => /備註|說明/.test(h));
 
-                if (c === '"') {
-                    if (inQuotes && next === '"') { row[row.length - 1] += '"'; i++; }
-                    else { inQuotes = !inQuotes; }
-                } else if (c === ',' && !inQuotes) {
-                    row.push('');
-                } else if ((c === '\r' || c === '\n') && !inQuotes) {
-                    if (c === '\r' && next === '\n') { i++; }
-                    lines.push(row);
-                    row = [''];
-                } else {
-                    row[row.length - 1] += c;
-                }
-            }
-            if (row.length > 1 || row[0] !== '') lines.push(row);
-            return lines;
-        }
-
-        async function loadWishList() {
-            const container = document.getElementById('items-container');
-            const loadingText = document.getElementById('loading');
-
-            try {
-                const response = await fetch(csvUrl);
-                if (!response.ok) throw new Error("無法讀取試算表資料");
+            let html = '';
+            for (let i = 1; i < rows.length; i++) {
+                if (rows[i].length < 2) continue;
                 
-                const dataText = await response.text();
-                const parsedData = parseCSV(dataText);
-
-                if (parsedData.length <= 1) {
-                    loadingText.innerText = "目前還沒有任何人許願喔！✨";
-                    return;
-                }
-
-                const headers = parsedData[0];
+                const name = rows[i][nameIdx] || "未命名品項";
+                const rawImg = rows[i][imgIdx] || "";
+                const note = rows[i][noteIdx] || "";
                 
-                let imgIdx = headers.findIndex(h => h.includes("圖") || h.includes("網址") || h.includes("照片") || h.includes("Url"));
-                let nameIdx = headers.findIndex(h => h.includes("名稱") || h.includes("品項") || h.includes("商品"));
-                let remarkIdx = headers.findIndex(h => h.includes("備註") || h.includes("說明") || h.includes("內容"));
-
-                if (nameIdx === -1) nameIdx = 1;
-                if (imgIdx === -1) imgIdx = 2;
-                if (remarkIdx === -1) remarkIdx = 3;
-
-                for (let i = 1; i < parsedData.length; i++) {
-                    const row = parsedData[i];
-                    if (row.length < Math.max(nameIdx, imgIdx) + 1) continue; 
-
-                    const itemName = row[nameIdx]?.trim() || `神秘品項 #${i}`;
-                    const itemRemark = row[remarkIdx]?.trim() || "無備註說明。";
-                    
-                    // --- 核心修正區：智能過濾 Cloudinary 與雜訊網址 ---
-                    let rawImgText = row[imgIdx]?.trim() || "";
-                    let finalImgUrl = "https://images.unsplash.com/photo-1594744803329-e58b31de215f?q=80&w=500"; // 預設替代圖
-                    
-                    // 正則表達式：強制尋找以 https:// 開頭，並且以 jpg, png, webp 等圖檔副檔名結尾的字串
-                    const imageRegex = /(https:\/\/[^\s]+?\.(?:jpg|jpeg|png|gif|webp))/i;
-                    const match = rawImgText.match(imageRegex);
-                    
-                    if (match && match[0]) {
-                        finalImgUrl = match[0]; // 只提取乾淨的圖片網址
-                    } else if (rawImgText.includes("http")) {
-                        // 如果沒有副檔名但有網址，至少把 http 開頭的部分切出來
-                        const httpMatch = rawImgText.match(/(https?:\/\/[^\s]+)/i);
-                        if (httpMatch) finalImgUrl = httpMatch[0];
-                    }
-                    // --------------------------------------------------
-
-                    const uniqueId = `wish_2026_${itemName.replace(/\s+/g, '')}_${i}`;
-
-                    const card = document.createElement('article');
-                    card.className = 'item-card';
-                    card.setAttribute('data-id', uniqueId);
-
-                    const isPurchased = localStorage.getItem(`status_${uniqueId}`) === 'true';
-                    if (isPurchased) card.classList.add('purchased');
-
-                    card.innerHTML = `
-                        <div class="image-container">
-                            <img class="item-image" src="${finalImgUrl}" alt="${itemName}" onerror="this.src='https://images.unsplash.com/photo-1594744803329-e58b31de215f?q=80&w=500';">
-                        </div>
-                        <div class="item-info">
-                            <h2 class="item-name">${itemName}</h2>
-                            <p class="item-remarks">📝 ${itemRemark}</p>
-                        </div>
-                        <div class="item-controls">
-                            <label>
-                                <input type="checkbox" class="purchase-checkbox" ${isPurchased ? 'checked' : ''}>
-                                <span>${isPurchased ? '已買到 🎨' : '買到了 ✏️'}</span>
-                            </label>
-                        </div>
-                    `;
-
-                    const checkbox = card.querySelector('.purchase-checkbox');
-                    const statusText = card.querySelector('.item-controls span');
-                    
-                    checkbox.addEventListener('change', (e) => {
-                        if (e.target.checked) {
-                            card.classList.add('purchased');
-                            statusText.innerText = "已買到 🎨";
-                            localStorage.setItem(`status_${uniqueId}`, 'true');
-                        } else {
-                            card.classList.remove('purchased');
-                            statusText.innerText = "買到了 ✏️";
-                            localStorage.setItem(`status_${uniqueId}`, 'false');
-                        }
-                    });
-
-                    container.appendChild(card);
-                }
-
-                loadingText.style.display = 'none';
-                container.style.display = 'grid';
-
-            } catch (error) {
-                console.error(error);
-                loadingText.innerText = "讀取失敗，請確認試算表是否有正確公開發佈為 CSV。";
+                // 執行清洗
+                const cleanImg = extractCloudinaryUrl(rawImg);
+                
+                html += `
+                    <div class="buy-gallery-item" id="wish-item-${i}">
+                        <img src="${cleanImg}" class="buy-gallery-img" 
+                             onerror="this.src='https://via.placeholder.com/150?text=No+Image'"
+                             onclick="openImageModal(this.src)">
+                        <div class="buy-gallery-name">${name}</div>
+                        <div style="font-size:0.8rem; color:#666;">${note}</div>
+                        <label>
+                            <input type="checkbox" onchange="toggleWishChecked(${i}, this)"> 已買到
+                        </label>
+                    </div>
+                `;
             }
+            container.innerHTML = html;
+        } catch (e) {
+            container.innerHTML = "讀取失敗，請檢查網路連線。";
         }
+    }
 
-        document.addEventListener('DOMContentLoaded', loadWishList);
-    </script>
+    function toggleWishChecked(id, checkbox) {
+        document.getElementById(`wish-item-${id}`).classList.toggle('is-checked', checkbox.checked);
+        localStorage.setItem(`wish_checked_${id}`, checkbox.checked);
+    }
+
+    // 啟動
+    refreshBuyGallery();
+</script>
+
 </body>
 </html>
