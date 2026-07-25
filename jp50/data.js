@@ -574,3 +574,6 @@ const gojuonData = [
     ]
   }
 ];
+
+// 開發者測試指令：當你在網頁中按下 F12 開啟 Console，就可以看到這行訊息確認資料庫載入狀態！
+console.log(`✅ 50 音資料庫載入成功，共讀取了 ${gojuonData.length} 個音階資料！`);
