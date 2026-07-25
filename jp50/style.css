@@ -1,78 +1,33 @@
-/* 修改卡片高度以適應多單字顯示 */
-.card-container {
-  perspective: 1000px;
-  height: 280px; /* 增加高度 */
-}
-
-/* 卡片背面佈局防護 */
-.card-back {
-  transform: rotateY(180deg);
-  text-align: left;
-  justify-content: flex-start;
-  overflow-y: auto; /* 若內容超出則可滾動 */
-  padding: 12px;
-}
-
-/* 記憶口訣樣式 */
-.mnemonic-section {
-  margin-bottom: 8px;
-  border-bottom: 1px dashed #ffd1d9;
-  padding-bottom: 6px;
+/* --- 手繪風格記憶區塊 --- */
+.hand-drawn-box {
+  /* 模擬手繪不規則邊框的 CSS 技巧 */
+  border: 2px solid #333;
+  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+  background-color: #fffdf5; /* 微黃的畫紙底色 */
+  padding: 10px 12px;
+  margin-bottom: 12px;
+  box-shadow: 2px 3px 0px rgba(0,0,0,0.1);
   width: 100%;
 }
 
-.mnemonic-title {
-  font-size: 0.8rem;
-  color: var(--primary-color);
-  font-weight: bold;
-}
-
-.mnemonic-text {
-  font-size: 0.85rem;
-  color: var(--text-color);
-  margin-top: 2px;
-  line-height: 1.3;
-}
-
-/* 單字列表樣式 */
-.word-list {
-  width: 100%;
-}
-
-.word-list-title {
-  font-size: 0.75rem;
-  color: var(--text-sub);
-  font-weight: bold;
-  display: block;
+.mnemonic-tag {
+  display: inline-block;
+  background-color: var(--primary-color);
+  color: white;
+  font-size: 0.7rem;
+  padding: 2px 6px;
+  border-radius: 8px;
   margin-bottom: 4px;
-}
-
-.word-item {
-  background-color: #fff0f3;
-  padding: 5px 8px;
-  border-radius: 6px;
-  margin-bottom: 4px;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-}
-
-.word-item:hover {
-  background-color: #ffe0e6;
-}
-
-.word-jp {
-  font-size: 0.85rem;
   font-weight: bold;
-  color: #d81b60;
 }
 
-.word-romaji {
-  font-size: 0.75rem;
-  color: #666666;
-  font-weight: normal;
+.mnemonic-content {
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: #444;
 }
 
-.word-meaning {
-  font-size: 0.75rem;
-  color: var(--text-sub);
+.mnemonic-content span {
+  font-weight: bold;
+  color: var(--katakana-color);
 }
