@@ -1,11 +1,11 @@
-let currentType = 'hiragana';
+          let currentType = 'hiragana';
 
-// 初始化渲染網頁
+// 初始化頁面
 document.addEventListener("DOMContentLoaded", () => {
   renderCards();
 });
 
-// 切換平假名與片假名
+// 切換平假名 / 片假名
 function switchType(type) {
   currentType = type;
   document.getElementById('btn-hiragana').classList.toggle('active', type === 'hiragana');
@@ -13,7 +13,7 @@ function switchType(type) {
   renderCards();
 }
 
-// 動態渲染卡片
+// 動態渲染 50 音卡片
 function renderCards() {
   const grid = document.getElementById('card-grid');
   grid.innerHTML = '';
@@ -21,6 +21,14 @@ function renderCards() {
   gojuonData.forEach((item) => {
     const char = currentType === 'hiragana' ? item.hiragana : item.katakana;
     
+    // 將 words 陣列轉化為多組單字的 HTML 結構
+    const wordsHtml = item.words.map(w => `
+      <div class="word-item" onclick="playAudio(event, '${w.jp.split(' ')[0]}')">
+        <div class="word-jp">${w.jp} <span class="word-romaji">(${w.romaji})</span></div>
+        <div class="word-meaning">${w.meaning}</div>
+      </div>
+    `).join('');
+
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card-container';
     
@@ -30,15 +38,18 @@ function renderCards() {
         <div class="card-front">
           <div class="kana-char">${char}</div>
           <div class="romaji">${item.romaji}</div>
-          <button class="audio-btn" onclick="playAudio(event, '${char}')">🔊</button>
+          <button class="audio-btn" onclick="playAudio(event, '${char}')" title="播放發音">🔊</button>
         </div>
-        <!-- 卡片反面 (印象記憶法與單字) -->
+        
+        <!-- 卡片反面 (記憶口訣與多組單字) -->
         <div class="card-back">
-          <span class="mnemonic-title">💡 記憶口訣</span>
-          <p class="mnemonic-text">${item.mnemonic}</p>
-          <div class="word-box">
-            <div class="word-japanese">${item.vocab.jp}</div>
-            <div class="word-meaning">${item.vocab.meaning}</div>
+          <div class="mnemonic-section">
+            <span class="mnemonic-title">💡 趣味口訣</span>
+            <p class="mnemonic-text">${item.mnemonic}</p>
+          </div>
+          <div class="word-list">
+            <span class="word-list-title">📚 實用單字 (點擊可發音)</span>
+            ${wordsHtml}
           </div>
         </div>
       </div>
@@ -48,22 +59,21 @@ function renderCards() {
   });
 }
 
-// 翻牌效果處理
+// 翻牌邏輯
 function flipCard(cardElement) {
   cardElement.classList.toggle('flipped');
 }
 
-// 語音發音 (Web Speech API)
+// 發音邏輯 (Web Speech API)
 function playAudio(event, text) {
-  // 阻止冒泡事件，避免播放發音時同時翻轉卡片
-  event.stopPropagation();
+  event.stopPropagation(); // 阻止事件冒泡，避免點擊聲音按鈕時觸發翻牌
   
   if ('speechSynthesis' in window) {
     const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ja-JP'; // 設定為日文語系
-    utterance.rate = 0.8;    // 稍微放慢語速以利聽清
+    utterance.lang = 'ja-JP';
+    utterance.rate = 0.85; // 適中的朗讀語速
     window.speechSynthesis.speak(utterance);
   } else {
-    alert("您的瀏覽器不支援語音合成功能。");
+    alert("您的瀏覽器不支援發音功能。");
   }
 }
