@@ -1,33 +1,245 @@
-/* --- 手繪風格記憶區塊 --- */
-.hand-drawn-box {
-  /* 模擬手繪不規則邊框的 CSS 技巧 */
-  border: 2px solid #333;
-  border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
-  background-color: #fffdf5; /* 微黃的畫紙底色 */
-  padding: 10px 12px;
-  margin-bottom: 12px;
-  box-shadow: 2px 3px 0px rgba(0,0,0,0.1);
+/* =========================================
+   基本重置與全域變數
+   ========================================= */
+:root {
+  --primary-color: #ff7b93;      /* 平假名主色：溫暖粉 */
+  --katakana-color: #4a90e2;     /* 片假名主色：質感藍 */
+  --bg-color: #f4f6f8;           /* 網頁背景色 */
+  --card-bg: #ffffff;            /* 卡片正面底色 */
+  --text-color: #333333;
+  --text-sub: #666666;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 20px 16px;
+}
+
+/* =========================================
+   頁首標題區塊
+   ========================================= */
+.header {
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 8px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.header p {
+  font-size: 0.95rem;
+  color: var(--text-sub);
+}
+
+/* =========================================
+   卡片網格佈局 (RWD)
+   ========================================= */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* =========================================
+   3D 翻轉卡片核心結構
+   ========================================= */
+.card-container {
+  perspective: 1200px; /* 增加透視深度，讓翻轉更自然 */
+  height: 320px;       /* 確保高度足夠容納手繪區與單字 */
+}
+
+.card {
   width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d; /* 關鍵：保留子元素的 3D 空間 */
+  transition: transform 0.6s cubic-bezier(0.4, 0.2, 0.2, 1);
+  cursor: pointer;
+}
+
+.card.flipped {
+  transform: rotateY(180deg);
+}
+
+/* 正反面共用設定 */
+.card-front, .card-back {
+  position: absolute;  /* 關鍵：讓正反面疊加 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden; /* 關鍵：背對時隱藏 */
+  border-radius: 12px;
+  background-color: var(--card-bg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+}
+
+/* =========================================
+   卡片正面：雙假名樣式
+   ========================================= */
+.card-front {
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+}
+
+.kana-pair {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.kana-hiragana {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.kana-divider {
+  font-size: 2rem;
+  color: #e0e0e0;
+  font-weight: 300;
+}
+
+.kana-katakana {
+  font-size: 3rem;
+  font-weight: bold;
+  color: var(--katakana-color);
+}
+
+.romaji {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: var(--text-sub);
+}
+
+.audio-btn {
+  margin-top: 16px;
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.audio-btn:hover {
+  transform: scale(1.15);
+}
+
+/* =========================================
+   卡片反面：手帳塗鴉風格與單字
+   ========================================= */
+.card-back {
+  transform: rotateY(180deg); /* 預先翻轉，確保外層翻轉時文字為正 */
+  text-align: left;
+  justify-content: flex-start;
+  padding: 16px 14px;
+  overflow-y: auto; /* 內容過長時允許滑動 */
+}
+
+/* --- 進階優化：充滿活力與手作感的手繪區塊 --- */
+.hand-drawn-box {
+  /* 粗黑麥克筆觸與硬陰影 */
+  border: 2px solid #2a2a2a;
+  border-radius: 255px 20px 225px 20px / 20px 225px 20px 255px;
+  background-color: #fffde6; /* 溫暖的明黃畫紙色調 */
+  padding: 12px 14px;
+  margin-bottom: 16px;
+  box-shadow: 4px 4px 0px #2a2a2a; /* 強烈的普普塗鴉風陰影 */
+  width: 100%;
+  transform: rotate(-1deg); /* 微微傾斜，增添隨性寫意的感覺 */
 }
 
 .mnemonic-tag {
   display: inline-block;
   background-color: var(--primary-color);
   color: white;
-  font-size: 0.7rem;
-  padding: 2px 6px;
-  border-radius: 8px;
-  margin-bottom: 4px;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  border: 1px solid #2a2a2a; /* 呼應手繪框 */
+  box-shadow: 2px 2px 0px #2a2a2a;
+  margin-bottom: 8px;
   font-weight: bold;
+  transform: rotate(1deg); /* 標籤反向微傾斜 */
 }
 
 .mnemonic-content {
   font-size: 0.85rem;
-  line-height: 1.4;
-  color: #444;
+  line-height: 1.5;
+  color: #333;
 }
 
 .mnemonic-content span {
   font-weight: bold;
+  color: #e55a73;
+}
+
+/* =========================================
+   實用單字列表
+   ========================================= */
+.word-list {
+  width: 100%;
+  padding-bottom: 10px;
+}
+
+.word-list-title {
+  font-size: 0.8rem;
+  color: var(--text-sub);
+  font-weight: bold;
+  display: block;
+  margin-bottom: 8px;
+}
+
+.word-item {
+  background-color: #f0f4f8;
+  padding: 8px 10px;
+  border-radius: 8px;
+  margin-bottom: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid transparent;
+}
+
+.word-item:hover {
+  background-color: #e6f0fa;
+  border-color: #cce0f5;
+  transform: translateX(2px); /* 滑鼠懸停時微移 */
+}
+
+.word-jp {
+  font-size: 0.9rem;
+  font-weight: bold;
   color: var(--katakana-color);
+  margin-bottom: 2px;
+}
+
+.word-romaji {
+  font-size: 0.75rem;
+  color: #888888;
+  font-weight: normal;
+}
+
+.word-meaning {
+  font-size: 0.8rem;
+  color: var(--text-sub);
 }
