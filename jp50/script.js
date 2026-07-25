@@ -1,27 +1,10 @@
-          let currentType = 'hiragana';
-
-// 初始化頁面
-document.addEventListener("DOMContentLoaded", () => {
-  renderCards();
-});
-
-// 切換平假名 / 片假名
-function switchType(type) {
-  currentType = type;
-  document.getElementById('btn-hiragana').classList.toggle('active', type === 'hiragana');
-  document.getElementById('btn-katakana').classList.toggle('active', type === 'katakana');
-  renderCards();
-}
-
-// 動態渲染 50 音卡片
+// 動態渲染 50 音卡片 (包含手繪塗鴉記憶區塊)
 function renderCards() {
   const grid = document.getElementById('card-grid');
   grid.innerHTML = '';
 
   gojuonData.forEach((item) => {
-    const char = currentType === 'hiragana' ? item.hiragana : item.katakana;
-    
-    // 將 words 陣列轉化為多組單字的 HTML 結構
+    // 渲染單字列表
     const wordsHtml = item.words.map(w => `
       <div class="word-item" onclick="playAudio(event, '${w.jp.split(' ')[0]}')">
         <div class="word-jp">${w.jp} <span class="word-romaji">(${w.romaji})</span></div>
@@ -32,23 +15,35 @@ function renderCards() {
     const cardContainer = document.createElement('div');
     cardContainer.className = 'card-container';
     
+    // 將多維度記憶資料套入 HTML (加入 hand-drawn-box 手繪風格)
     cardContainer.innerHTML = `
       <div class="card" onclick="flipCard(this)">
         <!-- 卡片正面 -->
         <div class="card-front">
-          <div class="kana-char">${char}</div>
+          <div class="kana-pair">
+            <span class="kana-hiragana" title="平假名">${item.hiragana}</span>
+            <span class="kana-divider">|</span>
+            <span class="kana-katakana" title="片假名">${item.katakana}</span>
+          </div>
           <div class="romaji">${item.romaji}</div>
-          <button class="audio-btn" onclick="playAudio(event, '${char}')" title="播放發音">🔊</button>
+          <button class="audio-btn" onclick="playAudio(event, '${item.hiragana}')" title="播放發音">🔊</button>
         </div>
         
-        <!-- 卡片反面 (記憶口訣與多組單字) -->
+        <!-- 卡片反面：多維度記憶與單字 -->
         <div class="card-back">
-          <div class="mnemonic-section">
-            <span class="mnemonic-title">💡 趣味口訣</span>
-            <p class="mnemonic-text">${item.mnemonic}</p>
+          
+          <!-- 手繪塗鴉風格記憶區塊 -->
+          <div class="hand-drawn-box">
+            <div class="mnemonic-tag">📖 情境聯想</div>
+            <div class="mnemonic-content">
+              👁️ <span>字形：</span>${item.mnemonics.shape}<br>
+              🎵 <span>諧音：</span>${item.mnemonics.sound}<br>
+              🎬 <span>故事：</span>${item.mnemonics.story}
+            </div>
           </div>
+
           <div class="word-list">
-            <span class="word-list-title">📚 實用單字 (點擊可發音)</span>
+            <span class="word-list-title">📚 實用單字 (點擊發音)</span>
             ${wordsHtml}
           </div>
         </div>
@@ -57,23 +52,4 @@ function renderCards() {
     
     grid.appendChild(cardContainer);
   });
-}
-
-// 翻牌邏輯
-function flipCard(cardElement) {
-  cardElement.classList.toggle('flipped');
-}
-
-// 發音邏輯 (Web Speech API)
-function playAudio(event, text) {
-  event.stopPropagation(); // 阻止事件冒泡，避免點擊聲音按鈕時觸發翻牌
-  
-  if ('speechSynthesis' in window) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.lang = 'ja-JP';
-    utterance.rate = 0.85; // 適中的朗讀語速
-    window.speechSynthesis.speak(utterance);
-  } else {
-    alert("您的瀏覽器不支援發音功能。");
-  }
 }
