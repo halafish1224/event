@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>手繪風 50音記憶字卡</title>
+    <style>
+        /* 匯入 Google Fonts 手寫風格字體，增添手繪塗鴉感 */
+        @import url('https://fonts.googleapis.com/css2?family=Yomogi&display=swap');
+
+        body {
+            font-family: 'Yomogi', cursive, sans-serif;
+            background-color: #fdfbf7;
+            color: #4a4a4a;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 0px #e0e0e0;
+        }
+
+        /* 模擬手繪不規則邊框的卡片設計 */
+        .card-container {
+            background-color: #ffffff;
+            border: 3px solid #4a4a4a;
+            /* 利用不對稱的 border-radius 創造手繪感 */
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            padding: 40px;
+            margin: 20px 0;
+            width: 80%;
+            max-width: 400px;
+            box-shadow: 5px 5px 0px #b3e5fc;
+            text-align: center;
+            transition: transform 0.2s ease;
+        }
+
+        .card-container:hover {
+            transform: scale(1.02);
+        }
+
+        .kana {
+            font-size: 5rem;
+            font-weight: bold;
+            margin: 10px 0;
+            color: #ff7043;
+        }
+
+        .romaji {
+            font-size: 1.5rem;
+            color: #78909c;
+            margin-bottom: 20px;
+        }
+
+        /* 記憶口訣的便利貼造型 */
+        .mnemonic {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            background-color: #fff9c4;
+            padding: 15px;
+            border-radius: 10px 255px 10px 255px/255px 10px 255px 10px;
+            border: 2px dashed #ffb74d;
+        }
+
+        /* 手繪風格按鈕 */
+        .btn-next {
+            background-color: #81c784;
+            color: white;
+            border: 2px solid #4a4a4a;
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            padding: 10px 30px;
+            font-size: 1.5rem;
+            font-family: 'Yomogi', cursive;
+            cursor: pointer;
+            box-shadow: 3px 3px 0px #4a4a4a;
+            margin-top: 20px;
+        }
+
+        .btn-next:active {
+            box-shadow: 1px 1px 0px #4a4a4a;
+            transform: translate(2px, 2px);
+        }
+
+        .footer {
+            margin-top: 40px;
+            font-size: 0.9rem;
+            text-align: center;
+            border-top: 2px solid #e0e0e0;
+            padding-top: 10px;
+            width: 100%;
+            max-width: 600px;
+        }
+
+        .footer a {
+            color: #29b6f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>五十音記憶字卡</h1>
+    
+    <div class="card-container" id="flashcard">
+        <div class="kana" id="kana-display">あ/ア</div>
+        <div class="romaji" id="romaji-display">a</div>
+        <div class="mnemonic" id="mnemonic-display">女孩胖了一圈，大叫「啊」 (平假名像女，片假名像樂)</div>
+    </div>
+
+    <button class="btn-next" onclick="nextCard()">下一張字卡</button>
+
+    <div class="footer">
+        <p>記憶參考來源與智財權聲明：</p>
+        <p>本字卡之記憶口訣與內容參考自影片 <a href="https://youtu.be/qz_DC_NEkvw?si=K3pH08IEb0eKBgOb" target="_blank">终于把日语整理成《动画片》~逼自己一个月学完</a></p>
+    </div>
+
+    <script>
+        // 匯入影片中的完整 50 音口訣與資料
+        const gojuonData = [
+            { kana: "あ / ア", romaji: "a", mnemonic: "女孩胖了一圈，大叫「啊」 (平假名像女，片假名像樂)" },
+            { kana: "い / イ", romaji: "i", mnemonic: "「以為」的以 (左邊平假名，右邊單人旁片假名)" },
+            { kana: "う / ウ", romaji: "u", mnemonic: "被搶寶物踹飛，嗚嗚哭 (平假名像踹飛的人，片假名像寶蓋頭)" },
+            { kana: "え / エ", romaji: "e", mnemonic: "元旦還要打工，好可憐「欸」 (平假名像元，片假名像工)" },
+            { kana: "お / オ", romaji: "o", mnemonic: "不學無術不成才「哦」 (片假名像才)" },
+            { kana: "か / カ", romaji: "ka", mnemonic: "大「力」一點，卡住了 (平假名力加點，片假名力)" },
+            { kana: "き / キ", romaji: "ki", mnemonic: "長得像鑰匙 (key)" },
+            { kana: "く / ク", romaji: "ku", mnemonic: "腿被打折了，哭(ku)了很久 (平假名像打折的腿)" },
+            { kana: "け / ケ", romaji: "ke", mnemonic: "計畫PK砍竹子 (平假名像計，片假名像竹)" },
+            { kana: "こ / コ", romaji: "ko", mnemonic: "圓括號與方括號，扣(ko)在一起" },
+            { kana: "さ / サ", romaji: "sa", mnemonic: "草地上發生殺(sa)人案 (平假名像殺，片假名像草字頭)" },
+            { kana: "し / シ", romaji: "shi", mnemonic: "吸(shi)管用來吸水 (平假名像吸管，片假名像三點水)" },
+            { kana: "す / ス", romaji: "su", mnemonic: "經過19天長出絲(su)瓜 (片假名像經的右下)" },
+            { kana: "せ / セ", romaji: "se", mnemonic: "世(se)界上有形形色色的人 (來自「世」字)" },
+            { kana: "そ / ソ", romaji: "so", mnemonic: "賴皮蛇縮(so)在地上 (平假名像Z+C)" },
+            { kana: "た / タ", romaji: "ta", mnemonic: "他(ta)說夕陽太漂亮 (平假名像太，片假名像夕)" },
+            { kana: "ち / チ", romaji: "chi", mnemonic: "長得像5，五到七(chi)千 (平假名像5，片假名像千)" },
+            { kana: "つ / ツ", romaji: "tsu", mnemonic: "吃(tsu)蝦很高興 (平假名像蝦，片假名像興的上半部)" },
+            { kana: "て / テ", romaji: "te", mnemonic: "想要飛上天也推(te)累了 (平假名像飛，片假名像天)" },
+            { kana: "と / ト", romaji: "to", mnemonic: "羊駝(to)愛吃胡蘿蔔 (平假名像羊駝，片假名像卜)" },
+            { kana: "な / ナ", romaji: "na", mnemonic: "那(na)個人10歲就大二 (平假名像大+二，片假名像十)" },
+            { kana: "に / ニ", romaji: "ni", mnemonic: "你(ni)真是個仁義的二貨 (平假名像仁，片假名像二)" },
+            { kana: "ぬ / ヌ", romaji: "nu", mnemonic: "匈奴(nu)又來了 (平假名像奴，片假名像又)" },
+            { kana: "ね / ネ", romaji: "ne", mnemonic: "權力交給內(ne)人很幸福 (平假名像權，片假名像福的部首)" },
+            { kana: "の / ノ", romaji: "no", mnemonic: "糯(no)米糰子切一刀 (平假名像糰子，片假名像一撇)" },
+            { kana: "は / ハ", romaji: "ha", mnemonic: "仗勢欺人的哈(ha)巴狗 (平假名像仗，片假名像八)" },
+            { kana: "ひ / ヒ", romaji: "hi", mnemonic: "壞蛋在坑裡拿匕首壞笑嘻嘻(hi) (片假名像匕)" },
+            { kana: "ふ / フ", romaji: "fu", mnemonic: "大風(fu)把小不點吹走 (平假名像小，片假名像7)" },
+            { kana: "へ / ヘ", romaji: "he", mnemonic: "嘿嘿(he)笑時瞇瞇的眼睛" },
+            { kana: "ほ / ホ", romaji: "ho", mnemonic: "幹了一天木工活(ho) (平假名像天，片假名像木)" },
+            { kana: "ま / マ", romaji: "ma", mnemonic: "抹(ma)布用來擦馬桶蓋 (平假名像抹的右半部，片假名像蓋子)" },
+            { kana: "み / ミ", romaji: "mi", mnemonic: "21歲養了三隻貓咪(mi) (平假名像21，片假名像三)" },
+            { kana: "む / ム", romaji: "mu", mnemonic: "沐(mu)浴的美人魚給個麼麼噠 (片假名像麼去頂)" },
+            { kana: "め / メ", romaji: "me", mnemonic: "美(me)女臉上有刀疤 (來自女字，片假名像刀疤)" },
+            { kana: "も / モ", romaji: "mo", mnemonic: "看到毛(mo)茸茸動物就想摸 (來自毛字)" },
+            { kana: "や / ヤ", romaji: "ya", mnemonic: "今天也(ya)要加油鴨 (來自也字)" },
+            { kana: "ゆ / ユ", romaji: "yu", mnemonic: "心中有你I love you，卻被醜拒 (平假名像中，片假名像醜的外殼)" },
+            { kana: "よ / ヨ", romaji: "yo", mnemonic: "上當了喲(yo) (平假名像上，片假名像當的上半部)" },
+            { kana: "ら / ラ", romaji: "ra", mnemonic: "坐在馬桶上拉(ra) (平假名像人坐馬桶)" },
+            { kana: "り / リ", romaji: "ri", mnemonic: "來自立(ri)刀旁" },
+            { kana: "る / ル", romaji: "ru", mnemonic: "歹徒擄(ru)走了兒子 (平假名像歹，片假名像兒)" },
+            { kana: "れ / レ", romaji: "re", mnemonic: "送禮物好累(re) (來自禮的右半部)" },
+            { kana: "ろ / ロ", romaji: "ro", mnemonic: "三張口對著你囉(ro)嗦 (平假名像3，片假名像口)" },
+            { kana: "わ / ワ", romaji: "wa", mnemonic: "13、17歲的青蛙(wa)精 (平假名像13，片假名像17)" },
+            { kana: "を / ヲ", romaji: "wo", mnemonic: "被毆(wo)打成C字型，肋骨斷兩根" },
+            { kana: "ん / ン", romaji: "n", mnemonic: "嗯(n)，我真帥 (平假名像洗剪吹髮型，片假名兩點水)" }
+        ];
+
+        // 隨機切換字卡的核心邏輯
+        function nextCard() {
+            // 利用 Math.random() 隨機挑選陣列中的一個索引
+            const randomIndex = Math.floor(Math.random() * gojuonData.length);
+            const card = gojuonData[randomIndex];
+            
+            // 將挑選到的資料更新至網頁對應的區塊中
+            document.getElementById('kana-display').innerText = card.kana;
+            document.getElementById('romaji-display').innerText = card.romaji;
+            document.getElementById('mnemonic-display').innerText = card.mnemonic;
+        }
+    </script>
+</body>
+</html>
