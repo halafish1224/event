@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日文 50 音圖記憶卡</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="header">
+    <h1>五 scheduler 音記憶卡</h1>
+    <p>隨時隨地，輕鬆記住平假名與片假名</p>
+    
+    <!-- 假名切換開關 -->
+    <div class="toggle-container">
+      <button id="btn-hiragana" class="toggle-btn active" onclick="switchType('hiragana')">平假名 (あ)</button>
+      <button id="btn-katakana" class="toggle-btn" onclick="switchType('katakana')">片假名 (ア)</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- 卡片展示區域 -->
+    <div id="card-grid" class="card-grid"></div>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
