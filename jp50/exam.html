@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>五段十行 - 直覺反應訓練器</title>
+    <style>
+        /* 基本的網頁排版與美化 */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f4f8;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        /* 題目顯示區塊 */
+        #question-box {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #d9534f;
+            margin-bottom: 20px;
+        }
+        /* 提示訊息區塊 */
+        #message {
+            font-size: 1.2rem;
+            height: 30px;
+            color: #5cb85c;
+            margin-bottom: 20px;
+        }
+        /* 建立五段十行的網格版面 (使用 CSS Grid) */
+        .kana-grid {
+            display: grid;
+            /* 這裡設定 5 欄，代表あ、い、う、え、お五段 */
+            grid-template-columns: repeat(5, 1fr);
+            gap: 10px;
+        }
+        /* 網格按鈕樣式 */
+        .kana-btn {
+            background-color: #e2e8f0;
+            border: none;
+            border-radius: 8px;
+            padding: 20px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .kana-btn:hover {
+            background-color: #cbd5e1;
+        }
+        /* 答對與答錯的特效 class */
+        .correct { background-color: #5cb85c !important; color: white; }
+        .wrong { background-color: #d9534f !important; color: white; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>請點擊對應的平假名！</h2>
+        <!-- 這裡是顯示羅馬拼音題目的地方 -->
+        <div id="question-box">準備中...</div>
+        <!-- 顯示答對或答錯的訊息 -->
+        <div id="message"></div>
+        
+        <!-- 這裡是產生五十音按鈕的容器 -->
+        <div class="kana-grid" id="grid"></div>
+    </div>
+
+    <script>
+        // 1. 準備五十音資料 (可以依此邏輯補齊 50 音)
+        const kanaData = [
+            { kana: 'あ', romaji: 'a' }, { kana: 'い', romaji: 'i' }, { kana: 'う', romaji: 'u' }, { kana: 'え', romaji: 'e' }, { kana: 'お', romaji: 'o' },
+            { kana: 'か', romaji: 'ka' }, { kana: 'き', romaji: 'ki' }, { kana: 'く', romaji: 'ku' }, { kana: 'け', romaji: 'ke' }, { kana: 'こ', romaji: 'ko' }
+        ];
+
+        let currentQuestion = null; // 儲存目前的題目
+
+        // 2. 初始化畫面，產生按鈕
+        function initGrid() {
+            const grid = document.getElementById('grid');
+            kanaData.forEach(item => {
+                const btn = document.createElement('button');
+                btn.className = 'kana-btn';
+                btn.textContent = item.kana;
+                
+                // 綁定點擊事件，判斷對錯
+                btn.onclick = () => checkAnswer(item.romaji, btn);
+                grid.appendChild(btn);
+            });
+        }
+
+        // 3. 隨機產生下一題的邏輯
+        function nextQuestion() {
+            // 讓按鈕恢復原本的顏色
+            document.querySelectorAll('.kana-btn').forEach(btn => {
+                btn.classList.remove('correct', 'wrong');
+            });
+            document.getElementById('message').textContent = "";
+
+            // 使用 Math.random() 隨機挑選一個物件
+            const randomIndex = Math.floor(Math.random() * kanaData.length);
+            currentQuestion = kanaData[randomIndex];
+            
+            // 將題目顯示在畫面上
+            document.getElementById('question-box').textContent = currentQuestion.romaji;
+        }
+
+        // 4. 檢查答案是否正確的邏輯
+        function checkAnswer(selectedRomaji, clickedBtn) {
+            const messageEl = document.getElementById('message');
+            
+            if (selectedRomaji === currentQuestion.romaji) {
+                // 答對了
+                clickedBtn.classList.add('correct');
+                messageEl.textContent = "答對了！";
+                messageEl.style.color = "#5cb85c";
+                // 延遲 0.8 秒後自動換下一題
+                setTimeout(nextQuestion, 800);
+            } else {
+                // 答錯了
+                clickedBtn.classList.add('wrong');
+                messageEl.textContent = "點錯了，再試試看！";
+                messageEl.style.color = "#d9534f";
+                // 延遲 0.5 秒後把紅色錯誤標示移除
+                setTimeout(() => clickedBtn.classList.remove('wrong'), 500);
+            }
+        }
+
+        // 網頁載入時執行初始化與出第一題
+        initGrid();
+        nextQuestion();
+    </script>
+</body>
+</html>
