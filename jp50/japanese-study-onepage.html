@@ -1,0 +1,865 @@
+<!doctype html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#f7f2e8">
+  <meta name="description" content="日文50音到N5基礎文法自學單頁：五十音、濁音、促音、拗音、長音、助詞、動詞、形容詞、ない形，以及 Aimyon《愛の花》短句拆解。">
+  <title>日文自學一頁通｜50音 × N5基礎 × Aimyon 歌詞拆解</title>
+
+  <style>
+    :root{
+      --bg:#f7f2e8;
+      --surface:#fffdf8;
+      --surface-2:#f0eadf;
+      --ink:#22221f;
+      --muted:#6c6b64;
+      --line:#d9d1c4;
+      --accent:#1f6f5f;
+      --accent-2:#a34e35;
+      --accent-3:#375a8c;
+      --good:#2f7d4b;
+      --warn:#9a651b;
+      --bad:#a23f3f;
+      --shadow:0 10px 30px rgba(44,35,20,.08);
+      --radius:20px;
+      --radius-sm:12px;
+      --max:1540px;
+      --mono:"SFMono-Regular",Consolas,"Liberation Mono",monospace;
+      --jp:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP","Meiryo",system-ui,sans-serif;
+      --zh:"PingFang TC","Microsoft JhengHei","Noto Sans TC",system-ui,sans-serif;
+    }
+
+    @media (prefers-color-scheme:dark){
+      :root{
+        --bg:#171815;
+        --surface:#20211e;
+        --surface-2:#292b27;
+        --ink:#f2f0e8;
+        --muted:#b8b5aa;
+        --line:#3b3d37;
+        --accent:#76c9b7;
+        --accent-2:#e09278;
+        --accent-3:#96b6e9;
+        --good:#83cf9b;
+        --warn:#e5b45d;
+        --bad:#f08d8d;
+        --shadow:0 10px 30px rgba(0,0,0,.22);
+      }
+    }
+
+    html[data-theme="light"]{
+      --bg:#f7f2e8;--surface:#fffdf8;--surface-2:#f0eadf;--ink:#22221f;--muted:#6c6b64;
+      --line:#d9d1c4;--accent:#1f6f5f;--accent-2:#a34e35;--accent-3:#375a8c;
+      --good:#2f7d4b;--warn:#9a651b;--bad:#a23f3f;--shadow:0 10px 30px rgba(44,35,20,.08);
+    }
+    html[data-theme="dark"]{
+      --bg:#171815;--surface:#20211e;--surface-2:#292b27;--ink:#f2f0e8;--muted:#b8b5aa;
+      --line:#3b3d37;--accent:#76c9b7;--accent-2:#e09278;--accent-3:#96b6e9;
+      --good:#83cf9b;--warn:#e5b45d;--bad:#f08d8d;--shadow:0 10px 30px rgba(0,0,0,.22);
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      background:
+        radial-gradient(circle at 10% 0%, color-mix(in srgb,var(--accent) 8%,transparent), transparent 35%),
+        radial-gradient(circle at 90% 10%, color-mix(in srgb,var(--accent-2) 7%,transparent), transparent 32%),
+        var(--bg);
+      color:var(--ink);
+      font-family:var(--zh);
+      line-height:1.72;
+      text-rendering:optimizeLegibility;
+    }
+    a{color:inherit}
+    button,input{font:inherit}
+    ruby rt{font-size:.6em;color:var(--muted)}
+    .jp{font-family:var(--jp);font-feature-settings:"palt" 1}
+    .wrap{width:min(var(--max),calc(100% - 32px));margin-inline:auto}
+    .skip{position:absolute;left:-999px;top:8px}
+    .skip:focus{left:8px;z-index:1000;background:var(--surface);padding:8px 12px;border-radius:8px}
+
+    header.hero{
+      padding:clamp(36px,7vw,84px) 0 28px;
+    }
+    .hero-grid{
+      display:grid;
+      grid-template-columns:minmax(0,1.45fr) minmax(280px,.55fr);
+      gap:24px;
+      align-items:end;
+    }
+    .eyebrow{
+      display:inline-flex;gap:.5rem;align-items:center;
+      padding:.35rem .7rem;border:1px solid var(--line);border-radius:999px;
+      background:color-mix(in srgb,var(--surface) 86%,transparent);
+      font-size:.9rem;color:var(--muted)
+    }
+    h1{
+      margin:.7rem 0 .6rem;
+      font-size:clamp(2.1rem,5vw,4.6rem);
+      line-height:1.02;letter-spacing:-.045em;
+      max-width:16ch;
+    }
+    .lead{font-size:clamp(1rem,1.4vw,1.2rem);color:var(--muted);max-width:72ch}
+    .hero-card{
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:20px;
+    }
+    .progress-row{display:flex;justify-content:space-between;gap:16px;align-items:center}
+    progress{width:100%;height:12px;accent-color:var(--accent)}
+    .small{font-size:.9rem;color:var(--muted)}
+
+    .toolbar{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter:blur(18px);
+      background:color-mix(in srgb,var(--bg) 80%,transparent);
+      border-block:1px solid color-mix(in srgb,var(--line) 75%,transparent);
+    }
+    .toolbar-inner{
+      display:grid;grid-template-columns:minmax(220px,1fr) auto auto;gap:10px;align-items:center;
+      padding:10px 0;
+    }
+    .search{
+      display:flex;align-items:center;gap:8px;background:var(--surface);
+      border:1px solid var(--line);border-radius:999px;padding:8px 12px;
+    }
+    .search input{width:100%;border:0;outline:0;background:transparent;color:var(--ink)}
+    .btn{
+      border:1px solid var(--line);background:var(--surface);color:var(--ink);
+      padding:.65rem .9rem;border-radius:999px;cursor:pointer;
+    }
+    .btn:hover{border-color:var(--accent)}
+    .btn.primary{background:var(--accent);color:white;border-color:transparent}
+    .btn.ghost{background:transparent}
+    .kbd{font-family:var(--mono);font-size:.8rem;padding:.1rem .35rem;border:1px solid var(--line);border-bottom-width:2px;border-radius:5px}
+
+    .layout{
+      display:grid;grid-template-columns:270px minmax(0,1fr);gap:28px;
+      padding:28px 0 80px;
+    }
+    aside{
+      position:sticky;top:78px;align-self:start;
+      max-height:calc(100dvh - 96px);overflow:auto;
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:14px;
+    }
+    .toc-title{font-weight:800;margin:2px 8px 10px}
+    .toc a{
+      display:block;text-decoration:none;padding:8px 10px;border-radius:9px;color:var(--muted);
+      font-size:.94rem;
+    }
+    .toc a:hover{background:var(--surface-2);color:var(--ink)}
+    main{min-width:0}
+    section{
+      scroll-margin-top:92px;
+      background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);
+      padding:clamp(18px,3vw,34px);margin-bottom:22px;box-shadow:var(--shadow);
+      container-type:inline-size;
+    }
+    section[hidden]{display:none!important}
+    section h2{
+      margin:0 0 .4rem;font-size:clamp(1.45rem,3vw,2.25rem);line-height:1.2;letter-spacing:-.02em
+    }
+    section h3{margin:1.5rem 0 .6rem;font-size:1.15rem}
+    .section-sub{color:var(--muted);margin-top:0}
+    .rule{
+      padding:14px 16px;border-left:4px solid var(--accent);background:var(--surface-2);
+      border-radius:0 var(--radius-sm) var(--radius-sm) 0;margin:16px 0;
+    }
+    .rule strong{color:var(--accent)}
+    .callout{
+      padding:14px 16px;border:1px dashed var(--line);border-radius:var(--radius-sm);
+      background:color-mix(in srgb,var(--surface-2) 70%,transparent);
+    }
+    .warning{border-left:4px solid var(--warn)}
+    .danger{border-left:4px solid var(--bad)}
+    .good{border-left:4px solid var(--good)}
+
+    .grid{display:grid;gap:14px}
+    .grid.auto{grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr))}
+    .grid.two{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grid.three{grid-template-columns:repeat(3,minmax(0,1fr))}
+    .card{
+      border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px;background:color-mix(in srgb,var(--surface) 92%,var(--surface-2));
+    }
+    .card h3{margin:.1rem 0 .4rem}
+    .tag{
+      display:inline-block;font-size:.78rem;padding:.18rem .5rem;border-radius:999px;
+      background:var(--surface-2);border:1px solid var(--line);color:var(--muted);margin:.1rem .2rem .1rem 0
+    }
+
+    .kana-table{
+      width:100%;border-collapse:separate;border-spacing:6px;table-layout:fixed;
+    }
+    .kana-table th{font-size:.8rem;color:var(--muted);font-weight:700}
+    .kana-table td{
+      text-align:center;background:var(--surface-2);border:1px solid var(--line);border-radius:10px;padding:10px 4px;
+    }
+    .kana{
+      display:block;font-family:var(--jp);font-size:clamp(1.3rem,2.6vw,2rem);font-weight:800;line-height:1.1
+    }
+    .roma{display:block;color:var(--muted);font-size:.72rem;margin-top:3px}
+    .dim{opacity:.28}
+
+    .dense-table-wrap{overflow:auto;border:1px solid var(--line);border-radius:var(--radius-sm)}
+    table.dense{width:100%;border-collapse:collapse;min-width:620px}
+    .dense th,.dense td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+    .dense th{background:var(--surface-2);text-align:left;position:sticky;top:0}
+    .dense tr:last-child td{border-bottom:0}
+
+    .lesson-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:10px}
+    .lesson{
+      display:grid;grid-template-columns:auto 1fr;gap:10px;border:1px solid var(--line);
+      border-radius:12px;padding:12px;background:var(--surface);
+    }
+    .lesson input{margin-top:.35rem;accent-color:var(--accent)}
+    .lesson b{display:block}
+    .lesson small{color:var(--muted)}
+
+    details{
+      border:1px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--surface);
+      margin:8px 0;
+    }
+    summary{cursor:pointer;font-weight:800}
+    details[open] summary{margin-bottom:8px}
+
+    .formula{
+      font-family:var(--jp);font-size:clamp(1.05rem,2vw,1.35rem);font-weight:800;
+      padding:12px 14px;border-radius:12px;background:var(--surface-2);overflow:auto
+    }
+    .chip-row{display:flex;flex-wrap:wrap;gap:8px}
+    .chip{
+      border:1px solid var(--line);background:var(--surface-2);border-radius:999px;padding:.35rem .65rem;
+      font-family:var(--jp)
+    }
+
+    .lyric{
+      font-family:var(--jp);
+      font-size:clamp(1.45rem,4vw,3rem);
+      line-height:1.45;
+      letter-spacing:.03em;
+      padding:18px;border:1px solid var(--line);border-radius:16px;background:var(--surface-2);
+    }
+    .token{padding:.04em .08em;border-radius:.2em}
+    .t-topic{background:color-mix(in srgb,var(--accent-3) 18%,transparent)}
+    .t-adj{background:color-mix(in srgb,var(--accent) 18%,transparent)}
+    .t-verb{background:color-mix(in srgb,var(--accent-2) 18%,transparent)}
+    .t-tone{background:color-mix(in srgb,var(--warn) 18%,transparent)}
+
+    .quiz-item{padding:12px 0;border-bottom:1px solid var(--line)}
+    .quiz-item:last-child{border-bottom:0}
+    .quiz-options{display:grid;gap:7px;margin-top:8px}
+    .quiz-options label{display:flex;gap:8px;align-items:flex-start}
+    .result{font-weight:800;margin-top:12px}
+    .ok{color:var(--good)} .no{color:var(--bad)}
+
+    .flashcards{
+      display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px
+    }
+    .flash{
+      min-height:128px;border:1px solid var(--line);border-radius:14px;padding:12px;cursor:pointer;
+      background:var(--surface-2);display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;
+    }
+    .flash .front{font-size:1.45rem;font-family:var(--jp);font-weight:800}
+    .flash .back{display:none;color:var(--muted);margin-top:8px}
+    .flash.revealed .back{display:block}
+
+    .speak{
+      margin-left:.35rem;border:0;background:transparent;cursor:pointer;color:var(--accent);font-size:.95em
+    }
+
+    .footer{
+      color:var(--muted);font-size:.9rem;padding:0 0 48px;
+    }
+
+    @container (max-width:720px){
+      .grid.two,.grid.three{grid-template-columns:1fr}
+    }
+    @media (max-width:980px){
+      .hero-grid{grid-template-columns:1fr}
+      .layout{grid-template-columns:1fr}
+      aside{position:static;max-height:none}
+      .toc{display:grid;grid-template-columns:repeat(2,minmax(0,1fr))}
+      .toolbar-inner{grid-template-columns:1fr auto auto}
+    }
+    @media (max-width:640px){
+      .wrap{width:min(100% - 20px,var(--max))}
+      .toolbar-inner{grid-template-columns:1fr auto}
+      .toolbar .hide-sm{display:none}
+      .toc{grid-template-columns:1fr}
+      section{border-radius:16px;padding:16px}
+      .hero-card{padding:16px}
+      .kana-table{border-spacing:3px}
+      .kana-table td{padding:8px 2px}
+      .lesson-list{grid-template-columns:1fr}
+    }
+    @media print{
+      .toolbar,aside,.btn,.speak{display:none!important}
+      body{background:white;color:black}
+      .layout{display:block}
+      section{box-shadow:none;break-inside:avoid;border-color:#ccc}
+    }
+  </style>
+
+  <script type="text/javascript" nonce="dc65c8695af84d47a188fc4b391" src="//local.adguard.org?ts=1786665233513&amp;type=content-script&amp;dmn=chatgpt.com&amp;url=https%3A%2F%2Fchatgpt.com%2Fbackend-api%2Festuary%2Fcontent%3Fid%3Dfile_000000004c70820695e73f0d036b0094%26fn%3Djapanese-study-onepage.html%26cd%3Dattachment%26ts%3D496304%26p%3Dfs%26cid%3D1%26sig%3D7c5a4c921723a112920a210c8610b78f890d1d8a74ba5f02d92d04d624876fe0%26v%3D0&amp;app=chrome.exe&amp;css=2&amp;js=1&amp;rel=1&amp;rji=1&amp;sbe=1&amp;stealth=1&amp;st-dnt"></script><script type="text/javascript" nonce="dc65c8695af84d47a188fc4b391" src="//local.adguard.org?ts=1786665233513&amp;name=AdGuard%20Assistant&amp;name=AdGuard%20Extra&amp;type=user-script"></script><script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"LearningResource",
+    "name":"日文自學一頁通｜50音 × N5基礎 × Aimyon 歌詞拆解",
+    "inLanguage":["zh-Hant","ja"],
+    "educationalLevel":"Beginner",
+    "learningResourceType":"Study guide",
+    "about":["Japanese language","Hiragana","Japanese grammar","JLPT N5"]
+  }
+  </script>
+</head>
+<body>
+<a class="skip" href="#main">跳到主要內容</a>
+
+<header class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">日本語 · Beginner → N5 基礎</span>
+      <h1>日文自學一頁通</h1>
+      <p class="lead">把目前第 1～23 課整合成單頁識讀資料：50 音、濁音／半濁音、促音／拗音／長音、助詞、動詞、形容詞、ない形，以及 Aimyon《愛の花》短句拆解。適合直接放到 GitHub Pages。</p>
+      <div class="chip-row" aria-label="學習重點">
+        <span class="chip">50 音</span><span class="chip">5段10行</span><span class="chip">mora 拍</span>
+        <span class="chip">は・が・を・の・と</span><span class="chip">SOV</span><span class="chip">ない形</span>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="progress-row">
+        <div><strong>課程進度</strong><div class="small" id="progressText">0 / 23 已完成</div></div>
+        <div class="small">資料保存於此裝置</div>
+      </div>
+      <progress id="progressBar" max="23" value="0" aria-label="課程完成進度"></progress>
+      <p class="small">勾選「課程總覽」中的章節即可保存進度。瀏覽器支援時可用 🔊 播放日文發音。</p>
+    </div>
+  </div>
+</header>
+
+<div class="toolbar">
+  <div class="wrap toolbar-inner">
+    <label class="search">
+      <span aria-hidden="true">⌕</span>
+      <input id="searchInput" type="search" placeholder="搜尋：促音、ない形、優しい、は vs が…" autocomplete="off" aria-label="搜尋教材">
+      <span class="kbd hide-sm">/</span>
+    </label>
+    <button class="btn" id="themeBtn" type="button" aria-label="切換深淺色">◐</button>
+    <button class="btn hide-sm" id="expandBtn" type="button">展開全部</button>
+  </div>
+</div>
+
+<div class="wrap layout">
+  <aside>
+    <div class="toc-title">章節導覽</div>
+    <nav class="toc" aria-label="教材章節">
+      <a href="#overview">01 課程總覽</a>
+      <a href="#kana">02 50 音 × 5段10行</a>
+      <a href="#sound">03 濁音・促音・拗音・長音</a>
+      <a href="#particles">04 助詞核心</a>
+      <a href="#verbs">05 動詞與 SOV</a>
+      <a href="#adjectives">06 形容詞</a>
+      <a href="#nai">07 五段動詞 ない形</a>
+      <a href="#aimyon">08 Aimyon 句子拆解</a>
+      <a href="#flashcards">09 快速字卡</a>
+      <a href="#quiz">10 綜合測驗</a>
+    </nav>
+  </aside>
+
+  <main id="main">
+    <section id="overview" class="searchable">
+      <h2>01｜目前課程總覽</h2>
+      <p class="section-sub">從 50 音第一輪，到第 23 課的「ない形」。勾選已熟悉項目。</p>
+
+      <div class="lesson-list" id="lessonList">
+        <label class="lesson"><input type="checkbox" data-lesson="1"><span><b>第 1 課｜あ行＋愛の花</b><small>あ・い・う・え・お／愛＝あい／の 的初步概念</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="2"><span><b>第 2 課｜か行</b><small>か・き・く・け・こ／かぜ／A の B</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="3"><span><b>第 3 課｜さ行</b><small>し＝shi／す 的弱化／そら</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="4"><span><b>第 4 課｜た行</b><small>ち＝chi／つ＝tsu／つき</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="5"><span><b>第 5 課｜な行</b><small>なに＝什麼／これは なに？</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="6"><span><b>第 6 課｜は行</b><small>ふ／助詞 は→wa、へ→e／はな</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="7"><span><b>第 7 課｜ま行</b><small>まいにち／みみ／め</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="8"><span><b>第 8 課｜や行</b><small>や・ゆ・よ／ゆめ／よる</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="9"><span><b>第 9 課｜ら行</b><small>日文 R 音／これ・それ・あれ</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="10"><span><b>第 10 課｜わ・を・ん</b><small>を→o／ん 也佔一拍／46 音第一輪完成</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="11"><span><b>第 11 課｜易混淆假名</b><small>ぬ・ね・め／れ・わ／る・ろ／は・ほ</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="12"><span><b>第 12 課｜濁音①</b><small>が行・ざ行／かぜ／みず</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="13"><span><b>第 13 課｜濁音②＋半濁音</b><small>だ行・ば行・ぱ行／゛與゜</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="14"><span><b>第 14 課｜促音</b><small>小っ＝不發母音、但佔一拍／きって</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="15"><span><b>第 15 課｜拗音</b><small>ゃゅょ／きょう／りょこう／しゃしん</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="16"><span><b>第 16 課｜長音</b><small>母音延長一拍／おばさん vs おばあさん</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="17"><span><b>第 17 課｜節奏整合</b><small>きょう／ちょっと／がっこう／mora 切拍</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="18"><span><b>第 18 課｜母音與子音</b><small>清音／濁音主要改子音；長音主要延長母音</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="19"><span><b>第 19 課｜は vs が</b><small>は＝話題；が＝主體／焦點</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="20"><span><b>第 20 課｜動詞與 SOV</b><small>先找句尾動詞／見る・聞く・思う・咲く</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="21"><span><b>第 21 課｜引用助詞 と</b><small>［內容］＋と思う／と言う</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="22"><span><b>第 22 課｜い形容詞 vs な形容詞</b><small>優しい→優しく／静か→静かに</small></span></label>
+        <label class="lesson"><input type="checkbox" data-lesson="23"><span><b>第 23 課｜ない形</b><small>動詞、い形容詞、な形容詞的否定</small></span></label>
+      </div>
+    </section>
+
+    <section id="kana" class="searchable">
+      <h2>02｜50 音 ×「5 段 10 行」</h2>
+      <p class="section-sub">用座標理解假名：<strong>行＝同一子音系列</strong>；<strong>段＝同一母音系列</strong>。</p>
+
+      <div class="rule">
+        <strong>五段：</strong>あ段・い段・う段・え段・お段<br>
+        <strong>十行：</strong>あ行・か行・さ行・た行・な行・は行・ま行・や行・ら行・わ行
+      </div>
+
+      <div class="dense-table-wrap">
+        <table class="kana-table" aria-label="平假名五十音表">
+          <thead>
+            <tr><th>行＼段</th><th>あ段</th><th>い段</th><th>う段</th><th>え段</th><th>お段</th></tr>
+          </thead>
+          <tbody>
+            <tr><th>あ行</th><td><span class="kana">あ</span><span class="roma">a</span></td><td><span class="kana">い</span><span class="roma">i</span></td><td><span class="kana">う</span><span class="roma">u</span></td><td><span class="kana">え</span><span class="roma">e</span></td><td><span class="kana">お</span><span class="roma">o</span></td></tr>
+            <tr><th>か行</th><td><span class="kana">か</span><span class="roma">ka</span></td><td><span class="kana">き</span><span class="roma">ki</span></td><td><span class="kana">く</span><span class="roma">ku</span></td><td><span class="kana">け</span><span class="roma">ke</span></td><td><span class="kana">こ</span><span class="roma">ko</span></td></tr>
+            <tr><th>さ行</th><td><span class="kana">さ</span><span class="roma">sa</span></td><td><span class="kana">し</span><span class="roma">shi</span></td><td><span class="kana">す</span><span class="roma">su</span></td><td><span class="kana">せ</span><span class="roma">se</span></td><td><span class="kana">そ</span><span class="roma">so</span></td></tr>
+            <tr><th>た行</th><td><span class="kana">た</span><span class="roma">ta</span></td><td><span class="kana">ち</span><span class="roma">chi</span></td><td><span class="kana">つ</span><span class="roma">tsu</span></td><td><span class="kana">て</span><span class="roma">te</span></td><td><span class="kana">と</span><span class="roma">to</span></td></tr>
+            <tr><th>な行</th><td><span class="kana">な</span><span class="roma">na</span></td><td><span class="kana">に</span><span class="roma">ni</span></td><td><span class="kana">ぬ</span><span class="roma">nu</span></td><td><span class="kana">ね</span><span class="roma">ne</span></td><td><span class="kana">の</span><span class="roma">no</span></td></tr>
+            <tr><th>は行</th><td><span class="kana">は</span><span class="roma">ha</span></td><td><span class="kana">ひ</span><span class="roma">hi</span></td><td><span class="kana">ふ</span><span class="roma">fu</span></td><td><span class="kana">へ</span><span class="roma">he</span></td><td><span class="kana">ほ</span><span class="roma">ho</span></td></tr>
+            <tr><th>ま行</th><td><span class="kana">ま</span><span class="roma">ma</span></td><td><span class="kana">み</span><span class="roma">mi</span></td><td><span class="kana">む</span><span class="roma">mu</span></td><td><span class="kana">め</span><span class="roma">me</span></td><td><span class="kana">も</span><span class="roma">mo</span></td></tr>
+            <tr><th>や行</th><td><span class="kana">や</span><span class="roma">ya</span></td><td class="dim">—</td><td><span class="kana">ゆ</span><span class="roma">yu</span></td><td class="dim">—</td><td><span class="kana">よ</span><span class="roma">yo</span></td></tr>
+            <tr><th>ら行</th><td><span class="kana">ら</span><span class="roma">ra</span></td><td><span class="kana">り</span><span class="roma">ri</span></td><td><span class="kana">る</span><span class="roma">ru</span></td><td><span class="kana">れ</span><span class="roma">re</span></td><td><span class="kana">ろ</span><span class="roma">ro</span></td></tr>
+            <tr><th>わ行</th><td><span class="kana">わ</span><span class="roma">wa</span></td><td class="dim">—</td><td class="dim">—</td><td class="dim">—</td><td><span class="kana">を</span><span class="roma">o</span></td></tr>
+            <tr><th>特殊</th><td colspan="5"><span class="kana">ん</span><span class="roma">n／自己也佔 1 mora</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="grid two" style="margin-top:16px">
+        <div class="card">
+          <h3>母音</h3>
+          <p class="jp"><strong>あ・い・う・え・お</strong></p>
+          <p>日文核心母音是 a / i / u / e / o。例：<span class="jp">か = k + a</span>。</p>
+        </div>
+        <div class="card">
+          <h3>子音</h3>
+          <p>例如 <b>k / s / t / n / h / m / r</b>。同一「行」通常共享近似子音骨架。</p>
+          <p class="small">例：か・き・く・け・こ ≈ k + a/i/u/e/o。</p>
+        </div>
+      </div>
+
+      <details>
+        <summary>易混淆假名速查</summary>
+        <div class="chip-row" style="margin-top:8px">
+          <span class="chip">ぬ / ね / め</span><span class="chip">れ / わ</span><span class="chip">る / ろ</span>
+          <span class="chip">は / ほ</span><span class="chip">さ / ち</span>
+        </div>
+      </details>
+    </section>
+
+    <section id="sound" class="searchable">
+      <h2>03｜濁音・半濁音・促音・拗音・長音</h2>
+      <p class="section-sub">這一區是「讀得出來」和「聽得懂」的核心。</p>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>濁音 ゛</h3>
+          <div class="formula jp">か→が　さ→ざ　た→だ　は→ば</div>
+          <p>主要改變子音；母音通常保持不變。</p>
+        </div>
+        <div class="card">
+          <h3>半濁音 ゜</h3>
+          <div class="formula jp">は→ば→ぱ</div>
+          <p>は行加半濁點形成 <span class="jp">ぱ・ぴ・ぷ・ぺ・ぽ</span>。</p>
+        </div>
+      </div>
+
+      <h3>促音「っ」vs 長音</h3>
+      <div class="dense-table-wrap">
+        <table class="dense">
+          <thead><tr><th>項目</th><th>核心</th><th>是否有母音</th><th>是否佔一拍</th><th>例子</th></tr></thead>
+          <tbody>
+            <tr><td><strong>促音 っ</strong></td><td>後續子音「卡住／延長」</td><td>沒有自己的母音</td><td>是</td><td class="jp">きって = き・っ・て</td></tr>
+            <tr><td><strong>長音</strong></td><td>前一個母音延長</td><td>延續前一母音</td><td>是</td><td class="jp">こう = こ・う</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="rule">
+        <strong>記法：</strong>促音＝<b>卡一拍</b>；長音＝<b>拉一拍</b>。<br>
+        <span class="jp">がっこう</span> 同時有促音與長音：<span class="jp">が｜っ｜こ｜う</span>＝4 mora。
+      </div>
+
+      <h3>拗音「ゃ・ゅ・ょ」</h3>
+      <div class="grid auto">
+        <div class="card"><span class="kana">きゃ</span><div>kya・1 拍</div></div>
+        <div class="card"><span class="kana">しゅ</span><div>shu・1 拍</div></div>
+        <div class="card"><span class="kana">ちょ</span><div>cho・1 拍</div></div>
+        <div class="card"><span class="kana">りょ</span><div>ryo・1 拍</div></div>
+      </div>
+      <p class="callout"><span class="jp">きや</span>＝2 拍；<span class="jp">きゃ</span>＝1 拍。看到小字不代表促音，只有小 <span class="jp">っ</span> 才是促音。</p>
+    </section>
+
+    <section id="particles" class="searchable">
+      <h2>04｜助詞核心：の・は・が・を・と</h2>
+      <p class="section-sub">拆歌詞時，助詞就是句子的路標。</p>
+
+      <div class="grid auto">
+        <div class="card"><h3 class="jp">の</h3><p><b>名詞與名詞的關聯</b></p><p class="jp">夜の空</p><p>夜晚的天空</p></div>
+        <div class="card"><h3 class="jp">は</h3><p><b>設定主題</b>，助詞時念 <b>wa</b></p><p class="jp">私は…</p><p>至於我……</p></div>
+        <div class="card"><h3 class="jp">が</h3><p><b>指出主體／焦點</b></p><p class="jp">花が咲く</p><p>花開了</p></div>
+        <div class="card"><h3 class="jp">を</h3><p><b>標記動作直接作用的對象</b>，通常念 <b>o</b></p><p class="jp">花を見る</p><p>看花</p></div>
+        <div class="card"><h3 class="jp">と</h3><p><b>引用／把前面內容打包</b></p><p class="jp">いいと思う</p><p>我覺得很好</p></div>
+      </div>
+
+      <div class="rule">
+        <strong>拆句流程：</strong>先找句尾動詞 → 找助詞 → 找主體／對象 → 判斷省略 → 最後才翻中文。
+      </div>
+    </section>
+
+    <section id="verbs" class="searchable">
+      <h2>05｜動詞與 SOV 語序</h2>
+      <p class="section-sub">日文常把動詞放在句尾，因此先看句尾，是拆長句的高效率方法。</p>
+
+      <div class="formula">S → O → V　／　主語・主題 → 對象 → 動詞</div>
+
+      <div class="grid two" style="margin-top:14px">
+        <div class="card">
+          <h3 class="jp">花を見る。</h3>
+          <p><span class="jp">花</span>＝花／<span class="jp">を</span>＝動作對象／<span class="jp">見る</span>＝看</p>
+          <p><strong>自然中文：</strong>看花。</p>
+        </div>
+        <div class="card">
+          <h3 class="jp">花が咲く。</h3>
+          <p><span class="jp">花</span>＝花／<span class="jp">が</span>＝主體／<span class="jp">咲く</span>＝開花</p>
+          <p><strong>自然中文：</strong>花開了。</p>
+        </div>
+      </div>
+
+      <h3>目前核心動詞</h3>
+      <div class="dense-table-wrap">
+        <table class="dense">
+          <thead><tr><th>辭書形</th><th>讀音</th><th>意思</th><th>提示</th></tr></thead>
+          <tbody>
+            <tr><td class="jp">見る</td><td class="jp">みる</td><td>看</td><td>一段動詞</td></tr>
+            <tr><td class="jp">聞く</td><td class="jp">きく</td><td>聽／問</td><td>依助詞與語境判斷</td></tr>
+            <tr><td class="jp">思う</td><td class="jp">おもう</td><td>想／覺得</td><td class="jp">～と思う</td></tr>
+            <tr><td class="jp">咲く</td><td class="jp">さく</td><td>開花</td><td class="jp">花が咲く</td></tr>
+            <tr><td class="jp">なる</td><td class="jp">なる</td><td>變成</td><td class="jp">優しくなる</td></tr>
+            <tr><td class="jp">できる</td><td class="jp">できる</td><td>能做到</td><td class="jp">できない＝做不到</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="adjectives" class="searchable">
+      <h2>06｜い形容詞 vs な形容詞</h2>
+
+      <div class="grid two">
+        <div class="card">
+          <h3>い形容詞</h3>
+          <div class="formula jp">優しい → 優しくなる</div>
+          <p>修飾名詞可直接放前面：<span class="jp">優しい人</span>。</p>
+          <p>接 <span class="jp">なる</span> 時：<strong>い → く</strong>。</p>
+        </div>
+        <div class="card">
+          <h3>な形容詞</h3>
+          <div class="formula jp">静か → 静かになる</div>
+          <p>修飾名詞：<span class="jp">静かな夜</span>。</p>
+          <p>接 <span class="jp">なる</span> 時：<strong>＋に</strong>。</p>
+        </div>
+      </div>
+
+      <div class="callout warning" style="margin-top:14px">
+        <strong>陷阱：</strong><span class="jp">きれい</span> 雖然字面最後有「い」，但屬於な形容詞。例：<span class="jp">きれいな花</span>。
+      </div>
+
+      <h3>否定</h3>
+      <div class="dense-table-wrap">
+        <table class="dense">
+          <thead><tr><th>類型</th><th>基本形</th><th>否定</th><th>意思</th></tr></thead>
+          <tbody>
+            <tr><td>い形容詞</td><td class="jp">優しい</td><td class="jp">優しくない</td><td>不溫柔</td></tr>
+            <tr><td>な形容詞</td><td class="jp">静か</td><td class="jp">静かじゃない</td><td>不安靜</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="nai" class="searchable">
+      <h2>07｜五段動詞的「ない形」</h2>
+      <p class="section-sub">這是目前最需要精準掌握的規則之一。</p>
+
+      <div class="rule">
+        <strong>五段動詞：</strong>辭書形最後的「う段假名」→ 保持同一行 → 移到「あ段假名」→ 加 <span class="jp">ない</span>。<br>
+        <strong>特例：</strong><span class="jp">う → わ</span>。
+      </div>
+
+      <div class="dense-table-wrap">
+        <table class="dense">
+          <thead><tr><th>語尾</th><th>同一行的あ段</th><th>例字</th><th>ない形</th></tr></thead>
+          <tbody>
+            <tr><td class="jp">う</td><td class="jp">わ</td><td class="jp">買う</td><td class="jp">買わない</td></tr>
+            <tr><td class="jp">く</td><td class="jp">か</td><td class="jp">書く</td><td class="jp">書かない</td></tr>
+            <tr><td class="jp">ぐ</td><td class="jp">が</td><td class="jp">泳ぐ</td><td class="jp">泳がない</td></tr>
+            <tr><td class="jp">す</td><td class="jp">さ</td><td class="jp">話す</td><td class="jp">話さない</td></tr>
+            <tr><td class="jp">つ</td><td class="jp">た</td><td class="jp">待つ</td><td class="jp">待たない</td></tr>
+            <tr><td class="jp">ぬ</td><td class="jp">な</td><td class="jp">死ぬ</td><td class="jp">死なない</td></tr>
+            <tr><td class="jp">ぶ</td><td class="jp">ば</td><td class="jp">遊ぶ</td><td class="jp">遊ばない</td></tr>
+            <tr><td class="jp">む</td><td class="jp">ま</td><td class="jp">読む</td><td class="jp">読まない</td></tr>
+            <tr><td class="jp">る</td><td class="jp">ら</td><td class="jp">取る</td><td class="jp">取らない</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>為什麼叫「五段動詞」？</h3>
+      <div class="formula jp">書かない → 書きます → 書く → 書ける → 書こう</div>
+      <p>同一個語尾會跨過 <strong>あ・い・う・え・お 五段</strong>變化，因此稱「五段動詞」。</p>
+
+      <div class="grid two">
+        <div class="callout danger">
+          <strong>不能套用到一段動詞：</strong><br>
+          <span class="jp">見る → 見ない</span><br>
+          <span class="jp">食べる → 食べない</span>
+        </div>
+        <div class="callout warning">
+          <strong>不規則：</strong><br>
+          <span class="jp">する → しない</span><br>
+          <span class="jp">来る（くる）→ 来ない（こない）</span><br>
+          <span class="jp">ある → ない</span>
+        </div>
+      </div>
+
+      <details>
+        <summary>逆推原形技巧</summary>
+        <p>看到 <span class="jp">聞かない</span>：先切 <span class="jp">聞か＋ない</span> → 「か」是か行・あ段 → 同一行的う段是「く」→ 原形 <span class="jp">聞く</span>。</p>
+      </details>
+    </section>
+
+    <section id="aimyon" class="searchable">
+      <h2>08｜Aimyon《愛の花》短句拆解</h2>
+      <p class="section-sub">只使用目前已在課程中指定學習的短句，不收錄完整歌詞。</p>
+
+      <div class="lyric">
+        <span class="token">心</span><span class="token t-topic">は</span><span class="token t-adj">優しく</span><span class="token t-verb">なれた</span><span class="token t-tone">かな</span>
+        <button class="speak" type="button" data-speak="心は優しくなれたかな" title="播放日文">🔊</button>
+      </div>
+
+      <div class="grid auto" style="margin-top:14px">
+        <div class="card"><h3 class="jp">心（こころ）</h3><p>內心、心境。</p></div>
+        <div class="card"><h3 class="jp">は</h3><p>主題助詞，念 <b>wa</b>。「至於這顆心……」</p></div>
+        <div class="card"><h3 class="jp">優しく</h3><p><span class="jp">優しい</span> 的連用形：<span class="jp">い→く</span>。</p></div>
+        <div class="card"><h3 class="jp">なれた</h3><p><span class="jp">なる→なれる→なれた</span>：能夠變成了。</p></div>
+        <div class="card"><h3 class="jp">かな</h3><p>自問、自我反思語氣：「不知道是不是呢……」</p></div>
+      </div>
+
+      <div class="rule">
+        <strong>變形鏈：</strong>
+        <span class="jp">優しい → 優しく → 優しくなる → 優しくなれる → 優しくなれた</span>
+      </div>
+
+      <div class="callout good">
+        <strong>自然理解：</strong>「不知道我的心，是不是已經變得更溫柔了呢？」<br>
+        <span class="small">重點不是硬翻每一個字，而是看「心は」設定主題、「優しく」指出狀態、「なれた」帶可能／達成感、「かな」形成自問。</span>
+      </div>
+
+      <h3>Aimyon 歌詞拆解固定流程</h3>
+      <ol>
+        <li>先讀假名與切 mora。</li>
+        <li>先找句尾：動詞／形容詞／語氣詞。</li>
+        <li>標出助詞：は・が・を・の・と。</li>
+        <li>找主體與動作對象。</li>
+        <li>判斷省略的「我／你／它」。</li>
+        <li>把變形還原成基本形。</li>
+        <li>先直譯日文骨架，再做自然中文。</li>
+      </ol>
+    </section>
+
+    <section id="flashcards" class="searchable">
+      <h2>09｜快速字卡</h2>
+      <p class="section-sub">點卡片顯示中文。建議先讀日文，再揭曉。</p>
+      <div class="flashcards">
+        <button class="flash"><span class="front">こころ</span><span class="back">心、內心</span></button>
+        <button class="flash"><span class="front">やさしい</span><span class="back">溫柔的</span></button>
+        <button class="flash"><span class="front">ゆめ</span><span class="back">夢</span></button>
+        <button class="flash"><span class="front">よる</span><span class="back">夜晚</span></button>
+        <button class="flash"><span class="front">そら</span><span class="back">天空</span></button>
+        <button class="flash"><span class="front">かぜ</span><span class="back">風</span></button>
+        <button class="flash"><span class="front">みず</span><span class="back">水</span></button>
+        <button class="flash"><span class="front">きょう</span><span class="back">今天</span></button>
+        <button class="flash"><span class="front">りょこう</span><span class="back">旅行</span></button>
+        <button class="flash"><span class="front">しゃしん</span><span class="back">照片</span></button>
+        <button class="flash"><span class="front">わからない</span><span class="back">不知道、不明白</span></button>
+        <button class="flash"><span class="front">おもう</span><span class="back">想、覺得</span></button>
+      </div>
+    </section>
+
+    <section id="quiz" class="searchable">
+      <h2>10｜綜合測驗</h2>
+      <p class="section-sub">答完後按「檢查答案」。結果不會上傳。</p>
+
+      <form id="quizForm">
+        <div class="quiz-item">
+          <strong>1. <span class="jp">書く</span> 的ない形是？</strong>
+          <div class="quiz-options">
+            <label><input type="radio" name="q1" value="a"> 書くない</label>
+            <label><input type="radio" name="q1" value="b"> 書かない</label>
+            <label><input type="radio" name="q1" value="c"> 書きない</label>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <strong>2. <span class="jp">がっこう</span> 有幾拍？</strong>
+          <div class="quiz-options">
+            <label><input type="radio" name="q2" value="a"> 3</label>
+            <label><input type="radio" name="q2" value="b"> 4</label>
+            <label><input type="radio" name="q2" value="c"> 5</label>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <strong>3. 助詞 <span class="jp">は</span> 最核心的功能是？</strong>
+          <div class="quiz-options">
+            <label><input type="radio" name="q3" value="a"> 設定主題</label>
+            <label><input type="radio" name="q3" value="b"> 動作對象</label>
+            <label><input type="radio" name="q3" value="c"> 表示所有</label>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <strong>4. <span class="jp">優しい → 優しくなる</span> 的核心規則是？</strong>
+          <div class="quiz-options">
+            <label><input type="radio" name="q4" value="a"> い→く＋なる</label>
+            <label><input type="radio" name="q4" value="b"> い→な＋なる</label>
+            <label><input type="radio" name="q4" value="c"> 直接＋なる</label>
+          </div>
+        </div>
+
+        <div class="quiz-item">
+          <strong>5. <span class="jp">きゃ</span> 有幾拍？</strong>
+          <div class="quiz-options">
+            <label><input type="radio" name="q5" value="a"> 1</label>
+            <label><input type="radio" name="q5" value="b"> 2</label>
+            <label><input type="radio" name="q5" value="c"> 3</label>
+          </div>
+        </div>
+
+        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">
+          <button class="btn primary" type="submit">檢查答案</button>
+          <button class="btn" type="reset" id="resetQuiz">清除</button>
+        </div>
+        <div class="result" id="quizResult" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <div class="footer">
+      <p><strong>使用方式：</strong>將此檔案命名為 <code>index.html</code> 放入 GitHub repository，啟用 GitHub Pages 後即可直接作為自學網站使用。</p>
+      <p>本頁不載入第三方 JS/CSS；學習進度只使用瀏覽器 localStorage 儲存於本機。日文發音採瀏覽器 SpeechSynthesis，可用性依作業系統與瀏覽器提供的日語語音而定。</p>
+    </div>
+  </main>
+</div>
+
+<script>
+(() => {
+  const $ = (s, root=document) => root.querySelector(s);
+  const $$ = (s, root=document) => [...root.querySelectorAll(s)];
+
+  // Theme
+  const root = document.documentElement;
+  const savedTheme = localStorage.getItem('jpStudyTheme');
+  if (savedTheme) root.dataset.theme = savedTheme;
+  $('#themeBtn').addEventListener('click', () => {
+    const current = root.dataset.theme || (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    const next = current === 'dark' ? 'light' : 'dark';
+    root.dataset.theme = next;
+    localStorage.setItem('jpStudyTheme', next);
+  });
+
+  // Lesson progress
+  const lessonChecks = $$('[data-lesson]');
+  const savedProgress = JSON.parse(localStorage.getItem('jpStudyProgress') || '{}');
+
+  lessonChecks.forEach(cb => {
+    cb.checked = !!savedProgress[cb.dataset.lesson];
+    cb.addEventListener('change', () => {
+      savedProgress[cb.dataset.lesson] = cb.checked;
+      localStorage.setItem('jpStudyProgress', JSON.stringify(savedProgress));
+      updateProgress();
+    });
+  });
+
+  function updateProgress(){
+    const count = lessonChecks.filter(x => x.checked).length;
+    $('#progressBar').value = count;
+    $('#progressText').textContent = `${count} / ${lessonChecks.length} 已完成`;
+  }
+  updateProgress();
+
+  // Search
+  const searchInput = $('#searchInput');
+  const sections = $$('main section.searchable');
+  searchInput.addEventListener('input', () => {
+    const q = searchInput.value.trim().toLocaleLowerCase('zh-Hant-TW');
+    sections.forEach(sec => {
+      sec.hidden = q && !sec.innerText.toLocaleLowerCase('zh-Hant-TW').includes(q);
+    });
+  });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === '/' && document.activeElement !== searchInput && !/input|textarea/i.test(document.activeElement.tagName)) {
+      e.preventDefault();
+      searchInput.focus();
+    }
+    if (e.key === 'Escape') {
+      searchInput.value = '';
+      searchInput.dispatchEvent(new Event('input'));
+      searchInput.blur();
+    }
+  });
+
+  // Details expand/collapse
+  let expanded = false;
+  $('#expandBtn').addEventListener('click', () => {
+    expanded = !expanded;
+    $$('details').forEach(d => d.open = expanded);
+    $('#expandBtn').textContent = expanded ? '收合全部' : '展開全部';
+  });
+
+  // Flashcards
+  $$('.flash').forEach(card => {
+    card.addEventListener('click', () => card.classList.toggle('revealed'));
+  });
+
+  // Japanese speech
+  $$('[data-speak]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (!('speechSynthesis' in window)) return;
+      speechSynthesis.cancel();
+      const u = new SpeechSynthesisUtterance(btn.dataset.speak);
+      u.lang = 'ja-JP';
+      u.rate = 0.85;
+      const voices = speechSynthesis.getVoices();
+      const jaVoice = voices.find(v => /^ja(-|_)/i.test(v.lang));
+      if (jaVoice) u.voice = jaVoice;
+      speechSynthesis.speak(u);
+    });
+  });
+
+  // Quiz
+  $('#quizForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const ans = {q1:'b',q2:'b',q3:'a',q4:'a',q5:'a'};
+    const fd = new FormData(e.currentTarget);
+    let score = 0;
+    Object.entries(ans).forEach(([k,v]) => { if (fd.get(k) === v) score++; });
+    const out = $('#quizResult');
+    out.textContent = `答對 ${score} / ${Object.keys(ans).length} 題。`;
+    out.className = 'result ' + (score === Object.keys(ans).length ? 'ok' : 'no');
+  });
+
+  $('#resetQuiz').addEventListener('click', () => {
+    $('#quizResult').textContent = '';
+    $('#quizResult').className = 'result';
+  });
+
+  // Progressive voice refresh for browsers that load voices async
+  if ('speechSynthesis' in window) speechSynthesis.onvoiceschanged = () => {};
+})();
+</script>
+</body>
+</html>
