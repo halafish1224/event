@@ -1,80 +1,1493 @@
-<!doctype html>
-<html lang="zh-Hant">
+<!DOCTYPE html>
+<html lang="zh-TW">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>五十音五段十行記憶課</title>
-  <meta name="description" content="用五段十行整理日文五十音記憶法、發音規則與課程編排，協助初學者建立識字與發音能力。">
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <meta property="og:title" content="五十音五段十行記憶課">
-  <meta property="og:description" content="用五段十行整理日文五十音記憶法、發音規則與課程編排，協助初學者建立識字與發音能力。">
-  <meta property="og:type" content="website">
-  <meta property="og:locale" content="zh_TW">
-  <meta property="og:image" content="http://event.itigre.com/jp50/og.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <style>
-    :root{--ink:#102033;--muted:#5d6878;--paper:#fff;--wash:#f3f7fb;--line:#dce4ee;--indigo:#20315f;--coral:#ee6352;--teal:#087f8c;--gold:#f4b23f;--leaf:#2d7d62;--shadow:0 18px 48px rgba(16,32,51,.12)}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--wash);color:var(--ink);font-family:Inter,"Noto Sans TC","Noto Sans JP","Microsoft JhengHei",system-ui,sans-serif}a{color:inherit;text-decoration:none}main{overflow:clip}
-    .hero{position:relative;min-height:540px;height:72svh;max-height:680px;display:flex;align-items:flex-end;padding:clamp(96px,12vw,140px) clamp(20px,6vw,96px) clamp(40px,7vw,72px);background-image:url("og.png");background-size:cover;background-position:center;isolation:isolate}.hero:before{content:"";position:absolute;inset:0;background:rgba(8,16,34,.5);z-index:-1}.hero-content{max-width:720px;color:white;text-shadow:0 2px 18px rgba(0,0,0,.34)}
-    .eyebrow,.section-kicker{margin:0 0 12px;color:var(--coral);font-size:.78rem;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.hero .eyebrow{color:#ffe59e}h1,h2,h3,p{margin-top:0}h1{max-width:10ch;margin-bottom:18px;font-size:clamp(3rem,8vw,6.8rem);line-height:.96;letter-spacing:0}.hero-copy{max-width:680px;margin-bottom:28px;font-size:clamp(1.05rem,2.1vw,1.35rem);line-height:1.8;color:rgba(255,255,255,.92)}
-    .hero-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;max-width:560px}.hero-metrics div{min-height:92px;padding:14px 16px;border:1px solid rgba(255,255,255,.32);border-radius:8px;background:rgba(7,18,36,.46);backdrop-filter:blur(7px)}.hero-metrics strong{display:block;color:#ffe59e;font-size:2.35rem;line-height:1}.hero-metrics span{display:block;margin-top:8px;color:rgba(255,255,255,.9);font-size:.92rem;line-height:1.35}
-    .quick-nav{position:sticky;top:0;z-index:5;display:flex;gap:8px;overflow-x:auto;padding:12px clamp(16px,5vw,72px);background:rgba(255,255,255,.94);border-bottom:1px solid var(--line);box-shadow:0 10px 28px rgba(16,32,51,.08);backdrop-filter:blur(12px)}.quick-nav a{flex:0 0 auto;padding:10px 14px;border:1px solid var(--line);border-radius:8px;background:var(--paper);color:var(--indigo);font-weight:750;font-size:.92rem}.quick-nav a:focus-visible,.source-grid a:focus-visible,.unit-card summary:focus-visible{outline:3px solid rgba(238,99,82,.34);outline-offset:3px}
-    .section-inner{width:min(1180px,calc(100% - 32px));margin:0 auto}.intro-band{background:var(--paper);border-bottom:1px solid var(--line)}.intro-grid{display:grid;grid-template-columns:minmax(220px,.8fr) minmax(0,1.2fr);gap:clamp(24px,5vw,80px);padding:clamp(48px,8vw,92px) 0;align-items:center}.intro-grid h2,.section-heading h2,.application-band h2{margin-bottom:16px;font-size:clamp(2rem,5vw,4.1rem);line-height:1.06;letter-spacing:0}.intro-grid p,.section-heading p,.application-band p{color:var(--muted);font-size:1.04rem;line-height:1.9}
-    .chart-section,.pronunciation-section,.course-section,.rhythm-section{padding:clamp(56px,9vw,110px) 0}.section-heading{max-width:760px;margin-bottom:32px}.compact-heading{margin-bottom:20px}.vowel-strip{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-bottom:16px}.vowel-strip div{min-height:124px;padding:16px;border-radius:8px;border:1px solid var(--line);background:var(--paper);box-shadow:0 10px 26px rgba(16,32,51,.06)}.vowel-strip strong,.vowel-strip span,.vowel-strip small{display:block}.vowel-strip strong{color:var(--indigo);font-size:.94rem}.vowel-strip span{margin:10px 0 8px;color:var(--coral);font-size:2.4rem;font-weight:900;line-height:1}.vowel-strip small{color:var(--muted);line-height:1.5}
-    .chart-section{overflow-x:auto}.kana-board{min-width:980px;border:1px solid var(--line);border-radius:8px;background:var(--paper);box-shadow:var(--shadow);overflow:hidden}.board-head,.board-row,.special-row{display:grid;grid-template-columns:190px repeat(5,minmax(130px,1fr))}.board-head{background:var(--indigo);color:white}.board-head span{padding:14px 12px;border-right:1px solid rgba(255,255,255,.18);font-weight:800;text-align:center}.board-row,.special-row{border-top:1px solid var(--line)}.row-label{min-height:150px;padding:16px;border-right:1px solid var(--line);background:#f8fafc}.row-label strong,.row-label span,.row-label small{display:block}.row-label strong{color:var(--indigo);font-size:1.18rem}.row-label span{margin:8px 0;color:var(--teal);font-weight:800}.row-label small{color:var(--muted);line-height:1.55}
-    .kana-cell{min-height:150px;display:flex;flex-direction:column;justify-content:space-between;gap:10px;padding:14px;border-right:1px solid var(--line);background:white}.kana-cell:nth-child(3n){background:#fbf8ef}.kana-pair{display:flex;align-items:baseline;gap:12px}.kana-pair span:first-child{color:var(--ink);font-family:"Yu Mincho","Hiragino Mincho ProN","Noto Serif JP",serif;font-size:clamp(2.3rem,4vw,3.5rem);font-weight:800;line-height:1}.kana-pair span:last-child{color:var(--teal);font-family:"Yu Gothic","Noto Sans JP",sans-serif;font-size:1.22rem;font-weight:800}.kana-cell strong{color:var(--coral);font-size:1.02rem;text-transform:uppercase}.kana-cell small{min-height:42px;color:var(--muted);line-height:1.5}.kana-empty{align-items:center;justify-content:center;color:#a7b0bd;background:repeating-linear-gradient(135deg,#f6f8fb,#f6f8fb 8px,#eef2f7 8px,#eef2f7 16px)}.special-row{grid-template-columns:190px minmax(130px,1fr)}.special-cell{max-width:260px;background:#eff8f7}
-    .method-band,.source-band{padding:clamp(56px,9vw,108px) 0;background:var(--ink);color:white}.light-heading p,.method-card p,.method-card strong{color:rgba(255,255,255,.76)}.method-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.method-card{min-height:310px;display:flex;flex-direction:column;padding:20px;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(255,255,255,.07)}.method-card span{width:fit-content;margin-bottom:18px;padding:6px 8px;border-radius:6px;background:rgba(246,183,60,.18);color:#ffe39d;font-size:.78rem;font-weight:800}.method-card h3,.rule-card h3{margin-bottom:12px;font-size:1.25rem;line-height:1.3}.method-card p{line-height:1.75}.method-card strong{display:block;margin-top:auto;padding-top:18px;color:white;font-size:.95rem;line-height:1.6}
-    .rule-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}.rule-card{min-height:260px;padding:20px;border:1px solid var(--line);border-top:5px solid var(--teal);border-radius:8px;background:var(--paper);box-shadow:0 12px 30px rgba(16,32,51,.08)}.rule-card:nth-child(2){border-top-color:var(--coral)}.rule-card:nth-child(3){border-top-color:var(--gold)}.rule-card:nth-child(4){border-top-color:var(--indigo)}.rule-card:nth-child(5){border-top-color:var(--leaf)}.rule-card p{color:var(--muted);line-height:1.75}.rule-card small{display:block;margin-top:16px;color:var(--ink);font-weight:750;line-height:1.6}
-    .application-band{padding:clamp(56px,8vw,98px) 0;background:#fff7e5;border-block:1px solid #ecd9ad}.app-grid{display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(28px,6vw,88px);align-items:start}.application-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.application-list div{min-height:116px;padding:18px;border:1px solid #e7c878;border-radius:8px;background:white;color:var(--ink);font-weight:750;line-height:1.7}.course-list{display:grid;gap:12px}.unit-card{border:1px solid var(--line);border-radius:8px;background:var(--paper);box-shadow:0 12px 28px rgba(16,32,51,.06);overflow:hidden}.unit-card summary{display:grid;grid-template-columns:minmax(220px,.55fr) minmax(0,1fr);gap:18px;align-items:center;padding:18px 20px;cursor:pointer;list-style:none}.unit-card summary::-webkit-details-marker{display:none}.unit-card summary span{color:var(--indigo);font-size:1.1rem;font-weight:850}.unit-card summary small{color:var(--muted);line-height:1.55}.unit-card ul{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:0;padding:0 20px 20px;list-style:none}.unit-card li{min-height:68px;display:flex;align-items:center;padding:12px;border-radius:8px;background:#edf6f5;color:var(--teal);font-weight:800;line-height:1.45}
-    .rhythm-table{border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--paper);box-shadow:var(--shadow)}.rhythm-row{display:grid;grid-template-columns:110px 190px minmax(0,1fr);min-height:78px;border-top:1px solid var(--line)}.rhythm-row:first-child{border-top:0}.rhythm-row strong,.rhythm-row span,.rhythm-row p{margin:0;display:flex;align-items:center;padding:16px;line-height:1.6}.rhythm-row strong{background:var(--indigo);color:white;font-size:.98rem}.rhythm-row span{color:var(--coral);font-weight:850}.rhythm-row p{color:var(--muted)}.source-band{background:#0f1724}.source-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.source-grid a{min-height:152px;display:flex;flex-direction:column;gap:14px;padding:18px;border:1px solid rgba(255,255,255,.14);border-radius:8px;background:rgba(255,255,255,.06)}.source-grid strong{color:#ffe39d;line-height:1.4}.source-grid span{color:rgba(255,255,255,.74);line-height:1.7}
-    @media(max-width:1080px){.method-grid,.rule-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.source-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}@media(max-width:760px){.hero{min-height:520px;height:74svh;padding:92px 18px 34px;background-position:58% center}h1{max-width:9ch;font-size:clamp(2.65rem,14vw,4.8rem)}.hero-copy{font-size:1rem}.hero-metrics{grid-template-columns:repeat(3,minmax(82px,1fr))}.hero-metrics div{min-height:82px;padding:12px}.hero-metrics strong{font-size:1.85rem}.hero-metrics span{font-size:.78rem}.intro-grid,.app-grid{grid-template-columns:1fr}.vowel-strip,.application-list,.method-grid,.rule-grid,.source-grid{grid-template-columns:1fr}.vowel-strip div,.method-card,.rule-card,.source-grid a{min-height:auto}.unit-card summary{grid-template-columns:1fr;gap:8px}.unit-card ul{grid-template-columns:1fr}.rhythm-row{grid-template-columns:88px minmax(104px,.42fr) minmax(0,1fr)}.rhythm-row strong,.rhythm-row span,.rhythm-row p{padding:12px;font-size:.9rem}}@media(max-width:520px){.section-inner{width:min(100% - 24px,1180px)}.quick-nav{padding-inline:12px}.intro-grid h2,.section-heading h2,.application-band h2{font-size:clamp(1.85rem,11vw,3rem)}.rhythm-row{grid-template-columns:1fr}.rhythm-row strong,.rhythm-row span,.rhythm-row p{min-height:52px}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- 搜尋引擎防收錄：依照用戶要求，不被搜尋引擎檢索 -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>日語初學語法藍圖 & 個人化記憶秘笈</title>
+    <!-- 引入日文字體與中文字體 -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kiwi+Maru:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Serif+JP:wght@400;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --bg-color: #FDFBF7;
+            --card-bg: #FFFFFF;
+            --text-main: #2D3748;
+            --text-muted: #718096;
+            --accent-red: #D25D5D;
+            --accent-green: #4A7C59;
+            --accent-blue: #3182CE;
+            --accent-orange: #DD6B20;
+            --border-color: #E2E8F0;
+            --shadow-color: rgba(160, 174, 192, 0.15);
+            --badge-bg: #EDF2F7;
+            --chef-color-1: #FFF5F5;
+            --chef-border-1: #FEB2B2;
+            --chef-text-1: #9B2C2C;
+            --chef-color-2: #F0FFF4;
+            --chef-border-2: #9AE6B4;
+            --chef-text-2: #22543D;
+            --chef-color-3: #EBF8FF;
+            --chef-border-3: #90CDF4;
+            --chef-text-3: #2B6CB0;
+        }
+
+        [data-theme="dark"] {
+            --bg-color: #1A202C;
+            --card-bg: #2D3748;
+            --text-main: #EDF2F7;
+            --text-muted: #A0AEC0;
+            --accent-red: #FC8181;
+            --accent-green: #68D391;
+            --accent-blue: #63B3ED;
+            --accent-orange: #F6AD55;
+            --border-color: #4A5568;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --badge-bg: #4A5568;
+            --chef-color-1: #742A2A;
+            --chef-border-1: #9B2C2C;
+            --chef-text-1: #FED7D7;
+            --chef-color-2: #22543D;
+            --chef-border-2: #2F855A;
+            --chef-text-2: #C6F6D5;
+            --chef-color-3: #2B6CB0;
+            --chef-border-3: #2B6CB0;
+            --chef-text-3: #EBF8FF;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: 'Noto Sans TC', 'Kiwi Maru', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* 頂部導航欄 */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background-color: var(--card-bg);
+            border-bottom: 2px solid var(--accent-red);
+            box-shadow: 0 2px 10px var(--shadow-color);
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .header-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .header-title h1 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .header-subtitle {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+        }
+
+        /* 主題切換與控制鍵 */
+        .controls {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .theme-btn {
+            background: none;
+            border: 1px solid var(--border-color);
+            padding: 6px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            color: var(--text-main);
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .theme-btn:hover {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        /* 行動端標籤選單 (Tabs) */
+        .tab-bar {
+            display: flex;
+            overflow-x: auto;
+            white-space: nowrap;
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 54px;
+            z-index: 99;
+            scrollbar-width: none; /* Firefox */
+        }
+
+        .tab-bar::-webkit-scrollbar {
+            display: none; /* Safari and Chrome */
+        }
+
+        .tab-item {
+            flex: 0 0 auto;
+            padding: 12px 18px;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-muted);
+            border-bottom: 3px solid transparent;
+            cursor: pointer;
+        }
+
+        .tab-item.active {
+            color: var(--accent-red);
+            border-bottom-color: var(--accent-red);
+            font-weight: 700;
+        }
+
+        /* 內容容器 */
+        main {
+            max-width: 800px;
+            margin: 15px auto;
+            padding: 0 15px;
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(8px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 卡片設計 */
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 18px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 12px var(--shadow-color);
+            border-left: 4px solid var(--accent-blue);
+        }
+
+        .card.red-border { border-left-color: var(--accent-red); }
+        .card.green-border { border-left-color: var(--accent-green); }
+        .card.orange-border { border-left-color: var(--accent-orange); }
+
+        .card-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: var(--text-main);
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* 標籤/徽章 */
+        .badge {
+            background-color: var(--badge-bg);
+            color: var(--text-main);
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 500;
+            display: inline-block;
+        }
+
+        .badge.red { background-color: rgba(210, 93, 93, 0.15); color: var(--accent-red); }
+        .badge.green { background-color: rgba(74, 124, 89, 0.15); color: var(--accent-green); }
+        .badge.blue { background-color: rgba(49, 130, 206, 0.15); color: var(--accent-blue); }
+
+        /* 日本美學點綴：記憶口訣 */
+        .mnemonic-box {
+            background-color: rgba(210, 93, 93, 0.05);
+            border: 1px dashed var(--accent-red);
+            border-radius: 8px;
+            padding: 12px;
+            margin: 10px 0;
+            position: relative;
+        }
+
+        .mnemonic-title {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .mnemonic-text {
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--text-main);
+            font-style: italic;
+        }
+
+        /* 表格響應式 */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin: 12px 0;
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.9rem;
+        }
+
+        th {
+            background-color: var(--badge-bg);
+            color: var(--text-main);
+            font-weight: 700;
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        /* 五五十音對比字樣 */
+        .kana-contrast {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .contrast-item {
+            flex: 1 1 calc(50% - 10px);
+            background: var(--bg-color);
+            padding: 12px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 2px 4px var(--shadow-color);
+        }
+
+        .contrast-kana {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Kiwi Maru', serif;
+            color: var(--accent-red);
+            margin-bottom: 5px;
+        }
+
+        .contrast-romaji {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 5px;
+        }
+
+        .contrast-desc {
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        /* 三大主廚廚房角色設計 */
+        .chef-kitchen {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .chef-card {
+            border-radius: 12px;
+            border: 2px solid var(--border-color);
+            overflow: hidden;
+            box-shadow: 0 4px 10px var(--shadow-color);
+        }
+
+        .chef-card.chef-1 { border-color: var(--chef-border-1); }
+        .chef-card.chef-2 { border-color: var(--chef-border-2); }
+        .chef-card.chef-3 { border-color: var(--chef-border-3); }
+
+        .chef-header {
+            padding: 10px 15px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        .chef-1 .chef-header { background-color: var(--chef-color-1); color: var(--chef-text-1); }
+        .chef-2 .chef-header { background-color: var(--chef-color-2); color: var(--chef-text-2); }
+        .chef-3 .chef-header { background-color: var(--chef-color-3); color: var(--chef-text-3); }
+
+        .chef-body {
+            padding: 15px;
+            background-color: var(--card-bg);
+        }
+
+        .chef-task {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 8px;
+        }
+
+        .chef-formula {
+            font-family: monospace;
+            background: var(--bg-color);
+            padding: 8px 12px;
+            border-radius: 6px;
+            margin-bottom: 10px;
+            font-weight: 700;
+            display: inline-block;
+        }
+
+        .chef-example {
+            margin-top: 10px;
+            background: var(--bg-color);
+            padding: 10px;
+            border-radius: 6px;
+            border-left: 3px solid var(--border-color);
+        }
+
+        .chef-1 .chef-example { border-left-color: var(--accent-red); }
+        .chef-2 .chef-example { border-left-color: var(--accent-green); }
+        .chef-3 .chef-example { border-left-color: var(--accent-blue); }
+
+        /* 六步驟解構互動器 */
+        .interactive-deconstruct {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 18px;
+            border: 2px solid var(--accent-orange);
+            margin-top: 20px;
+        }
+
+        .deconstruct-steps {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+        }
+
+        .step-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 10px;
+            border-radius: 8px;
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .step-item.completed {
+            border-color: var(--accent-green);
+            background-color: rgba(74, 124, 89, 0.05);
+        }
+
+        .step-num {
+            background-color: var(--text-muted);
+            color: #FFF;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.8rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-item.completed .step-num {
+            background-color: var(--accent-green);
+        }
+
+        .step-content {
+            font-size: 0.9rem;
+        }
+
+        .step-title {
+            font-weight: 700;
+            margin-bottom: 2px;
+        }
+
+        .step-tip {
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* 兩段式否定動態展示器 */
+        .negation-calculator {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 18px;
+            border: 2px solid var(--accent-blue);
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .calc-select {
+            padding: 8px 16px;
+            border-radius: 8px;
+            border: 1.5px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            width: 100%;
+            max-width: 250px;
+            outline: none;
+        }
+
+        .calc-select:focus {
+            border-color: var(--accent-blue);
+        }
+
+        .calc-flow {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .calc-node {
+            background-color: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 10px 15px;
+            min-width: 100px;
+            box-shadow: 0 2px 5px var(--shadow-color);
+        }
+
+        .calc-node.highlight {
+            border-color: var(--accent-red);
+            background-color: rgba(210, 93, 93, 0.05);
+        }
+
+        .calc-node.active {
+            border-color: var(--accent-blue);
+            background-color: rgba(49, 130, 206, 0.05);
+        }
+
+        .calc-arrow {
+            font-size: 1.5rem;
+            color: var(--accent-blue);
+        }
+
+        .node-kana {
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Kiwi Maru', serif;
+        }
+
+        .node-label {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            margin-top: 4px;
+        }
+
+        /* 互動式單字閃卡 (Flashcards) */
+        .flashcard-container {
+            display: flex;
+            justify-content: center;
+            margin: 20px 0;
+            perspective: 1000px;
+        }
+
+        .flashcard {
+            width: 100%;
+            max-width: 320px;
+            height: 200px;
+            cursor: pointer;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            position: relative;
+        }
+
+        .flashcard.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+            border: 2px solid var(--border-color);
+        }
+
+        .card-front {
+            background-color: var(--card-bg);
+            border-top: 5px solid var(--accent-red);
+        }
+
+        .card-back {
+            background-color: var(--card-bg);
+            border-top: 5px solid var(--accent-green);
+            transform: rotateY(180deg);
+        }
+
+        .card-prompt {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
+
+        .card-main-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Kiwi Maru', serif;
+            color: var(--text-main);
+        }
+
+        .card-explanation {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-top: 8px;
+            font-weight: 500;
+        }
+
+        .flashcard-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 20px;
+            border: 1px solid var(--border-color);
+            background-color: var(--card-bg);
+            color: var(--text-main);
+            font-size: 0.9rem;
+            cursor: pointer;
+            font-weight: 500;
+            outline: none;
+        }
+
+        .btn:hover {
+            border-color: var(--accent-red);
+            color: var(--accent-red);
+        }
+
+        /* 詩意例句解析 */
+        .poetic-analysis {
+            background: linear-gradient(135deg, rgba(210, 93, 93, 0.05), rgba(74, 124, 89, 0.05));
+            border-radius: 12px;
+            padding: 20px;
+            border-left: 5px solid var(--accent-red);
+            margin: 20px 0;
+        }
+
+        .poetic-sentence {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--accent-red);
+            font-family: 'Kiwi Maru', serif;
+            text-align: center;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .poetic-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .breakdown-row {
+            display: flex;
+            gap: 10px;
+            border-bottom: 1px dashed var(--border-color);
+            padding-bottom: 6px;
+        }
+
+        .breakdown-row:last-child {
+            border-bottom: none;
+        }
+
+        .breakdown-key {
+            font-weight: 700;
+            color: var(--accent-blue);
+            min-width: 90px;
+            flex-shrink: 0;
+        }
+
+        .breakdown-val {
+            color: var(--text-main);
+        }
+
+        /* 底部固定回到頂部與章節切換按鈕 */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 50px;
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            z-index: 98;
+            box-shadow: 0 -2px 10px var(--shadow-color);
+        }
+
+        .bottom-nav-item {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 2px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .bottom-nav-item.active {
+            color: var(--accent-red);
+        }
+
+        .bottom-nav-item svg {
+            width: 20px;
+            height: 20px;
+            fill: currentColor;
+        }
+
+        /* 五十音特殊速記卡 */
+        .grid-50 {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 6px;
+            margin: 15px 0;
+        }
+
+        .grid-50-cell {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 8px 4px;
+            text-align: center;
+            box-shadow: 0 1px 3px var(--shadow-color);
+        }
+
+        .grid-kana-main {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
+            font-family: 'Kiwi Maru', serif;
+        }
+
+        .grid-romaji {
+            font-size: 0.7rem;
+            color: var(--text-muted);
+        }
+
+        .special-note {
+            background-color: rgba(221, 107, 32, 0.08);
+            border: 1px solid var(--accent-orange);
+            border-radius: 8px;
+            padding: 10px;
+            font-size: 0.85rem;
+            margin-top: 8px;
+        }
+
+        /* 自適應手機版微調 */
+        @media (max-width: 480px) {
+            .tab-item {
+                padding: 10px 12px;
+                font-size: 0.85rem;
+            }
+            .card {
+                padding: 15px;
+            }
+            .poetic-sentence {
+                font-size: 1.2rem;
+            }
+            .node-kana {
+                font-size: 1.1rem;
+            }
+            .calc-node {
+                min-width: 80px;
+                padding: 8px;
+            }
+        }
+    </style>
 </head>
 <body>
-<main>
-  <section class="hero" aria-label="五十音五段十行記憶課">
-    <div class="hero-content">
-      <p class="eyebrow">Japanese Gojuon Course Builder</p>
-      <h1>五十音五段十行記憶課</h1>
-      <p class="hero-copy">用「五段母音 × 十行子音」建立識字座標，再把熱門記憶法、發音規則與真實詞彙練習排成一套可教、可複習的課程。</p>
-      <div class="hero-metrics" aria-label="課程重點"><div><strong>5</strong><span>母音段定位</span></div><div><strong>10</strong><span>行順路線</span></div><div><strong>6</strong><span>課程單元</span></div></div>
+
+    <!-- 頂部導航 -->
+    <header>
+        <div class="header-title">
+            <span style="font-size: 1.5rem;">🌸</span>
+            <div>
+                <h1>日語學習藍圖</h1>
+                <div class="header-subtitle">手繪筆記精煉 • 個人記憶秘笈</div>
+            </div>
+        </div>
+        <div class="controls">
+            <button class="theme-btn" id="themeToggle" onclick="toggleTheme()">
+                <span id="themeIcon">☀️</span> <span id="themeText">日語護眼</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- 標籤導航欄 (Sticky Tabs) -->
+    <div class="tab-bar" id="tabBar">
+        <div class="tab-item active" onclick="switchTab(0)">🎧 發音對比</div>
+        <div class="tab-item" onclick="switchTab(1)">🍳 三大主廚</div>
+        <div class="tab-item" onclick="switchTab(2)">🔍 助詞與解構</div>
+        <div class="tab-item" onclick="switchTab(3)">🌸 形容詞/なる</div>
+        <div class="tab-item" onclick="switchTab(4)">⚡ 動詞與否定</div>
+        <div class="tab-item" onclick="switchTab(5)">🃏 記憶閃卡</div>
     </div>
-  </section>
 
-  <nav class="quick-nav" aria-label="頁面段落導覽"><a href="#chart">五段十行表</a><a href="#methods">熱門記憶法</a><a href="#pronunciation">發音應用</a><a href="#course">課程編排</a><a href="#sources">資料來源</a></nav>
+    <!-- 主體內容 -->
+    <main>
 
-  <section class="intro-band"><div class="section-inner intro-grid"><div><p class="section-kicker">核心設計</p><h2>先學座標，再學符號。</h2></div><p>五十音不是隨機清單。五段代表固定母音 a・i・u・e・o，十行代表子音路線。課程先讓學生知道每個字住在哪個座標，再用圖像、節奏、手寫與聽辨把形音連起來。</p></div></section>
+        <!-- CHAPTER 1: 發音對比 -->
+        <section id="sec0" class="content-section active">
+            <div class="card red-border">
+                <div class="card-title">🌸 促音「っ」的核心機制</div>
+                <p style="font-size: 0.95rem; margin-bottom: 10px;">
+                    促音並非完全不發音，而是不發母音、佔一拍的時間，將後面緊接的子音加長持阻。
+                </p>
+                <div class="mnemonic-box">
+                    <div class="mnemonic-title">💡 最美的個人記憶口訣</div>
+                    <div class="mnemonic-text">「沒有自己的聲音，但有自己的時間。」</div>
+                </div>
+                
+                <div class="kana-contrast">
+                    <div class="contrast-item">
+                        <div class="contrast-kana">きて (Kite)</div>
+                        <div class="contrast-romaji">2 拍 (來 / 來過)</div>
+                        <div class="contrast-desc">直接發音，流暢不中斷</div>
+                    </div>
+                    <div class="contrast-item">
+                        <div class="contrast-kana">きって (Kitte)</div>
+                        <div class="contrast-romaji">3 拍 (郵票)</div>
+                        <div class="contrast-desc">「き」之後停頓一拍，再發「て」</div>
+                    </div>
+                    <div class="contrast-item">
+                        <div class="contrast-kana">さが (Saga)</div>
+                        <div class="contrast-romaji">2 拍 (坡 / 斜坡)</div>
+                        <div class="contrast-desc">兩拍順讀</div>
+                    </div>
+                    <div class="contrast-item">
+                        <div class="contrast-kana">さっが (Sagga)</div>
+                        <div class="contrast-romaji">3 拍 (作家)</div>
+                        <div class="contrast-desc">「さ」之後空一拍，再送出「が」</div>
+                    </div>
+                </div>
+            </div>
 
-  <section id="chart" class="section-inner chart-section">
-    <div class="section-heading"><p class="section-kicker">Recognition Map</p><h2>五段十行識字表</h2><p>每格同時顯示平假名、片假名、羅馬字與一句記憶提示。空格保留，讓學生理解表格規則，而不是誤以為漏背。</p></div>
-    <div class="vowel-strip" aria-label="五段母音口型提示"><div><strong>あ段</strong><span>a</span><small>口自然打開</small></div><div><strong>い段</strong><span>i</span><small>嘴角微拉平</small></div><div><strong>う段</strong><span>u</span><small>唇略收、不要圓太多</small></div><div><strong>え段</strong><span>e</span><small>介於 e / eh，舌位放鬆</small></div><div><strong>お段</strong><span>o</span><small>短而穩，不拖長</small></div></div>
-    <div class="kana-board" role="table" aria-label="五十音五段十行表">
-      <div class="board-head" role="row"><span role="columnheader">行</span><span role="columnheader">あ段</span><span role="columnheader">い段</span><span role="columnheader">う段</span><span role="columnheader">え段</span><span role="columnheader">お段</span></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>あ行</strong><span>母音骨架</span><small>先把 a i u e o 固定，後面每一行都只是替換前面的子音。</small></div><div class="kana-cell"><div class="kana-pair"><span>あ</span><span>ア</span></div><strong>a</strong><small>啊，開口定位</small></div><div class="kana-cell"><div class="kana-pair"><span>い</span><span>イ</span></div><strong>i</strong><small>像衣的短音</small></div><div class="kana-cell"><div class="kana-pair"><span>う</span><span>ウ</span></div><strong>u</strong><small>唇收但不嘟</small></div><div class="kana-cell"><div class="kana-pair"><span>え</span><span>エ</span></div><strong>e</strong><small>像欸但更短</small></div><div class="kana-cell"><div class="kana-pair"><span>お</span><span>オ</span></div><strong>o</strong><small>喔的短拍</small></div></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>か行</strong><span>k + 母音</span><small>用 ka ki ku ke ko 直向掃讀，後續濁音會變成 ga gi gu ge go。</small></div><div class="kana-cell"><div class="kana-pair"><span>か</span><span>カ</span></div><strong>ka</strong><small>像卡片的 ka</small></div><div class="kana-cell"><div class="kana-pair"><span>き</span><span>キ</span></div><strong>ki</strong><small>兩筆像鑰匙齒</small></div><div class="kana-cell"><div class="kana-pair"><span>く</span><span>ク</span></div><strong>ku</strong><small>轉角像咕嚕入口</small></div><div class="kana-cell"><div class="kana-pair"><span>け</span><span>ケ</span></div><strong>ke</strong><small>像提著水壺</small></div><div class="kana-cell"><div class="kana-pair"><span>こ</span><span>コ</span></div><strong>ko</strong><small>兩橫框住 ko</small></div></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>さ行</strong><span>s + 母音</span><small>し不是 si，讀 shi；教學時把例外字用不同顏色先標出。</small></div><div class="kana-cell"><div class="kana-pair"><span>さ</span><span>サ</span></div><strong>sa</strong><small>像沙漏斜線</small></div><div class="kana-cell"><div class="kana-pair"><span>し</span><span>シ</span></div><strong>shi</strong><small>魚鉤形，例外音</small></div><div class="kana-cell"><div class="kana-pair"><span>す</span><span>ス</span></div><strong>su</strong><small>旋轉收尾</small></div><div class="kana-cell"><div class="kana-pair"><span>せ</span><span>セ</span></div><strong>se</strong><small>像設下橫線</small></div><div class="kana-cell"><div class="kana-pair"><span>そ</span><span>ソ</span></div><strong>so</strong><small>單筆收束</small></div></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>た行</strong><span>t + 母音</span><small>ち讀 chi、つ讀 tsu；這一行最適合做例外音聽辨。</small></div><div class="kana-cell"><div class="kana-pair"><span>た</span><span>タ</span></div><strong>ta</strong><small>像拿叉吃 taco</small></div><div class="kana-cell"><div class="kana-pair"><span>ち</span><span>チ</span></div><strong>chi</strong><small>例外音，像微笑線</small></div><div class="kana-cell"><div class="kana-pair"><span>つ</span><span>ツ</span></div><strong>tsu</strong><small>像海浪或氣流</small></div><div class="kana-cell"><div class="kana-pair"><span>て</span><span>テ</span></div><strong>te</strong><small>像手持工具</small></div><div class="kana-cell"><div class="kana-pair"><span>と</span><span>ト</span></div><strong>to</strong><small>停在直線旁</small></div></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>な行</strong><span>n + 母音</span><small>なにぬねの可接生活詞，快速建立識字成就感。</small></div><div class="kana-cell"><div class="kana-pair"><span>な</span><span>ナ</span></div><strong>na</strong><small>像打結的線</small></div><div class="kana-cell"><div class="kana-pair"><span>に</span><span>ニ</span></div><strong>ni</strong><small>兩橫像二</small></div><div class="kana-cell"><div class="kana-pair"><span>ぬ</span><span>ヌ</span></div><strong>nu</strong><small>尾巴多一圈</small></div><div class="kana-cell"><div class="kana-pair"><span>ね</span><span>ネ</span></div><strong>ne</strong><small>像貓尾彎起</small></div><div class="kana-cell"><div class="kana-pair"><span>の</span><span>ノ</span></div><strong>no</strong><small>一圈像 no 的 O</small></div></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>は行</strong><span>h + 母音</span><small>ふ讀 fu，不是 hu；此行加兩點變 b，加小圈變 p。</small></div><div class="kana-cell"><div class="kana-pair"><span>は</span><span>ハ</span></div><strong>ha</strong><small>像兩片葉子</small></div><div class="kana-cell"><div class="kana-pair"><span>ひ</span><span>ヒ</span></div><strong>hi</strong><small>像笑開的嘴角</small></div><div class="kana-cell"><div class="kana-pair"><span>ふ</span><span>フ</span></div><strong>fu</strong><small>輕吹，例外音</small></div><div class="kana-cell"><div class="kana-pair"><span>へ</span><span>ヘ</span></div><strong>he</strong><small>山形上揚</small></div><div class="kana-cell"><div class="kana-pair"><span>ほ</span><span>ホ</span></div><strong>ho</strong><small>比 は 多一筆</small></div></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>ま行</strong><span>m + 母音</span><small>嘴唇閉合後放開，適合搭配拍手練習一拍一音。</small></div><div class="kana-cell"><div class="kana-pair"><span>ま</span><span>マ</span></div><strong>ma</strong><small>像媽媽抱住線</small></div><div class="kana-cell"><div class="kana-pair"><span>み</span><span>ミ</span></div><strong>mi</strong><small>三筆像米粒</small></div><div class="kana-cell"><div class="kana-pair"><span>む</span><span>ム</span></div><strong>mu</strong><small>尾端像鉤住</small></div><div class="kana-cell"><div class="kana-pair"><span>め</span><span>メ</span></div><strong>me</strong><small>像交叉的目光</small></div><div class="kana-cell"><div class="kana-pair"><span>も</span><span>モ</span></div><strong>mo</strong><small>兩橫加彎鉤</small></div></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>や行</strong><span>y + 母音</span><small>只有 ya yu yo；空格不是漏背，而是表本來就沒有。</small></div><div class="kana-cell"><div class="kana-pair"><span>や</span><span>ヤ</span></div><strong>ya</strong><small>箭頭展開</small></div><div class="kana-cell kana-empty" aria-label="此段無常用假名"><span>--</span></div><div class="kana-cell"><div class="kana-pair"><span>ゆ</span><span>ユ</span></div><strong>yu</strong><small>像悠閒繞圈</small></div><div class="kana-cell kana-empty" aria-label="此段無常用假名"><span>--</span></div><div class="kana-cell"><div class="kana-pair"><span>よ</span><span>ヨ</span></div><strong>yo</strong><small>像右轉三橫</small></div></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>ら行</strong><span>r + 母音</span><small>日文 r 介於 l / r，舌尖輕彈一次，不要捲舌。</small></div><div class="kana-cell"><div class="kana-pair"><span>ら</span><span>ラ</span></div><strong>ra</strong><small>像拉開布簾</small></div><div class="kana-cell"><div class="kana-pair"><span>り</span><span>リ</span></div><strong>ri</strong><small>兩線快速落下</small></div><div class="kana-cell"><div class="kana-pair"><span>る</span><span>ル</span></div><strong>ru</strong><small>尾巴收圓</small></div><div class="kana-cell"><div class="kana-pair"><span>れ</span><span>レ</span></div><strong>re</strong><small>像折線轉身</small></div><div class="kana-cell"><div class="kana-pair"><span>ろ</span><span>ロ</span></div><strong>ro</strong><small>方框穩住</small></div></div>
-      <div class="board-row" role="row"><div class="row-label" role="rowheader"><strong>わ行</strong><span>w + 母音</span><small>現代常用 わ、を；を作助詞時通常讀 o。</small></div><div class="kana-cell"><div class="kana-pair"><span>わ</span><span>ワ</span></div><strong>wa</strong><small>像彎起的線</small></div><div class="kana-cell kana-empty"><span>--</span></div><div class="kana-cell kana-empty"><span>--</span></div><div class="kana-cell kana-empty"><span>--</span></div><div class="kana-cell"><div class="kana-pair"><span>を</span><span>ヲ</span></div><strong>o</strong><small>助詞常讀 o</small></div></div>
-      <div class="special-row"><div class="row-label"><strong>撥音</strong><span>單獨一拍</span><small>放在清音表後練，避免和 な行混淆。</small></div><div class="kana-cell special-cell"><div class="kana-pair"><span>ん</span><span>ン</span></div><strong>n</strong><small>唯一單獨子音；依後面音改變鼻音位置</small></div></div>
+            <div class="card green-border">
+                <div class="card-title">🌸 長音：母音延長對比</div>
+                <p style="font-size: 0.95rem; margin-bottom: 10px;">
+                    長音代表要把前一個假名的母音額外延長一整拍。拍數如果數錯，字義將會完全改變！
+                </p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>單字</th>
+                                <th>拍數</th>
+                                <th>中文意思</th>
+                                <th>聽感對比</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 700;">おばさん</td>
+                                <td>4 拍</td>
+                                <td>阿姨、姑姑 (中年女性)</td>
+                                <td>急促、短暫的「ば」</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700; color: var(--accent-red);">おばあさん</td>
+                                <td>5 拍</td>
+                                <td>奶奶、外婆 (年長女性)</td>
+                                <td>「ば」拉長一拍 (baa)</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700;">ここ</td>
+                                <td>2 拍</td>
+                                <td>這裡</td>
+                                <td>短促俐落</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700; color: var(--accent-red);">こうこう</td>
+                                <td>4 拍</td>
+                                <td>高中</td>
+                                <td>兩個音皆拉長 (Koo-Koo)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card orange-border">
+                <div class="card-title">🌸 濁音、半濁音與拗音速記</div>
+                <div class="grid-50">
+                    <div class="grid-50-cell" style="border-color: var(--accent-red);">
+                        <div class="grid-kana-main">K → G</div>
+                        <div class="grid-romaji">か → が</div>
+                    </div>
+                    <div class="grid-50-cell" style="border-color: var(--accent-red);">
+                        <div class="grid-kana-main">S → Z</div>
+                        <div class="grid-romaji">さ → ざ</div>
+                    </div>
+                    <div class="grid-50-cell" style="border-color: var(--accent-red);">
+                        <div class="grid-kana-main">T → D</div>
+                        <div class="grid-romaji">た → だ</div>
+                    </div>
+                    <div class="grid-50-cell" style="border-color: var(--accent-red);">
+                        <div class="grid-kana-main">H → B</div>
+                        <div class="grid-romaji">は → ば</div>
+                    </div>
+                    <div class="grid-50-cell" style="border-color: var(--accent-orange);">
+                        <div class="grid-kana-main">H → P</div>
+                        <div class="grid-romaji">は → ぱ</div>
+                    </div>
+                </div>
+                <div class="special-note">
+                    <strong>💡 拗音規則：</strong>由「い段假名」與小寫的「や、ゆ、よ」合成，<strong>僅佔一拍</strong>！例如：きょ (Kyo - 1拍) vs きよ (Kiyo - 2拍)。
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 2: 三大主廚 -->
+        <section id="sec1" class="content-section">
+            <div class="card red-border">
+                <div class="card-title">🍳 日語句型的「三大主廚」概念</div>
+                <p style="font-size: 0.95rem; margin-bottom: 12px;">
+                    日語中不論多麼複雜的句子，最終核心控制中心都只會由以下一位主廚掌勺。先看句尾，就能知道是哪位主廚上菜！
+                </p>
+                
+                <div class="chef-kitchen">
+                    <!-- Chef 1 -->
+                    <div class="chef-card chef-1">
+                        <div class="chef-header">
+                            <span>👨‍🍳 判定型主廚</span>
+                            <span class="badge red">名詞句 / 形容詞句</span>
+                        </div>
+                        <div class="chef-body">
+                            <div class="chef-task">核心任務：負責貼標籤，把「是什麼、怎麼樣」說個明白。</div>
+                            <div class="chef-formula">A は B です (A是B) / A は C [形容詞] です (A很C)</div>
+                            <div class="chef-example">
+                                <strong>實戰例句：</strong><br>
+                                • <strong>これは私の本です。</strong> (這是我的書。)<br>
+                                • <strong>この本はおもしろいです。</strong> (這本書很有趣。)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chef 2 -->
+                    <div class="chef-card chef-2">
+                        <div class="chef-header">
+                            <span>👨‍🍳 動作型主廚</span>
+                            <span class="badge green">動詞句</span>
+                        </div>
+                        <div class="chef-body">
+                            <div class="chef-task">核心任務：負責描寫具體動作，把「做什麼、發生什麼事」交代清楚。</div>
+                            <div class="chef-formula">A は B を 動詞 (A做某動作修飾B)</div>
+                            <div class="chef-example">
+                                <strong>實戰例句：</strong><br>
+                                • <strong>わたしは本を買いました。</strong> (我買了書。)<br>
+                                • <strong>水を飲む。</strong> (喝水。)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chef 3 -->
+                    <div class="chef-card chef-3">
+                        <div class="chef-header">
+                            <span>👨‍🍳 存在型主廚</span>
+                            <span class="badge blue">存在句</span>
+                        </div>
+                        <div class="chef-body">
+                            <div class="chef-task">核心任務：交代空間與位置，說明「在、有、在哪裡」。</div>
+                            <div class="chef-formula">A は B に あります/います (A在B位置)</div>
+                            <div class="chef-example">
+                                <strong>實戰例句：</strong><br>
+                                • <strong>本は机の上にあります。</strong> (書在桌子上。)<br>
+                                • <strong>トイレはあそこです。</strong> (洗手間在那邊。)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card blue-border">
+                <div class="card-title">📊 判定型主廚：名詞句四種基本時態變化</div>
+                <p style="font-size: 0.9rem; color: var(--text-muted); margin-bottom: 10px;">禮貌形 (です) 的四種經典組合</p>
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>時態</th>
+                                <th>肯定形</th>
+                                <th>否定形</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: bold;">現在/未來式</td>
+                                <td style="color: var(--accent-green); font-weight: 700;">です</td>
+                                <td style="color: var(--accent-red); font-weight: 700;">じゃありません<br><span style="font-size: 0.75rem; color:var(--text-muted)">(或 ではありせん)</span></td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: bold;">過去式</td>
+                                <td style="color: var(--accent-green); font-weight: 700;">でした</td>
+                                <td style="color: var(--accent-red); font-weight: 700;">じゃありませんでした<br><span style="font-size: 0.75rem; color:var(--text-muted)">(或 ではありせんでした)</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="special-note" style="margin-top: 10px;">
+                    💡 <strong>口語表現轉換：</strong>在日常口語中，「じゃありません」常被替換為更簡短的「じゃないです」；「じゃありませんでした」則常替換為「じゃなかったです」。
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 3: 助詞與解構 -->
+        <section id="sec2" class="content-section">
+            <div class="card red-border">
+                <div class="card-title">⚔️ 世紀大對決：は vs が</div>
+                <p style="font-size: 0.95rem; margin-bottom: 12px;">這兩個助詞常被搞混。其實從語感上的「焦點位置」來切入，就能一秒解謎！</p>
+                
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <div style="background-color: var(--bg-color); padding: 12px; border-radius: 8px; border-left: 3px solid var(--accent-red);">
+                        <strong style="color: var(--accent-red);">【は】設定話題、切換話題：</strong><br>
+                        相當於中文的「至於我嘛...」或「說到...」。焦點落在<strong>後半段的述語描述</strong>。<br>
+                        例：<strong>わたしは学生です。</strong> (至於我嘛，是個學生。焦點在他是「學生」這個標籤。)
+                    </div>
+                    <div style="background-color: var(--bg-color); padding: 12px; border-radius: 8px; border-left: 3px solid var(--accent-blue);">
+                        <strong style="color: var(--accent-blue);">【が】指出主體、唯一鎖定：</strong><br>
+                        強調主體，焦點落在<strong>が前面的名詞</strong>，表示「就是這個人/物，不是別人」。<br>
+                        例：<strong>だれが来ますか。私が来ます。</strong> (誰要來？是我要來。鎖定「我」才是要來的主體。)
+                    </div>
+                </div>
+            </div>
+
+            <div class="card green-border">
+                <div class="card-title">📦 思考打包法：「と」與「～と思う」</div>
+                <p style="font-size: 0.95rem; margin-bottom: 12px;">
+                    當我們要表達自己的觀點、感覺或想法時，日語會使用助詞<strong>「と」</strong>，就像一個精美的快遞紙箱，把內層的完整想法「打包」裝箱，再貼上<strong>「～と思う (我覺得/我認為)」</strong>的標籤。
+                </p>
+                
+                <div style="border: 2px dashed var(--accent-green); padding: 15px; border-radius: 10px; background-color: var(--bg-color); text-align: center;">
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-bottom: 5px;">【外箱：我的看法 (主體敘述)】</div>
+                    <div style="font-size: 1.1rem; font-weight: 700; color: var(--accent-green);">
+                        [ 明日（あした）は晴（は）れる ] <span style="color: var(--accent-red); font-size: 1.3rem;">と</span> 思う
+                    </div>
+                    <div style="font-size: 0.8rem; color: var(--text-muted); margin-top: 5px;">【內物：被打包的想法】「明天會放晴」</div>
+                </div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 10px; line-height: 1.4;">
+                    💡 當我們遇到「～と思う」、「～と言う (說...)」、「～と聞く (聽說...)」時，就要立刻啟動「包裝盒解鎖」思維，先看懂外層，再看被打包的內容！
+                </p>
+            </div>
+
+            <div class="interactive-deconstruct">
+                <div class="card-title" style="margin-bottom: 5px;">🔍 6 步驟句子拆解互動解構器</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">
+                    日語基本語序為 SOV (主詞-受詞-動詞)，常省略主語。遇到複雜長句時，請使用這套 6 步驟黃金解構流程，自評並逐步攻克句子：
+                </p>
+                
+                <div class="deconstruct-steps">
+                    <div class="step-item" onclick="toggleStep(this)">
+                        <div class="step-num">A</div>
+                        <div class="step-content">
+                            <div class="step-title">先往句尾找！確認是否為動詞/或句尾判斷</div>
+                            <div class="step-tip">日語最核心的控制中心（主廚）一定在句尾。</div>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="toggleStep(this)">
+                        <div class="step-num">B</div>
+                        <div class="step-content">
+                            <div class="step-title">標示核心助詞：は、が、を、の 等</div>
+                            <div class="step-tip">助詞是句子的路標，決定了前後名詞與動詞間的物理關係。</div>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="toggleStep(this)">
+                        <div class="step-num">C</div>
+                        <div class="step-content">
+                            <div class="step-title">尋找動作對象：看「を」前面是什麼</div>
+                            <div class="step-tip">「を」指引著動作直接作用在什麼對象身上（例：水「を」飲む）。</div>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="toggleStep(this)">
+                        <div class="step-num">D</div>
+                        <div class="step-content">
+                            <div class="step-title">鎖定動作主體：看「が」前面是什麼</div>
+                            <div class="step-tip">「が」負責把做出該動作，或處於該狀態的主體給挑出來（例：花「が」咲く）。</div>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="toggleStep(this)">
+                        <div class="step-num">E</div>
+                        <div class="step-content">
+                            <div class="step-title">確認是否有「省略」</div>
+                            <div class="step-tip">若句子沒有「は/が」等主語，請根據上下文推斷是否省略了「我/你/他/牠/它」。</div>
+                        </div>
+                    </div>
+                    <div class="step-item" onclick="toggleStep(this)">
+                        <div class="step-num">F</div>
+                        <div class="step-content">
+                            <div class="step-title">最後才開始組合翻譯</div>
+                            <div class="step-tip">在釐清結構關係後，再順暢地翻譯成符合中文語序的句子。</div>
+                        </div>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 15px;">
+                    <button class="btn" onclick="resetSteps()" style="font-size: 0.8rem; padding: 6px 12px;">重置進度</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 4: 形容詞與なる -->
+        <section id="sec3" class="content-section">
+            <div class="card red-border">
+                <div class="card-title">🌸 い形容詞 vs な形容詞</div>
+                <p style="font-size: 0.95rem; margin-bottom: 10px;">
+                    日語中的形容詞分為兩大家族，最大的區別在於其「修飾名詞」時的物理狀態：
+                </p>
+                <div style="display: flex; gap: 10px; margin: 15px 0;">
+                    <div style="flex: 1; background: var(--bg-color); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <strong style="color: var(--accent-red);">い形容詞家族</strong><br>
+                        字尾為「い」。可以直接修飾名詞！<br>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">例：優しい人 (溫柔的人)</span>
+                    </div>
+                    <div style="flex: 1; background: var(--bg-color); padding: 12px; border-radius: 8px; border: 1px solid var(--border-color);">
+                        <strong style="color: var(--accent-green);">な形容詞家族</strong><br>
+                        字尾非「い」。修飾名詞時<strong>必須加上「な」</strong>！<br>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">例：静か<strong>な</strong>夜 (安靜的夜晚)</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card green-border">
+                <div class="card-title">🌸 「～なる（變得～）」狀態變化規律</div>
+                <p style="font-size: 0.95rem; margin-bottom: 12px;">
+                    當我們要描述「從某個狀態轉變為另一個狀態（變冷、變安靜...）」時，就需要藉助「～なる」。兩大形容詞的接續方式非常不同：
+                </p>
+                
+                <div class="table-responsive">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>形容詞分類</th>
+                                <th>變化規律</th>
+                                <th>原型單字</th>
+                                <th>「變得...」變化</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: 700;">い形容詞</td>
+                                <td style="color: var(--accent-red); font-weight: 700;">去い ＋ くなる</td>
+                                <td>優しい (溫柔)</td>
+                                <td>優し<strong>くなる</strong> (變得溫柔)</td>
+                            </tr>
+                            <tr>
+                                <td style="font-weight: 700;">な形容詞</td>
+                                <td style="color: var(--accent-green); font-weight: 700;">直接 ＋ になる</td>
+                                <td>元気 (精神)</td>
+                                <td>元気<strong>になる</strong> (變得有精神)</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- 動人筆記例句深度剖析 -->
+            <div class="poetic-analysis">
+                <div class="poetic-sentence">優しくなれたかな</div>
+                <p style="text-align: center; font-size: 0.95rem; font-weight: 500; margin-bottom: 15px; color: var(--text-muted);">
+                    「不知道我是不是已經變得更溫柔了一點呢？」
+                </p>
+                <div class="poetic-breakdown">
+                    <div class="breakdown-row">
+                        <div class="breakdown-key">1. 優しい</div>
+                        <div class="breakdown-val">い形容詞「溫柔的、體貼的」。</div>
+                    </div>
+                    <div class="breakdown-row">
+                        <div class="breakdown-key">2. なる</div>
+                        <div class="breakdown-val">透過變化為「優しくなる」，意為「變得溫柔」。</div>
+                    </div>
+                    <div class="breakdown-row">
+                        <div class="breakdown-key">3. なれる</div>
+                        <div class="breakdown-val">「なる」的<strong>可能形</strong>，表示「能夠變得溫柔」。</div>
+                    </div>
+                    <div class="breakdown-row">
+                        <div class="breakdown-key">4. なれた</div>
+                        <div class="breakdown-val">可能形的<strong>過去式</strong>，表示「已經能夠變得溫柔了」。</div>
+                    </div>
+                    <div class="breakdown-row">
+                        <div class="breakdown-key">5. かな</div>
+                        <div class="breakdown-val">
+                            極具情緒張力的句尾語氣助詞，像是<strong>心中的自我獨白 (I wonder...)</strong>。帶有自省、期待以及一絲對自己的溫柔探問。
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 5: 動詞與否定 -->
+        <section id="sec4" class="content-section">
+            <div class="card red-border">
+                <div class="card-title">⚡ 快速判斷：一段動詞 vs 五段動詞</div>
+                <p style="font-size: 0.95rem; margin-bottom: 10px;">
+                    動詞要進行任何變化前，必須先分類！請記住以下的黃金判斷法則：
+                </p>
+                
+                <div style="background-color: var(--bg-color); padding: 12px; border-radius: 8px; border-left: 4px solid var(--accent-red); margin-bottom: 12px;">
+                    <strong>一、一段動詞（通常滿足）：</strong><br>
+                    字尾為「る」，且「る」的前一個假名落在<strong>「い段」或「え段」</strong>。
+                    <span style="font-size: 0.85rem; color: var(--text-muted); display: block;">例：見る (Mi-ru / い段)、食べる (Tabe-ru / え段)。</span>
+                </div>
+
+                <div style="background-color: var(--bg-color); padding: 12px; border-radius: 8px; border-left: 4px solid var(--accent-orange); margin-bottom: 12px;">
+                    <strong>二、五段動詞：</strong><br>
+                    不符合一段動詞規則的其他動詞（例如字尾不是る，或者る前面是あ、う、お段假名）。
+                </div>
+
+                <div class="mnemonic-box" style="background-color: rgba(221, 107, 32, 0.05); border-color: var(--accent-orange);">
+                    <div class="mnemonic-title" style="color: var(--accent-orange);">⚠️ 四大超常見「偽裝成一段」的五段動詞</div>
+                    <div class="mnemonic-text" style="font-size: 0.9rem;">
+                        雖然符合「い/え段+る」，但它們其實是<strong>五段動詞</strong>！務必死記：<br>
+                        <strong>1. 帰る (かえる - 回) &nbsp;&nbsp; 2. 走る (はしる - 跑) &nbsp;&nbsp; 3. 入る (はいる - 進入) &nbsp;&nbsp; 4. 知る (しる - 知道)</strong>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 兩段式否定思考展示器 -->
+            <div class="negation-calculator">
+                <div class="card-title" style="justify-content: center; margin-bottom: 10px;">🔄 兩段式否定思維動態展示器</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 15px;">
+                    在進行過去否定（如「當時沒讀」、「那時不知道」）時，腦中要養成「兩段式」的漸進式思考路徑，避免大腦打結：
+                </p>
+                
+                <select id="verbSelect" class="calc-select" onchange="updateNegation()">
+                    <option value="yomu">読む (yomu - 五段)</option>
+                    <option value="taberu">食べる (taberu - 一段)</option>
+                    <option value="omou">思う (omou - 五段/う變わ例外)</option>
+                    <option value="shiru">知る (shiru - 五段例外)</option>
+                    <option value="wasure">忘れる (wasure- 一段)</option>
+                </select>
+
+                <div class="calc-flow">
+                    <div class="calc-node" id="nodeOriginal">
+                        <div class="node-kana">読む</div>
+                        <div class="node-label">原型 (辭書形)</div>
+                    </div>
+                    <div class="calc-arrow">➔</div>
+                    <div class="calc-node highlight" id="nodePresent">
+                        <div class="node-kana">読まない</div>
+                        <div class="node-label">Step 1: 現在否定</div>
+                    </div>
+                    <div class="calc-arrow">➔</div>
+                    <div class="calc-node active" id="nodePast">
+                        <div class="node-kana">読まなかった</div>
+                        <div class="node-label">Step 2: 過去否定</div>
+                    </div>
+                </div>
+                
+                <p id="calcExplanation" style="font-size: 0.85rem; font-weight: 500; color: var(--text-muted);">
+                    <strong>變化說明：</strong>五段動詞「読む」字尾為 む，將 む 轉為其對應 あ 段音的 ま，加上 ない 成為「読まない」；接著將 ない 轉為 なかった 即可！
+                </p>
+            </div>
+        </section>
+
+        <!-- CHAPTER 6: 記憶閃卡 -->
+        <section id="sec5" class="content-section">
+            <div class="card red-border">
+                <div class="card-title">🃏 日語初學語法 • 記憶翻牌卡</div>
+                <p style="font-size: 0.85rem; color: var(--text-muted); text-align: center; margin-bottom: 10px;">
+                    點擊下方卡片即可翻面，測試自己對關鍵觀念的熟練度！
+                </p>
+                
+                <div class="flashcard-container">
+                    <div class="flashcard" id="myCard" onclick="flipCard()">
+                        <!-- Front Face -->
+                        <div class="card-face card-front">
+                            <div class="card-prompt">🧠 促音「っ」的時間感</div>
+                            <div class="card-main-text">「っ」要怎麼發音？</div>
+                            <div class="card-explanation" style="color: var(--accent-red);">（點擊翻面查看答案）</div>
+                        </div>
+                        <!-- Back Face -->
+                        <div class="card-face card-back">
+                            <div class="card-prompt">✅ 正確解答</div>
+                            <div class="card-main-text" style="font-size: 1.15rem; color: var(--accent-green);">沒有自己的聲音，但佔一拍的時間！</div>
+                            <div class="card-explanation" style="font-size: 0.85rem;">
+                                不發母音，空出一拍的時間持阻，隨後發出後方子音。
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flashcard-nav">
+                    <button class="btn" onclick="prevCard()">◀ 上一卡</button>
+                    <button class="btn" onclick="nextCard()">下一卡 ▶</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- 底部固定選單 -->
+    <div class="bottom-nav">
+        <a class="bottom-nav-item active" onclick="switchTab(0)" id="bnav0">
+            <svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zM5.89 12.55L12 15.9l6.11-3.35c.1.53.16 1.09.16 1.67a6.28 6.28 0 01-1.31 3.8L12 21.28l-4.96-3.26c-.84-1-1.31-2.3-1.31-3.8 0-.58.06-1.14.16-1.67z"/></svg>
+            <span>發音聽感</span>
+        </a>
+        <a class="bottom-nav-item" onclick="switchTab(1)" id="bnav1">
+            <svg viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm5-3v8h2.5v8h2V2c-2.48 0-4.5 2.02-4.5 4z"/></svg>
+            <span>三大主廚</span>
+        </a>
+        <a class="bottom-nav-item" onclick="switchTab(2)" id="bnav2">
+            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+            <span>助詞解構</span>
+        </a>
+        <a class="bottom-nav-item" onclick="switchTab(3)" id="bnav3">
+            <svg viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            <span>狀態變化</span>
+        </a>
     </div>
-  </section>
 
-  <section id="methods" class="method-band"><div class="section-inner"><div class="section-heading light-heading"><p class="section-kicker">Memory Methods</p><h2>網路熱門記憶法整理</h2><p>這些方法在常見線上教材、圖像記憶表、發音課程與自學文章中反覆出現。網站把它們整理成可直接放進課堂的活動。</p></div><div class="method-grid"><article class="method-card"><span>發音定位</span><h3>五段先行</h3><p>先練 あ・い・う・え・お 的口型與一拍長度，再把每行視為子音替換。這能讓初學者不是背 46 個符號，而是背 5 個母音座標。</p><strong>開場 3 分鐘只做母音口型：看鏡子、拍一拍、讀一拍。</strong></article><article class="method-card"><span>表格骨架</span><h3>行順口訣</h3><p>あ、か、さ、た、な、は、ま、や、ら、わ、ん 先背成路線，空格照表保留。學生知道位置後，遇到新字能用座標回想。</p><strong>每次練習都從行首往右，再從同段往下掃讀。</strong></article><article class="method-card"><span>識字記憶</span><h3>圖像聯想</h3><p>把假名形狀連到圖像、聲音或生活物件；這是 Tofugu、圖像記憶教材與許多線上五十音教學都常用的方式。</p><strong>每個字只留一個最有感的畫面，避免一字多故事造成混亂。</strong></article><article class="method-card"><span>順序保持</span><h3>節奏歌曲</h3><p>把整張表唱成固定節奏，幫助保留十行順序；再把唱誦拆回看字快讀，避免只會唱、不會認。</p><strong>唱一次、遮表讀一次、隨機抽卡一次，三輪才算完成。</strong></article><article class="method-card"><span>長期記憶</span><h3>主動回想</h3><p>比反覆看表更有效的是遮住、填空、聽寫、混合測驗。熱門教材通常都會搭配 worksheet、quiz 或 assessment。</p><strong>每 10 分鐘做一次低壓小測，錯字進入苦手清單。</strong></article></div></div></section>
+    <script>
+        // 切換夜間護眼模式
+        function toggleTheme() {
+            const body = document.body;
+            const currentTheme = body.getAttribute('data-theme');
+            const themeIcon = document.getElementById('themeIcon');
+            const themeText = document.getElementById('themeText');
 
-  <section id="pronunciation" class="section-inner pronunciation-section"><div class="section-heading"><p class="section-kicker">Pronunciation Lab</p><h2>從識字走到發音應用</h2><p>五十音學完後，真正的關卡是「拍數」與「變化音」。這裡把延伸規則包成五個可練的發音任務。</p></div><div class="rule-grid"><article class="rule-card"><h3>清音到濁音</h3><p>か行 K 變 G、さ行 S 變 Z、た行 T 變 D、は行 H 變 B；は行加小圈變 P。</p><small>かき kaki 是柿，かぎ kagi 是鑰匙；一個濁點會改變意思。</small></article><article class="rule-card"><h3>拗音</h3><p>い段假名接小 や・ゆ・よ，合成一拍：きゃ、しゅ、ちょ。</p><small>きや 是兩拍，きゃ 是一拍；課堂要用拍手區分。</small></article><article class="rule-card"><h3>促音</h3><p>小 っ 不發完整音，而是在下一個子音前停一拍，羅馬字常寫成雙子音。</p><small>きて kite 和 きって kitte，差別在中間的停頓。</small></article><article class="rule-card"><h3>長音</h3><p>母音拉長一拍會改變詞義；片假名多用 ー 表示長音。</p><small>おばさん 是阿姨，おばあさん 是奶奶或老婆婆。</small></article><article class="rule-card"><h3>撥音 ん</h3><p>ん 是獨立一拍，會依後面的音變成接近 m、n 或 ng 的鼻音。</p><small>さんぽ 的 ん 接 p，嘴唇會自然閉合。</small></article></div></section>
+            if (currentTheme === 'dark') {
+                body.removeAttribute('data-theme');
+                themeIcon.textContent = '☀️';
+                themeText.textContent = '日語護眼';
+                localStorage.setItem('theme', 'light');
+            } else {
+                body.setAttribute('data-theme', 'dark');
+                themeIcon.textContent = '🌙';
+                themeText.textContent = '深色禪風';
+                localStorage.setItem('theme', 'dark');
+            }
+        }
 
-  <section class="application-band"><div class="section-inner app-grid"><div><p class="section-kicker">Applied Reading</p><h2>把假名放回真實情境。</h2><p>初學者最需要快速看到「我讀得出來」。課程可用菜單、交通、問候、姓名建立短詞任務，讓識字和發音同時發生。</p></div><div class="application-list"><div>菜單：すし、みそ、ラーメン，練清音與長音。</div><div>交通：えき、きっぷ、バス，練促音與片假名。</div><div>問候：おはよう、こんにちは，練長音與 は 的語境讀法。</div><div>姓名：たなか、やまだ、サトウ，練行順與片假名遷移。</div></div></div></section>
+        // 初始化主題
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            document.body.setAttribute('data-theme', 'dark');
+            document.getElementById('themeIcon').textContent = '🌙';
+            document.getElementById('themeText').textContent = '深色禪風';
+        }
 
-  <section id="course" class="section-inner course-section"><div class="section-heading"><p class="section-kicker">Course Flow</p><h2>六單元課程編排</h2><p>由清音主表開始，逐步加入片假名、濁音、拗音、促音與長音。每單元都有明確輸出，不停在「看過」。</p></div><div class="course-list"><details class="unit-card" open><summary><span>單元 1：母音與表格座標</span><small>學生能讀出五段，並說明五段十行如何運作。</small></summary><ul><li>口型定位</li><li>母音卡快讀</li><li>同段直向掃讀</li><li>填空五段表</li></ul></details><details class="unit-card"><summary><span>單元 2：か・さ・た・な行</span><small>學生能辨識前四組常用行，並記住 し、ち、つ。</small></summary><ul><li>行順口訣</li><li>例外音標色</li><li>圖像聯想卡</li><li>10 個短詞拼讀</li></ul></details><details class="unit-card"><summary><span>單元 3：は・ま・や・ら・わ・ん</span><small>學生完成清音主要表，能說明空格與 ん 的位置。</small></summary><ul><li>ふ、ら行舌尖練習</li><li>や行空格觀察</li><li>を 助詞讀法</li><li>清音總複習</li></ul></details><details class="unit-card"><summary><span>單元 4：片假名遷移</span><small>學生知道平假名與片假名同音不同用途，能配對常見外來語。</small></summary><ul><li>平片配對</li><li>外來語標籤</li><li>名字與品牌讀法</li><li>混合辨識</li></ul></details><details class="unit-card"><summary><span>單元 5：濁音、半濁音、拗音</span><small>學生能由清音推導變化音，而不是重新硬背一張表。</small></summary><ul><li>K/S/T/H 變音表</li><li>一拍拗音</li><li>最小對比詞</li><li>聽寫修正</li></ul></details><details class="unit-card"><summary><span>單元 6：促音、長音與真實閱讀</span><small>學生能把假名放進菜單、車站、問候語與短句閱讀。</small></summary><ul><li>拍數練習</li><li>長短音辨義</li><li>生活字卡</li><li>30 秒朗讀錄音</li></ul></details></div></section>
+        // 行動端 Tab 切換邏輯
+        function switchTab(index) {
+            // 切換頂部選單樣式
+            const tabs = document.querySelectorAll('.tab-item');
+            tabs.forEach((tab, i) => {
+                if (i === index) tab.classList.add('active');
+                else tab.classList.remove('active');
+            });
 
-  <section class="section-inner rhythm-section"><div class="section-heading compact-heading"><p class="section-kicker">Class Script</p><h2>45 分鐘練習節奏</h2></div><div class="rhythm-table" role="table" aria-label="45 分鐘課堂練習節奏"><div class="rhythm-row" role="row"><strong>00-05</strong><span>口型暖身</span><p>母音五段，一拍一音，不拖尾。</p></div><div class="rhythm-row" role="row"><strong>05-13</strong><span>表格掃讀</span><p>橫讀一行、直讀一段，建立座標。</p></div><div class="rhythm-row" role="row"><strong>13-25</strong><span>形狀聯想</span><p>新字配一張圖像卡，立刻遮住回想。</p></div><div class="rhythm-row" role="row"><strong>25-35</strong><span>發音對比</span><p>例外音、濁音、長短音用最小對比練。</p></div><div class="rhythm-row" role="row"><strong>35-45</strong><span>應用輸出</span><p>讀真實詞、做小聽寫、更新苦手清單。</p></div></div></section>
+            // 切換主體章節可見性
+            const sections = document.querySelectorAll('.content-section');
+            sections.forEach((sec, i) => {
+                if (i === index) sec.classList.add('active');
+                else sec.classList.remove('active');
+            });
 
-  <section id="sources" class="source-band"><div class="section-inner"><div class="section-heading"><p class="section-kicker">Source Digest</p><h2>資料來源與整理原則</h2><p>內容以常見公開教學資源為基礎，整理成繁中課程設計語言；實際課堂可再依學生母語、年齡與學習目標調整例字。</p></div><div class="source-grid"><a href="https://www.tofugu.com/japanese/learn-hiragana/" target="_blank" rel="noreferrer"><strong>Tofugu Learn Hiragana</strong><span>圖像聯想、分欄練習、遮表回想與 worksheet 思路。</span></a><a href="https://www.tofugu.com/japanese/japanese-pronunciation/" target="_blank" rel="noreferrer"><strong>Tofugu Japanese Pronunciation</strong><span>長短音、促音與日語發音應用整理。</span></a><a href="https://www.japanesepod101.com/japanesepod101-pronunciation-curriculum/" target="_blank" rel="noreferrer"><strong>JapanesePod101 Pronunciation Curriculum</strong><span>由基本音、濁音、拗音、促音、長音漸進的課程順序。</span></a><a href="https://jp.ikuchannel.com/articles/hiragana-katakana-master" target="_blank" rel="noreferrer"><strong>Iku老師五十音完全入門</strong><span>繁中學習者視角的背誦順序、兩套假名用途與發音規則。</span></a><a href="https://www.eikan.com.tw/e_news.php?id=1270" target="_blank" rel="noreferrer"><strong>永漢日語進階發音整理</strong><span>濁音、半濁音、拗音、促音、長音分類與例字設計。</span></a><a href="https://www.cocolong.com.tw/zh-tw/japanese/article.php?act=view&id=78" target="_blank" rel="noreferrer"><strong>Cocolong 五十音記憶法</strong><span>圖像、音樂、分組與多感官記憶法的熱門做法整理。</span></a></div></div></section>
-</main>
+            // 切換底部導航高亮
+            const bnavs = document.querySelectorAll('.bottom-nav-item');
+            bnavs.forEach((nav, i) => {
+                if (i === index) nav.classList.add('active');
+                else nav.classList.remove('active');
+            });
+
+            // 自動捲動頂部
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // 互動句子拆解控制
+        function toggleStep(element) {
+            element.classList.toggle('completed');
+        }
+
+        function resetSteps() {
+            const steps = document.querySelectorAll('.step-item');
+            steps.forEach(step => step.classList.remove('completed'));
+        }
+
+        // 兩段式否定動態計算器資料庫
+        const verbData = {
+            yomu: {
+                original: "読む",
+                present: "読まない",
+                past: "読まなかった",
+                desc: "<strong>變化說明：</strong>五段動詞「読む」字尾為 む，將 む 轉為其對應 あ 段音的 ま，加上 ない 成為「読まない」；接著將 ない 轉為 なかった 即可！"
+            },
+            taberu: {
+                original: "食べる",
+                present: "食べない",
+                past: "食べなかった",
+                desc: "<strong>變化說明：</strong>一段動詞「食べる」字尾為 る 且前為え段。直接去掉字尾的 る 加上 ない 成為「食べない」；隨後直接轉成「食べなかった」。"
+            },
+            omou: {
+                original: "思う",
+                present: "思わない",
+                past: "思わなかった",
+                desc: "<strong>變化說明：</strong>【特殊例外】「思う」字尾為 う。依照規則應變為 あ 段音的 あ，但日語規定<strong>う結尾一律轉為 わ</strong>而非 あ！因此變為「思わない」，再轉為「思わなかった」。"
+            },
+            shiru: {
+                original: "知る",
+                present: "知らない",
+                past: "知らなかった",
+                desc: "<strong>變化說明：</strong>【偽裝一段的五段】「知る」雖然看似符合一段（し+る），但它是五段動詞！必須將 る 改為 あ 段音的 ら，加上 ない 成為「知らない」，再轉為「知らなかった」。"
+            },
+            wasure: {
+                original: "忘れる",
+                present: "忘れない",
+                past: "忘れなかった",
+                desc: "<strong>變化說明：</strong>一段動詞「忘れる」字尾為 る。直接去掉字尾的 る 加上 ない 成為「忘れない」；隨後轉成「忘れなかった」，意為「沒有忘記」。"
+            }
+        };
+
+        function updateNegation() {
+            const selected = document.getElementById('verbSelect').value;
+            const data = verbData[selected];
+
+            document.getElementById('nodeOriginal').querySelector('.node-kana').textContent = data.original;
+            document.getElementById('nodePresent').querySelector('.node-kana').textContent = data.present;
+            document.getElementById('nodePast').querySelector('.node-kana').textContent = data.past;
+            document.getElementById('calcExplanation').innerHTML = data.desc;
+        }
+
+        // 記憶閃卡資料庫與功能
+        const flashcardData = [
+            {
+                prompt: "🧠 促音「っ」的時間感",
+                q: "「っ」要怎麼發音？",
+                a: "沒有自己的聲音，但佔一拍的時間！",
+                hint: "不發母音，空出一拍的時間持阻，隨後發出後方子音。"
+            },
+            {
+                prompt: "🍳 三大主廚的角色",
+                q: "什麼是「判定型主廚」的主題？",
+                a: "貼標籤，交代「是什麼」或「怎麼樣」！",
+                hint: "公式：A は B です / A は 形容詞 です。"
+            },
+            {
+                prompt: "⚔️ 助詞大對決",
+                q: "「は」與「が」最大的語感差異是什麼？",
+                a: "「は」設定整個話題，「が」唯一鎖定主體！",
+                hint: "は強調後半段的描述，而が強調前面的名詞本身（就是這個人/物）。"
+            },
+            {
+                prompt: "🌸 狀態變化 (なる)",
+                q: "「な形容詞」接「なる」要怎麼接？",
+                a: "な形容詞直接 ＋ になる！",
+                hint: "例如：元気（な）＋なる ➔ 元気になる。注意い形容詞是去い＋くなる。"
+            },
+            {
+                prompt: "⚠️ 偽裝的一段動詞",
+                q: "請背出 4 個偽裝成一段的五段動詞例外",
+                a: "歸る、走る、入る、知る！",
+                hint: "這四個字尾雖是「る」，前面為い/え段，但它們在語法變形上全部都是五段動詞！"
+            }
+        ];
+
+        let currentCardIndex = 0;
+
+        function flipCard() {
+            document.getElementById('myCard').classList.toggle('flipped');
+        }
+
+        function updateCardContent() {
+            const card = document.getElementById('myCard');
+            card.classList.remove('flipped'); // 重置翻面狀態
+
+            setTimeout(() => {
+                const data = flashcardData[currentCardIndex];
+                card.querySelector('.card-front .card-prompt').textContent = data.prompt;
+                card.querySelector('.card-front .card-main-text').textContent = data.q;
+
+                card.querySelector('.card-back .card-prompt').textContent = "✅ 正確解答";
+                card.querySelector('.card-back .card-main-text').textContent = data.a;
+                card.querySelector('.card-back .card-explanation').textContent = data.hint;
+            }, 150); // 配合翻牌動畫時間
+        }
+
+        function nextCard() {
+            currentCardIndex = (currentCardIndex + 1) % flashcardData.length;
+            updateCardContent();
+        }
+
+        document.getElementById('tabBar').addEventListener('touchmove', function(e) {
+            e.stopPropagation();
+        }, { passive: true });
+
+        function prevCard() {
+            currentCardIndex = (currentCardIndex - 1 + flashcardData.length) % flashcardData.length;
+            updateCardContent();
+        }
+    </script>
 </body>
 </html>
