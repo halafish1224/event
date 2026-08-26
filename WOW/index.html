@@ -328,7 +328,7 @@
 
                 const headers = parsedData[0];
                 
-                // 圖片欄位搜尋
+                // 圖片欄位搜尋：指定「Cloudinary照片網址」
                 let imgIdx = headers.findIndex(h => h.includes("Cloudinary照片網址"));
                 if (imgIdx === -1) {
                     imgIdx = headers.findIndex(h => h.includes("圖") || h.includes("網址") || h.includes("照片") || h.includes("Url"));
@@ -338,8 +338,11 @@
                 let nameIdx = headers.findIndex(h => h.includes("名稱") || h.includes("品項") || h.includes("商品"));
                 let remarkIdx = headers.findIndex(h => h.includes("備註") || h.includes("說明") || h.includes("內容"));
 
-                // Google Map / 導航 欄位搜尋
-                let mapIdx = headers.findIndex(h => /map|地圖|導航|地點|位置|google\s*map/i.test(h));
+                // Google Map 欄位搜尋：精確指定「提供品項購買GOOGLE MAP連結」
+                let mapIdx = headers.findIndex(h => h.includes("提供品項購買GOOGLE MAP連結"));
+                if (mapIdx === -1) {
+                    mapIdx = headers.findIndex(h => /map|地圖|導航|地點|位置|google\s*map/i.test(h));
+                }
 
                 if (nameIdx === -1) nameIdx = 1;
                 if (imgIdx === -1) imgIdx = 2;
@@ -375,12 +378,12 @@
                             const urlMatch = rawMapText.match(/(https?:\/\/[^\s]+)/i);
                             mapUrl = urlMatch ? urlMatch[0] : rawMapText;
                         } else {
-                            // 若填寫純地址或地名，轉為 Google Maps 搜尋導航連結
+                            // 若填寫純地址或店名，轉為 Google Maps 搜尋導航連結
                             mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rawMapText)}`;
                         }
                     }
 
-                    // 產生地圖按鈕 HTML（若無地圖資訊則不顯示）
+                    // 產生地圖按鈕 HTML（若該品項未填寫地圖資訊則不顯示）
                     const mapButtonHtml = mapUrl ? `
                         <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="map-nav-button">
                             <span>📍</span> 前往 Google 地圖導航
