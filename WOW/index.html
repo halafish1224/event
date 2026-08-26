@@ -15,6 +15,8 @@
             --text-color: #ffffff;
             --btn-bg: linear-gradient(135deg, #ff9a9e 0%, #fecfef 100%);
             --btn-hover: linear-gradient(135deg, #fecfef 0%, #ff9a9e 100%);
+            --nav-btn-bg: #ffffff;
+            --nav-btn-hover: #ffe5ec;
         }
 
         * {
@@ -157,7 +159,7 @@
         .item-info {
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 8px;
             padding: 0 4px;
         }
 
@@ -177,6 +179,36 @@
             border-radius: 6px;
             border-left: 3px solid #ff9a9e;
             word-break: break-all;
+        }
+
+        /* 導航地圖按鈕樣式 */
+        .map-nav-button {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            background: var(--nav-btn-bg);
+            color: #2c3e50;
+            text-decoration: none;
+            font-size: 0.92rem;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 20px;
+            border: 1.5px solid #4a4a4a;
+            box-shadow: 2px 2px 0px #4a4a4a;
+            transition: all 0.2s ease;
+            margin-top: 2px;
+        }
+
+        .map-nav-button:hover {
+            background: var(--nav-btn-hover);
+            transform: translate(-1px, -1px);
+            box-shadow: 3px 3px 0px #4a4a4a;
+        }
+
+        .map-nav-button:active {
+            transform: translate(1px, 1px);
+            box-shadow: 1px 1px 0px #4a4a4a;
         }
 
         .item-controls {
@@ -296,15 +328,18 @@
 
                 const headers = parsedData[0];
                 
-                // --- 修改處：明確指定「Cloudinary照片網址」 ---
+                // 圖片欄位搜尋
                 let imgIdx = headers.findIndex(h => h.includes("Cloudinary照片網址"));
-                // 如果找不到完全符合的，再降級使用其他相近關鍵字
                 if (imgIdx === -1) {
                     imgIdx = headers.findIndex(h => h.includes("圖") || h.includes("網址") || h.includes("照片") || h.includes("Url"));
                 }
                 
+                // 名稱與備註欄位搜尋
                 let nameIdx = headers.findIndex(h => h.includes("名稱") || h.includes("品項") || h.includes("商品"));
                 let remarkIdx = headers.findIndex(h => h.includes("備註") || h.includes("說明") || h.includes("內容"));
+
+                // Google Map / 導航 欄位搜尋
+                let mapIdx = headers.findIndex(h => /map|地圖|導航|地點|位置|google\s*map/i.test(h));
 
                 if (nameIdx === -1) nameIdx = 1;
                 if (imgIdx === -1) imgIdx = 2;
@@ -317,22 +352,40 @@
                     const itemName = row[nameIdx]?.trim() || `神秘品項 #${i}`;
                     const itemRemark = row[remarkIdx]?.trim() || "無備註說明。";
                     
-                    // --- 核心修正區：智能過濾 Cloudinary 與雜訊網址 ---
+                    // 智能過濾 Cloudinary 與圖片網址
                     let rawImgText = row[imgIdx]?.trim() || "";
-                    let finalImgUrl = "https://images.unsplash.com/photo-1594744803329-e58b31de215f?q=80&w=500"; // 預設替代圖
+                    let finalImgUrl = "https://images.unsplash.com/photo-1594744803329-e58b31de215f?q=80&w=500";
                     
-                    // 正則表達式：強制尋找以 https:// 開頭，並且以 jpg, png, webp 等圖檔副檔名結尾的字串
                     const imageRegex = /(https:\/\/[^\s]+?\.(?:jpg|jpeg|png|gif|webp))/i;
                     const match = rawImgText.match(imageRegex);
                     
                     if (match && match[0]) {
-                        finalImgUrl = match[0]; // 只提取乾淨的圖片網址
+                        finalImgUrl = match[0];
                     } else if (rawImgText.includes("http")) {
-                        // 如果沒有副檔名但有網址，至少把 http 開頭的部分切出來
                         const httpMatch = rawImgText.match(/(https?:\/\/[^\s]+)/i);
                         if (httpMatch) finalImgUrl = httpMatch[0];
                     }
-                    // --------------------------------------------------
+
+                    // 處理 Google Map 導航連結
+                    let rawMapText = mapIdx !== -1 ? (row[mapIdx]?.trim() || "") : "";
+                    let mapUrl = "";
+
+                    if (rawMapText && rawMapText !== "-" && rawMapText !== "無" && rawMapText.toLowerCase() !== "none") {
+                        if (/^https?:\/\//i.test(rawMapText)) {
+                            const urlMatch = rawMapText.match(/(https?:\/\/[^\s]+)/i);
+                            mapUrl = urlMatch ? urlMatch[0] : rawMapText;
+                        } else {
+                            // 若填寫純地址或地名，轉為 Google Maps 搜尋導航連結
+                            mapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(rawMapText)}`;
+                        }
+                    }
+
+                    // 產生地圖按鈕 HTML（若無地圖資訊則不顯示）
+                    const mapButtonHtml = mapUrl ? `
+                        <a href="${mapUrl}" target="_blank" rel="noopener noreferrer" class="map-nav-button">
+                            <span>📍</span> 前往 Google 地圖導航
+                        </a>
+                    ` : '';
 
                     const uniqueId = `wish_2026_${itemName.replace(/\s+/g, '')}_${i}`;
 
@@ -350,6 +403,7 @@
                         <div class="item-info">
                             <h2 class="item-name">${itemName}</h2>
                             <p class="item-remarks">📝 ${itemRemark}</p>
+                            ${mapButtonHtml}
                         </div>
                         <div class="item-controls">
                             <label>
