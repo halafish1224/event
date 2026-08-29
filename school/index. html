@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+    <meta name="googlebot" content="noindex, nofollow">
+    <title>龍潭國中 115-1 課表與行事曆</title>
+    <style>
+        /* 配色設定：芥末黃與墨綠 */
+        :root {
+            --dark-green: #1b3b2b;     /* 深墨綠 */
+            --mustard-yellow: #d4a373; /* 芥末黃 */
+            --light-mustard: #fdf3ea;  /* 極淺芥末黃(背景) */
+            --bg-light: #f4f6f5;       /* 護眼淺灰綠背景 */
+            --text-dark: #111111;      /* 超高對比深色字 */
+            --white: #ffffff;
+            --danger-red: #c0392b;     /* 降雨機率警告色 */
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "PingFang TC", sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            line-height: 1.6;
+            padding: 15px;
+            font-size: 20px; /* 長者友善大字體 */
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        header {
+            background-color: var(--dark-green);
+            color: var(--white);
+            padding: 24px 20px;
+            border-radius: 12px;
+            text-align: center;
+            border-bottom: 8px solid var(--mustard-yellow);
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 1.8rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            color: #e0e0e0;
+        }
+
+        /* 頁籤按鈕切換 */
+        .tab-controls {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            flex-wrap: wrap; /* 螢幕過小可折行 */
+        }
+
+        .tab-btn {
+            flex: 1;
+            min-width: 120px;
+            padding: 16px 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border: 3px solid var(--dark-green);
+            background-color: var(--white);
+            color: var(--dark-green);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .tab-btn.active {
+            background-color: var(--dark-green);
+            color: var(--white);
+            border-color: var(--mustard-yellow);
+        }
+
+        .content-section {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        .content-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 卡片包覆層 */
+        .card {
+            background: var(--white);
+            border: 2px solid var(--dark-green);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 6px 12px rgba(27, 59, 43, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: var(--dark-green);
+            border-left: 10px solid var(--mustard-yellow);
+            padding-left: 12px;
+            margin-bottom: 16px;
+            font-weight: bold;
+        }
+
+        /* 課表表格 */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 650px;
+        }
+
+        th, td {
+            border: 2px solid #ccc;
+            padding: 12px 8px;
+            text-align: center;
+            font-size: 1.15rem;
+        }
+
+        th {
+            background-color: var(--dark-green);
+            color: var(--white);
+            font-size: 1.2rem;
+        }
+
+        tr:nth-child(even) { background-color: var(--light-mustard); }
+        .lunch-row { background-color: #fff3cd !important; font-weight: bold; color: #856404; }
+        .teacher-name { display: block; font-size: 0.95rem; color: #444; margin-top: 4px; }
+
+        /* 行事曆 */
+        .event-list { list-style: none; }
+        .event-item {
+            padding: 16px 12px;
+            border-bottom: 2px dashed #ccc;
+            display: flex;
+            align-items: center;
+        }
+        .event-item:last-child { border-bottom: none; }
+        .event-date {
+            font-weight: bold;
+            background-color: var(--mustard-yellow);
+            color: var(--dark-green);
+            padding: 6px 12px;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            min-width: 160px;
+            text-align: center;
+        }
+        .event-desc {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-left: 20px;
+        }
+
+        /* 天氣預報卡片設計 (長者友善) */
+        .weather-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .weather-card {
+            background-color: var(--bg-light);
+            border: 2px solid var(--dark-green);
+            border-radius: 10px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .w-date { font-size: 1.2rem; font-weight: bold; color: var(--dark-green); margin-bottom: 5px; }
+        .w-icon { font-size: 2.5rem; margin: 10px 0; }
+        .w-temp { font-size: 1.3rem; font-weight: bold; }
+        .w-rain { 
+            font-size: 1.1rem; 
+            margin-top: 8px;
+            padding: 4px 10px;
+            border-radius: 6px;
+            background-color: #e8f4f8;
+            color: #0056b3;
+            font-weight: bold;
+        }
+        .w-rain.high { background-color: #fcebeb; color: var(--danger-red); } /* 降雨機率高時變紅色 */
+
+        @media (max-width: 600px) {
+            body { padding: 10px; font-size: 18px; }
+            .event-item { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .event-desc { margin-left: 0; }
+            .tab-btn { font-size: 1.1rem; padding: 12px 8px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1 id="page-title">龍潭國中 115 學年度第一學期</h1>
+        <p id="student-info">載入中...</p>
+    </header>
+
+    <div class="tab-controls">
+        <button class="tab-btn active" onclick="switchTab('timetable')">📅 班級課表</button>
+        <button class="tab-btn" onclick="switchTab('calendar')">📌 行事曆</button>
+        <button class="tab-btn" onclick="switchTab('weather')">⛅ 龍潭天氣</button>
+    </div>
+
+    <div id="timetable" class="content-section active">
+        <div class="card">
+            <div class="card-title">每週上課時間表</div>
+            <div class="table-responsive">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>節次 / 時間</th>
+                            <th>一</th>
+                            <th>二</th>
+                            <th>三</th>
+                            <th>四</th>
+                            <th>五</th>
+                        </tr>
+                    </thead>
+                    <tbody id="timetable-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div id="calendar" class="content-section">
+        <div class="card">
+            <div class="card-title">📝 考試評量與重要日程</div>
+            <ul class="event-list" id="calendar-body"></ul>
+        </div>
+    </div>
+
+    <div id="weather" class="content-section">
+        <div class="card">
+            <div class="card-title">⛅ 桃園市龍潭區 一週天氣預報</div>
+            <p style="margin-bottom: 15px; color: #555;">即時同步氣象資料，降雨機率過高時會以<span style="color:red; font-weight:bold;">紅色</span>提醒。</p>
+            <div class="weather-grid" id="weather-body">
+                <p>🌤️ 天氣資料努力載入中...</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.title = "龍潭國中 115-1 課表與行事曆";
+
+        // ==========================================
+        // 區塊 1：靜態資料 (可自行手動更改此區)
+        // ==========================================
+        const appData = {
+            "title": "龍潭國中 115 學年度第一學期",
+            "student": "學生：劉喜鈞 | 班級：706 | 導師：蔡文惠",
+            "timetable": [
+                { "period": "一<br><small>08:25-09:10</small>", "mon": "健康教育<br><span class='teacher-name'>許瀞文</span>", "tue": "英語<br><span class='teacher-name'>謝雯玲</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯</span>", "thu": "歷史<br><span class='teacher-name'>陳志翔</span>", "fri": "英語<br><span class='teacher-name'>謝雯玲</span>" },
+                { "period": "二<br><small>09:20-10:05</small>", "mon": "生物<br><span class='teacher-name'>曾莉雯</span>", "tue": "綜合輔導<br><span class='teacher-name'>陳孟萍</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯</span>", "thu": "英語<br><span class='teacher-name'>謝雯玲</span>", "fri": "音樂<br><span class='teacher-name'>莊宜錞</span>" },
+                { "period": "三<br><small>10:15-11:00</small>", "mon": "數學<br><span class='teacher-name'>陳登鉅</span>", "tue": "體育<br><span class='teacher-name'>陳怡</span>", "wed": "國文<br><span class='teacher-name'>蔡文惠</span>", "thu": "表演藝術<br><span class='teacher-name'>黃心怡</span>", "fri": "體育<br><span class='teacher-name'>陳怡</span>" },
+                { "period": "四<br><small>11:10-11:55</small>", "mon": "國文<br><span class='teacher-name'>蔡文惠</span>", "tue": "國文<br><span class='teacher-name'>蔡文惠</span>", "wed": "數學<br><span class='teacher-name'>陳登鉅</span>", "thu": "數學<br><span class='teacher-name'>陳登鉅</span>", "fri": "公民<br><span class='teacher-name'>曾亭勻</span>" },
+                { "period": "午休 / 午餐", "mon": "午餐休息", "tue": "午餐休息", "wed": "午餐休息", "thu": "午餐休息", "fri": "午餐休息", "isLunch": true },
+                { "period": "五<br><small>13:05-13:50</small>", "mon": "閱讀指導<br><span class='teacher-name'>蔡文惠</span>", "tue": "資訊科技<br><span class='teacher-name'>林湘涵</span>", "wed": "地理<br><span class='teacher-name'>鄭紹辰</span>", "thu": "國文<br><span class='teacher-name'>蔡文惠</span>", "fri": "班週會<br><span class='teacher-name'>蔡文惠</span>" },
+                { "period": "六<br><small>14:00-14:45</small>", "mon": "視覺藝術<br><span class='teacher-name'>蔡東佑</span>", "tue": "生活科技<br><span class='teacher-name'>林湘涵</span>", "wed": "國際教育<br><span class='teacher-name'>謝雯玲</span>", "thu": "綜合童軍<br><span class='teacher-name'>陳孟萍</span>", "fri": "國文<br><span class='teacher-name'>蔡文惠</span>" },
+                { "period": "七<br><small>15:00-15:45</small>", "mon": "本土語文<br><span class='teacher-name'>呂忠翰</span>", "tue": "邏輯思維<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "綜合家政<br><span class='teacher-name'>陳孟萍</span>", "fri": "數學<br><span class='teacher-name'>陳登鉅</span>" },
+                { "period": "八<br><small>15:55-16:40</small>", "mon": "英語輔<br><span class='teacher-name'>謝雯玲</span>", "tue": "數學輔<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "導師時間<br><span class='teacher-name'>蔡文惠</span>", "fri": "國文輔<br><span class='teacher-name'>蔡文惠</span>" }
+            ],
+            "calendar": [
+                { "date": "10/14(三) - 10/15(四)", "desc": "💯 第一次段考（不上輔導課）" },
+                { "date": "10/26(一)", "desc": "🌴 光復節補假" },
+                { "date": "10/31(六)", "desc": "🎉 校慶活動" },
+                { "date": "11/06(五)", "desc": "🌴 校慶補假" },
+                { "date": "12/01(二) - 12/02(三)", "desc": "💯 第二次段考（不上輔導課）" },
+                { "date": "12/25(五)", "desc": "🌴 行憲紀念日放假" },
+                { "date": "01/01(五)", "desc": "🌴 元旦放假" },
+                { "date": "01/19(二) - 01/20(三)", "desc": "💯 第三次段考" },
+                { "date": "01/21 - 02/10", "desc": "☃️ 寒假開始" },
+                { "date": "02/11(三)", "desc": "🔔 下學期開學日" }
+            ]
+        };
+
+        // ==========================================
+        // 區塊 2：動態渲染與頁籤切換邏輯
+        // ==========================================
+        function renderPage() {
+            document.getElementById('student-info').innerText = appData.student;
+            
+            // 渲染課表
+            const ttBody = document.getElementById('timetable-body');
+            ttBody.innerHTML = appData.timetable.map(row => {
+                if(row.isLunch) return `<tr class="lunch-row"><td>${row.period}</td><td colspan="5">午餐 / 午休時間</td></tr>`;
+                return `<tr><td><b>${row.period}</b></td><td>${row.mon}</td><td>${row.tue}</td><td>${row.wed}</td><td>${row.thu}</td><td>${row.fri}</td></tr>`;
+            }).join('');
+
+            // 渲染行事曆
+            const calBody = document.getElementById('calendar-body');
+            calBody.innerHTML = appData.calendar.map(item => `
+                <li class="event-item">
+                    <span class="event-date">${item.date}</span>
+                    <span class="event-desc">${item.desc}</span>
+                </li>`).join('');
+        }
+
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+            event.currentTarget.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // ==========================================
+        // 區塊 3：自動抓取龍潭天氣 (Open-Meteo API)
+        // ==========================================
+        const WMO_CODES = {
+            0: { desc: '晴天', icon: '☀️' },
+            1: { desc: '晴時多雲', icon: '🌤️' }, 2: { desc: '多雲', icon: '⛅' }, 3: { desc: '陰天', icon: '☁️' },
+            45: { desc: '霧', icon: '🌫️' }, 48: { desc: '霧', icon: '🌫️' },
+            51: { desc: '毛毛雨', icon: '🌧️' }, 53: { desc: '毛毛雨', icon: '🌧️' }, 55: { desc: '毛毛雨', icon: '🌧️' },
+            61: { desc: '陣雨', icon: '🌦️' }, 63: { desc: '雨天', icon: '🌧️' }, 65: { desc: '大雨', icon: '🌧️' },
+            80: { desc: '陣雨', icon: '🌦️' }, 81: { desc: '強陣雨', icon: '🌧️' }, 82: { desc: '暴雨', icon: '⛈️' },
+            95: { desc: '雷雨', icon: '⛈️' }, 96: { desc: '雷暴', icon: '⛈️' }, 99: { desc: '雷暴', icon: '⛈️' }
+        };
+
+        async function fetchWeather() {
+            try {
+                // 龍潭區經緯度: Lat 24.86, Lon 121.21
+                const response = await fetch('https://api.open-meteo.com/v1/forecast?latitude=24.86&longitude=121.21&daily=weathercode,temperature_2m_max,temperature_2m_min,precipitation_probability_max&timezone=Asia%2FTaipei');
+                const data = await response.json();
+                
+                const weatherBody = document.getElementById('weather-body');
+                weatherBody.innerHTML = ''; // 清除載入文字
+
+                const days = ['日', '一', '二', '三', '四', '五', '六'];
+
+                for(let i=0; i<7; i++) {
+                    const dateStr = data.daily.time[i];
+                    const dateObj = new Date(dateStr);
+                    const dayOfWeek = days[dateObj.getDay()];
+                    const formattedDate = `${dateObj.getMonth()+1}/${dateObj.getDate()} (${dayOfWeek})`;
+                    
+                    const code = data.daily.weathercode[i];
+                    const weather = WMO_CODES[code] || { desc: '未知', icon: '🌍' };
+                    const maxT = Math.round(data.daily.temperature_2m_max[i]);
+                    const minT = Math.round(data.daily.temperature_2m_min[i]);
+                    const rain = data.daily.precipitation_probability_max[i];
+
+                    // 降雨機率大於 40% 就加上紅色警示 Class
+                    const rainClass = rain >= 40 ? 'w-rain high' : 'w-rain';
+
+                    weatherBody.innerHTML += `
+                        <div class="weather-card">
+                            <div class="w-date">${formattedDate}</div>
+                            <div class="w-icon">${weather.icon}</div>
+                            <div class="w-temp">${minT}°C ~ ${maxT}°C</div>
+                            <div style="font-size:1.1rem; color:#555;">${weather.desc}</div>
+                            <div class="${rainClass}">☔ 降雨機率: ${rain}%</div>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                document.getElementById('weather-body').innerHTML = '<p style="color:red;">無法取得天氣資料，請檢查網路連線。</p>';
+            }
+        }
+
+        // 執行初始化
+        renderPage();
+        fetchWeather();
+    </script>
+</body>
+</html>
