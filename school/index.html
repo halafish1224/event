@@ -267,32 +267,44 @@
         // 區塊 1：靜態資料 (可自行手動更改此區)
         // ==========================================
         const appData = {
-            "title": "龍潭國中 115 學年度第一學期",
-            "student": "學生：劉喜鈞 | 班級：706 | 導師：蔡文惠",
-            "timetable": [
-                { "period": "一<br><small>08:25-09:10</small>", "mon": "健康教育<br><span class='teacher-name'>許瀞文</span>", "tue": "英語<br><span class='teacher-name'>謝雯玲</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯</span>", "thu": "歷史<br><span class='teacher-name'>陳志翔</span>", "fri": "英語<br><span class='teacher-name'>謝雯玲</span>" },
-                { "period": "二<br><small>09:20-10:05</small>", "mon": "生物<br><span class='teacher-name'>曾莉雯</span>", "tue": "綜合輔導<br><span class='teacher-name'>陳孟萍</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯</span>", "thu": "英語<br><span class='teacher-name'>謝雯玲</span>", "fri": "音樂<br><span class='teacher-name'>莊宜錞</span>" },
-                { "period": "三<br><small>10:15-11:00</small>", "mon": "數學<br><span class='teacher-name'>陳登鉅</span>", "tue": "體育<br><span class='teacher-name'>陳怡</span>", "wed": "國文<br><span class='teacher-name'>蔡文惠</span>", "thu": "表演藝術<br><span class='teacher-name'>黃心怡</span>", "fri": "體育<br><span class='teacher-name'>陳怡</span>" },
-                { "period": "四<br><small>11:10-11:55</small>", "mon": "國文<br><span class='teacher-name'>蔡文惠</span>", "tue": "國文<br><span class='teacher-name'>蔡文惠</span>", "wed": "數學<br><span class='teacher-name'>陳登鉅</span>", "thu": "數學<br><span class='teacher-name'>陳登鉅</span>", "fri": "公民<br><span class='teacher-name'>曾亭勻</span>" },
-                { "period": "午休 / 午餐", "mon": "午餐休息", "tue": "午餐休息", "wed": "午餐休息", "thu": "午餐休息", "fri": "午餐休息", "isLunch": true },
-                { "period": "五<br><small>13:05-13:50</small>", "mon": "閱讀指導<br><span class='teacher-name'>蔡文惠</span>", "tue": "資訊科技<br><span class='teacher-name'>林湘涵</span>", "wed": "地理<br><span class='teacher-name'>鄭紹辰</span>", "thu": "國文<br><span class='teacher-name'>蔡文惠</span>", "fri": "班週會<br><span class='teacher-name'>蔡文惠</span>" },
-                { "period": "六<br><small>14:00-14:45</small>", "mon": "視覺藝術<br><span class='teacher-name'>蔡東佑</span>", "tue": "生活科技<br><span class='teacher-name'>林湘涵</span>", "wed": "國際教育<br><span class='teacher-name'>謝雯玲</span>", "thu": "綜合童軍<br><span class='teacher-name'>陳孟萍</span>", "fri": "國文<br><span class='teacher-name'>蔡文惠</span>" },
-                { "period": "七<br><small>15:00-15:45</small>", "mon": "本土語文<br><span class='teacher-name'>呂忠翰</span>", "tue": "邏輯思維<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "綜合家政<br><span class='teacher-name'>陳孟萍</span>", "fri": "數學<br><span class='teacher-name'>陳登鉅</span>" },
-                { "period": "八<br><small>15:55-16:40</small>", "mon": "英語輔<br><span class='teacher-name'>謝雯玲</span>", "tue": "數學輔<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "導師時間<br><span class='teacher-name'>蔡文惠</span>", "fri": "國文輔<br><span class='teacher-name'>蔡文惠</span>" }
-            ],
-            "calendar": [
-                { "date": "10/14(三) - 10/15(四)", "desc": "💯 第一次段考（不上輔導課）" },
-                { "date": "10/26(一)", "desc": "🌴 光復節補假" },
-                { "date": "10/31(六)", "desc": "🎉 校慶活動" },
-                { "date": "11/06(五)", "desc": "🌴 校慶補假" },
-                { "date": "12/01(二) - 12/02(三)", "desc": "💯 第二次段考（不上輔導課）" },
-                { "date": "12/25(五)", "desc": "🌴 行憲紀念日放假" },
-                { "date": "01/01(五)", "desc": "🌴 元旦放假" },
-                { "date": "01/19(二) - 01/20(三)", "desc": "💯 第三次段考" },
-                { "date": "01/21 - 02/10", "desc": "☃️ 寒假開始" },
-                { "date": "02/11(三)", "desc": "🔔 下學期開學日" }
-            ]
-        };
+    "title": "龍潭國中 115 學年度第一學期",
+    "student": "學生：劉喜鈞 | 班級：706 | 導師：蔡文惠",
+    "timetable": [
+        { "period": "一<br><small>08:25-09:10</small>", "mon": "健康教育<br><span class='teacher-name'>許瀞文</span>", "tue": "英語<br><span class='teacher-name'>謝雯玲</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯 (生物實驗室)</span>", "thu": "歷史<br><span class='teacher-name'>陳志翔</span>", "fri": "英語<br><span class='teacher-name'>謝雯玲</span>" },
+        { "period": "二<br><small>09:20-10:05</small>", "mon": "生物<br><span class='teacher-name'>曾莉雯</span>", "tue": "綜合輔導<br><span class='teacher-name'>陳孟萍</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯 (生物實驗室)</span>", "thu": "英語<br><span class='teacher-name'>謝雯玲</span>", "fri": "音樂<br><span class='teacher-name'>莊宜錞 (音樂教室二)</span>" },
+        { "period": "三<br><small>10:15-11:00</small>", "mon": "數學<br><span class='teacher-name'>陳登鉅</span>", "tue": "體育<br><span class='teacher-name'>陳怡</span>", "wed": "國文<br><span class='teacher-name'>蔡文惠</span>", "thu": "表演藝術<br><span class='teacher-name'>黃心怡</span>", "fri": "體育<br><span class='teacher-name'>陳怡</span>" },
+        { "period": "四<br><small>11:10-11:55</small>", "mon": "國文<br><span class='teacher-name'>蔡文惠</span>", "tue": "國文<br><span class='teacher-name'>蔡文惠</span>", "wed": "數學<br><span class='teacher-name'>陳登鉅</span>", "thu": "數學<br><span class='teacher-name'>陳登鉅</span>", "fri": "公民<br><span class='teacher-name'>曾亭勻</span>" },
+        { "period": "午休 / 午餐", "mon": "午餐休息", "tue": "午餐休息", "wed": "午餐休息", "thu": "午餐休息", "fri": "午餐休息", "isLunch": true },
+        { "period": "五<br><small>13:05-13:50</small>", "mon": "閱讀指導<br><span class='teacher-name'>蔡文惠</span>", "tue": "資訊科技<br><span class='teacher-name'>林湘涵 (三樓電腦教室)</span>", "wed": "地理<br><span class='teacher-name'>鄭紹辰</span>", "thu": "國文<br><span class='teacher-name'>蔡文惠</span>", "fri": "班週會<br><span class='teacher-name'>蔡文惠</span>" },
+        { "period": "六<br><small>14:00-14:45</small>", "mon": "視覺藝術<br><span class='teacher-name'>蔡東佑 (美術教室一)</span>", "tue": "生活科技<br><span class='teacher-name'>林湘涵 (三樓電腦教室)</span>", "wed": "國際教育<br><span class='teacher-name'>謝雯玲</span>", "thu": "綜合童軍<br><span class='teacher-name'>陳孟萍</span>", "fri": "國文<br><span class='teacher-name'>蔡文惠</span>" },
+        { "period": "七<br><small>15:00-15:45</small>", "mon": "本土語文<br><span class='teacher-name'>呂忠翰 (閩語D組)</span>", "tue": "邏輯思維<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "綜合家政<br><span class='teacher-name'>陳孟萍</span>", "fri": "數學<br><span class='teacher-name'>陳登鉅</span>" },
+        { "period": "八<br><small>15:55-16:40</small>", "mon": "英語輔<br><span class='teacher-name'>謝雯玲</span>", "tue": "數學輔<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "導師時間<br><span class='teacher-name'>蔡文惠</span>", "fri": "國文輔<br><span class='teacher-name'>蔡文惠</span>" }
+    ],
+    "calendar": [
+        { "date": "08/31(一)", "desc": "🎒 開學、正式上課" },
+        { "date": "09/07(一)", "desc": "🕒 第八節輔導課開始" },
+        { "date": "09/14(一)", "desc": "🩺 七年級新生健檢 (全日)" },
+        { "date": "09/17(四)", "desc": "📝 新生學力檢測 C2-4" },
+        { "date": "09/18(五)", "desc": "🤝 親師座談會" },
+        { "date": "09/25(五)", "desc": "🥮 中秋節放假" },
+        { "date": "09/28(一)", "desc": "👨‍🏫 教師節放假" },
+        { "date": "10/05(一)", "desc": "💉 全校流感疫苗施打" },
+        { "date": "10/09(五)", "desc": "🇹🇼 國慶日補假" },
+        { "date": "10/14(三) - 10/15(四)", "desc": "💯 第一次段考（不上輔導課）" },
+        { "date": "10/23(五)", "desc": "🏃 運動會預演" },
+        { "date": "10/26(一)", "desc": "🌴 光復節補假" },
+        { "date": "10/31(六)", "desc": "🎉 校慶活動" },
+        { "date": "11/06(五)", "desc": "🌴 校慶補假" },
+        { "date": "11/13(五)", "desc": "⚖️ 性別平等教育講座 (七八)" },
+        { "date": "12/01(二) - 12/02(三)", "desc": "💯 第二次段考（不上輔導課）" },
+        { "date": "12/25(五)", "desc": "🌴 行憲紀念日放假" },
+        { "date": "01/01(五)", "desc": "🌴 元旦放假" },
+        { "date": "01/08(五)", "desc": "🛑 第八節輔導課最後一天" },
+        { "date": "01/19(二) - 01/20(三)", "desc": "💯 第三次段考" },
+        { "date": "01/21 - 02/10", "desc": "☃️ 寒假開始" },
+        { "date": "02/11(三)", "desc": "🔔 下學期開學日" }
+    ]
+};
 
         // ==========================================
         // 區塊 2：動態渲染與頁籤切換邏輯
