@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭 KTV 點歌本</title>
+    <style>
+        :root {
+            --primary-color: #3b82f6; 
+            --accent-color: #ef4444; 
+            --bg-color: #fcfcfc; 
+            --text-color: #1a1a1a;
+            --border-color: #1a1a1a; 
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Helvetica, 'PingFang TC', 'Microsoft JhengHei', sans-serif;
+            background-color: var(--bg-color);
+            background-image: radial-gradient(#d4d4d4 1px, transparent 1px);
+            background-size: 20px 20px; 
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* 讓滾動更滑順 */
+            scroll-behavior: smooth;
+        }
+
+        /* 頂部固定區域 */
+        .header {
+            width: 100%;
+            max-width: 800px; /* 加寬以適應多欄位 */
+            padding: 20px 15px;
+            box-sizing: border-box;
+            background-color: var(--bg-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 3px solid var(--border-color);
+            border-bottom-left-radius: 10px 30px;
+            border-bottom-right-radius: 30px 10px;
+            margin-bottom: 15px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 32px;
+            color: var(--text-color);
+            font-weight: 900;
+            letter-spacing: 2px;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            transform: rotate(-1deg);
+        }
+
+        .search-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 16px 20px 16px 50px; 
+            font-size: 22px;
+            font-weight: bold;
+            color: var(--text-color);
+            border: 3px solid var(--border-color);
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            box-sizing: border-box;
+            background-color: #fff;
+            outline: none;
+            box-shadow: 4px 4px 0px rgba(0,0,0,0.1);
+        }
+
+        .search-box:focus {
+            box-shadow: 6px 6px 0px var(--primary-color);
+            transform: translate(-2px, -2px);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 18px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: var(--border-color);
+        }
+
+        /* 總數統計區塊 */
+        .stats-bar {
+            width: 100%;
+            max-width: 800px;
+            padding: 0 15px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* 歌曲清單網格設計 (索引感) */
+        .song-list {
+            list-style: none;
+            padding: 0 15px;
+            margin: 0 0 60px 0;
+            width: 100%;
+            max-width: 800px;
+            box-sizing: border-box;
+            
+            /* 使用 CSS Grid 達成多欄位，RWD 自動適應 */
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 15px;
+        }
+
+        /* 每一首歌的列表項目 */
+        .song-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 16px 20px;
+            background-color: #fff;
+            border: 3px solid var(--border-color);
+            border-radius: 10px 30px 15px 25px/30px 10px 25px 15px;
+            box-shadow: 3px 3px 0px var(--primary-color);
+            /* 防止內容溢出 */
+            overflow: hidden; 
+        }
+        
+        .song-item:nth-child(even) {
+            box-shadow: 3px 3px 0px var(--accent-color);
+            border-radius: 20px 10px 30px 15px/15px 25px 10px 30px;
+        }
+
+        .song-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            gap: 10px;
+        }
+
+        .song-name {
+            font-size: 26px; /* 適合長輩的大字體 */
+            font-weight: 900;
+            color: var(--text-color);
+            letter-spacing: 1px;
+            /* 超過長度時顯示省略號 */
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            flex-grow: 1;
+        }
+
+        .song-id-badge {
+            background-color: var(--text-color);
+            color: white;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 20px; /* 大編號字體 */
+            font-weight: bold;
+            font-family: monospace;
+            border: 2px solid var(--text-color);
+            box-shadow: 2px 2px 0px rgba(0,0,0,0.2);
+            transform: rotate(2deg);
+            flex-shrink: 0;
+        }
+        
+        .song-item:nth-child(even) .song-id-badge {
+            transform: rotate(-2deg);
+        }
+
+        .no-result {
+            grid-column: 1 / -1;
+            text-align: center;
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--border-color);
+            margin-top: 20px;
+            padding: 40px;
+            background: #fff;
+            border: 3px dashed var(--accent-color);
+            border-radius: 20px;
+            transform: rotate(-1deg);
+        }
+        
+        .note-icon {
+            font-size: 30px;
+            color: var(--primary-color);
+            display: inline-block;
+        }
+        
+        .note-icon-right {
+            color: var(--accent-color);
+            transform: scaleX(-1);
+        }
+
+        /* 回到頂部按鈕 */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--primary-color);
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            border: 3px solid var(--border-color);
+            box-shadow: 4px 4px 0px var(--border-color);
+            cursor: pointer;
+            text-decoration: none;
+            opacity: 0.9;
+            transition: transform 0.2s;
+            z-index: 1000;
+        }
+
+        .back-to-top:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px var(--border-color);
+        }
+
+    </style>
+</head>
+<body id="top">
+
+    <div class="header">
+        <h1><span class="note-icon">♫</span>阿公阿嬤點歌本<span class="note-icon note-icon-right">♫</span></h1>
+        <div class="search-container">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="searchInput" class="search-box" placeholder="輸入歌名或編號搜尋..." inputmode="search">
+        </div>
+    </div>
+
+    <!-- 顯示資料總數，作為索引的提示 -->
+    <div class="stats-bar">
+        <span>全部歌單索引 👇</span>
+        <span id="songCount">共 0 首歌</span>
+    </div>
+
+    <!-- 使用 Grid 排列的歌單索引 -->
+    <ul class="song-list" id="songList">
+        <!-- 歌曲列表會由 JavaScript 動態生成 -->
+    </ul>
+
+    <!-- 方便長輩滑到底部後快速回頂部 -->
+    <a href="#top" class="back-to-top">⬆️</a>
+
+    <script>
+        const songData = [
+            // 第一欄
+            { id: '45212', name: '一暝三冬' },
+            { id: '45206', name: '委屈的玫瑰' },
+            { id: '48642', name: '心裡話' },
+            { id: '43937', name: '心驚驚' },
+            { id: '44863', name: '夢中作憨人' },
+            { id: '45068', name: '幸福的條件' },
+            { id: '44861', name: '堅強的女人' },
+            { id: '43511', name: '無情風雨淚' },
+            { id: '48275', name: '痴情烏日站' },
+            { id: '91449', name: '緣份斷情未盡' },
+            { id: '6191', name: '思念你的心肝你敢知' },
+            { id: '5211', name: '天照光' },
+            { id: '44689', name: '月娘的眼淚' },
+            { id: '44403', name: '自己寫情歌' },
+            { id: '44699', name: '今夜又擱為你醉' },
+            { id: '5239', name: '摸心肝想看覓' },
+            { id: '45653', name: '思念的海岸' },
+            { id: '45126', name: '多情玫瑰' },
+            { id: '45438', name: '碎心之戀' },
+            { id: '45367', name: '紅豆' },
+            { id: '45652', name: '相思話' },
+            { id: '45099', name: '思念的夢' },
+            { id: '1572', name: '今生愛過的人' },
+            { id: '45840', name: '唱一首故鄉的月' },
+            { id: '44259', name: '一夜情' },
+            { id: '40357', name: '炮仔聲' },
+            { id: '43544', name: '問酒' },
+            { id: '40031', name: '家後' },
+            { id: '8797', name: '兄弟' },
+            { id: '41898', name: '紅顏' },
+            { id: '40239', name: '老父' },
+            { id: '7018', name: '小雨' },
+            { id: '44608', name: '痛在你身邊' },
+            { id: '42794', name: '借問月娘' },
+            { id: '42522', name: '秋風' },
+
+            // 第二欄
+            { id: '44202', name: '西北風' },
+            { id: '55809', name: '浪子心' },
+            { id: '6554', name: '媽媽請妳也保重' },
+            { id: '45881', name: '春花望露水' },
+            { id: '45906', name: '理想的花' },
+            { id: '45672', name: '女人故事' },
+            { id: '1691', name: '盈盈祝福' },
+            { id: '43398', name: '思情' },
+            { id: '7823', name: '我捨你我心不甘' },
+            { id: '41175', name: '郎過' }, 
+            { id: '47583', name: '用性命愛我' },
+            { id: '43951', name: '天灯啊' },
+            { id: '46050', name: '情路過站' },
+            { id: '97735', name: '車票' },
+            { id: '47429', name: '沒人愛的心' },
+            { id: '47629', name: '一個人的日子' },
+            { id: '47951', name: '女人純情夢' },
+            { id: '46173', name: '風雨情路' },
+            { id: '45984', name: '借問愛情' },
+            { id: '47065', name: '女人的一生' },
+            { id: '1257', name: 'Radio 點歌心情' },
+            { id: '983416', name: '男人情女人心' },
+            { id: '41704', name: '深情海岸' },
+            { id: '91158', name: '阿母的手' },
+            { id: '43099', name: '秋天' },
+            { id: '47102', name: '芒果花' },
+            { id: '47736', name: '痴情折磨' },
+            { id: '47796', name: '溪中月' },
+            { id: '47274', name: '女人的願望' },
+            { id: '43781', name: '愛啊' },
+            { id: '47537', name: '女人的眼淚' },
+            { id: '47803', name: '愛你若性命' },
+            { id: '47469', name: '心頭鎖匙' },
+            { id: '47859', name: '女人命' },
+            { id: '47094', name: '鴛鴦溪' },
+
+            // 第三欄
+            { id: '47380', name: '帥到分手' },
+            { id: '45361', name: '大齡女子' },
+            { id: '46141', name: '孤單' },
+            { id: '46049', name: '雪落下的聲音' },
+            { id: '46174', name: '思念來借過' },
+            { id: '44852', name: '雪花飛' },
+            { id: '47418', name: '痴情的一生' },
+            { id: '47612', name: '遇見' },
+            { id: '46019', name: '若是有一天' },
+            { id: '46556', name: '英台' },
+            { id: '46542', name: '練恨智' }, 
+            { id: '46500', name: '悶戲詩' }, 
+            { id: '46267', name: '一滴淚' },
+            { id: '46477', name: '逢場作戲' },
+            { id: '46419', name: '女人的心願' },
+            { id: '46418', name: '純情花' },
+            { id: '46230', name: '何必留戀' },
+            { id: '46588', name: '自作多情' },
+            { id: '49553', name: '痴情無路用' },
+            { id: '41409', name: '紅顏花' },
+            { id: '47529', name: '痴情夢' },
+            { id: '47395', name: '總是為你掛心肝' },
+            { id: '010644', name: '避雨' },
+            { id: '400699', name: '酒女夢' },
+            { id: '400647', name: '女人情' },
+            { id: '46664', name: '錯愛的人' },
+            { id: '46616', name: '註定為你孤' },
+            { id: '55605', name: '愛見好就收' },
+            { id: '93313', name: '氧氣' },
+            { id: '47745', name: '鳳凰花' }, 
+            { id: '430057', name: '錯過情緣' },
+            { id: '430049', name: '雙面為難' },
+            { id: '430092', name: '愛情索' },
+            { id: '40049', name: '為何欺騙我' },
+            { id: '47739', name: '大甲溪邊' },
+            { id: '46640', name: '愛甲這堅持' },
+            { id: '430129', name: '難渡情關' },
+
+            // 第四欄
+            { id: '430051', name: '求情' },
+            { id: '430085', name: '喝醉的蝴蝶' }
+        ];
+
+        const songListContainer = document.getElementById('songList');
+        const searchInput = document.getElementById('searchInput');
+        const songCountDisplay = document.getElementById('songCount');
+
+        function renderSongs(songs) {
+            songListContainer.innerHTML = ''; 
+            
+            // 更新數量顯示
+            songCountDisplay.textContent = `共 ${songs.length} 首歌`;
+
+            if (songs.length === 0) {
+                songListContainer.innerHTML = '<div class="no-result">找不到這首歌唷 💦<br>換個字找找看吧！</div>';
+                return;
+            }
+
+            songs.forEach(song => {
+                const li = document.createElement('li');
+                li.className = 'song-item';
+                
+                li.innerHTML = `
+                    <div class="song-info">
+                        <span class="song-name">${song.name}</span>
+                        <span class="song-id-badge">${song.id}</span>
+                    </div>
+                `;
+                
+                songListContainer.appendChild(li);
+            });
+        }
+
+        searchInput.addEventListener('input', (e) => {
+            const keyword = e.target.value.trim().toLowerCase();
+            
+            if (!keyword) {
+                renderSongs(songData);
+                return;
+            }
+
+            const filteredSongs = songData.filter(song => {
+                return song.name.toLowerCase().includes(keyword) || 
+                       song.id.includes(keyword);
+            });
+
+            renderSongs(filteredSongs);
+        });
+
+        // 預設載入時就顯示所有歌單，直接呈現為索引
+        renderSongs(songData);
+
+    </script>
+</body>
+</html>
