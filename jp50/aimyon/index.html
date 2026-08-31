@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AIMYON 歌詞日文單字卡</title>
+  <style>
+    :root {
+      --bg-color: #FAF6EE;
+      --card-bg: #FFFFFF;
+      --text-main: #2C2C2C;
+      --accent-orange: #E76F51;
+      --accent-yellow: #F4A261;
+      --accent-green: #2A9D8F;
+      --border-dark: #2A2A2A;
+    }
+
+    body {
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      margin: 0;
+      padding: 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      margin: 0;
+      color: var(--accent-orange);
+      letter-spacing: 1px;
+    }
+
+    .doodle-star {
+      display: inline-block;
+      vertical-align: middle;
+      width: 24px;
+      height: 24px;
+      fill: var(--accent-yellow);
+    }
+
+    .card-container {
+      width: 100%;
+      max-width: 480px;
+      background: var(--card-bg);
+      border: 3px solid var(--border-dark);
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; /* 手繪不規則框線感 */
+      box-shadow: 5px 5px 0px var(--border-dark);
+      padding: 24px 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .badge {
+      background-color: var(--accent-yellow);
+      color: #000;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 0.9rem;
+      border: 1.5px solid var(--border-dark);
+      margin-bottom: 12px;
+    }
+
+    .kanji {
+      font-size: 4.2rem;
+      font-weight: 900;
+      margin: 10px 0 0 0;
+      line-height: 1.1;
+      color: var(--border-dark);
+    }
+
+    .reading {
+      font-size: 1.8rem;
+      color: var(--accent-orange);
+      font-weight: bold;
+      margin-bottom: 16px;
+    }
+
+    .meaning-box {
+      width: 100%;
+      background: var(--bg-color);
+      border: 2px dashed var(--border-dark);
+      border-radius: 12px;
+      padding: 12px;
+      margin: 10px 0;
+      box-sizing: border-box;
+      text-align: left;
+    }
+
+    .label {
+      font-size: 0.85rem;
+      color: #666;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+
+    .content-text {
+      font-size: 1.25rem;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .controls {
+      display: flex;
+      gap: 12px;
+      width: 100%;
+      max-width: 480px;
+      margin-top: 20px;
+    }
+
+    .btn {
+      flex: 1;
+      padding: 16px 0;
+      font-size: 1.2rem;
+      font-weight: bold;
+      color: #FFF;
+      background-color: var(--accent-orange);
+      border: 2.5px solid var(--border-dark);
+      border-radius: 16px;
+      box-shadow: 3px 3px 0px var(--border-dark);
+      cursor: pointer;
+      touch-action: manipulation;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn:active {
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--border-dark);
+    }
+
+    .btn-audio {
+      background-color: var(--accent-green);
+    }
+
+    .btn-secondary {
+      background-color: #6C757D;
+    }
+
+    .progress {
+      margin-top: 12px;
+      font-weight: bold;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>
+      <svg class="doodle-star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.2-6.3-4.6-6.3 4.6 2.3-7.2-6-4.6h7.6z"/></svg>
+      AIMYON 歌詞單字集
+      <svg class="doodle-star" viewBox="0 0 24 24"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.2-6.3-4.6-6.3 4.6 2.3-7.2-6-4.6h7.6z"/></svg>
+    </h1>
+  </header>
+
+  <div class="card-container">
+    <div id="typeBadge" class="badge">名詞 TOP 1</div>
+    <div id="kanjiText" class="kanji">愛</div>
+    <div id="readingText" class="reading">あい (ai)</div>
+    
+    <div class="meaning-box">
+      <div class="label">解釋釋義：</div>
+      <div id="meaningText" class="content-text">愛、愛情</div>
+      
+      <div class="label">歌詞例句與用法：</div>
+      <div id="usageText" class="content-text" style="color: var(--accent-orange);">愛を伝える</div>
+      
+      <div class="label">記憶口訣：</div>
+      <div id="memoryText" class="content-text" style="font-size: 1.05rem;">字中心有「心」，代表心中藏著愛。</div>
+    </div>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-audio" onclick="speakCurrentWord()">
+      🔊 語音發音
+    </button>
+  </div>
+
+  <div class="controls">
+    <button class="btn btn-secondary" onclick="prevCard()">上一張</button>
+    <button class="btn" onclick="nextCard()">下一張</button>
+  </div>
+
+  <div id="progressText" class="progress">1 / 35</div>
+
+  <script>
+    const wordList = [
+      // 名詞 TOP20
+      { type: "名詞 TOP1", kanji: "愛", reading: "あい (ai)", meaning: "愛、愛情", usage: "愛を伝える (傳達愛意)", memory: "漢字字中心有「心」，代表心中藏著愛。" },
+      { type: "名詞 TOP2", kanji: "心", reading: "こころ (kokoro)", meaning: "心靈、內心", usage: "裸の心 (赤裸的心)", memory: "發音 kokoro 聽起來像心臟跳動聲「砰砰」。" },
+      { type: "名詞 TOP3", kanji: "君", reading: "きみ (kimi)", meaning: "你（親密稱呼）", usage: "君はロックを聴かない", memory: "音似 Ki-mi，指著對方的親密口吻。" },
+      { type: "名詞 TOP4", kanji: "夜", reading: "よる (yoru)", meaning: "夜晚", usage: "今夜 (こんや / 今晚)", memory: "宀（屋簷）下夕陽落下，天色變暗即為夜。" },
+      { type: "名詞 TOP5", kanji: "目", reading: "め (me)", meaning: "眼睛、視線", usage: "目を閉じる (閉上眼睛)", memory: "象形字，將眼睛順時針旋轉90度即為「目」。" },
+      { type: "名詞 TOP6", kanji: "歌", reading: "うた (uta)", meaning: "歌曲", usage: "歌を歌う (唱歌)", memory: "發音 uta 類似烏鴉開口唱歌的聲音。" },
+      { type: "名詞 TOP7", kanji: "言葉", reading: "ことば (kotoba)", meaning: "言語、字句", usage: "言葉にする (化為言語表達)", memory: "事物（koto）的樹葉（ba），形容話語如樹葉般繁多。" },
+      { type: "名詞 TOP8", kanji: "空", reading: "そら (sora)", meaning: "天空", usage: "空の青さ (天空的湛藍)", memory: "Sora 發音高亢，聯想抬頭仰望廣闊清澈的天空。" },
+      { type: "名詞 TOP9", kanji: "声", reading: "こえ (koe)", meaning: "聲音、歌聲", usage: "声を聞く (聽見聲音)", memory: "發音 koe 像出聲叫人時尾音「可～」的迴響。" },
+      { type: "名詞 TOP10", kanji: "雨", reading: "あめ (ame)", meaning: "雨水", usage: "雨が降る (下雨)", memory: "一為雲層，下方四點為落下滴答的水滴。" },
+      { type: "名詞 TOP11", kanji: "風", reading: "かぜ (kaze)", meaning: "風", usage: "風が吹く (吹風)", memory: "Kaze 發音輕盈吹拂，如同微風掠過臉龐。" },
+      { type: "名詞 TOP12", kanji: "部屋", reading: "へや (heya)", meaning: "房間", usage: "自分の部屋 (自己的房間)", memory: "部（分割部分）+ 屋（房屋），大房子裡分出的小空間。" },
+      { type: "名詞 TOP13", kanji: "夢", reading: "ゆめ (yume)", meaning: "夢想、夢境", usage: "夢を見る (做夢/尋夢)", memory: "夕（夜晚）下眼睛看到模糊但美麗的景象。" },
+      { type: "名詞 TOP14", kanji: "涙", reading: "なみだ (namida)", meaning: "眼淚", usage: "涙を流す (流淚)", memory: "波（nami）+ 太（da），像波浪一樣源源不絕湧出的水。" },
+      { type: "名詞 TOP15", kanji: "体", reading: "からだ (karada)", meaning: "身體", usage: "体中 (からだじゅう / 全身)", memory: "人（人體）+ 本（根本），人最基本的軀幹。" },
+      { type: "名詞 TOP16", kanji: "朝", reading: "あさ (asa)", meaning: "早晨、朝陽", usage: "朝が来る (早晨到來)", memory: "朝字左邊為十月十日，代表太陽剛從地平線升起之刻。" },
+      { type: "名詞 TOP17", kanji: "花", reading: "はな (hana)", meaning: "花朵", usage: "花が咲く (花朵綻放)", memory: "Hana 發音甜美，艹（植物）變化（化）出美麗花瓣。" },
+      { type: "名詞 TOP18", kanji: "影", reading: "かげ (kage)", meaning: "影子、光影", usage: "影を追う (追尋影子)", memory: "景（陽光照射）+ 彡（光影紋路），有光就有影。" },
+      { type: "名詞 TOP19", kanji: "街", reading: "まち (machi)", meaning: "街道、城鎮", usage: "街を走る (穿梭街頭)", memory: "行（十字路口）加上圭（土地），人們交會居住的街區。" },
+      { type: "名詞 TOP20", kanji: "姿", reading: "すがた (sugata)", meaning: "姿態、身影", usage: "後ろ姿 (背影)", memory: "次（隨後）+ 女（女子姿態），行動時展現的身姿與外貌。" },
+      
+      // 動詞 TOP10
+      { type: "動詞 TOP1", kanji: "会う", reading: "あう (au)", meaning: "見面、相遇", usage: "君に会いたい (想見你)", memory: "音似 Ah-U，兩個人走在一起「啊！」一聲相遇。" },
+      { type: "動詞 TOP2", kanji: "聴く", reading: "きく (kiku)", meaning: "傾聽、聽音樂", usage: "ロックを聴かない (不聽搖滾)", memory: "中間有「耳」，代表用心專注欣賞音樂。" },
+      { type: "動詞 TOP3", kanji: "笑う", reading: "わらう (warau)", meaning: "笑、微笑", usage: "二人で笑う (兩人一起笑)", memory: "發音 Wa-ra-u 就像開懷大笑發出的「哇哈哈」聲。" },
+      { type: "動詞 TOP4", kanji: "泣く", reading: "なく (naku)", meaning: "哭泣", usage: "泣きそうな顔 (快哭了的臉)", memory: "三點水（氵）代表眼淚，立著流眼淚。" },
+      { type: "動詞 TOP5", kanji: "知る", reading: "しる (shiru)", meaning: "知道、了解", usage: "君を知りたい (想瞭解你)", memory: "言語精準命中真相，代表明白與理解。" },
+      { type: "動詞 TOP6", kanji: "忘れる", reading: "わすれる (wasureru)", meaning: "忘記、遺忘", usage: "忘れられない (無法忘懷)", memory: "心（忄）+ 亡（消失），代表心思從腦海中消逝。" },
+      { type: "動詞 TOP7", kanji: "抱きしめる", reading: "だきしめる (dakishimeru)", meaning: "緊抱、擁抱", usage: "強く抱きしめて (請緊緊擁抱我)", memory: "手（扌）加上包（包覆），用雙手把對方溫柔包裹住。" },
+      { type: "動詞 TOP8", kanji: "走る", reading: "はしる (hashiru)", meaning: "奔跑、馳騁", usage: "夜空を走る (在夜空奔跑)", memory: "上土下足，代表腳踏實地、大步邁開步伐快跑。" },
+      { type: "動詞 TOP9", kanji: "話す", reading: "はなす (hanasu)", meaning: "對話、交談", usage: "朝まで話そう (聊到天亮吧)", memory: "言（言語）與舌（舌頭），動動舌頭開口與對方說話。" },
+      { type: "動詞 TOP10", kanji: "離す", reading: "はなす (hanasu)", meaning: "放開、分離", usage: "手をつないで離さない (牽手不放開)", memory: "手（扌）將原本綁著的物件解開，代表放手或分開。" },
+
+      // 形容詞 TOP10
+      { type: "形容詞 TOP1", kanji: "青い", reading: "あおい (aoi)", meaning: "藍色的、青澀的", usage: "青い空 (藍天) / 青い春", memory: "A-O-I 發音流暢，聯想蔚藍大海與清澈天空。" },
+      { type: "形容詞 TOP2", kanji: "痛い", reading: "いたい (itai)", meaning: "疼痛的、難過的", usage: "胸が痛い (心痛/胸口痛)", memory: "被針刺到發出 Itai!（好痛！）的尖叫聲。" },
+      { type: "形容詞 TOP3", kanji: "愛しい", reading: "いとしい (itoshii)", meaning: "心愛的、珍惜的", usage: "愛しい人 (心愛的人)", memory: "「愛（Ito）」+「しい」，深深發自內心的愛眷。" },
+      { type: "形容詞 TOP4", kanji: "寂しい", reading: "さびしい (sabishii)", meaning: "寂寞的、孤單的", usage: "寂しい夜 (寂寞的夜晚)", memory: "音似日式審美「侘寂（Sabi）」，帶有孤獨沉靜感。" },
+      { type: "形容詞 TOP5", kanji: "優しい", reading: "やさしい (yasashii)", meaning: "溫柔的、親切的", usage: "優しい声 (溫柔的聲音)", memory: "漢字為「優」，聯想優秀且體貼溫柔的氣質。" },
+      { type: "形容詞 TOP6", kanji: "甘い", reading: "あまい (amai)", meaning: "甜美的、天真的", usage: "甘い匂い (甜美的香氣)", memory: "發音 A-ma-i 聯想阿嬤（Ama）給的糖果一樣甜美。" },
+      { type: "形容詞 TOP7", kanji: "強い", reading: "つよい (tsuyoi)", meaning: "強烈的、堅強的", usage: "強い風 (強風)", memory: "發音 Tsu-yo-i 唸起來帶有一股堅定、充滿力道的感覺。" },
+      { type: "形容詞 TOP8", kanji: "悲しい", reading: "かなしい (kanashii)", meaning: "悲傷的、哀愁的", usage: "悲しい歌 (悲傷的歌)", memory: "發音 Ka-na-shi-i 聽起來像是一聲長長的嘆息。" },
+      { type: "形容詞 TOP9", kanji: "眩しい", reading: "まぶしい (mabushii)", meaning: "耀眼的、刺眼的", usage: "眩しい光 (耀眼的光芒)", memory: "發音 Ma-bu-shi-i，聯想眼睛被強光刺到瞇起來的模樣。" },
+      { type: "形容詞 TOP10", kanji: "嬉しい", reading: "うれしい (ureshii)", meaning: "開心的、高興的", usage: "嬉しい知らせ (好消息)", memory: "發音 U-re-shi-i 就像聽到好消息時發自內心的歡呼聲。" }
+    ];
+
+    let currentIndex = 0;
+
+    function renderCard() {
+      const item = wordList[currentIndex];
+      document.getElementById('typeBadge').innerText = item.type;
+      document.getElementById('kanjiText').innerText = item.kanji;
+      document.getElementById('readingText').innerText = item.reading;
+      document.getElementById('meaningText').innerText = item.meaning;
+      document.getElementById('usageText').innerText = item.usage;
+      document.getElementById('memoryText').innerText = item.memory;
+      document.getElementById('progressText').innerText = `${currentIndex + 1} / ${wordList.length}`;
+    }
+
+    function nextCard() {
+      if (currentIndex < wordList.length - 1) {
+        currentIndex++;
+        renderCard();
+      }
+    }
+
+    function prevCard() {
+      if (currentIndex > 0) {
+        currentIndex--;
+        renderCard();
+      }
+    }
+
+    function speakCurrentWord() {
+      if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const item = wordList[currentIndex];
+        // 朗讀單字與例句
+        const textToSpeak = `${item.kanji}。 ${item.usage.split('(')[0]}`;
+        const utterance = new SpeechSynthesisUtterance(textToSpeak);
+        utterance.lang = 'ja-JP';
+        utterance.rate = 0.85; // 稍微放慢速度適合學習
+        window.speechSynthesis.speak(utterance);
+      } else {
+        alert("您的瀏覽器不支援語音合成朗讀機能");
+      }
+    }
+
+    // 初始化第一張
+    renderCard();
+  </script>
+</body>
+</html>
