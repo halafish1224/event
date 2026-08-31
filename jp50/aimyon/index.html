@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- 防止搜尋引擎收錄 -->
   <meta name="robots" content="noindex, nofollow">
-  <title>AIMYON 歌詞單字記憶卡 - 完整解析版</title>
+  <title>AIMYON 歌詞單字記憶卡 - 旗艦解析版</title>
   <style>
     :root {
       --bg-mustard: #DAB642; /* 芥末黃 */
@@ -43,7 +43,7 @@
 
     .card-container {
       width: 100%;
-      max-width: 600px;
+      max-width: 650px;
       background: var(--card-bg);
       border: 4px solid var(--border-dark);
       border-radius: 20px; 
@@ -101,7 +101,7 @@
       color: var(--card-bg);
       border: 3px solid var(--border-dark);
       border-radius: 12px;
-      padding: 16px;
+      padding: 20px 16px;
       margin: 8px 0;
       box-sizing: border-box;
       text-align: left;
@@ -110,7 +110,7 @@
     .label {
       font-size: 1.1rem;
       font-weight: 900;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       border-bottom: 2px solid currentcolor;
       display: inline-block;
       padding-bottom: 2px;
@@ -124,8 +124,15 @@
     .content-text {
       font-size: 1.5rem;
       font-weight: 900;
-      line-height: 1.4;
+      line-height: 1.5;
       margin-bottom: 12px;
+    }
+
+    /* 假名注音 (Furigana) 樣式，專為老花眼放大並變色 */
+    rt {
+      font-size: 0.85rem;
+      color: var(--accent-red);
+      font-weight: 900;
     }
 
     .memory-text {
@@ -136,21 +143,33 @@
     }
 
     .song-text {
-      font-size: 1.4rem;
-      font-weight: 900;
-      line-height: 1.5;
+      font-size: 1.35rem;
+      font-weight: bold;
+      line-height: 1.6;
     }
     
     .song-name {
       color: var(--bg-mustard);
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 900;
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .album-name {
+      color: #A3D9C9;
+      font-size: 1.15rem;
+      display: block;
+      margin-bottom: 12px;
+      border-bottom: 1px dashed #A3D9C9;
+      padding-bottom: 8px;
     }
 
     .controls {
       display: flex;
       gap: 16px;
       width: 100%;
-      max-width: 600px;
+      max-width: 650px;
       margin-top: 20px;
     }
 
@@ -200,15 +219,14 @@
     
     <div class="info-box">
       <div class="label">解釋與用法：</div>
-      <div id="usageText" class="content-text">愛、愛情 (愛を伝える)</div>
+      <div id="usageText" class="content-text"></div>
       
       <div class="label">發音聯想記憶：</div>
-      <div id="memoryText" class="memory-text">阿姨(a-i)給你滿滿的愛。</div>
+      <div id="memoryText" class="memory-text"></div>
     </div>
 
-    <!-- 新增：歌曲出現解析區塊 -->
     <div class="song-box">
-      <div class="label">名曲解析：</div>
+      <div class="label">名曲意涵解析：</div>
       <div id="songText" class="song-text"></div>
     </div>
   </div>
@@ -225,58 +243,172 @@
   <div id="progressText" class="progress">1 / 40</div>
 
   <script>
-    /* 
-      【JSON 資料庫】
-      修改方式：如需新增單字，只需複製一組 { ... } 並修改裡面的文字即可。
-      屬性對應：
-      kanji: 漢字, reading: 讀音, meaning: 意思, usage: 用法, memory: 記憶法, songExample: 歌曲解析
-    */
     const wordList = [
       // ====== 名詞 TOP20 ======
-      { type: "名詞 01", kanji: "愛", reading: "あい (ai)", meaning: "愛、愛情", usage: "愛を伝える", memory: "阿姨(a-i)給你滿滿的愛。", songExample: "<span class='song-name'>《愛を伝えたいだとか》</span><br>副歌開頭直白表達「就是想傳達愛意啊」，展現傲嬌卻渴望愛情的心境。" },
-      { type: "名詞 02", kanji: "心", reading: "こころ (kokoro)", meaning: "心靈、內心", usage: "裸の心", memory: "發音像心跳聲「叩叩囉(ko-ko-ro)」，代表心臟跳動。", songExample: "<span class='song-name'>《裸の心》</span><br>作為歌名與核心，描寫將防備卸下，用最「赤裸的心」去面對下一段戀情。" },
-      { type: "名詞 03", kanji: "君", reading: "きみ (kimi)", meaning: "你(親密)", usage: "君はロックを聴かない", memory: "指著對方說「奇密(ki-mi)」的你，代表親密的稱呼。", songExample: "<span class='song-name'>《君はロックを聴かない》</span><br>AIMYON 最常使用的第二人稱，這首歌滿滿都是對「君 (你)」不聽搖滾樂的無奈與愛戀。" },
-      { type: "名詞 04", kanji: "夜", reading: "よる (yoru)", meaning: "夜晚", usage: "今夜(こんや)", memory: "夜晚太黑沒有燈，只能「摸路(yo-ru)」。", songExample: "<span class='song-name'>《今夜このまま》</span><br>歌曲描繪夜晚的啤酒、徘徊與思緒，夜(よる)是她營造孤獨感的最佳背景。" },
-      { type: "名詞 05", kanji: "目", reading: "め (me)", meaning: "眼睛", usage: "目を閉じる", memory: "羊「咩(me)咩」的眼睛水汪汪的很可愛。", songExample: "<span class='song-name'>《マリーゴールド》</span><br>歌詞「目と目が合う」(眼神交會的瞬間)，用眼睛捕捉戀愛時最細微的互動。" },
-      { type: "名詞 06", kanji: "歌", reading: "うた (uta)", meaning: "歌曲", usage: "歌を歌う", memory: "唱歌唱到「無他(u-ta)」的忘我境界。", songExample: "<span class='song-name'>《貴方解剖純愛歌》</span><br>在出道曲中，將極端的愛意化作一首「純愛之歌」，表達音樂是她情感的載體。" },
-      { type: "名詞 07", kanji: "言葉", reading: "ことば (kotoba)", meaning: "言語", usage: "言葉にする", memory: "話說得太多，「口頭吧(ko-to-ba)」都講到乾了。", songExample: "<span class='song-name'>《マリーゴールド》</span><br>「言葉に出せない」(無法化作言語)，形容感情太深，反而不知該如何開口。" },
-      { type: "名詞 08", kanji: "空", reading: "そら (sora)", meaning: "天空", usage: "空の青さ", memory: "抬頭看天空，「搜啦(so-ra)」一聲就有飛機飛過。", songExample: "<span class='song-name'>《空の青さを知る人よ》</span><br>直接作為電影主題曲名，用廣闊的天空象徵青春的遺憾與未來的無際。" },
-      { type: "名詞 09", kanji: "声", reading: "こえ (koe)", meaning: "聲音", usage: "声を聞く", memory: "遠處傳來呼喚，發出「可欸(ko-e)」的聲音。", songExample: "<span class='song-name'>《満月の夜なら》</span><br>描寫兩人在滿月之夜的私密互動，對方微弱的「聲音」成為情緒的催化劑。" },
-      { type: "名詞 10", kanji: "雨", reading: "あめ (ame)", meaning: "雨水", usage: "雨が降る", memory: "下雨天不能出門，只好在家吃「阿梅(a-me)」(梅子)。", songExample: "<span class='song-name'>《生きていたんだよな》</span><br>在雨天看到社會事件的有感而發，雨水常在她的歌裡帶來憂鬱與反思。" },
-      { type: "名詞 11", kanji: "風", reading: "かぜ (kaze)", meaning: "風", usage: "風が吹く", memory: "大風吹過，把桌上的「卡紙(ka-ze)」全都吹走了。", songExample: "<span class='song-name'>《ハルノヒ》</span><br>「風の強さがちょっと」(風有一點點強)，用微風描繪北千住車站月台的日常風景。" },
-      { type: "名詞 12", kanji: "部屋", reading: "へや (heya)", meaning: "房間", usage: "自分の部屋", memory: "進到房間，對室友大喊一聲「嘿呀(he-ya)」。", songExample: "<span class='song-name'>《愛を伝えたいだとか》</span><br>在稍嫌昏暗的房間裡，主角獨自坐在沙發上，充滿等待與內心戲的空間。" },
-      { type: "名詞 13", kanji: "夢", reading: "ゆめ (yume)", meaning: "夢想、夢境", usage: "夢を見る", memory: "晚上做的夢境總是特別「幽美(yu-me)」。", songExample: "<span class='song-name'>《夢追いベンガル》</span><br>這是一首充滿搖滾疾走感的歌，描寫不顧一切追逐夢想(夢)的灑脫與掙扎。" },
-      { type: "名詞 14", kanji: "涙", reading: "なみだ (namida)", meaning: "眼淚", usage: "涙を流す", memory: "眼淚像「那米大(na-mi-da)」的珍珠一樣掉下來。", songExample: "<span class='song-name'>《裸の心》</span><br>「涙が出ちゃう」(眼淚不自覺掉下來)，真實描寫回憶過往戀情時的脆弱。" },
-      { type: "名詞 15", kanji: "体", reading: "からだ (karada)", meaning: "身體", usage: "体中", memory: "身體要健康，才能「卡拉大(ka-ra-da)」聲唱歌。", songExample: "<span class='song-name'>《ふたりの世界》</span><br>描寫兩人世界裡，連彼此的身體、氣息與溫度都相互依賴的親密感。" },
-      { type: "名詞 16", kanji: "朝", reading: "あさ (asa)", meaning: "早晨", usage: "朝が来る", memory: "早上起床伸個大懶腰，喊一聲「啊～爽(a-sa)」。", songExample: "<span class='song-name'>《朝陽》</span><br>整首歌以早晨為背景，描寫清晨陽光刺眼，與複雜心境形成強烈對比。" },
-      { type: "名詞 17", kanji: "花", reading: "はな (hana)", meaning: "花朵", usage: "花が咲く", memory: "聞花香要用鼻子，日文的鼻子發音也是「哈那(ha-na)」。", songExample: "<span class='song-name'>《桜が降る夜は》</span><br>雖然歌名是櫻花，但她常以花開花落來隱喻愛情的盛開與消逝。" },
-      { type: "名詞 18", kanji: "影", reading: "かげ (kage)", meaning: "影子", usage: "影を追う", memory: "影子就像是「卡給(ka-ge)」你身邊甩不掉的跟屁蟲。", songExample: "<span class='song-name'>《マリーゴールド》</span><br>「揺れる影」(搖曳的影子)，用光影的變化來增添夏日戀情的懷舊感。" },
-      { type: "名詞 19", kanji: "街", reading: "まち (machi)", meaning: "街道", usage: "街を走る", memory: "在熱鬧的街道上逛街，剛好遇到好「麻吉(ma-chi)」。", songExample: "<span class='song-name'>《生きていたんだよな》</span><br>描寫在喧囂的街道(街)上，人們冷漠卻又真實面對生死的強烈對比。" },
-      { type: "名詞 20", kanji: "姿", reading: "すがた (sugata)", meaning: "身影", usage: "後ろ姿", memory: "看到對方美麗的姿態，心裡覺得「速尬意(su-ga-ta)」。", songExample: "<span class='song-name'>《初恋が泣いている》</span><br>看著初戀離去的身影(姿)，或是找尋著那個曾經熟悉的身姿，充滿不捨。" },
+      { type: "名詞 01", kanji: "愛", reading: "あい (ai)", meaning: "愛、愛情", 
+        usage: "<ruby>愛<rt>あい</rt></ruby>を<ruby>伝<rt>つた</rt></ruby>える", 
+        memory: "阿姨(a-i)給你滿滿的愛。", 
+        songExample: "<span class='song-name'>《愛を伝えたいだとか》</span><span class='album-name'>💿 收錄專輯：『青春のエキサイトメント』</span>【歌曲意涵】以男性視角描繪在昏暗房間獨自煩惱，渴望傳達愛意卻又笨拙傲嬌的心境。單字在此展現了渴望愛情的焦慮與執著。" },
+      { type: "名詞 02", kanji: "心", reading: "こころ (kokoro)", meaning: "心靈、內心", 
+        usage: "<ruby>裸<rt>はだか</rt></ruby>の<ruby>心<rt>こころ</rt></ruby>", 
+        memory: "發音像心跳聲「叩叩囉(ko-ko-ro)」，代表心臟跳動。", 
+        songExample: "<span class='song-name'>《裸の心》</span><span class='album-name'>💿 收錄專輯：『おいしいパスタがあると聞いて』</span>【歌曲意涵】作為歌名與核心，描寫經歷多次失敗戀情後，終於卸下防備，用最「赤裸、毫無保留的心」去勇敢迎接下一段感情的真誠。" },
+      { type: "名詞 03", kanji: "君", reading: "きみ (kimi)", meaning: "你(親密)", 
+        usage: "<ruby>君<rt>きみ</rt></ruby>はロックを<ruby>聴<rt>き</rt></ruby>かない", 
+        memory: "指著對方說「奇密(ki-mi)」的你，代表親密的稱呼。", 
+        songExample: "<span class='song-name'>《君はロックを聴かない》</span><span class='album-name'>💿 收錄專輯：『青春のエキサイトメント』</span>【歌曲意涵】「君 (你)」是 AIMYON 最常使用的第二人稱，這首歌藉由「你」不聽搖滾樂這件小事，刻畫出男孩單戀時希望對方能理解自己世界的青春酸楚。" },
+      { type: "名詞 04", kanji: "夜", reading: "よる (yoru)", meaning: "夜晚", 
+        usage: "<ruby>今夜<rt>こんや</rt></ruby>", 
+        memory: "夜晚太黑沒有燈，只能「摸路(yo-ru)」。", 
+        songExample: "<span class='song-name'>《今夜このまま》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】描繪夜晚的啤酒、徘徊與思緒。「夜」是她營造都會男女孤獨感，以及想將時間停留在「今晚」的最佳背景。" },
+      { type: "名詞 05", kanji: "目", reading: "め (me)", meaning: "眼睛", 
+        usage: "<ruby>目<rt>め</rt></ruby>を<ruby>閉<rt>と</rt></ruby>じる", 
+        memory: "羊「咩(me)咩」的眼睛水汪汪的很可愛。", 
+        songExample: "<span class='song-name'>《マリーゴールド》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】歌詞「目と目が合う」(眼神交會的瞬間)，利用眼神的接觸，精準捕捉了戀愛時最細微、最令人心動的瞬間與回憶。" },
+      { type: "名詞 06", kanji: "歌", reading: "うた (uta)", meaning: "歌曲", 
+        usage: "<ruby>歌<rt>うた</rt></ruby>を<ruby>歌<rt>うた</rt></ruby>う", 
+        memory: "唱歌唱到「無他(u-ta)」的忘我境界。", 
+        songExample: "<span class='song-name'>《貴方解剖純愛歌 〜死ね〜》</span><span class='album-name'>💿 收錄專輯：『tamago』(地下時期迷你專輯)</span>【歌曲意涵】在極具衝擊力的出道曲中，將極端且病態的愛意化作一首「純愛之歌」，表達音樂就是她最無所畏懼的情感載體。" },
+      { type: "名詞 07", kanji: "言葉", reading: "ことば (kotoba)", meaning: "言語", 
+        usage: "<ruby>言葉<rt>ことば</rt></ruby>にする", 
+        memory: "話說得太多，「口頭吧(ko-to-ba)」都講到乾了。", 
+        songExample: "<span class='song-name'>《マリーゴールド》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】「言葉に出せない」(無法化作言語)，形容感情太過深厚，千言萬語反而不知該如何開口，是日式含蓄美的極致表現。" },
+      { type: "名詞 08", kanji: "空", reading: "そら (sora)", meaning: "天空", 
+        usage: "<ruby>空<rt>そら</rt></ruby>の<ruby>青<rt>あお</rt></ruby>さ", 
+        memory: "抬頭看天空，「搜啦(so-ra)」一聲就有飛機飛過。", 
+        songExample: "<span class='song-name'>《空の青さを知る人よ》</span><span class='album-name'>💿 收錄專輯：『おいしいパスタがあると聞いて』</span>【歌曲意涵】作為同名電影主題曲，用廣闊卻清澈的天空，象徵那些經歷過歲月洗禮，深知青春遺憾與現實落差的成熟心境。" },
+      { type: "名詞 09", kanji: "声", reading: "こえ (koe)", meaning: "聲音", 
+        usage: "<ruby>声<rt>こえ</rt></ruby>を<ruby>聞<rt>き</rt></ruby>く", 
+        memory: "遠處傳來呼喚，發出「可欸(ko-e)」的聲音。", 
+        songExample: "<span class='song-name'>《満月の夜なら》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】描寫兩人在滿月之夜的私密互動，對方微弱且喘息的「聲音」成為了整首歌情慾與情緒交織的催化劑。" },
+      { type: "名詞 10", kanji: "雨", reading: "あめ (ame)", meaning: "雨水", 
+        usage: "<ruby>雨<rt>あめ</rt></ruby>が<ruby>降<rt>ふ</rt></ruby>る", 
+        memory: "下雨天不能出門，只好在家吃「阿梅(a-me)」(梅子)。", 
+        songExample: "<span class='song-name'>《生きていたんだよな》</span><span class='album-name'>💿 收錄專輯：『青春のエキサイトメント』</span>【歌曲意涵】在冷漠的社會事件現場，雨水常在她的筆下作為洗刷生命痕跡、帶來憂鬱與生死反思的沉重意象。" },
+      { type: "名詞 11", kanji: "風", reading: "かぜ (kaze)", meaning: "風", 
+        usage: "<ruby>風<rt>かぜ</rt></ruby>が<ruby>吹<rt>ふ</rt></ruby>く", 
+        memory: "大風吹過，把桌上的「卡紙(ka-ze)」全都吹走了。", 
+        songExample: "<span class='song-name'>《ハルノヒ》</span><span class='album-name'>💿 收錄專輯：『おいしいパスタがあると聞いて』</span>【歌曲意涵】「風の強さがちょっと」(風有一點點強)，用微風吹拂描繪蠟筆小新父母在北千住車站求婚的日常風景，平凡卻溫馨。" },
+      { type: "名詞 12", kanji: "部屋", reading: "へや (heya)", meaning: "房間", 
+        usage: "<ruby>自分<rt>じぶん</rt></ruby>の<ruby>部屋<rt>へや</rt></ruby>", 
+        memory: "進到房間，對室友大喊一聲「嘿呀(he-ya)」。", 
+        songExample: "<span class='song-name'>《愛を伝えたいだとか》</span><span class='album-name'>💿 收錄專輯：『青春のエキサイトメント』</span>【歌曲意涵】主角獨自坐在稍嫌昏暗的房間沙發上，這個「房間」不僅是物理空間，更是充滿等待與內心小劇場的密閉世界。" },
+      { type: "名詞 13", kanji: "夢", reading: "ゆめ (yume)", meaning: "夢想", 
+        usage: "<ruby>夢<rt>ゆめ</rt></ruby>を<ruby>見<rt>み</rt></ruby>る", 
+        memory: "晚上做的夢境總是特別「幽美(yu-me)」。", 
+        songExample: "<span class='song-name'>《夢追いベンガル》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】這是一首充滿搖滾疾走感的歌曲，描寫像孟加拉貓一樣不顧一切追逐「夢想」的灑脫、野性與現實掙扎。" },
+      { type: "名詞 14", kanji: "涙", reading: "なみだ (namida)", meaning: "眼淚", 
+        usage: "<ruby>涙<rt>なみだ</rt></ruby>を<ruby>流<rt>なが</rt></ruby>す", 
+        memory: "眼淚像「那米大(na-mi-da)」的珍珠一樣掉下來。", 
+        songExample: "<span class='song-name'>《裸の心》</span><span class='album-name'>💿 收錄專輯：『おいしいパスタがあると聞いて』</span>【歌曲意涵】「涙が出ちゃう」(眼淚不自覺掉下來)，真實描寫在深夜回憶過往每一段戀情時，無法控制的脆弱與遺憾。" },
+      { type: "名詞 15", kanji: "体", reading: "からだ (karada)", meaning: "身體", 
+        usage: "<ruby>体中<rt>からだじゅう</rt></ruby>", 
+        memory: "身體要健康，才能「卡拉大(ka-ra-da)」聲唱歌。", 
+        songExample: "<span class='song-name'>《ふたりの世界》</span><span class='album-name'>💿 收錄專輯：『青春のエキサイトメント』</span>【歌曲意涵】描寫同居的兩人世界裡，不僅是心靈，連彼此的身體、氣息與溫度都產生了極度依賴的親密感。" },
+      { type: "名詞 16", kanji: "朝", reading: "あさ (asa)", meaning: "早晨", 
+        usage: "<ruby>朝<rt>あさ</rt></ruby>が<ruby>来<rt>く</rt></ruby>る", 
+        memory: "早上起床伸個大懶腰，喊一聲「啊～爽(a-sa)」。", 
+        songExample: "<span class='song-name'>《朝陽》</span><span class='album-name'>💿 收錄專輯：『おいしいパスタがあると聞いて』</span>【歌曲意涵】以早晨為背景，描寫經歷不順遂後迎來清晨，陽光的刺眼與內心複雜、混亂的心境形成強烈對比。" },
+      { type: "名詞 17", kanji: "花", reading: "はな (hana)", meaning: "花朵", 
+        usage: "<ruby>花<rt>はな</rt></ruby>が<ruby>咲<rt>さ</rt></ruby>く", 
+        memory: "聞花香要用鼻子，日文的鼻子發音也是「哈那(ha-na)」。", 
+        songExample: "<span class='song-name'>《桜が降る夜は》</span><span class='album-name'>💿 收錄專輯：『瞳へ落ちるよレコード』</span>【歌曲意涵】雖然歌名明指櫻花，但她常以花開花落來隱喻愛情的盛開與短暫易逝，充滿季節感的浪漫。" },
+      { type: "名詞 18", kanji: "影", reading: "かげ (kage)", meaning: "影子", 
+        usage: "<ruby>影<rt>かげ</rt></ruby>を<ruby>追<rt>お</rt></ruby>う", 
+        memory: "影子就像是「卡給(ka-ge)」你身邊甩不掉的跟屁蟲。", 
+        songExample: "<span class='song-name'>《マリーゴールド》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】「揺れる影」(搖曳的影子)，利用夕陽下的光影變化，完美烘托出夏日戀情那股泛黃的懷舊感。" },
+      { type: "名詞 19", kanji: "街", reading: "まち (machi)", meaning: "街道", 
+        usage: "<ruby>街<rt>まち</rt></ruby>を<ruby>走<rt>はし</rt></ruby>る", 
+        memory: "在熱鬧的街道上逛街，剛好遇到好「麻吉(ma-chi)」。", 
+        songExample: "<span class='song-name'>《生きていたんだよな》</span><span class='album-name'>💿 收錄專輯：『青春のエキサイトメント』</span>【歌曲意涵】描寫在喧囂、人們熙來攘往的街道上，大家冷漠旁觀卻又真實面對著生死，形成極具社會觀察的強烈對比。" },
+      { type: "名詞 20", kanji: "姿", reading: "すがた (sugata)", meaning: "身影", 
+        usage: "<ruby>後<rt>うし</rt></ruby>ろ<ruby>姿<rt>すがた</rt></ruby>", 
+        memory: "看到對方美麗的姿態，心裡覺得「速尬意(su-ga-ta)」。", 
+        songExample: "<span class='song-name'>《初恋が泣いている》</span><span class='album-name'>💿 收錄專輯：『瞳へ落ちるよレコード』</span>【歌曲意涵】看著初戀離去的身影，或是在人群中找尋著那個曾經熟悉的身姿，將對舊愛的執念具象化。" },
       
       // ====== 動詞 TOP10 ======
-      { type: "動詞 01", kanji: "会う", reading: "あう (au)", meaning: "見面", usage: "君に会いたい", memory: "兩人在街角相遇見面，「啊嗚(a-u)」地驚呼了一聲。", songExample: "<span class='song-name'>《ハルノヒ》</span><br>「北千住駅のプラットホームで待ち合わせ」(在月台會合相見)，充滿日常的幸福畫面。" },
-      { type: "動詞 02", kanji: "聴く", reading: "きく (kiku)", meaning: "傾聽", usage: "ロックを聴かない", memory: "聽到好聽的音樂，覺得這首歌非常「奇酷(ki-ku)」。", songExample: "<span class='song-name'>《君はロックを聴かない》</span><br>「你不聽搖滾樂吧」，用對方不願傾聽自己喜歡的音樂，帶出單戀的酸楚。" },
-      { type: "動詞 03", kanji: "笑う", reading: "わらう (warau)", meaning: "笑", usage: "二人で笑う", memory: "笑得非常開心，發出「哇哈哈(wa-ra-u)」的聲音。", songExample: "<span class='song-name'>《愛を知るまでは》</span><br>「笑って生きていたい」(希望能笑著活下去)，展現就算低潮也要笑著面對的生命力。" },
-      { type: "動詞 04", kanji: "泣く", reading: "なく (naku)", meaning: "哭泣", usage: "泣きそうな顔", memory: "哭得太大聲，被別人念說「那哭(na-ku)什麼啦？」。", songExample: "<span class='song-name'>《初恋が泣いている》</span><br>將「初戀」擬人化，說初戀正在哭泣，表現出失去戀情後的悲痛欲絕。" },
-      { type: "動詞 05", kanji: "知る", reading: "しる (shiru)", meaning: "知道", usage: "君を知りたい", memory: "知道感人的真相後，流下「吸嚕(shi-ru)」的鼻涕眼淚。", songExample: "<span class='song-name'>《空の青さを知る人よ》</span><br>「知道」天空多藍的人，代表經歷過歷練、理解現實與青春落差的人。" },
-      { type: "動詞 06", kanji: "忘れる", reading: "わすれる (wasureru)", meaning: "忘記", usage: "忘れられない", memory: "忘記帶重要東西，驚呼「哇！輸了了(wa-su-re-ru)」。", songExample: "<span class='song-name'>《あのね》</span><br>歌詞裡常有「不想忘記」或「請不要忘記我」的執念，是她情歌的一大特色。" },
-      { type: "動詞 07", kanji: "抱きしめる", reading: "だきしめる (dakishimeru)", meaning: "緊抱", usage: "強く抱きしめて", memory: "緊緊抱住對方，給他「打氣，是美夢(da-ki-shi-me-ru)」。", songExample: "<span class='song-name'>《マリーゴールド》</span><br>「強く抱きしめて」(緊緊擁抱)，這是情歌中最具畫面感的高潮動作。" },
-      { type: "動詞 08", kanji: "走る", reading: "はしる (hashiru)", meaning: "奔跑", usage: "夜空を走る", memory: "一直拚命奔跑，喘個不停發出「哈氣嚕(ha-shi-ru)」的聲音。", songExample: "<span class='song-name'>《双葉》</span><br>描寫不顧一切向前奔跑、成長的姿態，充滿青春期的衝勁與迷惘。" },
-      { type: "動詞 09", kanji: "話す", reading: "はなす (hanasu)", meaning: "說話", usage: "朝まで話そう", memory: "兩個人聊個不停，一直講話講到「哈那死(ha-na-su)」。", songExample: "<span class='song-name'>《ふたりの世界》</span><br>兩人獨處的空間裡，聊著只有彼此才懂的話語，平淡卻甜蜜。" },
-      { type: "動詞 10", kanji: "離す", reading: "はなす (hanasu)", meaning: "放開", usage: "手をつないで離さない", memory: "放開手不牽了，也是同樣的發音「哈那死(ha-na-su)」。", songExample: "<span class='song-name'>《マリーゴールド》</span><br>「離れないで」(請不要離開我)，用否定的形式表達想將對方牢牢抓緊的願望。" },
+      { type: "動詞 01", kanji: "会う", reading: "あう (au)", meaning: "見面", 
+        usage: "<ruby>君<rt>きみ</rt></ruby>に<ruby>会<rt>あ</rt></ruby>いたい", 
+        memory: "兩人在街角相遇見面，「啊嗚(a-u)」地驚呼了一聲。", 
+        songExample: "<span class='song-name'>《ハルノヒ》</span><span class='album-name'>💿 收錄專輯：『おいしいパスタがあると聞いて』</span>【歌曲意涵】「北千住駅のプラットホームで待ち合わせ」(在月台會合相見)，把情侶間最平凡的見面，唱出了日常的終極幸福感。" },
+      { type: "動詞 02", kanji: "聴く", reading: "きく (kiku)", meaning: "傾聽", 
+        usage: "ロックを<ruby>聴<rt>き</rt></ruby>かない", 
+        memory: "聽到好聽的音樂，覺得這首歌非常「奇酷(ki-ku)」。", 
+        songExample: "<span class='song-name'>《君はロックを聴かない》</span><span class='album-name'>💿 收錄專輯：『青春のエキサイトメント』</span>【歌曲意涵】「你不聽搖滾樂吧」，用對方不願傾聽自己喜歡的音樂，帶出那份希望藉由音樂縮短距離的單戀酸楚。" },
+      { type: "動詞 03", kanji: "笑う", reading: "わらう (warau)", meaning: "笑", 
+        usage: "<ruby>二人<rt>ふたり</rt></ruby>で<ruby>笑<rt>わら</rt></ruby>う", 
+        memory: "笑得非常開心，發出「哇哈哈(wa-ra-u)」的聲音。", 
+        songExample: "<span class='song-name'>《愛を知るまでは》</span><span class='album-name'>💿 收錄專輯：『瞳へ落ちるよレコード』</span>【歌曲意涵】「笑って生きていたい」(希望能笑著活下去)，這不僅是情歌，更是對人生低潮的反擊，展現不管怎樣都要笑著面對的生命力。" },
+      { type: "動詞 04", kanji: "泣く", reading: "なく (naku)", meaning: "哭泣", 
+        usage: "<ruby>泣<rt>な</rt></ruby>きそうな<ruby>顔<rt>かお</rt></ruby>", 
+        memory: "哭得太大聲，被別人念說「那哭(na-ku)什麼啦？」。", 
+        songExample: "<span class='song-name'>《初恋が泣いている》</span><span class='album-name'>💿 收錄專輯：『瞳へ落ちるよレコード』</span>【歌曲意涵】破天荒地將「初戀」擬人化，說初戀正在電線桿旁哭泣，用魔幻寫實的手法表現出失去戀情後的悲痛欲絕。" },
+      { type: "動詞 05", kanji: "知る", reading: "しる (shiru)", meaning: "知道", 
+        usage: "<ruby>君<rt>きみ</rt></ruby>を<ruby>知<rt>し</rt></ruby>りたい", 
+        memory: "知道感人的真相後，流下「吸嚕(shi-ru)」的鼻涕眼淚。", 
+        songExample: "<span class='song-name'>《空の青さを知る人よ》</span><span class='album-name'>💿 收錄專輯：『おいしいパスタがあると聞いて』</span>【歌曲意涵】「知道」天空多藍的人，代表了經歷過挫折歷練、徹底理解現實與青春落差，而變得更加成熟的人。" },
+      { type: "動詞 06", kanji: "忘れる", reading: "わすれる (wasureru)", meaning: "忘記", 
+        usage: "<ruby>忘<rt>わす</rt></ruby>れられない", 
+        memory: "忘記帶重要東西，驚呼「哇！輸了了(wa-su-re-ru)」。", 
+        songExample: "<span class='song-name'>《あのね》</span><span class='album-name'>💿 收錄專輯：『猫にジェラシー』</span>【歌曲意涵】歌詞裡常出現「不想忘記」或「請不要忘記我」的強烈執念，無法輕易忘記過去，是她情歌最迷人的特色之一。" },
+      { type: "動詞 07", kanji: "抱きしめる", reading: "だきしめる (dakishimeru)", meaning: "緊抱", 
+        usage: "<ruby>強<rt>つよ</rt></ruby>く<ruby>抱<rt>だ</rt></ruby>きしめて", 
+        memory: "緊緊抱住對方，給他「打氣，是美夢(da-ki-shi-me-ru)」。", 
+        songExample: "<span class='song-name'>《マリーゴールド》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】「強く抱きしめて」(緊緊擁抱)，這是情歌中最具畫面感的高潮動作，將抽象的愛意化為最直接的身體接觸。" },
+      { type: "動詞 08", kanji: "走る", reading: "はしる (hashiru)", meaning: "奔跑", 
+        usage: "<ruby>夜空<rt>よぞら</rt></ruby>を<ruby>走<rt>はし</rt></ruby>る", 
+        memory: "一直拚命奔跑，喘個不停發出「哈氣嚕(ha-shi-ru)」的聲音。", 
+        songExample: "<span class='song-name'>《双葉》</span><span class='album-name'>💿 收錄專輯：『瞳へ落ちるよレコード』</span>【歌曲意涵】描寫年輕時不顧一切向前奔跑、成長的姿態，充滿青春期的衝勁、迷惘以及對未來的無畏。" },
+      { type: "動詞 09", kanji: "話す", reading: "はなす (hanasu)", meaning: "說話", 
+        usage: "<ruby>朝<rt>あさ</rt></ruby>まで<ruby>話<rt>はな</rt></ruby>そう", 
+        memory: "兩個人聊個不停，一直講話講到「哈那死(ha-na-su)」。", 
+        songExample: "<span class='song-name'>《ふたりの世界》</span><span class='album-name'>💿 收錄專輯：『青春のエキサイトメント』</span>【歌曲意涵】描繪兩人在床上獨處的空間裡，隨意聊著只有彼此才懂的話語，平淡的對話堆疊出極致的甜蜜。" },
+      { type: "動詞 10", kanji: "離す", reading: "はなす (hanasu)", meaning: "放開", 
+        usage: "<ruby>手<rt>て</rt></ruby>をつないで<ruby>離<rt>はな</rt></ruby>さない", 
+        memory: "放開手不牽了，也是同樣的發音「哈那死(ha-na-su)」。", 
+        songExample: "<span class='song-name'>《マリーゴールド》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】「離れないで」(請不要離開我)，用否定的形式來表達害怕失去，希望能將對方牢牢抓緊、永不放手的強烈願望。" },
 
       // ====== 形容詞 TOP10 ======
-      { type: "形容詞 01", kanji: "青い", reading: "あおい (aoi)", meaning: "藍色、青澀", usage: "青い空", memory: "看到蔚藍大海，發出「啊～喔～伊(a-o-i)」的讚嘆。", songExample: "<span class='song-name'>《空の青さを知る人よ》</span><br>青(藍色)在 AIMYON 筆下常代表未成熟的青春、清澈卻帶點憂傷的天空。" },
-      { type: "形容詞 02", kanji: "痛い", reading: "いたい (itai)", meaning: "疼痛、難過", usage: "胸が痛い", memory: "踢到桌角，痛到大喊「唉太(i-tai)痛了吧！」", songExample: "<span class='song-name'>《貴方解剖純愛歌》</span><br>極致的愛戀帶來生理與心理的刺痛感，她經常使用「痛」來形容刻骨銘心。" },
-      { type: "形容詞 03", kanji: "愛しい", reading: "いとしい (itoshii)", meaning: "心愛的", usage: "愛しい人", memory: "感情「意投(i-to)」氣合，深深愛慕(shi-i)對方。", songExample: "<span class='song-name'>《マリーゴールド》</span><br>稱呼對方為心愛的人，比「喜歡」更多了一份想好好珍惜、疼愛的重量。" },
-      { type: "形容詞 04", kanji: "寂しい", reading: "さびしい (sabishii)", meaning: "寂寞的", usage: "寂しい夜", memory: "孤獨感如同「殺必死(sa-bi-shi)」，寂寞得快死掉。", songExample: "<span class='song-name'>《今夜このまま》</span><br>描寫一個人喝酒時的寂寞感，她的詞作完美捕捉了現代人的孤獨片刻。" },
-      { type: "形容詞 05", kanji: "優しい", reading: "やさしい (yasashii)", meaning: "溫柔的", usage: "優しい声", memory: "溫柔的人總被說「呀！傻傻(ya-sa-shi)的」一直付出。", songExample: "<span class='song-name'>《ハルノヒ》</span><br>形容日常生活中，對方不經意的溫柔舉動，是穩定期戀情中最迷人的特質。" },
-      { type: "形容詞 06", kanji: "甘い", reading: "あまい (amai)", meaning: "甜美的", usage: "甘い匂い", memory: "「阿嬤(a-ma)」偷偷塞給你的糖果，永遠是最甜美的。", songExample: "<span class='song-name'>《満月の夜なら》</span><br>「甘い匂い」(甜美的香氣)，用味覺與嗅覺的形容詞來帶出情慾與曖昧的氛圍。" },
-      { type: "形容詞 07", kanji: "強い", reading: "つよい (tsuyoi)", meaning: "強烈的", usage: "強い風", memory: "諧音台語「粗勇(tsu-yo)」，代表身體強壯、意志堅強。", songExample: "<span class='song-name'>《愛を知るまでは》</span><br>展現出無論如何都要活下去的「堅強」，是充滿生命力的吶喊。" },
-      { type: "形容詞 08", kanji: "悲しい", reading: "かなしい (kanashii)", meaning: "悲傷的", usage: "悲しい歌", memory: "「看哪～夕(ka-na-shi)陽」，看著日落湧上悲傷哀愁。", songExample: "<span class='song-name'>《生きていたんだよな》</span><br>面對新聞事件或生命的逝去，用最直接的「悲傷」來表達內心的無力感。" },
-      { type: "形容詞 09", kanji: "眩しい", reading: "まぶしい (mabushii)", meaning: "耀眼的", usage: "眩しい光", memory: "光線太刺眼，連「馬都不視(ma-bu-shi)」轉頭避開。", songExample: "<span class='song-name'>《マリーゴールド》</span><br>「眩しい光」(耀眼的光芒)，形容那段戀情像夏日陽光一樣，閃耀到讓人睜不開眼。" },
-      { type: "形容詞 10", kanji: "嬉しい", reading: "うれしい (ureshii)", meaning: "開心的", usage: "嬉しい知らせ", memory: "開心到發出「嗚！」歡呼，說著「來洗(re-shi)」澡慶祝吧！", songExample: "<span class='song-name'>《ハート》</span><br>在日常的小事中感受到被愛的喜悅，簡單的「好開心」就是戀愛中最純粹的情緒。" }
+      { type: "形容詞 01", kanji: "青い", reading: "あおい (aoi)", meaning: "藍色、青澀", 
+        usage: "<ruby>青<rt>あお</rt></ruby>い<ruby>空<rt>そら</rt></ruby>", 
+        memory: "看到蔚藍大海，發出「啊～喔～伊(a-o-i)」的讚嘆。", 
+        songExample: "<span class='song-name'>《空の青さを知る人よ》</span><span class='album-name'>💿 收錄專輯：『おいしいパスタがあると聞いて』</span>【歌曲意涵】青(藍色)在 AIMYON 筆下，不僅是天空的顏色，更常代表著未成熟的青春、以及那份清澈卻帶點憂傷的歲月。" },
+      { type: "形容詞 02", kanji: "痛い", reading: "いたい (itai)", meaning: "疼痛、難過", 
+        usage: "<ruby>胸<rt>むね</rt></ruby>が<ruby>痛<rt>いた</rt></ruby>い", 
+        memory: "踢到桌角，痛到大喊「唉太(i-tai)痛了吧！」", 
+        songExample: "<span class='song-name'>《貴方解剖純愛歌 〜死ね〜》</span><span class='album-name'>💿 收錄專輯：『tamago』</span>【歌曲意涵】極致的愛戀帶來生理與心理的刺痛感，她經常使用「痛」來形容愛情刻骨銘心、甚至令人窒息的感受。" },
+      { type: "形容詞 03", kanji: "愛しい", reading: "いとしい (itoshii)", meaning: "心愛的", 
+        usage: "<ruby>愛<rt>いと</rt></ruby>しい<ruby>人<rt>ひと</rt></ruby>", 
+        memory: "感情「意投(i-to)」氣合，深深愛慕(shi-i)對方。", 
+        songExample: "<span class='song-name'>《マリーゴールド》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】稱呼對方為心愛的人，這比單純的「喜歡」更多了一份想好好珍惜、疼愛，甚至為對方付出的厚重情感。" },
+      { type: "形容詞 04", kanji: "寂しい", reading: "さびしい (sabishii)", meaning: "寂寞的", 
+        usage: "<ruby>寂<rt>さび</rt></ruby>しい<ruby>夜<rt>よる</rt></ruby>", 
+        memory: "孤獨感如同「殺必死(sa-bi-shi)」，寂寞得快死掉。", 
+        songExample: "<span class='song-name'>《今夜このまま》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】描寫一個人在夜裡喝著酒時的寂寞感，她的詞作完美捕捉了現代都會男女那種無法排解的微小孤獨片刻。" },
+      { type: "形容詞 05", kanji: "優しい", reading: "やさしい (yasashii)", meaning: "溫柔的", 
+        usage: "<ruby>優<rt>やさ</rt></ruby>しい<ruby>声<rt>こえ</rt></ruby>", 
+        memory: "溫柔的人總被說「呀！傻傻(ya-sa-shi)的」一直付出。", 
+        songExample: "<span class='song-name'>《ハルノヒ》</span><span class='album-name'>💿 收錄專輯：『おいしいパスタがあると聞いて』</span>【歌曲意涵】形容在日常瑣碎的生活中，對方不經意的溫柔舉動與話語，這正是穩定期戀情中最迷人、最讓人安心的特質。" },
+      { type: "形容詞 06", kanji: "甘い", reading: "あまい (amai)", meaning: "甜美的", 
+        usage: "<ruby>甘<rt>あま</rt></ruby>い<ruby>匂<rt>にお</rt></ruby>い", 
+        memory: "「阿嬤(a-ma)」偷偷塞給你的糖果，永遠是最甜美的。", 
+        songExample: "<span class='song-name'>《満月の夜なら》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】「甘い匂い」(甜美的香氣)，巧妙運用味覺與嗅覺的形容詞，來帶出男女之間情慾流動與曖昧不清的危險氛圍。" },
+      { type: "形容詞 07", kanji: "強い", reading: "つよい (tsuyoi)", meaning: "強烈的", 
+        usage: "<ruby>強<rt>つよ</rt></ruby>い<ruby>風<rt>かぜ</rt></ruby>", 
+        memory: "諧音台語「粗勇(tsu-yo)」，代表身體強壯、意志堅強。", 
+        songExample: "<span class='song-name'>《愛を知るまでは》</span><span class='album-name'>💿 收錄專輯：『瞳へ落ちるよレコード』</span>【歌曲意涵】展現出無論遇到什麼困難，在真正懂得愛之前都要活下去的「堅強」，是一首充滿生命力與韌性的自我吶喊。" },
+      { type: "形容詞 08", kanji: "悲しい", reading: "かなしい (kanashii)", meaning: "悲傷的", 
+        usage: "<ruby>悲<rt>かな</rt></ruby>しい<ruby>歌<rt>うた</rt></ruby>", 
+        memory: "「看哪～夕(ka-na-shi)陽」，看著日落湧上悲傷哀愁。", 
+        songExample: "<span class='song-name'>《生きていたんだよな》</span><span class='album-name'>💿 收錄專輯：『青春のエキサイトメント』</span>【歌曲意涵】面對新聞事件或無辜生命的逝去，不加修飾地用最直接的「悲傷」來表達內心的無力感與對生存的叩問。" },
+      { type: "形容詞 09", kanji: "眩しい", reading: "まぶしい (mabushii)", meaning: "耀眼的", 
+        usage: "<ruby>眩<rt>まぶ</rt></ruby>しい<ruby>光<rt>ひかり</rt></ruby>", 
+        memory: "光線太刺眼，連「馬都不視(ma-bu-shi)」轉頭避開。", 
+        songExample: "<span class='song-name'>《マリーゴールド》</span><span class='album-name'>💿 收錄專輯：『瞬間的シックスセンス』</span>【歌曲意涵】「眩しい光」(耀眼的光芒)，形容那段刻骨銘心的戀情就像夏日豔陽一樣，閃耀到讓人睜不開眼，卻又無法忘懷。" },
+      { type: "形容詞 10", kanji: "嬉しい", reading: "うれしい (ureshii)", meaning: "開心的", 
+        usage: "<ruby>嬉<rt>うれ</rt></ruby>しい<ruby>知<rt>し</rt></ruby>らせ", 
+        memory: "開心到發出「嗚！」歡呼，說著「來洗(re-shi)」澡慶祝吧！", 
+        songExample: "<span class='song-name'>《ハート》</span><span class='album-name'>💿 收錄專輯：『瞳へ落ちるよレコード』</span>【歌曲意涵】在日常相處的小事中感受到被愛的喜悅，對於熱戀中的人來說，簡單的一句「好開心」就是最純粹的情緒表達。" }
     ];
 
     let currentIndex = 0;
@@ -286,7 +418,9 @@
       document.getElementById('typeBadge').innerText = item.type;
       document.getElementById('kanjiText').innerText = item.kanji;
       document.getElementById('readingText').innerText = item.reading;
-      document.getElementById('usageText').innerText = `${item.meaning} (${item.usage})`;
+      
+      // 使用 innerHTML 才能正確解析 <ruby> 標籤
+      document.getElementById('usageText').innerHTML = `${item.meaning} (${item.usage})`;
       document.getElementById('memoryText').innerText = item.memory;
       document.getElementById('songText').innerHTML = item.songExample;
       document.getElementById('progressText').innerText = `${currentIndex + 1} / ${wordList.length}`;
@@ -309,9 +443,14 @@
     function speakCurrentWord() {
       if ('speechSynthesis' in window) {
         window.speechSynthesis.cancel();
+        
+        // 抓取當前單字，並透過建立隱藏容器過濾掉 HTML <ruby> 標籤，取得純文字給語音唸
         const item = wordList[currentIndex];
-        // 朗讀漢字、用法
-        const textToSpeak = `${item.kanji}。 ${item.usage}`;
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = item.usage;
+        const cleanUsage = tempDiv.textContent || tempDiv.innerText;
+        
+        const textToSpeak = `${item.kanji}。 ${cleanUsage}`;
         const utterance = new SpeechSynthesisUtterance(textToSpeak);
         utterance.lang = 'ja-JP';
         utterance.rate = 0.85; 
@@ -321,7 +460,7 @@
       }
     }
 
-    // 啟動渲染
+    // 啟動渲染第一張
     renderCard();
   </script>
 </body>
