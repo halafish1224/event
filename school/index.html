@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 禁止搜尋引擎抓取與索引 (SEO Defense 雙重防護) -->
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <meta name="googlebot" content="noindex, nofollow">
     <title>龍潭國中 115-1 課表與行事曆</title>
@@ -61,7 +62,7 @@
             display: flex;
             gap: 10px;
             margin-bottom: 20px;
-            flex-wrap: wrap; /* 螢幕過小可折行 */
+            flex-wrap: wrap;
         }
 
         .tab-btn {
@@ -134,6 +135,7 @@
             padding: 12px 8px;
             text-align: center;
             font-size: 1.15rem;
+            vertical-align: middle;
         }
 
         th {
@@ -145,6 +147,20 @@
         tr:nth-child(even) { background-color: var(--light-mustard); }
         .lunch-row { background-color: #fff3cd !important; font-weight: bold; color: #856404; }
         .teacher-name { display: block; font-size: 0.95rem; color: #444; margin-top: 4px; }
+
+        /* 葛洛莉 專屬顏色標示 (高對比紫色標籤) */
+        .gloria-badge {
+            display: inline-block;
+            background-color: #6a1b9a; /* 深紫色 */
+            color: #ffffff;
+            font-weight: bold;
+            padding: 8px 14px;
+            border-radius: 20px; /* 圓角膠囊形狀 */
+            font-size: 1.15rem;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
 
         /* 行事曆 */
         .event-list { list-style: none; }
@@ -171,7 +187,7 @@
             margin-left: 20px;
         }
 
-        /* 天氣預報卡片設計 (長者友善) */
+        /* 天氣預報卡片設計 */
         .weather-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -199,7 +215,7 @@
             color: #0056b3;
             font-weight: bold;
         }
-        .w-rain.high { background-color: #fcebeb; color: var(--danger-red); } /* 降雨機率高時變紅色 */
+        .w-rain.high { background-color: #fcebeb; color: var(--danger-red); }
 
         @media (max-width: 600px) {
             body { padding: 10px; font-size: 18px; }
@@ -216,12 +232,14 @@
         <p id="student-info">載入中...</p>
     </header>
 
+    <!-- 切換分頁 -->
     <div class="tab-controls">
         <button class="tab-btn active" onclick="switchTab('timetable')">📅 班級課表</button>
         <button class="tab-btn" onclick="switchTab('calendar')">📌 行事曆</button>
         <button class="tab-btn" onclick="switchTab('weather')">⛅ 龍潭天氣</button>
     </div>
 
+    <!-- 1. 課表區域 -->
     <div id="timetable" class="content-section active">
         <div class="card">
             <div class="card-title">每週上課時間表</div>
@@ -243,6 +261,7 @@
         </div>
     </div>
 
+    <!-- 2. 行事曆區域 -->
     <div id="calendar" class="content-section">
         <div class="card">
             <div class="card-title">📝 考試評量與重要日程</div>
@@ -250,10 +269,11 @@
         </div>
     </div>
 
+    <!-- 3. 天氣區域 -->
     <div id="weather" class="content-section">
         <div class="card">
             <div class="card-title">⛅ 桃園市龍潭區 一週天氣預報</div>
-            <p style="margin-bottom: 15px; color: #555;">即時同步氣象資料，降雨機率過高時會以<span style="color:red; font-weight:bold;">紅色</span>提醒。</p>
+            <p style="margin-bottom: 15px; color: #555;">即時同步氣象資料，降雨機率高時會以<span style="color:red; font-weight:bold;">紅色</span>提醒。</p>
             <div class="weather-grid" id="weather-body">
                 <p>🌤️ 天氣資料努力載入中...</p>
             </div>
@@ -267,44 +287,46 @@
         // 區塊 1：靜態資料 (可自行手動更改此區)
         // ==========================================
         const appData = {
-    "title": "龍潭國中 115 學年度第一學期",
-    "student": "學生：劉喜鈞 | 班級：706 | 導師：蔡文惠",
-    "timetable": [
-        { "period": "一<br><small>08:25-09:10</small>", "mon": "健康教育<br><span class='teacher-name'>許瀞文</span>", "tue": "英語<br><span class='teacher-name'>謝雯玲</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯 (生物實驗室)</span>", "thu": "歷史<br><span class='teacher-name'>陳志翔</span>", "fri": "英語<br><span class='teacher-name'>謝雯玲</span>" },
-        { "period": "二<br><small>09:20-10:05</small>", "mon": "生物<br><span class='teacher-name'>曾莉雯</span>", "tue": "綜合輔導<br><span class='teacher-name'>陳孟萍</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯 (生物實驗室)</span>", "thu": "英語<br><span class='teacher-name'>謝雯玲</span>", "fri": "音樂<br><span class='teacher-name'>莊宜錞 (音樂教室二)</span>" },
-        { "period": "三<br><small>10:15-11:00</small>", "mon": "數學<br><span class='teacher-name'>陳登鉅</span>", "tue": "體育<br><span class='teacher-name'>陳怡</span>", "wed": "國文<br><span class='teacher-name'>蔡文惠</span>", "thu": "表演藝術<br><span class='teacher-name'>黃心怡</span>", "fri": "體育<br><span class='teacher-name'>陳怡</span>" },
-        { "period": "四<br><small>11:10-11:55</small>", "mon": "國文<br><span class='teacher-name'>蔡文惠</span>", "tue": "國文<br><span class='teacher-name'>蔡文惠</span>", "wed": "數學<br><span class='teacher-name'>陳登鉅</span>", "thu": "數學<br><span class='teacher-name'>陳登鉅</span>", "fri": "公民<br><span class='teacher-name'>曾亭勻</span>" },
-        { "period": "午休 / 午餐", "mon": "午餐休息", "tue": "午餐休息", "wed": "午餐休息", "thu": "午餐休息", "fri": "午餐休息", "isLunch": true },
-        { "period": "五<br><small>13:05-13:50</small>", "mon": "閱讀指導<br><span class='teacher-name'>蔡文惠</span>", "tue": "資訊科技<br><span class='teacher-name'>林湘涵 (三樓電腦教室)</span>", "wed": "地理<br><span class='teacher-name'>鄭紹辰</span>", "thu": "國文<br><span class='teacher-name'>蔡文惠</span>", "fri": "班週會<br><span class='teacher-name'>蔡文惠</span>" },
-        { "period": "六<br><small>14:00-14:45</small>", "mon": "視覺藝術<br><span class='teacher-name'>蔡東佑 (美術教室一)</span>", "tue": "生活科技<br><span class='teacher-name'>林湘涵 (三樓電腦教室)</span>", "wed": "國際教育<br><span class='teacher-name'>謝雯玲</span>", "thu": "綜合童軍<br><span class='teacher-name'>陳孟萍</span>", "fri": "國文<br><span class='teacher-name'>蔡文惠</span>" },
-        { "period": "七<br><small>15:00-15:45</small>", "mon": "本土語文<br><span class='teacher-name'>呂忠翰 (閩語D組)</span>", "tue": "邏輯思維<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "綜合家政<br><span class='teacher-name'>陳孟萍</span>", "fri": "數學<br><span class='teacher-name'>陳登鉅</span>" },
-        { "period": "八<br><small>15:55-16:40</small>", "mon": "英語輔<br><span class='teacher-name'>謝雯玲</span>", "tue": "數學輔<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "導師時間<br><span class='teacher-name'>蔡文惠</span>", "fri": "國文輔<br><span class='teacher-name'>蔡文惠</span>" }
-    ],
-    "calendar": [
-        { "date": "08/31(一)", "desc": "🎒 開學、正式上課" },
-        { "date": "09/07(一)", "desc": "🕒 第八節輔導課開始" },
-        { "date": "09/14(一)", "desc": "🩺 七年級新生健檢 (全日)" },
-        { "date": "09/17(四)", "desc": "📝 新生學力檢測 C2-4" },
-        { "date": "09/18(五)", "desc": "🤝 親師座談會" },
-        { "date": "09/25(五)", "desc": "🥮 中秋節放假" },
-        { "date": "09/28(一)", "desc": "👨‍🏫 教師節放假" },
-        { "date": "10/05(一)", "desc": "💉 全校流感疫苗施打" },
-        { "date": "10/09(五)", "desc": "🇹🇼 國慶日補假" },
-        { "date": "10/14(三) - 10/15(四)", "desc": "💯 第一次段考（不上輔導課）" },
-        { "date": "10/23(五)", "desc": "🏃 運動會預演" },
-        { "date": "10/26(一)", "desc": "🌴 光復節補假" },
-        { "date": "10/31(六)", "desc": "🎉 校慶活動" },
-        { "date": "11/06(五)", "desc": "🌴 校慶補假" },
-        { "date": "11/13(五)", "desc": "⚖️ 性別平等教育講座 (七八)" },
-        { "date": "12/01(二) - 12/02(三)", "desc": "💯 第二次段考（不上輔導課）" },
-        { "date": "12/25(五)", "desc": "🌴 行憲紀念日放假" },
-        { "date": "01/01(五)", "desc": "🌴 元旦放假" },
-        { "date": "01/08(五)", "desc": "🛑 第八節輔導課最後一天" },
-        { "date": "01/19(二) - 01/20(三)", "desc": "💯 第三次段考" },
-        { "date": "01/21 - 02/10", "desc": "☃️ 寒假開始" },
-        { "date": "02/11(三)", "desc": "🔔 下學期開學日" }
-    ]
-};
+            "title": "龍潭國中 115 學年度第一學期",
+            "student": "學生：劉喜鈞 | 班級：706 | 導師：蔡文惠",
+            "timetable": [
+                { "period": "一<br><small>08:25-09:10</small>", "mon": "健康教育<br><span class='teacher-name'>許瀞文</span>", "tue": "英語<br><span class='teacher-name'>謝雯玲</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯 (生物實驗室)</span>", "thu": "歷史<br><span class='teacher-name'>陳志翔</span>", "fri": "英語<br><span class='teacher-name'>謝雯玲</span>" },
+                { "period": "二<br><small>09:20-10:05</small>", "mon": "生物<br><span class='teacher-name'>曾莉雯</span>", "tue": "綜合輔導<br><span class='teacher-name'>陳孟萍</span>", "wed": "生物<br><span class='teacher-name'>曾莉雯 (生物實驗室)</span>", "thu": "英語<br><span class='teacher-name'>謝雯玲</span>", "fri": "音樂<br><span class='teacher-name'>莊宜錞 (音樂教室二)</span>" },
+                { "period": "三<br><small>10:15-11:00</small>", "mon": "數學<br><span class='teacher-name'>陳登鉅</span>", "tue": "體育<br><span class='teacher-name'>陳怡</span>", "wed": "國文<br><span class='teacher-name'>蔡文惠</span>", "thu": "表演藝術<br><span class='teacher-name'>黃心怡</span>", "fri": "體育<br><span class='teacher-name'>陳怡</span>" },
+                { "period": "四<br><small>11:10-11:55</small>", "mon": "國文<br><span class='teacher-name'>蔡文惠</span>", "tue": "國文<br><span class='teacher-name'>蔡文惠</span>", "wed": "數學<br><span class='teacher-name'>陳登鉅</span>", "thu": "數學<br><span class='teacher-name'>陳登鉅</span>", "fri": "公民<br><span class='teacher-name'>曾亭勻</span>" },
+                { "period": "午休 / 午餐", "mon": "午餐休息", "tue": "午餐休息", "wed": "午餐休息", "thu": "午餐休息", "fri": "午餐休息", "isLunch": true },
+                { "period": "五<br><small>13:05-13:50</small>", "mon": "閱讀指導<br><span class='teacher-name'>蔡文惠</span>", "tue": "資訊科技<br><span class='teacher-name'>林湘涵 (三樓電腦教室)</span>", "wed": "地理<br><span class='teacher-name'>鄭紹辰</span>", "thu": "國文<br><span class='teacher-name'>蔡文惠</span>", "fri": "班週會<br><span class='teacher-name'>蔡文惠</span>" },
+                { "period": "六<br><small>14:00-14:45</small>", "mon": "視覺藝術<br><span class='teacher-name'>蔡東佑 (美術教室一)</span>", "tue": "生活科技<br><span class='teacher-name'>林湘涵 (三樓電腦教室)</span>", "wed": "國際教育<br><span class='teacher-name'>謝雯玲</span>", "thu": "綜合童軍<br><span class='teacher-name'>陳孟萍</span>", "fri": "國文<br><span class='teacher-name'>蔡文惠</span>" },
+                { "period": "七<br><small>15:00-15:45</small>", "mon": "本土語文<br><span class='teacher-name'>呂忠翰 (閩語D組)</span>", "tue": "邏輯思維<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "綜合家政<br><span class='teacher-name'>陳孟萍</span>", "fri": "數學<br><span class='teacher-name'>陳登鉅</span>" },
+                { "period": "八<br><small>15:55-16:40</small>", "mon": "英語輔<br><span class='teacher-name'>謝雯玲</span>", "tue": "數學輔<br><span class='teacher-name'>陳登鉅</span>", "wed": "社團(足球)<br><span class='teacher-name'>鄧閔仁</span>", "thu": "導師時間<br><span class='teacher-name'>蔡文惠</span>", "fri": "國文輔<br><span class='teacher-name'>蔡文惠</span>" },
+                // 新增：課後 葛洛莉 行程
+                { "period": "課後<br><small>17:00起</small>", "mon": "-", "tue": "<span class='gloria-badge'>葛洛莉</span>", "wed": "-", "thu": "-", "fri": "<span class='gloria-badge'>葛洛莉</span>" }
+            ],
+            "calendar": [
+                { "date": "08/31(一)", "desc": "🎒 開學、正式上課" },
+                { "date": "09/07(一)", "desc": "🕒 第八節輔導課開始" },
+                { "date": "09/14(一)", "desc": "🩺 七年級新生健檢 (全日)" },
+                { "date": "09/17(四)", "desc": "📝 新生學力檢測 C2-4" },
+                { "date": "09/18(五)", "desc": "🤝 親師座談會" },
+                { "date": "09/25(五)", "desc": "🥮 中秋節放假" },
+                { "date": "09/28(一)", "desc": "👨‍🏫 教師節放假" },
+                { "date": "10/05(一)", "desc": "💉 全校流感疫苗施打" },
+                { "date": "10/09(五)", "desc": "🇹🇼 國慶日補假" },
+                { "date": "10/14(三) - 10/15(四)", "desc": "💯 第一次段考（不上輔導課）" },
+                { "date": "10/23(五)", "desc": "🏃 運動會預演" },
+                { "date": "10/26(一)", "desc": "🌴 光復節補假" },
+                { "date": "10/31(六)", "desc": "🎉 校慶活動" },
+                { "date": "11/06(五)", "desc": "🌴 校慶補假" },
+                { "date": "11/13(五)", "desc": "⚖️ 性別平等教育講座 (七八)" },
+                { "date": "12/01(二) - 12/02(三)", "desc": "💯 第二次段考（不上輔導課）" },
+                { "date": "12/25(五)", "desc": "🌴 行憲紀念日放假" },
+                { "date": "01/01(五)", "desc": "🌴 元旦放假" },
+                { "date": "01/08(五)", "desc": "🛑 第八節輔導課最後一天" },
+                { "date": "01/19(二) - 01/20(三)", "desc": "💯 第三次段考" },
+                { "date": "01/21 - 02/10", "desc": "☃️ 寒假開始" },
+                { "date": "02/11(三)", "desc": "🔔 下學期開學日" }
+            ]
+        };
 
         // ==========================================
         // 區塊 2：動態渲染與頁籤切換邏輯
@@ -355,7 +377,7 @@
                 const data = await response.json();
                 
                 const weatherBody = document.getElementById('weather-body');
-                weatherBody.innerHTML = ''; // 清除載入文字
+                weatherBody.innerHTML = ''; 
 
                 const days = ['日', '一', '二', '三', '四', '五', '六'];
 
@@ -371,7 +393,6 @@
                     const minT = Math.round(data.daily.temperature_2m_min[i]);
                     const rain = data.daily.precipitation_probability_max[i];
 
-                    // 降雨機率大於 40% 就加上紅色警示 Class
                     const rainClass = rain >= 40 ? 'w-rain high' : 'w-rain';
 
                     weatherBody.innerHTML += `
