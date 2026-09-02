@@ -14,7 +14,8 @@ import './globals.css';
 
 export const metadata: Metadata = {
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? 'http://localhost:3000',
+    process.env.NEXT_PUBLIC_SITE_URL ??
+      'https://aimyon-japanese.wow-themepark.chatgpt.site',
   ),
   title: {
     default: 'AIMYON Japanese｜用語境學會真正能說的日文',
