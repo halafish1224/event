@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/app-link';
 import { ArrowRight, BrainCircuit, Clock3, Layers3, Zap } from 'lucide-react';
 import { PageIntro } from '@/components/page-intro';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';

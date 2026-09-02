@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://event.itigre.com/sitemap.xml
+Sitemap: https://event.itigre.com/jp50/aimyon/aimyon-japanese/sitemap.xml

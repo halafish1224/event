@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/app-link';
 import { PageIntro } from '@/components/page-intro';
 import { VocabularyBrowser } from '@/components/vocabulary/vocabulary-browser';
 

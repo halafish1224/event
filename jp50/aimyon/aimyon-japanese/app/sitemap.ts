@@ -25,7 +25,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ];
 
   return [...staticRoutes, ...dynamicRoutes].map((route) => ({
-    url: `${baseUrl}${route}`,
+    url: `${baseUrl}${route}/`,
     changeFrequency: route ? 'monthly' : 'weekly',
     priority: route ? 0.7 : 1,
   }));

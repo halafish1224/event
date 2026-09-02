@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/app-link';
 import { ArrowRight, Headphones } from 'lucide-react';
 import { PageIntro } from '@/components/page-intro';
 import { Card, CardContent } from '@/components/ui/card';

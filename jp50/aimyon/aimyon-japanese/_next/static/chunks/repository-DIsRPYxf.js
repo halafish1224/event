@@ -1,0 +1,1 @@
+var e=`aimyon-japanese:settings:v1`,t={version:1,dailyGoal:15};function n(n){try{let r=n.getItem(e);if(!r)return t;let i=JSON.parse(r);if(i.version===1&&(i.dailyGoal===5||i.dailyGoal===10||i.dailyGoal===15))return{version:1,dailyGoal:i.dailyGoal}}catch{}return t}function r(t,n){t.setItem(e,JSON.stringify(n))}export{r as n,n as t};

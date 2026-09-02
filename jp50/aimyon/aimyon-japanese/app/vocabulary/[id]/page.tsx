@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
+import Link from '@/components/app-link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight, BrainCircuit, Link2 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';

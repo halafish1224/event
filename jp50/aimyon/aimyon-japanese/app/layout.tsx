@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import {
   BookOpenText,
   Contrast,
@@ -9,14 +8,17 @@ import {
   TrendingUp,
 } from 'lucide-react';
 
+import Link from '@/components/app-link';
 import { ReviewProvider } from '@/components/review/review-provider';
 import './globals.css';
 
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  'https://aimyon-japanese.wow-themepark.chatgpt.site';
+const socialImageUrl = `${siteUrl}/og-aimyon-japanese.png`;
+
 export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ??
-      'https://aimyon-japanese.wow-themepark.chatgpt.site',
-  ),
+  metadataBase: new URL(siteUrl),
   title: {
     default: 'AIMYON Japanese｜用語境學會真正能說的日文',
     template: '%s｜AIMYON Japanese',
@@ -30,6 +32,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   openGraph: {
     type: 'website',
+    url: siteUrl,
     locale: 'zh_TW',
     siteName: 'AIMYON Japanese',
     title: 'AIMYON Japanese｜用語境學會真正能說的日文',
@@ -37,7 +40,7 @@ export const metadata: Metadata = {
       '以檢索練習、語意對比與自適應複習，練出能理解、能分辨、也能主動說出的日文。',
     images: [
       {
-        url: '/og-aimyon-japanese.png',
+        url: socialImageUrl,
         width: 1731,
         height: 909,
         alt: '以學習卡片、對比節點與記憶路徑構成的日文學習視覺',
@@ -48,7 +51,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'AIMYON Japanese｜用語境學會真正能說的日文',
     description: '以檢索練習、語意對比與自適應複習建立可主動使用的日文能力。',
-    images: ['/og-aimyon-japanese.png'],
+    images: [socialImageUrl],
   },
 };
 
