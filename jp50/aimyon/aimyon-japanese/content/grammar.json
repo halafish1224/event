@@ -1,0 +1,214 @@
+[
+  {
+    "id": "g_masu",
+    "title": "ます形",
+    "surface_pattern": "動詞ます語幹＋ます",
+    "level": "beginner",
+    "category": "morphology",
+    "meaning_core": "將動詞改成禮貌敘述形式。",
+    "meaning_extended": ["也是 ながら、たい 等形式的基底。"],
+    "formation_rules": [
+      "五段動詞移到 i 段後接 ます。",
+      "一段動詞去掉最後的 る 後接 ます。",
+      "する→します；来る→来ます。"
+    ],
+    "prerequisites": [],
+    "semantic_functions": ["politeness"],
+    "register": "polite",
+    "usage_notes": ["不能只看是否以 る 結尾判斷動詞類型。"],
+    "example_sentence_ids": ["ex_au_01"],
+    "lesson_ids": ["lesson_06"],
+    "song_ids": ["song_harunohi"],
+    "common_error_tags": ["godan_a_row_error", "ichidan_drop_ru_error"]
+  },
+  {
+    "id": "g_te_form",
+    "title": "て形",
+    "surface_pattern": "動詞て形",
+    "level": "beginner",
+    "category": "morphology",
+    "meaning_core": "作為連接動作與組合文法的基礎形式。",
+    "meaning_extended": [
+      "可接 ～ている、～てみる、～てほしい、～ていく、～てくる。"
+    ],
+    "formation_rules": [
+      "う・つ・る→って。",
+      "む・ぶ・ぬ→んで。",
+      "く→いて；ぐ→いで；す→して。",
+      "行く 是例外：行って。",
+      "一段動詞去 る 加 て。"
+    ],
+    "prerequisites": ["g_masu"],
+    "semantic_functions": ["connection", "prerequisite"],
+    "register": "neutral",
+    "usage_notes": ["錯在後接文法時，先檢查 て形是否正確。"],
+    "example_sentence_ids": ["ex_kikitehoshii_01"],
+    "lesson_ids": ["lesson_08"],
+    "common_error_tags": ["te_form_sound_change_error", "iku_exception_error"]
+  },
+  {
+    "id": "g_potential",
+    "title": "可能形",
+    "surface_pattern": "動詞可能形",
+    "level": "beginner",
+    "category": "morphology",
+    "meaning_core": "表示能力或條件允許做某事。",
+    "meaning_extended": ["五段動詞移到 e 段加 る；一段動詞去 る 加 られる。"],
+    "formation_rules": [
+      "五段：u 段→e 段＋る。",
+      "一段：去 る＋られる。",
+      "する→できる；来る→来られる。"
+    ],
+    "prerequisites": ["g_masu"],
+    "semantic_functions": ["ability", "possibility"],
+    "register": "neutral",
+    "usage_notes": [
+      "見られる、聞ける 表能力／條件；見える、聞こえる 表自然感知。"
+    ],
+    "contrast_set_ids": [
+      "contrast_miru_mieru_mirareru",
+      "contrast_kiku_kikeru_kikoeru"
+    ],
+    "example_sentence_ids": ["ex_mirareru_01"],
+    "lesson_ids": ["lesson_03", "lesson_10"],
+    "song_ids": ["song_kimi_rock"],
+    "common_error_tags": ["miru_vs_mieru_error", "kikeru_vs_kikoeru_error"]
+  },
+  {
+    "id": "g_i_adjective",
+    "title": "い形容詞活用",
+    "surface_pattern": "語幹＋くない／かった／くて",
+    "level": "beginner",
+    "category": "adjective",
+    "meaning_core": "用詞尾變化表達否定、時態與連接。",
+    "meaning_extended": ["可接 ～くなる、～すぎる、～ければ。"],
+    "formation_rules": [
+      "一般形式去 い 後接所需詞尾。",
+      "いい 顯示形不變，但活用必須使用 よい 基底。"
+    ],
+    "prerequisites": [],
+    "semantic_functions": ["description", "state"],
+    "register": "neutral",
+    "usage_notes": ["禁止產生 いくない、いかった。"],
+    "example_sentence_ids": ["ex_samui_01", "ex_tsumetai_01"],
+    "lesson_ids": ["lesson_11", "lesson_12", "lesson_13", "lesson_15"],
+    "song_ids": ["song_marigold"],
+    "common_error_tags": [
+      "ii_irregular_error",
+      "i_vs_na_error",
+      "adjective_naru_error"
+    ]
+  },
+  {
+    "id": "g_na_adjective",
+    "title": "ナ形容詞活用",
+    "surface_pattern": "好きだ／好きな＋名詞",
+    "level": "beginner",
+    "category": "adjective",
+    "meaning_core": "ナ形容詞在述語與名詞前使用不同連接。",
+    "meaning_extended": ["否定使用 じゃない；狀態改變使用 に＋なる。"],
+    "formation_rules": [
+      "述語：語幹＋だ。",
+      "名詞前：語幹＋な＋名詞。",
+      "狀態改變：語幹＋になる。"
+    ],
+    "prerequisites": ["g_i_adjective"],
+    "semantic_functions": ["description", "state"],
+    "register": "neutral",
+    "usage_notes": ["好き不是 い形容詞，不可使用 好きい 或 好きくない。"],
+    "example_sentence_ids": ["ex_suki_01"],
+    "lesson_ids": ["lesson_14", "lesson_15"],
+    "song_ids": ["song_hadaka_no_kokoro"],
+    "common_error_tags": [
+      "i_vs_na_error",
+      "na_adjective_attributive_error",
+      "adjective_naru_error"
+    ]
+  },
+  {
+    "id": "g_to_omou",
+    "title": "～と思う",
+    "surface_pattern": "普通形＋と思う",
+    "level": "beginner",
+    "category": "stance",
+    "meaning_core": "表達說話者的想法、判斷或感受。",
+    "meaning_extended": ["可透過 と思います 調整禮貌程度。"],
+    "formation_rules": [
+      "動詞與い形容詞普通形直接接 と。",
+      "ナ形容詞與名詞的肯定非過去通常保留 だ 再接 と。"
+    ],
+    "prerequisites": ["g_masu"],
+    "semantic_functions": ["opinion", "stance"],
+    "register": "neutral_to_polite",
+    "usage_notes": ["思う 偏主觀感受；分析與考量通常使用 考える。"],
+    "example_sentence_ids": ["ex_to_omou_01"],
+    "lesson_ids": ["lesson_21"],
+    "song_ids": ["song_ai_no_hana"]
+  },
+  {
+    "id": "g_te_hoshii",
+    "title": "～てほしい",
+    "surface_pattern": "動詞て形＋ほしい",
+    "level": "beginner",
+    "category": "desire",
+    "meaning_core": "表示希望他人做某件事。",
+    "meaning_extended": ["可用 ～てほしくない 表示希望對方不要做。"],
+    "formation_rules": ["先正確產生動詞て形，再接 ほしい。"],
+    "prerequisites": ["g_te_form"],
+    "semantic_functions": ["desire", "interpersonal_distance"],
+    "register": "neutral",
+    "usage_notes": ["對不熟的人直接使用可能顯得強勢，需配合語氣。"],
+    "example_sentence_ids": ["ex_kikitehoshii_01"],
+    "lesson_ids": ["lesson_23"],
+    "common_error_tags": ["tai_vs_tehoshii_error", "te_form_sound_change_error"]
+  },
+  {
+    "id": "g_te_iru",
+    "title": "～ている",
+    "surface_pattern": "動詞て形＋いる",
+    "level": "beginner",
+    "category": "aspect",
+    "meaning_core": "表示進行、持續或結果狀態。",
+    "meaning_extended": ["知っている 表示已知狀態，而不是正在知道。"],
+    "formation_rules": ["動詞て形＋いる；口語可縮約為 ～てる。"],
+    "prerequisites": ["g_te_form"],
+    "semantic_functions": ["progressive", "state", "resultative"],
+    "register": "neutral",
+    "usage_notes": ["先判斷動詞語意類型，再翻譯時間感。"],
+    "example_sentence_ids": ["ex_shitteiru_01"],
+    "lesson_ids": ["lesson_26"],
+    "song_ids": ["song_hadaka_no_kokoro"]
+  },
+  {
+    "id": "g_te_iku",
+    "title": "～ていく",
+    "surface_pattern": "動詞て形＋いく",
+    "level": "lower_intermediate",
+    "category": "aspect",
+    "meaning_core": "描述從現在向未來延伸或離開說話者的變化。",
+    "meaning_extended": ["也可描述做完某事後離去。"],
+    "formation_rules": ["動詞て形＋いく。"],
+    "prerequisites": ["g_te_form", "g_te_iru"],
+    "semantic_functions": ["direction", "change_over_time"],
+    "register": "neutral",
+    "usage_notes": ["要與 ～てくる 一起依視點比較。"],
+    "lesson_ids": ["lesson_27"]
+  },
+  {
+    "id": "g_te_kuru",
+    "title": "～てくる",
+    "surface_pattern": "動詞て形＋くる",
+    "level": "lower_intermediate",
+    "category": "aspect",
+    "meaning_core": "描述變化一路延續並接近現在或說話者。",
+    "meaning_extended": ["也可描述做完某事後回來。"],
+    "formation_rules": ["動詞て形＋くる。"],
+    "prerequisites": ["g_te_form", "g_te_iru", "g_te_iku"],
+    "semantic_functions": ["direction", "change_over_time"],
+    "register": "neutral",
+    "usage_notes": ["時間變化用法要從現在視點回看。"],
+    "example_sentence_ids": ["ex_tekuru_01"],
+    "lesson_ids": ["lesson_28"],
+    "song_ids": ["song_harunohi"]
+  }
+]

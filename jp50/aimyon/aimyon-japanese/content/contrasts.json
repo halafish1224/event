@@ -1,0 +1,268 @@
+[
+  {
+    "id": "contrast_miru_mieru_mirareru",
+    "title": "見る／見える／見られる／見つめる",
+    "item_ids": ["v_miru", "v_mieru", "v_miru:form:potential", "v_mitsumeru"],
+    "category": "perception",
+    "priority": 1,
+    "core_question": "是主動看、自然進入視野、條件允許，還是持續凝視？",
+    "semantic_dimensions": [
+      "agency",
+      "visibility",
+      "ability_or_condition",
+      "duration_and_focus"
+    ],
+    "decision_rules": [
+      {
+        "when": "主體主動把視線移向對象",
+        "choose": "v_miru",
+        "because": "見る 表示有意識的觀看行為。"
+      },
+      {
+        "when": "景物自然進入視野，不凸顯努力或條件",
+        "choose": "v_mieru",
+        "because": "見える 表示自然看得到。"
+      },
+      {
+        "when": "能力、時間、規則或設備允許觀看",
+        "choose": "v_miru:form:potential",
+        "because": "見られる 是 見る 的可能形。"
+      },
+      {
+        "when": "視線持續集中在同一對象",
+        "choose": "v_mitsumeru",
+        "because": "見つめる 表示凝視。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "窗戶沒有遮擋，山自然出現在視野中／展望台開放後具備觀看條件",
+        "left": "窓から山が見える。",
+        "right": "展望台から山が見られる。",
+        "explanation": "左句是自然可見；右句凸顯地點或開放條件允許觀看。"
+      },
+      {
+        "context": "短暫看天空／持續專注望著天空",
+        "left": "空を見る。",
+        "right": "空を見つめる。",
+        "explanation": "見つめる 比 見る 多了持續與專注。"
+      }
+    ],
+    "common_errors": [
+      "把自然可見誤選成可能形。",
+      "把條件允許誤解為自然感知。",
+      "忽略 見つめる 的持續專注。"
+    ],
+    "wrong_choice_examples": [
+      {
+        "prompt": "從窗戶自然看得到山。",
+        "wrong": "窓から山が見られる。",
+        "correction": "窓から山が見える。",
+        "reason": "題目沒有能力或規則條件，而是山自然進入視野。"
+      }
+    ],
+    "memory_hook": "主動用 見る；自然用 見える；條件加 られる；視線停住用 見つめる。",
+    "lesson_ids": ["lesson_03", "lesson_10"],
+    "song_ids": ["song_marigold", "song_harunohi"],
+    "question_template_ids": [
+      "q_contrast_mieru_01",
+      "q_contrast_mirareru_01",
+      "q_error_mieru_01"
+    ],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_kiku_kikeru_kikoeru",
+    "title": "聞く／聴く／聞ける／聞こえる",
+    "item_ids": [
+      "v_kiku",
+      "v_kiku_music",
+      "v_kiku:form:potential",
+      "v_kikoeru"
+    ],
+    "category": "perception",
+    "priority": 0.95,
+    "core_question": "是一般主動聽／詢問、專心欣賞、具備能聽的條件，還是聲音自然傳進耳中？",
+    "semantic_dimensions": [
+      "agency",
+      "focused_listening",
+      "ability_or_condition",
+      "audibility"
+    ],
+    "decision_rules": [
+      {
+        "when": "主體主動去聽或詢問",
+        "choose": "v_kiku",
+        "because": "聞く 表示主動行為。"
+      },
+      {
+        "when": "專心欣賞音樂或留意聲音內容",
+        "choose": "v_kiku_music",
+        "because": "聴く 凸顯專注聆聽。"
+      },
+      {
+        "when": "設備、時間或能力允許聽",
+        "choose": "v_kiku:form:potential",
+        "because": "聞ける 是 聞く 的可能形。"
+      },
+      {
+        "when": "聲音自然傳入耳中",
+        "choose": "v_kikoeru",
+        "because": "聞こえる 表示自然聽得到。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "主動播放並聽音樂／隔壁的音樂自然傳來",
+        "left": "音楽を聞く。",
+        "right": "隣から音楽が聞こえる。",
+        "explanation": "左句主動聽；右句是自然可聽見。"
+      },
+      {
+        "context": "有耳機所以能聽／現在自然聽得到",
+        "left": "イヤホンがあれば聞ける。",
+        "right": "今はよく聞こえる。",
+        "explanation": "聞ける 有條件；聞こえる 描述聲音可聽見的狀態。"
+      },
+      {
+        "context": "一般聽說明／專心欣賞音樂",
+        "left": "説明を聞く。",
+        "right": "音楽を聴く。",
+        "explanation": "聴く 以字形凸顯專注欣賞；一般聽取與詢問多用 聞く。"
+      }
+    ],
+    "common_errors": [
+      "把自然聽見誤用 聞ける。",
+      "忽略 聞く 也可表示詢問。",
+      "把 聴く 當成所有聽覺情境的固定寫法。"
+    ],
+    "wrong_choice_examples": [
+      {
+        "prompt": "隔壁自然傳來說話聲。",
+        "wrong": "隣から話し声が聞ける。",
+        "correction": "隣から話し声が聞こえる。",
+        "reason": "沒有能力或條件，而是聲音自然傳來。"
+      }
+    ],
+    "memory_hook": "一般去聽是 聞く；專心欣賞是 聴く；有條件能聽是 聞ける；聲音自己來是 聞こえる。",
+    "lesson_ids": ["lesson_04", "lesson_10"],
+    "song_ids": ["song_kimi_rock"],
+    "question_template_ids": ["q_contrast_kikoeru_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_tsumetai_samui",
+    "title": "冷たい／寒い",
+    "item_ids": ["v_tsumetai", "v_samui"],
+    "category": "temperature",
+    "priority": 0.9,
+    "core_question": "冷的是可接觸的物體，還是環境與人的體感？",
+    "semantic_dimensions": [
+      "touch",
+      "ambient_temperature",
+      "metaphorical_attitude"
+    ],
+    "decision_rules": [
+      {
+        "when": "描述天氣、空間溫度或人覺得冷",
+        "choose": "v_samui",
+        "because": "寒い 聚焦環境與體感。"
+      },
+      {
+        "when": "描述接觸到的物體或冷淡態度",
+        "choose": "v_tsumetai",
+        "because": "冷たい 聚焦物體觸感，也可比喻態度。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "冬天的戶外／杯中的水",
+        "left": "今日は寒い。",
+        "right": "この水は冷たい。",
+        "explanation": "環境用 寒い；物體觸感用 冷たい。"
+      }
+    ],
+    "common_errors": ["直接把中文的『冷』一律翻成同一個詞。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "今天氣溫很低。",
+        "wrong": "今日は冷たい。",
+        "correction": "今日は寒い。",
+        "reason": "描述環境氣溫時使用 寒い。"
+      }
+    ],
+    "memory_hook": "天氣讓身體冷：寒い；手碰到東西冰：冷たい。",
+    "lesson_ids": ["lesson_11"],
+    "song_ids": ["song_marigold"],
+    "question_template_ids": ["q_contrast_samui_01", "q_contrast_tsumetai_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_kokoro_kimochi_omoi",
+    "title": "心／気持ち／想い",
+    "item_ids": ["v_kokoro", "v_kimochi", "v_omoi"],
+    "category": "emotion",
+    "priority": 1,
+    "core_question": "是在談整體內在、當下感受，還是想傳達的深層心意？",
+    "semantic_dimensions": ["depth", "temporality", "intentional_weight"],
+    "decision_rules": [
+      {
+        "when": "談人的內在世界或精神核心",
+        "choose": "v_kokoro",
+        "because": "心 的範圍較整體、較深層。"
+      },
+      {
+        "when": "談當下可感受到的情緒或感覺",
+        "choose": "v_kimochi",
+        "because": "気持ち 適合具體的當下感受。"
+      },
+      {
+        "when": "談帶有重量、想傳達或保存的心意",
+        "choose": "v_omoi",
+        "because": "想い 凸顯情感與意向的重量。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "敞開內心／說出現在感受／把深切心意寫進信裡",
+        "left": "心を開く。／今の気持ちを話す。",
+        "right": "大切な想いを手紙に書く。",
+        "explanation": "三者分別聚焦內在、當下感受與帶有意向的深層心意。"
+      }
+    ],
+    "common_errors": ["把三個詞全部翻成『心情』而忽略語意焦點。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "請告訴我你現在的感受。",
+        "wrong": "今の心を教えて。",
+        "correction": "今の気持ちを教えて。",
+        "reason": "題目聚焦當下感受，気持ち 更直接自然。"
+      }
+    ],
+    "memory_hook": "心是內在空間；気持ち是此刻溫度；想い是想交到對方手中的重量。",
+    "lesson_ids": ["lesson_01"],
+    "song_ids": ["song_hadaka_no_kokoro", "song_ai_no_hana"],
+    "question_template_ids": ["q_meaning_kimochi_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  }
+]

@@ -1,0 +1,283 @@
+[
+  {
+    "id": "ex_kokoro_01",
+    "japanese": "その言葉が心に残っている。",
+    "reading": "そのことばがこころにのこっている。",
+    "translation_zh_tw": "那句話一直留在心裡。",
+    "tokens": [
+      { "surface": "心", "reading": "こころ", "vocab_id": "v_kokoro" }
+    ],
+    "target_vocab_ids": ["v_kokoro"],
+    "target_grammar_ids": [],
+    "contrast_ids": ["contrast_kokoro_kimochi_omoi"],
+    "difficulty": 2,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_kimochi_01",
+    "japanese": "今の気持ちを短い言葉で伝えた。",
+    "reading": "いまのきもちをみじかいことばでつたえた。",
+    "translation_zh_tw": "我用簡短的話傳達了現在的感受。",
+    "tokens": [
+      { "surface": "気持ち", "reading": "きもち", "vocab_id": "v_kimochi" },
+      { "surface": "伝えた", "reading": "つたえた", "vocab_id": "v_tsutaeru" }
+    ],
+    "target_vocab_ids": ["v_kimochi"],
+    "target_grammar_ids": [],
+    "contrast_ids": ["contrast_kokoro_kimochi_omoi"],
+    "difficulty": 3,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_omoi_01",
+    "japanese": "大切な想いを手紙に書いた。",
+    "reading": "たいせつなおもいをてがみにかいた。",
+    "translation_zh_tw": "我把珍重的心意寫進信裡。",
+    "tokens": [
+      { "surface": "想い", "reading": "おもい", "vocab_id": "v_omoi" }
+    ],
+    "target_vocab_ids": ["v_omoi"],
+    "target_grammar_ids": [],
+    "contrast_ids": ["contrast_kokoro_kimochi_omoi"],
+    "difficulty": 3,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_mieru_01",
+    "japanese": "窓から山が見える。",
+    "reading": "まどからやまがみえる。",
+    "translation_zh_tw": "從窗戶自然看得到山。",
+    "tokens": [
+      { "surface": "見える", "reading": "みえる", "vocab_id": "v_mieru" }
+    ],
+    "target_vocab_ids": ["v_mieru"],
+    "target_grammar_ids": [],
+    "contrast_ids": ["contrast_miru_mieru_mirareru"],
+    "difficulty": 4,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_mirareru_01",
+    "japanese": "今日は時間があるから、映画が見られる。",
+    "reading": "きょうはじかんがあるから、えいががみられる。",
+    "translation_zh_tw": "今天有時間，所以有條件可以看電影。",
+    "tokens": [
+      {
+        "surface": "見られる",
+        "reading": "みられる",
+        "vocab_id": "v_miru",
+        "grammar_id": "g_potential"
+      }
+    ],
+    "target_vocab_ids": ["v_miru"],
+    "target_grammar_ids": ["g_potential"],
+    "contrast_ids": ["contrast_miru_mieru_mirareru"],
+    "difficulty": 4,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_mitsumeru_01",
+    "japanese": "彼女は夜の空を静かに見つめた。",
+    "reading": "かのじょはよるのそらをしずかにみつめた。",
+    "translation_zh_tw": "她靜靜凝視著夜空。",
+    "tokens": [
+      {
+        "surface": "見つめた",
+        "reading": "みつめた",
+        "vocab_id": "v_mitsumeru"
+      }
+    ],
+    "target_vocab_ids": ["v_mitsumeru"],
+    "target_grammar_ids": [],
+    "contrast_ids": ["contrast_miru_mieru_mirareru"],
+    "difficulty": 3,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_kikoeru_01",
+    "japanese": "隣の部屋から優しい声が聞こえる。",
+    "reading": "となりのへやからやさしいこえがきこえる。",
+    "translation_zh_tw": "從隔壁房間自然聽得到溫柔的聲音。",
+    "tokens": [
+      { "surface": "聞こえる", "reading": "きこえる", "vocab_id": "v_kikoeru" }
+    ],
+    "target_vocab_ids": ["v_kikoeru"],
+    "target_grammar_ids": [],
+    "contrast_ids": ["contrast_kiku_kikeru_kikoeru"],
+    "difficulty": 4,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_kikitehoshii_01",
+    "japanese": "この話を最後まで聞いてほしい。",
+    "reading": "このはなしをさいごまできいてほしい。",
+    "translation_zh_tw": "我希望你把這段話聽到最後。",
+    "tokens": [
+      {
+        "surface": "聞いて",
+        "reading": "きいて",
+        "vocab_id": "v_kiku",
+        "grammar_id": "g_te_form"
+      },
+      { "surface": "ほしい", "grammar_id": "g_te_hoshii" }
+    ],
+    "target_vocab_ids": ["v_kiku"],
+    "target_grammar_ids": ["g_te_form", "g_te_hoshii"],
+    "contrast_ids": [],
+    "difficulty": 5,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_au_01",
+    "japanese": "明日、駅で友達に会います。",
+    "reading": "あした、えきでともだちにあいます。",
+    "translation_zh_tw": "明天要在車站和朋友見面。",
+    "tokens": [
+      {
+        "surface": "会います",
+        "reading": "あいます",
+        "vocab_id": "v_au",
+        "grammar_id": "g_masu"
+      }
+    ],
+    "target_vocab_ids": ["v_au"],
+    "target_grammar_ids": ["g_masu"],
+    "contrast_ids": [],
+    "difficulty": 2,
+    "register": "polite",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_suki_01",
+    "japanese": "私は静かな朝が好きだ。",
+    "reading": "わたしはしずかなあさがすきだ。",
+    "translation_zh_tw": "我喜歡安靜的早晨。",
+    "tokens": [
+      {
+        "surface": "好きだ",
+        "reading": "すきだ",
+        "vocab_id": "v_suki",
+        "grammar_id": "g_na_adjective"
+      }
+    ],
+    "target_vocab_ids": ["v_suki"],
+    "target_grammar_ids": ["g_na_adjective"],
+    "contrast_ids": [],
+    "difficulty": 2,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_to_omou_01",
+    "japanese": "この方法がいいと思う。",
+    "reading": "このほうほうがいいとおもう。",
+    "translation_zh_tw": "我覺得這個方法不錯。",
+    "tokens": [
+      { "surface": "いい", "reading": "いい", "vocab_id": "v_ii" },
+      {
+        "surface": "と思う",
+        "reading": "とおもう",
+        "vocab_id": "v_omou",
+        "grammar_id": "g_to_omou"
+      }
+    ],
+    "target_vocab_ids": ["v_omou"],
+    "target_grammar_ids": ["g_to_omou"],
+    "contrast_ids": [],
+    "difficulty": 3,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_samui_01",
+    "japanese": "今日は風が強くて寒い。",
+    "reading": "きょうはかぜがつよくてさむい。",
+    "translation_zh_tw": "今天風很強，天氣很冷。",
+    "tokens": [
+      {
+        "surface": "強くて",
+        "reading": "つよくて",
+        "vocab_id": "v_tsuyoi",
+        "grammar_id": "g_i_adjective"
+      },
+      { "surface": "寒い", "reading": "さむい", "vocab_id": "v_samui" }
+    ],
+    "target_vocab_ids": ["v_samui"],
+    "target_grammar_ids": ["g_i_adjective"],
+    "contrast_ids": ["contrast_tsumetai_samui"],
+    "difficulty": 4,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_tsumetai_01",
+    "japanese": "この水はとても冷たい。",
+    "reading": "このみずはとてもつめたい。",
+    "translation_zh_tw": "這個水很冰。",
+    "tokens": [
+      { "surface": "冷たい", "reading": "つめたい", "vocab_id": "v_tsumetai" }
+    ],
+    "target_vocab_ids": ["v_tsumetai"],
+    "target_grammar_ids": ["g_i_adjective"],
+    "contrast_ids": ["contrast_tsumetai_samui"],
+    "difficulty": 4,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_shitteiru_01",
+    "japanese": "私はその名前を知っている。",
+    "reading": "わたしはそのなまえをしっている。",
+    "translation_zh_tw": "我知道那個名字。",
+    "tokens": [
+      {
+        "surface": "知っている",
+        "reading": "しっている",
+        "vocab_id": "v_shiru",
+        "grammar_id": "g_te_iru"
+      }
+    ],
+    "target_vocab_ids": ["v_shiru"],
+    "target_grammar_ids": ["g_te_iru"],
+    "contrast_ids": [],
+    "difficulty": 4,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  },
+  {
+    "id": "ex_tekuru_01",
+    "japanese": "少しずつ日本語が分かってきた。",
+    "reading": "すこしずつにほんごがわかってきた。",
+    "translation_zh_tw": "我逐漸開始懂日文了。",
+    "tokens": [{ "surface": "～てきた", "grammar_id": "g_te_kuru" }],
+    "target_vocab_ids": [],
+    "target_grammar_ids": ["g_te_kuru"],
+    "contrast_ids": [],
+    "difficulty": 5,
+    "register": "neutral",
+    "source_type": "original",
+    "reviewed": true
+  }
+]

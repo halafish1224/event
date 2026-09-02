@@ -1,0 +1,155 @@
+[
+  {
+    "id": "lo_kokoro_reading",
+    "content_type": "vocabulary",
+    "target_id": "v_kokoro",
+    "dimension": "reading",
+    "lesson_ids": ["lesson_01"],
+    "question_ids": ["q_reading_kokoro_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.75
+  },
+  {
+    "id": "lo_kimochi_meaning",
+    "content_type": "vocabulary",
+    "target_id": "v_kimochi",
+    "dimension": "meaning",
+    "lesson_ids": ["lesson_01"],
+    "question_ids": ["q_meaning_kimochi_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.9
+  },
+  {
+    "id": "lo_omoi_meaning",
+    "content_type": "vocabulary",
+    "target_id": "v_omoi",
+    "dimension": "meaning",
+    "lesson_ids": ["lesson_01"],
+    "question_ids": ["q_reverse_omoi_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.85
+  },
+  {
+    "id": "lo_omou_morphology",
+    "content_type": "vocabulary",
+    "target_id": "v_omou",
+    "dimension": "morphology",
+    "lesson_ids": ["lesson_06", "lesson_07"],
+    "question_ids": ["q_morph_omou_negative"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 1
+  },
+  {
+    "id": "lo_kiku_morphology_te",
+    "content_type": "vocabulary",
+    "target_id": "v_kiku",
+    "dimension": "morphology",
+    "lesson_ids": ["lesson_08", "lesson_23"],
+    "question_ids": ["q_morph_kiku_te"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 1
+  },
+  {
+    "id": "lo_ii_morphology",
+    "content_type": "vocabulary",
+    "target_id": "v_ii",
+    "dimension": "morphology",
+    "lesson_ids": ["lesson_11", "lesson_12"],
+    "question_ids": ["q_morph_ii_negative"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 1
+  },
+  {
+    "id": "lo_suki_morphology",
+    "content_type": "vocabulary",
+    "target_id": "v_suki",
+    "dimension": "morphology",
+    "lesson_ids": ["lesson_14"],
+    "question_ids": ["q_morph_suki_attributive"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 1
+  },
+  {
+    "id": "lo_mieru_contrast",
+    "content_type": "vocabulary",
+    "target_id": "v_mieru",
+    "dimension": "contrast",
+    "lesson_ids": ["lesson_03", "lesson_10"],
+    "question_ids": ["q_contrast_mieru_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 1
+  },
+  {
+    "id": "lo_mirareru_contrast",
+    "content_type": "vocabulary",
+    "target_id": "v_miru:form:potential",
+    "dimension": "contrast",
+    "lesson_ids": ["lesson_03", "lesson_10"],
+    "question_ids": ["q_contrast_mirareru_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 1
+  },
+  {
+    "id": "lo_miru_contrast_explanation",
+    "content_type": "contrast",
+    "target_id": "contrast_miru_mieru_mirareru",
+    "dimension": "explanation",
+    "lesson_ids": ["lesson_03", "lesson_10"],
+    "question_ids": ["q_error_mieru_01"],
+    "prerequisite_object_ids": ["lo_mieru_contrast", "lo_mirareru_contrast"],
+    "learning_priority": 0.95
+  },
+  {
+    "id": "lo_kikoeru_contrast",
+    "content_type": "vocabulary",
+    "target_id": "v_kikoeru",
+    "dimension": "contrast",
+    "lesson_ids": ["lesson_04", "lesson_10"],
+    "question_ids": ["q_contrast_kikoeru_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.95
+  },
+  {
+    "id": "lo_samui_contrast",
+    "content_type": "vocabulary",
+    "target_id": "v_samui",
+    "dimension": "contrast",
+    "lesson_ids": ["lesson_11"],
+    "question_ids": ["q_contrast_samui_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.9
+  },
+  {
+    "id": "lo_tsumetai_contrast",
+    "content_type": "vocabulary",
+    "target_id": "v_tsumetai",
+    "dimension": "contrast",
+    "lesson_ids": ["lesson_11"],
+    "question_ids": ["q_contrast_tsumetai_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.9
+  },
+  {
+    "id": "lo_mieru_production",
+    "content_type": "vocabulary",
+    "target_id": "v_mieru",
+    "dimension": "production",
+    "lesson_ids": ["lesson_03", "lesson_10"],
+    "question_ids": ["q_generation_mieru_01"],
+    "prerequisite_object_ids": [
+      "lo_mieru_contrast",
+      "lo_miru_contrast_explanation"
+    ],
+    "learning_priority": 1
+  },
+  {
+    "id": "lo_tehoshii_formation",
+    "content_type": "grammar",
+    "target_id": "g_te_hoshii",
+    "dimension": "formation",
+    "lesson_ids": ["lesson_08", "lesson_23"],
+    "question_ids": ["q_error_kikutehoshii_01"],
+    "prerequisite_object_ids": ["lo_kiku_morphology_te"],
+    "learning_priority": 1
+  }
+]

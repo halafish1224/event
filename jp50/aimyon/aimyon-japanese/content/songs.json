@@ -1,0 +1,87 @@
+[
+  {
+    "id": "song_marigold",
+    "title_ja": "マリーゴールド",
+    "title_zh_tw": "金盞花",
+    "artist": "あいみょん",
+    "metadata": {
+      "release_year": 2018,
+      "copyright_note": "僅保存作品資料與學習任務，不收錄歌詞。"
+    },
+    "vocabulary_ids": ["v_miru", "v_tsuyoi", "v_samui"],
+    "grammar_ids": ["g_i_adjective"],
+    "semantic_clusters": ["memory", "season", "perception"],
+    "listening_missions": [
+      "聽辨情境中的視覺詞彙，不抄錄歌詞。",
+      "留意形容狀態與季節感的聲音線索。"
+    ]
+  },
+  {
+    "id": "song_hadaka_no_kokoro",
+    "title_ja": "裸の心",
+    "title_zh_tw": "赤裸的心",
+    "artist": "あいみょん",
+    "metadata": {
+      "release_year": 2020,
+      "copyright_note": "僅保存作品資料與學習任務，不收錄歌詞。"
+    },
+    "vocabulary_ids": ["v_kokoro", "v_kimochi", "v_suki", "v_shiru"],
+    "grammar_ids": ["g_na_adjective", "g_te_iru"],
+    "semantic_clusters": ["emotion", "vulnerability", "love"],
+    "listening_missions": [
+      "辨認心與感受相關詞的語意功能。",
+      "注意已形成狀態的表達。"
+    ]
+  },
+  {
+    "id": "song_kimi_rock",
+    "title_ja": "君はロックを聴かない",
+    "title_zh_tw": "你不聽搖滾",
+    "artist": "あいみょん",
+    "metadata": {
+      "release_year": 2017,
+      "copyright_note": "僅保存作品資料與學習任務，不收錄歌詞。"
+    },
+    "vocabulary_ids": ["v_kiku", "v_kikoeru"],
+    "grammar_ids": ["g_potential"],
+    "semantic_clusters": ["listening", "invitation", "distance"],
+    "listening_missions": [
+      "辨認主動聽與自然聽見的差別。",
+      "找出說話者對聽者的期待，但不重製句子。"
+    ]
+  },
+  {
+    "id": "song_harunohi",
+    "title_ja": "ハルノヒ",
+    "title_zh_tw": "春日",
+    "artist": "あいみょん",
+    "metadata": {
+      "release_year": 2019,
+      "copyright_note": "僅保存作品資料與學習任務，不收錄歌詞。"
+    },
+    "vocabulary_ids": ["v_au", "v_miru", "v_tsutaeru"],
+    "grammar_ids": ["g_masu", "g_te_kuru"],
+    "semantic_clusters": ["time", "future", "relationship"],
+    "listening_missions": [
+      "留意時間向現在靠近的敘事線索。",
+      "辨認人際互動動詞。"
+    ]
+  },
+  {
+    "id": "song_ai_no_hana",
+    "title_ja": "愛の花",
+    "title_zh_tw": "愛之花",
+    "artist": "あいみょん",
+    "metadata": {
+      "release_year": 2023,
+      "copyright_note": "僅保存作品資料與學習任務，不收錄歌詞。"
+    },
+    "vocabulary_ids": ["v_kokoro", "v_omoi", "v_omou", "v_tsutaeru"],
+    "grammar_ids": ["g_to_omou"],
+    "semantic_clusters": ["love", "memory", "communication"],
+    "listening_missions": [
+      "追蹤心意與傳達之間的語意關係。",
+      "注意主觀想法的表達方式。"
+    ]
+  }
+]

@@ -1,0 +1,192 @@
+[
+  {
+    "id": "lo_contrast_kiku",
+    "content_type": "contrast",
+    "target_id": "contrast_kiku_kikeru_kikoeru",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_04", "lesson_10"],
+    "question_ids": [],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.95
+  },
+  {
+    "id": "lo_contrast_temperature",
+    "content_type": "contrast",
+    "target_id": "contrast_tsumetai_samui",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_11"],
+    "question_ids": [],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.9
+  },
+  {
+    "id": "lo_contrast_emotion_words",
+    "content_type": "contrast",
+    "target_id": "contrast_kokoro_kimochi_omoi",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_01"],
+    "question_ids": [],
+    "prerequisite_object_ids": [],
+    "learning_priority": 1
+  },
+  {
+    "id": "lo_contrast_koi_ai",
+    "content_type": "contrast",
+    "target_id": "contrast_koi_ai",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_02"],
+    "question_ids": ["q_contrast_koi_ai_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.9
+  },
+  {
+    "id": "lo_contrast_suki_koishii",
+    "content_type": "contrast",
+    "target_id": "contrast_suki_koishii",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_02"],
+    "question_ids": ["q_contrast_suki_koishii_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.85
+  },
+  {
+    "id": "lo_contrast_sabishii_kanashii",
+    "content_type": "contrast",
+    "target_id": "contrast_sabishii_kanashii",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_05"],
+    "question_ids": ["q_contrast_sabishii_kanashii_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.85
+  },
+  {
+    "id": "lo_contrast_koishii_natsukashii",
+    "content_type": "contrast",
+    "target_id": "contrast_koishii_natsukashii",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_05"],
+    "question_ids": ["q_contrast_koishii_natsukashii_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.8
+  },
+  {
+    "id": "lo_contrast_shiru_wakaru",
+    "content_type": "contrast",
+    "target_id": "contrast_shiru_shitteiru_wakaru",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_26"],
+    "question_ids": ["q_contrast_shiru_wakaru_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.95
+  },
+  {
+    "id": "lo_contrast_omou_kangaeru",
+    "content_type": "contrast",
+    "target_id": "contrast_omou_kangaeru",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_21"],
+    "question_ids": ["q_contrast_omou_kangaeru_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.9
+  },
+  {
+    "id": "lo_contrast_communication",
+    "content_type": "contrast",
+    "target_id": "contrast_iu_tsutaeru_tsutawaru",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_04"],
+    "question_ids": ["q_contrast_iu_tsutaeru_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.9
+  },
+  {
+    "id": "lo_contrast_naru_change",
+    "content_type": "contrast",
+    "target_id": "contrast_naru_you_ninaru",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_13", "lesson_24"],
+    "question_ids": ["q_contrast_naru_youninaru_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.9
+  },
+  {
+    "id": "lo_contrast_desire",
+    "content_type": "contrast",
+    "target_id": "contrast_tai_tehoshii_tsumori",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_22", "lesson_23", "lesson_25"],
+    "question_ids": ["q_contrast_tai_tehoshii_tsumori_01"],
+    "prerequisite_object_ids": ["lo_kiku_morphology_te"],
+    "learning_priority": 0.95
+  },
+  {
+    "id": "lo_contrast_condition",
+    "content_type": "contrast",
+    "target_id": "contrast_ba_tara_temo_noni",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_19", "lesson_20", "lesson_25"],
+    "question_ids": ["q_contrast_ba_tara_temo_noni_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.95
+  },
+  {
+    "id": "lo_contrast_time_direction",
+    "content_type": "contrast",
+    "target_id": "contrast_teiku_tekuru",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_27", "lesson_28"],
+    "question_ids": ["q_contrast_teiku_tekuru_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.95
+  },
+  {
+    "id": "lo_contrast_ima_kyou",
+    "content_type": "contrast",
+    "target_id": "contrast_ima_kyou",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_29"],
+    "question_ids": ["q_contrast_ima_kyou_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.75
+  },
+  {
+    "id": "lo_contrast_mainichi_hibi",
+    "content_type": "contrast",
+    "target_id": "contrast_mainichi_hibi",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_29"],
+    "question_ids": ["q_contrast_mainichi_hibi_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.7
+  },
+  {
+    "id": "lo_contrast_hikari_kage",
+    "content_type": "contrast",
+    "target_id": "contrast_hikari_kage",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_29"],
+    "question_ids": ["q_contrast_hikari_kage_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.7
+  },
+  {
+    "id": "lo_contrast_koe_oto",
+    "content_type": "contrast",
+    "target_id": "contrast_koe_oto",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_04", "lesson_29"],
+    "question_ids": ["q_contrast_koe_oto_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.8
+  },
+  {
+    "id": "lo_contrast_basho_tokoro",
+    "content_type": "contrast",
+    "target_id": "contrast_basho_tokoro",
+    "dimension": "selection",
+    "lesson_ids": ["lesson_29"],
+    "question_ids": ["q_contrast_basho_tokoro_01"],
+    "prerequisite_object_ids": [],
+    "learning_priority": 0.75
+  }
+]

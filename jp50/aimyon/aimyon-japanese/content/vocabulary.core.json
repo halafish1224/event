@@ -1,0 +1,658 @@
+[
+  {
+    "id": "v_koi",
+    "surface": "恋",
+    "reading_hiragana": "こい",
+    "reading_katakana": "コイ",
+    "romaji": "koi",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["戀愛情感、戀慕"], "extended": [] }
+  },
+  {
+    "id": "v_ima",
+    "surface": "今",
+    "reading_hiragana": "いま",
+    "reading_katakana": "イマ",
+    "romaji": "ima",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["現在、此刻"], "extended": [] }
+  },
+  {
+    "id": "v_hito",
+    "surface": "人",
+    "reading_hiragana": "ひと",
+    "reading_katakana": "ヒト",
+    "romaji": "hito",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["人"], "extended": [] }
+  },
+  {
+    "id": "v_kyou",
+    "surface": "今日",
+    "reading_hiragana": "きょう",
+    "reading_katakana": "キョウ",
+    "romaji": "kyou",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["今天"], "extended": [] }
+  },
+  {
+    "id": "v_ai",
+    "surface": "愛",
+    "reading_hiragana": "あい",
+    "reading_katakana": "アイ",
+    "romaji": "ai",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["愛、深厚而持續的關愛"], "extended": [] }
+  },
+  {
+    "id": "v_yoru",
+    "surface": "夜",
+    "reading_hiragana": "よる",
+    "reading_katakana": "ヨル",
+    "romaji": "yoru",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["夜晚"], "extended": [] }
+  },
+  {
+    "id": "v_yume",
+    "surface": "夢",
+    "reading_hiragana": "ゆめ",
+    "reading_katakana": "ユメ",
+    "romaji": "yume",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["夢、理想"], "extended": [] }
+  },
+  {
+    "id": "v_sekai",
+    "surface": "世界",
+    "reading_hiragana": "せかい",
+    "reading_katakana": "セカイ",
+    "romaji": "sekai",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["世界"], "extended": [] }
+  },
+  {
+    "id": "v_sora",
+    "surface": "空",
+    "reading_hiragana": "そら",
+    "reading_katakana": "ソラ",
+    "romaji": "sora",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["天空"], "extended": [] }
+  },
+  {
+    "id": "v_kotoba",
+    "surface": "言葉",
+    "reading_hiragana": "ことば",
+    "reading_katakana": "コトバ",
+    "romaji": "kotoba",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["話語、語言"], "extended": [] }
+  },
+  {
+    "id": "v_mirai",
+    "surface": "未来",
+    "reading_hiragana": "みらい",
+    "reading_katakana": "ミライ",
+    "romaji": "mirai",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["未來"], "extended": [] }
+  },
+  {
+    "id": "v_koe",
+    "surface": "声",
+    "reading_hiragana": "こえ",
+    "reading_katakana": "コエ",
+    "romaji": "koe",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["人或動物發出的聲音、嗓音"], "extended": [] }
+  },
+  {
+    "id": "v_hibi",
+    "surface": "日々",
+    "reading_hiragana": "ひび",
+    "reading_katakana": "ヒビ",
+    "romaji": "hibi",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["一天天的日常、歲月"], "extended": [] }
+  },
+  {
+    "id": "v_omoide",
+    "surface": "思い出",
+    "reading_hiragana": "おもいで",
+    "reading_katakana": "オモイデ",
+    "romaji": "omoide",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["回憶"], "extended": [] }
+  },
+  {
+    "id": "v_me",
+    "surface": "目",
+    "reading_hiragana": "め",
+    "reading_katakana": "メ",
+    "romaji": "me",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["眼睛、目光"], "extended": [] }
+  },
+  {
+    "id": "v_te",
+    "surface": "手",
+    "reading_hiragana": "て",
+    "reading_katakana": "テ",
+    "romaji": "te",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["手"], "extended": [] }
+  },
+  {
+    "id": "v_heya",
+    "surface": "部屋",
+    "reading_hiragana": "へや",
+    "reading_katakana": "ヘヤ",
+    "romaji": "heya",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["房間"], "extended": [] }
+  },
+  {
+    "id": "v_asa",
+    "surface": "朝",
+    "reading_hiragana": "あさ",
+    "reading_katakana": "アサ",
+    "romaji": "asa",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["早晨"], "extended": [] }
+  },
+  {
+    "id": "v_hana",
+    "surface": "花",
+    "reading_hiragana": "はな",
+    "reading_katakana": "ハナ",
+    "romaji": "hana",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["花"], "extended": [] }
+  },
+  {
+    "id": "v_basho",
+    "surface": "場所",
+    "reading_hiragana": "ばしょ",
+    "reading_katakana": "バショ",
+    "romaji": "basho",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["具體地點、場所"], "extended": [] }
+  },
+  {
+    "id": "v_namida",
+    "surface": "涙",
+    "reading_hiragana": "なみだ",
+    "reading_katakana": "ナミダ",
+    "romaji": "namida",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["眼淚"], "extended": [] }
+  },
+  {
+    "id": "v_namae",
+    "surface": "名前",
+    "reading_hiragana": "なまえ",
+    "reading_katakana": "ナマエ",
+    "romaji": "namae",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["名字、名稱"], "extended": [] }
+  },
+  {
+    "id": "v_kage",
+    "surface": "影",
+    "reading_hiragana": "かげ",
+    "reading_katakana": "カゲ",
+    "romaji": "kage",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["影子、陰影"], "extended": [] }
+  },
+  {
+    "id": "v_hikari",
+    "surface": "光",
+    "reading_hiragana": "ひかり",
+    "reading_katakana": "ヒカリ",
+    "romaji": "hikari",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["光、光亮"], "extended": [] }
+  },
+  {
+    "id": "v_shiawase",
+    "surface": "幸せ",
+    "reading_hiragana": "しあわせ",
+    "reading_katakana": "シアワセ",
+    "romaji": "shiawase",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["幸福、幸福狀態"], "extended": [] }
+  },
+  {
+    "id": "v_toki",
+    "surface": "時",
+    "reading_hiragana": "とき",
+    "reading_katakana": "トキ",
+    "romaji": "toki",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["時候、時間點"], "extended": [] }
+  },
+  {
+    "id": "v_kaze",
+    "surface": "風",
+    "reading_hiragana": "かぜ",
+    "reading_katakana": "カゼ",
+    "romaji": "kaze",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["風"], "extended": [] }
+  },
+  {
+    "id": "v_karada",
+    "surface": "身体",
+    "reading_hiragana": "からだ",
+    "reading_katakana": "カラダ",
+    "romaji": "karada",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["身體"], "extended": [] }
+  },
+  {
+    "id": "v_mainichi",
+    "surface": "毎日",
+    "reading_hiragana": "まいにち",
+    "reading_katakana": "マイニチ",
+    "romaji": "mainichi",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["每天（規律頻率）"], "extended": [] }
+  },
+  {
+    "id": "v_oto",
+    "surface": "音",
+    "reading_hiragana": "おと",
+    "reading_katakana": "オト",
+    "romaji": "oto",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["一般聲響、聲音"], "extended": [] }
+  },
+  {
+    "id": "v_tokoro",
+    "surface": "ところ",
+    "reading_hiragana": "ところ",
+    "reading_katakana": "トコロ",
+    "romaji": "tokoro",
+    "part_of_speech": "noun",
+    "subclass": "common",
+    "meanings": { "core": ["地方、位置、情況中的一點"], "extended": [] }
+  },
+
+  {
+    "id": "v_iu",
+    "surface": "言う",
+    "reading_hiragana": "いう",
+    "reading_katakana": "イウ",
+    "romaji": "iu",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["說、表達話語"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_iku",
+    "surface": "行く",
+    "reading_hiragana": "いく",
+    "reading_katakana": "イク",
+    "romaji": "iku",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["去、前往"], "extended": [] },
+    "metadata": { "conjugation_class": "godan", "exception": "iku" }
+  },
+  {
+    "id": "v_naru",
+    "surface": "なる",
+    "reading_hiragana": "なる",
+    "reading_katakana": "ナル",
+    "romaji": "naru",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["變成、成為"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_aisuru",
+    "surface": "愛する",
+    "reading_hiragana": "あいする",
+    "reading_katakana": "アイスル",
+    "romaji": "aisuru",
+    "part_of_speech": "verb",
+    "subclass": "suru",
+    "meanings": { "core": ["愛、珍愛"], "extended": [] },
+    "metadata": {
+      "conjugation_class": "suru",
+      "morphology_overrides": {
+        "negative": "愛さない",
+        "potential": "愛せる",
+        "volitional": "愛そう"
+      }
+    }
+  },
+  {
+    "id": "v_warau",
+    "surface": "笑う",
+    "reading_hiragana": "わらう",
+    "reading_katakana": "ワラウ",
+    "romaji": "warau",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["笑"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_naku",
+    "surface": "泣く",
+    "reading_hiragana": "なく",
+    "reading_katakana": "ナク",
+    "romaji": "naku",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["哭泣"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_matsu",
+    "surface": "待つ",
+    "reading_hiragana": "まつ",
+    "reading_katakana": "マツ",
+    "romaji": "matsu",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["等待"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_kaeru",
+    "surface": "帰る",
+    "reading_hiragana": "かえる",
+    "reading_katakana": "カエル",
+    "romaji": "kaeru",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["回去、回家"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_idaku",
+    "surface": "抱く",
+    "reading_hiragana": "だく",
+    "reading_katakana": "ダク",
+    "romaji": "daku",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["擁抱、懷抱"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_hanareru",
+    "surface": "離れる",
+    "reading_hiragana": "はなれる",
+    "reading_katakana": "ハナレル",
+    "romaji": "hanareru",
+    "part_of_speech": "verb",
+    "subclass": "ichidan",
+    "meanings": { "core": ["離開、分離"], "extended": [] },
+    "metadata": { "conjugation_class": "ichidan" }
+  },
+  {
+    "id": "v_yureru",
+    "surface": "揺れる",
+    "reading_hiragana": "ゆれる",
+    "reading_katakana": "ユレル",
+    "romaji": "yureru",
+    "part_of_speech": "verb",
+    "subclass": "ichidan",
+    "meanings": { "core": ["搖動、動搖"], "extended": [] },
+    "metadata": { "conjugation_class": "ichidan" }
+  },
+  {
+    "id": "v_ikiru",
+    "surface": "生きる",
+    "reading_hiragana": "いきる",
+    "reading_katakana": "イキル",
+    "romaji": "ikiru",
+    "part_of_speech": "verb",
+    "subclass": "ichidan",
+    "meanings": { "core": ["活著、生存"], "extended": [] },
+    "metadata": { "conjugation_class": "ichidan" }
+  },
+  {
+    "id": "v_aruku",
+    "surface": "歩く",
+    "reading_hiragana": "あるく",
+    "reading_katakana": "アルク",
+    "romaji": "aruku",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["走路、步行"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_kiku_music",
+    "surface": "聴く",
+    "reading_hiragana": "きく",
+    "reading_katakana": "キク",
+    "romaji": "kiku",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["專心聆聽、欣賞"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_wakaru",
+    "surface": "分かる",
+    "reading_hiragana": "わかる",
+    "reading_katakana": "ワカル",
+    "romaji": "wakaru",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["理解、明白"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+  {
+    "id": "v_kangaeru",
+    "surface": "考える",
+    "reading_hiragana": "かんがえる",
+    "reading_katakana": "カンガエル",
+    "romaji": "kangaeru",
+    "part_of_speech": "verb",
+    "subclass": "ichidan",
+    "meanings": { "core": ["思考、考量"], "extended": [] },
+    "metadata": { "conjugation_class": "ichidan" }
+  },
+  {
+    "id": "v_tsutawaru",
+    "surface": "伝わる",
+    "reading_hiragana": "つたわる",
+    "reading_katakana": "ツタワル",
+    "romaji": "tsutawaru",
+    "part_of_speech": "verb",
+    "subclass": "godan",
+    "meanings": { "core": ["被傳達、傳到"], "extended": [] },
+    "metadata": { "conjugation_class": "godan" }
+  },
+
+  {
+    "id": "v_sabishii",
+    "surface": "寂しい",
+    "reading_hiragana": "さびしい",
+    "reading_katakana": "サビシイ",
+    "romaji": "sabishii",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["寂寞、因缺少陪伴而空虛"], "extended": [] }
+  },
+  {
+    "id": "v_koishii",
+    "surface": "恋しい",
+    "reading_hiragana": "こいしい",
+    "reading_katakana": "コイシイ",
+    "romaji": "koishii",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["思念、渴望再見"], "extended": [] }
+  },
+  {
+    "id": "v_yasashii",
+    "surface": "優しい",
+    "reading_hiragana": "やさしい",
+    "reading_katakana": "ヤサシイ",
+    "romaji": "yasashii",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["溫柔、體貼"], "extended": [] }
+  },
+  {
+    "id": "v_taisetsu",
+    "surface": "大切",
+    "reading_hiragana": "たいせつ",
+    "reading_katakana": "タイセツ",
+    "romaji": "taisetsu",
+    "part_of_speech": "adjective",
+    "subclass": "na",
+    "meanings": { "core": ["重要、珍視"], "extended": [] }
+  },
+  {
+    "id": "v_tooi",
+    "surface": "遠い",
+    "reading_hiragana": "とおい",
+    "reading_katakana": "トオイ",
+    "romaji": "tooi",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["遙遠"], "extended": [] }
+  },
+  {
+    "id": "v_natsukashii",
+    "surface": "懐かしい",
+    "reading_hiragana": "なつかしい",
+    "reading_katakana": "ナツカシイ",
+    "romaji": "natsukashii",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["令人懷念、勾起溫暖回憶"], "extended": [] }
+  },
+  {
+    "id": "v_atarashii",
+    "surface": "新しい",
+    "reading_hiragana": "あたらしい",
+    "reading_katakana": "アタラシイ",
+    "romaji": "atarashii",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["新的"], "extended": [] }
+  },
+  {
+    "id": "v_yowai",
+    "surface": "弱い",
+    "reading_hiragana": "よわい",
+    "reading_katakana": "ヨワイ",
+    "romaji": "yowai",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["弱、脆弱"], "extended": [] }
+  },
+  {
+    "id": "v_kanashii",
+    "surface": "悲しい",
+    "reading_hiragana": "かなしい",
+    "reading_katakana": "カナシイ",
+    "romaji": "kanashii",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["悲傷、難過"], "extended": [] }
+  },
+  {
+    "id": "v_chiisai",
+    "surface": "小さい",
+    "reading_hiragana": "ちいさい",
+    "reading_katakana": "チイサイ",
+    "romaji": "chiisai",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["小的"], "extended": [] }
+  },
+  {
+    "id": "v_aoi",
+    "surface": "青い",
+    "reading_hiragana": "あおい",
+    "reading_katakana": "アオイ",
+    "romaji": "aoi",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["藍色的、青色的"], "extended": [] }
+  },
+  {
+    "id": "v_shiroi",
+    "surface": "白い",
+    "reading_hiragana": "しろい",
+    "reading_katakana": "シロイ",
+    "romaji": "shiroi",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["白色的"], "extended": [] }
+  },
+  {
+    "id": "v_akai",
+    "surface": "赤い",
+    "reading_hiragana": "あかい",
+    "reading_katakana": "アカイ",
+    "romaji": "akai",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["紅色的"], "extended": [] }
+  },
+  {
+    "id": "v_kurai",
+    "surface": "暗い",
+    "reading_hiragana": "くらい",
+    "reading_katakana": "クライ",
+    "romaji": "kurai",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["昏暗、陰沉"], "extended": [] }
+  },
+  {
+    "id": "v_amai",
+    "surface": "甘い",
+    "reading_hiragana": "あまい",
+    "reading_katakana": "アマイ",
+    "romaji": "amai",
+    "part_of_speech": "adjective",
+    "subclass": "i",
+    "meanings": { "core": ["甜的、天真的"], "extended": [] }
+  }
+]

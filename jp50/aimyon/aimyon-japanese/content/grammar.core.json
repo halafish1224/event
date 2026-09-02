@@ -1,0 +1,113 @@
+[
+  {
+    "id": "g_you_ni_naru",
+    "title": "～ようになる",
+    "surface_pattern": "動詞辭書形／可能形＋ようになる",
+    "level": "N4",
+    "category": "change",
+    "meaning_core": "描述能力、習慣或狀態逐漸變得成立。",
+    "formation_rules": [
+      "先選擇要描述的動作或能力。",
+      "接 ようになる 表示變化後的新狀態。"
+    ],
+    "prerequisites": ["g_potential", "g_te_iru"],
+    "semantic_functions": ["能力變化", "習慣形成"],
+    "register": "neutral",
+    "lesson_ids": ["lesson_24"],
+    "contrast_set_ids": ["contrast_naru_you_ninaru"],
+    "common_error_tags": ["naru_vs_you_ninaru_error"]
+  },
+  {
+    "id": "g_tai",
+    "title": "～たい",
+    "surface_pattern": "動詞ます語幹＋たい",
+    "level": "N5",
+    "category": "desire",
+    "meaning_core": "表達說話者自己想做某件事。",
+    "formation_rules": ["從辭書形產生 ます形。", "移除 ます，接 たい。"],
+    "prerequisites": ["g_masu"],
+    "semantic_functions": ["自己的願望"],
+    "register": "neutral",
+    "lesson_ids": ["lesson_22"],
+    "contrast_set_ids": ["contrast_tai_tehoshii_tsumori"],
+    "common_error_tags": ["tai_vs_tehoshii_error"]
+  },
+  {
+    "id": "g_tsumori",
+    "title": "～つもり",
+    "surface_pattern": "動詞普通形＋つもりだ",
+    "level": "N4",
+    "category": "intention",
+    "meaning_core": "表達已形成的打算或計畫。",
+    "formation_rules": ["選擇肯定或否定普通形。", "接 つもりだ 表示明確打算。"],
+    "prerequisites": ["g_masu"],
+    "semantic_functions": ["計畫", "意圖"],
+    "register": "neutral",
+    "lesson_ids": ["lesson_25"],
+    "contrast_set_ids": ["contrast_tai_tehoshii_tsumori"],
+    "common_error_tags": ["tai_vs_tsumori_error"]
+  },
+  {
+    "id": "g_ba",
+    "title": "～ば",
+    "surface_pattern": "動詞ば形／形容詞ければ",
+    "level": "N4",
+    "category": "condition",
+    "meaning_core": "表達一般、邏輯或可重複成立的條件。",
+    "formation_rules": ["依詞類產生條件形。", "將條件放在結果之前。"],
+    "prerequisites": ["g_masu", "g_i_adjective"],
+    "semantic_functions": ["一般條件", "邏輯關係"],
+    "register": "neutral",
+    "lesson_ids": ["lesson_19"],
+    "contrast_set_ids": ["contrast_ba_tara_temo_noni"],
+    "common_error_tags": ["ba_vs_tara_error"]
+  },
+  {
+    "id": "g_tara",
+    "title": "～たら",
+    "surface_pattern": "普通形過去＋ら",
+    "level": "N4",
+    "category": "condition",
+    "meaning_core": "表達特定情境成立後的條件或時間先後。",
+    "formation_rules": ["先正確產生 た形。", "在 た形後接 ら。"],
+    "prerequisites": ["g_te_form"],
+    "semantic_functions": ["特定條件", "先後關係"],
+    "register": "neutral",
+    "lesson_ids": ["lesson_20"],
+    "contrast_set_ids": ["contrast_ba_tara_temo_noni"],
+    "common_error_tags": ["ba_vs_tara_error"]
+  },
+  {
+    "id": "g_temo",
+    "title": "～ても",
+    "surface_pattern": "動詞て形／形容詞ても＋も",
+    "level": "N4",
+    "category": "concession",
+    "meaning_core": "表達即使條件成立，結果仍不改變。",
+    "formation_rules": ["依詞類產生 て形。", "接 も 形成讓步條件。"],
+    "prerequisites": ["g_te_form", "g_i_adjective"],
+    "semantic_functions": ["讓步", "逆條件"],
+    "register": "neutral",
+    "lesson_ids": ["lesson_20"],
+    "contrast_set_ids": ["contrast_ba_tara_temo_noni"],
+    "common_error_tags": ["temo_vs_noni_error"]
+  },
+  {
+    "id": "g_noni",
+    "title": "～のに",
+    "surface_pattern": "普通形＋のに",
+    "level": "N4",
+    "category": "concession",
+    "meaning_core": "凸顯期待與實際結果之間的落差，常帶遺憾或不滿。",
+    "formation_rules": [
+      "用普通形提出原本的期待基礎。",
+      "接 のに，再說與期待相反的結果。"
+    ],
+    "prerequisites": ["g_masu"],
+    "semantic_functions": ["期待落差", "遺憾"],
+    "register": "neutral",
+    "lesson_ids": ["lesson_20", "lesson_25"],
+    "contrast_set_ids": ["contrast_ba_tara_temo_noni"],
+    "common_error_tags": ["temo_vs_noni_error"]
+  }
+]

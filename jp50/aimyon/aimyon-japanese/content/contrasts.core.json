@@ -1,0 +1,814 @@
+[
+  {
+    "id": "contrast_koi_ai",
+    "title": "恋／愛",
+    "item_ids": ["v_koi", "v_ai"],
+    "category": "emotion",
+    "priority": 0.9,
+    "core_question": "是正在萌生、想靠近的戀慕，還是範圍更廣且持續的關愛？",
+    "semantic_dimensions": ["romantic_longing", "depth", "duration"],
+    "decision_rules": [
+      {
+        "when": "聚焦戀慕、心動或想靠近",
+        "choose": "v_koi",
+        "because": "恋 常指浪漫性的戀慕。"
+      },
+      {
+        "when": "聚焦持續關愛、珍惜或更廣泛的愛",
+        "choose": "v_ai",
+        "because": "愛 的範圍與時間跨度通常更廣。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "剛察覺心動／經過長期相處而珍惜",
+        "left": "恋が始まる。",
+        "right": "深い愛を育てる。",
+        "explanation": "左句是戀情開始，右句是持續培養的愛。"
+      }
+    ],
+    "common_errors": ["把 恋 與 愛 視為完全可互換。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "長期照顧與珍惜家人。",
+        "wrong": "家族への恋",
+        "correction": "家族への愛",
+        "reason": "這裡不是浪漫戀慕，而是廣義且持續的關愛。"
+      }
+    ],
+    "memory_hook": "恋是想靠近的心動；愛是願意持續珍惜。",
+    "lesson_ids": ["lesson_02"],
+    "song_ids": ["song_hadaka_no_kokoro", "song_ai_no_hana"],
+    "question_template_ids": ["q_contrast_koi_ai_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_suki_koishii",
+    "title": "好き／恋しい",
+    "item_ids": ["v_suki", "v_koishii"],
+    "category": "emotion",
+    "priority": 0.85,
+    "core_question": "只是喜歡，還是因距離或缺席而強烈思念？",
+    "semantic_dimensions": ["preference", "absence", "longing"],
+    "decision_rules": [
+      {
+        "when": "陳述喜歡的人事物",
+        "choose": "v_suki",
+        "because": "好き 表示喜好或好感。"
+      },
+      {
+        "when": "對不在眼前的人事物渴望再見",
+        "choose": "v_koishii",
+        "because": "恋しい 包含距離與思念。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "喜歡故鄉料理／離鄉後思念故鄉",
+        "left": "故郷の料理が好きだ。",
+        "right": "故郷が恋しい。",
+        "explanation": "喜好用 好き；因離開而思念用 恋しい。"
+      }
+    ],
+    "common_errors": ["只看到中文『想念』就忽略距離感。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "我喜歡這種音樂。",
+        "wrong": "この音楽が恋しい。",
+        "correction": "この音楽が好きだ。",
+        "reason": "只是表達喜好，沒有缺席或渴望再見。"
+      }
+    ],
+    "memory_hook": "好き是喜歡；恋しい是隔著距離想再見。",
+    "lesson_ids": ["lesson_02"],
+    "song_ids": ["song_hadaka_no_kokoro"],
+    "question_template_ids": ["q_contrast_suki_koishii_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_sabishii_kanashii",
+    "title": "寂しい／悲しい",
+    "item_ids": ["v_sabishii", "v_kanashii"],
+    "category": "emotion",
+    "priority": 0.85,
+    "core_question": "痛點是缺少陪伴的空缺，還是某件事造成的悲傷？",
+    "semantic_dimensions": ["loneliness", "loss", "cause"],
+    "decision_rules": [
+      {
+        "when": "因獨處、分離或缺少人事物而空虛",
+        "choose": "v_sabishii",
+        "because": "寂しい 聚焦空缺與孤單。"
+      },
+      {
+        "when": "因壞消息、失敗或失去而難過",
+        "choose": "v_kanashii",
+        "because": "悲しい 聚焦悲傷情緒。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "一個人過夜／聽到壞消息",
+        "left": "一人の夜は寂しい。",
+        "right": "その知らせは悲しい。",
+        "explanation": "左句缺陪伴，右句由事件引發悲傷。"
+      }
+    ],
+    "common_errors": ["把所有『難過』都翻成 悲しい。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "朋友離開後只剩自己。",
+        "wrong": "悲しい部屋だ。",
+        "correction": "一人で寂しい。",
+        "reason": "情境焦點是孤單與空缺。"
+      }
+    ],
+    "memory_hook": "少了誰而空是 寂しい；發生壞事而痛是 悲しい。",
+    "lesson_ids": ["lesson_05"],
+    "song_ids": ["song_hadaka_no_kokoro"],
+    "question_template_ids": ["q_contrast_sabishii_kanashii_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_koishii_natsukashii",
+    "title": "恋しい／懐かしい",
+    "item_ids": ["v_koishii", "v_natsukashii"],
+    "category": "memory",
+    "priority": 0.8,
+    "core_question": "現在渴望再見，還是過往回憶被喚起而感到懷念？",
+    "semantic_dimensions": ["longing", "memory_trigger", "warmth"],
+    "decision_rules": [
+      {
+        "when": "現在強烈想再見到缺席的人事物",
+        "choose": "v_koishii",
+        "because": "恋しい 指向當下的渴望。"
+      },
+      {
+        "when": "熟悉事物喚回過去回憶",
+        "choose": "v_natsukashii",
+        "because": "懐かしい 由回憶線索觸發。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "想念遠方故鄉／看到舊照片",
+        "left": "故郷が恋しい。",
+        "right": "この写真は懐かしい。",
+        "explanation": "前者想回去，後者是回憶被喚起。"
+      }
+    ],
+    "common_errors": ["忽略 懐かしい 需要過往熟悉感。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "第一次看到的新照片很有趣。",
+        "wrong": "懐かしい写真だ。",
+        "correction": "面白い写真だ。",
+        "reason": "沒有過往記憶可被喚起。"
+      }
+    ],
+    "memory_hook": "恋しい朝向想再見的現在；懐かしい回頭看熟悉的過去。",
+    "lesson_ids": ["lesson_05"],
+    "song_ids": ["song_harunohi"],
+    "question_template_ids": ["q_contrast_koishii_natsukashii_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_shiru_shitteiru_wakaru",
+    "title": "知る／知っている／分かる",
+    "item_ids": ["v_shiru", "v_shiru:form:te_iru", "v_wakaru"],
+    "category": "cognition",
+    "priority": 0.95,
+    "core_question": "是取得新資訊、已處於知道狀態，還是理解內容？",
+    "semantic_dimensions": [
+      "information_acquisition",
+      "result_state",
+      "understanding"
+    ],
+    "decision_rules": [
+      {
+        "when": "第一次得知資訊",
+        "choose": "v_shiru",
+        "because": "知る 是取得知識的變化。"
+      },
+      {
+        "when": "已經知道",
+        "choose": "v_shiru:form:te_iru",
+        "because": "知っている 表示取得後持續的狀態。"
+      },
+      {
+        "when": "理解意思、理由或方法",
+        "choose": "v_wakaru",
+        "because": "分かる 聚焦理解。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "剛得知名字／本來就知道名字／理解原因",
+        "left": "名前を知った。／名前を知っている。",
+        "right": "理由が分かった。",
+        "explanation": "取得、持有知識與理解是三個不同階段。"
+      }
+    ],
+    "common_errors": [
+      "用 知る 回答『你知道嗎』的現在狀態。",
+      "把 分かる 的理解對象一律標成 を。"
+    ],
+    "wrong_choice_examples": [
+      {
+        "prompt": "你知道那家店嗎？",
+        "wrong": "その店を知る？",
+        "correction": "その店を知っている？",
+        "reason": "問題問的是現在是否已知。"
+      }
+    ],
+    "memory_hook": "知る是把資訊拿進來；知っている是手上已經有；分かる是看懂它。",
+    "lesson_ids": ["lesson_26"],
+    "song_ids": ["song_hadaka_no_kokoro"],
+    "question_template_ids": ["q_contrast_shiru_wakaru_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_omou_kangaeru",
+    "title": "思う／考える",
+    "item_ids": ["v_omou", "v_kangaeru"],
+    "category": "cognition",
+    "priority": 0.9,
+    "core_question": "是在表達感受與判斷，還是在有意識地分析、考量？",
+    "semantic_dimensions": ["subjective_judgment", "deliberation", "emotion"],
+    "decision_rules": [
+      {
+        "when": "表達感受、印象或保留空間的判斷",
+        "choose": "v_omou",
+        "because": "思う 偏主觀想法。"
+      },
+      {
+        "when": "分析選項、方法或理由",
+        "choose": "v_kangaeru",
+        "because": "考える 是主動思考過程。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "覺得會下雨／思考明日計畫",
+        "left": "明日は雨だと思う。",
+        "right": "明日の計画を考える。",
+        "explanation": "前者提出判斷，後者進行分析。"
+      }
+    ],
+    "common_errors": ["看到中文『想』就任意互換。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "仔細考量三個方案。",
+        "wrong": "三つの案を思う。",
+        "correction": "三つの案を考える。",
+        "reason": "這裡是有意識的比較分析。"
+      }
+    ],
+    "memory_hook": "思う說心裡怎麼覺得；考える說腦中怎麼推敲。",
+    "lesson_ids": ["lesson_21"],
+    "song_ids": ["song_ai_no_hana"],
+    "question_template_ids": ["q_contrast_omou_kangaeru_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_iu_tsutaeru_tsutawaru",
+    "title": "言う／伝える／伝わる",
+    "item_ids": ["v_iu", "v_tsutaeru", "v_tsutawaru"],
+    "category": "communication",
+    "priority": 0.9,
+    "core_question": "是說出口、主動讓內容到達對方，還是內容實際傳到了？",
+    "semantic_dimensions": ["utterance", "intentional_transfer", "result"],
+    "decision_rules": [
+      {
+        "when": "聚焦說出話語",
+        "choose": "v_iu",
+        "because": "言う 描述發話。"
+      },
+      {
+        "when": "主動把訊息或心意傳給對方",
+        "choose": "v_tsutaeru",
+        "because": "伝える 是他動詞。"
+      },
+      {
+        "when": "內容成功傳到或被理解",
+        "choose": "v_tsutawaru",
+        "because": "伝わる 是自動詞。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "說一句話／轉告時間／心意傳到",
+        "left": "一言言う。／時間を伝える。",
+        "right": "気持ちが伝わる。",
+        "explanation": "發話、傳遞動作與傳達結果不同。"
+      }
+    ],
+    "common_errors": ["混淆 伝える 的 を 與 伝わる 的 が。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "心意自然傳達到了。",
+        "wrong": "気持ちを伝わった。",
+        "correction": "気持ちが伝わった。",
+        "reason": "伝わる 是自動詞，傳到的內容用 が。"
+      }
+    ],
+    "memory_hook": "言う是開口；伝える是送出；伝わる是抵達。",
+    "lesson_ids": ["lesson_04"],
+    "song_ids": ["song_harunohi", "song_ai_no_hana"],
+    "question_template_ids": ["q_contrast_iu_tsutaeru_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_naru_you_ninaru",
+    "title": "なる／～ようになる",
+    "item_ids": ["v_naru", "g_you_ni_naru"],
+    "category": "change",
+    "priority": 0.9,
+    "core_question": "是直接變成某狀態，還是能力或習慣逐漸變得成立？",
+    "semantic_dimensions": ["state_change", "ability_change", "habit"],
+    "decision_rules": [
+      {
+        "when": "名詞或形容詞描述直接狀態轉變",
+        "choose": "v_naru",
+        "because": "なる 表示成為。"
+      },
+      {
+        "when": "動作能力或習慣開始成立",
+        "choose": "g_you_ni_naru",
+        "because": "～ようになる 描述漸進能力／習慣變化。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "變安靜／變得能閱讀",
+        "left": "静かになる。",
+        "right": "読めるようになる。",
+        "explanation": "左句是狀態，右句是能力成立。"
+      }
+    ],
+    "common_errors": ["用名詞＋なる直接表達能力變化。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "漸漸變得能游泳。",
+        "wrong": "泳ぐになる。",
+        "correction": "泳げるようになる。",
+        "reason": "能力改變使用可能形＋ようになる。"
+      }
+    ],
+    "memory_hook": "狀態直接變用 なる；做得到這件事的改變用 ようになる。",
+    "lesson_ids": ["lesson_13", "lesson_24"],
+    "song_ids": [],
+    "question_template_ids": ["q_contrast_naru_youninaru_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_tai_tehoshii_tsumori",
+    "title": "～たい／～てほしい／～つもり",
+    "item_ids": ["g_tai", "g_te_hoshii", "g_tsumori"],
+    "category": "desire",
+    "priority": 0.95,
+    "core_question": "是自己想做、希望別人做，還是已有明確打算？",
+    "semantic_dimensions": ["actor", "desire", "intention_strength"],
+    "decision_rules": [
+      {
+        "when": "說話者自己想做",
+        "choose": "g_tai",
+        "because": "～たい 表自己的願望。"
+      },
+      {
+        "when": "希望他人採取動作",
+        "choose": "g_te_hoshii",
+        "because": "～てほしい 的動作者是他人。"
+      },
+      {
+        "when": "表達已形成的計畫",
+        "choose": "g_tsumori",
+        "because": "～つもり 表打算。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "我想聽／希望你聽／我打算聽",
+        "left": "聞きたい。／聞いてほしい。",
+        "right": "聞くつもりだ。",
+        "explanation": "先辨認動作者，再分願望與計畫。"
+      }
+    ],
+    "common_errors": [
+      "用 ～たい 表示希望別人做。",
+      "未先產生て形就接 ほしい。"
+    ],
+    "wrong_choice_examples": [
+      {
+        "prompt": "希望朋友聽。",
+        "wrong": "友達が聞きたい。",
+        "correction": "友達に聞いてほしい。",
+        "reason": "願望屬於說話者，但執行動作的是朋友。"
+      }
+    ],
+    "memory_hook": "我想做是 たい；我希望你做是 てほしい；我已打算做是 つもり。",
+    "lesson_ids": ["lesson_22", "lesson_23", "lesson_25"],
+    "song_ids": ["song_kimi_rock"],
+    "question_template_ids": ["q_contrast_tai_tehoshii_tsumori_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_ba_tara_temo_noni",
+    "title": "～ば／～たら／～ても／～のに",
+    "item_ids": ["g_ba", "g_tara", "g_temo", "g_noni"],
+    "category": "condition",
+    "priority": 0.95,
+    "core_question": "是一般條件、特定先後、讓步不變，還是期待落差？",
+    "semantic_dimensions": [
+      "generality",
+      "sequence",
+      "concession",
+      "expectation_gap"
+    ],
+    "decision_rules": [
+      {
+        "when": "一般或邏輯條件",
+        "choose": "g_ba",
+        "because": "～ば 聚焦條件關係。"
+      },
+      {
+        "when": "特定事件成立後",
+        "choose": "g_tara",
+        "because": "～たら 常帶先後。"
+      },
+      {
+        "when": "即使成立結果仍不變",
+        "choose": "g_temo",
+        "because": "～ても 表讓步。"
+      },
+      {
+        "when": "結果違反期待且帶情緒",
+        "choose": "g_noni",
+        "because": "～のに 凸顯落差。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "如果便宜就買／即使貴也買／明明便宜卻沒買",
+        "left": "安ければ買う。／高くても買う。",
+        "right": "安いのに買わなかった。",
+        "explanation": "條件、讓步與期待落差不能只靠中文『如果／即使』混用。"
+      }
+    ],
+    "common_errors": ["把 ～ても 與帶情緒的 ～のに 視為同義。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "即使下雨也出發。",
+        "wrong": "雨が降るのに出発する。",
+        "correction": "雨が降っても出発する。",
+        "reason": "只是讓步條件，沒有強調期待落差。"
+      }
+    ],
+    "memory_hook": "ば立規則、たら等事件、ても不改變、のに嘆落差。",
+    "lesson_ids": ["lesson_19", "lesson_20", "lesson_25"],
+    "song_ids": [],
+    "question_template_ids": ["q_contrast_ba_tara_temo_noni_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_teiku_tekuru",
+    "title": "～ていく／～てくる",
+    "item_ids": ["g_te_iku", "g_te_kuru"],
+    "category": "aspect",
+    "priority": 0.95,
+    "core_question": "變化是從現在向未來延伸，還是從過去一路來到現在？",
+    "semantic_dimensions": ["viewpoint", "time_direction", "movement"],
+    "decision_rules": [
+      {
+        "when": "從現在起向未來持續",
+        "choose": "g_te_iku",
+        "because": "～ていく 離開現在視點。"
+      },
+      {
+        "when": "從過去延續到現在或向說話者靠近",
+        "choose": "g_te_kuru",
+        "because": "～てくる 把變化帶到此刻。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "今後持續學／至今漸漸學會",
+        "left": "これから学んでいく。",
+        "right": "少しずつ分かってきた。",
+        "explanation": "兩句以現在為分界，時間方向相反。"
+      }
+    ],
+    "common_errors": ["只按中文『來／去』直譯，不看時間視點。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "最近逐漸變暖了。",
+        "wrong": "暖かくなっていった。",
+        "correction": "暖かくなってきた。",
+        "reason": "變化一路抵達說話者的現在。"
+      }
+    ],
+    "memory_hook": "從現在往外走是 ていく；一路走到現在是 てくる。",
+    "lesson_ids": ["lesson_27", "lesson_28"],
+    "song_ids": ["song_harunohi"],
+    "question_template_ids": ["q_contrast_teiku_tekuru_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_ima_kyou",
+    "title": "今／今日",
+    "item_ids": ["v_ima", "v_kyou"],
+    "category": "time",
+    "priority": 0.75,
+    "core_question": "是在指此刻，還是今天這個日期／期間？",
+    "semantic_dimensions": ["moment", "calendar_day"],
+    "decision_rules": [
+      {
+        "when": "聚焦說話當下",
+        "choose": "v_ima",
+        "because": "今 是現在此刻。"
+      },
+      {
+        "when": "聚焦今天一整天",
+        "choose": "v_kyou",
+        "because": "今日 是日曆上的今天。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "現在正忙／今天很忙",
+        "left": "今、忙しい。",
+        "right": "今日は忙しい。",
+        "explanation": "前者只說此刻，後者涵蓋今天。"
+      }
+    ],
+    "common_errors": ["將英文 now/today 的差別忽略。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "此刻幾點？",
+        "wrong": "今日は何時？",
+        "correction": "今、何時？",
+        "reason": "問題指當下時點。"
+      }
+    ],
+    "memory_hook": "今是一個點；今日是一整天。",
+    "lesson_ids": ["lesson_29"],
+    "song_ids": ["song_harunohi"],
+    "question_template_ids": ["q_contrast_ima_kyou_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_mainichi_hibi",
+    "title": "毎日／日々",
+    "item_ids": ["v_mainichi", "v_hibi"],
+    "category": "time",
+    "priority": 0.7,
+    "core_question": "是在陳述每天的規律頻率，還是在描寫一天天累積的日常？",
+    "semantic_dimensions": ["frequency", "continuity", "narrative_tone"],
+    "decision_rules": [
+      {
+        "when": "回答多久一次，明確表示每天",
+        "choose": "v_mainichi",
+        "because": "毎日 是頻率詞。"
+      },
+      {
+        "when": "描寫日常歲月的連續與累積",
+        "choose": "v_hibi",
+        "because": "日々 帶一天天過去的敘事感。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "每天跑步／珍惜一天天的生活",
+        "left": "毎日走る。",
+        "right": "日々の暮らしを大切にする。",
+        "explanation": "前者量化頻率，後者描寫日常。"
+      }
+    ],
+    "common_errors": ["在固定頻率句中為了文藝感硬換成 日々。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "每天七點起床。",
+        "wrong": "日々七時に起きる。",
+        "correction": "毎日七時に起きる。",
+        "reason": "規律時間表用 毎日 最直接。"
+      }
+    ],
+    "memory_hook": "毎日回答頻率；日々描寫一天天的生活。",
+    "lesson_ids": ["lesson_29"],
+    "song_ids": [],
+    "question_template_ids": ["q_contrast_mainichi_hibi_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_hikari_kage",
+    "title": "光／影",
+    "item_ids": ["v_hikari", "v_kage"],
+    "category": "perception",
+    "priority": 0.7,
+    "core_question": "描述的是亮光本身，還是光被遮擋後形成的影子與陰影？",
+    "semantic_dimensions": ["illumination", "occlusion", "metaphor"],
+    "decision_rules": [
+      {
+        "when": "光線、亮度或希望的比喻",
+        "choose": "v_hikari",
+        "because": "光 是照亮的來源或狀態。"
+      },
+      {
+        "when": "物體遮光形成的輪廓或陰影",
+        "choose": "v_kage",
+        "because": "影 是遮光結果。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "窗外射入光／地面形成影",
+        "left": "窓から光が入る。",
+        "right": "地面に影が伸びる。",
+        "explanation": "光進入，影則由遮擋形成。"
+      }
+    ],
+    "common_errors": ["把影子與微弱光線混為一談。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "樹在地面留下影子。",
+        "wrong": "木の光",
+        "correction": "木の影",
+        "reason": "是物體遮光後的輪廓。"
+      }
+    ],
+    "memory_hook": "光照過來；影被留下來。",
+    "lesson_ids": ["lesson_29"],
+    "song_ids": ["song_marigold"],
+    "question_template_ids": ["q_contrast_hikari_kage_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_koe_oto",
+    "title": "声／音",
+    "item_ids": ["v_koe", "v_oto"],
+    "category": "sound",
+    "priority": 0.8,
+    "core_question": "是人或動物的嗓音，還是不限來源的一般聲響？",
+    "semantic_dimensions": ["animate_source", "sound_general"],
+    "decision_rules": [
+      {
+        "when": "人或動物發出的嗓音、呼喊",
+        "choose": "v_koe",
+        "because": "声 聚焦有生命的發聲。"
+      },
+      {
+        "when": "物體、樂器、環境等一般聲響",
+        "choose": "v_oto",
+        "because": "音 的聲源範圍更廣。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "朋友說話的聲音／關門聲",
+        "left": "友達の声が聞こえる。",
+        "right": "ドアの音が聞こえる。",
+        "explanation": "人的嗓音用 声，物體聲響用 音。"
+      }
+    ],
+    "common_errors": ["所有中文『聲音』都只用 音。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "聽見母親的嗓音。",
+        "wrong": "母の音",
+        "correction": "母の声",
+        "reason": "聲源是人，選 声。"
+      }
+    ],
+    "memory_hook": "有一張嘴的聲音多用 声；其他聲響先想 音。",
+    "lesson_ids": ["lesson_04", "lesson_29"],
+    "song_ids": ["song_kimi_rock"],
+    "question_template_ids": ["q_contrast_koe_oto_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  },
+  {
+    "id": "contrast_basho_tokoro",
+    "title": "場所／ところ",
+    "item_ids": ["v_basho", "v_tokoro"],
+    "category": "location",
+    "priority": 0.75,
+    "core_question": "是客觀可指認的地點，還是較廣義的地方、部分、情況或階段？",
+    "semantic_dimensions": [
+      "physical_location",
+      "abstract_point",
+      "aspectual_stage"
+    ],
+    "decision_rules": [
+      {
+        "when": "具體、客觀、可標示的地點",
+        "choose": "v_basho",
+        "because": "場所 聚焦空間位置。"
+      },
+      {
+        "when": "口語的地方，或情況、部分、正要做的階段",
+        "choose": "v_tokoro",
+        "because": "ところ 的抽象功能較廣。"
+      }
+    ],
+    "minimal_pairs": [
+      {
+        "context": "集合地點／正要出門",
+        "left": "集合場所を決める。",
+        "right": "今、出かけるところだ。",
+        "explanation": "場所 是地點；ところ 也能標記事件階段。"
+      }
+    ],
+    "common_errors": ["在時間階段語法中誤換成 場所。"],
+    "wrong_choice_examples": [
+      {
+        "prompt": "我正要吃飯。",
+        "wrong": "食べる場所だ。",
+        "correction": "食べるところだ。",
+        "reason": "這裡是動作即將開始的階段，不是吃飯地點。"
+      }
+    ],
+    "memory_hook": "場所能標在地圖上；ところ還能標在事情進行到哪裡。",
+    "lesson_ids": ["lesson_29"],
+    "song_ids": [],
+    "question_template_ids": ["q_contrast_basho_tokoro_01"],
+    "mastery": {
+      "recognition": 0,
+      "explanation": 0,
+      "selection": 0,
+      "production": 0
+    }
+  }
+]
