@@ -1,313 +1,334 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
-  <title>AIMYON 歌詞學習地圖 - 2021-2026 近期名曲特化版</title>
-  <style>
-    :root {
-      --bg-mustard: #DAB642; 
-      --text-green: #1A3B28; 
-      --card-bg: #FCFBF4;    
-      --accent-red: #D14936; 
-      --border-dark: #1A3B28;
-      --tab-inactive: #B89B36;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 確保網頁不被搜尋引擎索引與追蹤 -->
+    <meta name="robots" content="noindex, nofollow">
+    <title>AIMYON 日文語境解構法典</title>
+    <style>
+        :root {
+            --bg-color: #f7f9fc;
+            --text-main: #2c3e50;
+            --text-muted: #596a7b;
+            --accent-color: #d35400;
+            --card-bg: #ffffff;
+            --border-radius: 12px;
+            --network-bg: #eaf2f8;
+            --network-border: #3498db;
+        }
 
-    body {
-      background-color: var(--bg-mustard);
-      color: var(--text-green);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
-      margin: 0;
-      padding: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      min-height: 100vh;
-      box-sizing: border-box;
-    }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-    /* 導航列 */
-    .nav-tabs {
-      display: flex;
-      width: 100%;
-      max-width: 650px;
-      gap: 8px;
-      margin-bottom: 12px;
-    }
+        body {
+            font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.8;
+            padding: 20px;
+        }
 
-    .tab-btn {
-      flex: 1;
-      padding: 14px 0;
-      font-size: 1.3rem;
-      font-weight: 900;
-      color: var(--text-green);
-      background-color: var(--tab-inactive);
-      border: 3px solid var(--border-dark);
-      border-radius: 12px;
-      box-shadow: 3px 3px 0px var(--border-dark);
-      cursor: pointer;
-      text-align: center;
-    }
+        header {
+            max-width: 900px;
+            margin: 0 auto 40px;
+            text-align: center;
+        }
 
-    .tab-btn.active {
-      background-color: var(--card-bg);
-      color: var(--accent-red);
-      transform: translate(2px, 2px);
-      box-shadow: 1px 1px 0px var(--border-dark);
-      border-bottom-width: 5px;
-    }
+        h1 {
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--text-main);
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+        }
 
-    .card-container {
-      width: 100%;
-      max-width: 650px;
-      background: var(--card-bg);
-      border: 4px solid var(--border-dark);
-      border-radius: 20px; 
-      box-shadow: 6px 6px 0px var(--border-dark);
-      padding: 20px;
-      box-sizing: border-box;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      text-align: center;
-    }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
 
-    .kanji { font-size: 4.5rem; font-weight: 900; margin: 0; color: var(--border-dark); }
-    .reading { font-size: 2rem; color: var(--accent-red); font-weight: bold; margin-bottom: 12px; }
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+        }
 
-    /* 資訊區塊通用 */
-    .box {
-      width: 100%;
-      border-radius: 12px;
-      padding: 14px;
-      margin: 6px 0;
-      box-sizing: border-box;
-      text-align: left;
-    }
+        /* 階段性區塊 (Chunking Framework) */
+        .phase-section {
+            margin-bottom: 50px;
+        }
 
-    .memory-box { background: #F2EEDB; border: 3px dashed var(--border-dark); }
-    .lyrics-box { background: var(--text-green); color: var(--card-bg); border: 3px solid var(--border-dark); }
-    
-    .label {
-      font-size: 1.1rem; font-weight: 900; margin-bottom: 6px;
-      border-bottom: 2px solid currentcolor; display: inline-block; padding-bottom: 2px;
-    }
-    
-    .lyrics-box .label { color: var(--bg-mustard); border-bottom-color: var(--bg-mustard); }
+        .phase-title {
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            border-bottom: 2px solid var(--accent-color);
+            padding-bottom: 8px;
+            margin-bottom: 20px;
+        }
 
-    .memory-text { font-size: 1.35rem; font-weight: bold; color: var(--accent-red); line-height: 1.4; }
-    
-    /* 歌詞特化顯示 (老花眼友善) */
-    .lyrics-quote {
-      background: rgba(255,255,255,0.1);
-      padding: 12px;
-      border-radius: 8px;
-      margin: 10px 0;
-      border-left: 5px solid var(--bg-mustard);
-    }
+        /* 歌曲卡片 (Dual-Coding Visuals) */
+        .song-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
 
-    .lyrics-line { font-size: 1.5rem; font-weight: 900; line-height: 1.8; margin: 4px 0; }
-    
-    /* 注音優化 */
-    rt { font-size: 0.9rem; color: #F4A261; font-weight: 900; }
+        .song-card:hover {
+            transform: translateY(-2px);
+        }
 
-    .song-attr {
-      font-size: 1rem; color: #A3D9C9; text-align: right; font-weight: bold; margin-top: 8px;
-    }
+        .lyrics-box {
+            font-size: 1.4rem;
+            font-weight: bold;
+            color: var(--text-main);
+            background: #fdf2e9;
+            padding: 15px;
+            border-left: 5px solid var(--accent-color);
+            border-radius: 4px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
 
-    .explanation-text {
-      font-size: 1.25rem; font-weight: bold; line-height: 1.6; color: #E8E8E8;
-    }
+        /* 強制漢字標音樣式 */
+        ruby {
+            ruby-align: center;
+        }
+        
+        rt {
+            font-size: 0.55em;
+            color: var(--text-muted);
+            font-weight: normal;
+            transform: translateY(-2px);
+        }
 
-    .copyright-note {
-      font-size: 1rem; color: var(--bg-mustard); text-align: center; margin-top: 16px; border-top: 1px dashed #A3D9C9; padding-top: 8px;
-    }
+        /* 白話拆字解析 (Deep Deconstruction) */
+        .deconstruct-list {
+            list-style: none;
+            margin-bottom: 20px;
+        }
 
-    .controls { display: flex; gap: 12px; width: 100%; max-width: 650px; margin-top: 16px; }
-    .btn {
-      flex: 1; padding: 16px 0; font-size: 1.5rem; font-weight: 900; color: var(--card-bg);
-      background-color: var(--text-green); border: 3px solid var(--border-dark);
-      border-radius: 12px; box-shadow: 4px 4px 0px var(--border-dark); cursor: pointer;
-    }
-    .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0px var(--border-dark); }
-    .btn-audio { background-color: var(--accent-red); }
-    .progress { margin-top: 12px; font-size: 1.2rem; font-weight: 900; }
-  </style>
+        .deconstruct-list li {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px dashed #eee;
+        }
+
+        .deconstruct-list li:last-child {
+            border-bottom: none;
+        }
+
+        .vocab-highlight {
+            font-weight: bold;
+            color: var(--accent-color);
+            font-size: 1.1rem;
+            margin-right: 8px;
+        }
+
+        /* 網狀聯繫演繹 (Causal Network Map) */
+        .network-link {
+            background: var(--network-bg);
+            border-left: 5px solid var(--network-border);
+            padding: 15px 20px;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+            margin-top: 15px;
+            font-size: 0.95rem;
+        }
+
+        .network-title {
+            font-weight: bold;
+            color: var(--network-border);
+            margin-bottom: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* RWD 響應式設定 */
+        @media (max-width: 768px) {
+            body { padding: 15px; }
+            .lyrics-box { font-size: 1.2rem; padding: 12px; }
+            .phase-title { font-size: 1.3rem; }
+            .song-card { padding: 20px; }
+        }
+    </style>
 </head>
 <body>
 
-  <div class="nav-tabs">
-    <button class="tab-btn active" onclick="setCategory('noun')" id="tab-noun">名詞 (5)</button>
-    <button class="tab-btn" onclick="setCategory('verb')" id="tab-verb">動詞 (5)</button>
-    <button class="tab-btn" onclick="setCategory('adj')" id="tab-adj">形容詞 (5)</button>
-  </div>
+    <header>
+        <h1>AIMYON 日文語境解構法典</h1>
+        <p class="subtitle">視覺、聽覺與觸覺的三位一體語彙建構</p>
+    </header>
 
-  <div class="card-container">
-    <div id="kanjiText" class="kanji">讀取中</div>
-    <div id="readingText" class="reading"></div>
-    
-    <div class="box memory-box">
-      <div class="label">解釋與記憶法：</div>
-      <div id="memoryText" class="memory-text"></div>
-    </div>
+    <main>
+        <!-- 第一階段 -->
+        <section class="phase-section">
+            <h2 class="phase-title">第一階段：視覺定錨與聽覺介質的傳輸</h2>
+            
+            <article class="song-card">
+                <div class="lyrics-box">
+                    <ruby>麦<rt>むぎ</rt></ruby>わらの<ruby>帽子<rt>ぼうし</rt></ruby>の<ruby>君<rt>きみ</rt></ruby>が <ruby>揺<rt>ゆ</rt></ruby>れたマリーゴールドに<ruby>似<rt>に</rt></ruby>てる<br>
+                    あれは<ruby>空<rt>そら</rt></ruby>がまだ<ruby>青<rt>あお</rt></ruby>い<ruby>夏<rt>なつ</rt></ruby>のこと
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight"><ruby>麦<rt>むぎ</rt></ruby>わら + の + <ruby>帽子<rt>ぼうし</rt></ruby></span>「の」在此作為材質的黏著劑。先喚起乾燥稻草的嗅覺，再將其塑造成帽子實體。</li>
+                    <li><span class="vocab-highlight"><ruby>帽子<rt>ぼうし</rt></ruby> + の + <ruby>君<rt>きみ</rt></ruby></span>第二個「の」將「戴著草帽」這個特徵，像標籤一樣牢牢貼在主角「你（君）」身上。</li>
+                    <li><span class="vocab-highlight">が</span>主詞標記助詞。如同舞台聚光燈，告訴大腦接下來所有動作的唯一主體，就是這個戴草帽的你。</li>
+                    <li><span class="vocab-highlight"><ruby>揺<rt>ゆ</rt></ruby>れた</span>動詞「<ruby>揺<rt>ゆ</rt></ruby>れる（搖晃）」的過去形作連體修飾。用來製造視覺殘影，精準形容花朵被微風吹拂後「持續擺盪的動態」。</li>
+                    <li><span class="vocab-highlight">に + <ruby>似<rt>に</rt></ruby>てる</span>「に」是投射的標靶。「<ruby>似<rt>に</rt></ruby>ている（相像）」約音為「<ruby>似<rt>に</rt></ruby>てる」，將你的身姿完美疊合到萬壽菊上。</li>
+                </ul>
+            </article>
 
-    <div class="box lyrics-box">
-      <div class="label" id="songTitle">名曲解析</div>
-      <div class="lyrics-quote" id="lyricsQuote"></div>
-      <div class="explanation-text" id="explanationText"></div>
-      <div class="copyright-note">※ 欲學習完整歌曲，請至 Google 搜尋該首曲目歌詞。</div>
-    </div>
-  </div>
+            <article class="song-card">
+                <div class="lyrics-box">
+                    <ruby>君<rt>きみ</rt></ruby>はロックなんか<ruby>聴<rt>き</rt></ruby>かないと<ruby>思<rt>おも</rt></ruby>いながら<br>
+                    <ruby>少<rt>すこ</rt></ruby>しでも<ruby>僕<rt>ぼく</rt></ruby>に<ruby>近<rt>ちか</rt></ruby>づいてほしくて
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight">なんか</span>帶有貶義或隨意的「...之類的」。大腦在此建立保護牆，假裝不在乎對方不聽搖滾樂。</li>
+                    <li><span class="vocab-highlight"><ruby>聴<rt>き</rt></ruby>かない</span>動詞「<ruby>聴<rt>き</rt></ruby>く（專注聆聽）」的否定。不是沒聽到聲音（聞かない），而是不去用心理解。</li>
+                    <li><span class="vocab-highlight"><ruby>僕<rt>ぼく</rt></ruby>に + <ruby>近<rt>ちか</rt></ruby>づいてほしくて</span>「に」是移動的終點。「<ruby>近<rt>ちか</rt></ruby>づく（靠近）」轉化為て形加上「ほしい（希望）」，強烈表達「渴望你主動靠近我這裡」的拉力。</li>
+                </ul>
+                <div class="network-link">
+                    <div class="network-title">🔗 網狀聯繫演繹：記憶迴路貫通</div>
+                    <p>前一首歌中「<ruby>揺<rt>ゆ</rt></ruby>れる（搖晃）」產生了無法觸及的物理距離感，導致此處必須借用「<ruby>歌<rt>うた</rt></ruby>（歌曲）」作為工具去「<ruby>近<rt>ちか</rt></ruby>づく（靠近）」。大腦自動建立因果：當視覺（<ruby>似<rt>に</rt></ruby>てる）無法直接觸及對方時，便切換感官，利用聽覺（<ruby>聴<rt>き</rt></ruby>く）試圖突破防線。</p>
+                </div>
+            </article>
+        </section>
 
-  <div class="controls">
-    <button class="btn btn-audio" onclick="speakCurrentWord()">🔊 日文朗讀</button>
-  </div>
-  <div class="controls">
-    <button class="btn" style="background-color: #555;" onclick="prevCard()">上一張</button>
-    <button class="btn" onclick="nextCard()">下一張</button>
-  </div>
-  <div id="progressText" class="progress">1 / 5</div>
+        <!-- 第二階段 -->
+        <section class="phase-section">
+            <h2 class="phase-title">第二階段：感官失調、情緒重量與自我武裝</h2>
+            
+            <article class="song-card">
+                <div class="lyrics-box">
+                    <ruby>苦<rt>にが</rt></ruby>いようで<ruby>甘<rt>あま</rt></ruby>いようなこの<ruby>泡<rt>あわ</rt></ruby>に<br>
+                    くぐらせる<ruby>想<rt>おも</rt></ruby>いが<ruby>弾<rt>はじ</rt></ruby>ける
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight"><ruby>苦<rt>にが</rt></ruby>い / <ruby>甘<rt>あま</rt></ruby>い</span>味覺光譜的兩極。</li>
+                    <li><span class="vocab-highlight">〜ようで / 〜ような</span>感官濾鏡句型。大腦無法給出絕對判斷時，將苦與甜強制揉合，創造出微醺的錯覺。</li>
+                    <li><span class="vocab-highlight">この<ruby>泡<rt>あわ</rt></ruby>に + くぐらせる</span>「に」是沉浸空間。「くぐらせる」是「くぐる（潛入）」的使役態。強行將思緒按進、浸泡在虛幻的泡沫裡。</li>
+                    <li><span class="vocab-highlight"><ruby>弾<rt>はじ</rt></ruby>ける</span>氣泡破裂的瞬間動詞。同時乘載視覺的消失與聽覺的破裂感。</li>
+                </ul>
+            </article>
 
-  <script>
-    // 嚴選 2021~2026 近期名曲 15 選 (考量效能與精緻度，各取 TOP 5 深入解析)
-    const wordList = [
-      // ====== 名詞 ======
-      { cat: "noun", kanji: "愛", reading: "あい (ai)", meaning: "愛、愛情",
-        memory: "【發音聯想】阿姨(a-i)給你滿滿的愛。",
-        songTitle: "《愛の花》(2023) - 晨間劇『爛漫』主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>空<rt>そら</rt></ruby>が<ruby>晴<rt>は</rt></ruby>れたら</div><div class='lyrics-line'><ruby>愛<rt>あい</rt></ruby>を、<ruby>愛<rt>あい</rt></ruby>を<ruby>伝<rt>つた</rt></ruby>えて</div><div class='lyrics-line'><ruby>涙<rt>なみだ</rt></ruby>は<ruby>明<rt>あす</rt></ruby>の<ruby>為<rt>ため</rt></ruby></div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【歌詞賞析】將「愛」實體化為如同花朵般可以傳遞的信物。前句鋪陳天晴，中句渴望傳遞情感，後句將眼淚留給未來的希望。展現極具生命力的傳承感。" },
-      { cat: "noun", kanji: "涙", reading: "なみだ (namida)", meaning: "眼淚",
-        memory: "【發音聯想】眼淚像「那米大(na-mi-da)」的珍珠一樣掉下來。",
-        songTitle: "《ざらめ》(2024) - 日劇『海的開始』主題曲",
-        lyrics: "<div class='lyrics-line'>どれだけ<ruby>涙流<rt>なみだなが</rt></ruby>しても</div><div class='lyrics-line'><ruby>満<rt>み</rt></ruby>たされないの</div><div class='lyrics-line'>あなたがいいの</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【獨特用法】ざらめ(粗糖)比喻無法融化的心結。這裡描述無論流下多少眼淚，內心依然匱乏，直接點出對「你」無可取代的執念。" },
-      { cat: "noun", kanji: "言葉", reading: "ことば (kotoba)", meaning: "言語",
-        memory: "【發音聯想】話說得太多，「口頭吧(ko-to-ba)」都講到乾了。",
-        songTitle: "《会いに行くのに》(2024) - 日劇『Unmet』主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>言<rt>い</rt></ruby>い<ruby>忘<rt>わす</rt></ruby>れた<ruby>言葉<rt>ことば</rt></ruby>は</div><div class='lyrics-line'><ruby>傷<rt>きず</rt></ruby>になる<ruby>前<rt>まえ</rt></ruby>に</div><div class='lyrics-line'><ruby>伝<rt>つた</rt></ruby>えなくちゃな</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【歌詞賞析】以大腦記憶為背景，點出「沒說出口的言語」若不趁早傳達，最終會化為心裡的傷痕。用字日常卻刺痛人心。" },
-      { cat: "noun", kanji: "朝", reading: "あさ (asa)", meaning: "早晨",
-        memory: "【發音聯想】早上起床伸大懶腰，喊一聲「啊～爽(a-sa)」。",
-        songTitle: "《ラッキーカラー》(2024) - 專輯『猫にジェラシー』",
-        lyrics: "<div class='lyrics-line'>どんよりとした<ruby>朝<rt>あさ</rt></ruby></div><div class='lyrics-line'>いつもの<ruby>占<rt>うらな</rt></ruby>い<ruby>見<rt>み</rt></ruby>て</div><div class='lyrics-line'>ため<ruby>息<rt>いき</rt></ruby>が<ruby>出<rt>で</rt></ruby>る</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【生活寫實】描繪陰鬱的早晨看著星座運勢嘆氣的現代人日常。「朝」在此不是充滿希望的破曉，而是社畜無奈的每一天起點。" },
-      { cat: "noun", kanji: "心", reading: "こころ (kokoro)", meaning: "心靈、內心",
-        memory: "【發音聯想】發音像心跳聲「叩叩囉(ko-ko-ro)」。",
-        songTitle: "《ハート》(2021) - 日劇『只是在結婚申請書上蓋個章而已』主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>不器用<rt>ぶきよう</rt></ruby>な<ruby>心<rt>こころ</rt></ruby>は</div><div class='lyrics-line'><ruby>見失<rt>みうしな</rt></ruby>いそうだけど</div><div class='lyrics-line'>あなたがいいの</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【歌詞賞析】「ハート(Heart)」與「心(Kokoro)」交錯使用，將自己笨拙、容易迷失的內心狀態展露無遺，卻又堅定地選擇了對方。" },
+            <article class="song-card">
+                <div class="lyrics-box">
+                    バラの<ruby>花<rt>はな</rt></ruby>に<ruby>願<rt>ねが</rt></ruby>い<ruby>込<rt>こ</rt></ruby>めてさ<br>
+                    <ruby>臭<rt>くさ</rt></ruby>いことばっか<ruby>考<rt>かんが</rt></ruby>えて<ruby>待<rt>ま</rt></ruby>ってても
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight"><ruby>願<rt>ねが</rt></ruby>い + <ruby>込<rt>こ</rt></ruby>めて</span>「<ruby>込<rt>こ</rt></ruby>める（注入、填裝）」。具備強烈肌肉重量的動詞，如同把火藥壓實，大腦能感受到將虛無願望「用力塞進」實體玫瑰裡的施力感。</li>
+                    <li><span class="vocab-highlight">〜さ</span>語氣助詞。用極度輕浮、隨性的語調，來掩飾前面「<ruby>込<rt>こ</rt></ruby>める」的沉重感。</li>
+                    <li><span class="vocab-highlight"><ruby>臭<rt>くさ</rt></ruby>いこと + ばっか</span>「<ruby>臭<rt>くさ</rt></ruby>い」在此指做作、老套的話語。「ばっか」是「ばかり（全是...）」的口語。</li>
+                </ul>
+                <div class="network-link">
+                    <div class="network-title">🔗 網狀聯繫演繹：記憶迴路貫通</div>
+                    <p>前段「<ruby>泡<rt>あわ</rt></ruby>」的虛無與破裂（<ruby>弾<rt>はじ</rt></ruby>ける）讓大腦極度不安；為對抗虛幻，大腦在此調用了最具實體重量感的「<ruby>込<rt>こ</rt></ruby>める（用力裝填）」，試圖將情緒實體化，隨後又因害怕受傷而用「さ（啦）」進行自我防衛。</p>
+                </div>
+            </article>
+        </section>
 
-      // ====== 動詞 ======
-      { cat: "verb", kanji: "会う", reading: "あう (au)", meaning: "見面",
-        memory: "【發音聯想】兩人在街角相遇見面，「啊嗚(a-u)」驚呼。",
-        songTitle: "《会いに行くのに》(2024) - 日劇『Unmet』主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>冷蔵庫<rt>れいぞうこ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>で<ruby>凍<rt>こお</rt></ruby>りかけた</div><div class='lyrics-line'><ruby>愛<rt>あい</rt></ruby>を<ruby>溶<rt>とか</rt></ruby>して</div><div class='lyrics-line'><ruby>今夜<rt>こんや</rt></ruby>、<ruby>会<rt>あ</rt></ruby>いに<ruby>行<rt>い</rt></ruby>くのに</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【獨特意象】將愛情具象化為冰箱裡快結冰的物品。為了今晚的「見面」，必須將冰冷的關係與情緒重新溶解，畫面感極強。" },
-      { cat: "verb", kanji: "泣く", reading: "なく (naku)", meaning: "哭泣",
-        memory: "【發音聯想】哭得太大聲，被念說「那哭(na-ku)什麼啦？」。",
-        songTitle: "《初恋が泣いている》(2022) - 日劇『戀愛何必認真？』主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>電柱<rt>でんちゅう</rt></ruby>にぶら<ruby>下<rt>さ</rt></ruby>がったままの</div><div class='lyrics-line'><ruby>初恋<rt>はつこい</rt></ruby>が<ruby>泣<rt>な</rt></ruby>いている</div><div class='lyrics-line'><ruby>帰<rt>かえ</rt></ruby>る<ruby>場所<rt>ばしょ</rt></ruby>を<ruby>失<rt>うしな</rt></ruby>って</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【擬人修辭】這不是指人哭泣，而是將「初戀」擬人化。被遺棄在電線桿旁的初戀正在哭泣，魔幻寫實地表達失戀的滯留感。" },
-      { cat: "verb", kanji: "知る", reading: "しる (shiru)", meaning: "知道",
-        memory: "【發音聯想】知道感人的真相後，流下「吸嚕(shi-ru)」的眼淚。",
-        songTitle: "《愛を知るまでは》(2021) - 日劇『喜劇開場』主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>愛<rt>あい</rt></ruby>を<ruby>知<rt>し</rt></ruby>るまでは</div><div class='lyrics-line'><ruby>死<rt>し</rt></ruby>ねない<ruby>私<rt>わたし</rt></ruby>なのだ</div><div class='lyrics-line'><ruby>導<rt>みちび</rt></ruby>かれたいな</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【歌曲意涵】「知る」在這裡是經歷與頓悟。在真正體驗到愛之前，無論如何都不能放棄生命，強烈展現生存意志與對愛的渴望。" },
-      { cat: "verb", kanji: "忘れる", reading: "わすれる (wasureru)", meaning: "忘記",
-        memory: "【發音聯想】忘記帶東西，驚呼「哇！輸了了(wa-su-re-ru)」。",
-        songTitle: "《あのね》(2023) - 電影『窗邊的小荳荳』主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>忘<rt>わす</rt></ruby>れたくないよ</div><div class='lyrics-line'><ruby>初<rt>はじ</rt></ruby>めて<ruby>触<rt>ふ</rt></ruby>れた</div><div class='lyrics-line'><ruby>優<rt>やさ</rt></ruby>しさを</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【情感堆疊】AIMYON 情歌中常見的執念，用「不想忘記」去抵抗時間流逝。這裡刻畫了初次感受到溫柔時，想永遠銘記在心的感動。" },
-      { cat: "verb", kanji: "走る", reading: "はしる (hashiru)", meaning: "奔跑",
-        memory: "【發音聯想】一直奔跑喘個不停發出「哈氣嚕(ha-shi-ru)」。",
-        songTitle: "《双葉》(2022) - NHK『18祭』企劃曲",
-        lyrics: "<div class='lyrics-line'><ruby>大<rt>おお</rt></ruby>きく<ruby>息<rt>いき</rt></ruby>を<ruby>吸<rt>す</rt></ruby>い<ruby>込<rt>こ</rt></ruby>んで</div><div class='lyrics-line'><ruby>風<rt>かぜ</rt></ruby>の<ruby>中<rt>なか</rt></ruby>を<ruby>走<rt>はし</rt></ruby>る</div><div class='lyrics-line'><ruby>未熟<rt>みじゅく</rt></ruby>な<ruby>二人<rt>ふたり</rt></ruby>のまま</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【青春動態】以「雙葉」象徵未成年18歲的青澀。深呼吸後在風中奔跑，代表不畏懼不成熟，勇敢朝未來邁進的衝勁。" },
+        <!-- 第三階段 -->
+        <section class="phase-section">
+            <h2 class="phase-title">第三階段：防備卸除、認知坦白與日常窺探</h2>
+            
+            <article class="song-card">
+                <div class="lyrics-box">
+                    いざとなれば<ruby>馬鹿<rt>ばか</rt></ruby>みたいに<br>
+                    この<ruby>恋<rt>こい</rt></ruby>が<ruby>実<rt>みの</rt></ruby>りますように
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight">いざとなれば</span>慣用句型，「一旦到了關鍵時刻」。</li>
+                    <li><span class="vocab-highlight"><ruby>馬鹿<rt>ばか</rt></ruby>みたいに</span>「像個笨蛋一樣」。大腦放棄了前述所有的計算與傲嬌掩飾。</li>
+                    <li><span class="vocab-highlight"><ruby>恋<rt>こい</rt></ruby>が + <ruby>実<rt>みの</rt></ruby>りますように</span>「<ruby>実<rt>みの</rt></ruby>る」是結出果實，代表感情得到歸屬。「〜ますように」是最高級別的祈願語法，毫無保留地將願望託付給命運。</li>
+                </ul>
+            </article>
 
-      // ====== 形容詞 ======
-      { cat: "adj", kanji: "優しい", reading: "やさしい (yasashii)", meaning: "溫柔的",
-        memory: "【發音聯想】溫柔的人總被說「呀！傻傻(ya-sa-shi)的」付出。",
-        songTitle: "《愛の花》(2023) - 晨間劇『爛漫』主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>優<rt>やさ</rt></ruby>しい<ruby>光<rt>ひかり</rt></ruby>に<ruby>包<rt>つつ</rt></ruby>まれた</div><div class='lyrics-line'>あの日々を</div><div class='lyrics-line'><ruby>忘<rt>わす</rt></ruby>れないで</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【溫暖寄託】用「溫柔的光」形容曾經擁有的幸福時光。即使生命與愛情如同花朵會凋零，那份被溫柔包圍的記憶將永存心底。" },
-      { cat: "adj", kanji: "甘い", reading: "あまい (amai)", meaning: "甜美的",
-        memory: "【發音聯想】「阿嬤(a-ma)」偷偷塞給你的糖果永遠最甜美。",
-        songTitle: "《ざらめ》(2024) - 日劇『海的開始』主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>甘<rt>あま</rt></ruby>い<ruby>夢<rt>ゆめ</rt></ruby>ばかり</div><div class='lyrics-line'><ruby>見<rt>み</rt></ruby>ていたの</div><div class='lyrics-line'><ruby>目<rt>め</rt></ruby>が<ruby>覚<rt>さ</rt></ruby>めてしまうとも<ruby>知<rt>し</rt></ruby>らずに</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【反差對比】「甜美的夢」與終究會「醒來」的現實形成對比。呼應歌名「粗糖」，有些甜味再怎麼咀嚼，終究伴隨著顆粒的刺痛感。" },
-      { cat: "adj", kanji: "嬉しい", reading: "うれしい (ureshii)", meaning: "開心的",
-        memory: "【發音聯想】開心發出「嗚！」歡呼說「來洗(re-shi)」澡慶祝！",
-        songTitle: "《ハート》(2021)",
-        lyrics: "<div class='lyrics-line'><ruby>朝起<rt>あさお</rt></ruby>きてさ</div><div class='lyrics-line'><ruby>嬉<rt>うれ</rt></ruby>しいニュースも</div><div class='lyrics-line'>あなたに<ruby>一<rt>いち</rt></ruby><ruby>番<rt>ばん</rt></ruby>に<ruby>教<rt>おし</rt></ruby>えたい</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【日常共鳴】戀愛中最真實的反應：早上起床看到任何「開心的」新聞，第一個想分享的人永遠是你。用微小的情緒刻畫極深的愛意。" },
-      { cat: "adj", kanji: "悲しい", reading: "かなしい (kanashii)", meaning: "悲傷的",
-        memory: "【發音聯想】「看哪～夕(ka-na-shi)陽」，看著日落湧上哀愁。",
-        songTitle: "《姿》(2022) - 專輯『瞳へ落ちるよレコード』",
-        lyrics: "<div class='lyrics-line'><ruby>悲<rt>かな</rt></ruby>しい<ruby>顔<rt>かお</rt></ruby>しないで</div><div class='lyrics-line'><ruby>私<rt>わたし</rt></ruby>が<ruby>側<rt>そば</rt></ruby>にいるよ</div><div class='lyrics-line'><ruby>大丈夫<rt>だいじょうぶ</rt></ruby>だからね</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【情感撫慰】有別於她早期強烈的生死悲傷，這首以陪伴者的視角，看見對方「悲傷」的表情時，給予最純粹、不求回報的安慰。" },
-      { cat: "adj", kanji: "眩しい", reading: "まぶしい (mabushii)", meaning: "耀眼的",
-        memory: "【發音聯想】太刺眼，連「馬都不視(ma-bu-shi)」轉頭避開。",
-        songTitle: "《桜が降る夜は》(2021) - 戀愛實境節目主題曲",
-        lyrics: "<div class='lyrics-line'><ruby>眩<rt>まぶ</rt></ruby>しい<ruby>笑顔<rt>えがお</rt></ruby>に</div><div class='lyrics-line'><ruby>何度<rt>なんど</rt></ruby>も<ruby>救<rt>すく</rt></ruby>われたの</div><div class='lyrics-line'><ruby>春<rt>はる</rt></ruby>の<ruby>風<rt>かぜ</rt></ruby>のせい</div><div class='song-attr'>詞/曲：あいみょん</div>",
-        explanation: "【閃耀回憶】將對方的笑容形容為「耀眼刺目」，耀眼到拯救了自己的低潮，最後卻嬌羞地將這份心動推託給春天的微風。" }
-    ];
+            <article class="song-card">
+                <div class="lyrics-box">
+                    どんな<ruby>未来<rt>みらい</rt></ruby>がこちらを<ruby>覗<rt>のぞ</rt></ruby>いてるかな
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight">どんな<ruby>未来<rt>みらい</rt></ruby>が</span>將抽象的「未來」，擬人化為一個擁有動作能力的實體主詞。</li>
+                    <li><span class="vocab-highlight">こちらを + <ruby>覗<rt>のぞ</rt></ruby>いてる</span>「こちら」是我們這邊。「<ruby>覗<rt>のぞ</rt></ruby>く」帶有從門縫或死角偷偷窺探的肢體動作感。</li>
+                </ul>
+                <div class="network-link">
+                    <div class="network-title">🔗 網狀聯繫演繹：記憶迴路貫通</div>
+                    <p>當防禦被摧毀並回歸到「<ruby>実<rt>みの</rt></ruby>る（結果）」的坦白後，大腦視角從個人的患得患失，擴張到了雙人宏觀視角，並將時間實體化，想像被「<ruby>未来<rt>みらい</rt></ruby>が<ruby>覗<rt>のぞ</rt></ruby>く（未來窺探著）」。</p>
+                </div>
+            </article>
+        </section>
 
-    let currentCategory = 'noun';
-    let currentIndex = 0;
-    let filteredList = [];
+        <!-- 第四階段 -->
+        <section class="phase-section">
+            <h2 class="phase-title">第四階段：生死震撼與存在主義的絕對宣告</h2>
+            
+            <article class="song-card">
+                <div class="lyrics-box">
+                    <ruby>生<rt>い</rt></ruby>きていたんだよな<br>
+                    <ruby>誰<rt>だれ</rt></ruby>よりも<ruby>一番<rt>いちばん</rt></ruby> <ruby>命<rt>いのち</rt></ruby>の<ruby>音<rt>おと</rt></ruby>を<ruby>鳴<rt>な</rt></ruby>らしていた
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight"><ruby>生<rt>い</rt></ruby>きていた</span>動詞「<ruby>生<rt>い</rt></ruby>きる」的過去進行式。強調在悲劇發生前的上一秒，生命機能還確確實實地運作著。</li>
+                    <li><span class="vocab-highlight">んだよな</span>「のだ」的口語加上「よ」與「な」。這是一記重拳，告訴大腦「這是鐵打的客觀事實，無法改變」。</li>
+                    <li><span class="vocab-highlight"><ruby>命<rt>いのち</rt></ruby>の<ruby>音<rt>おと</rt></ruby>を + <ruby>鳴<rt>な</rt></ruby>らしていた</span>「<ruby>鳴<rt>な</rt></ruby>らす」是主動讓某物發聲。不是被動，而是主動、用盡全力地敲響自己生命的回音。</li>
+                </ul>
+            </article>
 
-    function setCategory(cat) {
-      currentCategory = cat;
-      currentIndex = 0;
-      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-      document.getElementById(`tab-${cat}`).classList.add('active');
-      filteredList = wordList.filter(item => item.cat === currentCategory);
-      renderCard();
-    }
+            <article class="song-card">
+                <div class="lyrics-box">
+                    <ruby>愛<rt>あい</rt></ruby>を<ruby>知<rt>し</rt></ruby>るまでは<ruby>死<rt>し</rt></ruby>ねない<ruby>私<rt>わたし</rt></ruby>なのだ
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight"><ruby>知<rt>し</rt></ruby>るまでは</span>「在徹底弄懂、體會過之前，絕對...」。時間與條件的極限鎖定。</li>
+                    <li><span class="vocab-highlight"><ruby>死<rt>し</rt></ruby>ねない</span>「<ruby>死<rt>し</rt></ruby>ぬ」的可能形否定。不是客觀的「不會死（死なない）」，而是大腦下達的絕對指令：「命運不允許我死 / 我沒有死去的餘地」。</li>
+                    <li><span class="vocab-highlight"><ruby>私<rt>わたし</rt></ruby>なのだ</span>名詞直接加上強烈斷定，充滿肌肉感的存在宣告。</li>
+                </ul>
+                <div class="network-link">
+                    <div class="network-title">🔗 網狀聯繫演繹：記憶迴路貫通</div>
+                    <p>聽見了生命消逝前「<ruby>鳴<rt>な</rt></ruby>らす（敲響）」的聲音帶來極大恐懼；為對抗恐懼，大腦反彈出「<ruby>死<rt>し</rt></ruby>ねない（不允許死）」的強制指令。語境從悲傷的「過去進行式（<ruby>生<rt>い</rt></ruby>きていた）」強力反轉為戰鬥的「可能否定式（<ruby>死<rt>し</rt></ruby>ねない）」。</p>
+                </div>
+            </article>
+        </section>
 
-    function renderCard() {
-      const item = filteredList[currentIndex];
-      document.getElementById('kanjiText').innerText = item.kanji;
-      document.getElementById('readingText').innerText = `${item.reading} - ${item.meaning}`;
-      document.getElementById('memoryText').innerText = item.memory;
-      document.getElementById('songTitle').innerText = item.songTitle;
-      document.getElementById('lyricsQuote').innerHTML = item.lyrics;
-      document.getElementById('explanationText').innerText = item.explanation;
-      document.getElementById('progressText').innerText = `${currentIndex + 1} / ${filteredList.length}`;
-    }
+        <!-- 第五階段 -->
+        <section class="phase-section">
+            <h2 class="phase-title">第五階段：記憶重塑、投射分離與溫柔定錨</h2>
+            
+            <article class="song-card">
+                <div class="lyrics-box">
+                    <ruby>初恋<rt>はつこい</rt></ruby>が<ruby>泣<rt>な</rt></ruby>いている<br>
+                    <ruby>電柱<rt>でんちゅう</rt></ruby>にぶら<ruby>下<rt>さ</rt></ruby>がったまま
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight"><ruby>初恋<rt>はつこい</rt></ruby>が<ruby>泣<rt>な</rt></ruby>いている</span>將「初戀」這個抽象概念賦予肉體，成為流淚的主詞。大腦透過這種投射作用，讓真正的自我免於崩潰。</li>
+                    <li><span class="vocab-highlight"><ruby>電柱<rt>でんちゅう</rt></ruby>に + ぶら<ruby>下<rt>さ</rt></ruby>がったまま</span>「ぶら<ruby>下<rt>さ</rt></ruby>がる」是懸掛、無力垂吊。「〜まま」表示狀態維持不變。建立冷硬且無力的街景。</li>
+                </ul>
+            </article>
 
-    function nextCard() {
-      if (currentIndex < filteredList.length - 1) { currentIndex++; renderCard(); }
-    }
+            <article class="song-card">
+                <div class="lyrics-box">
+                    <ruby>初<rt>はじ</rt></ruby>めて<ruby>触<rt>ふ</rt></ruby>れた<ruby>優<rt>やさ</rt></ruby>しさを<br>
+                    <ruby>大切<rt>たいせつ</rt></ruby>にしたいと<ruby>思<rt>おも</rt></ruby>うばかりで
+                </div>
+                <ul class="deconstruct-list">
+                    <li><span class="vocab-highlight"><ruby>初<rt>はじ</rt></ruby>めて + <ruby>触<rt>ふ</rt></ruby>れた</span>第一次。加上「<ruby>触<rt>ふ</rt></ruby>れる」，同時包含了物理上的觸摸，以及心理上的深深觸動。</li>
+                    <li><span class="vocab-highlight"><ruby>優<rt>やさ</rt></ruby>しさ + を</span>形容詞名詞化。將溫柔變成具體能捧在手心的物件。助詞「を」留下動作懸念，暗示緊緊擁抱。</li>
+                    <li><span class="vocab-highlight"><ruby>大切<rt>たいせつ</rt></ruby>にしたい</span>希望能將這份感受當作寶物般珍視。</li>
+                </ul>
+                <div class="network-link">
+                    <div class="network-title">🔗 網狀聯繫演繹：記憶迴路貫通（最終閉環）</div>
+                    <p>從無力「ぶら<ruby>下<rt>さ</rt></ruby>がる（懸掛）」的悲傷初戀，經過大腦過濾，最終死死鎖定在「<ruby>触<rt>ふ</rt></ruby>れた（觸摸到）」的實體溫暖。呼應了第一階段只能遠遠看著「<ruby>似<rt>に</rt></ruby>てる（相像）」的距離，日文字詞在此完成了一場從「視覺凝視」到「觸覺擁抱」的完美閉環。</p>
+                </div>
+            </article>
+        </section>
+    </main>
 
-    function prevCard() {
-      if (currentIndex > 0) { currentIndex--; renderCard(); }
-    }
-
-    function speakCurrentWord() {
-      if ('speechSynthesis' in window) {
-        window.speechSynthesis.cancel();
-        const item = filteredList[currentIndex];
-        
-        // 過濾 HTML <ruby> 標籤與換行，取得供語音唸出的純淨日文歌詞
-        const tempDiv = document.createElement('div');
-        tempDiv.innerHTML = item.lyrics;
-        const lyricsText = tempDiv.textContent.replace('詞/曲：あいみょん', ''); // 避免唸出版權宣告
-
-        const textToSpeak = `${item.kanji}。 ${lyricsText}`;
-        const utterance = new SpeechSynthesisUtterance(textToSpeak);
-        utterance.lang = 'ja-JP';
-        utterance.rate = 0.8; // 稍微放慢，利於開車聆聽
-        window.speechSynthesis.speak(utterance);
-      } else {
-        alert("您的設備不支援語音功能。");
-      }
-    }
-
-    setCategory('noun');
-  </script>
 </body>
 </html>
