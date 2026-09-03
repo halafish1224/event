@@ -29,6 +29,10 @@ const vinextCli = path.join(
 const basePath = '/jp50/aimyon/aimyon-japanese';
 const siteUrl = `https://event.itigre.com${basePath}`;
 
+// Vinext can retain prerendered documents from an earlier build. A clean
+// output directory keeps the GitHub Pages HTML in sync with the current UI.
+rmSync(path.join(projectRoot, 'dist'), { recursive: true, force: true });
+
 const build = spawnSync(process.execPath, [vinextCli, 'build'], {
   cwd: projectRoot,
   stdio: 'inherit',
@@ -230,6 +234,14 @@ if (!indexHtml.includes(`${basePath}/learn/`)) {
   throw new Error(
     'The homepage does not use the required GitHub Pages route path.',
   );
+}
+
+if (!indexHtml.includes('compact-nav')) {
+  throw new Error('The homepage is missing the small-screen header navigation.');
+}
+
+if (indexHtml.includes('mobile-nav')) {
+  throw new Error('The homepage still contains the removed bottom navigation.');
 }
 
 if (!indexHtml.includes(siteUrl)) {
