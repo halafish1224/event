@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import {
   BookOpenText,
   Contrast,
+  Download,
   House,
   Settings2,
   TimerReset,
@@ -16,6 +17,8 @@ const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL ??
   'https://aimyon-japanese.wow-themepark.chatgpt.site';
 const socialImageUrl = `${siteUrl}/og-aimyon-japanese.png`;
+const epubDownloadBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
+const epubDownloadHref = `${epubDownloadBasePath}/downloads/AIMYON-Japanese-教材完整版.epub`;
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -143,6 +146,14 @@ export default function RootLayout({
                 <Link href="/songs" className="hover:text-foreground">
                   歌曲
                 </Link>
+                <a
+                  href={epubDownloadHref}
+                  download
+                  className="inline-flex items-center gap-1 hover:text-foreground"
+                >
+                  <Download aria-hidden="true" className="size-3.5" />
+                  下載教材 EPUB
+                </a>
               </nav>
             </div>
           </footer>
