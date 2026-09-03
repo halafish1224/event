@@ -1,0 +1,2980 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+  <title>Japanese Form Map｜日文動詞・い形容詞・ナ形容詞・名詞變化總整理</title>
+
+  <meta name="description"
+        content="系統整理日文動詞、い形容詞、ナ形容詞與名詞，在現在肯定、否定、過去、過去否定與接續形中的變化。理解普通形、て形、くて、で的概念與用途。">
+
+  <style>
+    /* =========================================================
+       Japanese Form Map
+       所有樣式皆限制於 #jp-form-map，避免影響既有網站全域設定
+       ========================================================= */
+
+    #jp-form-map {
+      --jfm-bg: #f7f8fb;
+      --jfm-surface: #ffffff;
+      --jfm-surface-soft: #f2f5fa;
+
+      --jfm-text: #202532;
+      --jfm-text-soft: #5e687b;
+      --jfm-text-faint: #7c8595;
+
+      --jfm-line: #dfe4ec;
+
+      --jfm-blue: #3768cc;
+      --jfm-blue-soft: #edf3ff;
+
+      --jfm-green: #3c8265;
+      --jfm-green-soft: #edf8f2;
+
+      --jfm-orange: #a8672a;
+      --jfm-orange-soft: #fff5e9;
+
+      --jfm-purple: #7558ad;
+      --jfm-purple-soft: #f4effc;
+
+      --jfm-red: #a84d55;
+      --jfm-red-soft: #fff0f1;
+
+      --jfm-radius-sm: 10px;
+      --jfm-radius-md: 16px;
+      --jfm-radius-lg: 24px;
+
+      --jfm-shadow:
+        0 12px 34px rgba(25, 35, 55, 0.07);
+
+      --jfm-max: 1120px;
+
+      box-sizing: border-box;
+
+      width: 100%;
+      margin: 0;
+      padding: 0;
+
+      color: var(--jfm-text);
+      background: var(--jfm-bg);
+
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        "Noto Sans TC",
+        "Noto Sans JP",
+        "Hiragino Kaku Gothic ProN",
+        "Yu Gothic",
+        "Microsoft JhengHei",
+        sans-serif;
+
+      line-height: 1.75;
+
+      -webkit-text-size-adjust: 100%;
+      text-rendering: optimizeLegibility;
+    }
+
+    #jp-form-map *,
+    #jp-form-map *::before,
+    #jp-form-map *::after {
+      box-sizing: border-box;
+    }
+
+    #jp-form-map a {
+      color: inherit;
+    }
+
+    #jp-form-map button {
+      font: inherit;
+    }
+
+    #jp-form-map .jfm-shell {
+      width: min(100% - 28px, var(--jfm-max));
+      margin-inline: auto;
+    }
+
+    /* =========================================================
+       Hero
+       ========================================================= */
+
+    #jp-form-map .jfm-hero {
+      padding:
+        clamp(42px, 8vw, 86px)
+        0
+        clamp(32px, 6vw, 64px);
+
+      background:
+        radial-gradient(
+          circle at 10% 10%,
+          rgba(55, 104, 204, 0.12),
+          transparent 34%
+        ),
+        radial-gradient(
+          circle at 90% 0%,
+          rgba(117, 88, 173, 0.10),
+          transparent 30%
+        ),
+        linear-gradient(
+          180deg,
+          #ffffff 0%,
+          #f7f8fb 100%
+        );
+    }
+
+    #jp-form-map .jfm-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 16px;
+      padding: 7px 12px;
+
+      border: 1px solid #d9e2f5;
+      border-radius: 999px;
+
+      color: var(--jfm-blue);
+      background: rgba(255, 255, 255, 0.88);
+
+      font-size: 0.82rem;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+
+    #jp-form-map .jfm-hero h1 {
+      max-width: 900px;
+
+      margin: 0;
+
+      font-size: clamp(2rem, 6vw, 4.2rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+    }
+
+    #jp-form-map .jfm-title-en {
+      display: block;
+
+      margin-top: 12px;
+
+      color: var(--jfm-blue);
+
+      font-size: clamp(0.92rem, 2vw, 1.15rem);
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #jp-form-map .jfm-lead {
+      max-width: 780px;
+
+      margin: 24px 0 0;
+
+      color: var(--jfm-text-soft);
+
+      font-size: clamp(1rem, 2vw, 1.15rem);
+    }
+
+    #jp-form-map .jfm-core {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+
+      margin-top: 28px;
+    }
+
+    #jp-form-map .jfm-core-item {
+      padding: 18px;
+
+      border: 1px solid var(--jfm-line);
+      border-radius: var(--jfm-radius-md);
+
+      background: rgba(255, 255, 255, 0.88);
+    }
+
+    #jp-form-map .jfm-core-label {
+      margin-bottom: 4px;
+
+      color: var(--jfm-text-faint);
+
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    #jp-form-map .jfm-core-value {
+      font-weight: 800;
+    }
+
+    /* =========================================================
+       Navigation
+       ========================================================= */
+
+    #jp-form-map .jfm-nav-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+
+      border-top: 1px solid rgba(223, 228, 236, 0.75);
+      border-bottom: 1px solid rgba(223, 228, 236, 0.95);
+
+      background: rgba(255, 255, 255, 0.92);
+
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    #jp-form-map .jfm-nav {
+      display: flex;
+      gap: 8px;
+
+      overflow-x: auto;
+
+      padding: 10px 0;
+
+      scrollbar-width: none;
+    }
+
+    #jp-form-map .jfm-nav::-webkit-scrollbar {
+      display: none;
+    }
+
+    #jp-form-map .jfm-nav a {
+      flex: 0 0 auto;
+
+      padding: 8px 12px;
+
+      border-radius: 999px;
+
+      color: var(--jfm-text-soft);
+
+      background: var(--jfm-surface-soft);
+
+      font-size: 0.86rem;
+      font-weight: 750;
+
+      text-decoration: none;
+
+      transition:
+        background 0.18s ease,
+        color 0.18s ease;
+    }
+
+    #jp-form-map .jfm-nav a:hover,
+    #jp-form-map .jfm-nav a:focus-visible {
+      color: #ffffff;
+      background: var(--jfm-blue);
+      outline: none;
+    }
+
+    /* =========================================================
+       Sections
+       ========================================================= */
+
+    #jp-form-map .jfm-main {
+      padding: 34px 0 80px;
+    }
+
+    #jp-form-map .jfm-section {
+      scroll-margin-top: 80px;
+
+      margin-top: clamp(38px, 7vw, 72px);
+    }
+
+    #jp-form-map .jfm-section:first-child {
+      margin-top: 0;
+    }
+
+    #jp-form-map .jfm-section-head {
+      max-width: 790px;
+
+      margin-bottom: 22px;
+    }
+
+    #jp-form-map .jfm-kicker {
+      margin-bottom: 6px;
+
+      color: var(--jfm-blue);
+
+      font-size: 0.78rem;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    #jp-form-map h2,
+    #jp-form-map h3,
+    #jp-form-map h4 {
+      margin-top: 0;
+
+      line-height: 1.3;
+    }
+
+    #jp-form-map h2 {
+      margin-bottom: 12px;
+
+      font-size: clamp(1.45rem, 4vw, 2.35rem);
+    }
+
+    #jp-form-map h3 {
+      margin-bottom: 10px;
+
+      font-size: clamp(1.12rem, 2.4vw, 1.35rem);
+    }
+
+    #jp-form-map p {
+      margin-top: 0;
+    }
+
+    #jp-form-map .jfm-muted {
+      color: var(--jfm-text-soft);
+    }
+
+    #jp-form-map .jfm-note {
+      padding: 18px 20px;
+
+      border-left: 4px solid var(--jfm-blue);
+      border-radius:
+        0
+        var(--jfm-radius-md)
+        var(--jfm-radius-md)
+        0;
+
+      background: var(--jfm-blue-soft);
+    }
+
+    #jp-form-map .jfm-note strong {
+      color: #294f9d;
+    }
+
+    /* =========================================================
+       Summary cards
+       ========================================================= */
+
+    #jp-form-map .jfm-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    #jp-form-map .jfm-card {
+      padding: clamp(19px, 3vw, 26px);
+
+      border: 1px solid var(--jfm-line);
+      border-radius: var(--jfm-radius-lg);
+
+      background: var(--jfm-surface);
+
+      box-shadow: var(--jfm-shadow);
+    }
+
+    #jp-form-map .jfm-card--verb {
+      border-top: 5px solid var(--jfm-blue);
+    }
+
+    #jp-form-map .jfm-card--i {
+      border-top: 5px solid var(--jfm-green);
+    }
+
+    #jp-form-map .jfm-card--na {
+      border-top: 5px solid var(--jfm-orange);
+    }
+
+    #jp-form-map .jfm-card--noun {
+      border-top: 5px solid var(--jfm-purple);
+    }
+
+    #jp-form-map .jfm-tag {
+      display: inline-block;
+
+      margin-bottom: 12px;
+      padding: 4px 9px;
+
+      border-radius: 999px;
+
+      font-size: 0.75rem;
+      font-weight: 850;
+    }
+
+    #jp-form-map .jfm-tag--verb {
+      color: var(--jfm-blue);
+      background: var(--jfm-blue-soft);
+    }
+
+    #jp-form-map .jfm-tag--i {
+      color: var(--jfm-green);
+      background: var(--jfm-green-soft);
+    }
+
+    #jp-form-map .jfm-tag--na {
+      color: var(--jfm-orange);
+      background: var(--jfm-orange-soft);
+    }
+
+    #jp-form-map .jfm-tag--noun {
+      color: var(--jfm-purple);
+      background: var(--jfm-purple-soft);
+    }
+
+    #jp-form-map .jfm-jp {
+      font-family:
+        "Noto Sans JP",
+        "Yu Gothic",
+        "Hiragino Kaku Gothic ProN",
+        sans-serif;
+
+      font-weight: 760;
+    }
+
+    #jp-form-map .jfm-big-jp {
+      margin-bottom: 8px;
+
+      font-size: clamp(1.5rem, 4vw, 2.1rem);
+      font-weight: 850;
+    }
+
+    /* =========================================================
+       Tables
+       ========================================================= */
+
+    #jp-form-map .jfm-table-scroll {
+      width: 100%;
+
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+
+      border: 1px solid var(--jfm-line);
+      border-radius: var(--jfm-radius-lg);
+
+      background: #ffffff;
+
+      box-shadow: var(--jfm-shadow);
+
+      -webkit-overflow-scrolling: touch;
+    }
+
+    #jp-form-map table {
+      width: 100%;
+      min-width: 820px;
+
+      border-collapse: collapse;
+
+      font-size: 0.94rem;
+    }
+
+    #jp-form-map th,
+    #jp-form-map td {
+      padding: 15px 14px;
+
+      border-bottom: 1px solid var(--jfm-line);
+
+      text-align: left;
+      vertical-align: top;
+    }
+
+    #jp-form-map th {
+      color: #394154;
+      background: #f3f6fa;
+
+      font-size: 0.84rem;
+      font-weight: 850;
+
+      white-space: nowrap;
+    }
+
+    #jp-form-map tbody tr:last-child td {
+      border-bottom: 0;
+    }
+
+    #jp-form-map tbody tr:hover {
+      background: #fafbfe;
+    }
+
+    #jp-form-map .jfm-row-label {
+      font-weight: 850;
+      white-space: nowrap;
+    }
+
+    #jp-form-map .jfm-table-help {
+      margin-top: 10px;
+
+      color: var(--jfm-text-faint);
+
+      font-size: 0.82rem;
+    }
+
+    /* =========================================================
+       Formula / flow
+       ========================================================= */
+
+    #jp-form-map .jfm-formula {
+      display: grid;
+      gap: 9px;
+
+      margin-top: 16px;
+    }
+
+    #jp-form-map .jfm-formula-row {
+      display: grid;
+      grid-template-columns: minmax(82px, auto) 1fr;
+      gap: 14px;
+
+      padding: 11px 13px;
+
+      border-radius: var(--jfm-radius-sm);
+
+      background: var(--jfm-surface-soft);
+    }
+
+    #jp-form-map .jfm-formula-key {
+      color: var(--jfm-text-soft);
+      font-size: 0.82rem;
+      font-weight: 800;
+    }
+
+    #jp-form-map .jfm-formula-value {
+      overflow-wrap: anywhere;
+      font-weight: 760;
+    }
+
+    #jp-form-map .jfm-arrow {
+      color: var(--jfm-text-faint);
+      padding-inline: 5px;
+    }
+
+    /* =========================================================
+       Comparison blocks
+       ========================================================= */
+
+    #jp-form-map .jfm-pair {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    #jp-form-map .jfm-pair-box {
+      padding: 20px;
+
+      border: 1px solid var(--jfm-line);
+      border-radius: var(--jfm-radius-md);
+
+      background: #fff;
+    }
+
+    #jp-form-map .jfm-pair-box strong {
+      display: block;
+
+      margin-bottom: 5px;
+
+      font-size: 1.05rem;
+    }
+
+    #jp-form-map .jfm-correct {
+      color: var(--jfm-green);
+      font-weight: 850;
+    }
+
+    #jp-form-map .jfm-wrong {
+      color: var(--jfm-red);
+      font-weight: 850;
+    }
+
+    /* =========================================================
+       Verb te-form map
+       ========================================================= */
+
+    #jp-form-map .jfm-rule-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+    }
+
+    #jp-form-map .jfm-rule {
+      padding: 16px;
+
+      border: 1px solid var(--jfm-line);
+      border-radius: var(--jfm-radius-md);
+
+      background: #fff;
+    }
+
+    #jp-form-map .jfm-rule-head {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+
+      margin-bottom: 8px;
+    }
+
+    #jp-form-map .jfm-rule-pattern {
+      padding: 4px 9px;
+
+      border-radius: 999px;
+
+      color: var(--jfm-blue);
+      background: var(--jfm-blue-soft);
+
+      font-size: 0.8rem;
+      font-weight: 850;
+    }
+
+    /* =========================================================
+       Concept map
+       ========================================================= */
+
+    #jp-form-map .jfm-concept-map {
+      display: grid;
+      gap: 12px;
+
+      margin-top: 18px;
+    }
+
+    #jp-form-map .jfm-concept-node {
+      padding: 16px 18px;
+
+      border-radius: var(--jfm-radius-md);
+
+      background: #fff;
+      border: 1px solid var(--jfm-line);
+    }
+
+    #jp-form-map .jfm-concept-node--main {
+      color: #fff;
+      background: #2f5fbf;
+      border-color: #2f5fbf;
+    }
+
+    #jp-form-map .jfm-concept-node strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* =========================================================
+       Mini quiz
+       ========================================================= */
+
+    #jp-form-map .jfm-quiz {
+      display: grid;
+      gap: 14px;
+    }
+
+    #jp-form-map details {
+      border: 1px solid var(--jfm-line);
+      border-radius: var(--jfm-radius-md);
+
+      background: #fff;
+    }
+
+    #jp-form-map summary {
+      cursor: pointer;
+
+      padding: 16px 18px;
+
+      font-weight: 800;
+    }
+
+    #jp-form-map details > div {
+      padding: 0 18px 18px;
+    }
+
+    /* =========================================================
+       Final summary
+       ========================================================= */
+
+    #jp-form-map .jfm-memory {
+      padding: clamp(22px, 5vw, 34px);
+
+      border-radius: var(--jfm-radius-lg);
+
+      color: #fff;
+
+      background:
+        linear-gradient(
+          135deg,
+          #315fb8 0%,
+          #654f9b 100%
+        );
+
+      box-shadow: var(--jfm-shadow);
+    }
+
+    #jp-form-map .jfm-memory h2 {
+      color: #fff;
+    }
+
+    #jp-form-map .jfm-memory-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+
+      margin-top: 20px;
+    }
+
+    #jp-form-map .jfm-memory-item {
+      padding: 15px 16px;
+
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--jfm-radius-md);
+
+      background: rgba(255, 255, 255, 0.10);
+    }
+
+    #jp-form-map .jfm-memory-item strong {
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    /* =========================================================
+       Footer
+       ========================================================= */
+
+    #jp-form-map .jfm-footer {
+      padding: 34px 0;
+
+      color: var(--jfm-text-faint);
+
+      text-align: center;
+      font-size: 0.82rem;
+    }
+
+    /* =========================================================
+       RWD
+       ========================================================= */
+
+    @media (min-width: 640px) {
+
+      #jp-form-map .jfm-core {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      #jp-form-map .jfm-grid--2 {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #jp-form-map .jfm-pair {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #jp-form-map .jfm-rule-list {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      #jp-form-map .jfm-memory-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (min-width: 900px) {
+
+      #jp-form-map .jfm-grid--4 {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+
+      #jp-form-map .jfm-rule-list {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+
+      #jp-form-map .jfm-memory-grid {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      #jp-form-map *,
+      #jp-form-map *::before,
+      #jp-form-map *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body style="margin:0;">
+
+<main id="jp-form-map">
+
+  <!-- =======================================================
+       HERO
+       ======================================================= -->
+  <header class="jfm-hero">
+    <div class="jfm-shell">
+
+      <div class="jfm-eyebrow">
+        JAPANESE GRAMMAR SYSTEM
+      </div>
+
+      <h1>
+        日文四大詞類
+        <br>
+        變化總地圖
+
+        <span class="jfm-title-en">
+          Japanese Form Map
+        </span>
+      </h1>
+
+      <p class="jfm-lead">
+        動詞、い形容詞、ナ形容詞、名詞到底怎麼變？
+        這一頁不只整理「答案」，而是先建立
+        <strong>為什麼要變、哪個部分在變、變化之後可以做什麼</strong>
+        的完整概念。
+      </p>
+
+      <div class="jfm-core">
+
+        <div class="jfm-core-item">
+          <div class="jfm-core-label">Concept 01</div>
+          <div class="jfm-core-value">
+            動詞：有自己的活用系統
+          </div>
+        </div>
+
+        <div class="jfm-core-item">
+          <div class="jfm-core-label">Concept 02</div>
+          <div class="jfm-core-value">
+            い形容詞：改最後的「い」
+          </div>
+        </div>
+
+        <div class="jfm-core-item">
+          <div class="jfm-core-label">Concept 03</div>
+          <div class="jfm-core-value">
+            ナ形容詞＋名詞：共用「だ」系統
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- =======================================================
+       NAVIGATION
+       ======================================================= -->
+  <div class="jfm-nav-wrap">
+    <nav class="jfm-shell jfm-nav"
+         aria-label="頁面章節導覽">
+
+      <a href="#concept">核心概念</a>
+      <a href="#master-table">變化總表</a>
+      <a href="#verb">動詞</a>
+      <a href="#i-adjective">い形容詞</a>
+      <a href="#na-adjective">ナ形容詞</a>
+      <a href="#noun">名詞</a>
+      <a href="#connection">接續形</a>
+      <a href="#te-form">動詞て形</a>
+      <a href="#memory">記憶總結</a>
+
+    </nav>
+  </div>
+
+
+  <div class="jfm-shell jfm-main">
+
+
+    <!-- =====================================================
+         CONCEPT
+         ===================================================== -->
+    <section class="jfm-section"
+             id="concept">
+
+      <div class="jfm-section-head">
+        <div class="jfm-kicker">01 · Big Picture</div>
+
+        <h2>
+          先理解：日文為什麼一直「變形」？
+        </h2>
+
+        <p class="jfm-muted">
+          因為日文會把「肯定、否定、時間、接續方式」
+          直接表現在述語的形式上。
+          所以學習重點不是背很多獨立單字，
+          而是辨認：
+          <strong>現在是哪一類詞？它的哪個部分需要改變？</strong>
+        </p>
+      </div>
+
+      <div class="jfm-note">
+        <strong>最重要的觀念：</strong>
+        「變化」不是製造新的單字，
+        而是同一個詞依照句子的功能，
+        換成不同形式。
+      </div>
+
+      <div class="jfm-concept-map">
+
+        <div class="jfm-concept-node jfm-concept-node--main">
+          <strong>日文述語系統</strong>
+          一句話最後負責描述「做什麼、怎麼樣、是什麼」的部分。
+        </div>
+
+        <div class="jfm-concept-node">
+          <strong>動詞</strong>
+          食べる、行く、読む、見る……
+          <br>
+          → 有完整的動詞活用。
+        </div>
+
+        <div class="jfm-concept-node">
+          <strong>い形容詞</strong>
+          高い、暑い、おいしい……
+          <br>
+          → 主要改變最後的「い」。
+        </div>
+
+        <div class="jfm-concept-node">
+          <strong>ナ形容詞＋名詞</strong>
+          好きだ、静かだ、学生だ……
+          <br>
+          → 兩者的句尾變化高度相似。
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MASTER TABLE
+         ===================================================== -->
+    <section class="jfm-section"
+             id="master-table">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          02 · Master Table
+        </div>
+
+        <h2>
+          四大詞類變化總表
+        </h2>
+
+        <p class="jfm-muted">
+          先不要急著全部背下來。
+          第一輪只需要觀察「每一類究竟改了哪個地方」。
+        </p>
+
+      </div>
+
+      <div class="jfm-table-scroll"
+           role="region"
+           aria-label="日文四大詞類變化總表"
+           tabindex="0">
+
+        <table>
+
+          <thead>
+            <tr>
+              <th>詞類</th>
+              <th>現在肯定</th>
+              <th>現在否定</th>
+              <th>過去肯定</th>
+              <th>過去否定</th>
+              <th>接續形式</th>
+            </tr>
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td class="jfm-row-label">
+                動詞
+              </td>
+
+              <td class="jfm-jp">
+                食べる
+              </td>
+
+              <td class="jfm-jp">
+                食べない
+              </td>
+
+              <td class="jfm-jp">
+                食べた
+              </td>
+
+              <td class="jfm-jp">
+                食べなかった
+              </td>
+
+              <td class="jfm-jp">
+                食べて
+              </td>
+            </tr>
+
+            <tr>
+              <td class="jfm-row-label">
+                い形容詞
+              </td>
+
+              <td class="jfm-jp">
+                高い
+              </td>
+
+              <td class="jfm-jp">
+                高くない
+              </td>
+
+              <td class="jfm-jp">
+                高かった
+              </td>
+
+              <td class="jfm-jp">
+                高くなかった
+              </td>
+
+              <td class="jfm-jp">
+                高くて
+              </td>
+            </tr>
+
+            <tr>
+              <td class="jfm-row-label">
+                ナ形容詞
+              </td>
+
+              <td class="jfm-jp">
+                好きだ
+              </td>
+
+              <td class="jfm-jp">
+                好きじゃない
+              </td>
+
+              <td class="jfm-jp">
+                好きだった
+              </td>
+
+              <td class="jfm-jp">
+                好きじゃなかった
+              </td>
+
+              <td class="jfm-jp">
+                好きで
+              </td>
+            </tr>
+
+            <tr>
+              <td class="jfm-row-label">
+                名詞
+              </td>
+
+              <td class="jfm-jp">
+                学生だ
+              </td>
+
+              <td class="jfm-jp">
+                学生じゃない
+              </td>
+
+              <td class="jfm-jp">
+                学生だった
+              </td>
+
+              <td class="jfm-jp">
+                学生じゃなかった
+              </td>
+
+              <td class="jfm-jp">
+                学生で
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+      <p class="jfm-table-help">
+        手機版：表格可左右滑動查看完整內容。
+      </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         FOUR TYPE OVERVIEW
+         ===================================================== -->
+    <section class="jfm-section">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          03 · Pattern Recognition
+        </div>
+
+        <h2>
+          先不要背五欄，先看四種「變化邏輯」
+        </h2>
+
+      </div>
+
+      <div class="jfm-grid jfm-grid--4">
+
+        <article class="jfm-card jfm-card--verb">
+
+          <span class="jfm-tag jfm-tag--verb">
+            動詞
+          </span>
+
+          <div class="jfm-big-jp jfm-jp">
+            食べる
+          </div>
+
+          <p>
+            動詞本身具有完整活用系統。
+            不同動詞類別又會影響
+            ない形、た形、て形的形成方式。
+          </p>
+
+          <strong>
+            核心：辨認動詞類型
+          </strong>
+
+        </article>
+
+
+        <article class="jfm-card jfm-card--i">
+
+          <span class="jfm-tag jfm-tag--i">
+            い形容詞
+          </span>
+
+          <div class="jfm-big-jp jfm-jp">
+            高い
+          </div>
+
+          <p>
+            最重要的變化位置通常就是最後的
+            <strong>い</strong>。
+          </p>
+
+          <strong>
+            核心：改「い」
+          </strong>
+
+        </article>
+
+
+        <article class="jfm-card jfm-card--na">
+
+          <span class="jfm-tag jfm-tag--na">
+            ナ形容詞
+          </span>
+
+          <div class="jfm-big-jp jfm-jp">
+            好きだ
+          </div>
+
+          <p>
+            「好き」本體不變，
+            主要透過句尾的
+            <strong>だ系統</strong>
+            表示肯定、否定與過去。
+          </p>
+
+          <strong>
+            核心：看「だ」
+          </strong>
+
+        </article>
+
+
+        <article class="jfm-card jfm-card--noun">
+
+          <span class="jfm-tag jfm-tag--noun">
+            名詞
+          </span>
+
+          <div class="jfm-big-jp jfm-jp">
+            学生だ
+          </div>
+
+          <p>
+            名詞述語與ナ形容詞的句尾變化
+            非常接近。
+          </p>
+
+          <strong>
+            核心：與ナ形容詞一起記
+          </strong>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VERB
+         ===================================================== -->
+    <section class="jfm-section"
+             id="verb">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          04 · Verb
+        </div>
+
+        <h2>
+          動詞：食べる
+        </h2>
+
+        <p class="jfm-muted">
+          食べる（たべる）＝吃。
+          這裡先使用規則最清楚的一段動詞作為基準。
+        </p>
+
+      </div>
+
+      <div class="jfm-card jfm-card--verb">
+
+        <div class="jfm-formula">
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              現在肯定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              食べる
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              現在否定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              食べない
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              過去肯定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              食べた
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              過去否定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              食べなかった
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              接續
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              食べて……
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="jfm-note"
+           style="margin-top:18px;">
+
+        <strong>理解重點：</strong>
+
+        <span class="jfm-jp">食べて</span>
+        通常具有「還沒說完」的感覺。
+
+        後面可以繼續接：
+
+        <span class="jfm-jp">
+          食べている、
+          食べてください、
+          食べてみる
+        </span>
+        等文法。
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         I ADJECTIVE
+         ===================================================== -->
+    <section class="jfm-section"
+             id="i-adjective">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          05 · I-Adjective
+        </div>
+
+        <h2>
+          い形容詞：高い
+        </h2>
+
+        <p class="jfm-muted">
+          高い（たかい）＝高的／貴的。
+          い形容詞本身具有活用能力，
+          所以不需要依靠「だ」來完成基本普通形。
+        </p>
+
+      </div>
+
+      <div class="jfm-grid jfm-grid--2">
+
+        <div class="jfm-card jfm-card--i">
+
+          <h3>
+            核心規則
+          </h3>
+
+          <div class="jfm-formula">
+
+            <div class="jfm-formula-row">
+              <div class="jfm-formula-key">
+                原形
+              </div>
+              <div class="jfm-formula-value jfm-jp">
+                高い
+              </div>
+            </div>
+
+            <div class="jfm-formula-row">
+              <div class="jfm-formula-key">
+                否定
+              </div>
+              <div class="jfm-formula-value jfm-jp">
+                高い
+                <span class="jfm-arrow">→</span>
+                高くない
+              </div>
+            </div>
+
+            <div class="jfm-formula-row">
+              <div class="jfm-formula-key">
+                過去
+              </div>
+              <div class="jfm-formula-value jfm-jp">
+                高い
+                <span class="jfm-arrow">→</span>
+                高かった
+              </div>
+            </div>
+
+            <div class="jfm-formula-row">
+              <div class="jfm-formula-key">
+                過去否定
+              </div>
+              <div class="jfm-formula-value jfm-jp">
+                高くなかった
+              </div>
+            </div>
+
+            <div class="jfm-formula-row">
+              <div class="jfm-formula-key">
+                接續
+              </div>
+              <div class="jfm-formula-value jfm-jp">
+                高くて
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="jfm-card">
+
+          <h3>
+            你真正要記的是
+          </h3>
+
+          <p>
+            不是五個完整單字，
+            而是最後的
+            <strong>「い」可以切換成不同形式。</strong>
+          </p>
+
+          <div class="jfm-formula">
+
+            <div class="jfm-formula-row">
+              <div class="jfm-formula-key">
+                い
+              </div>
+              <div class="jfm-formula-value">
+                → くない
+              </div>
+            </div>
+
+            <div class="jfm-formula-row">
+              <div class="jfm-formula-key">
+                い
+              </div>
+              <div class="jfm-formula-value">
+                → かった
+              </div>
+            </div>
+
+            <div class="jfm-formula-row">
+              <div class="jfm-formula-key">
+                い
+              </div>
+              <div class="jfm-formula-value">
+                → くて
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="jfm-note"
+           style="margin-top:18px;">
+
+        例：
+
+        <span class="jfm-jp">
+          この店は安くて、おいしいです。
+        </span>
+
+        <br>
+
+        這間店便宜，而且很好吃。
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NA ADJECTIVE
+         ===================================================== -->
+    <section class="jfm-section"
+             id="na-adjective">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          06 · Na-Adjective
+        </div>
+
+        <h2>
+          ナ形容詞：好き
+        </h2>
+
+        <p class="jfm-muted">
+          這正好可以回答一個重要問題：
+          為什麼是
+          <span class="jfm-jp">好き</span>，
+          卻沒有
+          <span class="jfm-jp">好きい</span>？
+        </p>
+
+      </div>
+
+
+      <div class="jfm-pair">
+
+        <div class="jfm-pair-box">
+
+          <strong>
+            句尾
+          </strong>
+
+          <div class="jfm-big-jp jfm-jp">
+            好きだ
+          </div>
+
+          <p class="jfm-muted">
+            「好き」本身不需要增加「い」。
+            普通形句尾使用「だ」。
+          </p>
+
+        </div>
+
+
+        <div class="jfm-pair-box">
+
+          <strong>
+            修飾名詞
+          </strong>
+
+          <div class="jfm-big-jp jfm-jp">
+            好きな人
+          </div>
+
+          <p class="jfm-muted">
+            修飾後面的名詞時，
+            使用「な」連接。
+            這也是「ナ形容詞」名稱的來源。
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="jfm-card jfm-card--na"
+           style="margin-top:18px;">
+
+        <div class="jfm-formula">
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              現在肯定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              好きだ
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              現在否定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              好きじゃない
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              過去肯定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              好きだった
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              過去否定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              好きじゃなかった
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              接續
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              好きで
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="jfm-pair"
+           style="margin-top:18px;">
+
+        <div class="jfm-pair-box">
+
+          <strong class="jfm-correct">
+            ○ 正確
+          </strong>
+
+          <div class="jfm-jp">
+            好きだ
+            <br>
+            好きな人
+            <br>
+            好きだった
+          </div>
+
+        </div>
+
+
+        <div class="jfm-pair-box">
+
+          <strong class="jfm-wrong">
+            × 錯誤
+          </strong>
+
+          <div class="jfm-jp">
+            好きい
+            <br>
+            好きかった
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NOUN
+         ===================================================== -->
+    <section class="jfm-section"
+             id="noun">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          07 · Noun
+        </div>
+
+        <h2>
+          名詞：学生
+        </h2>
+
+        <p class="jfm-muted">
+          名詞本身不活用，
+          但當它成為句子的述語時，
+          後面的「だ」系統會發生變化。
+        </p>
+
+      </div>
+
+
+      <div class="jfm-card jfm-card--noun">
+
+        <div class="jfm-formula">
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              現在肯定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              学生だ
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              現在否定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              学生じゃない
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              過去肯定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              学生だった
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              過去否定
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              学生じゃなかった
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              接續
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              学生で
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="jfm-note"
+           style="margin-top:18px;">
+
+        <strong>學習捷徑：</strong>
+
+        ナ形容詞與名詞可以先視為同一家族。
+
+        <br>
+
+        <span class="jfm-jp">
+          好きだ → 好きだった → 好きで
+        </span>
+
+        <br>
+
+        <span class="jfm-jp">
+          学生だ → 学生だった → 学生で
+        </span>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NA + NOUN FAMILY
+         ===================================================== -->
+    <section class="jfm-section">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          08 · Same Family
+        </div>
+
+        <h2>
+          ナ形容詞＋名詞，為什麼可以一起記？
+        </h2>
+
+      </div>
+
+
+      <div class="jfm-table-scroll"
+           role="region"
+           aria-label="ナ形容詞與名詞比較"
+           tabindex="0">
+
+        <table style="min-width:680px;">
+
+          <thead>
+
+            <tr>
+              <th>功能</th>
+              <th>ナ形容詞</th>
+              <th>名詞</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>
+                現在肯定
+              </td>
+              <td class="jfm-jp">
+                好きだ
+              </td>
+              <td class="jfm-jp">
+                学生だ
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                否定
+              </td>
+              <td class="jfm-jp">
+                好きじゃない
+              </td>
+              <td class="jfm-jp">
+                学生じゃない
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                過去
+              </td>
+              <td class="jfm-jp">
+                好きだった
+              </td>
+              <td class="jfm-jp">
+                学生だった
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                過去否定
+              </td>
+              <td class="jfm-jp">
+                好きじゃなかった
+              </td>
+              <td class="jfm-jp">
+                学生じゃなかった
+              </td>
+            </tr>
+
+            <tr>
+              <td>
+                接續
+              </td>
+              <td class="jfm-jp">
+                好きで
+              </td>
+              <td class="jfm-jp">
+                学生で
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONNECTION
+         ===================================================== -->
+    <section class="jfm-section"
+             id="connection">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          09 · Connection Form
+        </div>
+
+        <h2>
+          「て形」的真正概念：
+          其實是「接續」
+        </h2>
+
+        <p class="jfm-muted">
+          初學教材常把這整組概念統稱為「て形」，
+          但嚴格來看，不同詞類的接續形式並不完全相同。
+        </p>
+
+      </div>
+
+
+      <div class="jfm-grid jfm-grid--4">
+
+        <div class="jfm-card jfm-card--verb">
+
+          <span class="jfm-tag jfm-tag--verb">
+            動詞
+          </span>
+
+          <div class="jfm-big-jp jfm-jp">
+            食べて
+          </div>
+
+          <p>
+            真正的動詞て形。
+          </p>
+
+        </div>
+
+
+        <div class="jfm-card jfm-card--i">
+
+          <span class="jfm-tag jfm-tag--i">
+            い形容詞
+          </span>
+
+          <div class="jfm-big-jp jfm-jp">
+            高くて
+          </div>
+
+          <p>
+            い → くて。
+          </p>
+
+        </div>
+
+
+        <div class="jfm-card jfm-card--na">
+
+          <span class="jfm-tag jfm-tag--na">
+            ナ形容詞
+          </span>
+
+          <div class="jfm-big-jp jfm-jp">
+            好きで
+          </div>
+
+          <p>
+            使用「で」連接。
+          </p>
+
+        </div>
+
+
+        <div class="jfm-card jfm-card--noun">
+
+          <span class="jfm-tag jfm-tag--noun">
+            名詞
+          </span>
+
+          <div class="jfm-big-jp jfm-jp">
+            学生で
+          </div>
+
+          <p>
+            同樣使用「で」。
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div class="jfm-note"
+           style="margin-top:18px;">
+
+        所以最好的理解不是：
+
+        <br>
+
+        「所有東西都變成て形」
+
+        <br><br>
+
+        而是：
+
+        <strong>
+          「每一類詞都有自己的『接續模式』，
+          用來告訴聽者：我的話還沒結束。」
+        </strong>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         CONNECTION EXAMPLES
+         ===================================================== -->
+    <section class="jfm-section">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          10 · Examples
+        </div>
+
+        <h2>
+          四種接續，一起比較
+        </h2>
+
+      </div>
+
+
+      <div class="jfm-grid jfm-grid--2">
+
+        <article class="jfm-card">
+
+          <span class="jfm-tag jfm-tag--verb">
+            動詞
+          </span>
+
+          <h3 class="jfm-jp">
+            ご飯を食べて、寝ます。
+          </h3>
+
+          <p>
+            吃飯，然後睡覺。
+          </p>
+
+          <p class="jfm-muted">
+            食べる → 食べて
+          </p>
+
+        </article>
+
+
+        <article class="jfm-card">
+
+          <span class="jfm-tag jfm-tag--i">
+            い形容詞
+          </span>
+
+          <h3 class="jfm-jp">
+            この店は安くて、おいしいです。
+          </h3>
+
+          <p>
+            這間店便宜，而且好吃。
+          </p>
+
+          <p class="jfm-muted">
+            安い → 安くて
+          </p>
+
+        </article>
+
+
+        <article class="jfm-card">
+
+          <span class="jfm-tag jfm-tag--na">
+            ナ形容詞
+          </span>
+
+          <h3 class="jfm-jp">
+            この町は静かで、きれいです。
+          </h3>
+
+          <p>
+            這個城鎮安靜又漂亮。
+          </p>
+
+          <p class="jfm-muted">
+            静かだ → 静かで
+          </p>
+
+        </article>
+
+
+        <article class="jfm-card">
+
+          <span class="jfm-tag jfm-tag--noun">
+            名詞
+          </span>
+
+          <h3 class="jfm-jp">
+            兄は学生で、私は会社員です。
+          </h3>
+
+          <p>
+            哥哥是學生，而我是上班族。
+          </p>
+
+          <p class="jfm-muted">
+            学生だ → 学生で
+          </p>
+
+        </article>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         VERB TE FORM
+         ===================================================== -->
+    <section class="jfm-section"
+             id="te-form">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          11 · Verb Te-Form
+        </div>
+
+        <h2>
+          動詞的て形怎麼形成？
+        </h2>
+
+        <p class="jfm-muted">
+          一段動詞最單純；
+          五段動詞則依照最後一個假名產生不同音便。
+        </p>
+
+      </div>
+
+
+      <h3>
+        一段動詞
+      </h3>
+
+      <div class="jfm-note">
+
+        基本規則：
+
+        <strong class="jfm-jp">
+          る → て
+        </strong>
+
+        <br><br>
+
+        <span class="jfm-jp">
+          食べる → 食べて
+          <br>
+          見る → 見て
+          <br>
+          起きる → 起きて
+          <br>
+          寝る → 寝て
+        </span>
+
+      </div>
+
+
+      <h3 style="margin-top:30px;">
+        五段動詞
+      </h3>
+
+
+      <div class="jfm-rule-list">
+
+        <div class="jfm-rule">
+
+          <div class="jfm-rule-head">
+
+            <span class="jfm-rule-pattern">
+              う・つ・る
+            </span>
+
+            <strong>
+              → って
+            </strong>
+
+          </div>
+
+          <div class="jfm-jp">
+            買う → 買って
+            <br>
+            待つ → 待って
+            <br>
+            帰る → 帰って
+          </div>
+
+        </div>
+
+
+        <div class="jfm-rule">
+
+          <div class="jfm-rule-head">
+
+            <span class="jfm-rule-pattern">
+              む・ぶ・ぬ
+            </span>
+
+            <strong>
+              → んで
+            </strong>
+
+          </div>
+
+          <div class="jfm-jp">
+            読む → 読んで
+            <br>
+            遊ぶ → 遊んで
+            <br>
+            死ぬ → 死んで
+          </div>
+
+        </div>
+
+
+        <div class="jfm-rule">
+
+          <div class="jfm-rule-head">
+
+            <span class="jfm-rule-pattern">
+              く
+            </span>
+
+            <strong>
+              → いて
+            </strong>
+
+          </div>
+
+          <div class="jfm-jp">
+            書く → 書いて
+          </div>
+
+        </div>
+
+
+        <div class="jfm-rule">
+
+          <div class="jfm-rule-head">
+
+            <span class="jfm-rule-pattern">
+              ぐ
+            </span>
+
+            <strong>
+              → いで
+            </strong>
+
+          </div>
+
+          <div class="jfm-jp">
+            泳ぐ → 泳いで
+          </div>
+
+        </div>
+
+
+        <div class="jfm-rule">
+
+          <div class="jfm-rule-head">
+
+            <span class="jfm-rule-pattern">
+              す
+            </span>
+
+            <strong>
+              → して
+            </strong>
+
+          </div>
+
+          <div class="jfm-jp">
+            話す → 話して
+          </div>
+
+        </div>
+
+
+        <div class="jfm-rule">
+
+          <div class="jfm-rule-head">
+
+            <span class="jfm-rule-pattern">
+              特別
+            </span>
+
+            <strong>
+              行く
+            </strong>
+
+          </div>
+
+          <div class="jfm-jp">
+            行く → 行って
+          </div>
+
+          <p class="jfm-muted"
+             style="margin:8px 0 0;">
+
+            雖然以「く」結尾，
+            但不是「行いて」。
+
+          </p>
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TE-FORM PURPOSE
+         ===================================================== -->
+    <section class="jfm-section">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          12 · Why Te-Form Matters
+        </div>
+
+        <h2>
+          為什麼て形這麼重要？
+        </h2>
+
+        <p class="jfm-muted">
+          因為て形不是只代表一個意思，
+          而是一個可以接上大量文法的
+          <strong>「連接平台」</strong>。
+        </p>
+
+      </div>
+
+
+      <div class="jfm-table-scroll"
+           role="region"
+           aria-label="て形常見文法功能"
+           tabindex="0">
+
+        <table>
+
+          <thead>
+
+            <tr>
+              <th>結構</th>
+              <th>例子</th>
+              <th>主要概念</th>
+              <th>中文理解</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td class="jfm-jp">
+                Vて、V
+              </td>
+
+              <td class="jfm-jp">
+                食べて寝る
+              </td>
+
+              <td>
+                動作連接
+              </td>
+
+              <td>
+                吃了然後睡
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="jfm-jp">
+                Vている
+              </td>
+
+              <td class="jfm-jp">
+                食べている
+              </td>
+
+              <td>
+                處於某動作／狀態
+              </td>
+
+              <td>
+                正在吃
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="jfm-jp">
+                Vてください
+              </td>
+
+              <td class="jfm-jp">
+                見てください
+              </td>
+
+              <td>
+                請求
+              </td>
+
+              <td>
+                請看
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="jfm-jp">
+                Vてもいい
+              </td>
+
+              <td class="jfm-jp">
+                食べてもいい
+              </td>
+
+              <td>
+                許可
+              </td>
+
+              <td>
+                可以吃
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="jfm-jp">
+                Vてはいけない
+              </td>
+
+              <td class="jfm-jp">
+                入ってはいけない
+              </td>
+
+              <td>
+                禁止
+              </td>
+
+              <td>
+                不可以進去
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="jfm-jp">
+                Vてみる
+              </td>
+
+              <td class="jfm-jp">
+                食べてみる
+              </td>
+
+              <td>
+                嘗試
+              </td>
+
+              <td>
+                吃吃看
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="jfm-jp">
+                Vておく
+              </td>
+
+              <td class="jfm-jp">
+                予約しておく
+              </td>
+
+              <td>
+                預先準備
+              </td>
+
+              <td>
+                先預約好
+              </td>
+            </tr>
+
+
+            <tr>
+              <td class="jfm-jp">
+                Vてしまう
+              </td>
+
+              <td class="jfm-jp">
+                忘れてしまった
+              </td>
+
+              <td>
+                完成／遺憾
+              </td>
+
+              <td>
+                不小心忘了
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         NAI
+         ===================================================== -->
+    <section class="jfm-section">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          13 · Hidden Pattern
+        </div>
+
+        <h2>
+          另一個值得看懂的共同規則：
+          ない → なかった
+        </h2>
+
+      </div>
+
+
+      <div class="jfm-card">
+
+        <p>
+          觀察：
+        </p>
+
+        <div class="jfm-formula">
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              動詞
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              食べない → 食べなかった
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              い形容詞
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              高くない → 高くなかった
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              ナ形容詞
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              好きじゃない → 好きじゃなかった
+            </div>
+          </div>
+
+          <div class="jfm-formula-row">
+            <div class="jfm-formula-key">
+              名詞
+            </div>
+            <div class="jfm-formula-value jfm-jp">
+              学生じゃない → 学生じゃなかった
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <div class="jfm-note"
+           style="margin-top:18px;">
+
+        <strong>所以不要把「なかった」當成四套規則。</strong>
+
+        <br>
+
+        先建立：
+
+        <span class="jfm-jp">
+          ない → なかった
+        </span>
+
+        的共同概念，就能大幅降低記憶量。
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         POLITE
+         ===================================================== -->
+    <section class="jfm-section">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          14 · Plain vs Polite
+        </div>
+
+        <h2>
+          普通形與禮貌形不要混在一起
+        </h2>
+
+      </div>
+
+
+      <div class="jfm-table-scroll"
+           role="region"
+           aria-label="普通形與禮貌形比較"
+           tabindex="0">
+
+        <table style="min-width:650px;">
+
+          <thead>
+
+            <tr>
+              <th>詞類</th>
+              <th>普通形</th>
+              <th>禮貌形</th>
+            </tr>
+
+          </thead>
+
+          <tbody>
+
+            <tr>
+              <td>
+                動詞
+              </td>
+
+              <td class="jfm-jp">
+                食べる
+              </td>
+
+              <td class="jfm-jp">
+                食べます
+              </td>
+            </tr>
+
+
+            <tr>
+              <td>
+                い形容詞
+              </td>
+
+              <td class="jfm-jp">
+                高い
+              </td>
+
+              <td class="jfm-jp">
+                高いです
+              </td>
+            </tr>
+
+
+            <tr>
+              <td>
+                ナ形容詞
+              </td>
+
+              <td class="jfm-jp">
+                好きだ
+              </td>
+
+              <td class="jfm-jp">
+                好きです
+              </td>
+            </tr>
+
+
+            <tr>
+              <td>
+                名詞
+              </td>
+
+              <td class="jfm-jp">
+                学生だ
+              </td>
+
+              <td class="jfm-jp">
+                学生です
+              </td>
+            </tr>
+
+          </tbody>
+
+        </table>
+
+      </div>
+
+
+      <div class="jfm-note"
+           style="margin-top:18px;">
+
+        <span class="jfm-jp">好きだ</span>
+        的禮貌形是
+        <span class="jfm-jp">好きです</span>，
+
+        不是
+
+        <span class="jfm-wrong jfm-jp">
+          好きだです
+        </span>。
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         MINI QUIZ
+         ===================================================== -->
+    <section class="jfm-section">
+
+      <div class="jfm-section-head">
+
+        <div class="jfm-kicker">
+          15 · Check Yourself
+        </div>
+
+        <h2>
+          快速確認是否真的理解
+        </h2>
+
+        <p class="jfm-muted">
+          先自己回答，再展開答案。
+        </p>
+
+      </div>
+
+
+      <div class="jfm-quiz">
+
+        <details>
+
+          <summary>
+            Q1｜高い 的過去形是？
+          </summary>
+
+          <div>
+            <strong class="jfm-jp">
+              高かった
+            </strong>
+
+            <p class="jfm-muted">
+              い形容詞：
+              い → かった。
+            </p>
+          </div>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Q2｜好き 的過去形是「好きかった」嗎？
+          </summary>
+
+          <div>
+            <strong class="jfm-wrong">
+              不是。
+            </strong>
+
+            <p class="jfm-jp">
+              好きだ → 好きだった
+            </p>
+
+            <p class="jfm-muted">
+              因為好き是ナ形容詞，
+              不走い形容詞的「かった」變化。
+            </p>
+          </div>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Q3｜学生 的接續形式是？
+          </summary>
+
+          <div>
+
+            <strong class="jfm-jp">
+              学生で
+            </strong>
+
+            <p class="jfm-muted">
+              例如：
+              兄は学生で、私は会社員です。
+            </p>
+
+          </div>
+
+        </details>
+
+
+        <details>
+
+          <summary>
+            Q4｜読む 的て形是？
+          </summary>
+
+          <div>
+
+            <strong class="jfm-jp">
+              読んで
+            </strong>
+
+            <p class="jfm-muted">
+              五段動詞：
+              む・ぶ・ぬ → んで。
+            </p>
+
+          </div>
+
+        </details>
+
+      </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         FINAL MEMORY
+         ===================================================== -->
+    <section class="jfm-section"
+             id="memory">
+
+      <div class="jfm-memory">
+
+        <div class="jfm-kicker"
+             style="color:#dce7ff;">
+          FINAL MAP
+        </div>
+
+        <h2>
+          最後只需要牢記四件事
+        </h2>
+
+        <div class="jfm-memory-grid">
+
+          <div class="jfm-memory-item">
+
+            <strong>
+              ① 動詞
+            </strong>
+
+            有自己的活用系統。
+
+            <div class="jfm-jp"
+                 style="margin-top:5px;">
+              食べる → 食べない → 食べた → 食べて
+            </div>
+
+          </div>
+
+
+          <div class="jfm-memory-item">
+
+            <strong>
+              ② い形容詞
+            </strong>
+
+            主要改最後的「い」。
+
+            <div class="jfm-jp"
+                 style="margin-top:5px;">
+              高い → 高くない → 高かった → 高くて
+            </div>
+
+          </div>
+
+
+          <div class="jfm-memory-item">
+
+            <strong>
+              ③ ナ形容詞
+            </strong>
+
+            本體通常不動，
+            改「だ」系統。
+
+            <div class="jfm-jp"
+                 style="margin-top:5px;">
+              好きだ → 好きじゃない → 好きだった → 好きで
+            </div>
+
+          </div>
+
+
+          <div class="jfm-memory-item">
+
+            <strong>
+              ④ 名詞
+            </strong>
+
+            與ナ形容詞句尾變化高度相似。
+
+            <div class="jfm-jp"
+                 style="margin-top:5px;">
+              学生だ → 学生じゃない → 学生だった → 学生で
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <p style="margin:24px 0 0;">
+
+          <strong>
+            最終學習公式：
+          </strong>
+
+          <br><br>
+
+          動詞＝看活用
+
+          <br>
+
+          い形容詞＝看「い」
+
+          <br>
+
+          ナ形容詞＋名詞＝看「だ」
+
+          <br>
+
+          接續形＝「話還沒說完，後面要繼續接」
+
+        </p>
+
+      </div>
+
+    </section>
+
+
+  </div>
+
+
+  <footer class="jfm-footer">
+
+    <div class="jfm-shell">
+
+      Japanese Form Map
+      <br>
+      動詞・い形容詞・ナ形容詞・名詞活用學習地圖
+
+    </div>
+
+  </footer>
+
+</main>
+
+
+<script>
+  /*
+   * Japanese Form Map
+   * 平滑捲動只作用於本教材內部錨點。
+   * 若使用者偏好 reduced motion，CSS 已停用動畫效果。
+   */
+
+  (() => {
+    const root = document.getElementById('jp-form-map');
+
+    if (!root) return;
+
+    const links = root.querySelectorAll('.jfm-nav a[href^="#"]');
+
+    links.forEach(link => {
+      link.addEventListener('click', event => {
+        const targetId = link.getAttribute('href');
+
+        if (!targetId || targetId === '#') return;
+
+        const target = root.querySelector(targetId);
+
+        if (!target) return;
+
+        event.preventDefault();
+
+        const reducedMotion = window.matchMedia(
+          '(prefers-reduced-motion: reduce)'
+        ).matches;
+
+        target.scrollIntoView({
+          behavior: reducedMotion ? 'auto' : 'smooth',
+          block: 'start'
+        });
+
+        history.replaceState(
+          null,
+          '',
+          targetId
+        );
+      });
+    });
+  })();
+</script>
+
+</body>
+</html>
