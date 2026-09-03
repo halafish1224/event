@@ -105,10 +105,18 @@ export default function RootLayout({
               <Settings2 aria-hidden="true" className="size-5" />
             </Link>
           </div>
+          <nav aria-label="小螢幕主要導覽" className="compact-nav md:hidden">
+            {navigation.map(({ href, label, icon: Icon }) => (
+              <Link key={href} href={href} className="compact-nav-link">
+                <Icon aria-hidden="true" className="size-5" />
+                <span>{label}</span>
+              </Link>
+            ))}
+          </nav>
         </header>
         <ReviewProvider>
           {children}
-          <footer className="mb-20 border-t border-border/70 bg-card/55 md:mb-0">
+          <footer className="border-t border-border/70 bg-card/55">
             <div className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-8 text-sm sm:grid-cols-[1fr_auto] sm:px-6 lg:px-8">
               <div>
                 <strong>AIMYON Japanese</strong>
@@ -138,14 +146,6 @@ export default function RootLayout({
               </nav>
             </div>
           </footer>
-          <nav aria-label="行動版主要導覽" className="mobile-nav md:hidden">
-            {navigation.map(({ href, label, icon: Icon }) => (
-              <Link key={href} href={href} className="mobile-nav-link">
-                <Icon aria-hidden="true" className="size-5" />
-                <span>{label}</span>
-              </Link>
-            ))}
-          </nav>
         </ReviewProvider>
       </body>
     </html>

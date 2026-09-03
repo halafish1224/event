@@ -26,7 +26,7 @@ const units = Array.from(
 
 export default function LearnPage() {
   return (
-    <main id="main-content" className="page-shell pb-28">
+    <main id="main-content" className="page-shell pb-12">
       <div className="content-shell">
         <PageIntro
           eyebrow="6 UNITS · 30 LESSONS"

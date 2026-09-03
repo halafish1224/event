@@ -15,7 +15,7 @@ export default function AdjectivesPage() {
     (item) => item.part_of_speech === 'adjective',
   );
   return (
-    <main id="main-content" className="page-shell pb-28">
+    <main id="main-content" className="page-shell pb-12">
       <div className="content-shell">
         <PageIntro
           eyebrow="ADJECTIVE MORPHOLOGY"

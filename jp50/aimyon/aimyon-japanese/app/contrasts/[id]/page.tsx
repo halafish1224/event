@@ -32,7 +32,7 @@ export default async function ContrastDetailPage({
     (questionId) => contentMaps.questions.get(questionId)?.options.length,
   );
   return (
-    <main id="main-content" className="page-shell pb-28">
+    <main id="main-content" className="page-shell pb-12">
       <article className="content-shell max-w-5xl">
         <Link
           href="/contrasts"

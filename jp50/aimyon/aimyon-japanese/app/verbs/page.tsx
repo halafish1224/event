@@ -15,7 +15,7 @@ export default function VerbsPage() {
     (item) => item.part_of_speech === 'verb',
   );
   return (
-    <main id="main-content" className="page-shell pb-28">
+    <main id="main-content" className="page-shell pb-12">
       <div className="content-shell">
         <PageIntro
           eyebrow="VERB MORPHOLOGY"

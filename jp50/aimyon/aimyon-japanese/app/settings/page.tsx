@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 export default function SettingsPage() {
   return (
-    <main id="main-content" className="page-shell pb-28">
+    <main id="main-content" className="page-shell pb-12">
       <div className="content-shell max-w-4xl">
         <PageIntro
           eyebrow="LOCAL-FIRST SETTINGS"

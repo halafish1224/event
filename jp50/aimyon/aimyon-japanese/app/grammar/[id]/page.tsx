@@ -47,7 +47,7 @@ export default async function GrammarDetailPage({
     return value ? [value] : [];
   });
   return (
-    <main id="main-content" className="page-shell pb-28">
+    <main id="main-content" className="page-shell pb-12">
       <article className="content-shell max-w-5xl">
         <Link
           href="/grammar"

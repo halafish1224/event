@@ -116,7 +116,7 @@ function ReadyReviewSession({
       profile?.attempts ?? initialProfile.attempts,
     );
     return (
-      <main id="main-content" className="page-shell pb-28">
+      <main id="main-content" className="page-shell pb-12">
         <section className="mx-auto max-w-2xl py-10 sm:py-16">
           <Card className="overflow-hidden border-0 bg-card shadow-lg ring-border">
             <CardHeader className="items-center text-center">
@@ -264,7 +264,7 @@ function ReadyReviewSession({
   };
 
   return (
-    <main id="main-content" className="page-shell pb-28">
+    <main id="main-content" className="page-shell pb-12">
       <section className="mx-auto max-w-3xl py-5 sm:py-9">
         <div className="mb-5 flex items-center gap-3">
           <Link
@@ -408,7 +408,7 @@ function ReadyReviewSession({
 
 function ReviewLoading() {
   return (
-    <main id="main-content" className="page-shell pb-28">
+    <main id="main-content" className="page-shell pb-12">
       <section className="mx-auto max-w-3xl py-9" aria-busy="true">
         <div className="h-3 animate-pulse rounded-full bg-muted" />
         <Card className="mt-5 min-h-96 animate-pulse border-0 bg-card ring-border" />

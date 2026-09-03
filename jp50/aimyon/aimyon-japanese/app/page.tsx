@@ -36,7 +36,7 @@ export default function Home() {
     .replaceAll('/', '.');
 
   return (
-    <main id="main-content" className="min-h-screen pb-24">
+    <main id="main-content" className="min-h-screen pb-12">
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{

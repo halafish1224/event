@@ -6,7 +6,7 @@ export default function NotFound() {
   return (
     <main
       id="main-content"
-      className="page-shell grid min-h-[70vh] place-items-center pb-28 text-center"
+      className="page-shell grid min-h-[70vh] place-items-center pb-12 text-center"
     >
       <div>
         <p className="japanese-serif text-7xl font-bold text-primary/20">迷</p>

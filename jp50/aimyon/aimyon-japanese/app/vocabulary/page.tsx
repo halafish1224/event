@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function VocabularyPage() {
   return (
-    <main id="main-content" className="page-shell pb-28">
+    <main id="main-content" className="page-shell pb-12">
       <div className="content-shell">
         <PageIntro
           eyebrow="VOCABULARY NETWORK"
