@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#f4aa19" />
+    <meta
+      name="description"
+      content="以マリーゴールド附件字詞編排的 14 天日文主動回想教材，適合手機短時學習。"
+    />
+    <title>AIMYON研究所｜マリーゴールド 14天詞彙實驗課</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">跳到教材</a>
+
+    <header class="site-header">
+      <div class="header-inner">
+        <a class="brand" href="#top" aria-label="回到頁首">
+          <span class="brand-mark" aria-hidden="true">研</span>
+          <span>
+            <strong>AIMYON研究所</strong>
+            <small>ことばの記憶実験室</small>
+          </span>
+        </a>
+        <button class="quiet-button" id="resetProgress" type="button">重設進度</button>
+      </div>
+    </header>
+
+    <main id="main">
+      <section class="intro" id="top" aria-labelledby="course-title">
+        <p class="eyebrow">マリーゴールド｜14 DAYS MOBILE LAB</p>
+        <h1 id="course-title">不是背歌詞，<br />是把歌裡的日文變成自己的。</h1>
+        <p class="lede">
+          從附件提取字詞與句型，重新編成「先猜、揭示、比較、產出」的短課程。每次只做一個判斷，手機也能專心完成。
+        </p>
+
+        <div class="course-facts" aria-label="課程摘要">
+          <div><strong id="vocabCount">—</strong><span>個字詞</span></div>
+          <div><strong id="patternCount">—</strong><span>個句型</span></div>
+          <div><strong>6–10</strong><span>分鐘／次</span></div>
+        </div>
+
+        <button class="primary-button" id="startSession" type="button">
+          開始今天的 6 分鐘
+          <span aria-hidden="true">→</span>
+        </button>
+        <p class="copyright-note">
+          本教材僅使用附件提取的字詞、短語及教學分析；例句皆為重新撰寫，不重製或逐句重排完整歌詞。
+        </p>
+      </section>
+
+      <nav class="section-nav" aria-label="教材段落">
+        <a href="#session">今日練習</a>
+        <a href="#roadmap">14天編排</a>
+        <a href="#vocabulary">字詞庫</a>
+        <a href="#patterns">句型</a>
+        <a href="#method">學習方法</a>
+      </nav>
+
+      <section class="section session-section" id="session" aria-labelledby="session-title">
+        <div class="section-heading">
+          <p class="eyebrow">TODAY'S RETRIEVAL</p>
+          <h2 id="session-title">先從腦中找，再看答案</h2>
+          <p>回想 5–8 秒即可；想不起來也不是失敗，而是下一次複習的依據。</p>
+        </div>
+
+        <div class="progress-panel">
+          <div class="progress-copy">
+            <span>本機學習進度</span>
+            <strong id="progressText">0 / 0</strong>
+          </div>
+          <div class="progress-track" aria-hidden="true">
+            <span id="progressBar"></span>
+          </div>
+          <p id="dueText">正在整理今天的題目…</p>
+        </div>
+
+        <article class="study-card" id="studyCard" aria-live="polite">
+          <div class="card-topline">
+            <span id="sessionMode">日文 → 意思</span>
+            <span id="sessionPosition">1 / 6</span>
+          </div>
+          <div class="prompt-area">
+            <p id="promptLabel">先不要往下看</p>
+            <h3 id="promptText">—</h3>
+            <p id="promptHint">請說出意思，並想一個可使用的情境。</p>
+          </div>
+          <button class="reveal-button" id="revealAnswer" type="button">顯示答案</button>
+
+          <div class="answer-area" id="answerArea" hidden>
+            <div class="answer-title">
+              <div>
+                <strong id="answerTerm">—</strong>
+                <span id="answerReading">—</span>
+              </div>
+              <span id="answerPos">—</span>
+            </div>
+            <p class="answer-meaning" id="answerMeaning">—</p>
+            <p class="answer-note" id="answerNote">—</p>
+            <div class="example-box">
+              <p lang="ja" id="answerExample">—</p>
+              <p id="answerExampleZh">—</p>
+            </div>
+            <fieldset class="rating-group">
+              <legend>剛才回想得如何？</legend>
+              <button type="button" data-rating="again">還不熟</button>
+              <button type="button" data-rating="hard">有想起來</button>
+              <button type="button" data-rating="good">很順</button>
+            </fieldset>
+          </div>
+        </article>
+      </section>
+
+      <section class="section" id="roadmap" aria-labelledby="roadmap-title">
+        <div class="section-heading">
+          <p class="eyebrow">14-DAY CURRICULUM</p>
+          <h2 id="roadmap-title">由歌中印象，走到自由產出</h2>
+          <p>每一天都混入舊題；不是學完一章才複習，而是在快忘記時重新把它找回來。</p>
+        </div>
+        <div class="roadmap" id="roadmapList"></div>
+      </section>
+
+      <section class="section" id="vocabulary" aria-labelledby="vocabulary-title">
+        <div class="section-heading">
+          <p class="eyebrow">WORD BANK</p>
+          <h2 id="vocabulary-title">附件字詞，依語意重新成組</h2>
+          <p>不依歌詞順序背誦，改用概念群組建立可以互相提取的記憶線索。</p>
+        </div>
+
+        <div class="filters" aria-label="字詞篩選">
+          <label class="search-box">
+            <span class="visually-hidden">搜尋字詞、讀音或中文意思</span>
+            <input id="wordSearch" type="search" placeholder="搜尋：気持ち、きもち、感受…" />
+          </label>
+          <div class="filter-chips" id="clusterFilters"></div>
+        </div>
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
+        <div class="word-grid" id="wordGrid"></div>
+      </section>
+
+      <section class="section" id="contrasts" aria-labelledby="contrast-title">
+        <div class="section-heading">
+          <p class="eyebrow">CONTRAST LAB</p>
+          <h2 id="contrast-title">相近詞要放在一起判斷</h2>
+          <p>先問「誰主動、狀態還是動作、情緒距離多遠」，再選詞。</p>
+        </div>
+        <div class="contrast-list" id="contrastList"></div>
+      </section>
+
+      <section class="section" id="patterns" aria-labelledby="patterns-title">
+        <div class="section-heading">
+          <p class="eyebrow">PATTERN WORKSHOP</p>
+          <h2 id="patterns-title">從詞塊到句型，不先背術語</h2>
+          <p>每個句型都以附件短語為觀察點，再用新的生活情境完成遷移。</p>
+        </div>
+        <div class="pattern-list" id="patternList"></div>
+      </section>
+
+      <section class="section challenge-section" id="challenge" aria-labelledby="challenge-title">
+        <div class="section-heading">
+          <p class="eyebrow">TRANSFER CHECK</p>
+          <h2 id="challenge-title">離開歌曲，還能不能使用？</h2>
+          <p>先口答，再展開參考答案。能換情境使用，才算真正學會。</p>
+        </div>
+        <div class="challenge-list" id="challengeList"></div>
+      </section>
+
+      <section class="section method-section" id="method" aria-labelledby="method-title">
+        <div class="section-heading">
+          <p class="eyebrow">WHY THIS WORKS</p>
+          <h2 id="method-title">AIMYON研究所的學習規則</h2>
+          <p>採用目前較有實證支持的方法，也誠實保留研究限制，不把「大腦科學」包裝成神奇捷徑。</p>
+        </div>
+
+        <div class="method-grid">
+          <article>
+            <span>01</span>
+            <h3>先提取，再重讀</h3>
+            <p>答案出現前先試著回想；揭示後立刻核對，避免把熟悉感誤認成真正會用。</p>
+          </article>
+          <article>
+            <span>02</span>
+            <h3>短量、間隔、再學一次</h3>
+            <p>同一字詞安排在隔日、三日、七日與十四日再出現；實際間隔依回想表現縮短或拉長。</p>
+          </article>
+          <article>
+            <span>03</span>
+            <h3>換線索提取</h3>
+            <p>同一個詞輪流用日文、中文、相近詞與新情境提問，避免記憶只綁在原句位置。</p>
+          </article>
+          <article>
+            <span>04</span>
+            <h3>降低工作記憶負擔</h3>
+            <p>一張卡只做一個判斷；不熟時先給回饋與短例句，再要求完整造句。</p>
+          </article>
+          <article>
+            <span>05</span>
+            <h3>歌曲是情境，不是證明</h3>
+            <p>熟悉旋律可以增加意義與動機，但歌本身不能取代檢索、回饋與跨情境使用。</p>
+          </article>
+          <article>
+            <span>06</span>
+            <h3>手機只做剛好的提醒</h3>
+            <p>以 6–10 分鐘為一回，完成後離開螢幕，用走路或等待時間在腦中重述三個詞。</p>
+          </article>
+        </div>
+
+        <details class="research-notes">
+          <summary>查看研究依據與教材轉譯方式</summary>
+          <div>
+            <p>
+              本企劃將研究結果轉成可操作的課程設計；「0／1／3／7／14 日」是便於執行的起始節奏，不宣稱為所有人的唯一最佳間隔。
+            </p>
+            <ul>
+              <li><a href="https://www.nature.com/articles/s44159-022-00089-1" target="_blank" rel="noreferrer">間隔與提取練習綜述｜Nature Reviews Psychology</a></li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/39453748/" target="_blank" rel="noreferrer">變化線索下的間隔提取｜PNAS, 2024</a></li>
+              <li><a href="https://www.nature.com/articles/s41539-023-00159-w" target="_blank" rel="noreferrer">工作記憶負荷與提取練習｜npj Science of Learning</a></li>
+              <li><a href="https://www.nature.com/articles/s41539-024-00289-9" target="_blank" rel="noreferrer">手機教育介入與即時支持｜npj Science of Learning, 2024</a></li>
+              <li><a href="https://doi.org/10.1016/j.system.2024.103350" target="_blank" rel="noreferrer">歌曲與第二語言學習系統性回顧｜System, 2024</a></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <strong>AIMYON研究所｜マリーゴールド 14天詞彙實驗課</strong>
+      <p>附件來源字詞 × 原創教學例句 × 手機主動回想流程</p>
+    </footer>
+  </body>
+</html>
