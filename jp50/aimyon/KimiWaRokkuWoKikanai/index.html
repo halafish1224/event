@@ -1,0 +1,193 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#111318" />
+    <meta
+      name="description"
+      content="從《君はロックを聴かない》附件字詞重新編排的 14 天手機日文教材，練習聽覺、邀請、距離感與口語節奏。"
+    />
+    <title>AIMYON研究所｜君はロックを聴かない・聲音與距離實驗課</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#practice">直接開始練習</a>
+
+    <header class="topbar">
+      <a href="#top" class="identity" aria-label="回到頁首">
+        <span class="identity-code">AIM</span>
+        <span><strong>AIMYON研究所</strong><small>SOUND & DISTANCE LAB</small></span>
+      </a>
+      <button type="button" class="reset-button" id="resetProgress">重設</button>
+    </header>
+
+    <main id="top">
+      <section class="practice-shell" id="practice" aria-labelledby="practice-title">
+        <div class="practice-intro">
+          <p class="kicker">NEEDLE DROP SESSION 01</p>
+          <h1 id="practice-title">先開口，<br />再確認你懂多少。</h1>
+          <p>每次 6 題。答案出現前先說出讀音、意思或完整形式；讀出聲音後，再回答理解問題。</p>
+        </div>
+
+        <div class="progress-row">
+          <div>
+            <span>已穩定</span>
+            <strong id="progressText">0 / 0</strong>
+          </div>
+          <div class="progress-meter" aria-hidden="true"><span id="progressBar"></span></div>
+          <p id="dueText">準備今天的題目…</p>
+        </div>
+
+        <article class="retrieval-card" aria-live="polite">
+          <header>
+            <span id="cardMode">日文 → 中文</span>
+            <span id="cardPosition">1 / 6</span>
+          </header>
+          <div class="prompt">
+            <small id="promptInstruction">先說出讀音與意思</small>
+            <h2 id="promptText" lang="ja">—</h2>
+            <p id="promptSupport">想 5–8 秒即可，不必追求一次全對。</p>
+          </div>
+          <button type="button" class="reveal-button" id="revealAnswer">開啟回饋</button>
+
+          <div class="answer" id="answerArea" hidden>
+            <div class="answer-heading">
+              <div><strong id="answerTerm" lang="ja">—</strong><span id="answerReading">—</span></div>
+              <span id="answerPos">—</span>
+            </div>
+            <p class="answer-meaning" id="answerMeaning">—</p>
+            <p id="answerNote">—</p>
+            <div class="speak-box">
+              <span>READ → MEANING</span>
+              <p lang="ja" id="answerExample">—</p>
+              <p id="answerExampleZh">—</p>
+            </div>
+            <fieldset class="ratings">
+              <legend>這次提取得如何？</legend>
+              <button type="button" data-rating="again">沒想起來</button>
+              <button type="button" data-rating="hard">想得較久</button>
+              <button type="button" data-rating="good">直接想起</button>
+            </fieldset>
+          </div>
+        </article>
+
+        <p class="session-note">完成 6 題後，關閉螢幕並口頭重述 3 個詞。朗讀能增加記憶辨識度，但理解仍需要另外回答意思與情境。</p>
+      </section>
+
+      <nav class="jump-nav" aria-label="教材目錄">
+        <a href="#course">14天</a>
+        <a href="#words">字詞</a>
+        <a href="#contrasts">對比</a>
+        <a href="#patterns">句型</a>
+        <a href="#transfer">活用</a>
+        <a href="#method">方法</a>
+      </nav>
+
+      <section class="course-overview" aria-labelledby="overview-title">
+        <p class="kicker">君はロックを聴かない</p>
+        <h2 id="overview-title">聲音不是背景，<br />而是一條可以走近對方的路。</h2>
+        <p>
+          本教材不照歌詞順序背誦。附件中的字詞會依「聲音、動作、距離、情緒、口語態度」重新組合，再放進新的生活例句。
+        </p>
+        <div class="fact-strip" aria-label="教材數量">
+          <div><strong id="wordCount">—</strong><span>字詞</span></div>
+          <div><strong id="patternCount">—</strong><span>句型</span></div>
+          <div><strong id="contrastCount">—</strong><span>對比</span></div>
+          <div><strong>6–9</strong><span>分鐘／次</span></div>
+        </div>
+        <p class="copyright-scope">
+          僅使用附件提取的字詞、短語與教學分析；完整例句為重新撰寫，不收錄或按原順序重製完整歌詞。
+        </p>
+      </section>
+
+      <section class="section" id="course" aria-labelledby="course-title">
+        <div class="section-heading">
+          <p class="kicker">14-DAY SETLIST</p>
+          <h2 id="course-title">從聽見，到能說出自己的邀請</h2>
+          <p>正式課程前先做診斷；往後每天都穿插舊題，讓已學字詞在不同線索下再次被提取。</p>
+        </div>
+        <div class="timeline" id="courseList"></div>
+      </section>
+
+      <section class="section" id="words" aria-labelledby="words-title">
+        <div class="section-heading">
+          <p class="kicker">LYRIC WORD MINING</p>
+          <h2 id="words-title">附件字詞重新分群</h2>
+          <p>依聲音與唱片、動作、距離與情緒、身體感、語氣五條檢索路徑整理。</p>
+        </div>
+        <div class="word-tools">
+          <label>
+            <span class="visually-hidden">搜尋字詞、讀音或中文意思</span>
+            <input id="wordSearch" type="search" placeholder="搜尋：聴く、きく、專心聽…" />
+          </label>
+          <div class="filter-row" id="clusterFilters"></div>
+        </div>
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
+        <div class="word-list" id="wordList"></div>
+      </section>
+
+      <section class="section dark-section" id="contrasts" aria-labelledby="contrasts-title">
+        <div class="section-heading">
+          <p class="kicker">A / B SOUND CHECK</p>
+          <h2 id="contrasts-title">不是翻譯選字，是判斷關係</h2>
+          <p>相近形式並排比較，先判斷主動性、起點、距離與說話者態度。</p>
+        </div>
+        <div class="contrast-grid" id="contrastList"></div>
+      </section>
+
+      <section class="section" id="patterns" aria-labelledby="patterns-title">
+        <div class="section-heading">
+          <p class="kicker">PHRASE AMPLIFIER</p>
+          <h2 id="patterns-title">先學會詞塊，再補文法名稱</h2>
+          <p>觀察附件裡的語法功能，再用全新的情境完成替換與口說。</p>
+        </div>
+        <div class="pattern-stack" id="patternList"></div>
+      </section>
+
+      <section class="section" id="transfer" aria-labelledby="transfer-title">
+        <div class="section-heading">
+          <p class="kicker">OFF-LYRIC TRANSFER</p>
+          <h2 id="transfer-title">離開原句，才知道是否真的會</h2>
+          <p>先用口語回答，再展開參考答案。答案不是唯一版本，重點是詞義與句型功能正確。</p>
+        </div>
+        <div class="transfer-list" id="transferList"></div>
+      </section>
+
+      <section class="section method-section" id="method" aria-labelledby="method-title">
+        <div class="section-heading">
+          <p class="kicker">LEARNING SCIENCE NOTES</p>
+          <h2 id="method-title">為什麼要這樣學</h2>
+          <p>把有效方法轉成手機可執行的行為，也保留研究限制，避免用「大腦科學」過度承諾。</p>
+        </div>
+        <div class="method-list">
+          <article><strong>01</strong><div><h3>提取後立即回饋</h3><p>先試著想，再看答案。困難項目降低一次資訊量，避免工作記憶被新字、讀音與長句同時塞滿。</p></div></article>
+          <article><strong>02</strong><div><h3>同一詞換線索</h3><p>日文、中文、對比詞、新情境輪流提問，避免只記得它出現在歌中的哪個位置。</p></div></article>
+          <article><strong>03</strong><div><h3>朗讀只負責「留下痕跡」</h3><p>讀出聲能增強記憶辨識度，但不保證理解；所以每次朗讀後必須再說意思或完成情境題。</p></div></article>
+          <article><strong>04</strong><div><h3>歌曲是入口，不是完整課程</h3><p>旋律與熟悉度可提供動機及情境，真正的學習仍由檢索、回饋、對比與新句產出完成。</p></div></article>
+          <article><strong>05</strong><div><h3>短回合＋間隔再學</h3><p>採 0／1／3／7／14 日作為起始節奏，再依「沒想起、想得久、直接想起」調整下一次出現時間。</p></div></article>
+        </div>
+
+        <details class="research-panel">
+          <summary>研究依據與教材轉譯</summary>
+          <div>
+            <p>上述間隔是便於自學的初始規則，不宣稱為所有學習者唯一最佳答案。</p>
+            <ul>
+              <li><a href="https://doi.org/10.1073/pnas.2413511121" target="_blank" rel="noreferrer">變化線索與外語字詞提取｜PNAS, 2024</a></li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/37440162/" target="_blank" rel="noreferrer">朗讀的記憶效果與理解限制｜Memory & Cognition, 2024</a></li>
+              <li><a href="https://www.nature.com/articles/s41539-023-00159-w" target="_blank" rel="noreferrer">提取練習與工作記憶負荷｜npj Science of Learning</a></li>
+              <li><a href="https://www.sciencedirect.com/science/article/pii/S0346251X24002173" target="_blank" rel="noreferrer">朗讀翻譯與第二語言字詞處理｜System, 2024</a></li>
+              <li><a href="https://doi.org/10.1016/j.system.2024.103350" target="_blank" rel="noreferrer">歌曲第二語言教學的證據限制｜System, 2024</a></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <strong>AIMYON研究所｜君はロックを聴かない</strong>
+      <p>附件字詞 × 原創教學例句 × 手機提取練習</p>
+    </footer>
+  </body>
+</html>
