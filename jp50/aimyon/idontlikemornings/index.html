@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>AIMYON研究所：失恋認知ネットワーク</title>
+  <style>
+    :root {
+      --bg-mustard: #DAB642; 
+      --text-green: #1A3B28; 
+      --card-bg: #FCFBF4;    
+      --accent-red: #D14936; 
+      --border-dark: #1A3B28;
+      --tab-inactive: #B89B36;
+    }
+
+    body {
+      background-color: var(--bg-mustard);
+      color: var(--text-green);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Hiragino Sans", "Noto Sans JP", sans-serif;
+      margin: 0;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      box-sizing: border-box;
+    }
+
+    h1 {
+      font-size: 1.6rem;
+      color: var(--text-green);
+      text-align: center;
+      margin: 10px 0 20px 0;
+      font-weight: 900;
+      letter-spacing: 1px;
+    }
+
+    .nav-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      max-width: 650px;
+      gap: 8px;
+      margin-bottom: 16px;
+    }
+
+    .tab-btn {
+      flex: 1 1 45%;
+      padding: 14px 0;
+      font-size: 1.1rem;
+      font-weight: 900;
+      color: var(--text-green);
+      background-color: var(--tab-inactive);
+      border: 3px solid var(--border-dark);
+      border-radius: 12px;
+      box-shadow: 3px 3px 0px var(--border-dark);
+      cursor: pointer;
+      text-align: center;
+    }
+
+    .tab-btn.active {
+      background-color: var(--card-bg);
+      color: var(--accent-red);
+      transform: translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--border-dark);
+      border-bottom-width: 5px;
+    }
+
+    .card-container {
+      width: 100%;
+      max-width: 650px;
+      background: var(--card-bg);
+      border: 4px solid var(--border-dark);
+      /* AIMYON手繪風格不規則邊框 */
+      border-radius: 255px 15px 225px 15px/15px 225px 15px 255px; 
+      box-shadow: 6px 6px 0px var(--border-dark);
+      padding: 24px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 20px;
+    }
+
+    .phase-title {
+      color: var(--accent-red);
+      font-size: 1.35rem;
+      font-weight: 900;
+      margin-bottom: 12px;
+      border-bottom: 2px dashed var(--accent-red);
+      padding-bottom: 8px;
+    }
+
+    .psycho-note {
+      background: var(--text-green);
+      color: var(--card-bg);
+      border: 3px solid var(--border-dark);
+      border-radius: 12px;
+      padding: 14px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .psycho-note span {
+      color: var(--bg-mustard);
+    }
+
+    .word-block {
+      border-bottom: 2px dashed var(--border-dark);
+      padding-bottom: 20px;
+      margin-bottom: 20px;
+    }
+    .word-block:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 10px;
+    }
+
+    .kanji-title {
+      font-size: 2.5rem;
+      color: var(--border-dark);
+      margin: 0 0 10px 0;
+      font-weight: 900;
+    }
+
+    .kanji-title rt {
+      font-size: 1rem;
+      color: var(--accent-red);
+    }
+
+    .lyrics-quote {
+      background: #F2EEDB;
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 6px solid var(--accent-red);
+      font-size: 1.4rem;
+      font-weight: 900;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .lyrics-quote rt {
+      font-size: 0.85rem;
+      color: var(--accent-red);
+    }
+
+    .breakdown {
+      font-size: 1.25rem;
+      line-height: 1.7;
+      font-weight: bold;
+    }
+
+    .breakdown strong {
+      color: var(--accent-red);
+      font-size: 1.3rem;
+    }
+
+    .controls {
+      display: flex;
+      width: 100%;
+      max-width: 650px;
+    }
+
+    .btn-audio {
+      flex: 1;
+      padding: 18px 0;
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--card-bg);
+      background-color: var(--accent-red);
+      border: 3px solid var(--border-dark);
+      border-radius: 16px;
+      box-shadow: 4px 4px 0px var(--border-dark);
+      cursor: pointer;
+    }
+
+    .btn-audio:active {
+      transform: translate(3px, 3px);
+      box-shadow: 1px 1px 0px var(--border-dark);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>★ AIMYON研究所：失恋認知ネットワーク ★</h1>
+  
+  <div class="nav-tabs">
+    <button class="tab-btn active" onclick="setPhase(1)" id="tab-1">① 認知失調</button>
+    <button class="tab-btn" onclick="setPhase(2)" id="tab-2">② 感官剝奪</button>
+    <button class="tab-btn" onclick="setPhase(3)" id="tab-3">③ 防衛崩潰</button>
+    <button class="tab-btn" onclick="setPhase(4)" id="tab-4">④ 依附渴望</button>
+  </div>
+
+  <div id="content-container" style="width:100%; max-width:650px; display:flex; flex-direction:column; align-items:center;"></div>
+
+  <script>
+    // 嚴格依據大腦神經科學與附件圖片擷取字詞所編寫的學習資料庫
+    const db = {
+      1: {
+        title: "第一階：認知失調與現實抗拒 (Cognitive Dissonance)",
+        psycho: "<span>【大腦神經機制】</span><br>大腦的海馬迴拒絕更新「失去對方」的基模 (Schema)。反覆閱讀舊訊息，會刺激多巴胺短暫分泌，但隨即與殘酷現實產生強烈的「認知失調」。",
+        words: [
+          {
+            kanji: "戻る",
+            reading: "もどる",
+            lyrics: "<ruby>戻<rt>もど</rt></ruby>っても<ruby>戻<rt>もど</rt></ruby>らないって",
+            breakdown: "<strong>戻（もど）っても：</strong>動詞て形＋も，代表「即使回去...」。<br><strong>戻（もど）らない：</strong>否定形「不會回來」。<br><strong>って：</strong>口語的引用助詞。<br><strong>【白話意境解析】</strong>：理智上清楚「就算想回到過去，也回不去了」，但大腦依然不斷在模擬這個不可能的迴圈。"
+          },
+          {
+            kanji: "履歴",
+            reading: "りれき",
+            lyrics: "<ruby>山程<rt>やまほど</rt></ruby>のLINEの<ruby>履歴<rt>りれき</rt></ruby>",
+            breakdown: "<strong>山程（やまほど）：</strong>名詞，堆積如山的意思。<br><strong>の：</strong>連接詞「的」。<br><strong>【白話意境解析】</strong>：翻閱著堆積如山的對話紀錄，大腦試圖在過去的數位足跡中，拼湊出對方還愛著自己的虛假證據，藉此抵抗現實。"
+          }
+        ]
+      },
+      2: {
+        title: "第二階：感官剝奪與情緒放大 (Sensory Deprivation)",
+        psycho: "<span>【大腦神經機制】</span><br>深夜時視覺刺激減少，前額葉的理性控制力下降，導致杏仁核（情緒中樞）極度活躍。聽覺的「留白」會讓孤獨感呈指數級放大。",
+        words: [
+          {
+            kanji: "寂しい",
+            reading: "さびしい",
+            lyrics: "<ruby>寂<rt>さび</rt></ruby>しい<ruby>夜<rt>よる</rt></ruby>にかけてる",
+            breakdown: "<strong>寂（さび）しい：</strong>形容詞，修飾後面的夜。<br><strong>かけてる：</strong>掛ける的進行式，這裡指「打電話」或「在心裡呼喚」。<br><strong>【白話意境解析】</strong>：在失去所有感官刺激的寂寞黑夜裡，大腦的防禦力降到最低，忍不住向那個不可能回應的人發出無聲的呼喚。"
+          },
+          {
+            kanji: "囁き声",
+            reading: "ささやきごえ",
+            lyrics: "ここは<ruby>囁<rt>ささや</rt></ruby>き<ruby>声<rt>ごえ</rt></ruby>も<ruby>届<rt>とど</rt></ruby>かなくて",
+            breakdown: "<strong>ここ：</strong>這裡（指現在這個被孤立的空間）。<br><strong>届（とど）かなくて：</strong>届く（傳達、抵達）的否定中止形。<br><strong>【白話意境解析】</strong>：連最輕微的耳語聲都無法傳達到這個空間。聽覺的徹底剝奪，象徵著兩人物理與心理距離的絕對斷裂。"
+          }
+        ]
+      },
+      3: {
+        title: "第三階：自我防衛機制與崩潰 (Defense Breakdown)",
+        psycho: "<span>【大腦神經機制】</span><br>大腦會啟動「反向作用」來偽裝堅強。但當認知負荷超載時，神經系統會強制透過流淚來排出皮質醇（壓力荷爾蒙），進行自我修復。",
+        words: [
+          {
+            kanji: "強がる",
+            reading: "つよがる",
+            lyrics: "なのに<ruby>私達<rt>わたしたち</rt></ruby>は<ruby>強<rt>つよ</rt></ruby>がって",
+            breakdown: "<strong>なのに：</strong>接續詞，表示「明明如此，卻...」。<br><strong>強（つよ）がって：</strong>字尾的「がる」表示將內心感受刻意流露於外表，指硬撐著裝出強勢的樣子。<br><strong>【白話意境解析】</strong>：明明心裡痛得要命，我們卻還要戴上面具，死撐著不肯示弱，這是大腦最耗能的防衛狀態。"
+          },
+          {
+            kanji: "涙",
+            reading: "なみだ",
+            lyrics: "<ruby>涙<rt>なみだ</rt></ruby><ruby>流<rt>なが</rt></ruby>すよね",
+            breakdown: "<strong>流（なが）す：</strong>動詞，使之流下。<br><strong>よね：</strong>尋求共鳴與認同的終助詞。<br><strong>【白話意境解析】</strong>：偽裝的極限一到，眼淚終究還是會流下來的吧。這是大腦放棄防禦、開始接納現實並排解壓力的生理信號。"
+          }
+        ]
+      },
+      4: {
+        title: "第四階：存在焦慮與依附渴望 (Attachment Desire)",
+        psycho: "<span>【大腦神經機制】</span><br>將分手歸咎於「自己是壞人」，是心理學上奪回「控制感」的機制。剝除所有偽裝後，底層代碼永遠是哺乳類對「安全依附」的終極渴望。",
+        words: [
+          {
+            kanji: "悪い女",
+            reading: "わるいおんな",
+            lyrics: "<ruby>私<rt>わたし</rt></ruby>は<ruby>悪<rt>わる</rt></ruby>い<ruby>女<rt>おんな</rt></ruby>？",
+            breakdown: "<strong>悪（わる）い：</strong>形容詞，不好的、有罪咎的。<br><strong>【白話意境解析】</strong>：「難道這一切都是因為我是個壞女人嗎？」透過自我貶低，試圖為這段失敗的關係找到一個大腦能接受的因果邏輯，來緩解未知帶來的恐懼。"
+          },
+          {
+            kanji: "愛される",
+            reading: "あいされる",
+            lyrics: "ちゃんと<ruby>愛<rt>あい</rt></ruby>されたいだけ",
+            breakdown: "<strong>ちゃんと：</strong>副詞，好好地、認真地。<br><strong>愛（あい）されたい：</strong>愛する（愛）的受身形（被愛）＋たい（想要）。<br><strong>だけ：</strong>副助詞，僅僅、只是。<br><strong>【白話意境解析】</strong>：剝開所有的爭吵、謊言與逞強，我大腦深處唯一的指令，就只是「想要被你好好地愛著」而已啊。"
+          }
+        ]
+      }
+    };
+
+    function setPhase(phaseNum) {
+      // Update Tab Styles
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.getElementById('tab-' + phaseNum).classList.add('active');
+      
+      const data = db[phaseNum];
+      
+      let html = `<div class="card-container">
+                    <div class="phase-title">${data.title}</div>
+                    <div class="psycho-note">${data.psycho}</div>`;
+      
+      data.words.forEach(w => {
+        html += `<div class="word-block">
+                   <h2 class="kanji-title"><ruby>${w.kanji}<rt>${w.reading}</rt></ruby></h2>
+                   <div class="lyrics-quote">${w.lyrics}</div>
+                   <div class="breakdown">${w.breakdown}</div>
+                 </div>`;
+      });
+      
+      html += `</div>
+               <div class="controls">
+                 <button class="btn-audio" onclick="playAudio(${phaseNum})">🔊 播放本階段純日文朗讀</button>
+               </div>`;
+               
+      document.getElementById('content-container').innerHTML = html;
+    }
+
+    function playAudio(phaseNum) {
+      if (!('speechSynthesis' in window)) {
+        alert('您的瀏覽器不支援語音功能');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const data = db[phaseNum];
+      let text = "";
+      
+      // Extract clean Japanese text without HTML tags for TTS
+      data.words.forEach(w => {
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = w.lyrics;
+        text += tempDiv.innerText + "。 ";
+      });
+      
+      const utterance = new SpeechSynthesisUtterance(text);
+      utterance.lang = 'ja-JP';
+      utterance.rate = 0.8;
+      window.speechSynthesis.speak(utterance);
+    }
+
+    // Init first phase
+    setPhase(1);
+  </script>
+</body>
+</html>
