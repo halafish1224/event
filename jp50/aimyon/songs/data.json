@@ -1,0 +1,29 @@
+[
+  {
+    "id": "kimi-rock",
+    "title": "君はロックを聴かない",
+    "subtitle": "你不上搖滾樂",
+    "url": "http://go.itigre.com/Kimi-Rock",
+    "tags": ["經典必聽", "歌詞拆解", "文法特訓"],
+    "sticker": "🎸",
+    "color": "#f39c12"
+  },
+  {
+    "id": "morning",
+    "title": "朝が嫌い",
+    "subtitle": "討厭早晨",
+    "url": "http://go.itigre.com/idontlikemornings",
+    "tags": ["心情歌曲", "單字積累"],
+    "sticker": "☕",
+    "color": "#3498db"
+  },
+  {
+    "id": "marigold",
+    "title": "マリーゴールド",
+    "subtitle": "金盞花",
+    "url": "http://go.itigre.com/marigold",
+    "tags": ["百萬名曲", "聽歌學日文"],
+    "sticker": "🌼",
+    "color": "#e67e22"
+  }
+]
