@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#17162a" />
+    <meta
+      name="description"
+      content="以《朝が嫌い》附件字詞重新編排的 14 天手機日文教材，練習夜與朝、家與離開、等待、願望和未來表達。"
+    />
+    <title>AIMYON研究所｜朝が嫌い・夜與朝的記憶交接課</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#practice">直接開始練習</a>
+
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="回到頁首">
+        <span class="brand-mark" aria-hidden="true">AM</span>
+        <span><strong>AIMYON研究所</strong><small>NIGHT → MORNING LAB</small></span>
+      </a>
+      <button class="quiet-button" id="resetProgress" type="button">重設進度</button>
+    </header>
+
+    <main id="top">
+      <section class="practice" id="practice" aria-labelledby="practice-title">
+        <div class="sky-clock" aria-hidden="true">
+          <span>22:40</span><i></i><span>06:10</span>
+        </div>
+        <div class="practice-copy">
+          <p class="eyebrow">MEMORY HANDOFF 01</p>
+          <h1 id="practice-title">把今晚記得的，<br />交給明天早上的自己。</h1>
+          <p>一次只做 6 題。先回想 5–8 秒，再開啟答案；不用把歌詞背成一整段。</p>
+        </div>
+
+        <div class="progress-block">
+          <div class="progress-copy">
+            <span>已穩定字詞</span>
+            <strong id="progressText">0 / 0</strong>
+          </div>
+          <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+          <p id="dueText">正在整理今天的題目…</p>
+        </div>
+
+        <article class="memory-card" aria-live="polite">
+          <header>
+            <span id="cardMode">日文 → 中文</span>
+            <span id="cardPosition">1 / 6</span>
+          </header>
+          <div class="card-prompt">
+            <small id="promptInstruction">先說出讀音與意思</small>
+            <h2 id="promptText" lang="ja">—</h2>
+            <p id="promptSupport">想起後，說一個與自己生活有關的情境。</p>
+          </div>
+          <button class="reveal-button" id="revealAnswer" type="button">開啟回饋</button>
+
+          <div class="answer" id="answerArea" hidden>
+            <div class="answer-heading">
+              <div><strong id="answerTerm" lang="ja">—</strong><span id="answerReading">—</span></div>
+              <span id="answerPos">—</span>
+            </div>
+            <p class="answer-meaning" id="answerMeaning">—</p>
+            <p id="answerNote">—</p>
+            <div class="example-box">
+              <span>NEW CONTEXT</span>
+              <p lang="ja" id="answerExample">—</p>
+              <p id="answerExampleZh">—</p>
+            </div>
+            <fieldset class="ratings">
+              <legend>這次提取得如何？</legend>
+              <button type="button" data-rating="again">沒想起來</button>
+              <button type="button" data-rating="hard">想得較久</button>
+              <button type="button" data-rating="good">直接想起</button>
+            </fieldset>
+          </div>
+        </article>
+
+        <div class="handoff" aria-labelledby="handoff-title">
+          <div>
+            <p class="eyebrow">SLEEP / WAKE CUE</p>
+            <h2 id="handoff-title">今晚 3 詞，明早再取一次</h2>
+            <p>睡前關掉答案，口頭回想 3 個詞；維持正常睡眠，不需整夜播放音訊。醒後用 1 分鐘再測同三詞。</p>
+          </div>
+          <div class="handoff-actions">
+            <button type="button" id="nightDone" data-check="night">今晚已回想</button>
+            <button type="button" id="morningDone" data-check="morning">明早已再測</button>
+          </div>
+          <p class="handoff-status" id="handoffStatus" aria-live="polite">尚未開始今晚的記憶交接。</p>
+        </div>
+      </section>
+
+      <nav class="jump-nav" aria-label="教材目錄">
+        <a href="#course">14天</a>
+        <a href="#words">字詞</a>
+        <a href="#contrasts">對比</a>
+        <a href="#patterns">語法</a>
+        <a href="#transfer">活用</a>
+        <a href="#method">方法</a>
+      </nav>
+
+      <section class="overview" aria-labelledby="overview-title">
+        <p class="eyebrow">朝が嫌い</p>
+        <h2 id="overview-title">不是背一首歌，<br />是學會描述一段夜與朝。</h2>
+        <p>附件字詞重新放進「時間、房間與物件、關係情緒、動作與狀態、說話態度」五條檢索路徑。例句全部改寫為日常情境。</p>
+        <div class="fact-strip" aria-label="教材規模">
+          <div><strong id="wordCount">—</strong><span>字詞</span></div>
+          <div><strong id="patternCount">—</strong><span>語法詞塊</span></div>
+          <div><strong id="contrastCount">—</strong><span>辨義對比</span></div>
+          <div><strong>6–9</strong><span>分鐘／次</span></div>
+        </div>
+        <p class="scope-note">著作權範圍：只整理附件可見的單字、必要短語與語法功能，不收錄或依原順序重製完整歌詞。涉及「病、死にかける」等表現時，僅作為文學語言分析，不作醫療判斷。</p>
+      </section>
+
+      <section class="section" id="course" aria-labelledby="course-title">
+        <div class="section-heading">
+          <p class="eyebrow">14-DAY DAWN PLAN</p>
+          <h2 id="course-title">從時間定位，到寫給明天的短箋</h2>
+          <p>正式課程前先做診斷。每日都混入舊詞，並讓同一詞改由讀音、中文、對比或新場景重新出現。</p>
+        </div>
+        <div class="timeline" id="courseList"></div>
+      </section>
+
+      <section class="section words-section" id="words" aria-labelledby="words-title">
+        <div class="section-heading">
+          <p class="eyebrow">WORD CONSTELLATIONS</p>
+          <h2 id="words-title">附件字詞，換一張記憶地圖</h2>
+          <p>先依主題縮小搜尋範圍，再觀察讀音、詞性、搭配與新例句。</p>
+        </div>
+        <div class="word-tools">
+          <label>
+            <span class="visually-hidden">搜尋字詞、讀音或中文意思</span>
+            <input id="wordSearch" type="search" placeholder="搜尋：朝、あさ、早晨…" />
+          </label>
+          <div class="filter-row" id="clusterFilters"></div>
+        </div>
+        <p class="result-count" id="resultCount" aria-live="polite"></p>
+        <div class="word-list" id="wordList"></div>
+      </section>
+
+      <section class="section contrast-section" id="contrasts" aria-labelledby="contrasts-title">
+        <div class="section-heading">
+          <p class="eyebrow">DAWN / DUSK PAIRS</p>
+          <h2 id="contrasts-title">中文相近，不代表日文能互換</h2>
+          <p>每組先判斷時間、視角、主動性或語氣，再看說明。</p>
+        </div>
+        <div class="contrast-grid" id="contrastList"></div>
+      </section>
+
+      <section class="section" id="patterns" aria-labelledby="patterns-title">
+        <div class="section-heading">
+          <p class="eyebrow">GRAMMAR IN LOW LIGHT</p>
+          <h2 id="patterns-title">用短詞塊承接複雜感受</h2>
+          <p>先辨認句型要完成的溝通工作，再看變化規則；每個示例都離開原歌詞語境。</p>
+        </div>
+        <div class="pattern-stack" id="patternList"></div>
+      </section>
+
+      <section class="section transfer-section" id="transfer" aria-labelledby="transfer-title">
+        <div class="section-heading">
+          <p class="eyebrow">MORNING TRANSFER</p>
+          <h2 id="transfer-title">不靠原句，也能說新的事</h2>
+          <p>先口頭作答，再展開參考答案。重點是詞義與語法功能正確，不要求只有一種說法。</p>
+        </div>
+        <div class="transfer-list" id="transferList"></div>
+      </section>
+
+      <section class="section method-section" id="method" aria-labelledby="method-title">
+        <div class="section-heading">
+          <p class="eyebrow">LEARNING SCIENCE, CAREFULLY</p>
+          <h2 id="method-title">方法有依據，承諾要保守</h2>
+          <p>研究被轉成手機上可以執行的學習行為；沒有把單一研究包裝成「最適合所有人的大腦捷徑」。</p>
+        </div>
+        <div class="method-list">
+          <article><strong>01</strong><div><h3>先提取，再立即回饋</h3><p>先試著說答案，之後才揭示。回饋會補正錯誤；一次只呈現一個判斷，減少工作記憶同時處理讀音、意思和長句的負擔。</p></div></article>
+          <article><strong>02</strong><div><h3>0／1／3／7／14 日只是起始節奏</h3><p>「沒想起來」立刻重排；「想得較久」隔天再見；「直接想起」逐步拉長。這是可調整的自學規則，不宣稱唯一最佳間隔。</p></div></article>
+          <article><strong>03</strong><div><h3>睡眠支持鞏固，不等於睡著也能上課</h3><p>把睡前 3 詞當作一天的收尾，醒後再測。教材不要求睡眠中播放音訊，也不把較好的保留誤說成隔天一定更會學新詞。</p></div></article>
+          <article><strong>04</strong><div><h3>同一詞更換線索</h3><p>日文、中文、對比、時間軸與全新情境輪流出題，降低只記得「它在歌詞哪一行」的依賴。</p></div></article>
+          <article><strong>05</strong><div><h3>情緒提供脈絡，不替人下診斷</h3><p>先辨認字詞在敘事中的視角，再轉寫成安全的日常例句。強烈表現只作語言與文學分析。</p></div></article>
+        </div>
+
+        <details class="research-panel">
+          <summary>研究來源與教材轉譯</summary>
+          <div>
+            <ul>
+              <li><a href="https://www.nature.com/articles/s41599-024-03983-6" target="_blank" rel="noreferrer">提取練習的回饋時機｜Humanities and Social Sciences Communications, 2024</a></li>
+              <li><a href="https://www.nature.com/articles/s41539-024-00268-0" target="_blank" rel="noreferrer">測驗效應、回饋與工作記憶｜npj Science of Learning, 2024</a></li>
+              <li><a href="https://www.nature.com/articles/s41539-024-00244-8" target="_blank" rel="noreferrer">睡眠中的記憶再活化研究回顧｜npj Science of Learning, 2024</a></li>
+              <li><a href="https://pubmed.ncbi.nlm.nih.gov/40675054/" target="_blank" rel="noreferrer">睡眠、保留與隔日新學習的限制｜Memory, 2025</a></li>
+              <li><a href="https://doi.org/10.1073/pnas.2413511121" target="_blank" rel="noreferrer">變化檢索與外語字詞｜PNAS, 2024</a></li>
+              <li><a href="https://doi.org/10.1016/j.system.2024.103350" target="_blank" rel="noreferrer">歌曲用於第二語言教學的系統性回顧｜System, 2024</a></li>
+            </ul>
+          </div>
+        </details>
+      </section>
+    </main>
+
+    <footer>
+      <strong>AIMYON研究所｜朝が嫌い</strong>
+      <p>附件字詞 × 原創教學例句 × 夜與朝的記憶交接</p>
+    </footer>
+  </body>
+</html>
