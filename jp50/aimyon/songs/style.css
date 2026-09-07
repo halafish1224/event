@@ -83,11 +83,13 @@ body {
 
 /* 拍立得 3D 卡片樣式 */
 .card-item {
+  --song-color: #1a1a1a;
   background: var(--card-bg);
   padding: 20px;
   border-radius: 4px;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-  border: 2px solid #1a1a1a;
+  border: 2px solid var(--song-color);
+  border-top-width: 7px;
   position: relative;
   text-decoration: none;
   color: inherit;
@@ -125,6 +127,12 @@ body {
   filter: drop-shadow(2px 2px 0px rgba(0,0,0,0.2));
 }
 
+.link-label {
+  color: var(--song-color);
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
 .song-title {
   font-size: 1.6rem;
   font-weight: bold;
@@ -147,7 +155,8 @@ body {
 
 .tag {
   background: #f0f0f0;
-  border: 1px solid #333;
+  background: color-mix(in srgb, var(--song-color) 12%, white);
+  border: 1px solid var(--song-color);
   border-radius: 12px;
   padding: 3px 10px;
   font-size: 0.85rem;
@@ -155,7 +164,12 @@ body {
 
 /* hover 黑膠光澤線條感 */
 .card-item:hover {
-  box-shadow: 0 20px 35px rgba(0,0,0,0.18);
+  box-shadow: 0 20px 35px color-mix(in srgb, var(--song-color) 25%, transparent);
+}
+
+.card-item:focus-visible {
+  outline: 4px solid var(--song-color);
+  outline-offset: 5px;
 }
 
 footer {
@@ -169,4 +183,11 @@ footer {
 @media (max-width: 600px) {
   .title { font-size: 2rem; }
   .grid-container { grid-template-columns: 1fr; }
+  .container { padding: 28px 16px; }
+  .card-item { min-height: 240px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .card-item { transition: none; }
+  #doodleCanvas { display: none; }
 }

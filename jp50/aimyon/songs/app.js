@@ -3,28 +3,65 @@ document.addEventListener('DOMContentLoaded', () => {
   initCanvasEffect();
 });
 
+function escapeHtml(value) {
+  return String(value).replace(/[&<>"']/g, character => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#039;'
+  })[character]);
+}
+
+function normalizeUrl(value) {
+  const url = new URL(value, window.location.href);
+  if (!['http:', 'https:'].includes(url.protocol)) {
+    throw new Error('不支援的連結格式');
+  }
+  return url.href;
+}
+
+function normalizeColor(value) {
+  return /^#[0-9a-f]{6}$/i.test(value) ? value : '#333333';
+}
+
 // 1. 從 JSON 動態載入連結資料
 async function fetchDataAndRender() {
   const container = document.getElementById('cardsGrid');
   try {
     const response = await fetch('data.json');
+    if (!response.ok) {
+      throw new Error(`歌曲資料讀取失敗：${response.status}`);
+    }
     const data = await response.json();
+    if (!Array.isArray(data)) {
+      throw new Error('歌曲資料必須是陣列');
+    }
 
-    container.innerHTML = data.map(item => `
-      <a href="${item.url}" target="_blank" rel="noopener noreferrer" class="card-item" data-tilt>
+    container.innerHTML = data.map(item => {
+      const title = escapeHtml(item.title);
+      const subtitle = escapeHtml(item.subtitle);
+      const sticker = escapeHtml(item.sticker || '🎵');
+      const tags = Array.isArray(item.tags) ? item.tags : [];
+      const color = normalizeColor(item.color);
+      const url = normalizeUrl(item.url);
+
+      return `
+      <a href="${url}" target="_blank" rel="noopener noreferrer nofollow" class="card-item" data-tilt data-song-id="${escapeHtml(item.id)}" style="--song-color:${color}" aria-label="開啟 ${title}｜${subtitle}">
         <div>
           <div class="card-header">
-            <span class="sticker-icon">${item.sticker || '🎵'}</span>
-            <span style="font-size:0.9rem; font-weight:bold; color:${item.color || '#333'}">AIMYON LINK ↗</span>
+            <span class="sticker-icon" aria-hidden="true">${sticker}</span>
+            <span class="link-label">AIMYON LINK ↗</span>
           </div>
-          <h2 class="song-title">${item.title}</h2>
-          <p class="song-subtitle">${item.subtitle}</p>
+          <h2 class="song-title">${title}</h2>
+          <p class="song-subtitle">${subtitle}</p>
         </div>
         <div class="tags">
-          ${item.tags.map(tag => `<span class="tag">#${tag}</span>`).join('')}
+          ${tags.map(tag => `<span class="tag">#${escapeHtml(tag)}</span>`).join('')}
         </div>
       </a>
-    `).join('');
+    `;
+    }).join('');
 
     init3DTilt();
   } catch (err) {
@@ -34,6 +71,8 @@ async function fetchDataAndRender() {
 
 // 2. 酷炫 3D 視差傾斜特效 (Tilt Effect)
 function init3DTilt() {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
   const cards = document.querySelectorAll('.card-item');
   cards.forEach(card => {
     card.addEventListener('mousemove', (e) => {
@@ -59,7 +98,9 @@ function init3DTilt() {
 // 3. Canvas 游標繪圖動態 (手繪塗鴉流星微粒)
 function initCanvasEffect() {
   const canvas = document.getElementById('doodleCanvas');
+  if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const ctx = canvas.getContext('2d');
+  if (!ctx) return;
 
   function resize() {
     canvas.width = window.innerWidth;
@@ -76,7 +117,7 @@ function initCanvasEffect() {
         x: e.clientX,
         y: e.clientY,
         size: Math.random() * 6 + 2,
-        color: ['#ffde59', '#ff5757', '#3498db', '#e67e22'][Math.floor(Math.random() * 4)],
+        color: ['#ffde59', '#d94a36', '#3498db', '#e67e22', '#225c48'][Math.floor(Math.random() * 5)],
         vx: (Math.random() - 0.5) * 2,
         vy: (Math.random() - 0.5) * 2,
         life: 1
