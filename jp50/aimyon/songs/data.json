@@ -26,4 +26,22 @@
     "sticker": "🌼",
     "color": "#e67e22"
   }
+    {
+    "id": "https://event.itigre.com/jp50/aimyon/ai-no-hana/",
+    "title": "あいのはな",
+    "subtitle": "愛の花",
+    "url": "http://go.itigre.com/ai-no-hana",
+    "tags": ["愛歌", "聽歌學日文"],
+    "sticker": "🌼",
+    "color": "#e11e22"
+  }
+    {
+    "id": "ichi-ni-tsuite",
+    "title": "いちについて",
+    "subtitle": "金盞花",
+    "url": "http://go.itigre.com/ichi-ni-tsuite",
+    "tags": ["愛歌", "聽歌學日文"],
+    "sticker": "🌼",
+    "color": "#e6aa12"
+  }
 ]
