@@ -1,0 +1,3 @@
+:root{--accent:#865026;--gold:#deb35c;--paper:#fbf9f5;--ink:#382a20;--muted:#66584c;--line:#ded0bf}
+.note,.prompt{background:#f2eade}h1{letter-spacing:.025em}h1 rt{font-size:.22em;letter-spacing:.08em}.map-card{border-top-color:var(--accent)}.map-card:last-child{border-top-color:var(--accent)}.table-wrap{max-width:100%;overflow-x:auto}table{width:100%;border-collapse:collapse;table-layout:fixed;background:white;font-size:.9rem}caption{text-align:left;padding:10px 0;color:var(--muted)}th,td{padding:12px 8px;border:1px solid var(--line);vertical-align:top;overflow-wrap:anywhere}th{background:#f2eade;text-align:left}thead th{background:var(--accent);color:white}.lyric-group{border-top-color:var(--accent)}
+@media(max-width:400px){th,td{padding:10px 6px;font-size:.85rem}}
