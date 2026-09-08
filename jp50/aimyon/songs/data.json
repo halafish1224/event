@@ -43,5 +43,14 @@
     "tags": ["假名標注", "句構拆解", "主動回想"],
     "sticker": "🎸",
     "color": "#d94a36"
+  },
+  {
+    "id": "ring-ding",
+    "title": "RING DING",
+    "subtitle": "直率的關心｜逐句假名與語氣轉換",
+    "url": "https://event.itigre.com/jp50/aimyon/ring-ding/",
+    "tags": ["完整語法", "口語辨析", "主動回想"],
+    "sticker": "♫",
+    "color": "#5546a3"
   }
 ]
