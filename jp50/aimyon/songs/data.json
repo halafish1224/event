@@ -52,5 +52,14 @@
     "tags": ["完整語法", "口語辨析", "主動回想"],
     "sticker": "♫",
     "color": "#5546a3"
+  },
+  {
+    "id": "rhythm64",
+    "title": "リズム64",
+    "subtitle": "自己的節奏｜長句拆讀與意象連結",
+    "url": "https://event.itigre.com/jp50/aimyon/rhythm64/",
+    "tags": ["完整假名", "長句拆解", "主動回想"],
+    "sticker": "64",
+    "color": "#146c75"
   }
 ]
