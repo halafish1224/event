@@ -67,3 +67,23 @@ concepts.push(
  c('prayer','wishes','29｜～ますように：祈願','祈願代表結果確定嗎？','ますように表示祈願，不是未來預測；與希望對方做事的てほしい分開。','実{みの}りますように。','願能有成果。','改成願明天放晴，並說明是否保證天氣。','明日{あした}は晴{は}れますように。這是希望，不是保證。',[['hadaka-no-kokoro','g-prayer'],['ai-no-hana','g-purpose']],[['before','wish'],['contrast','te-hoshii']]),
  c('regret','change','30｜～なきゃよかった：後悔','しなきゃ每次都是必須做嗎？','なきゃよかった還原為なければよかった，表早知道不做就好了；なきゃ（いけない）才常表示義務。必須讀到後項。','急{いそ}がなければよかった。','早知道別著急就好了。','用自己的話區別しなきゃよかった與しなきゃ（いけない）。','前者後悔已做；後者表必須做。不能只背なきゃ的單一中文。',[['hadaka-no-kokoro','g-regret'],['rhythm64','g-nakya']],[['before','condition'],['contrast','evidence']])
 );
+// September screenshot collection; stable IDs keep existing progress.
+songs.push({"id":"sora-no-aosa","title":"空の青さを知る人よ","color":"#295e86","lead":"曾經不喜歡的事，如今成為尋找對方的線索。","path":"sora-no-aosa"},{"id":"konya-konomama","title":"今夜このまま","color":"#814c39","lead":"說不出口的心意，在夜裡尋找暫停的地方。","path":"konya-konomama"},{"id":"futaba","title":"双葉","color":"#3f704b","lead":"在成長與告別之間，把祝福留給未來的你。","path":"futaba"},{"id":"aini-ikunoni","title":"会いに行くのに","color":"#755789","lead":"未交出的物件，與仍想前往的心。","path":"aini-ikunoni"},{"id":"yakou-bus","title":"夜行バス","color":"#806338","lead":"漫長車程裡，帶著害怕仍然追夢。","path":"yakou-bus"},{"id":"sakura-ga-furu-yoru-wa","title":"桜が降る夜は","color":"#92516e","lead":"花落的夜裡，想見你，卻仍在想該不該說。","path":"sakura-ga-furu-yoru-wa"});
+
+for(const [id,refs] of [
+ ['noni',[['sora-no-aosa','g-contrast'],['aini-ikunoni','g-contrast']]],
+ ['passive',[['sora-no-aosa','g-passive'],['konya-konomama','g-passive'],['sakura-ga-furu-yoru-wa','g-passive']]],
+ ['condition',[['futaba','g-condition'],['aini-ikunoni','g-condition']]],
+ ['gentle',[['futaba','g-request']]],
+ ['state',[['yakou-bus','g-state']]],
+ ['metaphor',[['konya-konomama','g-metaphor'],['sakura-ga-furu-yoru-wa','g-metaphor']]],
+ ['te-iku',[['sora-no-aosa','g-teiku'],['konya-konomama','g-teiku']]]
+])concepts.find(c=>c.id===id).refs.push(...refs);
+concepts.push(
+ c('missed-chance','change','31｜～そびれる：沒做成的事','沒交出，就一定是忘記嗎？','ます形去ます＋そびれる常表示錯過機會；損ねる可失敗或沒做成，忘れる則是忘記。','渡{わた}しそびれた。','沒能交出去。','比較渡しそびれた與渡し忘れた。','前者錯過機會；後者忘記。不應自動互換原因。',[['aini-ikunoni','g-failure'],['sketch','g-compound']],[['before','memory-time'],['contrast','te-shimau']]),
+ c('mama','daily','32｜～まま：狀態沒有改變','維持原狀一定是故意嗎？','た形＋まま描述某狀態持續；このまま是照現在這樣。意圖需另外判斷。','濡{ぬ}れたまま。','仍然濕著。','如果衣服仍濕著，能否直接斷言故意不換？','不能，まま只提供狀態，未提供動機。',[['aini-ikunoni','g-mama'],['konya-konomama','g-mama']],[['before','state'],['contrast','change-state']]),
+ c('beki','perspective','33｜～べきなのか：應不應該','問該不該，代表已經決定嗎？','べき表應然；なのか表示正在判斷，不等於直接下命令。與てもいい的許可分開。','今{いま}話{はな}すべきなのか。','現在該說嗎？','用中文分開應該說與可以說。','前者判斷適當性，後者詢問許可。',[['sakura-ga-furu-yoru-wa','g-beki'],['sketch','g-permission']],[['before','permission'],['contrast','wish']]),
+ c('benefit-direction','voice','34｜てあげる／てくれる：交換視角','同樣是幫助，誰在看這個行動？','てあげる從給予方描述，てくれる從受惠一方描述。先圈行動者再說受惠者。','友達{ともだち}が聞{き}いてくれた。','朋友聽我說。','這句是我聽朋友，還是朋友聽我？','朋友是行動者，我是受惠者。',[['futaba','g-kureru'],['konya-konomama','g-kureru']],[['before','kureru'],['contrast','te-hoshii']]),
+ c('time-negative','daily','35｜まだ…ない：還沒有','還沒一小時，是永遠不會過一小時嗎？','まだ…ない以目前為止為時間框架；之後可能改變。注意量詞讀音與單程／來回差異。','まだ着{つ}いていない。','還沒到。','將「還沒到」和「不打算去」分開說明。','前者目前狀態，後者意圖；不能混為一談。',[['yakou-bus','g-time'],['sakura-ga-furu-yoru-wa','g-time']],[['before','state'],['next','memory-time']]),
+ c('crossline','scenery','36｜跨行的修飾：接到中心詞','換行就表示句子結束嗎？','の、が、を或連用形常跨行接續。先讀述語與中心名詞，再安排中文語序。','君{きみ}が知{し}っている空{そら}。','你所知道的天空。','中心名詞是君還是空？','空是中心；君が知っている是修飾子句。',[['sora-no-aosa','g-modifier'],['yakou-bus','g-nominal']],[['before','noun-modifier'],['next','evidence']])
+);

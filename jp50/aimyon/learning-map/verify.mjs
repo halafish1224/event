@@ -8,14 +8,14 @@ import {createRequire} from 'node:module';
 import {songs,routes,concepts} from './content.mjs';
 const root=resolve(fileURLToPath(new URL('../../../',import.meta.url)));
 const html=readFileSync(new URL('index.html',import.meta.url),'utf8');
-assert.equal(songs.length,12);assert.equal(routes.length,6);assert.equal(concepts.length,30);
+assert.equal(songs.length,18);assert.equal(routes.length,6);assert.equal(concepts.length,36);
 const ids=[...html.matchAll(/\sid="([^"]+)"/g)].map(m=>m[1]);assert.equal(ids.length,new Set(ids).size);
 assert(!/[{}]/.test(html),'Unconverted reading notation');
 for(const m of html.matchAll(/href="#([^"]+)"/g))assert(ids.includes(m[1]),m[1]);
 for(const s of songs)assert(concepts.some(c=>c.refs.some(r=>r[0]===s.id)),s.id);
 console.log('PASS: counts, unique IDs, internal links, readings, all songs covered.');
 // Audit the new song and its links, including query-string map entry points.
-for(const slug of ['hikarimono','sketch','hadaka-no-kokoro']){
+for(const slug of ['hikarimono','sketch','hadaka-no-kokoro','sora-no-aosa','konya-konomama','futaba','aini-ikunoni','yakou-bus','sakura-ga-furu-yoru-wa']){
 const newSongURL=new URL(`../${slug}/index.html`,import.meta.url);
 const newSong=readFileSync(newSongURL,'utf8');
 const songIds=[...newSong.matchAll(/\sid="([^"]+)"/g)].map(m=>m[1]);
@@ -46,9 +46,23 @@ try{
  songPage.on('pageerror',e=>errors.push(e.message));
  await songPage.goto(url.replace('learning-map/','songs/'));
  await songPage.waitForSelector('[data-song-id="hadaka-no-kokoro"]');
- assert.equal(await songPage.locator('[data-song-id]').count(),12);
- assert((await songPage.locator('.learning-map-entry').textContent()).includes('30 個概念'));
+ assert.equal(await songPage.locator('[data-song-id]').count(),18);
+ assert((await songPage.locator('.learning-map-entry').textContent()).includes('36 個概念'));
  assert.equal(await songPage.locator('[data-song-id="hadaka-no-kokoro"]').getAttribute('href'),'https://event.itigre.com/jp50/aimyon/hadaka-no-kokoro/');
+ const batch=JSON.parse(readFileSync(new URL('../song-batch/report.json',import.meta.url),'utf8'));
+ for(const item of batch){
+ await songPage.goto(url.replace('learning-map/',item.id+'/'));
+ assert.equal(await songPage.locator('.line').count(),item.lines);
+ assert.equal(await songPage.locator('.word').count(),item.words);
+ for(const width of [320,360,390,768,1024]){await songPage.setViewportSize({width,height:900});assert(await songPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${item.id} overflow ${width}`);}
+ await songPage.setViewportSize({width:360,height:800});await songPage.screenshot({path:join(tmpdir(),`aimyon-${item.id}-mobile.png`)});
+ await songPage.locator('#word-search').fill('not-found');assert.equal(await songPage.locator('.word:visible').count(),0);
+ await songPage.evaluate(()=>location.hash='w-1');await songPage.waitForFunction(()=>!document.getElementById('w-1').hidden);
+ await songPage.locator('#reading-toggle').click();assert(await songPage.locator('body').evaluate(e=>e.classList.contains('hide-reading')));
+ await songPage.locator('#translation-toggle').click();assert.equal(await songPage.locator('.translation:visible').count(),0);
+ await songPage.goto(url+'?song='+item.id);await songPage.waitForSelector('.enhanced');assert((await songPage.locator('.concept:visible').count())>0);
+ }
+ console.log('PASS: six new lessons, line/word counts, five widths, controls, word reveal and cross-song maps.');
  await songPage.goto(url.replace('learning-map/','hadaka-no-kokoro/'));
  assert.equal(await songPage.locator('.phrase').count(),35);
  assert.equal(await songPage.locator('.word').count(),45);
@@ -58,7 +72,7 @@ try{
  await songPage.locator('#reading-toggle').click();assert(await songPage.locator('body').evaluate(e=>e.classList.contains('hide-reading')));
  await songPage.locator('#translation-toggle').click();assert.equal(await songPage.locator('.translation:visible').count(),0);
  await songPage.goto(url+'?song=hadaka-no-kokoro#routes');await songPage.waitForSelector('.enhanced');assert.equal(await songPage.locator('.concept:visible').count(),8);
- console.log('PASS: 12 catalog cards, new URL, 30-concept entry, hadaka mobile/search/controls/map.');
+ console.log('PASS: 18 catalog cards, new URL, 36-concept entry, hadaka mobile/search/controls/map.');
  await songPage.goto(url.replace('learning-map/','sketch/'));
  assert.equal(await songPage.locator('.phrase').count(),42);
  assert.equal(await songPage.locator('.word').count(),71);
@@ -70,7 +84,7 @@ try{
  await songPage.evaluate(()=>location.hash='w-1');await songPage.waitForFunction(()=>!document.getElementById('w-1').hidden);
  await songPage.locator('#reading-toggle').click();assert(await songPage.locator('body').evaluate(e=>e.classList.contains('hide-reading')));
  await songPage.locator('#translation-toggle').click();assert.equal(await songPage.locator('.translation:visible').count(),0);
- await songPage.goto(url+'?song=sketch#routes');await songPage.waitForSelector('.enhanced');assert.equal(await songPage.locator('#song-filter').inputValue(),'sketch');assert.equal(await songPage.locator('.concept:visible').count(),8);
+ await songPage.goto(url+'?song=sketch#routes');await songPage.waitForSelector('.enhanced');assert.equal(await songPage.locator('#song-filter').inputValue(),'sketch');assert.equal(await songPage.locator('.concept:visible').count(),10);
  console.log('PASS: sketch widths, 42 lines, kana search, hidden word jump, controls and map entry.');
  await songPage.goto(url.replace('learning-map/','hikarimono/'));
  assert.equal(await songPage.locator('.phrase').count(),30);

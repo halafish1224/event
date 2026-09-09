@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-  fetchDataAndRender();
+  if (document.querySelector('#cardsGrid [data-song-id]')) init3DTilt();
+  else fetchDataAndRender();
   initCanvasEffect();
 });
 
@@ -71,7 +72,7 @@ async function fetchDataAndRender() {
 
 // 2. 酷炫 3D 視差傾斜特效 (Tilt Effect)
 function init3DTilt() {
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
 
   const cards = document.querySelectorAll('.card-item');
   cards.forEach(card => {
@@ -98,7 +99,7 @@ function init3DTilt() {
 // 3. Canvas 游標繪圖動態 (手繪塗鴉流星微粒)
 function initCanvasEffect() {
   const canvas = document.getElementById('doodleCanvas');
-  if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  if (!canvas || window.matchMedia('(prefers-reduced-motion: reduce), (pointer: coarse)').matches) return;
   const ctx = canvas.getContext('2d');
   if (!ctx) return;
 

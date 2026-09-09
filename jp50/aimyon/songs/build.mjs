@@ -1,0 +1,11 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {songs,concepts,routes} from '../learning-map/content.mjs';
+const data=JSON.parse(readFileSync(new URL('data.json',import.meta.url),'utf8'));
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+if(data.length!==songs.length||new Set(data.map(x=>x.id)).size!==data.length)throw Error('Catalog mismatch');
+const cards=data.map(s=>{if(!songs.some(x=>x.id===s.id&&x.color===s.color))throw Error(s.id);return `<a href="${esc(s.url)}" class="card-item" data-tilt data-song-id="${s.id}" style="--song-color:${s.color}" aria-label="開啟 ${esc(s.title)}"><div><div class="card-header"><span class="sticker-icon" aria-hidden="true">${esc(s.sticker)}</span><span class="link-label">AIMYON LINK ↗</span></div><h2 class="song-title">${esc(s.title)}</h2><p class="song-subtitle">${esc(s.subtitle)}</p></div><div class="tags">${s.tags.map(t=>`<span class="tag">#${esc(t)}</span>`).join('')}</div></a>`;}).join('\n');
+let html=readFileSync(new URL('index.html',import.meta.url),'utf8');
+html=html.replace(/<main class="grid-container" id="cardsGrid">[\s\S]*?<\/main>/,`<main class="grid-container" id="cardsGrid">${cards}</main>`);
+html=html.replace(/<strong>跨歌曲學習地圖 →<\/strong><span>[^<]*<\/span>/,`<strong>跨歌曲學習地圖 →</strong><span>${data.length} 首歌・${routes.length} 條路線・${concepts.length} 個概念｜比較語法、主動回想、接續上次</span>`);
+writeFileSync(new URL('index.html',import.meta.url),html);
+console.log(`Catalog: ${data.length} static cards; ${concepts.length} concepts. No JavaScript required to open a song.`);

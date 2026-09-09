@@ -1,0 +1,44 @@
+[
+  {
+    "id": "sora-no-aosa",
+    "lines": 56,
+    "grammar": 18,
+    "words": 26,
+    "practice": 12
+  },
+  {
+    "id": "konya-konomama",
+    "lines": 58,
+    "grammar": 19,
+    "words": 25,
+    "practice": 12
+  },
+  {
+    "id": "futaba",
+    "lines": 50,
+    "grammar": 15,
+    "words": 24,
+    "practice": 12
+  },
+  {
+    "id": "aini-ikunoni",
+    "lines": 46,
+    "grammar": 19,
+    "words": 25,
+    "practice": 12
+  },
+  {
+    "id": "yakou-bus",
+    "lines": 26,
+    "grammar": 13,
+    "words": 22,
+    "practice": 12
+  },
+  {
+    "id": "sakura-ga-furu-yoru-wa",
+    "lines": 36,
+    "grammar": 17,
+    "words": 22,
+    "practice": 12
+  }
+]

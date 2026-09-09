@@ -152,5 +152,83 @@
     ],
     "sticker": "心",
     "color": "#8c465b"
+  },
+  {
+    "id": "sora-no-aosa",
+    "title": "空の青さを知る人よ",
+    "subtitle": "曾經不喜歡的事，如今成為尋找對方的線索。",
+    "url": "https://event.itigre.com/jp50/aimyon/sora-no-aosa/",
+    "tags": [
+      "假名拆讀",
+      "跨曲比較",
+      "回想轉用"
+    ],
+    "sticker": "♫",
+    "color": "#295e86"
+  },
+  {
+    "id": "konya-konomama",
+    "title": "今夜このまま",
+    "subtitle": "說不出口的心意，在夜裡尋找暫停的地方。",
+    "url": "https://event.itigre.com/jp50/aimyon/konya-konomama/",
+    "tags": [
+      "假名拆讀",
+      "跨曲比較",
+      "回想轉用"
+    ],
+    "sticker": "♫",
+    "color": "#814c39"
+  },
+  {
+    "id": "futaba",
+    "title": "双葉",
+    "subtitle": "在成長與告別之間，把祝福留給未來的你。",
+    "url": "https://event.itigre.com/jp50/aimyon/futaba/",
+    "tags": [
+      "假名拆讀",
+      "跨曲比較",
+      "回想轉用"
+    ],
+    "sticker": "♫",
+    "color": "#3f704b"
+  },
+  {
+    "id": "aini-ikunoni",
+    "title": "会いに行くのに",
+    "subtitle": "未交出的物件，與仍想前往的心。",
+    "url": "https://event.itigre.com/jp50/aimyon/aini-ikunoni/",
+    "tags": [
+      "假名拆讀",
+      "跨曲比較",
+      "回想轉用"
+    ],
+    "sticker": "♫",
+    "color": "#755789"
+  },
+  {
+    "id": "yakou-bus",
+    "title": "夜行バス",
+    "subtitle": "漫長車程裡，帶著害怕仍然追夢。",
+    "url": "https://event.itigre.com/jp50/aimyon/yakou-bus/",
+    "tags": [
+      "假名拆讀",
+      "跨曲比較",
+      "回想轉用"
+    ],
+    "sticker": "♫",
+    "color": "#806338"
+  },
+  {
+    "id": "sakura-ga-furu-yoru-wa",
+    "title": "桜が降る夜は",
+    "subtitle": "花落的夜裡，想見你，卻仍在想該不該說。",
+    "url": "https://event.itigre.com/jp50/aimyon/sakura-ga-furu-yoru-wa/",
+    "tags": [
+      "假名拆讀",
+      "跨曲比較",
+      "回想轉用"
+    ],
+    "sticker": "♫",
+    "color": "#92516e"
   }
 ]
