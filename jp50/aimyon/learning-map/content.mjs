@@ -8,7 +8,10 @@ export const songs = [
   ['ring-ding','RING DING','ring-ding','#5546a3'],
   ['rhythm64','リズム64','rhythm64','#146c75'],
   ['3636','3636','3636','#865026'],
-  ['miniskirt-highlight','ミニスカートとハイライト','miniskirt-highlight','#96344f']
+  ['miniskirt-highlight','ミニスカートとハイライト','miniskirt-highlight','#96344f'],
+  ['hikarimono','ひかりもの','hikarimono','#9a4b1d'],
+  ['sketch','スケッチ','sketch','#276c82'],
+  ['hadaka-no-kokoro','裸の心','hadaka-no-kokoro','#8c465b']
 ].map(([id,title,path,color])=>({id,title,path,color}));
 export const routes = [
   ['daily','日常與心情','從每天的生活，說出狀態與變化。'],
@@ -46,3 +49,21 @@ export const concepts = [
  c('box-image','perspective','23｜意象對讀：房間、盒子與心','同樣是「關起來」，歌中關的是哪一種東西？','先辨認字面容器、被封存的內容，以及關閉者。再比較門與心的映照。不同歌曲的房間意象可以聯想，但不代表作者在寫同一個故事。','扉{とびら}と心{こころ}。','門與心：比較字面動作與情感解讀。','解讀「心關起來」時，應列出什麼依據？','指出實際詞語、誰關閉、所指對象，再提出情感解讀。不能僅憑同一個「房間」就認定人物相同。',[['3636','map'],['morning','words']],[['before','subject'],['image','metaphor']]),
  c('evidence','perspective','24｜整合：事實、推測、我的解讀','你能將一句心得分成三種證據層次嗎？','第一層是文本明示；第二層是角色的推測與願望；第三層是讀者的意象解讀。文學閱讀容許多義，但語法辨識仍需依句構。','大丈夫{だいじょうぶ}だって。','說著／表示「沒問題」：要辨認引用內容與上下文。','角色表達沒問題，就能推論整段毫無矛盾或不安嗎？','不能。先確認引用的是誰的聲音，再比對前後段的變化。角色表達與整體文本解讀應分開。',[['rhythm64','g-quote'],['miniskirt-highlight','g-wish']],[['before','rashii'],['same','kigasuru']])
 ];
+// Stable existing IDs preserve all previous learner records when songs expand.
+for (const [id,anchor] of [['te-kita','g-tekita'],['condition','g-nara'],['tai','g-shimau'],['noun-modifier','g-modifier'],['metaphor','compare'],['gentle','g-request'],['passive','g-passive'],['self-question','g-kana']]) {
+ concepts.find(c=>c.id===id).refs.push(['hikarimono',anchor]);
+}
+concepts.push(
+ c('zuni','voice','25｜～ずに：不做／未做某事','知らずに和晴れずとも都只有「不」的意思嗎？','～ずに連接未做前項的情況；～ずとも表即使不做的讓步。知らずに可是不知情，不一定是故意不理會。','理由{りゆう}を知{し}らずに話{はな}した。','在不知道理由的情況下說了。','將知らずに換成ないで；再說明ずとも多了什麼關係。','知{し}らないで。ずとも多了「即使如此，後項仍成立」的讓步關係。',[['hikarimono','g-zuni'],['ai-no-hana','g-zutomo']],[['before','condition'],['contrast','gentle']]),
+ c('sou-evidence','perspective','26｜～そう：樣態還是傳聞？','泣きそう和泣くそうだ，資訊來源一樣嗎？','ます形去ます＋そう表樣態或快要發生；普通形＋そうだ表傳聞。なれそう還包含可能形，需先還原なれる。','泣{な}きそうだ。泣{な}くそうだ。','快哭了。聽說會哭。','宣告不哭，後來又快哭了，能直接判斷角色說謊嗎？','不能。決心與當下感受不同；先辨識句型，再依前後文解讀，不能僅以情緒變化斷定說謊。',[['hikarimono','g-sou'],['miniskirt-highlight','g-sou']],[['before','rashii'],['next','evidence']])
+);
+for(const [id,anchor] of [['kigasuru','g-feeling'],['casual','g-chau'],['passive','g-passive'],['noun-modifier','g-modifier'],['condition','g-tara'],['metaphor','compare']])concepts.find(c=>c.id===id).refs.push(['sketch',anchor]);
+concepts.push(
+ c('kureru','voice','27｜～てくれる：誰讓我受惠？','陪伴的行動是誰做的？','てくれる將他人的行動呈現為說話者或其所關心者受惠；てあげる常從給予方描述。先找主體與受惠者，再翻譯。','友達{ともだち}が待{ま}っていてくれた。','朋友等著我。','這句是我等朋友，還是朋友等我？','朋友等我；友達が標行動者，くれる呈現我受到這份好意。',[['sketch','g-kureru'],['ring-ding','g-ageru']],[['before','state'],['contrast','te-hoshii']]),
+ c('permission','wishes','28｜～てもいい：願望還是許可？','想說與可以說是同一件事嗎？','てもいい詢問或給予許可；たい表願望，てほしい希望對方行動。即使很想，也不代表已獲允許。','ここで話{はな}してもいいですか。','可以在這裡說嗎？','把「我想說」和「我可以說嗎」分別說出來。','話{はな}したい。話{はな}してもいいですか。願望與許可是不同訊息。',[['sketch','g-permission'],['miniskirt-highlight','g-want']],[['before','tai'],['contrast','te-hoshii']])
+);
+for(const [id,anchor] of [['let-me','g-causative'],['te-kita','g-tekita'],['state','g-state'],['metaphor','compare'],['tai','g-request'],['rashii','g-mitai']])concepts.find(c=>c.id===id).refs.push(['hadaka-no-kokoro',anchor]);
+concepts.push(
+ c('prayer','wishes','29｜～ますように：祈願','祈願代表結果確定嗎？','ますように表示祈願，不是未來預測；與希望對方做事的てほしい分開。','実{みの}りますように。','願能有成果。','改成願明天放晴，並說明是否保證天氣。','明日{あした}は晴{は}れますように。這是希望，不是保證。',[['hadaka-no-kokoro','g-prayer'],['ai-no-hana','g-purpose']],[['before','wish'],['contrast','te-hoshii']]),
+ c('regret','change','30｜～なきゃよかった：後悔','しなきゃ每次都是必須做嗎？','なきゃよかった還原為なければよかった，表早知道不做就好了；なきゃ（いけない）才常表示義務。必須讀到後項。','急{いそ}がなければよかった。','早知道別著急就好了。','用自己的話區別しなきゃよかった與しなきゃ（いけない）。','前者後悔已做；後者表必須做。不能只背なきゃ的單一中文。',[['hadaka-no-kokoro','g-regret'],['rhythm64','g-nakya']],[['before','condition'],['contrast','evidence']])
+);

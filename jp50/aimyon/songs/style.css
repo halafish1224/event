@@ -1,3 +1,8 @@
+.learning-map-entry { margin: 0 0 28px; }
+.learning-map-entry a { display: block; padding: 18px 20px; border: 2px solid #225c48; border-radius: 12px; background: #fff; color: #225c48; text-decoration: none; font-family: system-ui, sans-serif; line-height: 1.7; overflow-wrap: anywhere; }
+.learning-map-entry strong, .learning-map-entry span { display: block; }
+.learning-map-entry span { margin-top: 6px; font-size: .92rem; color: #454b44; }
+.learning-map-entry a:focus-visible { outline: 3px solid #96344f; outline-offset: 4px; }
 :root {
   --bg-color: #f7f4ea;
   --card-bg: #ffffff;

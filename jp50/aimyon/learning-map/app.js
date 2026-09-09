@@ -49,4 +49,8 @@
  document.addEventListener('click',e=>{const a=e.target.closest('a[href^="#"]');if(a&&a.hash===location.hash)navigate();});
  document.addEventListener('visibilitychange',()=>{if(!document.hidden)update();});
  document.documentElement.classList.add('enhanced');update();filter();navigate();
+ const requestedSong=new URLSearchParams(location.search).get('song');
+ if([...$('song-filter').options].some(o=>o.value===requestedSong)){$('song-filter').value=requestedSong;filter();}
+ // Explicit deep-linked concepts remain visible even with a song query.
+ if(ids.has(location.hash.slice(1)))navigate();
 })();

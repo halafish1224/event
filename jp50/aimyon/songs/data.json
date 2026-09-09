@@ -4,7 +4,11 @@
     "title": "君はロックを聴かない",
     "subtitle": "你不聽搖滾樂",
     "url": "http://go.itigre.com/Kimi-Rock",
-    "tags": ["經典必聽", "歌詞拆解", "文法特訓"],
+    "tags": [
+      "經典必聽",
+      "歌詞拆解",
+      "文法特訓"
+    ],
     "sticker": "🎸",
     "color": "#f39c12"
   },
@@ -13,7 +17,10 @@
     "title": "朝が嫌い",
     "subtitle": "討厭早晨",
     "url": "http://go.itigre.com/idontlikemornings",
-    "tags": ["心情歌曲", "單字積累"],
+    "tags": [
+      "心情歌曲",
+      "單字積累"
+    ],
     "sticker": "☕",
     "color": "#3498db"
   },
@@ -22,7 +29,10 @@
     "title": "マリーゴールド",
     "subtitle": "金盞花",
     "url": "http://go.itigre.com/marigold",
-    "tags": ["百萬名曲", "聽歌學日文"],
+    "tags": [
+      "百萬名曲",
+      "聽歌學日文"
+    ],
     "sticker": "🌼",
     "color": "#e67e22"
   },
@@ -31,7 +41,11 @@
     "title": "愛の花",
     "subtitle": "愛之花｜逐句解說與意象記憶地圖",
     "url": "http://go.itigre.com/ai-no-hana",
-    "tags": ["假名標注", "完整語法", "記憶連結"],
+    "tags": [
+      "假名標注",
+      "完整語法",
+      "記憶連結"
+    ],
     "sticker": "🌱",
     "color": "#225c48"
   },
@@ -40,7 +54,11 @@
     "title": "いちについて",
     "subtitle": "關於起點｜逐句語法與思緒記憶地圖",
     "url": "http://go.itigre.com/ichi-ni-tsuite",
-    "tags": ["假名標注", "句構拆解", "主動回想"],
+    "tags": [
+      "假名標注",
+      "句構拆解",
+      "主動回想"
+    ],
     "sticker": "🎸",
     "color": "#d94a36"
   },
@@ -49,7 +67,11 @@
     "title": "RING DING",
     "subtitle": "直率的關心｜逐句假名與語氣轉換",
     "url": "https://event.itigre.com/jp50/aimyon/ring-ding/",
-    "tags": ["完整語法", "口語辨析", "主動回想"],
+    "tags": [
+      "完整語法",
+      "口語辨析",
+      "主動回想"
+    ],
     "sticker": "♫",
     "color": "#5546a3"
   },
@@ -58,7 +80,11 @@
     "title": "リズム64",
     "subtitle": "自己的節奏｜長句拆讀與意象連結",
     "url": "https://event.itigre.com/jp50/aimyon/rhythm64/",
-    "tags": ["完整假名", "長句拆解", "主動回想"],
+    "tags": [
+      "完整假名",
+      "長句拆解",
+      "主動回想"
+    ],
     "sticker": "64",
     "color": "#146c75"
   },
@@ -67,7 +93,11 @@
     "title": "3636",
     "subtitle": "封存的日常｜自問語氣與箱格記憶地圖",
     "url": "https://event.itigre.com/jp50/aimyon/3636/",
-    "tags": ["完整假名", "語法對照", "主動回想"],
+    "tags": [
+      "完整假名",
+      "語法對照",
+      "主動回想"
+    ],
     "sticker": "▤",
     "color": "#865026"
   },
@@ -76,8 +106,51 @@
     "title": "ミニスカートとハイライト",
     "subtitle": "未如願的心動｜願望句與人物視角",
     "url": "https://event.itigre.com/jp50/aimyon/miniskirt-highlight/",
-    "tags": ["完整假名", "口語辨析", "主動回想"],
+    "tags": [
+      "完整假名",
+      "口語辨析",
+      "主動回想"
+    ],
     "sticker": "♪",
     "color": "#96344f"
+  },
+  {
+    "id": "hikarimono",
+    "title": "ひかりもの",
+    "subtitle": "帶著感受重新開始｜假設、否定與安慰的表達",
+    "url": "https://event.itigre.com/jp50/aimyon/hikarimono/",
+    "tags": [
+      "完整假名",
+      "情緒語法",
+      "跨曲回想"
+    ],
+    "sticker": "光",
+    "color": "#9a4b1d"
+  },
+  {
+    "id": "sketch",
+    "title": "スケッチ",
+    "subtitle": "描繪陪伴｜引用、受惠與失去的假設",
+    "url": "https://event.itigre.com/jp50/aimyon/sketch/",
+    "tags": [
+      "假名拆讀",
+      "跨曲比較",
+      "主動回想"
+    ],
+    "sticker": "描",
+    "color": "#276c82"
+  },
+  {
+    "id": "hadaka-no-kokoro",
+    "title": "裸の心",
+    "subtitle": "再次祈願｜後悔、使役請求與坦露的心意",
+    "url": "https://event.itigre.com/jp50/aimyon/hadaka-no-kokoro/",
+    "tags": [
+      "假名拆讀",
+      "祈願語法",
+      "跨曲回想"
+    ],
+    "sticker": "心",
+    "color": "#8c465b"
   }
 ]
