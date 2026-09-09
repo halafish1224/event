@@ -1,0 +1,26 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {source,groups,grammar,words,stages,practice} from './content.mjs';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const plain=s=>s.replace(/\[[^\]]+\]/g,'');
+const kana=s=>s.replace(/[\p{Script=Han}々0-9]+\[([^\]]+)\]/gu,'$1');
+const ruby=s=>esc(s).replace(/([\p{Script=Han}々0-9]+)\[([^\]]+)\]/gu,'<ruby>$1<rp>（</rp><rt>$2</rt><rp>）</rp></ruby>');
+const compact=s=>plain(s).replace(/\s/g,'');
+const link=(url,text)=>`<a href="${url}">${text}</a>`;
+const para=n=>link('#l-'+n,`第 ${n} 段`);
+const gl=id=>{const g=grammar.find(g=>g[0]===id);if(!g)throw Error(id);return link('#g-'+id,g[1]);};
+if(source.length!==8||groups.length!==source.length)throw Error('Source paragraphs');
+groups.forEach((g,i)=>{if(compact(g.map(p=>p[0]).join(''))!==compact(source[i]))throw Error('Source mismatch '+i);for(const p of g){if(/[\p{Script=Han}々0-9]/u.test(p[0].replace(/[\p{Script=Han}々0-9]+\[[^\]]+\]/gu,'')))throw Error('Missing ruby: '+p[0]);p[3].forEach(gl);}});
+const count=groups.flat().length;
+const map=stages.map(([id,title,ns,path,prompt],i)=>`<article class="map-card" id="m-${id}"><span class="number">0${i+1}</span><h3>${title}</h3><p>${path}</p><p class="muted">${prompt}</p><div class="chips">${ns.map(para).join('')}</div></article>`).join('');
+const lyrics=groups.map((parts,i)=>`<section class="lyric-group" id="l-${i+1}"><p class="meta">原文段落 ${i+1} ${link('#m-'+stages.find(s=>s[2].includes(i+1))[0],'回到本曲地圖')}</p><h2>${stages.find(s=>s[2].includes(i+1))[1]}</h2>${i===6?'<p class="note">與第3段相同的截圖文字完整保留。先回想，再比較前後段的情緒。</p>':''}${parts.map(([jp,zh,note,gs],j)=>`<article class="phrase" id="p-${i+1}-${j+1}"><span class="meta">短句 ${i+1}.${j+1}</span><h3 lang="ja">${ruby(jp)}</h3><p class="translation">${zh}</p><details><summary>語意、句構與語氣</summary><p>${note}</p><div class="chips">${gs.map(gl).join('')}</div></details></article>`).join('')}<details><summary>把本段接起來讀</summary><p class="joined-lyric" lang="ja">${parts.map(p=>ruby(p[0])).join(' ')}</p></details><h3>本段字詞</h3><div class="chips">${words.flatMap((w,j)=>w.slice(4).includes(i+1)?[link('#w-'+(j+1),ruby(w[0]))]:[]).join('')}</div><div class="chips">${i?para(i):''}${i<7?para(i+2):''}${link('#practice','回想練習')}</div></section>`).join('');
+const grammarHtml=grammar.map(([id,title,form,note,jp,zh])=>`<article class="entry" id="g-${id}"><h3>${title}</h3><p class="formula">${esc(form)}</p><p>${note}</p><div class="example"><p lang="ja">${ruby(jp)}</p><p>${zh}</p></div><div class="chips">${groups.flatMap((g,i)=>g.some(p=>p[3].includes(id))?[para(i+1)]:[]).join('')}</div></article>`).join('');
+const vocab=words.map(([jp,pos,meaning,note,...ns],i)=>`<article class="word" id="w-${i+1}" data-search="${esc([plain(jp),kana(jp),pos,meaning,note].join(' '))}"><h3 lang="ja">${ruby(jp)}</h3><p class="meta">${pos}</p><p><strong>${meaning}</strong>。${note}</p><div class="chips">${ns.map(para).join('')}</div></article>`).join('');
+const exercises=practice.map(([q,jp,note,g,n],i)=>`<article class="exercise"><h3>${i+1}. ${q}</h3><label for="answer-${i}">先口述或試寫，再核對（此欄不儲存）</label><textarea id="answer-${i}" rows="2"></textarea><details><summary>答案與回饋</summary><p lang="ja">${ruby(jp)}</p><p>${note}</p><div class="chips">${gl(g)}${para(n)}</div></details></article>`).join('');
+
+const template=readFileSync(new URL('template.html',import.meta.url),'utf8');
+const values={count,map,lyrics,grammarHtml,vocab,exercises,grammarCount:grammar.length,wordCount:words.length};
+const html=template.replace(/@@(\w+)@@/g,(_,key)=>{if(!(key in values))throw Error(key);return values[key];});
+const ids=[...html.matchAll(/\sid="([^"]+)"/g)].map(m=>m[1]);if(ids.length!==new Set(ids).size)throw Error('Duplicate IDs');
+for(const [,id] of html.matchAll(/href="#([^"]+)"/g))if(!ids.includes(id))throw Error('Missing ID '+id);
+writeFileSync(new URL('index.html',import.meta.url),html);
+console.log('Built sketch: '+count+' lines, '+grammar.length+' grammar, '+words.length+' words, '+practice.length+' exercises; source and readings verified.');

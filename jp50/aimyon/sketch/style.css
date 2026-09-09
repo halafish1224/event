@@ -1,0 +1,2 @@
+:root{--accent:#276c82;--gold:#e7c16c;--paper:#f5f9fa;--ink:#26383f;--muted:#506269;--line:#c8dbe1}
+h1{font-size:clamp(2.3rem,9vw,3.8rem);letter-spacing:.05em}.note,.prompt{background:#e8f1f4}.map-card:last-child{border-top-color:var(--accent)}
