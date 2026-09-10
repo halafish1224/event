@@ -158,6 +158,33 @@
             font-size: 1.1rem;
         }
 
+        /* ====== 新增：每日常態接送區塊 ====== */
+        .routine-box {
+            background-color: var(--light-mustard);
+            border: 3px solid var(--mustard-yellow);
+            border-radius: 10px;
+            padding: 18px 20px;
+            margin-bottom: 25px;
+        }
+        .routine-box h3 {
+            color: var(--dark-green);
+            margin-bottom: 12px;
+            font-size: 1.35rem;
+            border-bottom: 2px dashed #ccc;
+            padding-bottom: 8px;
+        }
+        .routine-item {
+            margin-bottom: 15px;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+        .routine-item strong {
+            color: var(--dark-green);
+            font-size: 1.25rem;
+            display: inline-block;
+            margin-bottom: 4px;
+        }
+
         /* 行事曆多校標籤 */
         .event-list { list-style: none; }
         .event-item {
@@ -264,7 +291,7 @@
 
     <header>
         <h1 id="page-title">115 學年度第一學期 學校行事曆</h1>
-        <p id="student-info">龍潭國中（劉喜鈞）｜ 武漢國中（莊智宇）｜ 龍星國小（劉喜玥）</p>
+        <p id="student-info">龍潭國中（喜鈞）｜ 武漢國中（智宇）｜ 龍星國小（喜玥）</p>
     </header>
 
     <div class="tab-controls">
@@ -299,6 +326,24 @@
     <div id="calendar" class="content-section">
         <div class="card">
             <div class="card-title">📝 整合行事曆 (龍潭 / 武漢 / 龍星)</div>
+            
+            <!-- 常態接送時刻表 (從手寫本提取) -->
+            <div class="routine-box">
+                <h3>🚗 喜鈞 ＆ 喜玥 每週常態接送時刻</h3>
+                <div class="routine-item">
+                    <strong>👦 龍潭國中 (喜鈞)：</strong><br>
+                    • [週一、四] 16:40 龍中放學接<br>
+                    • [週三] 16:40 黃優班接<br>
+                    • [週二、五] 19:00 葛洛莉接
+                </div>
+                <div class="routine-item" style="margin-bottom:0;">
+                    <strong>👧 龍星國小 (喜玥)：</strong><br>
+                    • [週一、二、四] 17:00 安親班接<br>
+                    • [週三、五] 16:30 美語班下課 ➔ 17:00 美安親接
+                </div>
+            </div>
+
+            <!-- 自動隱藏舊行程列表 -->
             <ul class="event-list" id="calendar-body"></ul>
         </div>
     </div>
@@ -332,7 +377,8 @@
             "calendar": [
                 { "date": "08/31(一)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🎒 開學、正式上課" },
                 { "date": "08/31(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🎒 開學日 / 第一節導師時間" },
-                { "date": "08/31(一)", "tag": "longxing", "school": "龍星國小 (劉喜玥)", "desc": "🎒 開學日" },
+                { "date": "08/31(一)", "tag": "longxing", "school": "龍星國小 (劉喜玥)", "desc": "🎒 開學日 (07:25-15:20)" },
+                { "date": "09/03(四)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🕒 校本/校會 提早放學 (15:45 接)" },
                 { "date": "09/04(五)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🏫 七年級社團" },
                 { "date": "09/07(一)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🕒 第八節輔導課開始" },
                 { "date": "09/07(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "📚 暑假作業 / 閱讀心得截止" },
@@ -344,8 +390,8 @@
                 { "date": "09/17 - 09/18", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "⛺ 隔宿露營" },
                 { "date": "09/18(五)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🤝 親師座談會" },
                 { "date": "09/21(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🚨 第一次服儀檢查 / 防災演練" },
-                { "date": "09/25(五)", "tag": "holiday", "school": "國定假日", "desc": "🥮 中秋節放假" },
-                { "date": "09/28(一)", "tag": "holiday", "school": "國定假日", "desc": "👨‍🏫 教師節放假" },
+                { "date": "09/25(五)", "tag": "holiday", "school": "國定假日", "desc": "🥮 中秋節放假 (鈞、玥放假)" },
+                { "date": "09/28(一)", "tag": "holiday", "school": "國定假日", "desc": "👨‍🏫 教師節放假 (鈞、玥放假)" },
                 { "date": "10/02(五)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🤝 親師座談會" },
                 { "date": "10/05(一)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "💉 全校流感疫苗施打" },
                 { "date": "10/05(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🩺 C1-C4 新生健檢" },
