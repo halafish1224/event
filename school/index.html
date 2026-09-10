@@ -6,7 +6,7 @@
     <!-- 禁止搜尋引擎抓取與索引 (SEO Defense) -->
     <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
     <meta name="googlebot" content="noindex, nofollow">
-    <title>115-1 課表與雙校行事曆</title>
+    <title>115-1 課表與三校行事曆</title>
     <style>
         :root {
             --dark-green: #1b3b2b;     /* 深墨綠 */
@@ -18,6 +18,7 @@
             --danger-red: #c0392b;     
             --wuhan-blue: #1d4ed8;     /* 武漢國中標籤藍 */
             --longtan-green: #15803d;  /* 龍潭國中標籤綠 */
+            --longxing-orange: #ea580c;/* 龍星國小標籤橘 */
         }
 
         * {
@@ -54,7 +55,7 @@
         }
 
         header p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #e0e0e0;
         }
 
@@ -216,6 +217,7 @@
         }
         .badge-longtan { background-color: var(--longtan-green); }
         .badge-wuhan { background-color: var(--wuhan-blue); }
+        .badge-longxing { background-color: var(--longxing-orange); }
         .badge-holiday { background-color: #d97706; }
 
         .event-desc {
@@ -262,12 +264,12 @@
 
     <header>
         <h1 id="page-title">115 學年度第一學期 學校行事曆</h1>
-        <p id="student-info">龍潭國中（劉喜鈞） ＆ 武漢國中（莊智宇）</p>
+        <p id="student-info">龍潭國中（劉喜鈞）｜ 武漢國中（莊智宇）｜ 龍星國小（莊喜玥）</p>
     </header>
 
     <div class="tab-controls">
         <button class="tab-btn active" onclick="switchTab('timetable')">📅 喜鈞課表</button>
-        <button class="tab-btn" onclick="switchTab('calendar')">📌 雙校行事曆</button>
+        <button class="tab-btn" onclick="switchTab('calendar')">📌 全家行事曆</button>
         <button class="tab-btn" onclick="switchTab('weather')">⛅ 龍潭天氣</button>
     </div>
 
@@ -296,7 +298,7 @@
     <!-- 2. 行事曆區域 -->
     <div id="calendar" class="content-section">
         <div class="card">
-            <div class="card-title">📝 雙校整合行事曆 (龍潭 / 武漢)</div>
+            <div class="card-title">📝 整合行事曆 (龍潭 / 武漢 / 龍星)</div>
             <ul class="event-list" id="calendar-body"></ul>
         </div>
     </div>
@@ -312,7 +314,7 @@
     </div>
 
     <script>
-        document.title = "115-1 課表與雙校行事曆";
+        document.title = "115-1 課表與行事曆";
 
         const appData = {
             "timetable": [
@@ -330,6 +332,7 @@
             "calendar": [
                 { "date": "08/31(一)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🎒 開學、正式上課" },
                 { "date": "08/31(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🎒 開學日 / 第一節導師時間" },
+                { "date": "08/31(一)", "tag": "longxing", "school": "龍星國小 (莊喜玥)", "desc": "🎒 開學日" },
                 { "date": "09/04(五)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🏫 七年級社團" },
                 { "date": "09/07(一)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🕒 第八節輔導課開始" },
                 { "date": "09/07(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "📚 暑假作業 / 閱讀心得截止" },
