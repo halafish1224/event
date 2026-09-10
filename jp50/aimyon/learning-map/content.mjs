@@ -1,4 +1,5 @@
 // Curated concepts: keep lesson content and links separate from learner progress.
+import {extendHarunohi} from '../harunohi/map-extension.mjs';
 export const songs = [
   ['kimi-rock','君はロックを聴かない','KimiWaRokkuWoKikanai','#f39c12'],
   ['morning','朝が嫌い','idontlikemornings','#3498db'],
@@ -87,3 +88,5 @@ concepts.push(
  c('time-negative','daily','35｜まだ…ない：還沒有','還沒一小時，是永遠不會過一小時嗎？','まだ…ない以目前為止為時間框架；之後可能改變。注意量詞讀音與單程／來回差異。','まだ着{つ}いていない。','還沒到。','將「還沒到」和「不打算去」分開說明。','前者目前狀態，後者意圖；不能混為一談。',[['yakou-bus','g-time'],['sakura-ga-furu-yoru-wa','g-time']],[['before','state'],['next','memory-time']]),
  c('crossline','scenery','36｜跨行的修飾：接到中心詞','換行就表示句子結束嗎？','の、が、を或連用形常跨行接續。先讀述語與中心名詞，再安排中文語序。','君{きみ}が知{し}っている空{そら}。','你所知道的天空。','中心名詞是君還是空？','空是中心；君が知っている是修飾子句。',[['sora-no-aosa','g-modifier'],['yakou-bus','g-nominal']],[['before','noun-modifier'],['next','evidence']])
 );
+
+extendHarunohi(songs,concepts,c);

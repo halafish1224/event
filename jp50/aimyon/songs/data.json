@@ -231,5 +231,18 @@
     ],
     "sticker": "♫",
     "color": "#92516e"
+  },
+  {
+    "id": "harunohi",
+    "title": "ハルノヒ",
+    "subtitle": "一起累積珍惜｜逐句拆讀、否定辨析與未來邀請",
+    "url": "https://event.itigre.com/jp50/aimyon/harunohi/",
+    "tags": [
+      "完整假名",
+      "跨行句構",
+      "生活造句"
+    ],
+    "sticker": "束",
+    "color": "#426b59"
   }
 ]
