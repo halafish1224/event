@@ -172,8 +172,8 @@
         
         /* 當天行程 High Light 高亮顯示 */
         .event-item.is-today {
-            background-color: #fff9db !important; /* 亮眼黃色背景 */
-            border: 3px solid #d97706 !important;  /* 醒目橘黃色外框 */
+            background-color: #fff9db !important;
+            border: 3px solid #d97706 !important;
             box-shadow: 0 4px 12px rgba(217, 119, 6, 0.3);
         }
 
@@ -262,7 +262,7 @@
 
     <header>
         <h1 id="page-title">115 學年度第一學期 學校行事曆</h1>
-        <p id="student-info">龍潭國中（喜鈞） ＆ 武漢國中（玥）</p>
+        <p id="student-info">龍潭國中（劉喜鈞） ＆ 武漢國中（莊智宇）</p>
     </header>
 
     <div class="tab-controls">
@@ -293,10 +293,10 @@
         </div>
     </div>
 
-    <!-- 2. 行事曆區域 (雙校整合 + 過期隱藏 + 當天高亮) -->
+    <!-- 2. 行事曆區域 -->
     <div id="calendar" class="content-section">
         <div class="card">
-            <div class="card-title">📝 雙校整合行事曆 (自動隱藏3天前舊行程)</div>
+            <div class="card-title">📝 雙校整合行事曆 (龍潭 / 武漢)</div>
             <ul class="event-list" id="calendar-body"></ul>
         </div>
     </div>
@@ -328,45 +328,44 @@
                 { "period": "課後<br><small>17:00起</small>", "mon": "-", "tue": "<span class='gloria-badge'>葛洛莉</span>", "wed": "-", "thu": "-", "fri": "<span class='gloria-badge'>葛洛莉</span>" }
             ],
             "calendar": [
-                { "date": "08/31(一)", "tag": "longtan", "school": "龍潭國中", "desc": "🎒 開學、正式上課" },
-                { "date": "08/31(一)", "tag": "wuhan", "school": "武漢國中", "desc": "🎒 開學日 / 第一節導師時間" },
-                { "date": "09/04(五)", "tag": "wuhan", "school": "武漢國中", "desc": "🏫 七年級社團" },
-                { "date": "09/07(一)", "tag": "longtan", "school": "龍潭國中", "desc": "🕒 第八節輔導課開始" },
-                { "date": "09/07(一)", "tag": "wuhan", "school": "武漢國中", "desc": "📚 暑假作業 / 閱讀心得截止" },
-                { "date": "09/14(一)", "tag": "longtan", "school": "龍潭國中", "desc": "🩺 七年級新生健檢 (全日)" },
-                { "date": "09/14(一)", "tag": "wuhan", "school": "武漢國中", "desc": "🕒 第八節輔導課開始" },
-                { "date": "09/15(二)", "tag": "wuhan", "school": "武漢國中", "desc": "💉 八年級 HPV 疫苗第一劑" },
-                { "date": "09/17(四)", "tag": "longtan", "school": "龍潭國中", "desc": "📝 新生學力檢測 C2-4" },
-                { "date": "09/17(四)", "tag": "wuhan", "school": "武漢國中", "desc": "📝 七年級 C1-C4 學力測驗" },
-                { "date": "09/17 - 09/18", "tag": "wuhan", "school": "武漢國中", "desc": "⛺ 隔宿露營" },
-                { "date": "09/18(五)", "tag": "longtan", "school": "龍潭國中", "desc": "🤝 親師座談會" },
-                { "date": "09/21(一)", "tag": "wuhan", "school": "武漢國中", "desc": "🚨 第一次服儀檢查 / 防災演練" },
+                { "date": "08/31(一)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🎒 開學、正式上課" },
+                { "date": "08/31(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🎒 開學日 / 第一節導師時間" },
+                { "date": "09/04(五)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🏫 七年級社團" },
+                { "date": "09/07(一)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🕒 第八節輔導課開始" },
+                { "date": "09/07(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "📚 暑假作業 / 閱讀心得截止" },
+                { "date": "09/14(一)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🩺 七年級新生健檢 (全日)" },
+                { "date": "09/14(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🕒 第八節輔導課開始" },
+                { "date": "09/15(二)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "💉 八年級 HPV 疫苗第一劑" },
+                { "date": "09/17(四)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "📝 新生學力檢測 C2-4" },
+                { "date": "09/17(四)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "📝 七年級 C1-C4 學力測驗" },
+                { "date": "09/17 - 09/18", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "⛺ 隔宿露營" },
+                { "date": "09/18(五)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🤝 親師座談會" },
+                { "date": "09/21(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🚨 第一次服儀檢查 / 防災演練" },
                 { "date": "09/25(五)", "tag": "holiday", "school": "國定假日", "desc": "🥮 中秋節放假" },
                 { "date": "09/28(一)", "tag": "holiday", "school": "國定假日", "desc": "👨‍🏫 教師節放假" },
-                { "date": "10/02(五)", "tag": "wuhan", "school": "武漢國中", "desc": "🤝 親師座談會" },
-                { "date": "10/05(一)", "tag": "longtan", "school": "龍潭國中", "desc": "💉 全校流感疫苗施打" },
-                { "date": "10/05(一)", "tag": "wuhan", "school": "武漢國中", "desc": "🩺 C1-C4 新生健檢" },
+                { "date": "10/02(五)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🤝 親師座談會" },
+                { "date": "10/05(一)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "💉 全校流感疫苗施打" },
+                { "date": "10/05(一)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🩺 C1-C4 新生健檢" },
                 { "date": "10/09(五)", "tag": "holiday", "school": "國定假日", "desc": "🇹🇼 國慶日補假" },
-                { "date": "10/14 - 10/15", "tag": "longtan", "school": "龍潭國中", "desc": "💯 第一次段考（不上輔導課）" },
-                { "date": "10/20 - 10/21", "tag": "wuhan", "school": "武漢國中", "desc": "💯 第一次定期考（第八節暫停）" },
-                { "date": "10/23(五)", "tag": "longtan", "school": "龍潭國中", "desc": "🏃 運動會預演" },
+                { "date": "10/14 - 10/15", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "💯 第一次段考（不上輔導課）" },
+                { "date": "10/20 - 10/21", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "💯 第一次定期考（第八節暫停）" },
+                { "date": "10/23(五)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🏃 運動會預演" },
                 { "date": "10/26(一)", "tag": "holiday", "school": "國定假日", "desc": "🌴 光復節補假" },
-                { "date": "10/30(五)", "tag": "wuhan", "school": "武漢國中", "desc": "💉 全校流感注射" },
-                { "date": "10/31(六)", "tag": "longtan", "school": "龍潭國中", "desc": "🎉 校慶活動" },
-                { "date": "11/06(五)", "tag": "longtan", "school": "龍潭國中", "desc": "🌴 校慶補假" },
-                { "date": "11/06(五)", "tag": "wuhan", "school": "武漢國中", "desc": "🔬 校內科展報名截止" },
-                { "date": "11/13(五)", "tag": "longtan", "school": "龍潭國中", "desc": "⚖️ 性別平等教育講座 (七八)" },
-                { "date": "12/01 - 12/02", "tag": "longtan", "school": "龍潭國中", "desc": "💯 第二次段考（不上輔導課）" },
+                { "date": "10/30(五)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "💉 全校流感注射" },
+                { "date": "10/31(六)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🎉 校慶活動" },
+                { "date": "11/06(五)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🌴 校慶補假" },
+                { "date": "11/06(五)", "tag": "wuhan", "school": "武漢國中 (莊智宇)", "desc": "🔬 校內科展報名截止" },
+                { "date": "11/13(五)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "⚖️ 性別平等教育講座 (七八)" },
+                { "date": "12/01 - 12/02", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "💯 第二次段考（不上輔導課）" },
                 { "date": "12/25(五)", "tag": "holiday", "school": "國定假日", "desc": "🌴 行憲紀念日放假" },
                 { "date": "01/01(五)", "tag": "holiday", "school": "國定假日", "desc": "🌴 元旦放假" },
-                { "date": "01/08(五)", "tag": "longtan", "school": "龍潭國中", "desc": "🛑 第八節輔導課最後一天" },
-                { "date": "01/19 - 01/20", "tag": "longtan", "school": "龍潭國中", "desc": "💯 第三次段考" },
+                { "date": "01/08(五)", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "🛑 第八節輔導課最後一天" },
+                { "date": "01/19 - 01/20", "tag": "longtan", "school": "龍潭國中 (劉喜鈞)", "desc": "💯 第三次段考" },
                 { "date": "01/21 - 02/10", "tag": "holiday", "school": "共同日程", "desc": "☃️ 寒假開始" },
                 { "date": "02/11(三)", "tag": "holiday", "school": "共同日程", "desc": "🔔 下學期開學日" }
             ]
         };
 
-        // 日期解析輔導函式
         function parseEventDates(dateStr) {
             const matches = [...dateStr.matchAll(/(\d{1,2})\/(\d{1,2})/g)];
             if (matches.length === 0) return null;
@@ -400,20 +399,18 @@
                 return `<tr><td><b>${row.period}</b></td><td>${row.mon}</td><td>${row.tue}</td><td>${row.wed}</td><td>${row.thu}</td><td>${row.fri}</td></tr>`;
             }).join('');
 
-            // 2. 行事曆動態過濾與高亮渲染
+            // 2. 行事曆渲染 (自動隱藏 3 天前舊行程)
             const calBody = document.getElementById('calendar-body');
             const now = new Date();
             const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 0, 0, 0, 0);
             const todayEnd = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 23, 59, 59, 999);
 
-            // 過期 3 天判定基準點
             const cutoffDate = new Date(todayStart);
             cutoffDate.setDate(cutoffDate.getDate() - 3);
 
             const filteredEvents = appData.calendar.filter(item => {
                 const dates = parseEventDates(item.date);
                 if (!dates) return true;
-                // 若結束時間比 3 天前還早，則自動隱藏
                 return dates.endDate >= cutoffDate;
             });
 
@@ -427,7 +424,6 @@
                 let isToday = false;
 
                 if (dates) {
-                    // 今日行程判定 (今天介於活動起迄時間內)
                     isToday = (todayStart <= dates.endDate && todayEnd >= dates.startDate);
                 }
 
