@@ -54,6 +54,7 @@ try{
  await songPage.goto(url.replace('learning-map/',item.id+'/'));
  assert.equal(await songPage.locator('.line').count(),item.lines);
  assert.equal(await songPage.locator('.word').count(),item.words);
+ if(item.id==='aini-ikunoni')assert.equal(await songPage.locator('.part-title').count(),8);
  for(const width of [320,360,390,768,1024]){await songPage.setViewportSize({width,height:900});assert(await songPage.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),`${item.id} overflow ${width}`);}
  await songPage.setViewportSize({width:360,height:800});await songPage.screenshot({path:join(tmpdir(),`aimyon-${item.id}-mobile.png`)});
  await songPage.locator('#word-search').fill('not-found');assert.equal(await songPage.locator('.word:visible').count(),0);

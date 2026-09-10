@@ -1,5 +1,6 @@
-export default {id:'aini-ikunoni',title:'会いに行くのに',rubyTitle:'会[あ]いに行[い]くのに',color:'#755789',file:'2344.png',lead:'未交出的物件，與仍想前往的心。',focus:'拆開複合動詞、目的に、轉折のに與未實現的條件。',links:[['3636','g-teiru','留下的狀態'],['miniskirt-highlight','g-wish','未實現願望'],['hadaka-no-kokoro','g-purpose','移動目的']],sourceLink:'https://www.aimyong.net/feature/ainiikunoni',
-rows:`食[た]べ損[そこ]ねたラブレター|沒能吃下的情書。|failure|特殊意象保留；截圖未給前文，不能自行補冰箱等情境。
+export default {id:'aini-ikunoni',title:'会いに行くのに',rubyTitle:'会[あ]いに行[い]くのに',color:'#755789',file:'2344.png',source:'使用者於 2026-09-10 提供的日文歌詞部分',verified:'2026-09-10',lead:'冰箱、紅盒與冬天，把未能交付的愛封存在反覆回想裡。',focus:'沿 Verse／Pre-chorus／Chorus／Bridge 辨認意象推進，拆開複合動詞、目的に、轉折のに與未實現條件。',parts:[[1,'VERSE 1','沒能交付的物件'],[7,'PRE-CHORUS 1','反事實願望與反覆傷害'],[11,'CHORUS 1','冬天、房間與未完成的行動'],[19,'VERSE 2','過零點後切斷記憶'],[22,'PRE-CHORUS 2','從夢轉向清晨'],[26,'CHORUS 2','衣服、體溫與關係終點'],[34,'BRIDGE','距離不變，觸碰已失去'],[38,'FINAL CHORUS','重複句的情緒加深']],links:[['3636','g-teiru','留下的狀態'],['miniskirt-highlight','g-wish','未實現願望'],['hadaka-no-kokoro','g-purpose','移動目的']],sourceLink:'https://www.aimyong.net/feature/ainiikunoni',
+rows:`冷蔵庫[れいぞうこ]の中[なか]には|冰箱裡面，|modifier|の中表示內部位置；には同時標示所在與對比，句意要接到下一行。
+食[た]べ損[そこ]ねたラブレター|沒能吃成的情書。|failure|食べ損ねる是「沒吃成」；情書被當成可食之物，是本段刻意營造的超現實意象。
 ひとつずつ ひとつずつ 白[しろ]くなる|一個接一個，一個接一個變白。|dake|ずつ表示逐次，變白原因未明示。
 赤[あか]い小[ちい]さな箱[はこ]には|紅色的小盒子裡，|modifier|には提示所在與對比。
 渡[わた]しそびれたリング|是沒能交出的戒指。|failure|そびれる為錯過機會，並非一定忘記。
@@ -46,7 +47,8 @@ rows:`食[た]べ損[そこ]ねたラブレター|沒能吃下的情書。|failu
 会[あ]いに行[い]くのに|明明就會去見你啊。|contrast|句末留白。
 会[あ]いに行[い]くのに|明明就會去見你啊。|contrast|第二次完整保留。
 会[あ]いに行[い]くのに|明明就會去見你啊。|contrast|第三次完整保留。`,
-words:`食[た]べ損[そこ]ねる|沒能吃成|複合動詞
+words:`冷蔵庫[れいぞうこ]|冰箱|名詞
+食[た]べ損[そこ]ねる|沒能吃成|複合動詞
 渡[わた]しそびれる|錯過交付機會|複合動詞
 リング|戒指|名詞
 息[いき]を吐[は]く|吐氣|搭配
