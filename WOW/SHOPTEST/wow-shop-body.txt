@@ -1,0 +1,623 @@
+<!-- 僅替換此頁商城內文；不要貼入完整 HTML 頁面 -->
+<style>#wow-muji-shop{--bg:#fdfcf9;--text:#3f3b38;--sub:#65615d;--accent:#86534c;--border:#e5ded6;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;padding:clamp(20px,4vw,48px) clamp(12px,3vw,32px);line-height:1.8;border-radius:12px;overflow-wrap:anywhere}#wow-muji-shop,#wow-muji-shop *{box-sizing:border-box}#wow-muji-shop h1,#wow-muji-shop h2,#wow-muji-shop h3,#wow-muji-shop h4,#wow-muji-shop p{margin:0 0 12px}#wow-muji-shop .ws-header{text-align:center;max-width:850px;margin:0 auto 32px}#wow-muji-shop .ws-title{font-size:clamp(24px,4vw,34px);color:#333;line-height:1.4}#wow-muji-shop .ws-kicker{color:var(--accent);letter-spacing:2px}#wow-muji-shop .ws-intro{font-size:16px;color:var(--sub)}#wow-muji-shop .ws-nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:24px 0 40px}#wow-muji-shop .ws-nav a{color:var(--accent);border:1px solid var(--border);padding:8px 14px;border-radius:30px;text-decoration:none;background:#fff}#wow-muji-shop .ws-section{max-width:1100px;margin:0 auto 56px;scroll-margin-top:100px}#wow-muji-shop .ws-section-title{text-align:center;font-size:24px;color:var(--accent)}#wow-muji-shop .ws-section-desc{text-align:center;color:var(--sub)}#wow-muji-shop .ws-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin-top:24px}#wow-muji-shop .ws-card{min-width:0;display:flex;flex-direction:column;background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden;color:var(--text);text-decoration:none;transition:transform .2s,box-shadow .2s}#wow-muji-shop .ws-card:hover{transform:translateY(-2px);box-shadow:0 8px 24px #46372b12}#wow-muji-shop .ws-img{aspect-ratio:1/1;padding:12px;background:#fff;border-bottom:1px solid var(--border)}#wow-muji-shop .ws-img img{display:block;width:100%;height:100%;object-fit:contain}#wow-muji-shop .ws-card-body{padding:16px;display:flex;flex-direction:column;flex:1;text-align:center}#wow-muji-shop .ws-name{font-size:17px;font-weight:600;line-height:1.5}#wow-muji-shop .ws-sub,#wow-muji-shop .ws-desc{font-size:15px;color:var(--sub)}#wow-muji-shop .ws-cta{display:block;border:1px solid var(--accent);border-radius:5px;color:var(--accent);padding:8px;margin-top:auto;font-size:15px}#wow-muji-shop .ws-card:hover .ws-cta{background:var(--accent);color:#fff}#wow-muji-shop a:focus-visible{outline:3px solid #156eaa;outline-offset:4px}#wow-muji-shop .ws-feature{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:28px;background:#fff;border:1px solid var(--border);border-radius:12px;margin:24px 0}#wow-muji-shop .ws-feature-imgs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;align-content:start}#wow-muji-shop .ws-feature .ws-img{border:1px solid var(--border);border-radius:8px}#wow-muji-shop .ws-feature a.ws-buy{display:inline-block;background:var(--accent);color:#fff;padding:12px 24px;border-radius:5px;text-decoration:none}#wow-muji-shop .ws-warning{background:#fff6f2;border-left:3px solid #a65f46;padding:16px;margin:16px 0;font-size:15px}#wow-muji-shop .ws-warning ol,#wow-muji-shop .ws-feature ul{padding-left:22px}#wow-muji-shop .ws-notice{max-width:1100px;margin:24px auto 0;padding:24px;background:#fff5f2;border:1px solid #ead0c7;border-radius:10px;font-size:16px}#wow-muji-shop .ws-notice a{color:#70453b;text-decoration:underline}#wow-muji-shop .ws-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}@media(max-width:991px){#wow-muji-shop .ws-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}@media(max-width:767px){#wow-muji-shop .ws-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}#wow-muji-shop .ws-feature{grid-template-columns:1fr;padding:18px}#wow-muji-shop .ws-card-body{padding:12px}}@media(max-width:359px){#wow-muji-shop .ws-grid{grid-template-columns:minmax(0,1fr)}}@media(prefers-reduced-motion:reduce){#wow-muji-shop .ws-card{transition:none}#wow-muji-shop .ws-card:hover{transform:none}}</style>
+<div id="wow-muji-shop"><header class="ws-header"><p class="ws-kicker">WOW 日常生活提案</p><h2 class="ws-title">小人國網路商城｜樂園限定周邊商品</h2><p class="ws-intro">小人國主題樂園網路商城精選限定爆米花、紀念T恤、造型傘、拼圖胸章冰箱貼與生活小物。瀏覽商品介紹，前往蝦皮賣場選購。</p><p class="ws-intro">本頁為小人國周邊商品導購頁。點選商品後前往蝦皮賣場；售價、款式與供貨以各商品賣場為準。商品連結將另開新分頁。</p></header><nav class="ws-nav" aria-label="商品分類"><a href="#ws-cat-0">衣．穿搭日常</a><a href="#ws-cat-1">行．出遊陪伴</a><a href="#ws-cat-2">居．生活妝點</a><a href="#ws-cat-3">育．文具收納</a><a href="#ws-cat-4">樂．派對共享</a></nav><section class="ws-section" id="ws-cat-0" aria-labelledby="ws-heading-0"><h3 class="ws-section-title" id="ws-heading-0">衣．穿搭日常</h3><p class="ws-section-desc">舒適穿搭，讓樂園回憶隨身。</p><div class="ws-grid"><a id="ws-p1" class="ws-card" href="https://sho.pe/worldTour" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/TA.jpg" alt="紀念 T-shirt－經典紀念款" loading="eager" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">紀念 T-shirt</h4><p class="ws-sub">經典紀念款</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p2" class="ws-card" href="https://sho.pe/worldTour" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/T1.jpg" alt="紀念 T-shirt－青春粉紅" loading="eager" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">紀念 T-shirt</h4><p class="ws-sub">青春粉紅</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p3" class="ws-card" href="https://sho.pe/worldTour" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/T2.jpg" alt="紀念 T-shirt－氣質米" loading="eager" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">紀念 T-shirt</h4><p class="ws-sub">氣質米</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p4" class="ws-card" href="https://sho.pe/worldTour" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/T3.jpg" alt="紀念 T-shirt－不敗黑" loading="eager" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">紀念 T-shirt</h4><p class="ws-sub">不敗黑</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p5" class="ws-card" href="https://sho.pe/worldTour" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/T4.jpg" alt="紀念 T-shirt－經典白" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">紀念 T-shirt</h4><p class="ws-sub">經典白</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p6" class="ws-card" href="https://sho.pe/worldTour" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/T3.webp" alt="紀念 T-shirt－常態款" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">紀念 T-shirt</h4><p class="ws-sub">常態款</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p7" class="ws-card" href="https://sho.pe/worldTour" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/TB1.webp" alt="兒童紀念 T-shirt－兒童青春粉紅" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">兒童紀念 T-shirt</h4><p class="ws-sub">兒童青春粉紅</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p8" class="ws-card" href="https://sho.pe/worldTour" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/TB2.webp" alt="兒童紀念 T-shirt－兒童氣質米" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">兒童紀念 T-shirt</h4><p class="ws-sub">兒童氣質米</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a></div></section>
+<section class="ws-section" id="ws-cat-1" aria-labelledby="ws-heading-1"><h3 class="ws-section-title" id="ws-heading-1">行．出遊陪伴</h3><p class="ws-section-desc">出行相伴，精選實用生活小物。</p><div class="ws-grid"><a id="ws-p9" class="ws-card" href="https://sho.pe/8wkecx" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-02.jpg" alt="萬用矽膠飲料提袋－杯墊兩用設計" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">萬用矽膠飲料提袋</h4><p class="ws-sub">杯墊兩用設計</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p10" class="ws-card" href="https://sho.pe/8wkecx" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/db_02.jpg" alt="矽膠飲料提袋－丈青色" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">矽膠飲料提袋</h4><p class="ws-sub">丈青色</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p11" class="ws-card" href="https://sho.pe/8wkecx" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/db_01.jpg" alt="矽膠飲料提袋－粉紅色" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">矽膠飲料提袋</h4><p class="ws-sub">粉紅色</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p12" class="ws-card" href="https://sho.pe/WOWebags" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/eb_02.jpg" alt="環保購物袋－深色款" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">環保購物袋</h4><p class="ws-sub">深色款</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p13" class="ws-card" href="https://sho.pe/WOWebags" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/eb_01.jpg" alt="環保購物袋－淺色款" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">環保購物袋</h4><p class="ws-sub">淺色款</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p14" class="ws-card" href="https://sho.pe/8wkerq" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-01.jpg" alt="WOW限定造型傘－晴雨兩用" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">WOW限定造型傘</h4><p class="ws-sub">晴雨兩用</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p15" class="ws-card" href="https://shopee.tw/product/144505443/14965139355" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop9c.jpg" alt="迷你小傘－藍色帥氣龍" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">迷你小傘</h4><p class="ws-sub">藍色帥氣龍</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p16" class="ws-card" href="https://shopee.tw/product/144505443/14965139355" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop9d.jpg" alt="迷你小傘－紫紅美麗妮" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">迷你小傘</h4><p class="ws-sub">紫紅美麗妮</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p17" class="ws-card" href="https://shopee.tw/product/144505443/14965139355" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop9a.jpg" alt="迷你小傘－紅色帥氣龍" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">迷你小傘</h4><p class="ws-sub">紅色帥氣龍</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p18" class="ws-card" href="https://shopee.tw/product/144505443/14965139355" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop9b.jpg" alt="迷你小傘－粉紅美麗妮" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">迷你小傘</h4><p class="ws-sub">粉紅美麗妮</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p19" class="ws-card" href="https://shopee.tw/product/144505443/22735725420" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/product/WOW0711.jpg" alt="造型手動傘－妮妮公主款" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">造型手動傘</h4><p class="ws-sub">妮妮公主款</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p20" class="ws-card" href="https://sho.pe/8wke6z" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop9e.jpg" alt="三折手開傘－WOW湖水綠" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">三折手開傘</h4><p class="ws-sub">WOW湖水綠</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p21" class="ws-card" href="https://sho.pe/8wke6z" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop9f.jpg" alt="三折手開傘－WOW魔力紅" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">三折手開傘</h4><p class="ws-sub">WOW魔力紅</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p22" class="ws-card" href="https://sho.pe/8wkerq" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop9g.jpg" alt="直骨自動開傘－WOW湖水綠" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">直骨自動開傘</h4><p class="ws-sub">WOW湖水綠</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p23" class="ws-card" href="https://sho.pe/8wkerq" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop9h.jpg" alt="直骨自動開傘－WOW魔力紅" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">直骨自動開傘</h4><p class="ws-sub">WOW魔力紅</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p24" class="ws-card" href="https://shopee.tw/product/144505443/15713020475" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop3a.jpg" alt="造型後背包－帥氣龍" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">造型後背包</h4><p class="ws-sub">帥氣龍</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p25" class="ws-card" href="https://shopee.tw/product/144505443/15213011920" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop3b.jpg" alt="造型後背包－美麗妮" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">造型後背包</h4><p class="ws-sub">美麗妮</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p26" class="ws-card" href="https://sho.pe/8wkelg" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop02.jpg" alt="龍龍兩用頸枕－絨毛周邊" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">龍龍兩用頸枕</h4><p class="ws-sub">絨毛周邊</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a></div></section>
+<section class="ws-section" id="ws-cat-2" aria-labelledby="ws-heading-2"><h3 class="ws-section-title" id="ws-heading-2">居．生活妝點</h3><p class="ws-section-desc">把喜歡的風景與角色帶回日常。</p><article id="ws-p27" class="ws-feature"><div class="ws-feature-imgs"><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/T529a.webp" alt="園區限定｜拼圖胸章冰箱貼" loading="lazy" decoding="async" /></div><div class="ws-img"><img src="https://www.wow.com.tw/tw/about/images/T529b.webp" alt="園區限定｜拼圖胸章冰箱貼－細節展示" loading="lazy" decoding="async" /></div></div><div><h4 class="ws-name">園區限定｜拼圖胸章冰箱貼</h4><p class="ws-desc">把微縮景觀化作胸章別在帆布袋上，或作為冰箱貼夾住家人的溫馨紙條，讓歡樂融入日常。</p><ul><li>景觀 8 款設計，每套內含磁鐵 9 片</li><li>拼圖直徑 6cm</li><li>材質：ABS塑膠、五金別針、磁鐵</li><li>使用說明：可用內附挑針由後方孔戳出拼圖</li></ul><div class="ws-warning"><strong>警告及注意事項</strong><ol><li>內含別針，不適合未滿14歲兒童使用。</li><li>為維護安全，請在成人監督下使用。</li><li>含有磁性物，吞入會吸附消化器官導致傷害。若吞入應立即就醫。</li><li>塑膠袋拆卸後請立即銷毀或遠離嬰幼兒。</li></ol></div><a class="ws-buy" href="https://sho.pe/95jq6b" target="_blank" rel="noopener">前往購買<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></a></div></article><div class="ws-grid"><a id="ws-p28" class="ws-card" href="https://shopee.tw/product/144505443/24818029382" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/wg1.jpg" alt="硅藻土杯墊－龍龍／妮妮／大野狼" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">硅藻土杯墊</h4><p class="ws-sub">龍龍／妮妮／大野狼</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p29" class="ws-card" href="https://shopee.tw/product/144505443/14965128323" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/sma.jpg" alt="迷你景觀磁鐵－共有4款" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">迷你景觀磁鐵</h4><p class="ws-sub">共有4款</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p30" class="ws-card" href="https://sho.pe/8wkemb" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/product/wowtowel.jpg" alt="WOW浴巾－櫻花粉／寶寶藍" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">WOW浴巾</h4><p class="ws-sub">櫻花粉／寶寶藍</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p31" class="ws-card" href="https://sho.pe/8wken5" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/product/luckytowel.jpg" alt="小歡龍毛巾－薰衣草紫／天空藍" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">小歡龍毛巾</h4><p class="ws-sub">薰衣草紫／天空藍</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p32" class="ws-card" href="https://shopee.tw/product/144505443/15210132013" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop7a.jpg" alt="7吋絨毛晴天娃娃－帥氣龍" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">7吋絨毛晴天娃娃</h4><p class="ws-sub">帥氣龍</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p33" class="ws-card" href="https://shopee.tw/product/144505443/11275564759" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop7b.jpg" alt="7吋絨毛晴天娃娃－美麗妮" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">7吋絨毛晴天娃娃</h4><p class="ws-sub">美麗妮</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a></div></section>
+<section class="ws-section" id="ws-cat-3" aria-labelledby="ws-heading-3"><h3 class="ws-section-title" id="ws-heading-3">育．文具收納</h3><p class="ws-section-desc">讓學習與辦公時光多一點趣味。</p><div class="ws-grid"><a id="ws-p34" class="ws-card" href="https://sho.pe/9aang2" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop703.jpg" alt="造型口袋筆" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">造型口袋筆</h4><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p35" class="ws-card" href="https://shopee.tw/product/144505443/6713361624" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop01.jpg" alt="造型迴紋針" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">造型迴紋針</h4><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p36" class="ws-card" href="https://sho.pe/8wkexp" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/filew.jpg" alt="資料收納袋3入－龍龍／妮妮／大野狼" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">資料收納袋3入</h4><p class="ws-sub">龍龍／妮妮／大野狼</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p37" class="ws-card" href="https://shopee.tw/product/144505443/25234512827" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/Pan1.jpg" alt="紓壓轉轉筆－龍龍款" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">紓壓轉轉筆</h4><p class="ws-sub">龍龍款</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p38" class="ws-card" href="https://shopee.tw/product/144505443/25234512827" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/Pan2.jpg" alt="紓壓轉轉筆－妮妮款" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">紓壓轉轉筆</h4><p class="ws-sub">妮妮款</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p39" class="ws-card" href="https://sho.pe/8wkf24" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/nnbp1.jpg" alt="妮妮輕巧扁梳" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">妮妮輕巧扁梳</h4><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p40" class="ws-card" href="https://sho.pe/8wkewk" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/coolw.jpg" alt="威力大圓扇" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">威力大圓扇</h4><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a></div></section>
+<section class="ws-section" id="ws-cat-4" aria-labelledby="ws-heading-4"><h3 class="ws-section-title" id="ws-heading-4">樂．派對共享</h3><p class="ws-section-desc">與家人朋友共享點心與歡樂。</p><div class="ws-grid"><a id="ws-p41" class="ws-card" href="https://sho.pe/W_popcorn" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-03.jpg" alt="小人國限定爆米花－魔法焦糖" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">小人國限定爆米花</h4><p class="ws-sub">魔法焦糖</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p42" class="ws-card" href="https://sho.pe/W_popcorn" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-04.jpg" alt="小人國限定爆米花－奇魅岩鹽" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">小人國限定爆米花</h4><p class="ws-sub">奇魅岩鹽</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p43" class="ws-card" href="https://sho.pe/W_popcorn" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-05.jpg" alt="小人國限定爆米花－搖滾起司" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">小人國限定爆米花</h4><p class="ws-sub">搖滾起司</p><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p44" class="ws-card" href="https://sho.pe/8wkepl" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shopllp.jpg" alt="水晶棒棒糖" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">水晶棒棒糖</h4><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p45" class="ws-card" href="https://sho.pe/8wkeya" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/cardsS.jpg" alt="環遊世界撲克牌" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">環遊世界撲克牌</h4><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p46" class="ws-card" href="https://sho.pe/8wkf2e" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/product/BallS.jpg" alt="迷你世界彈力球" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">迷你世界彈力球</h4><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p47" class="ws-card" href="https://shopee.tw/product/144505443/17628555684" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/smb.jpg" alt="迷你景觀模型" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">迷你景觀模型</h4><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a>
+<a id="ws-p48" class="ws-card" href="https://shopee.tw/product/144505443/24718026900" target="_blank" rel="noopener"><div><div class="ws-img"><img src="https://www.wow.com.tw/images/about/shop9s.jpg" alt="舒壓吊飾" loading="lazy" decoding="async" /></div></div><div class="ws-card-body"><h4 class="ws-name">舒壓吊飾</h4><span class="ws-cta">查看商品<span class="ws-sr">（蝦皮賣場，另開新分頁）</span></span></div></a></div></section><aside class="ws-notice" aria-label="防詐騙提醒"><strong>安心購物・慎防詐騙</strong><p>小人國不會以購買票種錯誤或分期付款設定錯誤等理由，要求您操作 ATM 解除設定、變更付款方式或補繳金額，亦不會要求您提供信用卡帳號或個人及銀行相關資料。</p><p>若接獲可疑電話或簡訊，請勿提供資料，可撥打 <a href="tel:165">165</a>，或查詢<a href="https://165.npa.gov.tw/" target="_blank" rel="noopener">內政部警政署全民防騙網（另開新分頁）</a>。</p></aside></div>
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AmusementPark",
+      "@id": "https://www.wow.com.tw/#organization",
+      "name": "小人國主題樂園",
+      "url": "https://www.wow.com.tw/"
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://www.wow.com.tw/#website",
+      "url": "https://www.wow.com.tw/",
+      "name": "小人國主題樂園",
+      "publisher": {
+        "@id": "https://www.wow.com.tw/#organization"
+      }
+    },
+    {
+      "@type": "CollectionPage",
+      "@id": "https://www.wow.com.tw/tw/about/shop.aspx#webpage",
+      "url": "https://www.wow.com.tw/tw/about/shop.aspx",
+      "name": "小人國網路商城｜限定爆米花、紀念T恤與周邊商品",
+      "description": "小人國主題樂園網路商城精選限定爆米花、紀念T恤、造型傘、拼圖胸章冰箱貼與生活小物。瀏覽商品介紹，前往蝦皮賣場選購。",
+      "inLanguage": "zh-TW",
+      "isPartOf": {
+        "@id": "https://www.wow.com.tw/#website"
+      },
+      "publisher": {
+        "@id": "https://www.wow.com.tw/#organization"
+      },
+      "mainEntity": {
+        "@id": "https://www.wow.com.tw/tw/about/shop.aspx#itemlist"
+      }
+    },
+    {
+      "@type": "ItemList",
+      "@id": "https://www.wow.com.tw/tw/about/shop.aspx#itemlist",
+      "name": "小人國周邊商品清單",
+      "numberOfItems": 48,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p1",
+            "name": "紀念 T-shirt－經典紀念款",
+            "url": "https://sho.pe/worldTour",
+            "image": "https://www.wow.com.tw/tw/about/images/TA.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p2",
+            "name": "紀念 T-shirt－青春粉紅",
+            "url": "https://sho.pe/worldTour",
+            "image": "https://www.wow.com.tw/tw/about/images/T1.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p3",
+            "name": "紀念 T-shirt－氣質米",
+            "url": "https://sho.pe/worldTour",
+            "image": "https://www.wow.com.tw/tw/about/images/T2.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p4",
+            "name": "紀念 T-shirt－不敗黑",
+            "url": "https://sho.pe/worldTour",
+            "image": "https://www.wow.com.tw/tw/about/images/T3.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 5,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p5",
+            "name": "紀念 T-shirt－經典白",
+            "url": "https://sho.pe/worldTour",
+            "image": "https://www.wow.com.tw/tw/about/images/T4.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 6,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p6",
+            "name": "紀念 T-shirt－常態款",
+            "url": "https://sho.pe/worldTour",
+            "image": "https://www.wow.com.tw/tw/about/images/T3.webp"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 7,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p7",
+            "name": "兒童紀念 T-shirt－兒童青春粉紅",
+            "url": "https://sho.pe/worldTour",
+            "image": "https://www.wow.com.tw/tw/about/images/TB1.webp"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 8,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p8",
+            "name": "兒童紀念 T-shirt－兒童氣質米",
+            "url": "https://sho.pe/worldTour",
+            "image": "https://www.wow.com.tw/tw/about/images/TB2.webp"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 9,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p9",
+            "name": "萬用矽膠飲料提袋－杯墊兩用設計",
+            "url": "https://sho.pe/8wkecx",
+            "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-02.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 10,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p10",
+            "name": "矽膠飲料提袋－丈青色",
+            "url": "https://sho.pe/8wkecx",
+            "image": "https://www.wow.com.tw/images/about/db_02.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 11,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p11",
+            "name": "矽膠飲料提袋－粉紅色",
+            "url": "https://sho.pe/8wkecx",
+            "image": "https://www.wow.com.tw/images/about/db_01.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 12,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p12",
+            "name": "環保購物袋－深色款",
+            "url": "https://sho.pe/WOWebags",
+            "image": "https://www.wow.com.tw/images/about/eb_02.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 13,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p13",
+            "name": "環保購物袋－淺色款",
+            "url": "https://sho.pe/WOWebags",
+            "image": "https://www.wow.com.tw/images/about/eb_01.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 14,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p14",
+            "name": "WOW限定造型傘－晴雨兩用",
+            "url": "https://sho.pe/8wkerq",
+            "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-01.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 15,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p15",
+            "name": "迷你小傘－藍色帥氣龍",
+            "url": "https://shopee.tw/product/144505443/14965139355",
+            "image": "https://www.wow.com.tw/images/about/shop9c.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 16,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p16",
+            "name": "迷你小傘－紫紅美麗妮",
+            "url": "https://shopee.tw/product/144505443/14965139355",
+            "image": "https://www.wow.com.tw/images/about/shop9d.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 17,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p17",
+            "name": "迷你小傘－紅色帥氣龍",
+            "url": "https://shopee.tw/product/144505443/14965139355",
+            "image": "https://www.wow.com.tw/images/about/shop9a.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 18,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p18",
+            "name": "迷你小傘－粉紅美麗妮",
+            "url": "https://shopee.tw/product/144505443/14965139355",
+            "image": "https://www.wow.com.tw/images/about/shop9b.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 19,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p19",
+            "name": "造型手動傘－妮妮公主款",
+            "url": "https://shopee.tw/product/144505443/22735725420",
+            "image": "https://www.wow.com.tw/images/product/WOW0711.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 20,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p20",
+            "name": "三折手開傘－WOW湖水綠",
+            "url": "https://sho.pe/8wke6z",
+            "image": "https://www.wow.com.tw/images/about/shop9e.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 21,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p21",
+            "name": "三折手開傘－WOW魔力紅",
+            "url": "https://sho.pe/8wke6z",
+            "image": "https://www.wow.com.tw/images/about/shop9f.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 22,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p22",
+            "name": "直骨自動開傘－WOW湖水綠",
+            "url": "https://sho.pe/8wkerq",
+            "image": "https://www.wow.com.tw/images/about/shop9g.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 23,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p23",
+            "name": "直骨自動開傘－WOW魔力紅",
+            "url": "https://sho.pe/8wkerq",
+            "image": "https://www.wow.com.tw/images/about/shop9h.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 24,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p24",
+            "name": "造型後背包－帥氣龍",
+            "url": "https://shopee.tw/product/144505443/15713020475",
+            "image": "https://www.wow.com.tw/images/about/shop3a.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 25,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p25",
+            "name": "造型後背包－美麗妮",
+            "url": "https://shopee.tw/product/144505443/15213011920",
+            "image": "https://www.wow.com.tw/images/about/shop3b.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 26,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p26",
+            "name": "龍龍兩用頸枕－絨毛周邊",
+            "url": "https://sho.pe/8wkelg",
+            "image": "https://www.wow.com.tw/images/about/shop02.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 27,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p27",
+            "name": "園區限定｜拼圖胸章冰箱貼",
+            "url": "https://sho.pe/95jq6b",
+            "image": "https://www.wow.com.tw/tw/about/images/T529a.webp",
+            "description": "把微縮景觀化作胸章別在帆布袋上，或作為冰箱貼夾住家人的溫馨紙條，讓歡樂融入日常。"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 28,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p28",
+            "name": "硅藻土杯墊－龍龍／妮妮／大野狼",
+            "url": "https://shopee.tw/product/144505443/24818029382",
+            "image": "https://www.wow.com.tw/images/about/wg1.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 29,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p29",
+            "name": "迷你景觀磁鐵－共有4款",
+            "url": "https://shopee.tw/product/144505443/14965128323",
+            "image": "https://www.wow.com.tw/images/about/sma.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 30,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p30",
+            "name": "WOW浴巾－櫻花粉／寶寶藍",
+            "url": "https://sho.pe/8wkemb",
+            "image": "https://www.wow.com.tw/images/product/wowtowel.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 31,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p31",
+            "name": "小歡龍毛巾－薰衣草紫／天空藍",
+            "url": "https://sho.pe/8wken5",
+            "image": "https://www.wow.com.tw/images/product/luckytowel.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 32,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p32",
+            "name": "7吋絨毛晴天娃娃－帥氣龍",
+            "url": "https://shopee.tw/product/144505443/15210132013",
+            "image": "https://www.wow.com.tw/images/about/shop7a.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 33,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p33",
+            "name": "7吋絨毛晴天娃娃－美麗妮",
+            "url": "https://shopee.tw/product/144505443/11275564759",
+            "image": "https://www.wow.com.tw/images/about/shop7b.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 34,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p34",
+            "name": "造型口袋筆",
+            "url": "https://sho.pe/9aang2",
+            "image": "https://www.wow.com.tw/images/about/shop703.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 35,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p35",
+            "name": "造型迴紋針",
+            "url": "https://shopee.tw/product/144505443/6713361624",
+            "image": "https://www.wow.com.tw/images/about/shop01.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 36,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p36",
+            "name": "資料收納袋3入－龍龍／妮妮／大野狼",
+            "url": "https://sho.pe/8wkexp",
+            "image": "https://www.wow.com.tw/images/about/filew.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 37,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p37",
+            "name": "紓壓轉轉筆－龍龍款",
+            "url": "https://shopee.tw/product/144505443/25234512827",
+            "image": "https://www.wow.com.tw/images/about/Pan1.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 38,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p38",
+            "name": "紓壓轉轉筆－妮妮款",
+            "url": "https://shopee.tw/product/144505443/25234512827",
+            "image": "https://www.wow.com.tw/images/about/Pan2.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 39,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p39",
+            "name": "妮妮輕巧扁梳",
+            "url": "https://sho.pe/8wkf24",
+            "image": "https://www.wow.com.tw/images/about/nnbp1.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 40,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p40",
+            "name": "威力大圓扇",
+            "url": "https://sho.pe/8wkewk",
+            "image": "https://www.wow.com.tw/images/about/coolw.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 41,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p41",
+            "name": "小人國限定爆米花－魔法焦糖",
+            "url": "https://sho.pe/W_popcorn",
+            "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-03.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 42,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p42",
+            "name": "小人國限定爆米花－奇魅岩鹽",
+            "url": "https://sho.pe/W_popcorn",
+            "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-04.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 43,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p43",
+            "name": "小人國限定爆米花－搖滾起司",
+            "url": "https://sho.pe/W_popcorn",
+            "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-05.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 44,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p44",
+            "name": "水晶棒棒糖",
+            "url": "https://sho.pe/8wkepl",
+            "image": "https://www.wow.com.tw/images/about/shopllp.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 45,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p45",
+            "name": "環遊世界撲克牌",
+            "url": "https://sho.pe/8wkeya",
+            "image": "https://www.wow.com.tw/images/about/cardsS.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 46,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p46",
+            "name": "迷你世界彈力球",
+            "url": "https://sho.pe/8wkf2e",
+            "image": "https://www.wow.com.tw/images/product/BallS.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 47,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p47",
+            "name": "迷你景觀模型",
+            "url": "https://shopee.tw/product/144505443/17628555684",
+            "image": "https://www.wow.com.tw/images/about/smb.jpg"
+          }
+        },
+        {
+          "@type": "ListItem",
+          "position": 48,
+          "item": {
+            "@type": "Thing",
+            "@id": "https://www.wow.com.tw/tw/about/shop.aspx#ws-p48",
+            "name": "舒壓吊飾",
+            "url": "https://shopee.tw/product/144505443/24718026900",
+            "image": "https://www.wow.com.tw/images/about/shop9s.jpg"
+          }
+        }
+      ]
+    }
+  ]
+}</script>
