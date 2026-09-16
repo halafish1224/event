@@ -415,12 +415,16 @@
     {
       "id": "p41",
       "category": "樂",
+      "active": true,
+      "feature": false,
       "name": "小人國限定爆米花",
-      "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-03.jpg",
+      "image": "https://www.wow.com.tw/images/product/popA.webp",
       "url": "https://sho.pe/W_popcorn",
       "subtitle": "魔法焦糖",
       "description": "",
-      "active": true
+      "image2": "",
+      "specs": "",
+      "warnings": ""
     },
     {
       "id": "p42",
