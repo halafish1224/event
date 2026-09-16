@@ -3,7 +3,7 @@
   "settings": {
     "title": "小人國網路商城｜限定爆米花、紀念T恤與周邊商品",
     "description": "小人國主題樂園網路商城精選限定爆米花、紀念T恤、造型傘、拼圖胸章冰箱貼與生活小物。瀏覽商品介紹，前往蝦皮賣場選購。",
-    "canonical": "https://www.wow.com.tw/tw/about/shop.aspx",
+    "canonical": "https://wow.com.tw/tw/news/show.aspx?num=3479&kind=10&page=2",
     "ogImage": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-03.jpg",
     "hasH1": true
   },
@@ -491,6 +491,20 @@
       "subtitle": "",
       "description": "",
       "active": true
+    },
+    {
+      "id": "p1789537379222-4kv16",
+      "category": "育",
+      "active": true,
+      "feature": false,
+      "name": "文具組合特惠組",
+      "image": "https://down-tw.img.susercontent.com/file/tw-11134207-820l5-mr889opud79h61@resize_w450_nl.webp",
+      "url": "https://shopee.tw/%E3%80%90%E5%B0%8F%E4%BA%BA%E5%9C%8B%E3%80%91%E9%96%8B%E5%AD%B8%E5%AD%A3-%E6%96%87%E5%85%B7%E7%B5%84%E5%90%88%E7%89%B9%E6%83%A0%E7%B5%84-%E9%80%A0%E5%9E%8B%E5%8F%A3%E8%A2%8B%E7%AD%86-%E8%88%92%E5%A3%93%E6%8C%89%E5%8B%95%E7%AD%86-%E8%B3%87%E6%96%99%E6%94%B6%E7%B4%8D%E8%A2%8B3%E5%85%A5%E7%B5%84-%E7%92%B0%E4%BF%9D%E8%B3%BC%E7%89%A9%E8%A2%8B-%E8%B3%BC%E7%89%A9%E8%A2%8B-%E6%96%87%E5%85%B7-%E6%94%B6%E7%B4%8D-i.144505443.47714111037?extraParams=%7B%22display_model_id%22%3A297788057792%2C%22model_selection_logic%22%3A3%7D",
+      "subtitle": "文具組合特惠組",
+      "description": "",
+      "image2": "",
+      "specs": "",
+      "warnings": ""
     }
   ]
 }
