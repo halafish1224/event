@@ -1,0 +1,181 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>WOW 水樂園｜設施編輯器</title><style>*{box-sizing:border-box}body{margin:0;background:#f3f5f7;color:#213547;font:16px/1.7 system-ui,-apple-system,"Microsoft JhengHei",sans-serif}header{background:#143f51;color:white;padding:32px max(20px,4vw)}header p{max-width:860px;margin:8px 0}h1{font-size:clamp(26px,4vw,38px);margin:0}h2{font-size:24px;margin:0 0 14px}h3{margin:0;font-size:20px}main{max-width:1500px;margin:auto;padding:20px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;padding:14px;background:#fff;border:1px solid #d7e1e6;border-radius:12px;margin-bottom:18px}button,.filebtn{font:inherit;border:1px solid #b8ccd3;background:#fff;color:#143f51;padding:8px 14px;border-radius:8px;cursor:pointer}button:hover,.filebtn:hover{background:#e7f4f5}button:disabled{opacity:.4;cursor:default}.primary{background:#006b79;color:white}.primary:hover{background:#004e5b}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible{outline:3px solid #bc6b0a;outline-offset:3px}.fields{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}label{display:block;font-weight:650;font-size:14px}input,select,textarea{display:block;width:100%;margin-top:6px;padding:10px;border:1px solid #b4c5cd;border-radius:6px;font:16px/1.6 system-ui;color:#213547;background:white}textarea{resize:vertical;min-height:110px}details.panel,.panel{background:#fff;border:1px solid #d7e1e6;border-radius:12px;padding:22px;margin-bottom:20px}summary{cursor:pointer;font-weight:750}.facility{border:1px solid #c9dbe0;border-radius:12px;padding:20px;margin:18px 0;background:#fff}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:18px}.actions{display:flex;gap:8px;flex-wrap:wrap}.imageform{background:#f0f6f7;padding:14px;margin:12px 0;border-radius:8px}.imageform button{margin-top:10px}.hint{font-size:14px;color:#536b78}#warnings,#message{white-space:pre-line;padding:14px;border-radius:8px;background:#fff5d9;margin-bottom:16px}#message{background:#e1f1ed}#output{font:13px/1.6 monospace;min-height:220px}#preview{border:1px solid #c8d9e0;height:850px;max-width:100%;display:block;margin:auto;background:white}#rulesfields textarea{min-height:200px}.previewwrap{background:#e2eaee;padding:12px}#import{position:absolute;width:1px;height:1px;opacity:0}.filebtn:focus-within{outline:3px solid #bc6b0a}.tag{letter-spacing:.12em;font-size:12px}section{scroll-margin-top:20px}@media(max-width:700px){.fields{grid-template-columns:1fr}main{padding:12px}.panel,.facility{padding:16px}}</style></head><body><header><div class="tag">WINDOW ON WORLD · CONTENT STUDIO</div><h1>水樂園設施編輯器</h1><p>填寫內容 → 更新預覽 → 下載維護資料 → 複製官網內文。此檔供內部編輯使用，請勿把整個編輯器貼上官網。</p></header><main><div class="toolbar"><button data-act="json">下載 JSON 備份</button><label class="filebtn">匯入 JSON<input id="import" type="file" accept=".json,application/json"></label><button data-act="restore">載入暫存</button><button data-act="reset">回復初始範例</button><a href="#result">前往預覽與輸出 ↓</a></div><div id="message" role="status" aria-live="polite">已載入四項設施。圖片需要網路，編輯與產生 HTML 可離線操作。</div><details class="panel" open><summary>發布前提醒</summary><div id="warnings"></div><p class="hint">營運狀態不會依日期自動切換。原始安全規範有待確認之處，請至「共通規範」查看內部備註。即使編輯器以 noindex 標示，也不能取代權限控管；請勿公開上傳本檔。</p></details><section class="panel"><h2>01　頁面與公告</h2><div id="pagefields" class="fields"></div></section><section><h2>02　設施資料</h2><p class="hint">新增或排序後，導覽、速查表及結構化資料會在產生語法時一起更新。</p><div id="facilities"></div><button data-act="add" class="primary">＋ 新增設施</button></section><details class="panel" style="margin-top:24px"><summary>03　共通規範與內部待確認事項</summary><div id="rulesfields"></div></details><section id="result" class="panel"><h2>04　預覽與官網語法</h2><div class="toolbar"><button class="primary" data-act="refresh">更新預覽／語法</button><button data-act="desktop">桌機預覽</button><button data-act="mobile">手機預覽</button><button data-act="copy">複製官網內文</button><button data-act="html">下載官網內文 TXT</button><button data-act="previewfile">下載預覽 HTML</button></div><p id="previewstate" class="hint"></p><div class="previewwrap"><iframe id="preview" title="官網內文預覽" sandbox="allow-popups allow-popups-to-escape-sandbox"></iframe></div><label style="margin-top:20px">產生的官網內文（唯讀；請從上方表單修改）<textarea id="output" readonly spellcheck="false"></textarea></label><p class="hint">title、meta description、canonical 請在官網該頁設定處處理，勿貼入內文；JSON-LD 需確認後台儲存後未被移除。</p></section></main><script>const SEED={"version":1,"page":{"title":"小人國 WOW 水樂園設施介紹","intro":"探索大雷雨、尼羅灘、瘋狂實驗室與 GoGo! 卡路里，出發前先查看開放狀態、身高限制及戲水注意事項。","notice":"2026 年 WOW 水樂園暑期開放期間為 7 月 4 日至 8 月 30 日，尼羅灘、瘋狂實驗室及 GoGo! 卡路里的暑期開放已結束。大雷雨於 2026 年 9 月假日開放，實際營運依天候、現場公告及工作人員指引為準。","noticeUntil":"2026-09-30","updated":"2026-09-16","url":"","heading":"h2"},"rules":["水樂園為季節性開放設施；各設施當期開放情形請參閱本頁公告。戶外設施與水樂園可能因天候、現場狀況或安全考量調整，請依現場公告與工作人員指引為準。","入園前請確認健康狀況。心臟病、皮膚病、傳染病、酗酒、皮膚易過敏、頸部／背部／脊椎受過傷、背部疾病、骨質疏鬆者及孕婦，請勿使用園內設施及滑水道。","6 歲以下孩童須由年滿 18 歲以上之家長或監護人全程陪同入園；身心障礙者亦須有陪同者同行。各設施另有陪同規定，請一併遵守。","陪同者與遊客皆須穿著泳衣、泳褲、泳帽或 100% 聚酯纖維材質衣物，方可入內。","請勿穿著含金屬拉鍊或裝飾物之泳裝，以免刮傷或造成危險。","請遵守秩序、彼此尊重、互相禮讓。遊玩及戲水皆存在意外受傷之風險，陪同家長須善盡監護責任並負責孩童安全，並充分瞭解且願意承受該風險。","工作人員有權制止危險行為者或請其離場。","請勿穿鞋進入水域及各項設施範圍，園內設有鞋櫃供使用。","入池前請務必先淋浴保持清潔。","嬰幼兒（未滿 3 歲）須穿著防水紙尿褲方可入池。","禁止攜帶任何易掉落、金屬及尖銳物品進入戲水區域，例如耳環、項鍊、髮夾、手錶、首飾、相機、自拍神器、玻璃瓶、易碎類物品、食物、飲料等。","戴眼鏡之遊客請務必將眼鏡固定，並確實了解配戴眼鏡可能發生之意外，承擔其責任與風險。","進入水池內，禁止水中追逐、跳水、潛水、推擠、奔跑，嚴禁攀爬、衝撞、重壓或翻越水池邊界，請勿跨越水池警戒範圍。","使用滑水道時，請遵守救生員及工作人員指示，避免危險。","全區禁止吸菸、飲酒、嚼食檳榔、口香糖或飲食；僅允許攜帶開水或瓶裝運動飲料入場。","水樂園全區嚴禁搭設任何形式之帳棚。","貴重物品請自行妥善保管，本園不負保管與賠償責任。","娃娃車請勿推進戲水區域。","遇天候不佳、打雷或閃電時將暫停營運，請依現場指引避難。"],"reviewNotes":"發布前請確認：①「9 月假日」的確切適用日期。② 共通「6 歲以下」、設施「6 歲以下（含）」與 GoGo!「未滿 6 歲」是否為刻意差異。③ 100% 聚酯纖維替代服裝是否仍須泳帽。④ 開水／運動飲料的攜入及飲用區域。⑤ GoGo!「適合滿 3 歲」是建議或硬性門檻。原法條歸因已移除，保留園方陪同規則，未把園規當成法條原文。","facilities":[{"id":"thunderstorm","name":"大雷雨","status":"指定日開放","period":"2026 年 9 月假日開放；實際營運依天候、現場公告與工作人員指引為準。","until":"2026-09-30","summary":"衝進親水降溫池，感受巨型濕身傾水桶帶來的清涼水花，一起享受夏日戲水樂趣。","height":"無身高限制","age":"未另列年齡門檻，請遵守陪同規定。","companion":"6 歲以下（含）孩童須由大人陪同，確實注意戲水安全。","notes":["發燒、呼吸道症狀或身體不適者，應盡速就醫，請勿進入。"],"video":"https://youtu.be/MLD48USU9zg","images":[{"url":"https://www.wow.com.tw/upload/images/about/26B2.jpg","alt":"小人國 WOW 水樂園大雷雨親水降溫池","width":"","height":""},{"url":"https://www.wow.com.tw/upload/images/about/26A2.jpg","alt":"小人國 WOW 水樂園大雷雨巨型濕身傾水桶","width":"","height":""}]},{"id":"nile-beach","name":"尼羅灘","status":"季節開放已結束","period":"2026 年暑期開放期間為 7 月 4 日至 8 月 30 日，現已結束。","until":"","summary":"棕櫚樹與金字塔環繞的兒童戲水灘，迎接轟浪濺起的巨大浪花，和小寶貝一起感受清涼水花與親子共遊的樂趣。","height":"無身高限制","age":"未另列年齡門檻，請遵守陪同規定。","companion":"6 歲以下（含）孩童須由大人陪同，確實注意戲水安全。","notes":["發燒、呼吸道症狀或身體不適者，應盡速就醫，請勿進入。"],"video":"https://www.youtube.com/watch?v=dtcGqC6DoqU","images":[{"url":"https://www.wow.com.tw/images/about/kj1.jpg","alt":"小人國 WOW 水樂園尼羅灘戲水區","width":"","height":""},{"url":"https://www.wow.com.tw/images/about/kj2.jpg","alt":"小人國 WOW 水樂園尼羅灘浪花設施","width":"","height":""},{"url":"https://www.wow.com.tw/images/about/kj3.jpg","alt":"小人國 WOW 水樂園尼羅灘親子玩水","width":"","height":""},{"url":"https://www.wow.com.tw/images/about/kj4.jpg","alt":"小人國 WOW 水樂園尼羅灘夏季消暑","width":"","height":""}]},{"id":"crazy-lab","name":"瘋狂實驗室","status":"季節開放已結束","period":"2026 年暑期開放期間為 7 月 4 日至 8 月 30 日，現已結束。","until":"","summary":"結合噴泉迷宮、水戰空間與多重滑水道的複合式親水設施，讓親子一起探索水花與滑行的樂趣。","height":"藍色、紅色滑水道：身高須滿 90 公分；橘色、綠色滑水道：身高須滿 100 公分。","age":"未另列年齡門檻，請遵守陪同及滑水道規定。","companion":"6 歲以下（含）兒童須有大人陪同。","notes":["發燒、呼吸道症狀或身體不適者，應盡速就醫，請勿進入。"],"video":"https://youtu.be/2HBQZnDdTSU","images":[{"url":"https://www.wow.com.tw/images/about/la1.jpg","alt":"小人國 WOW 水樂園瘋狂實驗室彩色滑水道","width":"","height":""},{"url":"https://www.wow.com.tw/images/about/la2.jpg","alt":"小人國 WOW 水樂園瘋狂實驗室噴泉迷宮","width":"","height":""},{"url":"https://www.wow.com.tw/images/about/la3.jpg","alt":"小人國 WOW 水樂園瘋狂實驗室親子戲水","width":"","height":""},{"url":"https://www.wow.com.tw/images/about/la4.jpg","alt":"小人國 WOW 水樂園瘋狂實驗室水戰設施","width":"","height":""},{"url":"https://www.wow.com.tw/images/about/la5.jpg","alt":"小人國 WOW 水樂園瘋狂實驗室夏季設施","width":"","height":""}]},{"id":"gogo-calories","name":"GoGo! 卡路里","status":"季節開放已結束","period":"2026 年暑期開放期間為 7 月 4 日至 8 月 30 日，現已結束。","until":"","summary":"以美式漢堡、薯條與甜甜圈為主題的戲水場域，包含轟炸薯條滑道、超級漢堡王滑梯與蜜糖甜甜圈遮陽池，享受玩水與拍照的樂趣。","height":"場域：身高須達 90 公分；滑水道：身高須達 100 公分。","age":"適合滿 3 歲以上且身高達 90 公分以上之兒童遊玩。","companion":"3 歲以上至未滿 6 歲兒童須由一位家長（或年滿 18 歲以上監護人）全程陪同。","notes":["身高未滿 90 公分兒童請勿使用本場域。","本場域須穿著泳衣、泳褲、泳帽（或 100% 聚酯纖維材質衣物）方可進入遊玩，工作人員除外。","轟炸薯條：從薯條城堡的滑道滑下，體驗水花與滑行樂趣。","超級漢堡王：以漢堡為造型的滑梯，滑入水中感受清涼。","蜜糖甜甜圈：草莓與巧克力甜甜圈造型的水池，設有遮陰。","超級漢堡王／轟炸薯條滑水道限身高達 100 公分以上者使用。","使用滑水道前，必須確定滑水道內已無其他使用者，或經工作人員給予信號後方可滑行而下。","請遵照工作人員指示，依規定背躺或坐在滑梯上、腳朝下、臉朝前、手抱胸，手臂和手勿伸出滑水道外。","所有滑水道嚴禁臉部朝下以趴著姿勢向下滑行。","嚴禁奔跑、跳水、站立、跪或半路停止等危險動作。","請勿攜帶任何遊具進入滑水道。","於滑水道出口端，請遵守工作人員指示，快速離開滑水道，以避免發生追撞；非滑道使用者請勿靠近出口端的著陸區域。","場域遊玩規範請依現場公告、工作人員指引為準。"],"video":"","images":[{"url":"https://www.wow.com.tw/upload/images/about/gogo1.jpg","alt":"小人國 WOW 水樂園GoGo! 卡路里水域區","width":"","height":""},{"url":"https://www.wow.com.tw/upload/images/about/gogo2.jpg","alt":"小人國 WOW 水樂園GoGo! 卡路里美式速食主題滑水道","width":"","height":""},{"url":"https://www.wow.com.tw/upload/images/about/gogo3.jpg","alt":"小人國 WOW 水樂園GoGo! 卡路里甜甜圈遮陽池","width":"","height":""}]}]};
+'use strict';
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const lines=s=>String(s).split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+const urlOK=s=>{try{const u=new URL(s);return ['https:','http:'].includes(u.protocol)&&!u.username&&!u.password}catch{return false}};
+const dateOK=s=>s===''||(/^\d{4}-\d{2}-\d{2}$/.test(s)&&!isNaN(Date.parse(s))&&new Date(s).toISOString().slice(0,10)===s);
+const statuses=['指定日開放','季節開放已結束','開放中','暫停開放','依現場公告'];
+function validate(d){
+ const errors=[];
+ if(!d||d.version!==1||!d.page||!Array.isArray(d.facilities)||!Array.isArray(d.rules))return ['不是有效的第 1 版設施資料。'];
+ const str=(s,n)=>{if(typeof s!=='string'||s.length>20000)errors.push(n+'須為文字（最多 20,000 字）。')};
+ for(const k of ['title','intro','notice','noticeUntil','updated','url','heading'])str(d.page[k],k);
+ str(d.reviewNotes,'待確認事項');
+ if(!['h1','h2'].includes(d.page.heading))errors.push('標題層級須為 h1 或 h2。');
+ if(!d.page.title?.trim())errors.push('請填寫頁面標題。');
+ if(d.page.url&&!urlOK(d.page.url))errors.push('正式頁面網址須為完整 http／https 網址。');
+ for(const k of ['noticeUntil','updated'])if(!dateOK(d.page[k]))errors.push(k+'日期格式錯誤。');
+ if(d.facilities.length<1||d.facilities.length>100)errors.push('設施數量須為 1～100 項。');
+ if(d.rules.length>200)errors.push('共通注意事項最多 200 項。');
+ d.rules.forEach(x=>str(x,'共通注意事項'));
+ const ids=new Set();
+ d.facilities.forEach((f,i)=>{
+  if(!f||typeof f!=='object'){errors.push('設施資料錯誤');return}
+  const n='第 '+(i+1)+' 項設施：';
+  for(const k of ['id','name','status','period','until','summary','height','age','companion','video'])str(f[k],n+k);
+  if(!/^[a-z][a-z0-9-]{0,79}$/.test(f.id)||ids.has(f.id))errors.push(n+'識別碼須唯一，使用英文小寫、數字與連字號。');ids.add(f.id);
+  if(!f.name?.trim()||!f.summary?.trim())errors.push(n+'名稱與簡介不可空白。');
+  if(!statuses.includes(f.status))errors.push(n+'開放狀態不在選項內。');
+  if(!dateOK(f.until))errors.push(n+'日期格式錯誤。');
+  if(f.video&&!urlOK(f.video))errors.push(n+'影片網址無效。');
+  if(!Array.isArray(f.notes)||f.notes.length>200)errors.push(n+'注意事項格式錯誤。');else f.notes.forEach(x=>str(x,n+'注意事項'));
+  if(!Array.isArray(f.images)||f.images.length>50){errors.push(n+'圖片資料格式錯誤（最多 50 張）。');return}
+  f.images.forEach((im,j)=>{
+   if(!im||typeof im!=='object'){errors.push(n+'圖片格式錯誤');return}
+   for(const k of ['url','alt','width','height'])str(im[k],n+'圖片'+k);
+   if(!urlOK(im.url))errors.push(n+'圖片 '+(j+1)+' 請填完整 http／https 網址。');
+   if(!im.alt?.trim())errors.push(n+'圖片 '+(j+1)+' 請填圖片說明。');
+   if((im.width||im.height)&&!(/^[1-9]\d{0,4}$/.test(im.width)&&/^[1-9]\d{0,4}$/.test(im.height)))errors.push(n+'圖片寬高請同時填入正整數，或全部留白。');
+  });
+ });return errors;
+}
+const pageCSS=`
+#wow-water-park{--ww-ink:#173d4e;--ww-muted:#426171;--ww-brand:#006e83;--ww-line:#cee2e6;--ww-pale:#edf8fa;color:var(--ww-ink);background:#fff;font-family:system-ui,-apple-system,"Noto Sans TC","Microsoft JhengHei",sans-serif;font-size:16px;line-height:1.85;padding:clamp(16px,4vw,40px);border-radius:20px;max-width:1200px;margin:0 auto;overflow-wrap:anywhere;text-align:left}
+#wow-water-park,#wow-water-park *{box-sizing:border-box}
+#wow-water-park h1,#wow-water-park h2,#wow-water-park h3,#wow-water-park h4{color:var(--ww-ink);font-family:inherit;line-height:1.45;margin:0 0 16px;font-weight:750;letter-spacing:normal}
+#wow-water-park .ww-title{font-size:clamp(26px,5vw,40px)}
+#wow-water-park .ww-section-title{font-size:clamp(23px,3vw,29px)}
+#wow-water-park .ww-subtitle{font-size:19px;margin-top:20px}
+#wow-water-park p{margin:0 0 14px;white-space:pre-line}
+#wow-water-park a{color:var(--ww-brand);text-decoration:underline;text-underline-offset:4px}
+#wow-water-park a:focus-visible,#wow-water-park summary:focus-visible{outline:3px solid #b45309;outline-offset:5px}
+#wow-water-park .ww-kicker{font-size:13px;color:var(--ww-brand);font-weight:750;letter-spacing:.13em}
+#wow-water-park .ww-notice{border:1px solid #dac895;border-left:5px solid #9a6a11;background:#fff9e9;padding:20px;border-radius:12px;margin:24px 0}
+#wow-water-park .ww-small{font-size:14px;color:var(--ww-muted)}
+#wow-water-park .ww-nav{display:flex;flex-wrap:wrap;gap:10px;margin:24px 0}
+#wow-water-park .ww-nav a,#wow-water-park .ww-video{display:inline-block;border:1px solid var(--ww-line);border-radius:99px;padding:8px 18px;background:var(--ww-pale);font-weight:650}
+#wow-water-park .ww-tablebox{overflow:auto;margin:20px 0 38px;border:1px solid var(--ww-line);border-radius:12px}
+#wow-water-park table{width:100%;border-collapse:collapse;min-width:620px;font:inherit;color:inherit;background:#fff;margin:0}
+#wow-water-park caption{padding:12px;text-align:left;font-weight:700;color:var(--ww-ink);caption-side:top}
+#wow-water-park th,#wow-water-park td{padding:14px;text-align:left;vertical-align:top;border-bottom:1px solid var(--ww-line);line-height:1.7}
+#wow-water-park thead{background:var(--ww-pale)}
+#wow-water-park .ww-card{padding:30px 0;border-top:1px solid var(--ww-line);scroll-margin-top:110px}
+#wow-water-park .ww-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(20px,4vw,40px);align-items:start}
+#wow-water-park .ww-layout>*{min-width:0}
+#wow-water-park figure{margin:0}
+#wow-water-park .ww-photo{display:block;width:100%;aspect-ratio:4/3;object-fit:contain;background:#eff4f5;border-radius:12px;height:auto}
+#wow-water-park .ww-gallery{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:14px}
+#wow-water-park figcaption{font-size:13px;color:var(--ww-muted);padding:5px 0}
+#wow-water-park .ww-status{display:inline-block;border-radius:6px;background:var(--ww-pale);color:#195367;padding:3px 10px;font-size:14px;font-weight:750;margin-bottom:12px}
+#wow-water-park dl{margin:20px 0;padding:16px;background:var(--ww-pale);border-radius:12px}
+#wow-water-park dt{font-weight:750;margin-top:10px}
+#wow-water-park dt:first-child{margin-top:0}
+#wow-water-park dd{margin:0;white-space:pre-line}
+#wow-water-park ul{display:block;list-style:disc outside;margin:12px 0;padding-left:1.5em}
+#wow-water-park li{display:list-item;margin:7px 0;white-space:pre-line}
+#wow-water-park details{border:1px solid var(--ww-line);border-radius:12px;padding:16px;margin-top:18px}
+#wow-water-park summary{cursor:pointer;font-weight:750;color:var(--ww-brand)}
+#wow-water-park .ww-rules{padding:26px;background:var(--ww-pale);border-radius:16px;margin-top:24px;scroll-margin-top:110px}
+@media(max-width:700px){#wow-water-park .ww-layout{grid-template-columns:1fr}#wow-water-park .ww-rules{padding:18px}#wow-water-park .ww-nav a{padding:8px 12px}}
+@media(prefers-reduced-motion:no-preference){#wow-water-park a{transition:background-color .15s}}
+@media print{#wow-water-park details>*{display:block}#wow-water-park .ww-tablebox{overflow:visible}#wow-water-park table{min-width:0}}
+`;
+function makeSnippet(d){
+ const e=validate(d);if(e.length)throw Error(e.join('\n'));
+ const p=d.page,sub=p.heading==='h1'?'h2':'h3',minor=p.heading==='h1'?'h3':'h4';
+ const dest=id=>(p.url?p.url.split('#')[0]:'')+'#wow-water-'+id;
+ const schema={'@context':'https://schema.org','@type':'ItemList',name:p.title,description:p.intro,numberOfItems:d.facilities.length,itemListElement:d.facilities.map((f,i)=>({'@type':'ListItem',position:i+1,item:{'@type':'Thing','@id':dest(f.id),name:f.name,description:f.summary,...(p.url?{url:dest(f.id)}:{}),...(f.images.length?{image:f.images.map(x=>x.url)}:{})}}))};
+ const json=JSON.stringify(schema,null,2).replace(/</g,'\\u003c').replace(/>/g,'\\u003e').replace(/&/g,'\\u0026');
+ const list=a=>'<ul>'+a.map(x=>'<li>'+esc(x)+'</li>').join('')+'</ul>';
+ const img=(im)=>`<figure><a href="${esc(im.url)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(im.alt)}（另開視窗檢視原圖）"><img class="ww-photo" src="${esc(im.url)}" alt="${esc(im.alt)}"${im.width?` width="${im.width}" height="${im.height}"`:''} loading="lazy" decoding="async"></a><figcaption>${esc(im.alt)}</figcaption></figure>`;
+ return `<!-- 僅貼入此頁內文；請勿貼入編輯器。外框預設已有 h1；可在編輯器調整。 -->
+<style>${pageCSS}</style>
+<section id="wow-water-park" aria-labelledby="wow-water-title">
+<header><p class="ww-kicker">WINDOW ON WORLD · WATER PARK</p><${p.heading} class="ww-title" id="wow-water-title">${esc(p.title)}</${p.heading}><p>${esc(p.intro)}</p></header>
+${p.notice?`<aside class="ww-notice" aria-label="當期開放公告"><p><strong>當期開放公告</strong></p><p>${esc(p.notice)}</p>${p.updated?`<p class="ww-small">資訊整理日期：<time datetime="${p.updated}">${p.updated}</time></p>`:''}<a href="https://wowfb.pse.is/Wcalendar">查看營業時間與公告</a></aside>`:''}
+<nav class="ww-nav" aria-label="水樂園設施快速導覽">${d.facilities.map(f=>`<a href="#wow-water-${f.id}">${esc(f.name)}</a>`).join('')}<a href="#wow-water-rules">共通注意事項</a></nav>
+<div class="ww-tablebox" role="region" aria-label="設施比較表，可左右捲動" tabindex="0"><table><caption>設施開放狀態與使用限制速查</caption><thead><tr><th scope="col">設施</th><th scope="col">開放狀態</th><th scope="col">身高限制</th><th scope="col">陪同規定</th></tr></thead><tbody>${d.facilities.map(f=>`<tr><th scope="row"><a href="#wow-water-${f.id}">${esc(f.name)}</a></th><td>${esc(f.status)}<br>${esc(f.period)}</td><td>${esc(f.height||'請依現場公告')}</td><td>${esc(f.companion||'請依現場公告')}</td></tr>`).join('')}</tbody></table></div>
+${d.facilities.map(f=>`<article class="ww-card" id="wow-water-${f.id}" aria-labelledby="wow-water-title-${f.id}"><div class="ww-layout"><div><span class="ww-status">${esc(f.status)}</span><${sub} class="ww-section-title" id="wow-water-title-${f.id}">${esc(f.name)}</${sub}><p>${esc(f.summary)}</p><dl><dt>開放資訊</dt><dd>${esc(f.period||'請依現場公告')}</dd><dt>身高限制</dt><dd>${esc(f.height||'請依現場公告')}</dd><dt>年齡說明</dt><dd>${esc(f.age||'請依現場公告')}</dd><dt>陪同規定</dt><dd>${esc(f.companion||'請依現場公告')}</dd></dl>${f.notes.length?`<${minor} class="ww-subtitle">${esc(f.name)}遊玩須知</${minor}>${list(f.notes)}`:''}${f.video?`<p><a class="ww-video" href="${esc(f.video)}" target="_blank" rel="noopener noreferrer">觀看${esc(f.name)}影片（另開視窗）</a></p>`:''}<p class="ww-small">亦請遵守<a href="#wow-water-rules">水樂園共通注意事項</a>。</p></div><div>${f.images.length?img(f.images[0]):''}${f.images.length>1?`<details><summary>查看${esc(f.name)}更多照片（${f.images.length-1} 張）</summary><div class="ww-gallery">${f.images.slice(1).map(img).join('')}</div></details>`:''}</div></div></article>`).join('\n')}
+<section class="ww-rules" id="wow-water-rules" aria-labelledby="wow-water-rules-title"><${sub} class="ww-section-title" id="wow-water-rules-title">水樂園共通注意事項</${sub}>${list(d.rules)}</section>
+</section>
+<script type="application/ld+json">${json}<\/script>`;
+}
+function makePreview(d){return '<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow"><title>'+esc(d.page.title)+'｜預覽</title><style>body{margin:0;background:#eaf0f2;padding:24px 8px}body>header{max-width:1200px;margin:0 auto 20px;font:16px system-ui;color:#173d4e}body>header h1{font-size:24px}</style></head><body><header>'+(d.page.heading==='h2'?'<h1>WOW 水樂園</h1>':'')+'<p>獨立預覽，正式後台僅貼上「官網內文」檔案內容。</p></header>'+makeSnippet(d)+'</body></html>'}
+if(typeof module!=='undefined')module.exports={validate,makeSnippet,makePreview};
+
+let data=structuredClone(SEED);
+const $=id=>document.getElementById(id),key='wow-water-editor-v1';
+const field=(label,value,path,type='text')=>`<label>${esc(label)}${type==='textarea'?`<textarea data-path="${path}" rows="3">${esc(value)}</textarea>`:`<input type="${type}" data-path="${path}" value="${esc(value)}">`}</label>`;
+function message(t){$('message').textContent=t}
+function persist(){try{localStorage.setItem(key,JSON.stringify(data));message('已暫存於此瀏覽器。完成後請下載 JSON 備份。')}catch{message('此瀏覽器無法暫存；請下載 JSON 備份。')}}
+function warnings(){
+ const today=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei'}).format(new Date());
+ const out=[];
+ if(data.page.noticeUntil&&data.page.noticeUntil<today)out.push('頁首公告已超過適用截止日 '+data.page.noticeUntil+'，請更新公告。');
+ data.facilities.forEach(f=>{if(f.until&&f.until<today)out.push(f.name+'的狀態資訊已到期（'+f.until+'），請人工確認後更新。')});
+ if(!data.page.url)out.push('正式頁面網址尚未填寫；結構化資料先使用頁內識別碼，未輸出 canonical。');
+ if(data.facilities.some(f=>f.images.some(im=>!im.width)))out.push('部分圖片未提供實際尺寸：已用固定比例容器預留空間，不臆造原圖寬高。');
+ out.push('資訊整理日期不會自動更新；確認內容後請自行修改。');
+ $('warnings').textContent=out.join('\n');
+}
+function render(){
+ $('pagefields').innerHTML=field('頁面標題',data.page.title,'page.title')+field('頁面簡介',data.page.intro,'page.intro','textarea')+field('當期開放公告',data.page.notice,'page.notice','textarea')+field('公告適用截止日（只提醒，不自動判定開放）',data.page.noticeUntil,'page.noticeUntil','date')+field('資訊整理日期',data.page.updated,'page.updated','date')+field('正式頁面完整網址（選填，不填假網址）',data.page.url,'page.url','url')+`<label>頁面主標題層級<select data-path="page.heading"><option value="h2" ${data.page.heading==='h2'?'selected':''}>h2：官網外框已有 h1（預設）</option><option value="h1" ${data.page.heading==='h1'?'selected':''}>h1：官網外框沒有 h1</option></select></label>`;
+ $('rulesfields').innerHTML=field('共通注意事項（一行一項）',data.rules.join('\n'),'rules','textarea')+field('內部待確認事項（不輸出到官網）',data.reviewNotes,'reviewNotes','textarea');
+ $('facilities').innerHTML=data.facilities.map((f,i)=>`<section class="facility"><div class="cardhead"><h3>${i+1}. ${esc(f.name||'新設施')}</h3><div class="actions"><button data-act="up" data-i="${i}" ${i===0?'disabled':''}>上移</button><button data-act="down" data-i="${i}" ${i===data.facilities.length-1?'disabled':''}>下移</button><button data-act="clone" data-i="${i}">複製</button><button data-act="delete" data-i="${i}">刪除</button></div></div><div class="fields">${field('設施名稱',f.name,`facilities.${i}.name`)}<label>開放狀態<select data-path="facilities.${i}.status">${statuses.map(s=>`<option ${f.status===s?'selected':''}>${s}</option>`).join('')}</select></label>${field('開放日期／狀態補充',f.period,`facilities.${i}.period`,'textarea')}${field('狀態資訊截止日（選填，到期提醒）',f.until,`facilities.${i}.until`,'date')}${field('設施簡介',f.summary,`facilities.${i}.summary`,'textarea')}${field('身高限制',f.height,`facilities.${i}.height`,'textarea')}${field('年齡說明',f.age,`facilities.${i}.age`,'textarea')}${field('陪同規定',f.companion,`facilities.${i}.companion`,'textarea')}${field('注意事項（一行一項）',f.notes.join('\n'),`facilities.${i}.notes`,'textarea')}${field('影片連結（選填）',f.video,`facilities.${i}.video`,'url')}</div><p class="hint">圖片不裁切。可加多張；寬、高請填原圖尺寸，不知道可留白。</p><div>${f.images.map((im,j)=>`<div class="imageform"><div class="fields">${field('圖片 '+(j+1)+' 網址',im.url,`facilities.${i}.images.${j}.url`,'url')}${field('圖片說明（alt）',im.alt,`facilities.${i}.images.${j}.alt`)}${field('原圖寬（px，選填）',im.width,`facilities.${i}.images.${j}.width`,'number')}${field('原圖高（px，選填）',im.height,`facilities.${i}.images.${j}.height`,'number')}</div><button data-act="delimg" data-i="${i}" data-j="${j}">刪除此圖片</button></div>`).join('')}</div><button data-act="addimg" data-i="${i}">＋ 新增圖片</button><details><summary>進階：固定識別碼（已發布後不建議更改）</summary>${field('英文小寫／數字／連字號',f.id,`facilities.${i}.id`)}</details></section>`).join('');
+ warnings();
+}
+let timer;
+document.addEventListener('input',e=>{
+ const path=e.target.dataset.path;if(!path)return;
+ const parts=path.split('.');let ob=data;for(const part of parts.slice(0,-1))ob=ob[part];
+ const last=parts.at(-1);ob[last]=['notes','rules'].includes(last)?lines(e.target.value):e.target.value;
+ clearTimeout(timer);timer=setTimeout(()=>{persist();warnings();$('previewstate').textContent='內容有更新，請按「更新預覽／語法」。'},350);
+});
+function newId(){return 'facility-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,6)}
+function updatePreview(){
+ const errors=validate(data);if(errors.length){message('請先修正：\n'+errors.join('\n'));return false}
+ $('output').value=makeSnippet(data);$('preview').srcdoc=makePreview(data);$('previewstate').textContent='預覽已更新（圖片需網路連線）。';warnings();return true;
+}
+function download(name,text,type){const a=document.createElement('a'),u=URL.createObjectURL(new Blob([text],{type}));a.href=u;a.download=name;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),5000)}
+document.addEventListener('click',async e=>{
+ const b=e.target.closest('button');if(!b)return;const act=b.dataset.act,i=Number(b.dataset.i),j=Number(b.dataset.j);
+ if(!act)return;
+ if(act==='refresh'){updatePreview();return}
+ if(act==='desktop'||act==='mobile'){$('preview').style.width=act==='mobile'?'390px':'100%';return}
+ if(act==='json'){download('wow-water-data.json',JSON.stringify(data,null,2),'application/json;charset=utf-8');message('已下載維護資料；請妥善保存。');return}
+ if(act==='html'||act==='previewfile'||act==='copy'){
+  if(!updatePreview())return;
+  if(act==='html')download('wow-water-snippet.txt',$('output').value,'text/plain;charset=utf-8');
+  if(act==='previewfile')download('wow-water-preview.html',makePreview(data),'text/html;charset=utf-8');
+  if(act==='copy'){
+   try{await navigator.clipboard.writeText($('output').value);message('官網內文已複製。請貼進後台 HTML／原始碼模式。')}
+   catch{$('output').focus();$('output').select();message('已選取語法，請按 Ctrl+C（Mac：Command+C）複製。')}
+  }return;
+ }
+ if(act==='restore'){
+  const raw=localStorage.getItem(key);if(!raw){message('目前沒有暫存資料。');return}
+  if(!confirm('載入暫存將取代目前表單，是否繼續？'))return;
+  try{const d=JSON.parse(raw),err=validate(d);if(err.length)throw Error(err.join('\n'));data=d;render();updatePreview();message('已載入瀏覽器暫存。')}catch(err){message('暫存無法載入：'+err.message)}return;
+ }
+ if(act==='reset'){if(!confirm('回復初始範例將取代目前內容，請確認已備份。'))return;data=structuredClone(SEED)}
+ if(act==='add')data.facilities.push({id:newId(),name:'新設施',status:'依現場公告',period:'',until:'',summary:'請填入設施簡介。',height:'',age:'',companion:'',notes:[],video:'',images:[]});
+ if(act==='up'&&i>0)[data.facilities[i-1],data.facilities[i]]=[data.facilities[i],data.facilities[i-1]];
+ if(act==='down'&&i<data.facilities.length-1)[data.facilities[i+1],data.facilities[i]]=[data.facilities[i],data.facilities[i+1]];
+ if(act==='clone'){const f=structuredClone(data.facilities[i]);f.id=newId();f.name+='（複本）';data.facilities.splice(i+1,0,f)}
+ if(act==='delete'){if(data.facilities.length===1){message('至少保留一項設施。');return}if(!confirm('確定刪除「'+data.facilities[i].name+'」？'))return;data.facilities.splice(i,1)}
+ if(act==='addimg')data.facilities[i].images.push({url:'',alt:data.facilities[i].name+'設施照片',width:'',height:''});
+ if(act==='delimg')data.facilities[i].images.splice(j,1);
+ render();persist();$('previewstate').textContent='內容有更新，請按「更新預覽／語法」。';
+});
+$('import').addEventListener('change',async e=>{
+ const file=e.target.files[0];if(!file)return;
+ try{
+  if(file.size>3e6)throw Error('檔案超過 3 MB。');
+  const d=JSON.parse(await file.text()),err=validate(d);if(err.length)throw Error(err.join('\n'));
+  if(!confirm('匯入將取代目前表單內容，是否繼續？'))return;
+  data=d;render();persist();updatePreview();message('JSON 資料已匯入。');
+ }catch(err){message('匯入失敗：'+err.message)}finally{e.target.value=''}
+});
+render();updatePreview();
+try{if(localStorage.getItem(key))message('偵測到上次暫存，可按「載入暫存」恢復。');}catch{}
+</script></body></html>
