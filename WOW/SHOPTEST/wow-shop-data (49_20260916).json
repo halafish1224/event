@@ -1,0 +1,514 @@
+{
+  "version": 1,
+  "settings": {
+    "title": "小人國網路商城｜限定爆米花、紀念T恤與周邊商品",
+    "description": "小人國主題樂園網路商城精選限定爆米花、紀念T恤、造型傘、拼圖胸章冰箱貼與生活小物。瀏覽商品介紹，前往蝦皮賣場選購。",
+    "canonical": "https://wow.com.tw/tw/news/show.aspx?num=3479&kind=10&page=2",
+    "ogImage": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-03.jpg",
+    "hasH1": true
+  },
+  "products": [
+    {
+      "id": "p1",
+      "category": "衣",
+      "name": "紀念 T-shirt",
+      "image": "https://www.wow.com.tw/tw/about/images/TA.jpg",
+      "url": "https://sho.pe/worldTour",
+      "subtitle": "經典紀念款",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p2",
+      "category": "衣",
+      "name": "紀念 T-shirt",
+      "image": "https://www.wow.com.tw/tw/about/images/T1.jpg",
+      "url": "https://sho.pe/worldTour",
+      "subtitle": "青春粉紅",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p3",
+      "category": "衣",
+      "name": "紀念 T-shirt",
+      "image": "https://www.wow.com.tw/tw/about/images/T2.jpg",
+      "url": "https://sho.pe/worldTour",
+      "subtitle": "氣質米",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p4",
+      "category": "衣",
+      "name": "紀念 T-shirt",
+      "image": "https://www.wow.com.tw/tw/about/images/T3.jpg",
+      "url": "https://sho.pe/worldTour",
+      "subtitle": "不敗黑",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p5",
+      "category": "衣",
+      "name": "紀念 T-shirt",
+      "image": "https://www.wow.com.tw/tw/about/images/T4.jpg",
+      "url": "https://sho.pe/worldTour",
+      "subtitle": "經典白",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p6",
+      "category": "衣",
+      "name": "紀念 T-shirt",
+      "image": "https://www.wow.com.tw/tw/about/images/T3.webp",
+      "url": "https://sho.pe/worldTour",
+      "subtitle": "常態款",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p7",
+      "category": "衣",
+      "name": "兒童紀念 T-shirt",
+      "image": "https://www.wow.com.tw/tw/about/images/TB1.webp",
+      "url": "https://sho.pe/worldTour",
+      "subtitle": "兒童青春粉紅",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p8",
+      "category": "衣",
+      "name": "兒童紀念 T-shirt",
+      "image": "https://www.wow.com.tw/tw/about/images/TB2.webp",
+      "url": "https://sho.pe/worldTour",
+      "subtitle": "兒童氣質米",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p9",
+      "category": "行",
+      "name": "萬用矽膠飲料提袋",
+      "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-02.jpg",
+      "url": "https://sho.pe/8wkecx",
+      "subtitle": "杯墊兩用設計",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p10",
+      "category": "行",
+      "name": "矽膠飲料提袋",
+      "image": "https://www.wow.com.tw/images/about/db_02.jpg",
+      "url": "https://sho.pe/8wkecx",
+      "subtitle": "丈青色",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p11",
+      "category": "行",
+      "name": "矽膠飲料提袋",
+      "image": "https://www.wow.com.tw/images/about/db_01.jpg",
+      "url": "https://sho.pe/8wkecx",
+      "subtitle": "粉紅色",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p12",
+      "category": "行",
+      "name": "環保購物袋",
+      "image": "https://www.wow.com.tw/images/about/eb_02.jpg",
+      "url": "https://sho.pe/WOWebags",
+      "subtitle": "深色款",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p13",
+      "category": "行",
+      "name": "環保購物袋",
+      "image": "https://www.wow.com.tw/images/about/eb_01.jpg",
+      "url": "https://sho.pe/WOWebags",
+      "subtitle": "淺色款",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p14",
+      "category": "行",
+      "name": "WOW限定造型傘",
+      "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-01.jpg",
+      "url": "https://sho.pe/8wkerq",
+      "subtitle": "晴雨兩用",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p15",
+      "category": "行",
+      "name": "迷你小傘",
+      "image": "https://www.wow.com.tw/images/about/shop9c.jpg",
+      "url": "https://shopee.tw/product/144505443/14965139355",
+      "subtitle": "藍色帥氣龍",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p16",
+      "category": "行",
+      "name": "迷你小傘",
+      "image": "https://www.wow.com.tw/images/about/shop9d.jpg",
+      "url": "https://shopee.tw/product/144505443/14965139355",
+      "subtitle": "紫紅美麗妮",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p17",
+      "category": "行",
+      "name": "迷你小傘",
+      "image": "https://www.wow.com.tw/images/about/shop9a.jpg",
+      "url": "https://shopee.tw/product/144505443/14965139355",
+      "subtitle": "紅色帥氣龍",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p18",
+      "category": "行",
+      "name": "迷你小傘",
+      "image": "https://www.wow.com.tw/images/about/shop9b.jpg",
+      "url": "https://shopee.tw/product/144505443/14965139355",
+      "subtitle": "粉紅美麗妮",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p19",
+      "category": "行",
+      "name": "造型手動傘",
+      "image": "https://www.wow.com.tw/images/product/WOW0711.jpg",
+      "url": "https://shopee.tw/product/144505443/22735725420",
+      "subtitle": "妮妮公主款",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p20",
+      "category": "行",
+      "name": "三折手開傘",
+      "image": "https://www.wow.com.tw/images/about/shop9e.jpg",
+      "url": "https://sho.pe/8wke6z",
+      "subtitle": "WOW湖水綠",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p21",
+      "category": "行",
+      "name": "三折手開傘",
+      "image": "https://www.wow.com.tw/images/about/shop9f.jpg",
+      "url": "https://sho.pe/8wke6z",
+      "subtitle": "WOW魔力紅",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p22",
+      "category": "行",
+      "name": "直骨自動開傘",
+      "image": "https://www.wow.com.tw/images/about/shop9g.jpg",
+      "url": "https://sho.pe/8wkerq",
+      "subtitle": "WOW湖水綠",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p23",
+      "category": "行",
+      "name": "直骨自動開傘",
+      "image": "https://www.wow.com.tw/images/about/shop9h.jpg",
+      "url": "https://sho.pe/8wkerq",
+      "subtitle": "WOW魔力紅",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p24",
+      "category": "行",
+      "name": "造型後背包",
+      "image": "https://www.wow.com.tw/images/about/shop3a.jpg",
+      "url": "https://shopee.tw/product/144505443/15713020475",
+      "subtitle": "帥氣龍",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p25",
+      "category": "行",
+      "name": "造型後背包",
+      "image": "https://www.wow.com.tw/images/about/shop3b.jpg",
+      "url": "https://shopee.tw/product/144505443/15213011920",
+      "subtitle": "美麗妮",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p26",
+      "category": "行",
+      "name": "龍龍兩用頸枕",
+      "image": "https://www.wow.com.tw/images/about/shop02.jpg",
+      "url": "https://sho.pe/8wkelg",
+      "subtitle": "絨毛周邊",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p27",
+      "category": "居",
+      "name": "園區限定｜拼圖胸章冰箱貼",
+      "image": "https://www.wow.com.tw/tw/about/images/T529a.webp",
+      "url": "https://sho.pe/95jq6b",
+      "subtitle": "",
+      "description": "把微縮景觀化作胸章別在帆布袋上，或作為冰箱貼夾住家人的溫馨紙條，讓歡樂融入日常。",
+      "active": true,
+      "feature": true,
+      "image2": "https://www.wow.com.tw/tw/about/images/T529b.webp",
+      "specs": "景觀 8 款設計，每套內含磁鐵 9 片\n拼圖直徑 6cm\n材質：ABS塑膠、五金別針、磁鐵\n使用說明：可用內附挑針由後方孔戳出拼圖",
+      "warnings": "內含別針，不適合未滿14歲兒童使用。\n為維護安全，請在成人監督下使用。\n含有磁性物，吞入會吸附消化器官導致傷害。若吞入應立即就醫。\n塑膠袋拆卸後請立即銷毀或遠離嬰幼兒。"
+    },
+    {
+      "id": "p28",
+      "category": "居",
+      "name": "硅藻土杯墊",
+      "image": "https://www.wow.com.tw/images/about/wg1.jpg",
+      "url": "https://shopee.tw/product/144505443/24818029382",
+      "subtitle": "龍龍／妮妮／大野狼",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p29",
+      "category": "居",
+      "name": "迷你景觀磁鐵",
+      "image": "https://www.wow.com.tw/images/about/sma.jpg",
+      "url": "https://shopee.tw/product/144505443/14965128323",
+      "subtitle": "共有4款",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p30",
+      "category": "居",
+      "name": "WOW浴巾",
+      "image": "https://www.wow.com.tw/images/product/wowtowel.jpg",
+      "url": "https://sho.pe/8wkemb",
+      "subtitle": "櫻花粉／寶寶藍",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p31",
+      "category": "居",
+      "name": "小歡龍毛巾",
+      "image": "https://www.wow.com.tw/images/product/luckytowel.jpg",
+      "url": "https://sho.pe/8wken5",
+      "subtitle": "薰衣草紫／天空藍",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p32",
+      "category": "居",
+      "name": "7吋絨毛晴天娃娃",
+      "image": "https://www.wow.com.tw/images/about/shop7a.jpg",
+      "url": "https://shopee.tw/product/144505443/15210132013",
+      "subtitle": "帥氣龍",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p33",
+      "category": "居",
+      "name": "7吋絨毛晴天娃娃",
+      "image": "https://www.wow.com.tw/images/about/shop7b.jpg",
+      "url": "https://shopee.tw/product/144505443/11275564759",
+      "subtitle": "美麗妮",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p34",
+      "category": "育",
+      "name": "造型口袋筆",
+      "image": "https://www.wow.com.tw/images/about/shop703.jpg",
+      "url": "https://sho.pe/9aang2",
+      "subtitle": "",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p35",
+      "category": "育",
+      "name": "造型迴紋針",
+      "image": "https://www.wow.com.tw/images/about/shop01.jpg",
+      "url": "https://shopee.tw/product/144505443/6713361624",
+      "subtitle": "",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p36",
+      "category": "育",
+      "name": "資料收納袋3入",
+      "image": "https://www.wow.com.tw/images/about/filew.jpg",
+      "url": "https://sho.pe/8wkexp",
+      "subtitle": "龍龍／妮妮／大野狼",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p37",
+      "category": "育",
+      "name": "紓壓轉轉筆",
+      "image": "https://www.wow.com.tw/images/about/Pan1.jpg",
+      "url": "https://shopee.tw/product/144505443/25234512827",
+      "subtitle": "龍龍款",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p38",
+      "category": "育",
+      "name": "紓壓轉轉筆",
+      "image": "https://www.wow.com.tw/images/about/Pan2.jpg",
+      "url": "https://shopee.tw/product/144505443/25234512827",
+      "subtitle": "妮妮款",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p39",
+      "category": "育",
+      "name": "妮妮輕巧扁梳",
+      "image": "https://www.wow.com.tw/images/about/nnbp1.jpg",
+      "url": "https://sho.pe/8wkf24",
+      "subtitle": "",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p40",
+      "category": "育",
+      "name": "威力大圓扇",
+      "image": "https://www.wow.com.tw/images/about/coolw.jpg",
+      "url": "https://sho.pe/8wkewk",
+      "subtitle": "",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p41",
+      "category": "樂",
+      "active": true,
+      "feature": false,
+      "name": "小人國限定爆米花",
+      "image": "https://www.wow.com.tw/images/product/popA.webp",
+      "url": "https://sho.pe/W_popcorn",
+      "subtitle": "魔法焦糖",
+      "description": "",
+      "image2": "",
+      "specs": "",
+      "warnings": ""
+    },
+    {
+      "id": "p42",
+      "category": "樂",
+      "name": "小人國限定爆米花",
+      "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-04.jpg",
+      "url": "https://sho.pe/W_popcorn",
+      "subtitle": "奇魅岩鹽",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p43",
+      "category": "樂",
+      "name": "小人國限定爆米花",
+      "image": "https://www.wow.com.tw/upload/news/%e8%9d%a6%e7%9a%ae%e9%80%a3%e6%92%ad-05.jpg",
+      "url": "https://sho.pe/W_popcorn",
+      "subtitle": "搖滾起司",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p44",
+      "category": "樂",
+      "name": "水晶棒棒糖",
+      "image": "https://www.wow.com.tw/images/about/shopllp.jpg",
+      "url": "https://sho.pe/8wkepl",
+      "subtitle": "",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p45",
+      "category": "樂",
+      "name": "環遊世界撲克牌",
+      "image": "https://www.wow.com.tw/images/about/cardsS.jpg",
+      "url": "https://sho.pe/8wkeya",
+      "subtitle": "",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p46",
+      "category": "樂",
+      "name": "迷你世界彈力球",
+      "image": "https://www.wow.com.tw/images/product/BallS.jpg",
+      "url": "https://sho.pe/8wkf2e",
+      "subtitle": "",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p47",
+      "category": "樂",
+      "name": "迷你景觀模型",
+      "image": "https://www.wow.com.tw/images/about/smb.jpg",
+      "url": "https://shopee.tw/product/144505443/17628555684",
+      "subtitle": "",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p48",
+      "category": "樂",
+      "name": "舒壓吊飾",
+      "image": "https://www.wow.com.tw/images/about/shop9s.jpg",
+      "url": "https://shopee.tw/product/144505443/24718026900",
+      "subtitle": "",
+      "description": "",
+      "active": true
+    },
+    {
+      "id": "p1789537379222-4kv16",
+      "category": "育",
+      "active": true,
+      "feature": false,
+      "name": "文具組合特惠組",
+      "image": "https://down-tw.img.susercontent.com/file/tw-11134207-820l5-mr889opud79h61@resize_w450_nl.webp",
+      "url": "https://shopee.tw/%E3%80%90%E5%B0%8F%E4%BA%BA%E5%9C%8B%E3%80%91%E9%96%8B%E5%AD%B8%E5%AD%A3-%E6%96%87%E5%85%B7%E7%B5%84%E5%90%88%E7%89%B9%E6%83%A0%E7%B5%84-%E9%80%A0%E5%9E%8B%E5%8F%A3%E8%A2%8B%E7%AD%86-%E8%88%92%E5%A3%93%E6%8C%89%E5%8B%95%E7%AD%86-%E8%B3%87%E6%96%99%E6%94%B6%E7%B4%8D%E8%A2%8B3%E5%85%A5%E7%B5%84-%E7%92%B0%E4%BF%9D%E8%B3%BC%E7%89%A9%E8%A2%8B-%E8%B3%BC%E7%89%A9%E8%A2%8B-%E6%96%87%E5%85%B7-%E6%94%B6%E7%B4%8D-i.144505443.47714111037?extraParams=%7B%22display_model_id%22%3A297788057792%2C%22model_selection_logic%22%3A3%7D",
+      "subtitle": "文具組合特惠組",
+      "description": "",
+      "image2": "",
+      "specs": "",
+      "warnings": ""
+    }
+  ]
+}
