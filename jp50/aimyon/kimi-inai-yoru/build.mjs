@@ -1,0 +1,12 @@
+import {readFileSync,writeFileSync} from 'node:fs';
+import {song,segments,grammar,words,practices} from './content.mjs';
+for (const k of ['id','title','subtitle']) if (!song[k]) throw Error('Missing song '+k);
+if (segments.length!==21) throw Error('Expected 21 unique attachment slots');
+if (new Set(segments.map(x=>x[0])).size!==segments.length) throw Error('Duplicate segment IDs');
+if (grammar.length<15||words.length<30||practices.length<6) throw Error('Teaching coverage too small');
+const html=readFileSync(new URL('index.html',import.meta.url),'utf8');
+for (const [id] of segments) if (!html.includes('id="'+id+'"')) throw Error('Missing segment '+id);
+for (const [id] of grammar) if (!html.includes('id="'+id+'"')) throw Error('Missing grammar '+id);
+if (/完整歌詞|逐字歌詞/.test(html)) throw Error('Do not turn this page into a lyrics mirror');
+writeFileSync(new URL('index.html',import.meta.url),html);
+console.log('PASS: '+segments.length+' attachment slots / '+grammar.length+' grammar / '+words.length+' words / '+practices.length+' practice items.');
