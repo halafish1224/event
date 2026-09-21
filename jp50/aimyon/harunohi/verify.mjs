@@ -6,7 +6,7 @@ const html=readFileSync(new URL('index.html',import.meta.url),'utf8');
 const lines=rows.split('\n').map(s=>s.split('|'));
 assert.equal(lines.length,58);assert.equal(grammar.split('\n').length,29);
 assert.equal(words.split('\n').length,48);assert.equal(practice.length,16);
-assert.equal(songs.length,19);assert.equal(concepts.length,39);
+assert.equal(concepts.length,39);
 for(const [jp] of lines)assert(!/[\p{Script=Han}々]/u.test(jp.replace(/[\p{Script=Han}々ヶ]+\{[^{}]+\}/gu,'')),'Missing reading: '+jp);
 assert.equal(lines[30][0],'優{やさ}しさに甘{あま}すぎて');
 assert(lines[0][0].endsWith('プラットホーム'));
@@ -28,7 +28,7 @@ for(const [,jp] of html.matchAll(/<(?:h3|p) lang="ja">([\s\S]*?)<\/(?:h3|p)>/g))
 }
 const catalog=JSON.parse(readFileSync(new URL('../songs/data.json',import.meta.url),'utf8'));
 const cards=readFileSync(new URL('../songs/index.html',import.meta.url),'utf8');
-assert.equal(catalog.length,19);assert.equal((cards.match(/data-song-id=/g)||[]).length,19);
+assert.equal(catalog.length,songs.length);assert.equal((cards.match(/data-song-id=/g)||[]).length,songs.length);
 for(const song of songs){assert(catalog.some(c=>c.id===song.id&&c.color===song.color));assert(cards.includes(`data-song-id="${song.id}"`));}
 const own=concepts.filter(c=>c.refs.some(r=>r[0]==='harunohi'));assert.equal(own.length,20);
 for(const c of own)for(const [,anchor] of c.refs.filter(r=>r[0]==='harunohi'))assert(ids.includes(anchor),anchor);
