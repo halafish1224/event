@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow,noarchive,nosnippet">
+<meta name="googlebot" content="noindex,nofollow">
+<title>君がいない夜を越えられやしない｜AIMYON 日文學習</title>
+<link rel="stylesheet" href="../ring-ding/style.css">
+<style>
+:root{--accent:#68465f;--paper:#faf8f4;--ink:#29292d;--muted:#686169;--line:#ded7dc}
+body{background:var(--paper);color:var(--ink)}
+header,main,footer{max-width:920px;margin:auto;padding-left:20px;padding-right:20px}
+header{border-top:8px solid var(--accent);padding-top:22px}
+h1{font-size:clamp(1.8rem,7vw,3.3rem);line-height:1.35;overflow-wrap:anywhere}
+.note,.example{background:#fff;border-left:4px solid var(--accent);padding:14px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:0 24px}
+.line,.entry,.word,.exercise{padding:20px 0;border-bottom:1px solid var(--line)}
+.line-label,.meta{color:var(--muted);font-size:.85rem}
+.chips{display:flex;flex-wrap:wrap;gap:8px}.chips a{padding:6px 10px;border:1px solid var(--line);border-radius:999px;text-decoration:none}
+.formula{font-weight:750;color:var(--accent)}
+rt{font-size:.62em}
+@media(max-width:620px){.grid{grid-template-columns:1fr}header,main,footer{padding-left:16px;padding-right:16px}}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<header id="top">
+<p><a href="../songs/">← 歌曲學習帳</a> · <a href="../learning-map/?song=kimi-inai-yoru#routes">跨歌曲學習地圖</a></p>
+<p class="eyebrow">AIMYON NOTEBOOK · ATTACHMENT ANALYSIS</p>
+<h1 lang="ja">君がいない夜を越えられやしない</h1>
+<p>越不過沒有你的夜｜可能否定、口語縮約、願望句與程度表達</p>
+<p class="note">依你提供的 3 張播放器截圖整理。此頁不公開重製完整歌詞；以附件順序 L01–L21 對應語意摘要、單字片語與句型。重複段落回到同一解析。親密場景中的詞彙僅作中性語言學習。</p>
+<nav class="chips" aria-label="教材目錄"><a href="#reading">逐句索引</a><a href="#grammar">句型文法</a><a href="#words">單字片語</a><a href="#practice">回想練習</a><a href="#connections">跨曲連結</a></nav>
+</header>
+<main>
+<section><h2>作品資料</h2><p>本曲收錄於 2016 年 11 月 30 日單曲《生きていたんだよな》，為第 3 曲；2026 年精選輯的 B-SIDE COLLECTION 亦收錄本曲。解析範圍只對應本次附件。</p></section>
+<section id="reading"><h2>附件逐句學習索引｜21 個唯一句位</h2><p>先回想截圖中的句子，再展開語意與文法；本頁只保留學習所需摘要，不另複製歌詞全文。</p><div id="segment-list"></div></section>
+<section id="grammar"><h2>句型文法</h2><div id="grammar-list"></div></section>
+<section id="words"><h2>核心單字與片語</h2><div id="word-list" class="grid"></div></section>
+<section id="practice"><h2>回想與轉用</h2><p>先自己回答，再展開核對。練習句皆為教材自編。</p><div id="practice-list"></div></section>
+<section id="connections"><h2>跨歌曲連結</h2><div class="grid">
+<article class="entry"><h3>〈裸の心〉：狀態與願望</h3><p>比較願望、狀態變化與喜歡程度的表達。</p><p><a href="../hadaka-no-kokoro/">前往教材 →</a></p></article>
+<article class="entry"><h3>〈今夜このまま〉：このまま</h3><p>比較「維持當下狀態」在不同歌曲裡的句法功能。</p><p><a href="../konya-konomama/#g-mama">前往對照 →</a></p></article>
+<article class="entry"><h3>〈ハルノヒ〉：ば形</h3><p>把一般條件與「～ばいい」的願望語感分開。</p><p><a href="../harunohi/#g-ba">前往對照 →</a></p></article>
+<article class="entry"><h3>〈3636〉：口語縮約與自問</h3><p>比較～てる、～のかな與說話者推測。</p><p><a href="../3636/#g-question">前往對照 →</a></p></article>
+</div></section>
+<section id="sources"><h2>來源與閱讀界線</h2><ul><li>附件：2026-09-21 使用者提供的 3 張播放器截圖。</li><li><a href="https://www.aimyong.net/discography/detail/4/" rel="noreferrer">AIMYON 官方：單曲《生きていたんだよな》</a>。</li><li><a href="https://www.aimyong.net/feature/aimyon_best" rel="noreferrer">AIMYON 官方：2026 BEST ALBUM</a>。</li></ul><p class="meta">非官方個人日文學習教材。中文摘要、文法說明與練習為教材編寫；核對日期：2026-09-21。</p></section>
+</main>
+<footer><a href="#top">回頁首</a> · <a href="../songs/">歌曲學習帳</a></footer>
+<script type="module">
+import {segments,grammar,words,practices} from './content.mjs';
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const ann=s=>esc(s).replace(/([\p{Script=Han}々]+)【([^】]+)】/gu,'<ruby>$1<rp>（</rp><rt>$2</rt><rp>）</rp></ruby>');
+const gm=new Map(grammar.map(x=>[x[0],x]));
+document.querySelector('#segment-list').innerHTML=segments.map((x,i)=>'<article class="line" id="'+x[0]+'"><p class="line-label">L'+String(i+1).padStart(2,'0')+' · 附件順序</p><h3>'+esc(x[1])+'</h3><p>'+esc(x[2])+'</p><p><strong>關鍵詞：</strong>'+ann(x[3])+'</p><p><strong>句型：</strong>'+x[4].split(',').map(g=>'<a href="#'+g+'">'+esc((gm.get(g)||[])[1]||g)+'</a>').join(' · ')+'</p></article>').join('');
+document.querySelector('#grammar-list').innerHTML=grammar.map(x=>'<article class="entry" id="'+x[0]+'"><h3>'+esc(x[1])+'</h3><p class="formula">'+esc(x[2])+'</p><p>'+esc(x[3])+'</p><div class="example"><p lang="ja">'+ann(x[4])+'</p><p>'+esc(x[5])+'（教學自編句）</p></div></article>').join('');
+document.querySelector('#word-list').innerHTML=words.map((x,i)=>'<article class="word" id="w-'+(i+1)+'"><h3 lang="ja"><ruby>'+esc(x[0])+'<rp>（</rp><rt>'+esc(x[1])+'</rt><rp>）</rp></ruby></h3><p class="meta">'+esc(x[3])+'</p><p>'+esc(x[2])+'</p></article>').join('');
+document.querySelector('#practice-list').innerHTML=practices.map((x,i)=>'<article class="exercise"><h3>'+(i+1)+'. '+esc(x[0])+'</h3><details><summary>核對答案</summary><p>'+esc(x[1])+'</p></details></article>').join('');
+</script>
+</body></html>
