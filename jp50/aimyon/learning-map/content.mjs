@@ -102,9 +102,4 @@ for(const [id,anchor] of [
  const concept=concepts.find(c=>c.id===id);
  if(concept && !concept.refs.some(r=>r[0]==='kimi-inai-yoru'&&r[1]===anchor)) concept.refs.push(['kimi-inai-yoru',anchor]);
 }
-concepts.push(
- c('degree-sugiru','daily','37｜～すぎる：程度超過','「很喜歡」和「太喜歡」的程度一樣嗎？','動詞ます詞幹、い形容詞去い、ナ形容詞語幹可接すぎる，表示程度超過某個基準。','考{かんが}えすぎる。','想太多。','把「好き」改成「太喜歡」，再說明它不是單純強調。','好{す}きすぎる。它表示程度超過說話者想像或可承受的基準。',[['kimi-inai-yoru','g-sugiru']],[['before','change-state'],['same','tai']]),
- c('emphatic-negative','voice','38｜～やしない：強調否定','普通的ない和やしない，語氣強度相同嗎？','～やしない是口語、帶情緒的強調否定。先還原基本否定，再判斷角色語氣。','忘{わす}れやしない。','絕不會忘。','先改成普通否定，再比較語氣。','忘{わす}れない。基本命題相近，但やしない更強烈。',[['kimi-inai-yoru','g-yashinai']],[['before','condition'],['contrast','gentle']])
-);
-
 extendHarunohi(songs,concepts,c);
