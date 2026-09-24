@@ -3,18 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日文動詞「て形」圖像視覺記憶面板</title>
+  <title>日文動詞「て形」系統化圖像視覺記憶圖鑑</title>
   <style>
     :root {
-      --bg-primary: #f4f7f6;
+      --bg-primary: #f0f4f8;
       --card-bg: #ffffff;
-      --text-main: #2c3e50;
-      --accent-blue: #3498db;
-      --accent-green: #2ecc71;
-      --accent-purple: #9b59b6;
-      --accent-orange: #e67e22;
-      --accent-red: #e74c3c;
-      --shadow: 0 10px 20px rgba(0,0,0,0.08);
+      --text-main: #1e293b;
+      --accent-blue: #0284c7;
+      --accent-purple: #7c3aed;
+      --accent-orange: #ea580c;
+      --accent-green: #16a34a;
+      --accent-red: #dc2626;
+      --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
       --border-radius: 16px;
     }
 
@@ -33,7 +33,7 @@
     }
 
     .container {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -49,13 +49,13 @@
     }
 
     header p {
-      color: #7f8c8d;
+      color: #64748b;
       font-size: 1.1rem;
     }
 
-    /* 唱歌韻律卡片 */
+    /* 歌唱口訣 Banner */
     .song-banner {
-      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      background: linear-gradient(135deg, #4f46e5, #818cf8);
       color: white;
       padding: 1.5rem;
       border-radius: var(--border-radius);
@@ -74,15 +74,15 @@
       flex-wrap: wrap;
       justify-content: center;
       gap: 1rem;
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       font-weight: bold;
     }
 
     .song-chip {
-      background: rgba(255, 255, 255, 0.2);
-      padding: 0.5rem 1rem;
+      background: rgba(255, 255, 255, 0.22);
+      padding: 0.5rem 1.2rem;
       border-radius: 20px;
-      backdrop-filter: blur(5px);
+      backdrop-filter: blur(6px);
     }
 
     /* 區塊標題 */
@@ -90,7 +90,7 @@
       font-size: 1.5rem;
       margin-bottom: 1.2rem;
       padding-left: 0.8rem;
-      border-left: 5px solid var(--accent-blue);
+      border-left: 6px solid var(--accent-blue);
       display: flex;
       align-items: center;
       gap: 0.5rem;
@@ -99,7 +99,7 @@
     /* 格線佈局 */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
       gap: 1.5rem;
       margin-bottom: 3rem;
     }
@@ -117,8 +117,8 @@
     }
 
     .card:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.12);
     }
 
     .card.group-1 { border-color: var(--accent-blue); }
@@ -155,8 +155,7 @@
 
     /* 圖像口訣視覺框 */
     .visual-box {
-      background: #f8f9fa;
-      border-dash: 2px dashed #bdc3c7;
+      background: #f8fafc;
       border: 2px dashed #cbd5e1;
       border-radius: 12px;
       padding: 1rem;
@@ -172,7 +171,7 @@
 
     .visual-mnemonic {
       font-weight: bold;
-      color: #2c3e50;
+      color: #334155;
       font-size: 1.05rem;
     }
 
@@ -191,7 +190,18 @@
 
     .arrow { color: #94a3b8; }
 
-    /* 範例列表 */
+    /* Ruby 語法發音美化 */
+    ruby {
+      ruby-position: over;
+    }
+
+    rt {
+      font-size: 0.65em;
+      color: #64748b;
+      font-weight: normal;
+    }
+
+    /* 系統化例字清單 */
     .example-list {
       list-style: none;
       margin-top: 1rem;
@@ -200,13 +210,24 @@
     .example-item {
       display: flex;
       justify-content: space-between;
-      padding: 0.4rem 0;
+      align-items: center;
+      padding: 0.5rem 0;
       border-bottom: 1px dashed #e2e8f0;
-      font-size: 0.95rem;
+      font-size: 1.05rem;
     }
 
     .example-item:last-child {
       border-bottom: none;
+    }
+
+    .ex-meaning {
+      color: #64748b;
+      font-size: 0.85rem;
+      margin-left: 0.5rem;
+    }
+
+    .ex-target {
+      font-weight: bold;
     }
 
     /* 翻牌互動測驗區 */
@@ -219,14 +240,14 @@
 
     .quiz-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-      gap: 1rem;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 1.2rem;
       margin-top: 1.5rem;
     }
 
     .flip-card {
       background-color: transparent;
-      height: 120px;
+      height: 130px;
       perspective: 1000px;
       cursor: pointer;
     }
@@ -261,23 +282,23 @@
     }
 
     .flip-card-front {
-      background-color: #3b82f6;
+      background-color: #0284c7;
       color: white;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: bold;
     }
 
     .flip-card-back {
-      background-color: #10b981;
+      background-color: #059669;
       color: white;
       transform: rotateY(180deg);
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       font-weight: bold;
     }
 
     .hint {
       font-size: 0.8rem;
-      opacity: 0.8;
+      opacity: 0.85;
       margin-top: 0.3rem;
     }
   </style>
@@ -286,8 +307,8 @@
 
 <div class="container">
   <header>
-    <h1>日文動詞「て形」視覺圖像記憶卡</h1>
-    <p>透過「口訣 + 圖像聯想 + 色彩分組」輕鬆掌握日語動詞變化</p>
+    <h1>日文動詞「て形」系統化圖像視覺記憶圖鑑</h1>
+    <p>全字標註日文漢字發音 ✕ 系統化擴充高頻動詞例字 ✕ 圖像記憶法</p>
   </header>
 
   <!-- 口訣歌唱 Banner -->
@@ -303,7 +324,7 @@
 
   <!-- 第一類動詞（五段動詞）區塊 -->
   <div class="section-title">
-    <span>❶ 第一類動詞（五段動詞）4 大圖像陣營</span>
+    <span>❶ 第一類動詞（五段動詞）4 大圖像陣營與極大化例字</span>
   </div>
 
   <div class="grid">
@@ -319,14 +340,19 @@
         <span style="color: var(--accent-blue);">って</span>
       </div>
       <div class="visual-box">
-        <span class="visual-icon">🐢 🦌</span>
+        <span class="visual-icon">🐢 鹿</span>
         <div class="visual-mnemonic">「烏（う）龜（つ）鹿（る）」跳起來！</div>
         <small style="color: #64748b;">（變成小促音 っ 加上 て）</small>
       </div>
       <ul class="example-list">
-        <li class="example-item"><span>買<b>う</b>（買）</span><span>➔ 買<b>って</b></span></li>
-        <li class="example-item"><span>待<b>つ</b>（等待）</span><span>➔ 待<b>って</b></span></li>
-        <li class="example-item"><span>取<b>る</b>（拿取）</span><span>➔ 取<b>って</b></span></li>
+        <li class="example-item"><span><ruby>買<rt>か</rt></ruby>う <span class="ex-meaning">(購買)</span></span><span class="ex-target"><ruby>買<rt>か</rt></ruby>って</span></li>
+        <li class="example-item"><span><ruby>洗<rt>あら</rt></ruby>う <span class="ex-meaning">(洗滌)</span></span><span class="ex-target"><ruby>洗<rt>あら</rt></ruby>って</span></li>
+        <li class="example-item"><span><ruby>待<rt>ま</rt></ruby>つ <span class="ex-meaning">(等待)</span></span><span class="ex-target"><ruby>待<rt>ま</rt></ruby>って</span></li>
+        <li class="example-item"><span><ruby>立<rt>た</rt></ruby>つ <span class="ex-meaning">(站立)</span></span><span class="ex-target"><ruby>立<rt>た</rt></ruby>って</span></li>
+        <li class="example-item"><span><ruby>取<rt>と</rt></ruby>る <span class="ex-meaning">(拿取)</span></span><span class="ex-target"><ruby>取<rt>と</rt></ruby>って</span></li>
+        <li class="example-item"><span><ruby>作<rt>つく</rt></ruby>る <span class="ex-meaning">(製作)</span></span><span class="ex-target"><ruby>作<rt>つく</rt></ruby>って</span></li>
+        <li class="example-item"><span><ruby>抱<rt>だ</rt></ruby>く <span class="ex-meaning">(擁抱)</span></span><span class="ex-target"><ruby>抱<rt>だ</rt></ruby>いて <small style="color:#0284c7;">(く組)</small></span></li>
+        <li class="example-item"><span><ruby>乘<rt>の</rt></ruby>る <span class="ex-meaning">(搭乘)</span></span><span class="ex-target"><ruby>乘<rt>の</rt></ruby>って</span></li>
       </ul>
     </div>
 
@@ -347,9 +373,13 @@
         <small style="color: #64748b;">（帶鼻音 ん，注意帶兩點 んで）</small>
       </div>
       <ul class="example-list">
-        <li class="example-item"><span>讀<b>む</b>（閱讀）</span><span>➔ 讀<b>んで</b></span></li>
-        <li class="example-item"><span>遊<b>ぶ</b>（遊玩）</span><span>➔ 遊<b>んで</b></span></li>
-        <li class="example-item"><span>死<b>ぬ</b>（死亡）</span><span>➔ 死<b>んで</b></span></li>
+        <li class="example-item"><span><ruby>讀<rt>よ</rt></ruby>む <span class="ex-meaning">(閱讀)</span></span><span class="ex-target"><ruby>讀<rt>よ</rt></ruby>んで</span></li>
+        <li class="example-item"><span><ruby>飲<rt>の</rt></ruby>む <span class="ex-meaning">(飲用)</span></span><span class="ex-target"><ruby>飲<rt>の</rt></ruby>んで</span></li>
+        <li class="example-item"><span><ruby>休<rt>やす</rt></ruby>む <span class="ex-meaning">(休息)</span></span><span class="ex-target"><ruby>休<rt>やす</rt></ruby>んで</span></li>
+        <li class="example-item"><span><ruby>遊<rt>あそ</rt></ruby>ぶ <span class="ex-meaning">(遊玩)</span></span><span class="ex-target"><ruby>遊<rt>あそ</rt></ruby>んで</span></li>
+        <li class="example-item"><span><ruby>選<rt>えら</rt></ruby>ぶ <span class="ex-meaning">(選擇)</span></span><span class="ex-target"><ruby>選<rt>えら</rt></ruby>んで</span></li>
+        <li class="example-item"><span><ruby>飛<rt>と</rt></ruby>ぶ <span class="ex-meaning">(飛行)</span></span><span class="ex-target"><ruby>飛<rt>と</rt></ruby>んで</span></li>
+        <li class="example-item"><span><ruby>死<rt>し</rt></ruby>ぬ <span class="ex-meaning">(死亡)</span></span><span class="ex-target"><ruby>死<rt>し</rt></ruby>んで</span></li>
       </ul>
     </div>
 
@@ -370,8 +400,13 @@
         <small style="color: #64748b;">（く 變 いて / ぐ 變 いで）</small>
       </div>
       <ul class="example-list">
-        <li class="example-item"><span>書<b>く</b>（寫）</span><span>➔ 書<b>いて</b></span></li>
-        <li class="example-item"><span>泳<b>ぐ</b>（游泳）</span><span>➔ 泳<b>いで</b></span></li>
+        <li class="example-item"><span><ruby>書<rt>か</rt></ruby>く <span class="ex-meaning">(書寫)</span></span><span class="ex-target"><ruby>書<rt>か</rt></ruby>いて</span></li>
+        <li class="example-item"><span><ruby>聞<rt>き</rt></ruby>く <span class="ex-meaning">(聆聽)</span></span><span class="ex-target"><ruby>聞<rt>き</rt></ruby>いて</span></li>
+        <li class="example-item"><span><ruby>步<rt>ある</rt></ruby>く <span class="ex-meaning">(步行)</span></span><span class="ex-target"><ruby>步<rt>ある</rt></ruby>いて</span></li>
+        <li class="example-item"><span><ruby>開<rt>ひら</rt></ruby>く <span class="ex-meaning">(打開)</span></span><span class="ex-target"><ruby>開<rt>ひら</rt></ruby>いて</span></li>
+        <li class="example-item"><span><ruby>泳<rt>およ</rt></ruby>ぐ <span class="ex-meaning">(游泳)</span></span><span class="ex-target"><ruby>泳<rt>およ</rt></ruby>いで</span></li>
+        <li class="example-item"><span><ruby>脱<rt>ぬ</rt></ruby>ぐ <span class="ex-meaning">(脫下)</span></span><span class="ex-target"><ruby>脱<rt>ぬ</rt></ruby>いで</span></li>
+        <li class="example-item"><span><ruby>急<rt>いそ</rt></ruby>ぐ <span class="ex-meaning">(趕快)</span></span><span class="ex-target"><ruby>急<rt>いそ</rt></ruby>いで</span></li>
       </ul>
     </div>
 
@@ -392,39 +427,50 @@
         <small style="color: #64748b;">（最直覺，順著發音變）</small>
       </div>
       <ul class="example-list">
-        <li class="example-item"><span>話<b>す</b>（交談）</span><span>➔ 話<b>して</b></span></li>
-        <li class="example-item"><span>發<b>す</b>（發射）</span><span>➔ 發<b>して</b></span></li>
+        <li class="example-item"><span><ruby>話<rt>はな</rt></ruby>す <span class="ex-meaning">(交談)</span></span><span class="ex-target"><ruby>話<rt>はな</rt></ruby>して</span></li>
+        <li class="example-item"><span><ruby>出<rt>だ</rt></ruby>す <span class="ex-meaning">(拿出)</span></span><span class="ex-target"><ruby>出<rt>だ</rt></ruby>して</span></li>
+        <li class="example-item"><span><ruby>探<rt>さが</rt></ruby>す <span class="ex-meaning">(尋找)</span></span><span class="ex-target"><ruby>探<rt>さが</rt></ruby>して</span></li>
+        <li class="example-item"><span><ruby>押<rt>お</rt></ruby>す <span class="ex-meaning">(按壓)</span></span><span class="ex-target"><ruby>押<rt>お</rt></ruby>して</span></li>
+        <li class="example-item"><span><ruby>消<rt>け</rt></ruby>す <span class="ex-meaning">(熄滅/關閉)</span></span><span class="ex-target"><ruby>消<rt>け</rt></ruby>して</span></li>
+        <li class="example-item"><span><ruby>落<rt>お</rt></ruby>とす <span class="ex-meaning">(弄丟/掉落)</span></span><span class="ex-target"><ruby>落<rt>お</rt></ruby>として</span></li>
       </ul>
     </div>
 
-    <!-- 大特例警示卡 -->
-    <div class="card alert">
+    <!-- 陷阱卡：五段特例與例外 -->
+    <div class="card alert" style="grid-column: 1 / -1;">
       <div class="card-header">
-        <span class="card-title" style="color: var(--accent-red);">⚠️ 超級特例陷阱卡</span>
-        <span class="badge bg-red">唯一特例</span>
+        <span class="card-title" style="color: var(--accent-red);">⚠️ 兩大五段動詞「陷阱考點」特別收錄</span>
+        <span class="badge bg-red">絕對必考</span>
       </div>
-      <div class="rule-transform">
-        <span>行く（いく）</span>
-        <span class="arrow">➔</span>
-        <span style="color: var(--accent-red);">行くだ ❌ 行って ⭕</span>
+      <div class="grid" style="margin-bottom: 0;">
+        <div class="visual-box" style="border-color: var(--accent-red); background: #fff5f5;">
+          <span class="visual-icon">🏃‍♂️💨</span>
+          <div class="visual-mnemonic" style="color: var(--accent-red);">【特例 1】<ruby>行<rt>い</rt></ruby>く 跑太快！</div>
+          <small style="color: #64748b;">字尾是 く，但絕不變 <s>いいて</s>，而是促音：<br><strong style="color: var(--accent-red); font-size:1.1rem;"><ruby>行<rt>い</rt></ruby>って</strong></small>
+        </div>
+        <div class="visual-box" style="border-color: var(--accent-red); background: #fff5f5;">
+          <span class="visual-icon">🎭 👺</span>
+          <div class="visual-mnemonic" style="color: var(--accent-red);">【特例 2】偽裝成一段的五段動詞</div>
+          <small style="color: #64748b;">外表像一段（i/e段+る），骨子裡卻是五段！<br>依然遵守「促音組 (る➔って)」規則：</small>
+          <ul class="example-list" style="text-align: left; margin-top: 0.5rem;">
+            <li class="example-item"><span><ruby>帰<rt>かえ</rt></ruby>る <span class="ex-meaning">(回家)</span></span><span class="ex-target"><ruby>帰<rt>かえ</rt></ruby>って</span></li>
+            <li class="example-item"><span><ruby>走<rt>はし</rt></ruby>る <span class="ex-meaning">(跑步)</span></span><span class="ex-target"><ruby>走<rt>はし</rt></ruby>って</span></li>
+            <li class="example-item"><span><ruby>知<rt>し</rt></ruby>る <span class="ex-meaning">(知道)</span></span><span class="ex-target"><ruby>知<rt>し</rt></ruby>って</span></li>
+            <li class="example-item"><span><ruby>入<rt>はい</rt></ruby>る <span class="ex-meaning">(進入)</span></span><span class="ex-target"><ruby>入<rt>はい</rt></ruby>って</span></li>
+            <li class="example-item"><span><ruby>切<rt>き</rt></ruby>る <span class="ex-meaning">(剪切)</span></span><span class="ex-target"><ruby>切<rt>き</rt></ruby>って</span></li>
+          </ul>
+        </div>
       </div>
-      <div class="visual-box" style="border-color: var(--accent-red); background: #fff5f5;">
-        <span class="visual-icon">🏃‍♂️💨</span>
-        <div class="visual-mnemonic" style="color: var(--accent-red);">「去（行く）跑得太快，變成促音！」</div>
-        <small style="color: #64748b;">（不走 イ音便，強制變小促音 って）</small>
-      </div>
-      <ul class="example-list">
-        <li class="example-item"><span>行<b>く</b>（去）</span><span style="color: var(--accent-red); font-weight:bold;">➔ 行<b>って</b></span></li>
-      </ul>
     </div>
   </div>
 
   <!-- 第二類與第三類動詞區塊 -->
   <div class="section-title">
-    <span>❷ 第二類（一段）與第三類（不規則）動詞</span>
+    <span>❷ 第二類（一段動詞）與第三類（不規則動詞）例字圖鑑</span>
   </div>
 
   <div class="grid">
+    <!-- 第二類動詞 -->
     <div class="card group-4">
       <div class="card-header">
         <span class="card-title">第二類動詞（一段動詞）</span>
@@ -435,12 +481,18 @@
         <div class="visual-mnemonic">「剪掉尾巴 る，直接補上 て」</div>
       </div>
       <ul class="example-list">
-        <li class="example-item"><span>食<b>べる</b>（吃）</span><span>➔ 食<b>べて</b></span></li>
-        <li class="example-item"><span>見<b>る</b>（看）</span><span>➔ 見<b>て</b></span></li>
-        <li class="example-item"><span>忘<b>れる</b>（忘記）</span><span>➔ 忘<b>れて</b></span></li>
+        <li class="example-item"><span><ruby>食<rt>た</rt></ruby>べる <span class="ex-meaning">(享用)</span></span><span class="ex-target"><ruby>食<rt>た</rt></ruby>べて</span></li>
+        <li class="example-item"><span><ruby>見<rt>み</rt></ruby>る <span class="ex-meaning">(觀看)</span></span><span class="ex-target"><ruby>見<rt>み</rt></ruby>て</span></li>
+        <li class="example-item"><span><ruby>起<rt>お</rt></ruby>きる <span class="ex-meaning">(起床)</span></span><span class="ex-target"><ruby>起<rt>お</rt></ruby>きて</span></li>
+        <li class="example-item"><span><ruby>寢<rt>ね</rt></ruby>る <span class="ex-meaning">(就寢)</span></span><span class="ex-target"><ruby>寢<rt>ね</rt></ruby>て</span></li>
+        <li class="example-item"><span><ruby>忘<rt>わす</rt></ruby>れる <span class="ex-meaning">(遺忘)</span></span><span class="ex-target"><ruby>忘<rt>わす</rt></ruby>れて</span></li>
+        <li class="example-item"><span><ruby>教<rt>おし</rt></ruby>える <span class="ex-meaning">(教學)</span></span><span class="ex-target"><ruby>教<rt>おし</rt></ruby>えて</span></li>
+        <li class="example-item"><span><ruby>開<rt>あ</rt></ruby>ける <span class="ex-meaning">(開啟)</span></span><span class="ex-target"><ruby>開<rt>あ</rt></ruby>けて</span></li>
+        <li class="example-item"><span><ruby>閉<rt>し</rt></ruby>める <span class="ex-meaning">(關閉)</span></span><span class="ex-target"><ruby>閉<rt>し</rt></ruby>めて</span></li>
       </ul>
     </div>
 
+    <!-- 第三類動詞 -->
     <div class="card group-2">
       <div class="card-header">
         <span class="card-title">第三類動詞（不規則動詞）</span>
@@ -448,11 +500,15 @@
       </div>
       <div class="visual-box">
         <span class="visual-icon">⚡ 👑</span>
-        <div class="visual-mnemonic">「兩大魔王，直接背熟」</div>
+        <div class="visual-mnemonic">「兩大原動核心與動作名詞組合」</div>
       </div>
       <ul class="example-list">
-        <li class="example-item"><span><b>する</b>（做）</span><span>➔ <b>して</b></span></li>
-        <li class="example-item"><span><b>来（く）る</b>（來）</span><span>➔ <b>来（き）て</b></span></li>
+        <li class="example-item"><span>する <span class="ex-meaning">(做)</span></span><span class="ex-target">して</span></li>
+        <li class="example-item"><span><ruby>来<rt>く</rt></ruby>る <span class="ex-meaning">(前來)</span></span><span class="ex-target"><ruby>来<rt>き</rt></ruby>て</span></li>
+        <li class="example-item"><span><ruby>勉<rt>べん</rt></ruby><ruby>強<rt>きょう</rt></ruby>する <span class="ex-meaning">(讀書)</span></span><span class="ex-target"><ruby>勉<rt>べん</rt></ruby><ruby>強<rt>きょう</rt></ruby>して</span></li>
+        <li class="example-item"><span><ruby>散<rt>さん</rt></ruby><ruby>歩<rt>ぽ</rt></ruby>する <span class="ex-meaning">(散步)</span></span><span class="ex-target"><ruby>散<rt>さん</rt></ruby><ruby>歩<rt>ぽ</rt></ruby>して</span></li>
+        <li class="example-item"><span><ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>こう</rt></ruby>する <span class="ex-meaning">(旅行)</span></span><span class="ex-target"><ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>こう</rt></ruby>して</span></li>
+        <li class="example-item"><span>キスする <span class="ex-meaning">(親吻)</span></span><span class="ex-target">キスして</span></li>
       </ul>
     </div>
   </div>
@@ -460,19 +516,19 @@
   <!-- 翻牌記憶測驗 -->
   <div class="quiz-section">
     <div class="section-title" style="margin-bottom: 0.5rem; border-color: var(--accent-purple);">
-      <span>❸ 點擊翻牌測驗（自我檢測）</span>
+      <span>❸ 點擊互動翻牌測驗（自我快速抽考）</span>
     </div>
-    <p style="color: #64748b; font-size: 0.95rem;">點擊卡片即可查看正確的「て形」變化與圖像提示：</p>
+    <p style="color: #64748b; font-size: 0.95rem;">點擊卡片翻面確認正確的「て形」與語法點：</p>
 
     <div class="quiz-grid">
       <div class="flip-card" onclick="this.classList.toggle('flipped')">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div>買<b>う</b></div>
+            <div><ruby>買<rt>か</rt></ruby>う</div>
             <div class="hint">點擊翻牌</div>
           </div>
           <div class="flip-card-back">
-            <div>買<b>って</b></div>
+            <div><ruby>買<rt>か</rt></ruby>って</div>
             <div class="hint">促音組 (う➔って)</div>
           </div>
         </div>
@@ -481,11 +537,11 @@
       <div class="flip-card" onclick="this.classList.toggle('flipped')">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div>讀<b>む</b></div>
+            <div><ruby>飲<rt>の</rt></ruby>む</div>
             <div class="hint">點擊翻牌</div>
           </div>
           <div class="flip-card-back">
-            <div>讀<b>んで</b></div>
+            <div><ruby>飲<rt>の</rt></ruby>んで</div>
             <div class="hint">撥音組 (む➔んで)</div>
           </div>
         </div>
@@ -494,12 +550,12 @@
       <div class="flip-card" onclick="this.classList.toggle('flipped')">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div>行<b>く</b></div>
+            <div><ruby>行<rt>い</rt></ruby>く</div>
             <div class="hint">⚠️ 特例陷阱</div>
           </div>
           <div class="flip-card-back" style="background-color: var(--accent-red);">
-            <div>行<b>って</b></div>
-            <div class="hint">唯一特例 (不變いて)</div>
+            <div><ruby>行<rt>い</rt></ruby>って</div>
+            <div class="hint">唯一特例 (不變 いて)</div>
           </div>
         </div>
       </div>
@@ -507,11 +563,37 @@
       <div class="flip-card" onclick="this.classList.toggle('flipped')">
         <div class="flip-card-inner">
           <div class="flip-card-front">
-            <div>話<b>す</b></div>
+            <div><ruby>帰<rt>かえ</rt></ruby>る</div>
+            <div class="hint">⚠️ 例外動詞</div>
+          </div>
+          <div class="flip-card-back" style="background-color: var(--accent-red);">
+            <div><ruby>帰<rt>かえ</rt></ruby>って</div>
+            <div class="hint">實為五段 (る➔って)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div><ruby>泳<rt>およ</rt></ruby>ぐ</div>
             <div class="hint">點擊翻牌</div>
           </div>
           <div class="flip-card-back">
-            <div>話<b>して</b></div>
+            <div><ruby>泳<rt>およ</rt></ruby>いで</div>
+            <div class="hint">イ音便 (ぐ➔いで)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div><ruby>話<rt>はな</rt></ruby>す</div>
+            <div class="hint">點擊翻牌</div>
+          </div>
+          <div class="flip-card-back">
+            <div><ruby>話<rt>はな</rt></ruby>して</div>
             <div class="hint">す變身組 (す➔して)</div>
           </div>
         </div>
