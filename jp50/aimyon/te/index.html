@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>日文動詞「て形」圖像視覺記憶面板</title>
+  <style>
+    :root {
+      --bg-primary: #f4f7f6;
+      --card-bg: #ffffff;
+      --text-main: #2c3e50;
+      --accent-blue: #3498db;
+      --accent-green: #2ecc71;
+      --accent-purple: #9b59b6;
+      --accent-orange: #e67e22;
+      --accent-red: #e74c3c;
+      --shadow: 0 10px 20px rgba(0,0,0,0.08);
+      --border-radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", sans-serif;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-main);
+      padding: 2rem 1rem;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+    }
+
+    header h1 {
+      font-size: 2.2rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      color: #7f8c8d;
+      font-size: 1.1rem;
+    }
+
+    /* 唱歌韻律卡片 */
+    .song-banner {
+      background: linear-gradient(135deg, #6c5ce7, #a29bfe);
+      color: white;
+      padding: 1.5rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+      margin-bottom: 2.5rem;
+      text-align: center;
+    }
+
+    .song-banner h2 {
+      font-size: 1.4rem;
+      margin-bottom: 0.8rem;
+    }
+
+    .song-lyrics {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+
+    .song-chip {
+      background: rgba(255, 255, 255, 0.2);
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      backdrop-filter: blur(5px);
+    }
+
+    /* 區塊標題 */
+    .section-title {
+      font-size: 1.5rem;
+      margin-bottom: 1.2rem;
+      padding-left: 0.8rem;
+      border-left: 5px solid var(--accent-blue);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    /* 格線佈局 */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+      margin-bottom: 3rem;
+    }
+
+    /* 圖像記憶卡片 */
+    .card {
+      background: var(--card-bg);
+      border-radius: var(--border-radius);
+      padding: 1.5rem;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-top: 6px solid var(--accent-blue);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+    }
+
+    .card.group-1 { border-color: var(--accent-blue); }
+    .card.group-2 { border-color: var(--accent-purple); }
+    .card.group-3 { border-color: var(--accent-orange); }
+    .card.group-4 { border-color: var(--accent-green); }
+    .card.alert   { border-color: var(--accent-red); }
+
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+
+    .card-title {
+      font-size: 1.3rem;
+      font-weight: bold;
+    }
+
+    .badge {
+      padding: 0.3rem 0.8rem;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      color: white;
+    }
+
+    .bg-blue { background-color: var(--accent-blue); }
+    .bg-purple { background-color: var(--accent-purple); }
+    .bg-orange { background-color: var(--accent-orange); }
+    .bg-green { background-color: var(--accent-green); }
+    .bg-red { background-color: var(--accent-red); }
+
+    /* 圖像口訣視覺框 */
+    .visual-box {
+      background: #f8f9fa;
+      border-dash: 2px dashed #bdc3c7;
+      border: 2px dashed #cbd5e1;
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .visual-icon {
+      font-size: 2.5rem;
+      display: block;
+      margin-bottom: 0.3rem;
+    }
+
+    .visual-mnemonic {
+      font-weight: bold;
+      color: #2c3e50;
+      font-size: 1.05rem;
+    }
+
+    .rule-transform {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      font-size: 1.2rem;
+      font-weight: bold;
+      margin: 0.8rem 0;
+      background: #f1f5f9;
+      padding: 0.6rem;
+      border-radius: 8px;
+    }
+
+    .arrow { color: #94a3b8; }
+
+    /* 範例列表 */
+    .example-list {
+      list-style: none;
+      margin-top: 1rem;
+    }
+
+    .example-item {
+      display: flex;
+      justify-content: space-between;
+      padding: 0.4rem 0;
+      border-bottom: 1px dashed #e2e8f0;
+      font-size: 0.95rem;
+    }
+
+    .example-item:last-child {
+      border-bottom: none;
+    }
+
+    /* 翻牌互動測驗區 */
+    .quiz-section {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .quiz-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .flip-card {
+      background-color: transparent;
+      height: 120px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      border-radius: 12px;
+    }
+
+    .flip-card.flipped .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0.5rem;
+    }
+
+    .flip-card-front {
+      background-color: #3b82f6;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .flip-card-back {
+      background-color: #10b981;
+      color: white;
+      transform: rotateY(180deg);
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+
+    .hint {
+      font-size: 0.8rem;
+      opacity: 0.8;
+      margin-top: 0.3rem;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>日文動詞「て形」視覺圖像記憶卡</h1>
+    <p>透過「口訣 + 圖像聯想 + 色彩分組」輕鬆掌握日語動詞變化</p>
+  </header>
+
+  <!-- 口訣歌唱 Banner -->
+  <div class="song-banner">
+    <h2>🎵 經典口訣歌（可套用《小星星》旋律）</h2>
+    <div class="song-lyrics">
+      <div class="song-chip">う、つ、る ➔ って</div>
+      <div class="song-chip">む、ぶ、ぬ ➔ んで</div>
+      <div class="song-chip">く ➔ いて / ぐ ➔ いで</div>
+      <div class="song-chip">す ➔ して</div>
+    </div>
+  </div>
+
+  <!-- 第一類動詞（五段動詞）區塊 -->
+  <div class="section-title">
+    <span>❶ 第一類動詞（五段動詞）4 大圖像陣營</span>
+  </div>
+
+  <div class="grid">
+    <!-- 促音組 -->
+    <div class="card group-1">
+      <div class="card-header">
+        <span class="card-title">促音組</span>
+        <span class="badge bg-blue">う・つ・る</span>
+      </div>
+      <div class="rule-transform">
+        <span>う / つ / る</span>
+        <span class="arrow">➔</span>
+        <span style="color: var(--accent-blue);">って</span>
+      </div>
+      <div class="visual-box">
+        <span class="visual-icon">🐢 🦌</span>
+        <div class="visual-mnemonic">「烏（う）龜（つ）鹿（る）」跳起來！</div>
+        <small style="color: #64748b;">（變成小促音 っ 加上 て）</small>
+      </div>
+      <ul class="example-list">
+        <li class="example-item"><span>買<b>う</b>（買）</span><span>➔ 買<b>って</b></span></li>
+        <li class="example-item"><span>待<b>つ</b>（等待）</span><span>➔ 待<b>って</b></span></li>
+        <li class="example-item"><span>取<b>る</b>（拿取）</span><span>➔ 取<b>って</b></span></li>
+      </ul>
+    </div>
+
+    <!-- 撥音組 -->
+    <div class="card group-2">
+      <div class="card-header">
+        <span class="card-title">撥音濁音組</span>
+        <span class="badge bg-purple">む・ぶ・ぬ</span>
+      </div>
+      <div class="rule-transform">
+        <span>む / ぶ / ぬ</span>
+        <span class="arrow">➔</span>
+        <span style="color: var(--accent-purple);">んで</span>
+      </div>
+      <div class="visual-box">
+        <span class="visual-icon">🪵 👃</span>
+        <div class="visual-mnemonic">「木（む）棒（ぶ）奴（ぬ）」帶鼻音！</div>
+        <small style="color: #64748b;">（帶鼻音 ん，注意帶兩點 んで）</small>
+      </div>
+      <ul class="example-list">
+        <li class="example-item"><span>讀<b>む</b>（閱讀）</span><span>➔ 讀<b>んで</b></span></li>
+        <li class="example-item"><span>遊<b>ぶ</b>（遊玩）</span><span>➔ 遊<b>んで</b></span></li>
+        <li class="example-item"><span>死<b>ぬ</b>（死亡）</span><span>➔ 死<b>んで</b></span></li>
+      </ul>
+    </div>
+
+    <!-- イ音便組 -->
+    <div class="card group-3">
+      <div class="card-header">
+        <span class="card-title">イ音便組</span>
+        <span class="badge bg-orange">く・ぐ</span>
+      </div>
+      <div class="rule-transform">
+        <span>く / ぐ</span>
+        <span class="arrow">➔</span>
+        <span style="color: var(--accent-orange);">いて / いで</span>
+      </div>
+      <div class="visual-box">
+        <span class="visual-icon">😭 🦴</span>
+        <div class="visual-mnemonic">「哭（く）了去（いて），骨（ぐ）折加點（いで）」</div>
+        <small style="color: #64748b;">（く 變 いて / ぐ 變 いで）</small>
+      </div>
+      <ul class="example-list">
+        <li class="example-item"><span>書<b>く</b>（寫）</span><span>➔ 書<b>いて</b></span></li>
+        <li class="example-item"><span>泳<b>ぐ</b>（游泳）</span><span>➔ 泳<b>いで</b></span></li>
+      </ul>
+    </div>
+
+    <!-- す 變身組 -->
+    <div class="card group-4">
+      <div class="card-header">
+        <span class="card-title">す 變身組</span>
+        <span class="badge bg-green">す</span>
+      </div>
+      <div class="rule-transform">
+        <span>す</span>
+        <span class="arrow">➔</span>
+        <span style="color: var(--accent-green);">して</span>
+      </div>
+      <div class="visual-box">
+        <span class="visual-icon">🗣️ 🪄</span>
+        <div class="visual-mnemonic">「Su（す）直接變身 Shi-te（して）」</div>
+        <small style="color: #64748b;">（最直覺，順著發音變）</small>
+      </div>
+      <ul class="example-list">
+        <li class="example-item"><span>話<b>す</b>（交談）</span><span>➔ 話<b>して</b></span></li>
+        <li class="example-item"><span>發<b>す</b>（發射）</span><span>➔ 發<b>して</b></span></li>
+      </ul>
+    </div>
+
+    <!-- 大特例警示卡 -->
+    <div class="card alert">
+      <div class="card-header">
+        <span class="card-title" style="color: var(--accent-red);">⚠️ 超級特例陷阱卡</span>
+        <span class="badge bg-red">唯一特例</span>
+      </div>
+      <div class="rule-transform">
+        <span>行く（いく）</span>
+        <span class="arrow">➔</span>
+        <span style="color: var(--accent-red);">行くだ ❌ 行って ⭕</span>
+      </div>
+      <div class="visual-box" style="border-color: var(--accent-red); background: #fff5f5;">
+        <span class="visual-icon">🏃‍♂️💨</span>
+        <div class="visual-mnemonic" style="color: var(--accent-red);">「去（行く）跑得太快，變成促音！」</div>
+        <small style="color: #64748b;">（不走 イ音便，強制變小促音 って）</small>
+      </div>
+      <ul class="example-list">
+        <li class="example-item"><span>行<b>く</b>（去）</span><span style="color: var(--accent-red); font-weight:bold;">➔ 行<b>って</b></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 第二類與第三類動詞區塊 -->
+  <div class="section-title">
+    <span>❷ 第二類（一段）與第三類（不規則）動詞</span>
+  </div>
+
+  <div class="grid">
+    <div class="card group-4">
+      <div class="card-header">
+        <span class="card-title">第二類動詞（一段動詞）</span>
+        <span class="badge bg-green">去 る + て</span>
+      </div>
+      <div class="visual-box">
+        <span class="visual-icon">✂️ 🗑️</span>
+        <div class="visual-mnemonic">「剪掉尾巴 る，直接補上 て」</div>
+      </div>
+      <ul class="example-list">
+        <li class="example-item"><span>食<b>べる</b>（吃）</span><span>➔ 食<b>べて</b></span></li>
+        <li class="example-item"><span>見<b>る</b>（看）</span><span>➔ 見<b>て</b></span></li>
+        <li class="example-item"><span>忘<b>れる</b>（忘記）</span><span>➔ 忘<b>れて</b></span></li>
+      </ul>
+    </div>
+
+    <div class="card group-2">
+      <div class="card-header">
+        <span class="card-title">第三類動詞（不規則動詞）</span>
+        <span class="badge bg-purple">死記對照</span>
+      </div>
+      <div class="visual-box">
+        <span class="visual-icon">⚡ 👑</span>
+        <div class="visual-mnemonic">「兩大魔王，直接背熟」</div>
+      </div>
+      <ul class="example-list">
+        <li class="example-item"><span><b>する</b>（做）</span><span>➔ <b>して</b></span></li>
+        <li class="example-item"><span><b>来（く）る</b>（來）</span><span>➔ <b>来（き）て</b></span></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 翻牌記憶測驗 -->
+  <div class="quiz-section">
+    <div class="section-title" style="margin-bottom: 0.5rem; border-color: var(--accent-purple);">
+      <span>❸ 點擊翻牌測驗（自我檢測）</span>
+    </div>
+    <p style="color: #64748b; font-size: 0.95rem;">點擊卡片即可查看正確的「て形」變化與圖像提示：</p>
+
+    <div class="quiz-grid">
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div>買<b>う</b></div>
+            <div class="hint">點擊翻牌</div>
+          </div>
+          <div class="flip-card-back">
+            <div>買<b>って</b></div>
+            <div class="hint">促音組 (う➔って)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div>讀<b>む</b></div>
+            <div class="hint">點擊翻牌</div>
+          </div>
+          <div class="flip-card-back">
+            <div>讀<b>んで</b></div>
+            <div class="hint">撥音組 (む➔んで)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div>行<b>く</b></div>
+            <div class="hint">⚠️ 特例陷阱</div>
+          </div>
+          <div class="flip-card-back" style="background-color: var(--accent-red);">
+            <div>行<b>って</b></div>
+            <div class="hint">唯一特例 (不變いて)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flip-card" onclick="this.classList.toggle('flipped')">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <div>話<b>す</b></div>
+            <div class="hint">點擊翻牌</div>
+          </div>
+          <div class="flip-card-back">
+            <div>話<b>して</b></div>
+            <div class="hint">す變身組 (す➔して)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
