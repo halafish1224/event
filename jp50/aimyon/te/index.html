@@ -3,17 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>日文動詞「て形」系統化圖像視覺記憶圖鑑</title>
+  <title>日文動詞終極圖鑑：て形視覺記憶 ✕ 全時態系統</title>
   <style>
     :root {
       --bg-primary: #f0f4f8;
       --card-bg: #ffffff;
       --text-main: #1e293b;
+      --text-muted: #64748b;
       --accent-blue: #0284c7;
       --accent-purple: #7c3aed;
       --accent-orange: #ea580c;
       --accent-green: #16a34a;
       --accent-red: #dc2626;
+      --te-color: #0284c7;
+      --nai-color: #e11d48;
+      --masu-color: #16a34a;
       --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.08);
       --border-radius: 16px;
     }
@@ -49,7 +53,7 @@
     }
 
     header p {
-      color: #64748b;
+      color: var(--text-muted);
       font-size: 1.1rem;
     }
 
@@ -60,7 +64,7 @@
       padding: 1.5rem;
       border-radius: var(--border-radius);
       box-shadow: var(--shadow);
-      margin-bottom: 2.5rem;
+      margin-bottom: 1rem;
       text-align: center;
     }
 
@@ -85,18 +89,32 @@
       backdrop-filter: blur(6px);
     }
 
+    /* jp50 基礎提示 Banner */
+    .jp50-banner {
+      background: #fffbeb;
+      border-left: 5px solid #f59e0b;
+      padding: 1.2rem;
+      border-radius: 8px;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+      color: #78350f;
+    }
+
+    .jp50-banner strong { color: #b45309; font-size: 1.1rem; }
+
     /* 區塊標題 */
     .section-title {
-      font-size: 1.5rem;
-      margin-bottom: 1.2rem;
+      font-size: 1.6rem;
+      margin: 3.5rem 0 1.5rem 0;
       padding-left: 0.8rem;
       border-left: 6px solid var(--accent-blue);
       display: flex;
       align-items: center;
       gap: 0.5rem;
+      font-weight: bold;
     }
 
-    /* 格線佈局 */
+    /* 格線佈局 (共用) */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
@@ -163,157 +181,74 @@
       margin: 1rem 0;
     }
 
-    .visual-icon {
-      font-size: 2.5rem;
-      display: block;
-      margin-bottom: 0.3rem;
-    }
-
-    .visual-mnemonic {
-      font-weight: bold;
-      color: #334155;
-      font-size: 1.05rem;
-    }
+    .visual-icon { font-size: 2.5rem; display: block; margin-bottom: 0.3rem; }
+    .visual-mnemonic { font-weight: bold; color: #334155; font-size: 1.05rem; }
 
     .rule-transform {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem;
-      font-size: 1.2rem;
-      font-weight: bold;
-      margin: 0.8rem 0;
-      background: #f1f5f9;
-      padding: 0.6rem;
-      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center; gap: 0.8rem;
+      font-size: 1.2rem; font-weight: bold; margin: 0.8rem 0;
+      background: #f1f5f9; padding: 0.6rem; border-radius: 8px;
     }
-
     .arrow { color: #94a3b8; }
 
-    /* Ruby 語法發音美化 */
-    ruby {
-      ruby-position: over;
-    }
-
-    rt {
-      font-size: 0.65em;
-      color: #64748b;
-      font-weight: normal;
-    }
+    /* 發音與註解美化 */
+    ruby { ruby-position: over; }
+    rt { font-size: 0.65em; color: #64748b; font-weight: normal; }
+    .cite { font-size: 0.75rem; color: #94a3b8; vertical-align: super; margin-left: 3px; font-weight: normal; }
 
     /* 系統化例字清單 */
-    .example-list {
-      list-style: none;
-      margin-top: 1rem;
-    }
+    .example-list { list-style: none; margin-top: 1rem; }
+    .example-item { display: flex; justify-content: space-between; align-items: center; padding: 0.5rem 0; border-bottom: 1px dashed #e2e8f0; font-size: 1.05rem; }
+    .example-item:last-child { border-bottom: none; }
+    .ex-meaning { color: #64748b; font-size: 0.85rem; margin-left: 0.5rem; }
+    .ex-target { font-weight: bold; }
 
-    .example-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.5rem 0;
-      border-bottom: 1px dashed #e2e8f0;
-      font-size: 1.05rem;
-    }
+    /* 綜合大表格設計 */
+    .table-wrapper { overflow-x: auto; background: var(--card-bg); border-radius: var(--border-radius); box-shadow: var(--shadow); margin-bottom: 3rem; }
+    table { width: 100%; border-collapse: collapse; min-width: 900px; }
+    thead { background: #f8fafc; border-bottom: 2px solid #e2e8f0; }
+    th { padding: 1.2rem 1rem; text-align: left; font-weight: 700; color: #475569; font-size: 1.05rem; }
+    td { padding: 1rem; border-bottom: 1px solid #f1f5f9; vertical-align: middle; font-size: 1.1rem; }
+    tbody tr:hover { background-color: #f8fafc; transition: background 0.2s; }
+    
+    .type-badge { display: inline-block; padding: 0.3rem 0.8rem; border-radius: 20px; font-size: 0.8rem; font-weight: bold; color: white; }
+    .type-1 { background-color: var(--accent-purple); } /* 五段 */
+    .type-2 { background-color: var(--accent-green); } /* 一段 */
+    .type-3 { background-color: var(--accent-orange); } /* 不規則 */
 
-    .example-item:last-child {
-      border-bottom: none;
-    }
-
-    .ex-meaning {
-      color: #64748b;
-      font-size: 0.85rem;
-      margin-left: 0.5rem;
-    }
-
-    .ex-target {
-      font-weight: bold;
-    }
+    /* 邏輯推導區塊 */
+    .logic-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 1.5rem; }
+    .logic-card { background: var(--card-bg); padding: 1.8rem; border-radius: var(--border-radius); box-shadow: var(--shadow); border-top: 5px solid var(--nai-color); }
+    .logic-step { display: flex; align-items: center; gap: 0.8rem; margin: 1rem 0; background: #fff1f2; padding: 1rem; border-radius: 8px; font-weight: bold; font-size: 1.2rem; justify-content: center; }
+    .logic-step .arrow { color: #f43f5e; font-size: 1.3rem; }
 
     /* 翻牌互動測驗區 */
-    .quiz-section {
-      background: white;
-      padding: 2rem;
-      border-radius: var(--border-radius);
-      box-shadow: var(--shadow);
-    }
-
-    .quiz-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-      gap: 1.2rem;
-      margin-top: 1.5rem;
-    }
-
-    .flip-card {
-      background-color: transparent;
-      height: 130px;
-      perspective: 1000px;
-      cursor: pointer;
-    }
-
-    .flip-card-inner {
-      position: relative;
-      width: 100%;
-      height: 100%;
-      text-align: center;
-      transition: transform 0.6s;
-      transform-style: preserve-3d;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
-      border-radius: 12px;
-    }
-
-    .flip-card.flipped .flip-card-inner {
-      transform: rotateY(180deg);
-    }
-
-    .flip-card-front, .flip-card-back {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      -webkit-backface-visibility: hidden;
-      backface-visibility: hidden;
-      border-radius: 12px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 0.5rem;
-    }
-
-    .flip-card-front {
-      background-color: #0284c7;
-      color: white;
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-
-    .flip-card-back {
-      background-color: #059669;
-      color: white;
-      transform: rotateY(180deg);
-      font-size: 1.25rem;
-      font-weight: bold;
-    }
-
-    .hint {
-      font-size: 0.8rem;
-      opacity: 0.85;
-      margin-top: 0.3rem;
-    }
+    .quiz-section { background: white; padding: 2rem; border-radius: var(--border-radius); box-shadow: var(--shadow); }
+    .quiz-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1.2rem; margin-top: 1.5rem; }
+    .flip-card { background-color: transparent; height: 140px; perspective: 1000px; cursor: pointer; }
+    .flip-card-inner { position: relative; width: 100%; height: 100%; text-align: center; transition: transform 0.6s; transform-style: preserve-3d; box-shadow: 0 4px 8px rgba(0,0,0,0.08); border-radius: 12px; }
+    .flip-card.flipped .flip-card-inner { transform: rotateY(180deg); }
+    .flip-card-front, .flip-card-back { position: absolute; width: 100%; height: 100%; -webkit-backface-visibility: hidden; backface-visibility: hidden; border-radius: 12px; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 0.5rem; border: 2px solid #e2e8f0; }
+    .flip-card-front { background-color: white; color: var(--text-main); font-size: 1.25rem; font-weight: bold; }
+    .flip-card-back { background-color: var(--accent-blue); color: white; transform: rotateY(180deg); font-size: 1.25rem; font-weight: bold; border-color: var(--accent-blue); }
+    
+    .tense-tag { font-size: 0.8rem; background: #f1f5f9; color: #475569; padding: 0.2rem 0.6rem; border-radius: 12px; margin-bottom: 0.5rem; font-weight: normal; }
+    .flip-card-back .tense-tag { background: rgba(255,255,255,0.2); color: white; }
+    .hint { font-size: 0.8rem; opacity: 0.85; margin-top: 0.3rem; font-weight: normal; color: #94a3b8; }
+    .flip-card-back .hint { color: #e0e7ff; }
   </style>
 </head>
 <body>
 
 <div class="container">
   <header>
-    <h1>日文動詞「て形」系統化圖像視覺記憶圖鑑</h1>
-    <p>全字標註日文漢字發音 ✕ 系統化擴充高頻動詞例字 ✕ 圖像記憶法</p>
+    <h1>日文動詞終極圖鑑</h1>
+    <p>て形視覺圖像記憶 ✕ 全型態時態變化表 ✕ 兩段式邏輯推導</p>
   </header>
 
-  <!-- 口訣歌唱 Banner -->
+  <!-- Banner 區塊 -->
   <div class="song-banner">
-    <h2>🎵 經典口訣歌（可套用《小星星》旋律）</h2>
+    <h2>🎵 て形 經典口訣歌（可套用《小星星》旋律）</h2>
     <div class="song-lyrics">
       <div class="song-chip">う、つ、る ➔ って</div>
       <div class="song-chip">む、ぶ、ぬ ➔ んで</div>
@@ -322,9 +257,16 @@
     </div>
   </div>
 
-  <!-- 第一類動詞（五段動詞）區塊 -->
+  <div class="jp50-banner">
+    <strong>✨ 核心基石：jp50 (五十音圖) 的應用 <span class="cite">[cite: 38]</span></strong><br>
+    動詞的變化規律皆建立在五十音的段音規則上。例如，第一類（五段）動詞的「ない形」，必須依靠五十音架構，將字尾的「う段」音轉換為同行的「あ段」音再加上ない <span class="cite">[cite: 13, 34]</span>。熟記五十音 <span class="cite">[cite: 38]</span> 是精通動詞變化的絕對關鍵。
+  </div>
+
+  <!-- ==========================================
+       Section 1: て形視覺圖像陣營 (原裝保留擴充)
+       ========================================== -->
   <div class="section-title">
-    <span>❶ 第一類動詞（五段動詞）4 大圖像陣營與極大化例字</span>
+    <span>❶ 第一類動詞（五段動詞）て形 4 大圖像陣營</span>
   </div>
 
   <div class="grid">
@@ -346,13 +288,8 @@
       </div>
       <ul class="example-list">
         <li class="example-item"><span><ruby>買<rt>か</rt></ruby>う <span class="ex-meaning">(購買)</span></span><span class="ex-target"><ruby>買<rt>か</rt></ruby>って</span></li>
-        <li class="example-item"><span><ruby>洗<rt>あら</rt></ruby>う <span class="ex-meaning">(洗滌)</span></span><span class="ex-target"><ruby>洗<rt>あら</rt></ruby>って</span></li>
         <li class="example-item"><span><ruby>待<rt>ま</rt></ruby>つ <span class="ex-meaning">(等待)</span></span><span class="ex-target"><ruby>待<rt>ま</rt></ruby>って</span></li>
-        <li class="example-item"><span><ruby>立<rt>た</rt></ruby>つ <span class="ex-meaning">(站立)</span></span><span class="ex-target"><ruby>立<rt>た</rt></ruby>って</span></li>
-        <li class="example-item"><span><ruby>取<rt>と</rt></ruby>る <span class="ex-meaning">(拿取)</span></span><span class="ex-target"><ruby>取<rt>と</rt></ruby>って</span></li>
-        <li class="example-item"><span><ruby>作<rt>つく</rt></ruby>る <span class="ex-meaning">(製作)</span></span><span class="ex-target"><ruby>作<rt>つく</rt></ruby>って</span></li>
-        <li class="example-item"><span><ruby>抱<rt>だ</rt></ruby>く <span class="ex-meaning">(擁抱)</span></span><span class="ex-target"><ruby>抱<rt>だ</rt></ruby>いて <small style="color:#0284c7;">(く組)</small></span></li>
-        <li class="example-item"><span><ruby>乘<rt>の</rt></ruby>る <span class="ex-meaning">(搭乘)</span></span><span class="ex-target"><ruby>乘<rt>の</rt></ruby>って</span></li>
+        <li class="example-item"><span><ruby>取<rt>と</rt></ruby>る <span class="ex-meaning">(拿取)<span class="cite">[cite: 7]</span></span></span><span class="ex-target"><ruby>取<rt>と</rt></ruby>って</span></li>
       </ul>
     </div>
 
@@ -373,12 +310,8 @@
         <small style="color: #64748b;">（帶鼻音 ん，注意帶兩點 んで）</small>
       </div>
       <ul class="example-list">
-        <li class="example-item"><span><ruby>讀<rt>よ</rt></ruby>む <span class="ex-meaning">(閱讀)</span></span><span class="ex-target"><ruby>讀<rt>よ</rt></ruby>んで</span></li>
-        <li class="example-item"><span><ruby>飲<rt>の</rt></ruby>む <span class="ex-meaning">(飲用)</span></span><span class="ex-target"><ruby>飲<rt>の</rt></ruby>んで</span></li>
-        <li class="example-item"><span><ruby>休<rt>やす</rt></ruby>む <span class="ex-meaning">(休息)</span></span><span class="ex-target"><ruby>休<rt>やす</rt></ruby>んで</span></li>
-        <li class="example-item"><span><ruby>遊<rt>あそ</rt></ruby>ぶ <span class="ex-meaning">(遊玩)</span></span><span class="ex-target"><ruby>遊<rt>あそ</rt></ruby>んで</span></li>
-        <li class="example-item"><span><ruby>選<rt>えら</rt></ruby>ぶ <span class="ex-meaning">(選擇)</span></span><span class="ex-target"><ruby>選<rt>えら</rt></ruby>んで</span></li>
-        <li class="example-item"><span><ruby>飛<rt>と</rt></ruby>ぶ <span class="ex-meaning">(飛行)</span></span><span class="ex-target"><ruby>飛<rt>と</rt></ruby>んで</span></li>
+        <li class="example-item"><span><ruby>読<rt>よ</rt></ruby>む <span class="ex-meaning">(閱讀)<span class="cite">[cite: 7, 18]</span></span></span><span class="ex-target"><ruby>読<rt>よ</rt></ruby>んで</span></li>
+        <li class="example-item"><span><ruby>遊<rt>あそ</rt></ruby>ぶ <span class="ex-meaning">(遊玩)<span class="cite">[cite: 7]</span></span></span><span class="ex-target"><ruby>遊<rt>あそ</rt></ruby>んで</span></li>
         <li class="example-item"><span><ruby>死<rt>し</rt></ruby>ぬ <span class="ex-meaning">(死亡)</span></span><span class="ex-target"><ruby>死<rt>し</rt></ruby>んで</span></li>
       </ul>
     </div>
@@ -400,13 +333,9 @@
         <small style="color: #64748b;">（く 變 いて / ぐ 變 いで）</small>
       </div>
       <ul class="example-list">
-        <li class="example-item"><span><ruby>書<rt>か</rt></ruby>く <span class="ex-meaning">(書寫)</span></span><span class="ex-target"><ruby>書<rt>か</rt></ruby>いて</span></li>
-        <li class="example-item"><span><ruby>聞<rt>き</rt></ruby>く <span class="ex-meaning">(聆聽)</span></span><span class="ex-target"><ruby>聞<rt>き</rt></ruby>いて</span></li>
-        <li class="example-item"><span><ruby>步<rt>ある</rt></ruby>く <span class="ex-meaning">(步行)</span></span><span class="ex-target"><ruby>步<rt>ある</rt></ruby>いて</span></li>
-        <li class="example-item"><span><ruby>開<rt>ひら</rt></ruby>く <span class="ex-meaning">(打開)</span></span><span class="ex-target"><ruby>開<rt>ひら</rt></ruby>いて</span></li>
+        <li class="example-item"><span><ruby>書<rt>か</rt></ruby>く <span class="ex-meaning">(書寫)<span class="cite">[cite: 7]</span></span></span><span class="ex-target"><ruby>書<rt>か</rt></ruby>いて</span></li>
+        <li class="example-item"><span><ruby>聞<rt>き</rt></ruby>く <span class="ex-meaning">(聽/問)<span class="cite">[cite: 7]</span></span></span><span class="ex-target"><ruby>聞<rt>き</rt></ruby>いて</span></li>
         <li class="example-item"><span><ruby>泳<rt>およ</rt></ruby>ぐ <span class="ex-meaning">(游泳)</span></span><span class="ex-target"><ruby>泳<rt>およ</rt></ruby>いで</span></li>
-        <li class="example-item"><span><ruby>脱<rt>ぬ</rt></ruby>ぐ <span class="ex-meaning">(脫下)</span></span><span class="ex-target"><ruby>脱<rt>ぬ</rt></ruby>いで</span></li>
-        <li class="example-item"><span><ruby>急<rt>いそ</rt></ruby>ぐ <span class="ex-meaning">(趕快)</span></span><span class="ex-target"><ruby>急<rt>いそ</rt></ruby>いで</span></li>
       </ul>
     </div>
 
@@ -427,178 +356,286 @@
         <small style="color: #64748b;">（最直覺，順著發音變）</small>
       </div>
       <ul class="example-list">
-        <li class="example-item"><span><ruby>話<rt>はな</rt></ruby>す <span class="ex-meaning">(交談)</span></span><span class="ex-target"><ruby>話<rt>はな</rt></ruby>して</span></li>
+        <li class="example-item"><span><ruby>話<rt>はな</rt></ruby>す <span class="ex-meaning">(交談)<span class="cite">[cite: 7]</span></span></span><span class="ex-target"><ruby>話<rt>はな</rt></ruby>して</span></li>
         <li class="example-item"><span><ruby>出<rt>だ</rt></ruby>す <span class="ex-meaning">(拿出)</span></span><span class="ex-target"><ruby>出<rt>だ</rt></ruby>して</span></li>
-        <li class="example-item"><span><ruby>探<rt>さが</rt></ruby>す <span class="ex-meaning">(尋找)</span></span><span class="ex-target"><ruby>探<rt>さが</rt></ruby>して</span></li>
-        <li class="example-item"><span><ruby>押<rt>お</rt></ruby>す <span class="ex-meaning">(按壓)</span></span><span class="ex-target"><ruby>押<rt>お</rt></ruby>して</span></li>
-        <li class="example-item"><span><ruby>消<rt>け</rt></ruby>す <span class="ex-meaning">(熄滅/關閉)</span></span><span class="ex-target"><ruby>消<rt>け</rt></ruby>して</span></li>
-        <li class="example-item"><span><ruby>落<rt>お</rt></ruby>とす <span class="ex-meaning">(弄丟/掉落)</span></span><span class="ex-target"><ruby>落<rt>お</rt></ruby>として</span></li>
       </ul>
     </div>
 
     <!-- 陷阱卡：五段特例與例外 -->
     <div class="card alert" style="grid-column: 1 / -1;">
       <div class="card-header">
-        <span class="card-title" style="color: var(--accent-red);">⚠️ 兩大五段動詞「陷阱考點」特別收錄</span>
+        <span class="card-title" style="color: var(--accent-red);">⚠️ 兩大五段動詞「陷阱考點」特別收錄 <span class="cite">[cite: 7, 13]</span></span>
         <span class="badge bg-red">絕對必考</span>
       </div>
       <div class="grid" style="margin-bottom: 0;">
         <div class="visual-box" style="border-color: var(--accent-red); background: #fff5f5;">
           <span class="visual-icon">🏃‍♂️💨</span>
-          <div class="visual-mnemonic" style="color: var(--accent-red);">【特例 1】<ruby>行<rt>い</rt></ruby>く 跑太快！</div>
+          <div class="visual-mnemonic" style="color: var(--accent-red);">【特例 1】<ruby>行<rt>い</rt></ruby>く 跑太快！<span class="cite">[cite: 13]</span></div>
           <small style="color: #64748b;">字尾是 く，但絕不變 <s>いいて</s>，而是促音：<br><strong style="color: var(--accent-red); font-size:1.1rem;"><ruby>行<rt>い</rt></ruby>って</strong></small>
         </div>
         <div class="visual-box" style="border-color: var(--accent-red); background: #fff5f5;">
           <span class="visual-icon">🎭 👺</span>
-          <div class="visual-mnemonic" style="color: var(--accent-red);">【特例 2】偽裝成一段的五段動詞</div>
+          <div class="visual-mnemonic" style="color: var(--accent-red);">【特例 2】偽裝成一段的五段動詞 <span class="cite">[cite: 7]</span></div>
           <small style="color: #64748b;">外表像一段（i/e段+る），骨子裡卻是五段！<br>依然遵守「促音組 (る➔って)」規則：</small>
           <ul class="example-list" style="text-align: left; margin-top: 0.5rem;">
             <li class="example-item"><span><ruby>帰<rt>かえ</rt></ruby>る <span class="ex-meaning">(回家)</span></span><span class="ex-target"><ruby>帰<rt>かえ</rt></ruby>って</span></li>
             <li class="example-item"><span><ruby>走<rt>はし</rt></ruby>る <span class="ex-meaning">(跑步)</span></span><span class="ex-target"><ruby>走<rt>はし</rt></ruby>って</span></li>
             <li class="example-item"><span><ruby>知<rt>し</rt></ruby>る <span class="ex-meaning">(知道)</span></span><span class="ex-target"><ruby>知<rt>し</rt></ruby>って</span></li>
             <li class="example-item"><span><ruby>入<rt>はい</rt></ruby>る <span class="ex-meaning">(進入)</span></span><span class="ex-target"><ruby>入<rt>はい</rt></ruby>って</span></li>
-            <li class="example-item"><span><ruby>切<rt>き</rt></ruby>る <span class="ex-meaning">(剪切)</span></span><span class="ex-target"><ruby>切<rt>き</rt></ruby>って</span></li>
           </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- 第二類與第三類動詞區塊 -->
+
+  <!-- ==========================================
+       Section 2: 全型態與時態總表 (全新整合)
+       ========================================== -->
   <div class="section-title">
-    <span>❷ 第二類（一段動詞）與第三類（不規則動詞）例字圖鑑</span>
+    <span>❷ 動詞八大核心型態與時態總表 <span class="cite">[cite: 1, 7]</span></span>
+  </div>
+  <p style="margin-bottom: 1rem; color: var(--text-muted);">本表涵蓋原形(非過去肯定)、ます形、て形、た形(過去肯定)、以及ない形延伸出的現在與過去否定 <span class="cite">[cite: 1, 7, 10, 22]</span>。</p>
+  
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 12%;">動詞原形<br><small>(非過去肯定)</small></th>
+          <th style="width: 8%;">分類</th>
+          <th style="width: 14%; color: var(--masu-color);">禮貌形<br><small>(ます形)</small></th>
+          <th style="width: 15%; color: var(--te-color);">連接/狀態<br><small>(て形)</small></th>
+          <th style="width: 15%; color: var(--te-color);">過去肯定<br><small>(た形)</small></th>
+          <th style="width: 18%; color: var(--nai-color);">非過去否定<br><small>(ない形)</small></th>
+          <th style="width: 18%; color: var(--nai-color);">過去否定<br><small>(なかった形)</small></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- 第二類動詞 (一段) -->
+        <tr>
+          <td><ruby>食<rt>た</rt></ruby>べる<span class="meaning">吃 <span class="cite">[cite: 7]</span></span></td>
+          <td><span class="type-badge type-2">一段</span></td>
+          <td><ruby>食<rt>た</rt></ruby>べます<span class="cite">[cite: 1, 7]</span></td>
+          <td><ruby>食<rt>た</rt></ruby>べて<span class="cite">[cite: 1]</span></td>
+          <td><ruby>食<rt>た</rt></ruby>べた<span class="cite">[cite: 7]</span></td>
+          <td><ruby>食<rt>た</rt></ruby>べない<span class="cite">[cite: 1, 7, 34]</span></td>
+          <td><ruby>食<rt>た</rt></ruby>べなかった<span class="cite">[cite: 7]</span></td>
+        </tr>
+        <tr>
+          <td><ruby>見<rt>み</rt></ruby>る<span class="meaning">看 <span class="cite">[cite: 3, 7]</span></span></td>
+          <td><span class="type-badge type-2">一段</span></td>
+          <td><ruby>見<rt>み</rt></ruby>ます</td>
+          <td><ruby>見<rt>み</rt></ruby>て</td>
+          <td><ruby>見<rt>み</rt></ruby>た</td>
+          <td><ruby>見<rt>み</rt></ruby>ない<span class="cite">[cite: 7, 10, 34]</span></td>
+          <td><ruby>見<rt>み</rt></ruby>なかった<span class="cite">[cite: 7, 10]</span></td>
+        </tr>
+        <tr>
+          <td><ruby>忘<rt>わす</rt></ruby>れる<span class="meaning">忘記 <span class="cite">[cite: 7, 18]</span></span></td>
+          <td><span class="type-badge type-2">一段</span></td>
+          <td><ruby>忘<rt>わす</rt></ruby>れます</td>
+          <td><ruby>忘<rt>わす</rt></ruby>れて</td>
+          <td><ruby>忘<rt>わす</rt></ruby>れた</td>
+          <td><ruby>忘<rt>わす</rt></ruby>れない<span class="cite">[cite: 7, 18]</span></td>
+          <td><ruby>忘<rt>わす</rt></ruby>れなかった<span class="cite">[cite: 7, 18]</span></td>
+        </tr>
+
+        <!-- 第一類動詞 (五段) -->
+        <tr>
+          <td><ruby>読<rt>よ</rt></ruby>む<span class="meaning">閱讀 <span class="cite">[cite: 7]</span></span></td>
+          <td><span class="type-badge type-1">五段</span></td>
+          <td><ruby>読<rt>よ</rt></ruby>みます</td>
+          <td><ruby>読<rt>よ</rt></ruby>んで</td>
+          <td><ruby>読<rt>よ</rt></ruby>んだ</td>
+          <td><ruby>読<rt>よ</rt></ruby>まない<span class="cite">[cite: 7, 18]</span></td>
+          <td><ruby>読<rt>よ</rt></ruby>まなかった<span class="cite">[cite: 7, 18]</span></td>
+        </tr>
+        <tr>
+          <td><ruby>聞<rt>き</rt></ruby>く<span class="meaning">聽/問 <span class="cite">[cite: 3, 7]</span></span></td>
+          <td><span class="type-badge type-1">五段</span></td>
+          <td><ruby>聞<rt>き</rt></ruby>きます</td>
+          <td><ruby>聞<rt>き</rt></ruby>いて</td>
+          <td><ruby>聞<rt>き</rt></ruby>いた</td>
+          <td><ruby>聞<rt>き</rt></ruby>かない<span class="cite">[cite: 7, 10, 34]</span></td>
+          <td><ruby>聞<rt>き</rt></ruby>かなかった<span class="cite">[cite: 7, 10, 22]</span></td>
+        </tr>
+        <tr>
+          <td><ruby>思<rt>おも</rt></ruby>う<span class="meaning">想/覺得 <span class="cite">[cite: 3, 7]</span></span></td>
+          <td><span class="type-badge type-1">五段</span></td>
+          <td><ruby>思<rt>おも</rt></ruby>います</td>
+          <td><ruby>思<rt>おも</rt></ruby>って</td>
+          <td><ruby>思<rt>おも</rt></ruby>った<span class="cite">[cite: 18]</span></td>
+          <td><ruby>思<rt>おも</rt></ruby>わない<span class="cite">[cite: 7, 18, 34]</span></td>
+          <td><ruby>思<rt>おも</rt></ruby>わなかった<span class="cite">[cite: 7, 18]</span></td>
+        </tr>
+        
+        <!-- 第三類動詞 (不規則) -->
+        <tr>
+          <td>する<span class="meaning">做 <span class="cite">[cite: 22]</span></span></td>
+          <td><span class="type-badge type-3">不規則</span></td>
+          <td>します</td>
+          <td>して</td>
+          <td>した</td>
+          <td>しない<span class="cite">[cite: 22]</span></td>
+          <td>しなかった<span class="cite">[cite: 22]</span></td>
+        </tr>
+        <tr>
+          <td><ruby>来<rt>く</rt></ruby>る<span class="meaning">來 <span class="cite">[cite: 22]</span></span></td>
+          <td><span class="type-badge type-3">不規則</span></td>
+          <td><ruby>来<rt>き</rt></ruby>ます</td>
+          <td><ruby>来<rt>き</rt></ruby>て<span class="cite">[cite: 31]</span></td>
+          <td><ruby>来<rt>き</rt></ruby>た</td>
+          <td><ruby>来<rt>こ</rt></ruby>ない<span class="cite">[cite: 22]</span></td>
+          <td><ruby>来<rt>こ</rt></ruby>なかった<span class="cite">[cite: 22]</span></td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 
-  <div class="grid">
-    <!-- 第二類動詞 -->
-    <div class="card group-4">
-      <div class="card-header">
-        <span class="card-title">第二類動詞（一段動詞）</span>
-        <span class="badge bg-green">去 る + て</span>
+  <!-- ==========================================
+       Section 3: 過去否定時態的兩段式推導
+       ========================================== -->
+  <div class="section-title">
+    <span>❸ 過去否定時態的「兩段式推導」邏輯 <span class="cite">[cite: 18, 22]</span></span>
+  </div>
+  <p style="margin-bottom: 1.5rem; color: var(--text-muted);">遇到句尾是「〜ない」時，代表「現在/非過去否定」。若要表達過去沒有發生的事，必須透過兩步驟轉換：</p>
+  
+  <div class="logic-grid">
+    <!-- 推導卡片 1 -->
+    <div class="logic-card">
+      <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">⚙️ 標準推導公式 <span class="cite">[cite: 18, 22]</span></h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted);">Step 1: 先找原形 ➔ 變為ない形<br>Step 2: 將 ない ➔ 替換為 なかった</p>
+      
+      <div class="logic-step">
+        <span style="text-align: center;"><ruby>読<rt>よ</rt></ruby>む<br><small style="font-size:0.75rem; font-weight:normal; color:#64748b;">(讀)</small></span>
+        <span class="arrow">➔</span>
+        <span style="text-align: center;"><ruby>読<rt>よ</rt></ruby>ま<b>ない</b><br><small style="font-size:0.75rem; font-weight:normal; color:#64748b;">(不讀)</small></span>
+        <span class="arrow">➔</span>
+        <span style="color: var(--nai-color); text-align: center;"><ruby>読<rt>よ</rt></ruby>ま<b>なかった</b><br><small style="font-size:0.75rem; font-weight:normal; color:var(--nai-color);">(沒讀)</small></span>
       </div>
-      <div class="visual-box">
-        <span class="visual-icon">✂️ 🗑️</span>
-        <div class="visual-mnemonic">「剪掉尾巴 る，直接補上 て」</div>
-      </div>
-      <ul class="example-list">
-        <li class="example-item"><span><ruby>食<rt>た</rt></ruby>べる <span class="ex-meaning">(享用)</span></span><span class="ex-target"><ruby>食<rt>た</rt></ruby>べて</span></li>
-        <li class="example-item"><span><ruby>見<rt>み</rt></ruby>る <span class="ex-meaning">(觀看)</span></span><span class="ex-target"><ruby>見<rt>み</rt></ruby>て</span></li>
-        <li class="example-item"><span><ruby>起<rt>お</rt></ruby>きる <span class="ex-meaning">(起床)</span></span><span class="ex-target"><ruby>起<rt>お</rt></ruby>きて</span></li>
-        <li class="example-item"><span><ruby>寢<rt>ね</rt></ruby>る <span class="ex-meaning">(就寢)</span></span><span class="ex-target"><ruby>寢<rt>ね</rt></ruby>て</span></li>
-        <li class="example-item"><span><ruby>忘<rt>わす</rt></ruby>れる <span class="ex-meaning">(遺忘)</span></span><span class="ex-target"><ruby>忘<rt>わす</rt></ruby>れて</span></li>
-        <li class="example-item"><span><ruby>教<rt>おし</rt></ruby>える <span class="ex-meaning">(教學)</span></span><span class="ex-target"><ruby>教<rt>おし</rt></ruby>えて</span></li>
-        <li class="example-item"><span><ruby>開<rt>あ</rt></ruby>ける <span class="ex-meaning">(開啟)</span></span><span class="ex-target"><ruby>開<rt>あ</rt></ruby>けて</span></li>
-        <li class="example-item"><span><ruby>閉<rt>し</rt></ruby>める <span class="ex-meaning">(關閉)</span></span><span class="ex-target"><ruby>閉<rt>し</rt></ruby>めて</span></li>
-      </ul>
     </div>
 
-    <!-- 第三類動詞 -->
-    <div class="card group-2">
-      <div class="card-header">
-        <span class="card-title">第三類動詞（不規則動詞）</span>
-        <span class="badge bg-purple">死記對照</span>
+    <!-- 推導卡片 2 -->
+    <div class="logic-card" style="border-top-color: var(--accent-blue);">
+      <h3 style="color: var(--text-main); margin-bottom: 0.5rem;">⚠️ 五段動詞「う」的絕對例外 <span class="cite">[cite: 18, 34]</span></h3>
+      <p style="font-size: 0.95rem; color: var(--text-muted);">五段動詞原形字尾為「う」時，其 ない形 <strong style="color: var(--nai-color);">不是變成 あない，而是變成 わ+ない</strong> <span class="cite">[cite: 34]</span>！</p>
+      
+      <div class="logic-step" style="background: #eff6ff;">
+        <span style="text-align: center;"><ruby>思<rt>おも</rt></ruby>う<br><small style="font-size:0.75rem; font-weight:normal; color:#64748b;">(覺得)</small></span>
+        <span class="arrow" style="color: var(--accent-blue);">➔</span>
+        <span style="text-align: center;"><ruby>思<rt>おも</rt></ruby><b>わ</b>ない<br><small style="font-size:0.75rem; font-weight:normal; color: var(--nai-color);">不是 <s>おもあない</s></small></span>
+        <span class="arrow" style="color: var(--accent-blue);">➔</span>
+        <span style="color: var(--accent-blue); text-align: center;"><ruby>思<rt>おも</rt></ruby><b>わ</b>なかった<br><small style="font-size:0.75rem; font-weight:normal; color:var(--accent-blue);">(當時沒想到)</small></span>
       </div>
-      <div class="visual-box">
-        <span class="visual-icon">⚡ 👑</span>
-        <div class="visual-mnemonic">「兩大原動核心與動作名詞組合」</div>
-      </div>
-      <ul class="example-list">
-        <li class="example-item"><span>する <span class="ex-meaning">(做)</span></span><span class="ex-target">して</span></li>
-        <li class="example-item"><span><ruby>来<rt>く</rt></ruby>る <span class="ex-meaning">(前來)</span></span><span class="ex-target"><ruby>来<rt>き</rt></ruby>て</span></li>
-        <li class="example-item"><span><ruby>勉<rt>べん</rt></ruby><ruby>強<rt>きょう</rt></ruby>する <span class="ex-meaning">(讀書)</span></span><span class="ex-target"><ruby>勉<rt>べん</rt></ruby><ruby>強<rt>きょう</rt></ruby>して</span></li>
-        <li class="example-item"><span><ruby>散<rt>さん</rt></ruby><ruby>歩<rt>ぽ</rt></ruby>する <span class="ex-meaning">(散步)</span></span><span class="ex-target"><ruby>散<rt>さん</rt></ruby><ruby>歩<rt>ぽ</rt></ruby>して</span></li>
-        <li class="example-item"><span><ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>こう</rt></ruby>する <span class="ex-meaning">(旅行)</span></span><span class="ex-target"><ruby>旅<rt>りょ</rt></ruby><ruby>行<rt>こう</rt></ruby>して</span></li>
-        <li class="example-item"><span>キスする <span class="ex-meaning">(親吻)</span></span><span class="ex-target">キスして</span></li>
-      </ul>
     </div>
   </div>
 
-  <!-- 翻牌記憶測驗 -->
-  <div class="quiz-section">
-    <div class="section-title" style="margin-bottom: 0.5rem; border-color: var(--accent-purple);">
-      <span>❸ 點擊互動翻牌測驗（自我快速抽考）</span>
-    </div>
-    <p style="color: #64748b; font-size: 0.95rem;">點擊卡片翻面確認正確的「て形」與語法點：</p>
 
-    <div class="quiz-grid">
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div><ruby>買<rt>か</rt></ruby>う</div>
-            <div class="hint">點擊翻牌</div>
-          </div>
-          <div class="flip-card-back">
-            <div><ruby>買<rt>か</rt></ruby>って</div>
-            <div class="hint">促音組 (う➔って)</div>
-          </div>
+  <!-- ==========================================
+       Section 4: 翻牌互動測驗 (整合て形與時態)
+       ========================================== -->
+  <div class="section-title">
+    <span>❹ 實戰互動：時態與て形 綜合抽考</span>
+  </div>
+  <p style="color: var(--text-muted);">點擊卡片翻面，驗證您對「て形變化」與「肯定/否定時態」的熟悉度：</p>
+
+  <div class="quiz-grid">
+    <!-- て形測驗 1 -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <span class="tense-tag">て形轉換</span>
+          <div><ruby>買<rt>か</rt></ruby>う</div>
+          <div class="hint">點擊翻牌</div>
         </div>
-      </div>
-
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div><ruby>飲<rt>の</rt></ruby>む</div>
-            <div class="hint">點擊翻牌</div>
-          </div>
-          <div class="flip-card-back">
-            <div><ruby>飲<rt>の</rt></ruby>んで</div>
-            <div class="hint">撥音組 (む➔んで)</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div><ruby>行<rt>い</rt></ruby>く</div>
-            <div class="hint">⚠️ 特例陷阱</div>
-          </div>
-          <div class="flip-card-back" style="background-color: var(--accent-red);">
-            <div><ruby>行<rt>い</rt></ruby>って</div>
-            <div class="hint">唯一特例 (不變 いて)</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div><ruby>帰<rt>かえ</rt></ruby>る</div>
-            <div class="hint">⚠️ 例外動詞</div>
-          </div>
-          <div class="flip-card-back" style="background-color: var(--accent-red);">
-            <div><ruby>帰<rt>かえ</rt></ruby>って</div>
-            <div class="hint">實為五段 (る➔って)</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div><ruby>泳<rt>およ</rt></ruby>ぐ</div>
-            <div class="hint">點擊翻牌</div>
-          </div>
-          <div class="flip-card-back">
-            <div><ruby>泳<rt>およ</rt></ruby>いで</div>
-            <div class="hint">イ音便 (ぐ➔いで)</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="flip-card" onclick="this.classList.toggle('flipped')">
-        <div class="flip-card-inner">
-          <div class="flip-card-front">
-            <div><ruby>話<rt>はな</rt></ruby>す</div>
-            <div class="hint">點擊翻牌</div>
-          </div>
-          <div class="flip-card-back">
-            <div><ruby>話<rt>はな</rt></ruby>して</div>
-            <div class="hint">す變身組 (す➔して)</div>
-          </div>
+        <div class="flip-card-back">
+          <span class="tense-tag">て形</span>
+          <div><ruby>買<rt>か</rt></ruby>って</div>
+          <div class="hint">促音組 (う➔って)</div>
         </div>
       </div>
     </div>
+
+    <!-- 過去否定測驗 1 -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <span class="tense-tag">過去否定 <span class="cite">[cite: 10, 22]</span></span>
+          <div><ruby>聞<rt>き</rt></ruby>く</div>
+          <div class="hint">點擊翻牌</div>
+        </div>
+        <div class="flip-card-back" style="background-color: var(--nai-color); border-color: var(--nai-color);">
+          <span class="tense-tag">沒聽 / 當時沒問</span>
+          <div><ruby>聞<rt>き</rt></ruby>かなかった</div>
+          <div class="hint">聞く ➔ 聞かない ➔ なかった</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- て形陷阱測驗 -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <span class="tense-tag">て形轉換</span>
+          <div><ruby>帰<rt>かえ</rt></ruby>る</div>
+          <div class="hint">⚠️ 例外動詞 <span class="cite">[cite: 7]</span></div>
+        </div>
+        <div class="flip-card-back" style="background-color: var(--accent-red); border-color: var(--accent-red);">
+          <span class="tense-tag">て形</span>
+          <div><ruby>帰<rt>かえ</rt></ruby>って</div>
+          <div class="hint">實為五段 (る➔って)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 過去肯定測驗 -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <span class="tense-tag">過去肯定 (た形) <span class="cite">[cite: 18]</span></span>
+          <div><ruby>思<rt>おも</rt></ruby>う</div>
+          <div class="hint">點擊翻牌</div>
+        </div>
+        <div class="flip-card-back" style="background-color: var(--accent-purple); border-color: var(--accent-purple);">
+          <span class="tense-tag">想過 / 覺得</span>
+          <div><ruby>思<rt>おも</rt></ruby>った</div>
+          <div class="hint">五段促音便 (う ➔ った)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 非過去否定測驗 -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <span class="tense-tag">非過去否定 <span class="cite">[cite: 22]</span></span>
+          <div><ruby>来<rt>く</rt></ruby>る</div>
+          <div class="hint">點擊翻牌</div>
+        </div>
+        <div class="flip-card-back" style="background-color: var(--accent-orange); border-color: var(--accent-orange);">
+          <span class="tense-tag">不來</span>
+          <div><ruby>来<rt>こ</rt></ruby>ない</div>
+          <div class="hint">不規則，發音變「こ」</div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- 過去否定測驗 2 -->
+    <div class="flip-card" onclick="this.classList.toggle('flipped')">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <span class="tense-tag">過去否定 <span class="cite">[cite: 18]</span></span>
+          <div>できる</div>
+          <div class="hint">點擊翻牌</div>
+        </div>
+        <div class="flip-card-back" style="background-color: #0f766e; border-color: #0f766e;">
+          <span class="tense-tag">沒能做到</span>
+          <div>できなかった</div>
+          <div class="hint">できる ➔ できない ➔ なかった</div>
+        </div>
+      </div>
+    </div>
+
   </div>
 </div>
 
