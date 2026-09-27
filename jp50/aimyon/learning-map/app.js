@@ -51,6 +51,9 @@
  document.documentElement.classList.add('enhanced');update();filter();navigate();
  const requestedSong=new URLSearchParams(location.search).get('song');
  if([...$('song-filter').options].some(o=>o.value===requestedSong)){$('song-filter').value=requestedSong;filter();}
- // Explicit deep-linked concepts remain visible even with a song query.
  if(ids.has(location.hash.slice(1)))navigate();
 })();
+const kanaQuickScript=document.createElement('script');
+kanaQuickScript.src='../../kana-quick.js';
+kanaQuickScript.defer=true;
+document.head.append(kanaQuickScript);
