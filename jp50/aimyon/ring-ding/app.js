@@ -43,3 +43,8 @@ function revealTarget() {
 window.addEventListener('hashchange', revealTarget);
 filterWords();
 revealTarget();
+
+const kanaQuickScript = document.createElement('script');
+kanaQuickScript.src = '../../kana-quick.js';
+kanaQuickScript.defer = true;
+document.head.append(kanaQuickScript);
