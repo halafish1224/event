@@ -59,4 +59,12 @@
       saveDone(done);sync();applyProgress();
     });
   }
+
+  if(!document.querySelector('script[data-kana-quick-loader]')){
+    const kana=document.createElement('script');
+    kana.src='../../../kana-quick.js';
+    kana.defer=true;
+    kana.dataset.kanaQuickLoader='1';
+    document.head.append(kana);
+  }
 })();
