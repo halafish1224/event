@@ -31,7 +31,7 @@ function compact(){return '<div class="kq-compact"><span>あ・ア<small>a</smal
 function build(mode,items,open){
  const el=document.createElement('section');el.className='jp50-kana-quick';el.dataset.kanaReady='1';
  let body='';
- if(mode==='full') body='<p class="kq-intro">平假名／片假名成對看，先認聲音，再認字形。</p>'+table();
+ if(mode==='full') body='<p class="kq-intro">平假名／片假名成對看，先認聲音，再認字形。手機可左右捲動完整表。</p>'+table();
  else if(mode==='focus') body='<p class="kq-intro">先快速叫出本頁常出現的假名；卡住再回完整表。</p><p class="kq-label">本頁高頻假名</p><div class="kq-focus">'+items.map(x=>'<span lang="ja">'+esc(x)+'</span>').join('')+'</div>'+compact();
  else if(mode==='confusion') body='<p class="kq-intro">Review 時先用聲音辨認，再用筆畫方向確認易混字形。</p><div class="kq-confusions"><div class="kq-confusion"><strong>シ／ツ</strong><small>注意兩點的方向。</small></div><div class="kq-confusion"><strong>ソ／ン</strong><small>注意短筆與長筆的起點。</small></div><div class="kq-confusion"><strong>ぬ／め／ね</strong><small>比較右側收筆與圈形。</small></div><div class="kq-confusion"><strong>れ／わ</strong><small>用後半輪廓與語境一起辨認。</small></div></div>'+compact();
  else body='<p class="kq-intro">先用五個母音定位；需要時再回完整 50 音。</p>'+compact();
@@ -42,11 +42,13 @@ function init(){
  if(document.querySelector('.jp50-kana-quick[data-kana-ready]'))return;
  const p=location.pathname,f=p.split('/').pop()||'';
  let mode='mini',items=[],open=false,anchor='header';
+ if(p.endsWith('/jp50/')||p.endsWith('/jp50/index.html')){mode='full';open=true;anchor='#basic';}
  if(p.endsWith('/audiobook/listen/')){open=true;anchor='.hero';}
  if(focus[f]){mode='focus';items=focus[f].split(',');anchor='.reader-tools';}
  if(f==='unit-review-01.html'){mode='confusion';anchor='.reader-tools';}
  if(p.includes('/aimyon/songs/'))anchor='.learning-map-entry';
- if(p.endsWith('/jp50/exam.html'))mode='confusion';
+ if(p.includes('/aimyon/learning-map/'))anchor='header';
+ if(p.endsWith('/jp50/exam.html')){mode='confusion';anchor='.container';}
  const w=build(mode,items,open);
  const a=document.querySelector(anchor);
  if(a)a.after(w);else if(document.querySelector('main'))document.querySelector('main').prepend(w);else document.body.prepend(w);
