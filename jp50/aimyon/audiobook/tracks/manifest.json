@@ -1,0 +1,58 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-27",
+  "default_main_duration_min": [8, 11],
+  "tracks": [
+    {"id":"L01","type":"lesson","unit":1,"lesson":1,"title":"心・気持ち・想い・思う","focus":"內在世界、當下感受、帶重量的心意","retrieval":["當下感受應選哪個詞？","心、気持ち、想い三選一情境辨析"],"generation":"用其中兩個詞描述今天的自己","carryover":[]},
+    {"id":"L02","type":"lesson","unit":1,"lesson":2,"title":"好き・恋・恋しい・愛・愛する","focus":"喜歡、戀慕、思念、愛","retrieval":["喜歡 vs 因距離想念","恋 vs 愛"],"generation":"用兩種情感距離描述同一個人或地方","carryover":["L01"]},
+    {"id":"L03","type":"lesson","unit":1,"lesson":3,"title":"見る・見える・見られる・見つめる","focus":"主動觀看、自然可見、條件允許、凝視","retrieval":["自然看得到是哪一個？","見える vs 見られる minimal pair"],"generation":"各造一句見る、見える、見られる","carryover":["L01"]},
+    {"id":"L04","type":"lesson","unit":1,"lesson":4,"title":"聞く・聴く・聞ける・聞こえる・伝える","focus":"主動聽、自然聽見與傳達","retrieval":["聞ける vs 聞こえる","言う vs 伝える"],"generation":"用伝える描述一個日常訊息","carryover":["L03"]},
+    {"id":"L05","type":"lesson","unit":1,"lesson":5,"title":"感知 Knowledge Graph","focus":"心、視覺、聽覺、傳達整合","retrieval":["從場景追回三個語意節點"],"generation":"三句描述一個有感受、視覺、聲音的場景","carryover":["L01","L03","L04"]},
+
+    {"id":"L06","type":"lesson","unit":2,"lesson":6,"title":"五段・一段・ます形","focus":"動詞分類與禮貌形","retrieval":["帰る、知る分類","三類動詞ます形"],"generation":"把三個辭書形改成禮貌句","carryover":["L04"]},
+    {"id":"L07","type":"lesson","unit":2,"lesson":7,"title":"ない形","focus":"五段a段、一段去る、う→わない","retrieval":["思う→否定","見る→否定"],"generation":"把兩個日常肯定句改成否定","carryover":["L06"]},
+    {"id":"L08","type":"lesson","unit":2,"lesson":8,"title":"て形","focus":"五段音便、一段、行く例外","retrieval":["末尾假名→音便","行く→て形"],"generation":"用兩個て形連接動作","carryover":["L06","L07"]},
+    {"id":"L09","type":"lesson","unit":2,"lesson":9,"title":"た形","focus":"從て形映射到過去形","retrieval":["て形→た形","行く→行った"],"generation":"回顧昨天兩件事","carryover":["L08"]},
+    {"id":"L10","type":"lesson","unit":2,"lesson":10,"title":"可能形","focus":"能力／條件與自然感知","retrieval":["見る→見られる","見える vs 見られる","聞ける vs 聞こえる"],"generation":"自然可見與條件允許各造一句","carryover":["L03","L04","L06"]},
+
+    {"id":"L11","type":"lesson","unit":3,"lesson":11,"title":"い形容詞","focus":"基本型與いい的特殊基底","retrieval":["い形容詞辨認","いい的活用基底"],"generation":"用兩個形容詞描述環境","carryover":[]},
+    {"id":"L12","type":"lesson","unit":3,"lesson":12,"title":"形容詞否定與過去","focus":"くない、かった、くなかった","retrieval":["強い四格變形","いい→よくない／よかった"],"generation":"比較昨天與今天","carryover":["L11"]},
+    {"id":"L13","type":"lesson","unit":3,"lesson":13,"title":"～くなる","focus":"い形容詞狀態改變","retrieval":["強い→強くなる","いい→よくなる"],"generation":"描述最近逐漸改變的狀態","carryover":["L11","L12"]},
+    {"id":"L14","type":"lesson","unit":3,"lesson":14,"title":"ナ形容詞","focus":"だ、な、じゃない、になる","retrieval":["好きな人","好きになる"],"generation":"用好き三種型態各造一句","carryover":["L02","L13"]},
+    {"id":"L15","type":"lesson","unit":3,"lesson":15,"title":"～すぎる","focus":"程度超過","retrieval":["強い→強すぎる","いい→よすぎる","見る→見すぎる"],"generation":"描述一個日常過度情境","carryover":["L11","L14"]},
+
+    {"id":"L16","type":"lesson","unit":4,"lesson":16,"title":"～ながら","focus":"同一主體同時動作","retrieval":["ます語幹→ながら"],"generation":"描述常同時做的兩件事","carryover":["L06"]},
+    {"id":"L17","type":"lesson","unit":4,"lesson":17,"title":"～たり～たりする","focus":"代表性列舉","retrieval":["た形→たり形"],"generation":"描述休假日活動","carryover":["L09"]},
+    {"id":"L18","type":"lesson","unit":4,"lesson":18,"title":"～てみる","focus":"嘗試做某事","retrieval":["て形→てみる"],"generation":"提出一個想嘗試的學習方法","carryover":["L08"]},
+    {"id":"L19","type":"lesson","unit":4,"lesson":19,"title":"～ば","focus":"一般條件","retrieval":["動詞ば形","い形容詞ば形"],"generation":"說一個可重複成立的條件","carryover":["L06","L11"]},
+    {"id":"L20","type":"lesson","unit":4,"lesson":20,"title":"～たら・～ても・～ずとも","focus":"條件與讓步","retrieval":["如果 vs 即使","たら vs ても"],"generation":"各造一句たら與ても","carryover":["L08","L09","L19"]},
+
+    {"id":"L21","type":"lesson","unit":5,"lesson":21,"title":"～と思う","focus":"主觀判斷與想法","retrieval":["思う vs 考える","普通形＋と思う"],"generation":"說一個保留空間的看法","carryover":["L01"]},
+    {"id":"L22","type":"lesson","unit":5,"lesson":22,"title":"～たい","focus":"自己的願望","retrieval":["ます語幹＋たい"],"generation":"說近期真的想做的一件事","carryover":["L06"]},
+    {"id":"L23","type":"lesson","unit":5,"lesson":23,"title":"～てほしい","focus":"希望他人做某事","retrieval":["て形 prerequisite","たい vs てほしい"],"generation":"用適當語氣提出希望","carryover":["L08","L22"]},
+    {"id":"L24","type":"lesson","unit":5,"lesson":24,"title":"～ように・～ようになる","focus":"目標與能力漸進變化","retrieval":["なる vs ようになる"],"generation":"描述一項逐漸做得到的能力","carryover":["L13"]},
+    {"id":"L25","type":"lesson","unit":5,"lesson":25,"title":"～つもり・～のに","focus":"打算與期待落差","retrieval":["たい vs つもり","ても vs のに"],"generation":"說出原計畫與實際結果","carryover":["L20","L22"]},
+
+    {"id":"L26","type":"lesson","unit":6,"lesson":26,"title":"～ている","focus":"進行、持續、結果狀態","retrieval":["知る→知っている","三種ている解讀"],"generation":"進行與狀態各造一句","carryover":["L08"]},
+    {"id":"L27","type":"lesson","unit":6,"lesson":27,"title":"～ていく","focus":"從現在向未來延伸","retrieval":["時間方向判斷"],"generation":"描述從現在起會持續的變化","carryover":["L26"]},
+    {"id":"L28","type":"lesson","unit":6,"lesson":28,"title":"～てくる","focus":"從過去一路到現在","retrieval":["ていく vs てくる"],"generation":"描述直到最近逐漸感受到的變化","carryover":["L27"]},
+    {"id":"L29","type":"lesson","unit":6,"lesson":29,"title":"Cross-Song Retrieval","focus":"跨歌曲找同一概念","retrieval":["五首歌語意節點回想"],"generation":"用五個核心概念寫短文","carryover":["L01","L03","L04","L20","L28"]},
+    {"id":"L30","type":"lesson","unit":6,"lesson":30,"title":"Japanese Output Challenge","focus":"無選項連貫產出","retrieval":["概念→形式自主選擇"],"generation":"四至六句包含感受、條件與時間變化的原創敘事","carryover":["L01-L29"]},
+
+    {"id":"UR1","type":"unit_review","unit":1,"title":"Unit 1 Retrieval Review","duration_min":[7,9],"focus":"心、視覺、聽覺、傳達","mix":["L01","L02","L03","L04","L05"]},
+    {"id":"UR2","type":"unit_review","unit":2,"title":"Unit 2 Morphology Review","duration_min":[7,9],"focus":"ます・ない・て・た・可能","mix":["L06","L07","L08","L09","L10"]},
+    {"id":"UR3","type":"unit_review","unit":3,"title":"Unit 3 Adjective Review","duration_min":[7,9],"focus":"い・ナ・時態・なる・すぎる","mix":["L11","L12","L13","L14","L15"]},
+    {"id":"UR4","type":"unit_review","unit":4,"title":"Unit 4 Event Relations Review","duration_min":[7,9],"focus":"ながら・たり・てみる・ば・たら・ても","mix":["L16","L17","L18","L19","L20"]},
+    {"id":"UR5","type":"unit_review","unit":5,"title":"Unit 5 Intention Review","duration_min":[7,9],"focus":"と思う・たい・てほしい・ようになる・つもり・のに","mix":["L21","L22","L23","L24","L25"]},
+    {"id":"UR6","type":"unit_review","unit":6,"title":"Unit 6 Time & Output Review","duration_min":[7,9],"focus":"ている・ていく・てくる・cross-song・output","mix":["L26","L27","L28","L29","L30"]},
+
+    {"id":"SM1","type":"song_mission","title":"マリーゴールド Listening Mission","duration_min":[4,6],"targets":["自然","視覺","形容詞"],"copyright":"No full lyrics"},
+    {"id":"SM2","type":"song_mission","title":"裸の心 Listening Mission","duration_min":[4,6],"targets":["心","気持ち","思う","狀態變化"],"copyright":"No full lyrics"},
+    {"id":"SM3","type":"song_mission","title":"君はロックを聴かない Listening Mission","duration_min":[4,6],"targets":["聞く","聴く","希望與期待"],"copyright":"No full lyrics"},
+    {"id":"SM4","type":"song_mission","title":"ハルノヒ Listening Mission","duration_min":[4,6],"targets":["未來","條件","ていく／てくる"],"copyright":"No full lyrics"},
+    {"id":"SM5","type":"song_mission","title":"愛の花 Listening Mission","duration_min":[4,6],"targets":["愛","言葉","想い","伝える"],"copyright":"No full lyrics"},
+
+    {"id":"CM1","type":"contrast_marathon","title":"Contrast Marathon","duration_min":[12,16],"targets":["見る／見える／見られる","聞く／聞ける／聞こえる","知る／分かる","寒い／冷たい","たい／てほしい／つもり","ていく／てくる"]},
+    {"id":"FO1","type":"final_output","title":"Final Audio Output Challenge","duration_min":[8,12],"focus":"只給情境與限制，不給句子答案","requirements":["至少一個感受詞","至少一個條件句","至少一個時間方向表現","至少一個自我生成例句"]}
+  ]
+}
