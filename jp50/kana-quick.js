@@ -23,7 +23,12 @@ const focus={
 'lesson-02.html':'す,き,こ,い,あ,れ',
 'lesson-03.html':'み,え,ら,れ,つ,め',
 'lesson-04.html':'き,こ,え,い,つ,た',
-'lesson-05.html':'こ,ろ,き,も,み,え,つ,た'
+'lesson-05.html':'こ,ろ,き,も,み,え,つ,た',
+'lesson_01':'こ,ろ,き,も,お,う,つ,た',
+'lesson_02':'す,き,こ,い,あ,れ',
+'lesson_03':'み,え,ら,れ,つ,め',
+'lesson_04':'き,こ,え,い,つ,た',
+'lesson_05':'こ,ろ,き,も,み,え,つ,た'
 };
 const esc=x=>String(x).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 function table(){return '<div class="kq-table-wrap"><table><tbody>'+rows.map(r=>'<tr><th>'+r[0]+'</th>'+r[1].split('|').map(c=>{if(!c.trim())return '<td></td>';const p=c.trim().split(' ');return '<td><span class="kq-kana">'+p[0]+' / '+p[1]+'</span><span class="kq-romaji">'+p[2]+'</span></td>';}).join('')+'</tr>').join('')+'</tbody></table></div>'}
@@ -40,12 +45,15 @@ function build(mode,items,open){
 }
 function init(){
  if(document.querySelector('.jp50-kana-quick[data-kana-ready]'))return;
- const p=location.pathname,f=p.split('/').pop()||'';
+ const p=location.pathname,f=p.split('/').filter(Boolean).pop()||'';
  let mode='mini',items=[],open=false,anchor='header';
  if(p.endsWith('/jp50/')||p.endsWith('/jp50/index.html')){mode='full';open=true;anchor='#basic';}
  if(p.endsWith('/audiobook/listen/')){open=true;anchor='.hero';}
  if(focus[f]){mode='focus';items=focus[f].split(',');anchor='.reader-tools';}
+ const nextLessonKey=Object.keys(focus).find(key=>p.includes('/aimyon-japanese/learn/'+key+'/'));
+ if(nextLessonKey){mode='focus';items=focus[nextLessonKey].split(',');anchor='.site-header';}
  if(f==='unit-review-01.html'){mode='confusion';anchor='.reader-tools';}
+ if(p.includes('/aimyon-japanese/review/')){mode='confusion';anchor='.site-header';}
  if(p.includes('/aimyon/songs/'))anchor='.learning-map-entry';
  if(p.includes('/aimyon/learning-map/'))anchor='header';
  if(p.endsWith('/jp50/exam.html')){mode='confusion';anchor='.container';}
