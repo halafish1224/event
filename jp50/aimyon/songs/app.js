@@ -2,7 +2,17 @@ document.addEventListener('DOMContentLoaded', () => {
   if (document.querySelector('#cardsGrid [data-song-id]')) init3DTilt();
   else fetchDataAndRender();
   initCanvasEffect();
+  loadKanaQuick();
 });
+
+function loadKanaQuick() {
+  if (document.querySelector('script[data-kana-quick-loader]')) return;
+  const script = document.createElement('script');
+  script.src = '../../kana-quick.js';
+  script.defer = true;
+  script.dataset.kanaQuickLoader = '1';
+  document.head.append(script);
+}
 
 function escapeHtml(value) {
   return String(value).replace(/[&<>"']/g, character => ({
@@ -80,10 +90,10 @@ function init3DTilt() {
       const rect = card.getBoundingClientRect();
       const x = e.clientX - rect.left;
       const y = e.clientY - rect.top;
-      
+
       const centerX = rect.width / 2;
       const centerY = rect.height / 2;
-      
+
       const rotateX = ((y - centerY) / centerY) * -12;
       const rotateY = ((x - centerX) / centerX) * 12;
 
@@ -128,7 +138,7 @@ function initCanvasEffect() {
 
   function animate() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    
+
     particles.forEach((p, index) => {
       p.x += p.vx;
       p.y += p.vy;
