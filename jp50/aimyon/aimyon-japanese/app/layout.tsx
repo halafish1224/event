@@ -19,6 +19,8 @@ const siteUrl =
 const socialImageUrl = `${siteUrl}/og-aimyon-japanese.png`;
 const epubDownloadBasePath = process.env.NEXT_PUBLIC_BASE_PATH ?? '';
 const epubDownloadHref = `${epubDownloadBasePath}/downloads/AIMYON-Japanese-教材完整版.epub`;
+const kanaQuickSrc =
+  process.env.NEXT_PUBLIC_KANA_QUICK_SRC ?? '/jp50/kana-quick.js';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -158,6 +160,7 @@ export default function RootLayout({
             </div>
           </footer>
         </ReviewProvider>
+        <script src={kanaQuickSrc} defer />
       </body>
     </html>
   );
