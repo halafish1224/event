@@ -1,0 +1,45 @@
+{
+  "version": 1,
+  "song_id": "harunohi",
+  "title": "ハルノヒ",
+  "source_of_truth": "content.mjs",
+  "content_schema_version": "unchanged",
+  "coverage": {
+    "structure": {
+      "status": "verified",
+      "source_rows": 58,
+      "stable_sentence_ids": 58
+    },
+    "sentence_analysis": {
+      "status": "verified",
+      "covered": 58,
+      "total": 58
+    },
+    "grammar": {
+      "status": "verified",
+      "items": 29
+    },
+    "vocabulary": {
+      "status": "verified",
+      "items": 48
+    },
+    "retrieval_practice": {
+      "status": "verified",
+      "items": 16
+    },
+    "cross_song_links": {
+      "status": "partial",
+      "note": "Managed through learning-map; do not present an estimated percentage until audited."
+    }
+  },
+  "sentence_ids": [
+    "harunohi-s001", "harunohi-s002", "harunohi-s003", "harunohi-s004", "harunohi-s005", "harunohi-s006", "harunohi-s007", "harunohi-s008", "harunohi-s009", "harunohi-s010",
+    "harunohi-s011", "harunohi-s012", "harunohi-s013", "harunohi-s014", "harunohi-s015", "harunohi-s016", "harunohi-s017", "harunohi-s018", "harunohi-s019", "harunohi-s020",
+    "harunohi-s021", "harunohi-s022", "harunohi-s023", "harunohi-s024", "harunohi-s025", "harunohi-s026", "harunohi-s027", "harunohi-s028", "harunohi-s029", "harunohi-s030",
+    "harunohi-s031", "harunohi-s032", "harunohi-s033", "harunohi-s034", "harunohi-s035", "harunohi-s036", "harunohi-s037", "harunohi-s038", "harunohi-s039", "harunohi-s040",
+    "harunohi-s041", "harunohi-s042", "harunohi-s043", "harunohi-s044", "harunohi-s045", "harunohi-s046", "harunohi-s047", "harunohi-s048", "harunohi-s049", "harunohi-s050",
+    "harunohi-s051", "harunohi-s052", "harunohi-s053", "harunohi-s054", "harunohi-s055", "harunohi-s056", "harunohi-s057", "harunohi-s058"
+  ],
+  "id_policy": "Sentence IDs are append-stable identifiers for learning coverage. Existing HTML anchors and deep links remain unchanged.",
+  "copyright_policy": "This manifest contains identifiers and coverage metadata only; it does not reproduce lyrics."
+}
