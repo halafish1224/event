@@ -1,11 +1,10 @@
 AIMYON Japanese｜Aurader 純文字教材製作索引
-更新：2026-09-28
+更新：2026-09-29
 
 規格：UTF-8 純文字／繁體中文＋日文／Audio First＋Retrieval Practice
 
 已完成：
-L01–L05：已存在 Unit 1 合併版 Aurader 教材；後續可再拆分為單課檔。
-UR1：已存在 Unit 1 合併版 Aurader 教材。
+L01–L05、UR1：目前提供聽讀網頁與單課 MD 母稿；尚未建立各課 Aurader TXT。
 L06：lesson-06.txt｜五段・一段・ます形｜完成。
 
 下一個目標：
@@ -17,3 +16,4 @@ L07 → L08 → L09 → L10 → UR2 → L11…L15 → UR3 → L16…L20 → UR4 
 
 版權原則：
 不建立可重組的完整 AIMYON 歌詞全文資料庫。歌曲僅作語意、文法與聽力任務索引；教學例句採原創內容。
+下載集中頁：https://event.itigre.com/jp50/downloads/

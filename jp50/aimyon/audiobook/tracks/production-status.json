@@ -1,5 +1,5 @@
 {
-  "updated": "2026-09-27",
+  "updated": "2026-09-29",
   "script_spec": "v1.0",
   "completed": [
     "L01",
@@ -34,6 +34,11 @@
     "All teaching examples are original.",
     "Retrieval pauses are production defaults and may be tuned after pilot listening.",
     "No full copyrighted lyrics are included.",
-    "Unit 1 is ready for SSML/TTS prototyping."
-  ]
+    "Unit 1 is ready for SSML/TTS prototyping; its per-lesson Aurader TXT files have not been published.",
+    "L06 Aurader TXT exists, while its listen HTML and track MD are not yet published."
+  ],
+  "aurader_txt_completed": [
+    "L06"
+  ],
+  "aurader_txt_next": "L07"
 }

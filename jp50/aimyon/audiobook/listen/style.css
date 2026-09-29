@@ -46,6 +46,7 @@ h1{font-size:clamp(2rem,6vw,4.15rem);line-height:1.12;margin:.18em 0 .28em;lette
 .lesson-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:24px}
 .lesson-card{display:flex;flex-direction:column;min-height:230px;padding:23px;background:var(--paper);border:1px solid var(--line);border-top:6px solid var(--card-color,var(--accent));border-radius:18px;text-decoration:none;box-shadow:0 8px 24px rgba(65,53,45,.06);transition:transform .15s ease,border-color .15s ease}
 .lesson-card:hover{transform:translateY(-2px);border-color:var(--card-color,var(--accent))}
+.download-section{margin-top:24px;padding:22px;background:var(--paper);border:1px solid var(--line);border-radius:18px}.download-section h2{margin:0 0 8px;font-size:1.35rem}.download-section p{margin:0 0 14px;color:var(--muted)}.download-section .pill-link{display:inline-block;margin:0 8px 8px 0}
 .lesson-card.done:after{content:"✓ 已完成";margin-top:auto;padding-top:16px;color:var(--green);font-weight:800;font-size:.86rem}
 .lesson-no{font-weight:900;color:var(--card-color,var(--accent));letter-spacing:.08em;font-size:.8rem}
 .lesson-card h2{margin:.35em 0 .18em;font-size:1.42rem;line-height:1.35}

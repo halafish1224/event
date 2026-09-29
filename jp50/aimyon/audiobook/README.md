@@ -4,6 +4,12 @@
 
 ## 直接使用
 
+### 下載集中頁
+
+`https://event.itigre.com/jp50/downloads/`
+
+現有完整 EPUB、L06 Aurader TXT 與 Unit 1 單課 MD 母稿；只列實際可用的檔案。
+
 ### Unit 1 GitHub Pages 聽讀版
 
 `https://event.itigre.com/jp50/aimyon/audiobook/listen/`
