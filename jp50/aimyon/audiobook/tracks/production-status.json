@@ -1,44 +1,21 @@
 {
   "updated": "2026-09-29",
   "script_spec": "v1.0",
-  "completed": [
-    "L01",
-    "L02",
-    "L03",
-    "L04",
-    "L05",
-    "UR1"
-  ],
+  "completed": ["L01","L02","L03","L04","L05","UR1"],
   "current_batch": {
     "unit": 1,
     "status": "script_complete",
-    "files": [
-      "lesson-01.md",
-      "lesson-02.md",
-      "lesson-03.md",
-      "lesson-04.md",
-      "lesson-05.md",
-      "unit-review-01.md"
-    ]
+    "files": ["lesson-01.md","lesson-02.md","lesson-03.md","lesson-04.md","lesson-05.md","unit-review-01.md"]
   },
-  "next_batch": [
-    "L06",
-    "L07",
-    "L08",
-    "L09",
-    "L10",
-    "UR2"
-  ],
+  "next_batch": ["L06","L07","L08","L09","L10","UR2"],
   "audio_render_status": "not_started",
   "notes": [
     "All teaching examples are original.",
     "Retrieval pauses are production defaults and may be tuned after pilot listening.",
     "No full copyrighted lyrics are included.",
     "Unit 1 is ready for SSML/TTS prototyping; its per-lesson Aurader TXT files have not been published.",
-    "L06 Aurader TXT exists, while its listen HTML and track MD are not yet published."
+    "L06 and L07 Aurader TXT exist, while their listen HTML and track MD are not yet published."
   ],
-  "aurader_txt_completed": [
-    "L06"
-  ],
-  "aurader_txt_next": "L07"
+  "aurader_txt_completed": ["L06","L07"],
+  "aurader_txt_next": "L08"
 }
