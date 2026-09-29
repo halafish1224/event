@@ -32,4 +32,22 @@ assert.equal(catalog.length,songs.length);assert.equal((cards.match(/data-song-i
 for(const song of songs){assert(catalog.some(c=>c.id===song.id&&c.color===song.color));assert(cards.includes(`data-song-id="${song.id}"`));}
 const own=concepts.filter(c=>c.refs.some(r=>r[0]==='harunohi'));assert.equal(own.length,20);
 for(const c of own)for(const [,anchor] of c.refs.filter(r=>r[0]==='harunohi'))assert(ids.includes(anchor),anchor);
-console.log('PASS: 58 annotated lines, 29 grammar groups, 48 words, 16 practices; local links, catalog parity, 20 map references, noindex and preserved source distinctions.');
+
+// Full Song Learning Coverage manifest must stay in lockstep with the audited source data.
+const coverage=JSON.parse(readFileSync(new URL('coverage.json',import.meta.url),'utf8'));
+assert.equal(coverage.song_id,'harunohi');
+assert.equal(coverage.source_of_truth,'content.mjs');
+assert.equal(coverage.content_schema_version,'unchanged');
+assert.equal(coverage.coverage.structure.source_rows,lines.length);
+assert.equal(coverage.coverage.structure.stable_sentence_ids,lines.length);
+assert.equal(coverage.coverage.sentence_analysis.covered,lines.length);
+assert.equal(coverage.coverage.sentence_analysis.total,lines.length);
+assert.equal(coverage.coverage.grammar.items,grammar.split('\n').length);
+assert.equal(coverage.coverage.vocabulary.items,words.split('\n').length);
+assert.equal(coverage.coverage.retrieval_practice.items,practice.length);
+assert.equal(coverage.coverage.cross_song_links.status,'partial');
+assert.equal(coverage.sentence_ids.length,lines.length);
+assert.equal(new Set(coverage.sentence_ids).size,coverage.sentence_ids.length);
+coverage.sentence_ids.forEach((id,i)=>assert.equal(id,`harunohi-s${String(i+1).padStart(3,'0')}`));
+
+console.log('PASS: 58 annotated lines, 29 grammar groups, 48 words, 16 practices; coverage manifest, local links, catalog parity, 20 map references, noindex and preserved source distinctions.');
