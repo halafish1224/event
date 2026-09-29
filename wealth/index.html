@@ -64,7 +64,7 @@
 <div id="fee-best" class="fee-best" role="status"></div>
 <p id="fee-coverage" class="muted"></p>
 <div class="table-scroll fee-table" tabindex="0" role="region" aria-label="費率比較表，可橫向捲動"><table><caption id="fee-caption">同交易方式、同金額的佣金比较</caption><thead><tr><th scope="col">機構／方案</th><th scope="col">官方費率／低收</th><th scope="col">估算佣金</th><th scope="col">資格與限制</th><th scope="col">有效期／查核</th><th scope="col">官網依據</th></tr></thead><tbody id="fee-body"></tbody></table></div>
-<details><summary>比較範圍、計算方法與更新規則</summary><p class="muted">只比较每筆交易佣金，不含證券交易稅、海外規費、匯差、匯款費、信託管理費及保管費。整股／零股以一般台幣上市櫃證券為前提，不含當沖、信用、興櫃或人工下單。定期定額只比較買進，且各方案須有可委託的相同標的。費率試算保留小數，實收進位、最低收費與次月折讓依券商對帳單；開戶禮與抵用金不折抵試算。</p><p class="muted">一般公式＝max(成交額 × 費率，低收)，固定費與上限依各方案。玉山一般方案使用本筆前月累計成交額切分 100 萬／300 萬級距。新戶額度超過上限時整筆停止比較，不猜測超額費率。銀行信託另列，不以買進費率區間直接選出總成本最優。</p><p class="muted">每日重新讀取各列官網；只有實際查核成功才能更新 verifiedAt。逾 36 小時未核實、活动已到期、條件不完整或價格待詢者不標最低價。官網可能隨時更動，查核時間不等於機構生效時間；本表未涵蓋全台所有機構及個別議價。</p><p id="fee-schedule" class="muted"></p></details>
+<details><summary>比較範圍、計算方法與更新規則</summary><p class="muted">只比较每筆交易佣金，不含證券交易稅、海外規費、匯差、匯款費、信託管理費及保管費。整股／零股以一般台幣上市櫃證券為前提，不含當沖、信用、興櫃或人工下單。定期定額只比較買進，且各方案須有可委託的相同標的。費率試算保留小數，實收進位、最低收費與次月折讓依券商對帳單；開戶禮與抵用金不折抵試算。</p><p class="muted">一般公式＝max(成交額 × 費率，低收)，固定費與上限依各方案。玉山一般方案使用本筆前月累計成交額切分 100 萬／300 萬級距。新戶額度超過上限時整筆停止比較，不猜測超額費率。銀行信託另列，不以買進費率區間直接選出總成本最優。</p><p class="muted">每週六重新讀取各列官網；只有實際查核成功才能更新 verifiedAt。逾 36 小時未核實、活动已到期、條件不完整或價格待詢者不標最低價。官網可能隨時更動，查核時間不等於機構生效時間；本表未涵蓋全台所有機構及個別議價。</p><p id="fee-schedule" class="muted"></p></details>
 <details><summary>其他持續追蹤機構</summary><div id="fee-watch" class="fee-watch"></div></details>
 <noscript><p>請啟用 JavaScript 以查看費率、適用條件與最新查核日期；不會在未計算條件前顯示最低價。</p></noscript>
 </div></section>
@@ -105,7 +105,7 @@ $('refresh').addEventListener('click',refresh);['search','journal-filter'].forEa
   "schemaVersion": 1,
   "updatedAt": "2026-09-29T08:32:06+08:00",
   "scope": "台股整股、零股、定期定額；另列美股與銀行信託。已追蹤名單非全台普查。",
-  "schedule": "每天台灣時間 02:30，由本任務排程重新查核官網後更新 GitHub；若未完成，保留各列實際查核時間。",
+  "schedule": "每週六台灣時間 02:30，由本任務排程重新查核官網後更新 GitHub；若未完成，保留各列實際查核時間。",
   "rows": [
     {
       "id": "sino-tw_whole",
