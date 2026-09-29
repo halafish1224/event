@@ -13,13 +13,34 @@
 @media(max-width:1000px){.span8,.span4{grid-column:span 6}.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.three{grid-template-columns:1fr}.value{font-size:26px}}
 @media(max-width:680px){.shell{padding:20px 16px 40px}.span8,.span4,.span6{grid-column:span 12}.card{padding:18px}.kpis{gap:10px}.kpi{padding:14px}.value{font-size:23px}.field-grid{gap:10px}.journal-controls{grid-template-columns:1fr}.frame{height:320px}.bar-row{grid-template-columns:68px 1fr 85px}nav{gap:20px}.top{align-items:flex-start}}
 @media print{body{background:white}.shell{max-width:none;padding:0}nav,.actions,button,.skip{display:none}details{display:block}.card{break-inside:avoid}.grid{display:block}.card{margin-bottom:16px}.frame{height:300px}}
+
+#fees .fee-controls{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:18px 0}
+#fees .fee-best{border:2px solid #18754a;background:#e7f6e9;border-radius:12px;padding:20px;margin:16px 0}
+#fees .fee-best strong{color:#07502c;font-size:24px;display:block}
+#fees .fee-best.fee-warning{border-color:#bc873b;background:#fff5df}
+#fees .fee-table{max-height:620px;border:1px solid var(--line);border-radius:10px}
+#fees th{position:sticky;top:0;background:#eff3ec;z-index:1;white-space:nowrap}
+#fees table{min-width:950px}
+#fees td{vertical-align:top;min-width:125px}
+#fees td:nth-child(4){min-width:260px;max-width:370px}
+#fees tr.fee-winner td{background:#e5f6e8;border-top:2px solid #23794b;border-bottom:2px solid #23794b}
+#fees .fee-marker{display:block;font-weight:750;color:#08532e}
+#fees .fee-cost{font-size:21px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
+#fees .fee-bar{height:7px;background:#e6ebe2;margin-top:7px;border-radius:6px;overflow:hidden}
+#fees .fee-bar span{display:block;height:100%;background:#537864}
+#fees .fee-winner .fee-bar span{background:#168146}
+#fees .fee-qualified{color:#845c13;font-weight:600}
+#fees .fee-watch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+#fees .fee-watch a{display:block;font-weight:650}
+@media(max-width:680px){#fees .fee-controls,#fees .fee-watch{grid-template-columns:1fr}#fees .fee-best strong{font-size:20px}}
+
 </style>
 </head>
 <body>
 <a href="#main" class="skip">跳至主要內容</a>
 <div class="shell">
 <header class="top"><div><h1>枯山觀水</h1><p class="muted">配置有依據，風險看得見，決策留下紀錄。</p></div><div class="actions"><a class="button" href="https://docs.google.com/spreadsheets/d/1FOE18xjHyh9LoRq5bXVFaJmWVQTeC0p0x2Ipy8iXoPo/edit?usp=sharing" target="_blank" rel="noopener noreferrer">更新試算表 ↗</a><button id="refresh" class="primary" type="button">重新同步 CSV</button></div></header>
-<nav aria-label="頁面導覽"><a href="#overview">配置總覽</a><a href="#scenario">決策試算</a><a href="#research">研究與方法</a><a href="#journal">決策日誌</a></nav>
+<nav aria-label="頁面導覽"><a href="#overview">配置總覽</a><a href="#scenario">決策試算</a><a href="#fees">交易費比較</a><a href="#research">研究與方法</a><a href="#journal">決策日誌</a></nav>
 <main id="main">
 <section id="overview" aria-labelledby="overview-title"><div class="row"><h2 id="overview-title">配置與紀律</h2><span class="badge">個人策略：衛星上限 30%</span></div>
 <div class="notice"><p><strong>保留您的核心／衛星框架。</strong>衛星占比超過 30% 時啟動再平衡檢視，回撥至 006208 核心；下方可比較新資金投入與轉換部位的試算。30% 是自訂門檻，並非學術上的最佳比例。006208 仍是股票型資產，核心定位不代表保本。</p></div>
@@ -33,6 +54,21 @@
 <div id="allocation-view" hidden><div class="stack" id="allocation-bar" role="img" aria-label="配置比例"></div><div id="allocation-legend" class="legend"></div><div class="ruletrack" aria-hidden="true"><div class="fill" id="rule-fill"></div><span class="limit"></span></div><p class="muted">衛星占比尺標 0–100%；虛線＝30% 檢視門檻</p><div class="three"><div class="mini"><small>目前組合市值</small><strong id="total">—</strong></div><div class="mini"><small>只投入核心所需新資金</small><strong id="cash-needed">—</strong></div><div class="mini"><small>投入後仍需轉出衛星</small><strong id="sell-needed">—</strong></div></div><p id="rebalance-note" class="status result"></p><p class="muted">假設市價固定、新資金全投入核心，轉出衛星後等額轉入核心。未計手續費、交易稅、價差、匯率與整股限制；金額是比例試算，不是交易指令。</p></div>
 <details><summary>公式與判斷邊界</summary><p class="muted">V＝核心＋衛星＋現金；S＝衛星；C＝新增投入；t＝目標比例。衛星占比＝S/V。僅投入核心所需新資金＝max(0, S/t−V)。投入 C 後，需轉出衛星＝max(0, S−t×(V+C))。超過 30% 才顯示檢視提示；等於 30% 為到達上限。即使未超標，設定較低目標仍可能產生情境調整金額。</p></details></article>
 <article class="card span4"><h3>如果市場下跌，能承受多少？</h3><p class="muted">以左側目前市值計算，不含新投入。以下跌幅是可調整的假設，不是預測或歷史回撤。</p><label>核心跌幅 <output id="core-shock-label">20%</output><input id="core-shock" aria-label="核心假設跌幅百分比" type="range" min="0" max="80" value="20"></label><label>衛星跌幅 <output id="sat-shock-label">35%</output><input id="sat-shock" aria-label="衛星假設跌幅百分比" type="range" min="0" max="100" value="35"></label><div id="stress-result" class="chart-empty" role="status">完成左側市值輸入後顯示情境。</div><p class="muted">現金名目價值假設不變；不反映通膨、匯率、流動性與交易成本。</p><div class="method"><h3>下單前的紀律檢查</h3><div class="checks"><label><input type="checkbox"> 觸發原因來自配置規則，而非恐慌或 FOMO。</label><label><input type="checkbox"> 已確認現金需求、資料日期與交易成本。</label><label><input type="checkbox"> 已檢查核心與衛星的成分股重疊。</label><label><input type="checkbox"> 已寫下理由與策略失效條件。</label></div><p class="muted">勾選僅供當次檢視，不代表系統核准交易。</p></div></article></div></section>
+<section id="fees" aria-labelledby="fees-title">
+<div class="row section-title"><h2 id="fees-title">交易手續費 · 官網查核比較</h2><span class="badge">台股為主 · 美股另列</span></div>
+<div class="card">
+<p>依相同交易方式與金額比較，<strong>綠色標出本次可比較方案中的最低估算佣金</strong>；同價全部並列。優惠資格、低收與資料新鮮度都會影響結果。</p>
+<p id="fee-updated" class="muted" role="status"></p>
+<div class="fee-controls"><label for="fee-group">交易方式<select id="fee-group"><option value="tw_dca">台股定期定額 · 買進</option><option value="tw_whole">台股整股 · 電子單筆佣金</option><option value="tw_odd">台股零股 · 電子單筆佣金</option><option value="us_dca">美股定期定額 · 買進</option><option value="us_regular">美股一般電子單 · 參考</option><option value="bank">銀行境外股票／ETF 信託 · 參考</option></select></label><label for="fee-amount">每筆金額（<span id="fee-currency">TWD</span>）<input id="fee-amount" type="number" value="10000" min="1" step="any" inputmode="decimal"></label><label id="fee-month-label" for="fee-month">本筆前當月累計成交額（TWD）<input id="fee-month" type="number" value="0" min="0" step="any" inputmode="decimal"></label></div>
+<label class="fee-qualified"><input type="checkbox" id="fee-promos"> 納入新戶／卡友／契約日期限定方案（只是假設符合，請核對每列條件）</label>
+<div id="fee-best" class="fee-best" role="status"></div>
+<p id="fee-coverage" class="muted"></p>
+<div class="table-scroll fee-table" tabindex="0" role="region" aria-label="費率比較表，可橫向捲動"><table><caption id="fee-caption">同交易方式、同金額的佣金比较</caption><thead><tr><th scope="col">機構／方案</th><th scope="col">官方費率／低收</th><th scope="col">估算佣金</th><th scope="col">資格與限制</th><th scope="col">有效期／查核</th><th scope="col">官網依據</th></tr></thead><tbody id="fee-body"></tbody></table></div>
+<details><summary>比較範圍、計算方法與更新規則</summary><p class="muted">只比较每筆交易佣金，不含證券交易稅、海外規費、匯差、匯款費、信託管理費及保管費。整股／零股以一般台幣上市櫃證券為前提，不含當沖、信用、興櫃或人工下單。定期定額只比較買進，且各方案須有可委託的相同標的。費率試算保留小數，實收進位、最低收費與次月折讓依券商對帳單；開戶禮與抵用金不折抵試算。</p><p class="muted">一般公式＝max(成交額 × 費率，低收)，固定費與上限依各方案。玉山一般方案使用本筆前月累計成交額切分 100 萬／300 萬級距。新戶額度超過上限時整筆停止比較，不猜測超額費率。銀行信託另列，不以買進費率區間直接選出總成本最優。</p><p class="muted">每日重新讀取各列官網；只有實際查核成功才能更新 verifiedAt。逾 36 小時未核實、活动已到期、條件不完整或價格待詢者不標最低價。官網可能隨時更動，查核時間不等於機構生效時間；本表未涵蓋全台所有機構及個別議價。</p><p id="fee-schedule" class="muted"></p></details>
+<details><summary>其他持續追蹤機構</summary><div id="fee-watch" class="fee-watch"></div></details>
+<noscript><p>請啟用 JavaScript 以查看費率、適用條件與最新查核日期；不會在未計算條件前顯示最低價。</p></noscript>
+</div></section>
+
 <section id="research" aria-labelledby="research-title"><h2 class="section-title" id="research-title">研究入口與判讀方法</h2><div class="grid"><article class="card span4"><h3>持倉與基本面</h3><a class="resource" href="https://aiinvest.sinotrade.com.tw/Account/Asset" target="_blank" rel="noopener noreferrer"><strong>永豐大戶投 ↗</strong><small>核對真實持倉、可用資金與交易成本</small></a><a class="resource" href="https://www.twse.com.tw/zh/ETFortune/products" target="_blank" rel="noopener noreferrer"><strong>證交所 ETF e添富 ↗</strong><small>研究 ETF、追蹤指數、費用與商品資訊</small></a><a class="resource" href="https://mops.twse.com.tw/" target="_blank" rel="noopener noreferrer"><strong>公開資訊觀測站 ↗</strong><small>查核財務報表、重大訊息與公司公告</small></a><a class="resource" href="https://gemini.google.com/gem/1TNWK82RGAFQhIKBLjowp67xB4XhJM0T9?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>您的投資學 AI 工具 ↗</strong><small>整理研究問題；數字與結論仍須回查原始公告</small></a></article>
 <article class="card span4"><h3>市場環境</h3><a class="resource" href="https://fred.stlouisfed.org/series/VIXCLS" target="_blank" rel="noopener noreferrer"><strong>FRED · VIX ↗</strong><small>美股選擇權隱含波動觀察；不等於台股買賣訊號</small></a><a class="resource" href="https://edition.cnn.com/markets/fear-and-greed" target="_blank" rel="noopener noreferrer"><strong>CNN Fear &amp; Greed ↗</strong><small>美股情緒背景；避免把極端讀值當作反轉保證</small></a><a class="resource" href="https://www.twse.com.tw/IIH2/zh/" target="_blank" rel="noopener noreferrer"><strong>證交所投資資訊中心 ↗</strong><small>從官方市場、公司與商品資訊交叉查核</small></a><p class="muted">本區為研究連結，未抓取即時報價。請在來源頁確認資料日期與適用市場。</p></article>
 <article class="card span4"><h3>把理論落實成檢查</h3><div class="method"><strong>組合理論：看整體曝險</strong><p class="muted">ETF 數量不等於分散程度。核心與衛星可能持有相同產業與公司；需有成分權重與共同期間報酬，才適合進一步分析相關性。</p><a class="muted" href="https://www.nobelprize.org/uploads/2018/06/markowitz-lecture.pdf" target="_blank" rel="noopener noreferrer">Markowitz · 組合理論講座 ↗</a></div><div class="method"><strong>再平衡：回到風險配置</strong><p class="muted">比較新資金投入與部位轉換，並考慮稅費；目的是控制配置偏離，並不保證提高報酬。</p><a class="muted" href="https://www.investor.gov/introduction-investing/getting-started/asset-allocation" target="_blank" rel="noopener noreferrer">Investor.gov · 資產配置 ↗</a></div><div class="method"><strong>績效衡量：先釐清現金流</strong><p class="muted">TWR 用來觀察排除外部現金流影響後的表現；XIRR 衡量投入時點與金額下的資金報酬。現有單一百分比不足以計算兩者。</p><a class="muted" href="https://www.cfainstitute.org/insights/professional-learning/refresher-readings/2026/rates-and-returns" target="_blank" rel="noopener noreferrer">CFA Institute · Rates and Returns ↗</a></div></article></div></section>
@@ -62,6 +98,797 @@ $('allocation-view').hidden=false;$('weight-value').textContent=percent(r.w);$('
 const loss=c*Number($('core-shock').value)/100+s*Number($('sat-shock').value)/100;const end=r.v-loss;const result=$('stress-result');result.replaceChildren(node('div','情境損失（TWD）','label'),node('div','−'+fmt(loss),'value negative'),node('p','組合變動 −'+percent(loss/r.v)+'；情境後市值 '+fmt(end)+' 元。'));const bars=node('div',undefined,'stress-bars');[['目前',r.v],['情境後',end]].forEach(([label,value])=>{const row=node('div',undefined,'bar-row'),track=node('div',undefined,'bar-track'),fill=node('span');fill.style.width=percent(value/r.v);track.append(fill);row.append(node('span',label),track,node('span',fmt(value)));bars.append(row);});result.append(bars,node('p','長條以目前總市值為 100%，起點為 0。','muted'));
 }
 $('refresh').addEventListener('click',refresh);['search','journal-filter'].forEach(id=>$(id).addEventListener('input',()=>{state.shown=8;renderJournal();}));$('more').addEventListener('click',()=>{state.shown+=8;renderJournal();});['core','satellite','cash','contribution','target','valuation-date','core-shock','sat-shock'].forEach(id=>$(id).addEventListener('input',scenario));scenario();refresh();
+</script>
+<!-- FEES_DATA_START -->
+<script id="fees-data" type="application/json">
+{
+  "schemaVersion": 1,
+  "updatedAt": "2026-09-29T08:32:06+08:00",
+  "scope": "台股整股、零股、定期定額；另列美股與銀行信託。已追蹤名單非全台普查。",
+  "schedule": "每天台灣時間 02:30，由本任務排程重新查核官網後更新 GitHub；若未完成，保留各列實際查核時間。",
+  "rows": [
+    {
+      "id": "sino-tw_whole",
+      "provider": "永豐金證券",
+      "group": "tw_whole",
+      "feeText": "2 折 · 0.0285%；最低 1 元",
+      "conditions": "線上新戶、電子下單，當月電子成交累計 100 萬元內；外幣 ETF 不適用低收優惠。先收原費率、次月 15 日退折讓。",
+      "source": "https://service.sinotrade.com.tw/newweb/Fee_Rate/",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": 0.000285,
+      "fixed": null,
+      "minFee": 1,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": 1000000,
+      "conditional": true,
+      "model": "rate",
+      "note": "費率頁標示 2026 活動，未載完整起訖日；排名僅作条件成立的情境試算。"
+    },
+    {
+      "id": "esun-tw_whole",
+      "provider": "玉山證券",
+      "group": "tw_whole",
+      "feeText": "月成交累進 6／5／3.8 折",
+      "conditions": "前 100 萬元 6 折、100–300 萬元 5 折、超過 300 萬元部分 3.8 折；次月 13 日退折讓。使用下方「本筆前月成交額」切分級距。",
+      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": 20,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "esun-tiers",
+      "note": ""
+    },
+    {
+      "id": "esun-u-tw_whole",
+      "provider": "玉山證券 · Unicard",
+      "group": "tw_whole",
+      "feeText": "2.8 折 · 0.0399%",
+      "conditions": "Unicard 卡友經專屬連結（30025）首次開戶並登錄；請核對活動資格。",
+      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": "2026-07-01",
+      "end": "2027-03-31",
+      "rate": 0.000399,
+      "fixed": null,
+      "minFee": 20,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": true,
+      "model": "rate",
+      "note": ""
+    },
+    {
+      "id": "cathay-tw_whole",
+      "provider": "國泰證券",
+      "group": "tw_whole",
+      "feeText": "2.8 折 · 0.0399%",
+      "conditions": "網路下單。此次費率頁未完整揭露此類交易最低收費，暫不推算金額。",
+      "source": "https://www.cathaysec.com.tw/cathaysec/Products/TradeFee/TWS.aspx",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": "最低收費待確認，不參與排名。"
+    },
+    {
+      "id": "capital-tw_whole",
+      "provider": "群益金鼎證券",
+      "group": "tw_whole",
+      "feeText": "牌告 0.1425%；電子優惠洽營業員",
+      "conditions": "上市櫃整股低收 20 元；本國自然人電子零股低收 1 元。個別折扣未公開。",
+      "source": "https://www.capital.com.tw/event/stock/20220214/default.html",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": "不以牌告費率冒充實際電子優惠，不參與排名。"
+    },
+    {
+      "id": "fubon-tw_whole",
+      "provider": "富邦證券",
+      "group": "tw_whole",
+      "feeText": "新戶優惠，數字洽分公司",
+      "conditions": "2026 新開台股自然人，電子月成交 100 萬元內；官網未公開完整折扣。",
+      "source": "https://www.fubon.com/securities/open-now/",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": "2026-12-31",
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": "不可由「優惠」推定為 2 折。"
+    },
+    {
+      "id": "sino-tw_odd",
+      "provider": "永豐金證券",
+      "group": "tw_odd",
+      "feeText": "2 折 · 0.0285%；最低 1 元",
+      "conditions": "線上新戶、電子下單，當月電子成交累計 100 萬元內；外幣 ETF 不適用低收優惠。先收原費率、次月 15 日退折讓。",
+      "source": "https://service.sinotrade.com.tw/newweb/Fee_Rate/",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": 0.000285,
+      "fixed": null,
+      "minFee": 1,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": 1000000,
+      "conditional": true,
+      "model": "rate",
+      "note": "費率頁標示 2026 活動，未載完整起訖日；排名僅作条件成立的情境試算。"
+    },
+    {
+      "id": "esun-tw_odd",
+      "provider": "玉山證券",
+      "group": "tw_odd",
+      "feeText": "月成交累進 6／5／3.8 折",
+      "conditions": "前 100 萬元 6 折、100–300 萬元 5 折、超過 300 萬元部分 3.8 折；次月 13 日退折讓。使用下方「本筆前月成交額」切分級距。",
+      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": 1,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "esun-tiers",
+      "note": ""
+    },
+    {
+      "id": "esun-u-tw_odd",
+      "provider": "玉山證券 · Unicard",
+      "group": "tw_odd",
+      "feeText": "2.8 折 · 0.0399%",
+      "conditions": "Unicard 卡友經專屬連結（30025）首次開戶並登錄；請核對活動資格。",
+      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": "2026-07-01",
+      "end": "2027-03-31",
+      "rate": 0.000399,
+      "fixed": null,
+      "minFee": 1,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": true,
+      "model": "rate",
+      "note": ""
+    },
+    {
+      "id": "cathay-tw_odd",
+      "provider": "國泰證券",
+      "group": "tw_odd",
+      "feeText": "2.8 折 · 0.0399%",
+      "conditions": "網路下單。此次費率頁未完整揭露此類交易最低收費，暫不推算金額。",
+      "source": "https://www.cathaysec.com.tw/cathaysec/Products/TradeFee/TWS.aspx",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": "最低收費待確認，不參與排名。"
+    },
+    {
+      "id": "capital-tw_odd",
+      "provider": "群益金鼎證券",
+      "group": "tw_odd",
+      "feeText": "牌告 0.1425%；電子優惠洽營業員",
+      "conditions": "上市櫃整股低收 20 元；本國自然人電子零股低收 1 元。個別折扣未公開。",
+      "source": "https://www.capital.com.tw/event/stock/20220214/default.html",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": "不以牌告費率冒充實際電子優惠，不參與排名。"
+    },
+    {
+      "id": "fubon-tw_odd",
+      "provider": "富邦證券",
+      "group": "tw_odd",
+      "feeText": "新戶優惠，數字洽分公司",
+      "conditions": "2026 新開台股自然人，電子月成交 100 萬元內；官網未公開完整折扣。",
+      "source": "https://www.fubon.com/securities/open-now/",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": "2026-12-31",
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": "不可由「優惠」推定為 2 折。"
+    },
+    {
+      "id": "sino-dca",
+      "provider": "永豐金證券",
+      "group": "tw_dca",
+      "feeText": "每筆 1 元",
+      "conditions": "豐存股指定標的；本國自然人或機構法人，交割須符合永豐銀行／分戶帳／LINE Bank 規定。",
+      "source": "https://aiinvest.sinotrade.com.tw/Support",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": "2026-12-31",
+      "rate": null,
+      "fixed": 1,
+      "minFee": null,
+      "cap": null,
+      "amountMin": 100,
+      "amountMax": 10000000,
+      "monthMax": null,
+      "conditional": false,
+      "model": "fixed",
+      "note": ""
+    },
+    {
+      "id": "cathay-dca",
+      "provider": "國泰證券",
+      "group": "tw_dca",
+      "feeText": "每筆 1 元",
+      "conditions": "台股定期定額買進；官網費率頁標示不限交易金額。須先完成該服務約定。",
+      "source": "https://www.cathaysec.com.tw/cathaysec/Products/TradeFee/TWS.aspx",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": 1,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "fixed",
+      "note": "最低可申購金額請依各標的設定；比較金額以可成功委託為前提。"
+    },
+    {
+      "id": "yuanta-dca",
+      "provider": "元大證券",
+      "group": "tw_dca",
+      "feeText": "每筆 1 元",
+      "conditions": "全體客戶，台股／ETF／ETF 投資組合定期定額買進。投組最低申購額另依商品。",
+      "source": "https://www.yuanta.com.tw/file-repository/content/168easy/index.html",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": "2026-12-31",
+      "rate": null,
+      "fixed": 1,
+      "minFee": null,
+      "cap": null,
+      "amountMin": 1000,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "fixed",
+      "note": ""
+    },
+    {
+      "id": "esun-dca",
+      "provider": "玉山證券",
+      "group": "tw_dca",
+      "feeText": "委託 2 萬元以下每筆 1 元",
+      "conditions": "台股 e 指存；單筆委託金額不得超過 20,000 元，超過部分未納入本試算。",
+      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": 1,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": 20000,
+      "monthMax": null,
+      "conditional": false,
+      "model": "fixed",
+      "note": ""
+    },
+    {
+      "id": "kgi-dca",
+      "provider": "凱基證券",
+      "group": "tw_dca",
+      "feeText": "符合契約日期每筆 1 元",
+      "conditions": "契約須於 2022/05/01–2026/12/31 成立；2022/04/30 前契約不適用。賣出另依帳戶條件計收。",
+      "source": "https://www.kgi.com.tw/zh-tw/product-overview/etf-rsp-odd-lot",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": "2026-01-01",
+      "end": "2026-12-31",
+      "rate": null,
+      "fixed": 1,
+      "minFee": null,
+      "cap": null,
+      "amountMin": 100,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": true,
+      "model": "fixed",
+      "note": ""
+    },
+    {
+      "id": "fubon-dca",
+      "provider": "富邦證券",
+      "group": "tw_dca",
+      "feeText": "買進優惠洽分公司",
+      "conditions": "官網未公開確切數值；不將新戶禮、抵用金換算為每筆固定折扣。",
+      "source": "https://www.fubon.com/securities/open-now/",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": ""
+    },
+    {
+      "id": "mega-dca",
+      "provider": "兆豐證券",
+      "group": "tw_dca",
+      "feeText": "依盤中零股電子費率；低收 1 元",
+      "conditions": "實際帳戶折扣未公開；須核對適用方案。",
+      "source": "https://project.emega.com.tw/EstockV2/",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": ""
+    },
+    {
+      "id": "tss-dca",
+      "provider": "台新證券",
+      "group": "tw_dca",
+      "feeText": "2 萬元以下均一價；數字待核對",
+      "conditions": "活動頁價格以圖像／符號呈現且截止年份不明，暫不量化。",
+      "source": "https://www.tssco.com.tw/DCA/",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": null,
+      "status": "needs_review",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": ""
+    },
+    {
+      "id": "sino-us-dca",
+      "provider": "永豐金證券",
+      "group": "us_dca",
+      "feeText": "買進每筆 US$0.01",
+      "conditions": "豐存股；本國自然人、無雙重國籍，交割須為永豐銀行或分戶帳。指定標的，賣出費用另計。",
+      "source": "https://aiinvest.sinotrade.com.tw/Support",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": "2026-12-31",
+      "rate": null,
+      "fixed": 0.01,
+      "minFee": null,
+      "cap": null,
+      "amountMin": 10,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "fixed",
+      "note": ""
+    },
+    {
+      "id": "capital-us-dca",
+      "provider": "群益金鼎證券",
+      "group": "us_dca",
+      "feeText": "買進每筆 US$0.03",
+      "conditions": "本國自然人且具複委託戶；群益一戶通台幣，或上海商銀／國泰世華外幣交割。賣出 0.20% 免低收。",
+      "source": "https://dstock.capital.com.tw/AverInvest/question/list.do",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": "2026-12-31",
+      "rate": null,
+      "fixed": 0.03,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "fixed",
+      "note": ""
+    },
+    {
+      "id": "yuanta-us-dca",
+      "provider": "元大證券",
+      "group": "us_dca",
+      "feeText": "買進 0.1%；每筆上限 US$1",
+      "conditions": "美股定期定額；只比較買進，賣出不適用此上限。",
+      "source": "https://www.yuanta.com.tw/file-repository/content/168easy/index.html",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": "2026-12-31",
+      "rate": 0.001,
+      "fixed": null,
+      "minFee": 0,
+      "cap": 1,
+      "amountMin": 10,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "rate",
+      "note": ""
+    },
+    {
+      "id": "psc-us-dca",
+      "provider": "統一證券",
+      "group": "us_dca",
+      "feeText": "買進 0.1%；免低收",
+      "conditions": "美股定期存股，2026/07/01 起取消最低手續費；賣出與規費另計。",
+      "source": "https://www.pscnet.com.tw/pscnetForeign/menuContent.do?main_id=38cd91f4fc00000065a8bb8cdcb275ca&sub_id=393574d0c300000041430e7c7ba594dd",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": "2026-07-01",
+      "end": "2026-12-31",
+      "rate": 0.001,
+      "fixed": null,
+      "minFee": 0,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "rate",
+      "note": ""
+    },
+    {
+      "id": "cathay-us-dca",
+      "provider": "國泰證券",
+      "group": "us_dca",
+      "feeText": "優惠均一價；待確認現行數字",
+      "conditions": "現行活動頁未直接取得可核對金額；不採用搜尋快取中的舊數字。",
+      "source": "https://istockapp.cathaysec.com.tw/Marketing/usstock",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": null,
+      "status": "needs_review",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": ""
+    },
+    {
+      "id": "fubon-us",
+      "provider": "富邦證券",
+      "group": "us_regular",
+      "feeText": "電子單免低收，費率洽分公司",
+      "conditions": "美股新戶 AI PRO 有額度內優惠；未公開完整費率。",
+      "source": "https://www.fubon.com/securities/open-now/",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": "2026-12-31",
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": ""
+    },
+    {
+      "id": "psc-us",
+      "provider": "統一證券",
+      "group": "us_regular",
+      "feeText": "電子單 0.1%–3%，免低收",
+      "conditions": "依帳戶費率，不能將區間下限視為所有人均適用。",
+      "source": "https://www.pscnet.com.tw/pscnetForeign/menuContent.do?main_id=38cd91f4fc00000065a8bb8cdcb275ca&sub_id=393574d0c300000041430e7c7ba594dd",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": "2026-07-01",
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": ""
+    },
+    {
+      "id": "cathay-us",
+      "provider": "國泰證券",
+      "group": "us_regular",
+      "feeText": "個股／ETF 優惠待核對",
+      "conditions": "活動頁金額未直接揭露；最低價排名暫不納入。",
+      "source": "https://istockapp.cathaysec.com.tw/Marketing/usstock",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": null,
+      "status": "needs_review",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": ""
+    },
+    {
+      "id": "esun-bank",
+      "provider": "玉山銀行",
+      "group": "bank",
+      "feeText": "境外 ETF 買進 1%–2%；賣出 0.5%–1%",
+      "conditions": "依產品不同。另有信託管理費（來源列信託本金之 0.2%）及市場相關費用；需確認持有期間計費方式，不能與證券佣金單獨比較。",
+      "source": "https://wealth.esunbank.com/zh-tw/etf/intro",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": "2026-09-29T08:32:06+08:00",
+      "status": "verified",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": ""
+    },
+    {
+      "id": "sino-bank",
+      "provider": "永豐銀行",
+      "group": "bank",
+      "feeText": "存美股 0 元起；完整條件待確認",
+      "conditions": "頁面主要由 JavaScript 呈現，未取得完整活動條件。不可當成所有交易皆免費。",
+      "source": "https://bank.sinopac.com/sinopacBT/webevents/wm/rspevent/",
+      "checkedAt": "2026-09-29T08:32:06+08:00",
+      "verifiedAt": null,
+      "status": "needs_review",
+      "start": null,
+      "end": null,
+      "rate": null,
+      "fixed": null,
+      "minFee": null,
+      "cap": null,
+      "amountMin": null,
+      "amountMax": null,
+      "monthMax": null,
+      "conditional": false,
+      "model": "unknown",
+      "note": ""
+    }
+  ],
+  "watchlist": [
+    {
+      "provider": "新光證券",
+      "source": "https://www.skis.com.tw/",
+      "note": "官網活動費率未完整公開，持續查核；不代填議價折扣。"
+    },
+    {
+      "provider": "中國信託證券",
+      "source": "https://www.ctbcsec.com/",
+      "note": "納入追蹤，尚未核實完整台股電子費率方案。"
+    },
+    {
+      "provider": "元富證券",
+      "source": "https://www.masterlink.com.tw/",
+      "note": "納入追蹤，尚未核實現行完整費率。"
+    },
+    {
+      "provider": "第一金證券",
+      "source": "https://www.firstsec.com.tw/",
+      "note": "納入追蹤，尚未核實現行完整費率。"
+    },
+    {
+      "provider": "合作金庫銀行",
+      "source": "https://www.tcb-bank.com.tw/personal-banking/wealth/discount/etf/good-days",
+      "note": "境外股票／ETF 信託優惠待核實完整低收與管理費。"
+    }
+  ]
+}
+</script>
+<!-- FEES_DATA_END -->
+<script>
+(function(){
+'use strict';
+const data=JSON.parse(document.getElementById('fees-data').textContent);
+const el=id=>document.getElementById(id);
+const make=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
+const money=(n,cur)=>new Intl.NumberFormat('zh-TW',{style:'currency',currency:cur,minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
+function feeEstimate(row,amount,month,include,now){
+ const day=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei'}).format(now);
+ const age=(now-new Date(row.verifiedAt))/3600000;
+ if(row.status!=='verified'||!row.verifiedAt||!Number.isFinite(age)||age<0||age>36)return {cost:null,why:'未取得近期完整核實資料'};
+ if(row.end&&day>row.end)return {cost:null,why:'優惠已到期'};
+ if(row.start&&day<row.start)return {cost:null,why:'活動尚未開始'};
+ if(row.conditional&&!include)return {cost:null,why:'未納入限定資格方案'};
+ if(row.amountMin!==null&&amount<row.amountMin)return {cost:null,why:'未達最低申購額'};
+ if(row.amountMax!==null&&amount>row.amountMax)return {cost:null,why:'超過此優惠單筆上限'};
+ if(row.monthMax!==null&&month+amount>row.monthMax)return {cost:null,why:'超過可核實的月成交優惠額度'};
+ let cost=null;
+ if(row.model==='fixed'&&Number.isFinite(row.fixed))cost=row.fixed;
+ if(row.model==='rate'&&Number.isFinite(row.rate)&&Number.isFinite(row.minFee))cost=Math.max(amount*row.rate,row.minFee);
+ if(row.model==='esun-tiers'){
+   const cumulative=x=>Math.min(x,1000000)*.001425*.6+Math.min(Math.max(0,x-1000000),2000000)*.001425*.5+Math.max(0,x-3000000)*.001425*.38;
+   cost=Math.max(cumulative(month+amount)-cumulative(month),row.minFee);
+ }
+ if(cost!==null&&Number.isFinite(row.cap))cost=Math.min(cost,row.cap);
+ return Number.isFinite(cost)&&cost>=0?{cost,why:row.conditional?'條件成立時試算':'依列示條件試算'}:{cost:null,why:'費率／低收或適用條件未完整，僅供參考'};
+}
+function render(){
+ const group=el('fee-group').value,usd=group.startsWith('us_'),cur=usd?'USD':'TWD',bank=group==='bank';
+ el('fee-currency').textContent=bank?'不適用':cur;el('fee-amount').disabled=bank;
+ const monthly=['tw_whole','tw_odd'].includes(group);el('fee-month-label').hidden=!monthly;
+ el('fee-schedule').textContent=data.schedule;
+ const now=new Date();const amount=Number(el('fee-amount').value),month=monthly?Number(el('fee-month').value):0;
+ const valid=el('fee-amount').value!==''&&Number.isFinite(amount)&&amount>0&&amount<=1e12&&(!monthly||(el('fee-month').value!==''&&Number.isFinite(month)&&month>=0&&month<=1e12));
+ const include=el('fee-promos').checked,rows=data.rows.filter(r=>r.group===group);
+ const evaluated=rows.map(r=>({r,...(valid&&!bank?feeEstimate(r,amount,month,include,now):{cost:null,why:bank?'信託總成本另計，不與券商混排':'請輸入有效金額'})}));
+ const comparable=evaluated.filter(v=>v.cost!==null);const min=comparable.length?Math.min(...comparable.map(v=>v.cost)):null;
+ const winners=comparable.filter(v=>Math.abs(v.cost-min)<1e-9),multiple=comparable.length>=2;
+ const best=el('fee-best');best.replaceChildren();best.classList.toggle('fee-warning',!multiple);
+ if(multiple){best.append(make('small',include?'條件成立時，本次方案中的最低估算佣金':'本次可比較方案中的最低估算佣金'),make('strong',money(min,cur)+'／筆 · '+winners.map(v=>v.r.provider).join('、')),make('p',`共 ${comparable.length} 項可計算方案${winners.length>1?'，最低價並列':''}。此結果只比較佣金，請核對下表資格；不是全台最低或券商服務品質排名。`));}
+ else best.append(make('strong',bank?'銀行信託：分開查核總成本':valid?'可比資料不足，暫不標示最優':'請輸入大於 0 的有效金額'),make('p',comparable.length===1?'目前只有一项可計算方案，無法據此判定較優。':'沒有足夠且仍有效的已核實方案。'));
+ const newest=new Date(data.updatedAt);el('fee-updated').textContent='資料整理：'+(Number.isNaN(+newest)?'未提供':newest.toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false}))+'（臺北）；各方案查核時間見表。';
+ el('fee-coverage').textContent=`本類 ${rows.length} 項方案；${comparable.length} 項可計算，${rows.length-comparable.length} 項因資格、資料或有效期不參與比較。綠色＝最低估算佣金；未達比較條件不著色。`;
+ el('fee-caption').textContent=el('fee-group').selectedOptions[0].textContent+(bank?'':`，每筆 ${valid?money(amount,cur):'—'}`);
+ evaluated.sort((a,b)=>(a.cost??Infinity)-(b.cost??Infinity));const max=Math.max(1,...comparable.map(v=>v.cost));const body=el('fee-body');body.replaceChildren();
+ evaluated.forEach(v=>{const r=v.r,winner=multiple&&v.cost!==null&&Math.abs(v.cost-min)<1e-9,tr=make('tr',undefined,winner?'fee-winner':'');
+  const name=make('td');name.append(make('strong',r.provider));if(winner)name.append(make('span','最低佣金'+(winners.length>1?' · 並列':''),'fee-marker'));
+  const cost=make('td');cost.append(make('div',v.cost===null?'—':money(v.cost,cur),'fee-cost'),make('small',v.why));
+  if(v.cost!==null){const bar=make('div',undefined,'fee-bar');const fill=make('span');fill.style.width=(100*v.cost/max)+'%';bar.append(fill);bar.setAttribute('aria-hidden','true');cost.append(bar);}
+  const condition=make('td',r.conditions);if(r.note)condition.append(make('p',r.note,'muted'));
+  const time=make('td');time.append(make('div',r.end?'截止 '+r.end:'截止日未載／依公告'),make('small','查核 '+(r.verifiedAt?new Date(r.verifiedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false}):'待核實')));
+  const source=make('td'),a=make('a','官方費率／活動 ↗');const url=new URL(r.source);if(url.protocol==='https:'){a.href=r.source;a.target='_blank';a.rel='noopener noreferrer';source.append(a);}
+  tr.append(name,make('td',r.feeText),cost,condition,time,source);body.append(tr);
+ });
+}
+const watch=el('fee-watch');data.watchlist.forEach(r=>{const d=make('div');const a=make('a',r.provider+' ↗');const u=new URL(r.source);if(u.protocol==='https:'){a.href=r.source;a.target='_blank';a.rel='noopener noreferrer';d.append(a);}d.append(make('small',r.note));watch.append(d);});
+el('fee-group').addEventListener('change',()=>{el('fee-amount').value=el('fee-group').value.startsWith('us_')?'100':'10000';render();});
+['fee-amount','fee-month','fee-promos'].forEach(id=>el(id).addEventListener('input',render));
+render();setInterval(render,60000);
+})();
+
 </script>
 </body>
 </html>
