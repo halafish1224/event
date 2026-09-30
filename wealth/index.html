@@ -34,13 +34,27 @@
 #fees .fee-watch a{display:block;font-weight:650}
 @media(max-width:680px){#fees .fee-controls,#fees .fee-watch{grid-template-columns:1fr}#fees .fee-best strong{font-size:20px}}
 
+
+#briefing .hub-grid,#learning .hub-grid,#masters .hub-grid,#decision .hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+#decision .hub-grid{grid-template-columns:1fr 1fr}
+.invest-hub .hub-controls{display:flex;align-items:end;gap:12px;flex-wrap:wrap;margin:16px 0}.invest-hub .hub-controls label{flex:1;min-width:160px}
+.invest-hub .hub-card{display:flex;flex-direction:column;gap:9px;min-width:0}.invest-hub .hub-card h3,.invest-hub .hub-card p{margin:0}.invest-hub .hub-card .hub-action{margin-top:auto;padding-top:12px;border-top:1px solid var(--line)}
+.invest-hub .hub-tag{font-size:12px;font-weight:650;color:#47664e;letter-spacing:.03em}.invest-hub .hub-note{background:#edf3ec;padding:12px;border-radius:8px;font-size:14px}.invest-hub .hub-warn{color:#80521c;background:#fff3dc;padding:10px;border-radius:6px}
+.invest-hub .hub-path{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}.invest-hub .hub-path a{padding:8px 13px;border:1px solid var(--line);border-radius:30px;text-decoration:none;background:var(--paper)}
+.invest-hub .hub-source{font-size:12px;line-height:1.6}.invest-hub .hub-meta{font-size:13px;color:var(--muted)}.invest-hub .hub-source a{overflow-wrap:anywhere}
+.invest-hub textarea{width:100%;min-height:95px;resize:vertical;border:1px solid #aebcaf;border-radius:7px;padding:10px;font:inherit;color:var(--ink);background:white}.invest-hub .hub-form{display:grid;gap:12px}
+.invest-hub .hub-list{padding-left:22px;line-height:1.85}.invest-hub .hub-list li{margin:8px 0}.invest-hub .hub-bridge{border-left:3px solid var(--green);padding:12px 16px;margin-top:16px;background:#edf3ec}
+#learning .lab-grid{display:grid;grid-template-columns:2fr 1fr;gap:18px;margin-top:18px}#learning .lab-inputs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:16px 0}#learning .lab-chart{display:block;width:100%;height:auto;min-height:190px}#learning .lab-chart text{font:13px system-ui;fill:var(--muted)}#learning .lab-result{font-size:22px;font-weight:650;color:var(--green)}#learning .loss-track{background:#e7ebe4;height:18px;border-radius:4px;margin:14px 0;overflow:hidden}#learning .loss-track span{display:block;background:var(--gold);height:100%}
+@media(max-width:980px){#briefing .hub-grid,#learning .hub-grid,#masters .hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#learning .lab-grid{grid-template-columns:1fr}}
+@media(max-width:680px){#briefing .hub-grid,#learning .hub-grid,#masters .hub-grid,#decision .hub-grid{grid-template-columns:1fr}#learning .lab-inputs{grid-template-columns:repeat(2,minmax(0,1fr))}.invest-hub .hub-controls{align-items:stretch}.invest-hub .hub-controls label{min-width:100%;flex-basis:100%}.invest-hub .hub-path a{font-size:13px}}
+
 </style>
 </head>
 <body>
 <a href="#main" class="skip">跳至主要內容</a>
 <div class="shell">
 <header class="top"><div><h1>枯山觀水</h1><p class="muted">配置有依據，風險看得見，決策留下紀錄。</p></div><div class="actions"><a class="button" href="https://docs.google.com/spreadsheets/d/1FOE18xjHyh9LoRq5bXVFaJmWVQTeC0p0x2Ipy8iXoPo/edit?usp=sharing" target="_blank" rel="noopener noreferrer">更新試算表 ↗</a><button id="refresh" class="primary" type="button">重新同步 CSV</button></div></header>
-<nav aria-label="頁面導覽"><a href="#overview">配置總覽</a><a href="#scenario">決策試算</a><a href="#fees">交易費比較</a><a href="#research">研究與方法</a><a href="#journal">決策日誌</a></nav>
+<nav aria-label="頁面導覽"><a href="#overview">配置總覽</a><a href="#scenario">決策試算</a><a href="#fees">交易費比較</a><a href="#briefing">資訊雷達</a><a href="#decision">決策依據</a><a href="#learning">概念工具箱</a><a href="#masters">大師觀點</a><a href="#research">研究與方法</a><a href="#journal">決策日誌</a></nav>
 <main id="main">
 <section id="overview" aria-labelledby="overview-title"><div class="row"><h2 id="overview-title">配置與紀律</h2><span class="badge">個人策略：衛星上限 30%</span></div>
 <div class="notice"><p><strong>保留您的核心／衛星框架。</strong>衛星占比超過 30% 時啟動再平衡檢視，回撥至 006208 核心；下方可比較新資金投入與轉換部位的試算。30% 是自訂門檻，並非學術上的最佳比例。006208 仍是股票型資產，核心定位不代表保本。</p></div>
@@ -68,6 +82,31 @@
 <details><summary>其他持續追蹤機構</summary><div id="fee-watch" class="fee-watch"></div></details>
 <noscript><p>請啟用 JavaScript 以查看費率、適用條件與最新查核日期；不會在未計算條件前顯示最低價。</p></noscript>
 </div></section>
+
+<!-- INVESTMENT_HUB_START -->
+<section id="briefing" class="invest-hub" aria-labelledby="briefing-title">
+<div class="section-title top"><h2 id="briefing-title">資訊雷達</h2><span class="badge">官方公告 × 下一步查核</span></div>
+<div class="hub-path" aria-label="研究流程"><a href="#briefing">01 看新資訊</a><a href="#decision">02 整理證據</a><a href="#learning">03 補足概念</a><a href="#journal">04 留下覆盤</a></div>
+<p class="muted">先區分已公告的事實、對未來的推論，以及自己要驗證的問題。以下是證交所公告整理快照，不是即時新聞、持倉推薦或買賣訊號。</p>
+<p id="hub-news-time" class="status" role="status"></p>
+<div class="hub-controls"><label>公告主題<select id="hub-news-filter"><option value="all">全部主題</option><option value="market">市場與資金</option><option value="industry">產業研究</option><option value="company">公司與法說</option></select></label><a class="button" href="https://www.twse.com.tw/zh/about/news/news/list.html" target="_blank" rel="noopener noreferrer">查閱官網最新公告 ↗</a></div>
+<div id="hub-news" class="hub-grid"></div>
+<details><summary>持續追蹤的官方入口與事件日曆</summary><div class="hub-grid" style="margin-top:16px">
+<article class="card hub-card"><h3>台股公司與 ETF</h3><p>公司重大訊息、法說與財報先看原始揭露；ETF 再核對淨值、成分與配息組成。</p><a href="https://mops.twse.com.tw/" target="_blank" rel="noopener noreferrer">公開資訊觀測站 ↗</a><a href="https://www.twse.com.tw/zh/ETFortune/products" target="_blank" rel="noopener noreferrer">證交所 ETF e添富 ↗</a></article>
+<article class="card hub-card"><h3>利率與總體</h3><p>讀政策聲明及數據發布日期，留意資料所屬月份與修正值。事件發生不代表股價必然同方向反應。</p><a href="https://www.cbc.gov.tw/tw/" target="_blank" rel="noopener noreferrer">臺灣中央銀行 ↗</a><a href="https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm" target="_blank" rel="noopener noreferrer">Fed 會議／聲明日曆 ↗</a><a href="https://www.bls.gov/schedule/news_release/cpi.htm" target="_blank" rel="noopener noreferrer">美國 CPI 發布日曆 ↗</a><small>時間以各官網時區為準；此處不自動換算或預告結果。</small></article>
+<article class="card hub-card"><h3>美股原始申報</h3><p>從 10-K、10-Q 與 8-K 找企業營運、風險及重大事件，並與公司投資人關係網站交叉確認。</p><a href="https://www.sec.gov/edgar/search/" target="_blank" rel="noopener noreferrer">SEC EDGAR 公司申報 ↗</a><a href="https://www.investor.gov/" target="_blank" rel="noopener noreferrer">SEC 投資人教育 ↗</a></article>
+</div></details></section>
+<section id="decision" class="invest-hub" aria-labelledby="decision-title">
+<div class="section-title top"><h2 id="decision-title">把資訊變成決策依據</h2><span class="badge">研究流程 · 不產生買賣評分</span></div>
+<div class="hub-grid"><article class="card"><h3>這次想釐清什麼？</h3><label>研究情境<select id="hub-case"><option value="etf">評估 ETF／核心配置</option><option value="stock">研究個股／企業價值</option><option value="news">看到新聞，考慮改變配置</option></select></label><ol id="hub-questions" class="hub-list"></ol><div class="hub-bridge">用同一估值日先做 <a href="#scenario">配置與壓力試算</a>，再看 <a href="#fees">交易成本</a>。現有 Google Sheets 圖表未提供可計算的完整持倉明細，因此此處不推算您的集中度或自動選股。</div></article>
+<article class="card"><h3>決策筆記草稿</h3><p class="muted">把可查證的事實與自己的解讀分開。輸入只留在本頁，重新整理會清除；可下載後自行存入原本的日誌。</p><div class="hub-form"><label>研究問題／標的<input id="hub-topic" maxlength="240" placeholder="例如：新增 ETF 是否與核心持股重疊？"></label><label>事實、原始網址與資料日期<textarea id="hub-evidence" maxlength="5000" placeholder="紀錄原始數值、期間與來源；尚未確認的地方也寫下來。"></textarea></label><label>我的解讀與相反證據<textarea id="hub-thesis" maxlength="5000" placeholder="哪一項假設最重要？什麼證據會推翻它？"></textarea></label><label>下一步與重新檢視條件<textarea id="hub-next" maxlength="3000" placeholder="例如：讀下一季財報後檢查現金流，而非只看股價漲跌。"></textarea></label><div class="actions"><button id="hub-export" type="button">下載筆記 TXT</button><a href="https://itigre.pse.is/wealth99" target="_blank" rel="noopener noreferrer">開啟原決策日誌 ↗</a></div><p id="hub-export-status" class="status" role="status"></p></div></article></div></section>
+<section id="learning" class="invest-hub" aria-labelledby="learning-title">
+<div class="section-title top"><h2 id="learning-title">投資概念工具箱</h2><span class="badge">概念 → 常見誤解 → 查核行動</span></div>
+<div class="hub-controls"><label>搜尋概念<input id="hub-search" type="search" placeholder="配息、分散、估值、定期定額…"></label><label>主題<select id="hub-concept-filter"><option value="all">全部概念</option><option value="allocation">配置與風險</option><option value="etf">ETF 與成本</option><option value="judgment">判斷與績效</option></select></label></div><p id="hub-concept-count" class="status" role="status"></p><div id="hub-concepts" class="hub-grid"></div>
+<div class="lab-grid"><article class="card"><h3>持有成本的長期差距</h3><p class="muted">教育情境：相同稅費前報酬、不同年度持有費率。與上方每筆交易佣金分開看。</p><div class="lab-inputs"><label>起始本金（TWD）<input id="lab-principal" type="number" min="1" max="1000000000" value="100000" step="1000"></label><label>年報酬假設（%）<input id="lab-return" type="number" min="-50" max="30" value="6" step="0.1"></label><label>持有年數<input id="lab-years" type="number" min="1" max="50" value="20"></label><label>A 年費率（%）<input id="lab-fee-a" type="number" min="0" max="10" value="0.2" step="0.1"></label><label>B 年費率（%）<input id="lab-fee-b" type="number" min="0" max="10" value="1" step="0.1"></label></div><p id="lab-result" class="lab-result" role="status"></p><svg id="lab-chart" class="lab-chart" viewBox="0 0 640 240" role="img" aria-label="年度持有費率 A 與 B 的假設資產路徑"></svg><div class="legend"><span><i class="dot core"></i>A 費率</span><span><i class="dot sat"></i>B 費率（虛線）</span></div><p id="lab-values" class="hub-meta"></p><details><summary>公式與假設</summary><p class="hub-meta">每年先依假設報酬成長、再扣年度費用：期末值＝本金 × [(1＋年報酬率) × (1－年費率)]^年數。無追加投入、不含交易佣金、稅、通膨、匯率及波動；不是個別基金的實際扣費方式。若輸入已扣費的基金報酬，會重複扣費。此圖為情境，不是回測或預測。</p><a class="hub-source" href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated" target="_blank" rel="noopener noreferrer">SEC：費用對投資組合的影響 ↗</a></details></article>
+<article class="card"><h3>跌幅與回本不對稱</h3><p class="muted">先理解損失需要多少漲幅才能彌補，再回到可承受的部位大小。</p><label for="lab-loss">假設下跌 <output id="lab-loss-label">30%</output></label><input id="lab-loss" type="range" min="0" max="90" step="5" value="30"><div class="loss-track" aria-hidden="true"><span id="lab-loss-bar"></span></div><p id="lab-recovery" class="lab-result" role="status"></p><p class="hub-meta">回本所需漲幅＝跌幅 ÷（1－跌幅）。例如下跌 50%，需再上漲 100% 才回到原值；不含配息、費用或新增資金。</p><a href="#scenario">帶回我的壓力情境 →</a></article></div></section>
+<section id="masters" class="invest-hub" aria-labelledby="masters-title"><div class="section-title top"><h2 id="masters-title">大師觀點，轉成自己的問題</h2><span class="badge">原始出處 · 中文意譯</span></div><p class="muted">以下為觀點摘要與本頁設計的應用問題，不是逐字名言，也不是作者對目前市場或您的持倉提出的建議。</p><div id="hub-masters" class="hub-grid"></div></section>
+<!-- INVESTMENT_HUB_END -->
 
 <section id="research" aria-labelledby="research-title"><h2 class="section-title" id="research-title">研究入口與判讀方法</h2><div class="grid"><article class="card span4"><h3>持倉與基本面</h3><a class="resource" href="https://aiinvest.sinotrade.com.tw/Account/Asset" target="_blank" rel="noopener noreferrer"><strong>永豐大戶投 ↗</strong><small>核對真實持倉、可用資金與交易成本</small></a><a class="resource" href="https://www.twse.com.tw/zh/ETFortune/products" target="_blank" rel="noopener noreferrer"><strong>證交所 ETF e添富 ↗</strong><small>研究 ETF、追蹤指數、費用與商品資訊</small></a><a class="resource" href="https://mops.twse.com.tw/" target="_blank" rel="noopener noreferrer"><strong>公開資訊觀測站 ↗</strong><small>查核財務報表、重大訊息與公司公告</small></a><a class="resource" href="https://gemini.google.com/gem/1TNWK82RGAFQhIKBLjowp67xB4XhJM0T9?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>您的投資學 AI 工具 ↗</strong><small>整理研究問題；數字與結論仍須回查原始公告</small></a></article>
 <article class="card span4"><h3>市場環境</h3><a class="resource" href="https://fred.stlouisfed.org/series/VIXCLS" target="_blank" rel="noopener noreferrer"><strong>FRED · VIX ↗</strong><small>美股選擇權隱含波動觀察；不等於台股買賣訊號</small></a><a class="resource" href="https://edition.cnn.com/markets/fear-and-greed" target="_blank" rel="noopener noreferrer"><strong>CNN Fear &amp; Greed ↗</strong><small>美股情緒背景；避免把極端讀值當作反轉保證</small></a><a class="resource" href="https://www.twse.com.tw/IIH2/zh/" target="_blank" rel="noopener noreferrer"><strong>證交所投資資訊中心 ↗</strong><small>從官方市場、公司與商品資訊交叉查核</small></a><p class="muted">本區為研究連結，未抓取即時報價。請在來源頁確認資料日期與適用市場。</p></article>
@@ -889,6 +928,97 @@ el('fee-group').addEventListener('change',()=>{el('fee-amount').value=el('fee-gr
 render();setInterval(render,60000);
 })();
 
+</script>
+
+<!-- HUB_NEWS_DATA_START -->
+<script id="hub-news-data" type="application/json">{
+  "schemaVersion": 1,
+  "checkedAt": "2026-09-30T13:48:13+08:00",
+  "source": "https://www.twse.com.tw/rwd/zh/news/newsList?startDate=20260901&endDate=20260930&type=NEWS&response=json",
+  "coverage": "證交所 2026-09-01 至 2026-09-30 公告清單中人工選取 5 則；依官方題名概述，非全文摘要或完整新聞涵蓋。",
+  "news": [
+    {
+      "id": "8a8216d6a0bdcc0001a0ebd1549a0090",
+      "category": "industry",
+      "title": "證交所推出半導體與數位雲端產業報告",
+      "publishedAt": "2026-09-29",
+      "source": "https://www.twse.com.tw/zh/about/news/news/content.html?8a8216d6a0bdcc0001a0ebd1549a0090",
+      "prompt": "回到報告方法與產業定義，辨認成長假設是否適用於研究中的公司。"
+    },
+    {
+      "id": "8a8216d6a0bdcc0001a0ebc5221c008c",
+      "category": "market",
+      "title": "證交所公布上週外資交易概況",
+      "publishedAt": "2026-09-29",
+      "source": "https://www.twse.com.tw/zh/about/news/news/content.html?8a8216d6a0bdcc0001a0ebc5221c008c",
+      "prompt": "買賣超是已發生的資金行為；查清統計期間，不單獨當作未來報酬訊號。"
+    },
+    {
+      "id": "8a8216d6a0bdcc0001a0d2b9f344006b",
+      "category": "market",
+      "title": "本週加權指數與上市市值概況出爐",
+      "publishedAt": "2026-09-24",
+      "source": "https://www.twse.com.tw/zh/about/news/news/content.html?8a8216d6a0bdcc0001a0d2b9f344006b",
+      "prompt": "比較價格指數與含息報酬的差異，再檢視自己的配置偏離。"
+    },
+    {
+      "id": "8a8216d6a0bdcc0001a0d29b8a220064",
+      "category": "company",
+      "title": "正瀚生技重大訊息揭露遭處違約金",
+      "publishedAt": "2026-09-24",
+      "source": "https://www.twse.com.tw/zh/about/news/news/content.html?8a8216d6a0bdcc0001a0d29b8a220064",
+      "prompt": "回查原處分原因及公司回應；不能只從處分標題推算財務影響。"
+    },
+    {
+      "id": "8a8216d6a0bdcc0001a0cd0c00d70050",
+      "category": "company",
+      "title": "證交所公布 10 月場地法說活動資訊",
+      "publishedAt": "2026-09-23",
+      "source": "https://www.twse.com.tw/zh/about/news/news/content.html?8a8216d6a0bdcc0001a0cd0c00d70050",
+      "prompt": "先核對最新場次、簡報與公司指引，區分管理層目標和已實現成果。"
+    }
+  ]
+}</script>
+<!-- HUB_NEWS_DATA_END -->
+<script id="hub-knowledge-data" type="application/json">{"concepts": [{"category": "allocation", "title": "分散看曝險，不只看檔數", "meaning": "多種資產與持股可以降低部分集中風險，但不能消除市場損失。", "misconception": "買了數檔 ETF，仍可能重複持有相同大型公司或產業。", "action": "用同日成分權重查重疊，再把直接持股一起算入；資料不足時先列待查。", "sourceKey": "allocation", "sourceLabel": "SEC｜資產配置與分散"}, {"category": "allocation", "title": "再平衡是恢復風險配置", "meaning": "資產漲跌會使原本比重偏移，可透過調整部位或新資金恢復設定。", "misconception": "再平衡不是預言漲跌；目標比例也不會自動適合所有人。", "action": "先確認用途、期限與現金需求，再到本頁比較新資金投入及轉換部位。", "sourceKey": "allocation", "sourceLabel": "SEC｜資產配置與分散"}, {"category": "etf", "title": "配息與總報酬分開看", "meaning": "ETF 配息需看來源與配息後的淨值，不能只用年化配息率評估投資成果。", "misconception": "領到現金不等於同額新增獲利；高頻配息也不等於較高總報酬。", "action": "核對收益分配組成，使用相同期間、相同再投入假設的含息報酬比較。", "sourceKey": "dividend", "sourceLabel": "證交所｜ETF 收益分配概念"}, {"category": "etf", "title": "市價、淨值與折溢價", "meaning": "ETF 市價受供需影響，可能偏離基金淨值；報價、估計淨值時間需對齊。", "misconception": "折價不代表必賺套利，海外市場休市也可能影響參考淨值。", "action": "看買賣價差、流動性、淨值時間與標的市場開休市，再決定委託方式。", "sourceKey": "etf", "sourceLabel": "證交所｜ETF 特性與風險"}, {"category": "etf", "title": "低佣金不等於低總成本", "meaning": "每次交易費與每年持有費是不同成本，長期都會影響累積資產。", "misconception": "只比券商折數，容易漏看低收、基金內扣費與價差。", "action": "先用手續費表比較相同交易，再用下方情境圖理解年度費率差距。", "sourceKey": "cost", "sourceLabel": "SEC｜投資費用影響"}, {"category": "allocation", "title": "定期定額是投入規則", "meaning": "定期投入固定金額，價格低時買到較多單位、高時較少。", "misconception": "它不保證獲利，也不代表任何時段都優於單筆投入。", "action": "區分每月新收入與已持有的整筆現金，設定能持續執行的金額及再檢視條件。", "sourceKey": "dca", "sourceLabel": "SEC｜Dollar Cost Averaging"}, {"category": "judgment", "title": "價值估計需要假設範圍", "meaning": "企業投資研究需了解可持續的獲利能力，並承認自己能理解的範圍。", "misconception": "便宜的股價或單一低本益比，並不足以證明被低估。", "action": "列出正常、保守情境與估值失效條件；若無法解釋企業如何賺錢，先補研究。", "sourceKey": "buffett", "sourceLabel": "Buffett｜2013 股東信"}, {"category": "judgment", "title": "績效要有可比的基準", "meaning": "比較管理成果時，需事先選定可行、風險與市場範圍相近的替代方案。", "misconception": "事後挑一個較弱指數，或只看存活基金的平均值，會誤判能力。", "action": "對齊期間、幣別、含息、費用及現金流。原 Sheets 單一報酬值不足以判定超額績效。", "sourceKey": "sharpe", "sourceLabel": "Sharpe｜1991 主動管理算術"}], "sources": {"allocation": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation", "etf": "https://www.twse.com.tw/zh/products/securities/etf/overview/introduction.html", "dividend": "https://www.twse.com.tw/downloads/zh/ETF/concept06.pdf", "cost": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated", "dca": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging", "buffett": "https://www.berkshirehathaway.com/letters/2013ltr.pdf", "marks": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge", "sharpe": "https://web.stanford.edu/~wfsharpe/art/active/active.htm"}, "masters": [{"name": "Warren Buffett", "topic": "能力圈與企業價值", "year": "2013 股東信｜2014 年發布", "summary": "把股票當作企業的一部分，先判断自己能否合理估計其長期獲利範圍。無法理解的機會可以略過；一般投資人也可考慮分散、低成本的方式。", "question": "若一年看不到股價，我能用哪些企業資料說明持有理由？", "boundary": "企業品質不等於任何價格都值得買；原文的美國市場與信託配置情境不直接套用為您的資產比例。", "source": "https://www.berkshirehathaway.com/letters/2013ltr.pdf", "label": "Berkshire Hathaway 原始股東信"}, {"name": "Howard Marks", "topic": "承認預測的限制", "year": "The Illusion of Knowledge｜2022", "summary": "總體經濟受複雜互動、行為與假設影響；精密模型仍可能在關鍵轉折失準。不要把對未來的信心當成已知事實。", "question": "如果我預期的利率或景氣方向完全相反，現金與部位是否仍可承受？", "boundary": "不確定性不是完全忽略總體資訊；要把它用於情境與風險準備，並保留修正空間。", "source": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge", "label": "Oaktree 原始備忘錄"}, {"name": "William F. Sharpe", "topic": "先看成本，再談勝出", "year": "The Arithmetic of Active Management｜1991", "summary": "在同一市場與其定義下，主動及被動資金在費用前有加權平均的算術關係；成本較高會壓低費用後結果。評估策略應有事先選定的可行基準。", "question": "扣完所有費用後，這個策略相對可行替代方案的優勢，有可驗證的依據嗎？", "boundary": "這是群體與定義下的關係，不是每一位主動投資人一定落後，也不是所有指數產品都便宜。", "source": "https://web.stanford.edu/~wfsharpe/art/active/active.htm", "label": "Stanford 作者原文"}], "cases": {"etf": ["用途與風險：這筆資金何時要用？股票型核心仍可能大幅下跌。", "曝險：追蹤指數如何選股？與現有核心／衛星重疊多少？", "成本與交易：總費用、追蹤落差、買賣價差、折溢價是否合理？", "證據與紀律：從公開說明書及發行人資料核對，寫下重看配置的條件。"], "stock": ["生意與來源：收入靠什麼？先找最新財報、年報與重大訊息。", "品質與現金：跨期比較獲利、營業現金流、資本支出與負債，留意一次性項目。", "價格與假設：估值使用什麼期間、成長率與風險？保守情境是否仍可接受？", "反面證據：最可能讓判斷失效的是什麼？先限定研究範圍與可承受曝險。"], "news": ["原始依據：找到原公告、發布日期與事件期間，不把轉述當事實。", "傳導路徑：它會如何影響企業收入、成本、資產負債或折現假設？", "是否新增：市場原本知道什麼？不要只因標題正面就假定仍有超額報酬。", "採取行動前：回看配置規則、現金用途與相反證據；可先列觀察，不必立即交易。"]}}</script>
+<script>(()=>{'use strict';
+const $=id=>document.getElementById(id),news=JSON.parse($('hub-news-data').textContent),knowledge=JSON.parse($('hub-knowledge-data').textContent);
+const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
+const link=(text,url)=>{const a=node('a',text);if(/^https:\/\//.test(url)){a.href=url;a.target='_blank';a.rel='noopener noreferrer';}return a;};
+const categories={market:'市場與資金',industry:'產業研究',company:'公司與法說',allocation:'配置與風險',etf:'ETF 與成本',judgment:'判斷與績效'};
+function useTopic(topic,evidence=''){const prefix=$('hub-topic').value.trim();$('hub-topic').value=prefix?prefix+'；'+topic:topic;if(evidence)$('hub-evidence').value+=($('hub-evidence').value?'\n':'')+evidence;$('decision').scrollIntoView({behavior:'smooth'});$('hub-topic').focus({preventScroll:true});}
+function renderNews(){
+ const age=(Date.now()-Date.parse(news.checkedAt))/86400000;const bad=!Number.isFinite(age)||age<0||age>8;
+ const status=$('hub-news-time');status.classList.toggle('hub-warn',bad);status.textContent=(bad?'這份快照已超過更新檢視期限，請以官網最新公告為準。 ':'')+'查核：'+new Date(news.checkedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false})+'（臺北）。'+news.coverage+' 每週六 02:30 排程查核。';
+ const list=$('hub-news');list.replaceChildren();const rows=news.news.filter(r=>$('hub-news-filter').value==='all'||r.category===$('hub-news-filter').value);
+ rows.forEach(r=>{const c=node('article',undefined,'card hub-card');c.append(node('div',categories[r.category]+' · 公告 '+r.publishedAt,'hub-tag'),node('h3',r.title),node('p','下一步查核：'+r.prompt,'hub-note'));const a=node('div',undefined,'hub-action');a.append(link('證交所原公告 ↗',r.source));const b=node('button','帶入決策筆記');b.type='button';b.addEventListener('click',()=>useTopic(r.title,`公告日期：${r.publishedAt}\n來源：${r.source}\n待確認：${r.prompt}`));a.append(node('br'),b);c.append(a);list.append(c);});if(!rows.length)list.append(node('p','目前快照沒有此主題的公告。','muted'));
+}
+function renderConcepts(){const q=$('hub-search').value.trim().toLowerCase(),cat=$('hub-concept-filter').value;const rows=knowledge.concepts.filter(r=>(cat==='all'||r.category===cat)&&[r.title,r.meaning,r.misconception,r.action].join(' ').toLowerCase().includes(q));const list=$('hub-concepts');list.replaceChildren();$('hub-concept-count').textContent=`顯示 ${rows.length} / ${knowledge.concepts.length} 個概念`;
+ rows.forEach(r=>{const a=node('article',undefined,'card hub-card');a.append(node('small',categories[r.category],'hub-tag'),node('h3',r.title),node('p',r.meaning));const d=node('details');d.append(node('summary','常見誤解與查核行動'),node('p','容易誤解：'+r.misconception,'hub-meta'),node('p','實作：'+r.action,'hub-note'));a.append(d);const f=node('div',undefined,'hub-source hub-action');f.append(link(r.sourceLabel+' ↗',knowledge.sources[r.sourceKey]));a.append(f);list.append(a);});if(!rows.length)list.append(node('p','找不到符合的概念，請調整搜尋文字或主題。','muted'));
+}
+function renderCase(){const list=$('hub-questions');list.replaceChildren();knowledge.cases[$('hub-case').value].forEach(t=>list.append(node('li',t)));}
+knowledge.masters.forEach(r=>{const a=node('article',undefined,'card hub-card');a.append(node('div',r.name,'hub-tag'),node('h3',r.topic),node('small',r.year,'hub-meta'),node('p',r.summary),node('p','問自己：'+r.question,'hub-note'));const d=node('details');d.append(node('summary','適用邊界'),node('p',r.boundary,'hub-meta'));a.append(d);const f=node('div',undefined,'hub-source hub-action');f.append(link(r.label+' ↗',r.source));const b=node('button','用這個問題寫筆記');b.type='button';b.addEventListener('click',()=>useTopic(r.question));f.append(node('br'),b);a.append(f);$('hub-masters').append(a);});
+function costPath(principal,annual,fee,years){return Array.from({length:years+1},(_,i)=>principal*Math.pow((1+annual)*(1-fee),i));}
+function recoveryPct(loss){return 100*loss/(100-loss);}
+const currency=n=>new Intl.NumberFormat('zh-TW',{maximumFractionDigits:0}).format(n);
+function renderCosts(){
+ const ids=['lab-principal','lab-return','lab-years','lab-fee-a','lab-fee-b'],v=ids.map(id=>Number($(id).value));const [p,r,y,a,b]=v;const svg=$('lab-chart');svg.replaceChildren();
+ if(ids.some(id=>$(id).value==='')||!v.every(Number.isFinite)||p<=0||p>1e9||r< -50||r>30||!Number.isInteger(y)||y<1||y>50||a<0||a>10||b<0||b>10){$('lab-result').textContent='請填有效數值：本金 1–10 億、年報酬 −50%–30%、整數年期 1–50、費率 0%–10%。';$('lab-values').textContent='';return;}
+ const A=costPath(p,r/100,a/100,y),B=costPath(p,r/100,b/100,y),max=Math.max(...A,...B)*1.08;
+ const s=(tag,attrs,text)=>{const n=document.createElementNS('http://www.w3.org/2000/svg',tag);Object.entries(attrs).forEach(([k,v])=>n.setAttribute(k,String(v)));if(text!==undefined)n.textContent=text;svg.append(n);return n;};
+ s('title',{},`相同年報酬 ${r}%、持有 ${y} 年的費率情境`);s('desc',{},`A 期末 ${currency(A[y])} 元，B 期末 ${currency(B[y])} 元。縱軸從零起，單位萬新臺幣。`);
+ const X=i=>64+i/y*552,Y=n=>194-n/max*169;
+ [0,.5,1].forEach(f=>{const z=max*f;s('line',{x1:64,x2:616,y1:Y(z),y2:Y(z),stroke:'#dce2d9'});s('text',{x:56,y:Y(z)+4,'text-anchor':'end'},(z/10000).toFixed(1));});
+ s('text',{x:10,y:13},'萬元');s('text',{x:64,y:223},'第 0 年');s('text',{x:616,y:223,'text-anchor':'end'},`第 ${y} 年`);
+ [[A,'#236b53',''],[B,'#ad7730','7 4']].forEach(([arr,c,d])=>s('polyline',{points:arr.map((n,i)=>`${X(i)},${Y(n)}`).join(' '),fill:'none',stroke:c,'stroke-width':3,'stroke-dasharray':d}));
+ const gap=Math.abs(A[y]-B[y]);$('lab-result').textContent=gap<.5?'兩種費率下的期末值相同':`${y} 年後，${A[y]>B[y]?'A':'B'} 情境多 ${currency(gap)} 元`;
+ $('lab-values').textContent=`本金 ${currency(p)} 元；A（年費 ${a}%）期末 ${currency(A[y])} 元，B（年費 ${b}%）期末 ${currency(B[y])} 元。固定報酬情境，不代表能達成此報酬。`;
+}
+function renderLoss(){const n=Number($('lab-loss').value);$('lab-loss-label').textContent=n+'%';$('lab-loss-bar').style.width=n+'%';$('lab-recovery').textContent='需上漲 '+recoveryPct(n).toFixed(1)+'% 才回本';}
+$('hub-export').addEventListener('click',()=>{const topic=$('hub-topic').value.trim();if(!topic){$('hub-export-status').textContent='請先填寫研究問題／標的。';$('hub-topic').focus();return;}const t=['投資決策筆記｜'+new Date().toLocaleString('zh-TW',{timeZone:'Asia/Taipei'}),'問題：'+topic,'事實／來源／日期：\n'+$('hub-evidence').value,'解讀與反證：\n'+$('hub-thesis').value,'下一步與重看條件：\n'+$('hub-next').value].join('\n\n');const url=URL.createObjectURL(new Blob(['\ufeff'+t],{type:'text/plain;charset=utf-8'}));const a=node('a');a.href=url;a.download='投資決策筆記-'+new Date().toISOString().slice(0,10)+'.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$('hub-export-status').textContent='已建立下載；未自動寫入試算表。';});
+$('hub-news-filter').addEventListener('change',renderNews);$('hub-case').addEventListener('change',renderCase);$('hub-search').addEventListener('input',renderConcepts);$('hub-concept-filter').addEventListener('change',renderConcepts);['lab-principal','lab-return','lab-years','lab-fee-a','lab-fee-b'].forEach(id=>$(id).addEventListener('input',renderCosts));$('lab-loss').addEventListener('input',renderLoss);
+renderNews();renderCase();renderConcepts();renderCosts();renderLoss();setInterval(renderNews,60000);
+})();
 </script>
 </body>
 </html>
