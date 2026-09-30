@@ -32,6 +32,15 @@
       "note": "Managed through learning-map; do not present an estimated percentage until audited."
     }
   },
+  "delivery": {
+    "kobo_epub": {
+      "status": "artifact-present",
+      "path": "reader/harunohi-jp50-kobo.epub",
+      "builder": "reader/build-reader.mjs",
+      "verifier": "reader/verify-reader.mjs",
+      "note": "The EPUB artifact, builder and repository verifier are present on main. This status does not claim EPUBCheck certification."
+    }
+  },
   "sentence_ids": [
     "harunohi-s001", "harunohi-s002", "harunohi-s003", "harunohi-s004", "harunohi-s005", "harunohi-s006", "harunohi-s007", "harunohi-s008", "harunohi-s009", "harunohi-s010",
     "harunohi-s011", "harunohi-s012", "harunohi-s013", "harunohi-s014", "harunohi-s015", "harunohi-s016", "harunohi-s017", "harunohi-s018", "harunohi-s019", "harunohi-s020",
