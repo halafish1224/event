@@ -29,7 +29,10 @@
     },
     "cross_song_links": {
       "status": "partial",
-      "note": "Managed through learning-map; do not present an estimated percentage until audited."
+      "source": "map-extension.mjs",
+      "audited_concepts": 20,
+      "audit_scope": "17 existing learning-map concepts receive a Harunohi reference; 3 Harunohi concepts each include Harunohi plus another-song references.",
+      "note": "This is an audited concept count, not a completion percentage. Keep status partial until the full learning-map is audited for reciprocal navigation and missing concepts."
     }
   },
   "delivery": {
