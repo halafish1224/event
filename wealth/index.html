@@ -14,26 +14,6 @@
 @media(max-width:680px){.shell{padding:20px 16px 40px}.span8,.span4,.span6{grid-column:span 12}.card{padding:18px}.kpis{gap:10px}.kpi{padding:14px}.value{font-size:23px}.field-grid{gap:10px}.journal-controls{grid-template-columns:1fr}.frame{height:320px}.bar-row{grid-template-columns:68px 1fr 85px}nav{gap:20px}.top{align-items:flex-start}}
 @media print{body{background:white}.shell{max-width:none;padding:0}nav,.actions,button,.skip{display:none}details{display:block}.card{break-inside:avoid}.grid{display:block}.card{margin-bottom:16px}.frame{height:300px}}
 
-#fees .fee-controls{display:grid;grid-template-columns:2fr 1fr 1fr;gap:14px;margin:18px 0}
-#fees .fee-best{border:2px solid #18754a;background:#e7f6e9;border-radius:12px;padding:20px;margin:16px 0}
-#fees .fee-best strong{color:#07502c;font-size:24px;display:block}
-#fees .fee-best.fee-warning{border-color:#bc873b;background:#fff5df}
-#fees .fee-table{max-height:620px;border:1px solid var(--line);border-radius:10px}
-#fees th{position:sticky;top:0;background:#eff3ec;z-index:1;white-space:nowrap}
-#fees table{min-width:950px}
-#fees td{vertical-align:top;min-width:125px}
-#fees td:nth-child(4){min-width:260px;max-width:370px}
-#fees tr.fee-winner td{background:#e5f6e8;border-top:2px solid #23794b;border-bottom:2px solid #23794b}
-#fees .fee-marker{display:block;font-weight:750;color:#08532e}
-#fees .fee-cost{font-size:21px;font-weight:700;font-variant-numeric:tabular-nums;white-space:nowrap}
-#fees .fee-bar{height:7px;background:#e6ebe2;margin-top:7px;border-radius:6px;overflow:hidden}
-#fees .fee-bar span{display:block;height:100%;background:#537864}
-#fees .fee-winner .fee-bar span{background:#168146}
-#fees .fee-qualified{color:#845c13;font-weight:600}
-#fees .fee-watch{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-#fees .fee-watch a{display:block;font-weight:650}
-@media(max-width:680px){#fees .fee-controls,#fees .fee-watch{grid-template-columns:1fr}#fees .fee-best strong{font-size:20px}}
-
 
 #briefing .hub-grid,#learning .hub-grid,#masters .hub-grid,#decision .hub-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 #decision .hub-grid{grid-template-columns:1fr 1fr}
@@ -56,12 +36,17 @@
 @media(max-width:680px){#holdings .holdings-notes{grid-template-columns:minmax(0,1fr)}#holdings .actions{width:100%}#holdings .actions>*{flex:1;text-align:center}#holdings .kpi{overflow-wrap:anywhere}#holdings .holdings-note{padding:18px}#holdings #holdings-basis{font-size:13px}#holdings .top>div{min-width:0}}
 
 </style>
+<style>
+#masters .master-current{margin:16px 0;background:#f0f5ef}#masters .master-current .card{padding:18px}#masters .master-current .hub-grid{grid-template-columns:repeat(2,minmax(0,1fr))}#masters .master-context-fact{font-size:14px}#masters .master-questions{padding-left:20px;margin:8px 0}#masters .master-questions li{margin:8px 0;font-size:14px}#masters .master-label{font-weight:650;color:var(--green);margin:12px 0 5px}#masters .master-review{margin-top:18px}#masters .hub-card{display:flex;flex-direction:column}#masters .hub-source{margin-top:auto;padding-top:14px}#masters .master-application{border-top:1px solid var(--line);padding-top:12px;margin-top:12px}#decision .hub-grid{grid-template-columns:minmax(0,1fr)}
+@media(max-width:680px){#masters .master-current .hub-grid{grid-template-columns:minmax(0,1fr)}#masters .master-current{padding:16px}}
+
+</style>
 </head>
 <body>
 <a href="#main" class="skip">跳至主要內容</a>
 <div class="shell">
 <header class="top"><div><h1>枯山觀水</h1><p class="muted">配置有依據，風險看得見，決策留下紀錄。</p></div><div class="actions"><a class="button" href="https://docs.google.com/spreadsheets/d/1FOE18xjHyh9LoRq5bXVFaJmWVQTeC0p0x2Ipy8iXoPo/edit?usp=sharing" target="_blank" rel="noopener noreferrer">更新試算表 ↗</a><button id="refresh" class="primary" type="button">重新同步 CSV</button></div></header>
-<nav aria-label="頁面導覽"><a href="#holdings">持股與行情</a><a href="#overview">配置總覽</a><a href="#scenario">決策試算</a><a href="#fees">交易費比較</a><a href="#briefing">資訊雷達</a><a href="#decision">決策依據</a><a href="#learning">概念工具箱</a><a href="#masters">大師觀點</a><a href="#research">研究與方法</a><a href="#journal">決策日誌</a></nav>
+<nav aria-label="頁面導覽"><a href="#holdings">持股與行情</a><a href="#overview">配置總覽</a><a href="#scenario">決策試算</a><a href="#briefing">資訊雷達</a><a href="#decision">決策依據</a><a href="#learning">概念工具箱</a><a href="#masters">大師觀點</a><a href="#research">研究與方法</a><a href="#journal">決策日誌</a></nav>
 <main id="main">
 <section id="holdings" aria-labelledby="holdings-title">
 <div class="section-title top"><div><h2 id="holdings-title">我的持股與行情查核</h2><p class="muted">從持股、配置到需要追蹤的問題，先確認資料，再做決策。</p></div><div class="actions"><a id="holdings-sheet" class="button" target="_blank" rel="noopener noreferrer">查看持股 SHEET ↗</a><button id="holdings-refresh" type="button" class="primary">同步持股 CSV</button></div></div>
@@ -85,21 +70,6 @@
 <div id="allocation-view" hidden><div class="stack" id="allocation-bar" role="img" aria-label="配置比例"></div><div id="allocation-legend" class="legend"></div><div class="ruletrack" aria-hidden="true"><div class="fill" id="rule-fill"></div><span class="limit"></span></div><p class="muted">衛星占比尺標 0–100%；虛線＝30% 檢視門檻</p><div class="three"><div class="mini"><small>目前組合市值</small><strong id="total">—</strong></div><div class="mini"><small>只投入核心所需新資金</small><strong id="cash-needed">—</strong></div><div class="mini"><small>投入後仍需轉出衛星</small><strong id="sell-needed">—</strong></div></div><p id="rebalance-note" class="status result"></p><p class="muted">假設市價固定、新資金全投入核心，轉出衛星後等額轉入核心。未計手續費、交易稅、價差、匯率與整股限制；金額是比例試算，不是交易指令。</p></div>
 <details><summary>公式與判斷邊界</summary><p class="muted">V＝核心＋衛星＋現金；S＝衛星；C＝新增投入；t＝目標比例。衛星占比＝S/V。僅投入核心所需新資金＝max(0, S/t−V)。投入 C 後，需轉出衛星＝max(0, S−t×(V+C))。超過 30% 才顯示檢視提示；等於 30% 為到達上限。即使未超標，設定較低目標仍可能產生情境調整金額。</p></details></article>
 <article class="card span4"><h3>如果市場下跌，能承受多少？</h3><p class="muted">以左側目前市值計算，不含新投入。以下跌幅是可調整的假設，不是預測或歷史回撤。</p><label>核心跌幅 <output id="core-shock-label">20%</output><input id="core-shock" aria-label="核心假設跌幅百分比" type="range" min="0" max="80" value="20"></label><label>衛星跌幅 <output id="sat-shock-label">35%</output><input id="sat-shock" aria-label="衛星假設跌幅百分比" type="range" min="0" max="100" value="35"></label><div id="stress-result" class="chart-empty" role="status">完成左側市值輸入後顯示情境。</div><p class="muted">現金名目價值假設不變；不反映通膨、匯率、流動性與交易成本。</p><div class="method"><h3>下單前的紀律檢查</h3><div class="checks"><label><input type="checkbox"> 觸發原因來自配置規則，而非恐慌或 FOMO。</label><label><input type="checkbox"> 已確認現金需求、資料日期與交易成本。</label><label><input type="checkbox"> 已檢查核心與衛星的成分股重疊。</label><label><input type="checkbox"> 已寫下理由與策略失效條件。</label></div><p class="muted">勾選僅供當次檢視，不代表系統核准交易。</p></div></article></div></section>
-<section id="fees" aria-labelledby="fees-title">
-<div class="row section-title"><h2 id="fees-title">交易手續費 · 官網查核比較</h2><span class="badge">台股為主 · 美股另列</span></div>
-<div class="card">
-<p>依相同交易方式與金額比較，<strong>綠色標出本次可比較方案中的最低估算佣金</strong>；同價全部並列。優惠資格、低收與資料新鮮度都會影響結果。</p>
-<p id="fee-updated" class="muted" role="status"></p>
-<div class="fee-controls"><label for="fee-group">交易方式<select id="fee-group"><option value="tw_dca">台股定期定額 · 買進</option><option value="tw_whole">台股整股 · 電子單筆佣金</option><option value="tw_odd">台股零股 · 電子單筆佣金</option><option value="us_dca">美股定期定額 · 買進</option><option value="us_regular">美股一般電子單 · 參考</option><option value="bank">銀行境外股票／ETF 信託 · 參考</option></select></label><label for="fee-amount">每筆金額（<span id="fee-currency">TWD</span>）<input id="fee-amount" type="number" value="10000" min="1" step="any" inputmode="decimal"></label><label id="fee-month-label" for="fee-month">本筆前當月累計成交額（TWD）<input id="fee-month" type="number" value="0" min="0" step="any" inputmode="decimal"></label></div>
-<label class="fee-qualified"><input type="checkbox" id="fee-promos"> 納入新戶／卡友／契約日期限定方案（只是假設符合，請核對每列條件）</label>
-<div id="fee-best" class="fee-best" role="status"></div>
-<p id="fee-coverage" class="muted"></p>
-<div class="table-scroll fee-table" tabindex="0" role="region" aria-label="費率比較表，可橫向捲動"><table><caption id="fee-caption">同交易方式、同金額的佣金比较</caption><thead><tr><th scope="col">機構／方案</th><th scope="col">官方費率／低收</th><th scope="col">估算佣金</th><th scope="col">資格與限制</th><th scope="col">有效期／查核</th><th scope="col">官網依據</th></tr></thead><tbody id="fee-body"></tbody></table></div>
-<details><summary>比較範圍、計算方法與更新規則</summary><p class="muted">只比较每筆交易佣金，不含證券交易稅、海外規費、匯差、匯款費、信託管理費及保管費。整股／零股以一般台幣上市櫃證券為前提，不含當沖、信用、興櫃或人工下單。定期定額只比較買進，且各方案須有可委託的相同標的。費率試算保留小數，實收進位、最低收費與次月折讓依券商對帳單；開戶禮與抵用金不折抵試算。</p><p class="muted">一般公式＝max(成交額 × 費率，低收)，固定費與上限依各方案。玉山一般方案使用本筆前月累計成交額切分 100 萬／300 萬級距。新戶額度超過上限時整筆停止比較，不猜測超額費率。銀行信託另列，不以買進費率區間直接選出總成本最優。</p><p class="muted">每週六重新讀取各列官網；只有實際查核成功才能更新 verifiedAt。逾 36 小時未核實、活动已到期、條件不完整或價格待詢者不標最低價。官網可能隨時更動，查核時間不等於機構生效時間；本表未涵蓋全台所有機構及個別議價。</p><p id="fee-schedule" class="muted"></p></details>
-<details><summary>其他持續追蹤機構</summary><div id="fee-watch" class="fee-watch"></div></details>
-<noscript><p>請啟用 JavaScript 以查看費率、適用條件與最新查核日期；不會在未計算條件前顯示最低價。</p></noscript>
-</div></section>
-
 <!-- INVESTMENT_HUB_START -->
 <section id="briefing" class="invest-hub" aria-labelledby="briefing-title">
 <div class="section-title top"><h2 id="briefing-title">資訊雷達</h2><span class="badge">官方公告 × 下一步查核</span></div>
@@ -115,14 +85,21 @@
 </div></details></section>
 <section id="decision" class="invest-hub" aria-labelledby="decision-title">
 <div class="section-title top"><h2 id="decision-title">把資訊變成決策依據</h2><span class="badge">研究流程 · 不產生買賣評分</span></div>
-<div class="hub-grid"><article class="card"><h3>這次想釐清什麼？</h3><label>研究情境<select id="hub-case"><option value="etf">評估 ETF／核心配置</option><option value="stock">研究個股／企業價值</option><option value="news">看到新聞，考慮改變配置</option></select></label><ol id="hub-questions" class="hub-list"></ol><div class="hub-bridge">用同一估值日先做 <a href="#scenario">配置與壓力試算</a>，再看 <a href="#fees">交易成本</a>。上方持股 CSV 可計算所列部位的市值與占比；未包含現金、其他帳戶及 ETF 底層成分，仍需另核對整體曝險。</div></article>
-<article class="card"><h3>決策筆記草稿</h3><p class="muted">把可查證的事實與自己的解讀分開。輸入只留在本頁，重新整理會清除；可下載後自行存入原本的日誌。</p><div class="hub-form"><label>研究問題／標的<input id="hub-topic" maxlength="240" placeholder="例如：新增 ETF 是否與核心持股重疊？"></label><label>事實、原始網址與資料日期<textarea id="hub-evidence" maxlength="5000" placeholder="紀錄原始數值、期間與來源；尚未確認的地方也寫下來。"></textarea></label><label>我的解讀與相反證據<textarea id="hub-thesis" maxlength="5000" placeholder="哪一項假設最重要？什麼證據會推翻它？"></textarea></label><label>下一步與重新檢視條件<textarea id="hub-next" maxlength="3000" placeholder="例如：讀下一季財報後檢查現金流，而非只看股價漲跌。"></textarea></label><div class="actions"><button id="hub-export" type="button">下載筆記 TXT</button><a href="https://itigre.pse.is/wealth99" target="_blank" rel="noopener noreferrer">開啟原決策日誌 ↗</a></div><p id="hub-export-status" class="status" role="status"></p></div></article></div></section>
+<div class="hub-grid"><article class="card"><h3>這次想釐清什麼？</h3><label>研究情境<select id="hub-case"><option value="etf">評估 ETF／核心配置</option><option value="stock">研究個股／企業價值</option><option value="news">看到新聞，考慮改變配置</option></select></label><ol id="hub-questions" class="hub-list"></ol><div class="hub-bridge">用同一估值日先做 <a href="#scenario">配置與壓力試算</a>，再核對基金與交易總成本。上方持股 CSV 可計算所列部位的市值與占比；未包含現金、其他帳戶及 ETF 底層成分，仍需另核對整體曝險。</div></article>
+</div></section>
 <section id="learning" class="invest-hub" aria-labelledby="learning-title">
 <div class="section-title top"><h2 id="learning-title">投資概念工具箱</h2><span class="badge">概念 → 常見誤解 → 查核行動</span></div>
 <div class="hub-controls"><label>搜尋概念<input id="hub-search" type="search" placeholder="配息、分散、估值、定期定額…"></label><label>主題<select id="hub-concept-filter"><option value="all">全部概念</option><option value="allocation">配置與風險</option><option value="etf">ETF 與成本</option><option value="judgment">判斷與績效</option></select></label></div><p id="hub-concept-count" class="status" role="status"></p><div id="hub-concepts" class="hub-grid"></div>
-<div class="lab-grid"><article class="card"><h3>持有成本的長期差距</h3><p class="muted">教育情境：相同稅費前報酬、不同年度持有費率。與上方每筆交易佣金分開看。</p><div class="lab-inputs"><label>起始本金（TWD）<input id="lab-principal" type="number" min="1" max="1000000000" value="100000" step="1000"></label><label>年報酬假設（%）<input id="lab-return" type="number" min="-50" max="30" value="6" step="0.1"></label><label>持有年數<input id="lab-years" type="number" min="1" max="50" value="20"></label><label>A 年費率（%）<input id="lab-fee-a" type="number" min="0" max="10" value="0.2" step="0.1"></label><label>B 年費率（%）<input id="lab-fee-b" type="number" min="0" max="10" value="1" step="0.1"></label></div><p id="lab-result" class="lab-result" role="status"></p><svg id="lab-chart" class="lab-chart" viewBox="0 0 640 240" role="img" aria-label="年度持有費率 A 與 B 的假設資產路徑"></svg><div class="legend"><span><i class="dot core"></i>A 費率</span><span><i class="dot sat"></i>B 費率（虛線）</span></div><p id="lab-values" class="hub-meta"></p><details><summary>公式與假設</summary><p class="hub-meta">每年先依假設報酬成長、再扣年度費用：期末值＝本金 × [(1＋年報酬率) × (1－年費率)]^年數。無追加投入、不含交易佣金、稅、通膨、匯率及波動；不是個別基金的實際扣費方式。若輸入已扣費的基金報酬，會重複扣費。此圖為情境，不是回測或預測。</p><a class="hub-source" href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated" target="_blank" rel="noopener noreferrer">SEC：費用對投資組合的影響 ↗</a></details></article>
+<div class="lab-grid"><article class="card"><h3>持有成本的長期差距</h3><p class="muted">教育情境：相同稅費前報酬、不同年度持有費率。年度持有費用與一次交易成本應分開看。</p><div class="lab-inputs"><label>起始本金（TWD）<input id="lab-principal" type="number" min="1" max="1000000000" value="100000" step="1000"></label><label>年報酬假設（%）<input id="lab-return" type="number" min="-50" max="30" value="6" step="0.1"></label><label>持有年數<input id="lab-years" type="number" min="1" max="50" value="20"></label><label>A 年費率（%）<input id="lab-fee-a" type="number" min="0" max="10" value="0.2" step="0.1"></label><label>B 年費率（%）<input id="lab-fee-b" type="number" min="0" max="10" value="1" step="0.1"></label></div><p id="lab-result" class="lab-result" role="status"></p><svg id="lab-chart" class="lab-chart" viewBox="0 0 640 240" role="img" aria-label="年度持有費率 A 與 B 的假設資產路徑"></svg><div class="legend"><span><i class="dot core"></i>A 費率</span><span><i class="dot sat"></i>B 費率（虛線）</span></div><p id="lab-values" class="hub-meta"></p><details><summary>公式與假設</summary><p class="hub-meta">每年先依假設報酬成長、再扣年度費用：期末值＝本金 × [(1＋年報酬率) × (1－年費率)]^年數。無追加投入、不含交易佣金、稅、通膨、匯率及波動；不是個別基金的實際扣費方式。若輸入已扣費的基金報酬，會重複扣費。此圖為情境，不是回測或預測。</p><a class="hub-source" href="https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated" target="_blank" rel="noopener noreferrer">SEC：費用對投資組合的影響 ↗</a></details></article>
 <article class="card"><h3>跌幅與回本不對稱</h3><p class="muted">先理解損失需要多少漲幅才能彌補，再回到可承受的部位大小。</p><label for="lab-loss">假設下跌 <output id="lab-loss-label">30%</output></label><input id="lab-loss" type="range" min="0" max="90" step="5" value="30"><div class="loss-track" aria-hidden="true"><span id="lab-loss-bar"></span></div><p id="lab-recovery" class="lab-result" role="status"></p><p class="hub-meta">回本所需漲幅＝跌幅 ÷（1－跌幅）。例如下跌 50%，需再上漲 100% 才回到原值；不含配息、費用或新增資金。</p><a href="#scenario">帶回我的壓力情境 →</a></article></div></section>
-<section id="masters" class="invest-hub" aria-labelledby="masters-title"><div class="section-title top"><h2 id="masters-title">大師觀點，轉成自己的問題</h2><span class="badge">原始出處 · 中文意譯</span></div><p class="muted">以下為觀點摘要與本頁設計的應用問題，不是逐字名言，也不是作者對目前市場或您的持倉提出的建議。</p><div id="hub-masters" class="hub-grid"></div></section>
+<section id="masters" class="invest-hub" aria-labelledby="masters-title">
+<div class="section-title top"><h2 id="masters-title">大師觀點 · 面對市場變化的六種視角</h2><span class="badge">企業 · 風險 · 成本 · 配置 · 行為 · 敘事</span></div>
+<p class="muted">原始理論以中文意譯呈現，市場問題及查核建議由本頁整理。情境提問不是大師對今日市場或您的持股發表的意見。</p>
+<div class="hub-controls"><label>目前想研究的變化<select id="master-situation"><option value="all">全部視角</option><option value="company">公司重大訊息／財報變化</option><option value="allocation">集中曝險／配置偏移</option><option value="rates">利率、匯率與債券變動</option><option value="volatility">股市大漲大跌／情緒波動</option><option value="valuation">熱門題材／估值擴張</option><option value="cost">換股成本／績效比較</option></select></label></div>
+<div class="master-current card"><h3>連結我的持股與最近已查核事件</h3><p id="master-context-status" class="muted"></p><div id="master-context" class="hub-grid"></div></div>
+<p id="master-count" class="status" role="status" aria-live="polite"></p><div id="hub-masters" class="hub-grid"></div>
+<div class="notice master-review"><strong>先證據，再調整</strong><p>逐項核對：事件是否改變持有理由？有哪些相反證據？若判斷錯誤，部位與資金用途是否仍可承受？需要什麼新資料才重新評估？</p><p class="muted">公司公告不等於已證實的經濟損失；股價漲跌也不等於企業價值同步變動。未取得估值、財報或完整資產資料時，只列待查問題。</p></div></section>
+
 <!-- INVESTMENT_HUB_END -->
 
 <section id="research" aria-labelledby="research-title"><h2 class="section-title" id="research-title">研究入口與判讀方法</h2><div class="grid"><article class="card span4"><h3>持倉與基本面</h3><a class="resource" href="https://aiinvest.sinotrade.com.tw/Account/Asset" target="_blank" rel="noopener noreferrer"><strong>永豐大戶投 ↗</strong><small>核對真實持倉、可用資金與交易成本</small></a><a class="resource" href="https://www.twse.com.tw/zh/ETFortune/products" target="_blank" rel="noopener noreferrer"><strong>證交所 ETF e添富 ↗</strong><small>研究 ETF、追蹤指數、費用與商品資訊</small></a><a class="resource" href="https://mops.twse.com.tw/" target="_blank" rel="noopener noreferrer"><strong>公開資訊觀測站 ↗</strong><small>查核財務報表、重大訊息與公司公告</small></a><a class="resource" href="https://gemini.google.com/gem/1TNWK82RGAFQhIKBLjowp67xB4XhJM0T9?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>您的投資學 AI 工具 ↗</strong><small>整理研究問題；數字與結論仍須回查原始公告</small></a></article>
@@ -155,798 +132,6 @@ const loss=c*Number($('core-shock').value)/100+s*Number($('sat-shock').value)/10
 }
 $('refresh').addEventListener('click',refresh);['search','journal-filter'].forEach(id=>$(id).addEventListener('input',()=>{state.shown=8;renderJournal();}));$('more').addEventListener('click',()=>{state.shown+=8;renderJournal();});['core','satellite','cash','contribution','target','valuation-date','core-shock','sat-shock'].forEach(id=>$(id).addEventListener('input',scenario));scenario();refresh();
 </script>
-<!-- FEES_DATA_START -->
-<script id="fees-data" type="application/json">
-{
-  "schemaVersion": 1,
-  "updatedAt": "2026-09-29T08:32:06+08:00",
-  "scope": "台股整股、零股、定期定額；另列美股與銀行信託。已追蹤名單非全台普查。",
-  "schedule": "每週六台灣時間 02:30，由本任務排程重新查核官網後更新 GitHub；若未完成，保留各列實際查核時間。",
-  "rows": [
-    {
-      "id": "sino-tw_whole",
-      "provider": "永豐金證券",
-      "group": "tw_whole",
-      "feeText": "2 折 · 0.0285%；最低 1 元",
-      "conditions": "線上新戶、電子下單，當月電子成交累計 100 萬元內；外幣 ETF 不適用低收優惠。先收原費率、次月 15 日退折讓。",
-      "source": "https://service.sinotrade.com.tw/newweb/Fee_Rate/",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": 0.000285,
-      "fixed": null,
-      "minFee": 1,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": 1000000,
-      "conditional": true,
-      "model": "rate",
-      "note": "費率頁標示 2026 活動，未載完整起訖日；排名僅作条件成立的情境試算。"
-    },
-    {
-      "id": "esun-tw_whole",
-      "provider": "玉山證券",
-      "group": "tw_whole",
-      "feeText": "月成交累進 6／5／3.8 折",
-      "conditions": "前 100 萬元 6 折、100–300 萬元 5 折、超過 300 萬元部分 3.8 折；次月 13 日退折讓。使用下方「本筆前月成交額」切分級距。",
-      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": 20,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "esun-tiers",
-      "note": ""
-    },
-    {
-      "id": "esun-u-tw_whole",
-      "provider": "玉山證券 · Unicard",
-      "group": "tw_whole",
-      "feeText": "2.8 折 · 0.0399%",
-      "conditions": "Unicard 卡友經專屬連結（30025）首次開戶並登錄；請核對活動資格。",
-      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": "2026-07-01",
-      "end": "2027-03-31",
-      "rate": 0.000399,
-      "fixed": null,
-      "minFee": 20,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": true,
-      "model": "rate",
-      "note": ""
-    },
-    {
-      "id": "cathay-tw_whole",
-      "provider": "國泰證券",
-      "group": "tw_whole",
-      "feeText": "2.8 折 · 0.0399%",
-      "conditions": "網路下單。此次費率頁未完整揭露此類交易最低收費，暫不推算金額。",
-      "source": "https://www.cathaysec.com.tw/cathaysec/Products/TradeFee/TWS.aspx",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": "最低收費待確認，不參與排名。"
-    },
-    {
-      "id": "capital-tw_whole",
-      "provider": "群益金鼎證券",
-      "group": "tw_whole",
-      "feeText": "牌告 0.1425%；電子優惠洽營業員",
-      "conditions": "上市櫃整股低收 20 元；本國自然人電子零股低收 1 元。個別折扣未公開。",
-      "source": "https://www.capital.com.tw/event/stock/20220214/default.html",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": "不以牌告費率冒充實際電子優惠，不參與排名。"
-    },
-    {
-      "id": "fubon-tw_whole",
-      "provider": "富邦證券",
-      "group": "tw_whole",
-      "feeText": "新戶優惠，數字洽分公司",
-      "conditions": "2026 新開台股自然人，電子月成交 100 萬元內；官網未公開完整折扣。",
-      "source": "https://www.fubon.com/securities/open-now/",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": "2026-12-31",
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": "不可由「優惠」推定為 2 折。"
-    },
-    {
-      "id": "sino-tw_odd",
-      "provider": "永豐金證券",
-      "group": "tw_odd",
-      "feeText": "2 折 · 0.0285%；最低 1 元",
-      "conditions": "線上新戶、電子下單，當月電子成交累計 100 萬元內；外幣 ETF 不適用低收優惠。先收原費率、次月 15 日退折讓。",
-      "source": "https://service.sinotrade.com.tw/newweb/Fee_Rate/",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": 0.000285,
-      "fixed": null,
-      "minFee": 1,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": 1000000,
-      "conditional": true,
-      "model": "rate",
-      "note": "費率頁標示 2026 活動，未載完整起訖日；排名僅作条件成立的情境試算。"
-    },
-    {
-      "id": "esun-tw_odd",
-      "provider": "玉山證券",
-      "group": "tw_odd",
-      "feeText": "月成交累進 6／5／3.8 折",
-      "conditions": "前 100 萬元 6 折、100–300 萬元 5 折、超過 300 萬元部分 3.8 折；次月 13 日退折讓。使用下方「本筆前月成交額」切分級距。",
-      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": 1,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "esun-tiers",
-      "note": ""
-    },
-    {
-      "id": "esun-u-tw_odd",
-      "provider": "玉山證券 · Unicard",
-      "group": "tw_odd",
-      "feeText": "2.8 折 · 0.0399%",
-      "conditions": "Unicard 卡友經專屬連結（30025）首次開戶並登錄；請核對活動資格。",
-      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": "2026-07-01",
-      "end": "2027-03-31",
-      "rate": 0.000399,
-      "fixed": null,
-      "minFee": 1,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": true,
-      "model": "rate",
-      "note": ""
-    },
-    {
-      "id": "cathay-tw_odd",
-      "provider": "國泰證券",
-      "group": "tw_odd",
-      "feeText": "2.8 折 · 0.0399%",
-      "conditions": "網路下單。此次費率頁未完整揭露此類交易最低收費，暫不推算金額。",
-      "source": "https://www.cathaysec.com.tw/cathaysec/Products/TradeFee/TWS.aspx",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": "最低收費待確認，不參與排名。"
-    },
-    {
-      "id": "capital-tw_odd",
-      "provider": "群益金鼎證券",
-      "group": "tw_odd",
-      "feeText": "牌告 0.1425%；電子優惠洽營業員",
-      "conditions": "上市櫃整股低收 20 元；本國自然人電子零股低收 1 元。個別折扣未公開。",
-      "source": "https://www.capital.com.tw/event/stock/20220214/default.html",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": "不以牌告費率冒充實際電子優惠，不參與排名。"
-    },
-    {
-      "id": "fubon-tw_odd",
-      "provider": "富邦證券",
-      "group": "tw_odd",
-      "feeText": "新戶優惠，數字洽分公司",
-      "conditions": "2026 新開台股自然人，電子月成交 100 萬元內；官網未公開完整折扣。",
-      "source": "https://www.fubon.com/securities/open-now/",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": "2026-12-31",
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": "不可由「優惠」推定為 2 折。"
-    },
-    {
-      "id": "sino-dca",
-      "provider": "永豐金證券",
-      "group": "tw_dca",
-      "feeText": "每筆 1 元",
-      "conditions": "豐存股指定標的；本國自然人或機構法人，交割須符合永豐銀行／分戶帳／LINE Bank 規定。",
-      "source": "https://aiinvest.sinotrade.com.tw/Support",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": "2026-12-31",
-      "rate": null,
-      "fixed": 1,
-      "minFee": null,
-      "cap": null,
-      "amountMin": 100,
-      "amountMax": 10000000,
-      "monthMax": null,
-      "conditional": false,
-      "model": "fixed",
-      "note": ""
-    },
-    {
-      "id": "cathay-dca",
-      "provider": "國泰證券",
-      "group": "tw_dca",
-      "feeText": "每筆 1 元",
-      "conditions": "台股定期定額買進；官網費率頁標示不限交易金額。須先完成該服務約定。",
-      "source": "https://www.cathaysec.com.tw/cathaysec/Products/TradeFee/TWS.aspx",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": 1,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "fixed",
-      "note": "最低可申購金額請依各標的設定；比較金額以可成功委託為前提。"
-    },
-    {
-      "id": "yuanta-dca",
-      "provider": "元大證券",
-      "group": "tw_dca",
-      "feeText": "每筆 1 元",
-      "conditions": "全體客戶，台股／ETF／ETF 投資組合定期定額買進。投組最低申購額另依商品。",
-      "source": "https://www.yuanta.com.tw/file-repository/content/168easy/index.html",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": "2026-12-31",
-      "rate": null,
-      "fixed": 1,
-      "minFee": null,
-      "cap": null,
-      "amountMin": 1000,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "fixed",
-      "note": ""
-    },
-    {
-      "id": "esun-dca",
-      "provider": "玉山證券",
-      "group": "tw_dca",
-      "feeText": "委託 2 萬元以下每筆 1 元",
-      "conditions": "台股 e 指存；單筆委託金額不得超過 20,000 元，超過部分未納入本試算。",
-      "source": "https://www.esunsec.com.tw/campaign/trade-fee",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": 1,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": 20000,
-      "monthMax": null,
-      "conditional": false,
-      "model": "fixed",
-      "note": ""
-    },
-    {
-      "id": "kgi-dca",
-      "provider": "凱基證券",
-      "group": "tw_dca",
-      "feeText": "符合契約日期每筆 1 元",
-      "conditions": "契約須於 2022/05/01–2026/12/31 成立；2022/04/30 前契約不適用。賣出另依帳戶條件計收。",
-      "source": "https://www.kgi.com.tw/zh-tw/product-overview/etf-rsp-odd-lot",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": "2026-01-01",
-      "end": "2026-12-31",
-      "rate": null,
-      "fixed": 1,
-      "minFee": null,
-      "cap": null,
-      "amountMin": 100,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": true,
-      "model": "fixed",
-      "note": ""
-    },
-    {
-      "id": "fubon-dca",
-      "provider": "富邦證券",
-      "group": "tw_dca",
-      "feeText": "買進優惠洽分公司",
-      "conditions": "官網未公開確切數值；不將新戶禮、抵用金換算為每筆固定折扣。",
-      "source": "https://www.fubon.com/securities/open-now/",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": ""
-    },
-    {
-      "id": "mega-dca",
-      "provider": "兆豐證券",
-      "group": "tw_dca",
-      "feeText": "依盤中零股電子費率；低收 1 元",
-      "conditions": "實際帳戶折扣未公開；須核對適用方案。",
-      "source": "https://project.emega.com.tw/EstockV2/",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": ""
-    },
-    {
-      "id": "tss-dca",
-      "provider": "台新證券",
-      "group": "tw_dca",
-      "feeText": "2 萬元以下均一價；數字待核對",
-      "conditions": "活動頁價格以圖像／符號呈現且截止年份不明，暫不量化。",
-      "source": "https://www.tssco.com.tw/DCA/",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": null,
-      "status": "needs_review",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": ""
-    },
-    {
-      "id": "sino-us-dca",
-      "provider": "永豐金證券",
-      "group": "us_dca",
-      "feeText": "買進每筆 US$0.01",
-      "conditions": "豐存股；本國自然人、無雙重國籍，交割須為永豐銀行或分戶帳。指定標的，賣出費用另計。",
-      "source": "https://aiinvest.sinotrade.com.tw/Support",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": "2026-12-31",
-      "rate": null,
-      "fixed": 0.01,
-      "minFee": null,
-      "cap": null,
-      "amountMin": 10,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "fixed",
-      "note": ""
-    },
-    {
-      "id": "capital-us-dca",
-      "provider": "群益金鼎證券",
-      "group": "us_dca",
-      "feeText": "買進每筆 US$0.03",
-      "conditions": "本國自然人且具複委託戶；群益一戶通台幣，或上海商銀／國泰世華外幣交割。賣出 0.20% 免低收。",
-      "source": "https://dstock.capital.com.tw/AverInvest/question/list.do",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": "2026-12-31",
-      "rate": null,
-      "fixed": 0.03,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "fixed",
-      "note": ""
-    },
-    {
-      "id": "yuanta-us-dca",
-      "provider": "元大證券",
-      "group": "us_dca",
-      "feeText": "買進 0.1%；每筆上限 US$1",
-      "conditions": "美股定期定額；只比較買進，賣出不適用此上限。",
-      "source": "https://www.yuanta.com.tw/file-repository/content/168easy/index.html",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": "2026-12-31",
-      "rate": 0.001,
-      "fixed": null,
-      "minFee": 0,
-      "cap": 1,
-      "amountMin": 10,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "rate",
-      "note": ""
-    },
-    {
-      "id": "psc-us-dca",
-      "provider": "統一證券",
-      "group": "us_dca",
-      "feeText": "買進 0.1%；免低收",
-      "conditions": "美股定期存股，2026/07/01 起取消最低手續費；賣出與規費另計。",
-      "source": "https://www.pscnet.com.tw/pscnetForeign/menuContent.do?main_id=38cd91f4fc00000065a8bb8cdcb275ca&sub_id=393574d0c300000041430e7c7ba594dd",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": "2026-07-01",
-      "end": "2026-12-31",
-      "rate": 0.001,
-      "fixed": null,
-      "minFee": 0,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "rate",
-      "note": ""
-    },
-    {
-      "id": "cathay-us-dca",
-      "provider": "國泰證券",
-      "group": "us_dca",
-      "feeText": "優惠均一價；待確認現行數字",
-      "conditions": "現行活動頁未直接取得可核對金額；不採用搜尋快取中的舊數字。",
-      "source": "https://istockapp.cathaysec.com.tw/Marketing/usstock",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": null,
-      "status": "needs_review",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": ""
-    },
-    {
-      "id": "fubon-us",
-      "provider": "富邦證券",
-      "group": "us_regular",
-      "feeText": "電子單免低收，費率洽分公司",
-      "conditions": "美股新戶 AI PRO 有額度內優惠；未公開完整費率。",
-      "source": "https://www.fubon.com/securities/open-now/",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": "2026-12-31",
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": ""
-    },
-    {
-      "id": "psc-us",
-      "provider": "統一證券",
-      "group": "us_regular",
-      "feeText": "電子單 0.1%–3%，免低收",
-      "conditions": "依帳戶費率，不能將區間下限視為所有人均適用。",
-      "source": "https://www.pscnet.com.tw/pscnetForeign/menuContent.do?main_id=38cd91f4fc00000065a8bb8cdcb275ca&sub_id=393574d0c300000041430e7c7ba594dd",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": "2026-07-01",
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": ""
-    },
-    {
-      "id": "cathay-us",
-      "provider": "國泰證券",
-      "group": "us_regular",
-      "feeText": "個股／ETF 優惠待核對",
-      "conditions": "活動頁金額未直接揭露；最低價排名暫不納入。",
-      "source": "https://istockapp.cathaysec.com.tw/Marketing/usstock",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": null,
-      "status": "needs_review",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": ""
-    },
-    {
-      "id": "esun-bank",
-      "provider": "玉山銀行",
-      "group": "bank",
-      "feeText": "境外 ETF 買進 1%–2%；賣出 0.5%–1%",
-      "conditions": "依產品不同。另有信託管理費（來源列信託本金之 0.2%）及市場相關費用；需確認持有期間計費方式，不能與證券佣金單獨比較。",
-      "source": "https://wealth.esunbank.com/zh-tw/etf/intro",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": "2026-09-29T08:32:06+08:00",
-      "status": "verified",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": ""
-    },
-    {
-      "id": "sino-bank",
-      "provider": "永豐銀行",
-      "group": "bank",
-      "feeText": "存美股 0 元起；完整條件待確認",
-      "conditions": "頁面主要由 JavaScript 呈現，未取得完整活動條件。不可當成所有交易皆免費。",
-      "source": "https://bank.sinopac.com/sinopacBT/webevents/wm/rspevent/",
-      "checkedAt": "2026-09-29T08:32:06+08:00",
-      "verifiedAt": null,
-      "status": "needs_review",
-      "start": null,
-      "end": null,
-      "rate": null,
-      "fixed": null,
-      "minFee": null,
-      "cap": null,
-      "amountMin": null,
-      "amountMax": null,
-      "monthMax": null,
-      "conditional": false,
-      "model": "unknown",
-      "note": ""
-    }
-  ],
-  "watchlist": [
-    {
-      "provider": "新光證券",
-      "source": "https://www.skis.com.tw/",
-      "note": "官網活動費率未完整公開，持續查核；不代填議價折扣。"
-    },
-    {
-      "provider": "中國信託證券",
-      "source": "https://www.ctbcsec.com/",
-      "note": "納入追蹤，尚未核實完整台股電子費率方案。"
-    },
-    {
-      "provider": "元富證券",
-      "source": "https://www.masterlink.com.tw/",
-      "note": "納入追蹤，尚未核實現行完整費率。"
-    },
-    {
-      "provider": "第一金證券",
-      "source": "https://www.firstsec.com.tw/",
-      "note": "納入追蹤，尚未核實現行完整費率。"
-    },
-    {
-      "provider": "合作金庫銀行",
-      "source": "https://www.tcb-bank.com.tw/personal-banking/wealth/discount/etf/good-days",
-      "note": "境外股票／ETF 信託優惠待核實完整低收與管理費。"
-    }
-  ]
-}
-</script>
-<!-- FEES_DATA_END -->
-<script>
-(function(){
-'use strict';
-const data=JSON.parse(document.getElementById('fees-data').textContent);
-const el=id=>document.getElementById(id);
-const make=(tag,text,cls)=>{const n=document.createElement(tag);if(text!==undefined)n.textContent=text;if(cls)n.className=cls;return n;};
-const money=(n,cur)=>new Intl.NumberFormat('zh-TW',{style:'currency',currency:cur,minimumFractionDigits:2,maximumFractionDigits:2}).format(n);
-function feeEstimate(row,amount,month,include,now){
- const day=new Intl.DateTimeFormat('sv-SE',{timeZone:'Asia/Taipei'}).format(now);
- const age=(now-new Date(row.verifiedAt))/3600000;
- if(row.status!=='verified'||!row.verifiedAt||!Number.isFinite(age)||age<0||age>36)return {cost:null,why:'未取得近期完整核實資料'};
- if(row.end&&day>row.end)return {cost:null,why:'優惠已到期'};
- if(row.start&&day<row.start)return {cost:null,why:'活動尚未開始'};
- if(row.conditional&&!include)return {cost:null,why:'未納入限定資格方案'};
- if(row.amountMin!==null&&amount<row.amountMin)return {cost:null,why:'未達最低申購額'};
- if(row.amountMax!==null&&amount>row.amountMax)return {cost:null,why:'超過此優惠單筆上限'};
- if(row.monthMax!==null&&month+amount>row.monthMax)return {cost:null,why:'超過可核實的月成交優惠額度'};
- let cost=null;
- if(row.model==='fixed'&&Number.isFinite(row.fixed))cost=row.fixed;
- if(row.model==='rate'&&Number.isFinite(row.rate)&&Number.isFinite(row.minFee))cost=Math.max(amount*row.rate,row.minFee);
- if(row.model==='esun-tiers'){
-   const cumulative=x=>Math.min(x,1000000)*.001425*.6+Math.min(Math.max(0,x-1000000),2000000)*.001425*.5+Math.max(0,x-3000000)*.001425*.38;
-   cost=Math.max(cumulative(month+amount)-cumulative(month),row.minFee);
- }
- if(cost!==null&&Number.isFinite(row.cap))cost=Math.min(cost,row.cap);
- return Number.isFinite(cost)&&cost>=0?{cost,why:row.conditional?'條件成立時試算':'依列示條件試算'}:{cost:null,why:'費率／低收或適用條件未完整，僅供參考'};
-}
-function render(){
- const group=el('fee-group').value,usd=group.startsWith('us_'),cur=usd?'USD':'TWD',bank=group==='bank';
- el('fee-currency').textContent=bank?'不適用':cur;el('fee-amount').disabled=bank;
- const monthly=['tw_whole','tw_odd'].includes(group);el('fee-month-label').hidden=!monthly;
- el('fee-schedule').textContent=data.schedule;
- const now=new Date();const amount=Number(el('fee-amount').value),month=monthly?Number(el('fee-month').value):0;
- const valid=el('fee-amount').value!==''&&Number.isFinite(amount)&&amount>0&&amount<=1e12&&(!monthly||(el('fee-month').value!==''&&Number.isFinite(month)&&month>=0&&month<=1e12));
- const include=el('fee-promos').checked,rows=data.rows.filter(r=>r.group===group);
- const evaluated=rows.map(r=>({r,...(valid&&!bank?feeEstimate(r,amount,month,include,now):{cost:null,why:bank?'信託總成本另計，不與券商混排':'請輸入有效金額'})}));
- const comparable=evaluated.filter(v=>v.cost!==null);const min=comparable.length?Math.min(...comparable.map(v=>v.cost)):null;
- const winners=comparable.filter(v=>Math.abs(v.cost-min)<1e-9),multiple=comparable.length>=2;
- const best=el('fee-best');best.replaceChildren();best.classList.toggle('fee-warning',!multiple);
- if(multiple){best.append(make('small',include?'條件成立時，本次方案中的最低估算佣金':'本次可比較方案中的最低估算佣金'),make('strong',money(min,cur)+'／筆 · '+winners.map(v=>v.r.provider).join('、')),make('p',`共 ${comparable.length} 項可計算方案${winners.length>1?'，最低價並列':''}。此結果只比較佣金，請核對下表資格；不是全台最低或券商服務品質排名。`));}
- else best.append(make('strong',bank?'銀行信託：分開查核總成本':valid?'可比資料不足，暫不標示最優':'請輸入大於 0 的有效金額'),make('p',comparable.length===1?'目前只有一项可計算方案，無法據此判定較優。':'沒有足夠且仍有效的已核實方案。'));
- const newest=new Date(data.updatedAt);el('fee-updated').textContent='資料整理：'+(Number.isNaN(+newest)?'未提供':newest.toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false}))+'（臺北）；各方案查核時間見表。';
- el('fee-coverage').textContent=`本類 ${rows.length} 項方案；${comparable.length} 項可計算，${rows.length-comparable.length} 項因資格、資料或有效期不參與比較。綠色＝最低估算佣金；未達比較條件不著色。`;
- el('fee-caption').textContent=el('fee-group').selectedOptions[0].textContent+(bank?'':`，每筆 ${valid?money(amount,cur):'—'}`);
- evaluated.sort((a,b)=>(a.cost??Infinity)-(b.cost??Infinity));const max=Math.max(1,...comparable.map(v=>v.cost));const body=el('fee-body');body.replaceChildren();
- evaluated.forEach(v=>{const r=v.r,winner=multiple&&v.cost!==null&&Math.abs(v.cost-min)<1e-9,tr=make('tr',undefined,winner?'fee-winner':'');
-  const name=make('td');name.append(make('strong',r.provider));if(winner)name.append(make('span','最低佣金'+(winners.length>1?' · 並列':''),'fee-marker'));
-  const cost=make('td');cost.append(make('div',v.cost===null?'—':money(v.cost,cur),'fee-cost'),make('small',v.why));
-  if(v.cost!==null){const bar=make('div',undefined,'fee-bar');const fill=make('span');fill.style.width=(100*v.cost/max)+'%';bar.append(fill);bar.setAttribute('aria-hidden','true');cost.append(bar);}
-  const condition=make('td',r.conditions);if(r.note)condition.append(make('p',r.note,'muted'));
-  const time=make('td');time.append(make('div',r.end?'截止 '+r.end:'截止日未載／依公告'),make('small','查核 '+(r.verifiedAt?new Date(r.verifiedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false}):'待核實')));
-  const source=make('td'),a=make('a','官方費率／活動 ↗');const url=new URL(r.source);if(url.protocol==='https:'){a.href=r.source;a.target='_blank';a.rel='noopener noreferrer';source.append(a);}
-  tr.append(name,make('td',r.feeText),cost,condition,time,source);body.append(tr);
- });
-}
-const watch=el('fee-watch');data.watchlist.forEach(r=>{const d=make('div');const a=make('a',r.provider+' ↗');const u=new URL(r.source);if(u.protocol==='https:'){a.href=r.source;a.target='_blank';a.rel='noopener noreferrer';d.append(a);}d.append(make('small',r.note));watch.append(d);});
-el('fee-group').addEventListener('change',()=>{el('fee-amount').value=el('fee-group').value.startsWith('us_')?'100':'10000';render();});
-['fee-amount','fee-month','fee-promos'].forEach(id=>el(id).addEventListener('input',render));
-render();setInterval(render,60000);
-})();
-
-</script>
-
 <!-- HUB_NEWS_DATA_START -->
 <script id="hub-news-data" type="application/json">{
   "schemaVersion": 1,
@@ -997,24 +182,48 @@ render();setInterval(render,60000);
   ]
 }</script>
 <!-- HUB_NEWS_DATA_END -->
-<script id="hub-knowledge-data" type="application/json">{"concepts": [{"category": "allocation", "title": "分散看曝險，不只看檔數", "meaning": "多種資產與持股可以降低部分集中風險，但不能消除市場損失。", "misconception": "買了數檔 ETF，仍可能重複持有相同大型公司或產業。", "action": "用同日成分權重查重疊，再把直接持股一起算入；資料不足時先列待查。", "sourceKey": "allocation", "sourceLabel": "SEC｜資產配置與分散"}, {"category": "allocation", "title": "再平衡是恢復風險配置", "meaning": "資產漲跌會使原本比重偏移，可透過調整部位或新資金恢復設定。", "misconception": "再平衡不是預言漲跌；目標比例也不會自動適合所有人。", "action": "先確認用途、期限與現金需求，再到本頁比較新資金投入及轉換部位。", "sourceKey": "allocation", "sourceLabel": "SEC｜資產配置與分散"}, {"category": "etf", "title": "配息與總報酬分開看", "meaning": "ETF 配息需看來源與配息後的淨值，不能只用年化配息率評估投資成果。", "misconception": "領到現金不等於同額新增獲利；高頻配息也不等於較高總報酬。", "action": "核對收益分配組成，使用相同期間、相同再投入假設的含息報酬比較。", "sourceKey": "dividend", "sourceLabel": "證交所｜ETF 收益分配概念"}, {"category": "etf", "title": "市價、淨值與折溢價", "meaning": "ETF 市價受供需影響，可能偏離基金淨值；報價、估計淨值時間需對齊。", "misconception": "折價不代表必賺套利，海外市場休市也可能影響參考淨值。", "action": "看買賣價差、流動性、淨值時間與標的市場開休市，再決定委託方式。", "sourceKey": "etf", "sourceLabel": "證交所｜ETF 特性與風險"}, {"category": "etf", "title": "低佣金不等於低總成本", "meaning": "每次交易費與每年持有費是不同成本，長期都會影響累積資產。", "misconception": "只比券商折數，容易漏看低收、基金內扣費與價差。", "action": "先用手續費表比較相同交易，再用下方情境圖理解年度費率差距。", "sourceKey": "cost", "sourceLabel": "SEC｜投資費用影響"}, {"category": "allocation", "title": "定期定額是投入規則", "meaning": "定期投入固定金額，價格低時買到較多單位、高時較少。", "misconception": "它不保證獲利，也不代表任何時段都優於單筆投入。", "action": "區分每月新收入與已持有的整筆現金，設定能持續執行的金額及再檢視條件。", "sourceKey": "dca", "sourceLabel": "SEC｜Dollar Cost Averaging"}, {"category": "judgment", "title": "價值估計需要假設範圍", "meaning": "企業投資研究需了解可持續的獲利能力，並承認自己能理解的範圍。", "misconception": "便宜的股價或單一低本益比，並不足以證明被低估。", "action": "列出正常、保守情境與估值失效條件；若無法解釋企業如何賺錢，先補研究。", "sourceKey": "buffett", "sourceLabel": "Buffett｜2013 股東信"}, {"category": "judgment", "title": "績效要有可比的基準", "meaning": "比較管理成果時，需事先選定可行、風險與市場範圍相近的替代方案。", "misconception": "事後挑一個較弱指數，或只看存活基金的平均值，會誤判能力。", "action": "對齊期間、幣別、含息、費用及現金流。原 Sheets 單一報酬值不足以判定超額績效。", "sourceKey": "sharpe", "sourceLabel": "Sharpe｜1991 主動管理算術"}], "sources": {"allocation": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation", "etf": "https://www.twse.com.tw/zh/products/securities/etf/overview/introduction.html", "dividend": "https://www.twse.com.tw/downloads/zh/ETF/concept06.pdf", "cost": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated", "dca": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging", "buffett": "https://www.berkshirehathaway.com/letters/2013ltr.pdf", "marks": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge", "sharpe": "https://web.stanford.edu/~wfsharpe/art/active/active.htm"}, "masters": [{"name": "Warren Buffett", "topic": "能力圈與企業價值", "year": "2013 股東信｜2014 年發布", "summary": "把股票當作企業的一部分，先判断自己能否合理估計其長期獲利範圍。無法理解的機會可以略過；一般投資人也可考慮分散、低成本的方式。", "question": "若一年看不到股價，我能用哪些企業資料說明持有理由？", "boundary": "企業品質不等於任何價格都值得買；原文的美國市場與信託配置情境不直接套用為您的資產比例。", "source": "https://www.berkshirehathaway.com/letters/2013ltr.pdf", "label": "Berkshire Hathaway 原始股東信"}, {"name": "Howard Marks", "topic": "承認預測的限制", "year": "The Illusion of Knowledge｜2022", "summary": "總體經濟受複雜互動、行為與假設影響；精密模型仍可能在關鍵轉折失準。不要把對未來的信心當成已知事實。", "question": "如果我預期的利率或景氣方向完全相反，現金與部位是否仍可承受？", "boundary": "不確定性不是完全忽略總體資訊；要把它用於情境與風險準備，並保留修正空間。", "source": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge", "label": "Oaktree 原始備忘錄"}, {"name": "William F. Sharpe", "topic": "先看成本，再談勝出", "year": "The Arithmetic of Active Management｜1991", "summary": "在同一市場與其定義下，主動及被動資金在費用前有加權平均的算術關係；成本較高會壓低費用後結果。評估策略應有事先選定的可行基準。", "question": "扣完所有費用後，這個策略相對可行替代方案的優勢，有可驗證的依據嗎？", "boundary": "這是群體與定義下的關係，不是每一位主動投資人一定落後，也不是所有指數產品都便宜。", "source": "https://web.stanford.edu/~wfsharpe/art/active/active.htm", "label": "Stanford 作者原文"}], "cases": {"etf": ["用途與風險：這筆資金何時要用？股票型核心仍可能大幅下跌。", "曝險：追蹤指數如何選股？與現有核心／衛星重疊多少？", "成本與交易：總費用、追蹤落差、買賣價差、折溢價是否合理？", "證據與紀律：從公開說明書及發行人資料核對，寫下重看配置的條件。"], "stock": ["生意與來源：收入靠什麼？先找最新財報、年報與重大訊息。", "品質與現金：跨期比較獲利、營業現金流、資本支出與負債，留意一次性項目。", "價格與假設：估值使用什麼期間、成長率與風險？保守情境是否仍可接受？", "反面證據：最可能讓判斷失效的是什麼？先限定研究範圍與可承受曝險。"], "news": ["原始依據：找到原公告、發布日期與事件期間，不把轉述當事實。", "傳導路徑：它會如何影響企業收入、成本、資產負債或折現假設？", "是否新增：市場原本知道什麼？不要只因標題正面就假定仍有超額報酬。", "採取行動前：回看配置規則、現金用途與相反證據；可先列觀察，不必立即交易。"]}}</script>
+<!-- HOLDINGS_DATA_START -->
+<script id="holdings-data" type="application/json">{"schemaVersion": 1, "updatedAt": "2026-10-01T08:05:41+08:00", "csvCheckedAt": "2026-10-01T08:05:41+08:00", "csvSource": "https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pub?gid=840076836&single=true&output=csv", "sheetSource": "https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubhtml?gid=840076836&single=true", "sourceRows": [{"股票代號": "006208", "股票名稱": "富邦台50", "買入價": "225.83", "目前價": "256.30", "庫存股數": "308"}, {"股票代號": "0050", "股票名稱": "元大台灣50", "買入價": "105.05", "目前價": "112.05", "庫存股數": "1,456"}, {"股票代號": "00679B", "股票名稱": "元大美債20年", "買入價": "26.42", "目前價": "24.77", "庫存股數": "700"}, {"股票代號": "006023", "股票名稱": "元大期", "買入價": "83.33", "目前價": "85.00", "庫存股數": "131"}, {"股票代號": "3029", "股票名稱": "鈊象3293", "買入價": "741.37", "目前價": "788.00", "庫存股數": "30"}], "registry": {"006208": {"name": "富邦台50", "aliases": ["富邦台50"], "type": "台灣50股票ETF", "source": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/006208", "facts": "追蹤臺灣50指數；與0050屬同一指數曝險。", "review": "核對基金費用、追蹤落差、折溢價及前十大持股；兩檔合計檢視，避免把基金檔數當成市場分散。"}, "0050": {"name": "元大台灣50", "aliases": ["元大台灣50"], "type": "台灣50股票ETF", "source": "https://www.yuantaetfs.com/product/detail/0050/Basic_information", "facts": "追蹤臺灣50指數；與006208屬同一指數曝險。", "review": "以相同日期比較0050與006208的費用及交易價差；賣出整併前計入稅費，不能只因費率差就換股。"}, "00679B": {"name": "元大美債20年", "aliases": ["元大美債20年"], "type": "長天期美國公債ETF", "source": "https://www.yuantaetfs.com/product/detail/00679B/Basic_information", "facts": "追蹤20年以上美國公債相關指數；台幣交易仍應留意債券利率及匯率曝險。", "review": "核對最新存續期間、殖利率、匯率與基金配息來源；殖利率上升可能壓低長債價格，不能視為現金替代品或保本資產。"}, "6023": {"name": "元大期貨", "aliases": ["元大期", "元大期貨"], "type": "期貨商個股", "source": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap04_O", "facts": "持有期貨公司股票，並非直接持有期貨合約。", "review": "留意交易量與手續費收入、利息收入、淨資本及增資後每股指標；資產負債表的客戶資金不可直接當成公司可支配現金。"}, "3293": {"name": "鈊象", "aliases": ["鈊象", "鈊象3293"], "type": "遊戲公司個股", "source": "https://www.igs.com.tw/investors/reports/", "facts": "現金流研究需使用合併現金流量表；本次未取得可核實的完整現金流量表，不提供現金流數值或估值結論。", "review": "跨期核對營業現金流與淨利、應收帳款、資本支出及股利支付；留意資安事件後續公告、營運中斷與額外成本有無實際證據。"}}, "quotes": {"0050": {"name": "元大台灣50", "close": 112.05, "change": 0.75, "date": "2026-09-30", "source": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL", "checkedAt": "2026-10-01T08:05:41+08:00"}, "006208": {"name": "富邦台50", "close": 256.3, "change": 1.1, "date": "2026-09-30", "source": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL", "checkedAt": "2026-10-01T08:05:41+08:00"}, "00679B": {"name": "元大美債20年", "close": 24.77, "change": 0.05, "date": "2026-09-30", "source": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes", "checkedAt": "2026-10-01T08:05:41+08:00"}, "3293": {"name": "鈊象", "close": 788.0, "change": 9.0, "date": "2026-09-30", "source": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes", "checkedAt": "2026-10-01T08:05:41+08:00"}, "6023": {"name": "元大期", "close": 85.0, "change": -1.0, "date": "2026-09-30", "source": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes", "checkedAt": "2026-10-01T08:05:41+08:00"}}, "events": {"6023": [{"date": "2026-09-29", "title": "元大期貨公告115年現金增資催繳股款期間屆滿暨\r\n催繳股份發放公告", "statement": "1.事實發生日:115/09/29\n2.公司名稱:元大期貨股份有限公司\n3.與公司關係(請輸入本公司或子公司):本公司\n4.相互持股比例:不適用\n5.發生緣由:本公司115年現金增資催繳股款期間自115年08月28日\n至115年09月29日下午3點30分止。\n6.因應措施:\n(1)未於催繳期間繳納股款之原股東即喪失認股權利。\n(2)於催繳期間繳納股款之原股東，所認購之股數將於115年10月\n07日劃撥至股東指定之集保帳戶。\n(3)若股東有任何疑問，請洽詢本公司股務代理機構元大證券股份\n有限公司股務代理部(臺北市大安區敦化南路2段67號地下1樓，\n電話：(02)2586-5859)。\n7.其他應敘明事項(若事件發生或決議之主體係屬公開發行以上公司，\n本則重大訊息同時符合證券交易法施行細則第7條第9款所定\n對股東權益或證券價格有重大影響之事項):無。", "source": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap04_O", "checkedAt": "2026-10-01T08:05:41+08:00", "summary": "公告涉及現金增資股款及新股發放；請核對認股權利與股數變化。股數更新前，勿假設原表已反映增資。"}], "3293": [{"date": "2026-09-29", "title": "本公司網路資安事件說明", "statement": "1.事實發生日:115/09/29\n2.發生緣由:本公司於115年9月29日發現不明IP異常侵入公司營運資訊設備。\n3.處理過程:本公司資安團隊於當日偵測發現後，隨即啟動資安緊急應變機制。\n4.預計可能損失或影響:目前評估對公司營運尚無重大影響。\n5.可能獲得保險理賠之金額:不適用。\n6.改善情形及未來因應措施:持續提升資安防禦，強化監控與防護層級。\n7.其他應敘明事項:無。", "source": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap04_O", "checkedAt": "2026-10-01T08:05:41+08:00", "summary": "公司於2026-09-29公告發現異常IP侵入並啟動應變；當時評估營運尚無重大影響。這是公司當時的說明，後續仍需查核。"}]}, "eventsCheckedAt": "2026-10-01T08:05:41+08:00", "eventsCoverage": "本次上市／上櫃重大訊息日資料快照；不是歷史全量搜尋，也不是盤中推播。無匹配不代表期間內無事件。", "overrides": [{"sourceCode": "006023", "sourceName": "元大期", "code": "6023", "name": "元大期貨", "confirmedBy": "使用者於2026-10-01確認6023.TWO；僅套用相同原始代號及名稱"}, {"sourceCode": "3029", "sourceName": "鈊象3293", "code": "3293", "name": "鈊象", "confirmedBy": "使用者於2026-10-01確認3293；僅套用相同原始代號及名稱"}], "financialCoverage": "本次未取得可核實的公司現金流量表；研究問題不代表已確認財務異常。", "reviewCheckedAt": "2026-10-01T08:05:41+08:00"}</script>
+<!-- HOLDINGS_DATA_END -->
+<script id="hub-knowledge-data" type="application/json">{"concepts": [{"category": "allocation", "title": "分散看曝險，不只看檔數", "meaning": "多種資產與持股可以降低部分集中風險，但不能消除市場損失。", "misconception": "買了數檔 ETF，仍可能重複持有相同大型公司或產業。", "action": "用同日成分權重查重疊，再把直接持股一起算入；資料不足時先列待查。", "sourceKey": "allocation", "sourceLabel": "SEC｜資產配置與分散"}, {"category": "allocation", "title": "再平衡是恢復風險配置", "meaning": "資產漲跌會使原本比重偏移，可透過調整部位或新資金恢復設定。", "misconception": "再平衡不是預言漲跌；目標比例也不會自動適合所有人。", "action": "先確認用途、期限與現金需求，再到本頁比較新資金投入及轉換部位。", "sourceKey": "allocation", "sourceLabel": "SEC｜資產配置與分散"}, {"category": "etf", "title": "配息與總報酬分開看", "meaning": "ETF 配息需看來源與配息後的淨值，不能只用年化配息率評估投資成果。", "misconception": "領到現金不等於同額新增獲利；高頻配息也不等於較高總報酬。", "action": "核對收益分配組成，使用相同期間、相同再投入假設的含息報酬比較。", "sourceKey": "dividend", "sourceLabel": "證交所｜ETF 收益分配概念"}, {"category": "etf", "title": "市價、淨值與折溢價", "meaning": "ETF 市價受供需影響，可能偏離基金淨值；報價、估計淨值時間需對齊。", "misconception": "折價不代表必賺套利，海外市場休市也可能影響參考淨值。", "action": "看買賣價差、流動性、淨值時間與標的市場開休市，再決定委託方式。", "sourceKey": "etf", "sourceLabel": "證交所｜ETF 特性與風險"}, {"category": "etf", "title": "低佣金不等於低總成本", "meaning": "每次交易費與每年持有費是不同成本，長期都會影響累積資產。", "misconception": "只比券商折數，容易漏看低收、基金內扣費與價差。", "action": "先核對交易稅費、基金內扣費與買賣價差，再用下方情境圖理解年度費率差距。", "sourceKey": "cost", "sourceLabel": "SEC｜投資費用影響"}, {"category": "allocation", "title": "定期定額是投入規則", "meaning": "定期投入固定金額，價格低時買到較多單位、高時較少。", "misconception": "它不保證獲利，也不代表任何時段都優於單筆投入。", "action": "區分每月新收入與已持有的整筆現金，設定能持續執行的金額及再檢視條件。", "sourceKey": "dca", "sourceLabel": "SEC｜Dollar Cost Averaging"}, {"category": "judgment", "title": "價值估計需要假設範圍", "meaning": "企業投資研究需了解可持續的獲利能力，並承認自己能理解的範圍。", "misconception": "便宜的股價或單一低本益比，並不足以證明被低估。", "action": "列出正常、保守情境與估值失效條件；若無法解釋企業如何賺錢，先補研究。", "sourceKey": "buffett", "sourceLabel": "Buffett｜2013 股東信"}, {"category": "judgment", "title": "績效要有可比的基準", "meaning": "比較管理成果時，需事先選定可行、風險與市場範圍相近的替代方案。", "misconception": "事後挑一個較弱指數，或只看存活基金的平均值，會誤判能力。", "action": "對齊期間、幣別、含息、費用及現金流。原 Sheets 單一報酬值不足以判定超額績效。", "sourceKey": "sharpe", "sourceLabel": "Sharpe｜1991 主動管理算術"}], "sources": {"allocation": "https://www.investor.gov/introduction-investing/getting-started/asset-allocation", "etf": "https://www.twse.com.tw/zh/products/securities/etf/overview/introduction.html", "dividend": "https://www.twse.com.tw/downloads/zh/ETF/concept06.pdf", "cost": "https://www.investor.gov/introduction-investing/general-resources/news-alerts/alerts-bulletins/investor-bulletins/updated", "dca": "https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging", "buffett": "https://www.berkshirehathaway.com/letters/2013ltr.pdf", "marks": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge", "sharpe": "https://web.stanford.edu/~wfsharpe/art/active/active.htm"}, "masters": [{"id": "buffett", "name": "Warren Buffett", "topic": "能力圈、企業價值與價格", "year": "1996 股東信｜1997 年發布", "summary": "投資前先辨認自己能理解的企業與能力圈邊界。股價與企業價值可能在短期走向不同；公司營運與可持續獲利需獨立研究。", "question": "若一年看不到股價，我能用哪些企業資料說明持有理由？", "boundary": "熟悉產品不代表能估值，優質企業也可能價格過高；不能把美國個案直接套用為臺股目標價。", "source": "https://www.berkshirehathaway.com/letters/1996.html", "label": "Berkshire Hathaway｜1996 股東信", "applications": {"company": {"question": "重大事件會影響收入、成本、客戶留存，還是只是短期市場情緒？哪些影響已被證實？", "action": "從公告、後續營收與財報交叉查核；營業現金流與淨利需使用同一期間。"}, "valuation": {"question": "股價上漲的速度，是否超過我能說明的企業獲利改善？", "action": "列出保守與一般情境及估值失效條件；缺少可靠資料時不給單一目標价。"}, "volatility": {"question": "今天改變的是價格，還是企業賺錢的能力？", "action": "先回查持有理由及新證據，避免只依買入成本或單日漲跌作決定。"}}}, {"id": "marks", "name": "Howard Marks", "topic": "預測限制與攻守平衡", "year": "2022 預測備忘錄；2024 配置備忘錄", "summary": "總體預測存在限制；配置應先決定能承受的風險及攻守平衡。較高風險帶來更寬的結果範圍，不保證較高實現報酬。", "question": "若最有信心的預測完全相反，我的資金用途與部位是否仍可承受？", "boundary": "攻守比例依期限、收入與現金需求而異；不能把原文對信用資產的討論當作長債ETF保本承諾。", "source": "https://www.oaktreecapital.com/insights/memo/ruminating-on-asset-allocation", "extraSource": "https://www.oaktreecapital.com/insights/memo/the-illusion-of-knowledge", "label": "Oaktree｜Ruminating on Asset Allocation", "applications": {"rates": {"question": "若利率不降，或匯率走向相反，長天期債券部位的損失與等待時間可以承受嗎？", "action": "核對最新存續期間、匯率曝險及資金用途，使用多個情境而非單一降息預測。"}, "allocation": {"question": "目前集中度是主動選擇，還是上漲後不知不覺累積的風險？", "action": "先補入現金與其他帳戶，再比較正常攻守比例與當前配置。"}, "volatility": {"question": "因行情變化增加風險，是因補償變好，還是因為怕錯過？", "action": "比較可承受損失與流動性需求；下跌不自動等於便宜。"}, "company": {"question": "公告裡哪些是已知事實，哪些是公司當時評估，哪些仍然未知？", "action": "列出需追蹤的後續公告及重新評估條件，不用樂觀或悲觀預測填補未知。"}}}, {"id": "sharpe", "name": "William F. Sharpe", "topic": "成本算術與可比的績效基準", "year": "The Arithmetic of Active Management｜1991", "summary": "在同一市場及其定義下，主動與被動資金費用前存在加權平均的算術關係；較高成本會壓低費用後結果。比較策略必須先對齊基準。", "question": "扣完全部成本後，調整策略的優勢是否仍有可驗證的依據？", "boundary": "這是市場群體的算術關係，不代表每位主動投資人都落後；買入成本差額不是完整含息投資績效。", "source": "https://web.stanford.edu/~wfsharpe/art/active/active.htm", "label": "Stanford｜作者原文", "applications": {"cost": {"question": "把兩檔相近ETF整併，節省的未來費用足以彌補交易稅費及價差嗎？", "action": "分開計算一次交易成本與年度持有費用；沒有持有期限與實際成本時不斷言換股划算。"}, "valuation": {"question": "目前看起來勝出的策略，使用的比較期間、幣別、含息與現金流是否一致？", "action": "事前選可行替代基準，避免事後挑選較弱基準來證明能力。"}, "allocation": {"question": "增加相同曝險的基金，帶來的是額外分散，還是重複成本？", "action": "核對同日成分、基金費用與交易價差；不能只按檔數判斷分散。"}}}, {"id": "markowitz", "name": "Harry M. Markowitz", "topic": "從單一標的，走向整體組合", "year": "Portfolio Selection｜1952；諾貝爾獎官方說明｜1990", "summary": "組合風險需考慮各資產的波動與彼此共同變動，而不只看單一資產風險。增加標的數量，不一定帶來相同程度的分散。", "question": "新增這筆部位，會減少整體共同風險，還是增加原有曝險？", "boundary": "歷史相關性可能改變；缺少同日成分與足夠歷史報酬，本頁不計算相關係數、有效前緣或最適比例。", "source": "https://www.nobelprize.org/prizes/economic-sciences/1990/press-release/", "label": "Nobel Foundation｜1990 投資組合理論說明", "applications": {"allocation": {"question": "0050與006208同時持有後，臺灣大型股與主要成分的曝險到底增加多少？", "action": "合併計算持股市值，再取得同日成分權重；補齊現金與其他帳戶後才判斷全資產分散。"}, "rates": {"question": "壓力情境下，股票與長債是否可能同時下跌？", "action": "同時考慮利率、匯率及股市下跌情境；不能假設歷史股債關係永久不變。"}, "company": {"question": "單一公司的事件若擴大，對整體資產造成多大損失？", "action": "先看部位大小與其他持股的相關曝險，再評估是否需要調整風險預算。"}}}, {"id": "kahneman", "name": "Daniel Kahneman", "topic": "參考點、損失厭惡與決策偏誤", "year": "Maps of Bounded Rationality｜2002 諾貝爾講座", "summary": "人們常以參考點感受盈虧，損失與同額收益的心理重量不同。這些行為傾向可能影響風險選擇，而不只是依最終財富作理性比較。", "question": "如果今天沒有這筆持股，我還會用同樣理由買進嗎？", "boundary": "行為理論描述一般傾向，不能診斷個人的心理狀態，也不構成自動停損或逢低加碼規則。", "source": "https://www.nobelprize.org/uploads/2018/06/kahnemann-lecture.pdf", "label": "Nobel Foundation｜Kahneman 原始講座", "applications": {"volatility": {"question": "想賣是因新證據，還是只想停止看見帳面損失？想加碼是因研究，還是想快點回本？", "action": "把買入成本暫時遮住，重新看資金用途、部位風險與替代選擇。"}, "company": {"question": "我是否只注意支持原本持有理由的公告，而略過相反訊息？", "action": "對同一事件同時列出支持與反對的證據，分開實際結果與管理層評估。"}, "valuation": {"question": "最近最鮮明的漲幅或熱門故事，是否取代了完整證據？", "action": "先找可量化的營收與現金流，再查反面案例，避免只因怕錯過追價。"}}}, {"id": "shiller", "name": "Robert J. Shiller", "topic": "价格波動、敘事與基本面證據", "year": "Speculative Asset Prices｜2013 講座；2014 修訂", "summary": "資產價格變動需同時研究基本面、預期及行為因素。市場故事可以影響判斷；價格波動不能直接被當成同等幅度的已實現營運變化。", "question": "這個市場故事，可以轉成哪些能被查證的獲利與現金流假設？", "boundary": "敘事或估值疑慮不提供泡沫轉折時點；本頁未計算CAPE，也不把美國市場估值門檻套在臺灣個股。", "source": "https://www.nobelprize.org/uploads/2018/06/shiller-lecture.pdf", "label": "Nobel Foundation｜Shiller 原始講座", "applications": {"valuation": {"question": "熱門題材的利多，究竟已反映在價格中多少？成長假設有哪些反例？", "action": "分開產業規模、公司實際取得的收入及市場給的估值，避免把題材等同獲利。"}, "volatility": {"question": "價格變動的解釋是新數據，還是沒有新證據的共同情緒？", "action": "回查原始公告與資料期間，不因媒體故事流行就斷言市場方向。"}, "company": {"question": "重大訊息的故事，與其可核實的現金流影响是否一致？", "action": "先看事件日期、後續實際結果與財務數據，避免把標題直接換算為公司價值。"}}}], "cases": {"etf": ["用途與風險：這筆資金何時要用？股票型核心仍可能大幅下跌。", "曝險：追蹤指數如何選股？與現有核心／衛星重疊多少？", "成本與交易：總費用、追蹤落差、買賣價差、折溢價是否合理？", "證據與紀律：從公開說明書及發行人資料核對，寫下重看配置的條件。"], "stock": ["生意與來源：收入靠什麼？先找最新財報、年報與重大訊息。", "品質與現金：跨期比較獲利、營業現金流、資本支出與負債，留意一次性項目。", "價格與假設：估值使用什麼期間、成長率與風險？保守情境是否仍可接受？", "反面證據：最可能讓判斷失效的是什麼？先限定研究範圍與可承受曝險。"], "news": ["原始依據：找到原公告、發布日期與事件期間，不把轉述當事實。", "傳導路徑：它會如何影響企業收入、成本、資產負債或折現假設？", "是否新增：市場原本知道什麼？不要只因標題正面就假定仍有超額報酬。", "採取行動前：回看配置規則、現金用途與相反證據；可先列觀察，不必立即交易。"]}}</script>
 <script>(()=>{'use strict';
 const $=id=>document.getElementById(id),news=JSON.parse($('hub-news-data').textContent),knowledge=JSON.parse($('hub-knowledge-data').textContent);
 const node=(tag,text,cls)=>{const e=document.createElement(tag);if(text!==undefined)e.textContent=text;if(cls)e.className=cls;return e;};
 const link=(text,url)=>{const a=node('a',text);if(/^https:\/\//.test(url)){a.href=url;a.target='_blank';a.rel='noopener noreferrer';}return a;};
 const categories={market:'市場與資金',industry:'產業研究',company:'公司與法說',allocation:'配置與風險',etf:'ETF 與成本',judgment:'判斷與績效'};
-function useTopic(topic,evidence=''){const prefix=$('hub-topic').value.trim();$('hub-topic').value=prefix?prefix+'；'+topic:topic;if(evidence)$('hub-evidence').value+=($('hub-evidence').value?'\n':'')+evidence;$('decision').scrollIntoView({behavior:'smooth'});$('hub-topic').focus({preventScroll:true});}
 function renderNews(){
  const age=(Date.now()-Date.parse(news.checkedAt))/86400000;const bad=!Number.isFinite(age)||age<0||age>8;
  const status=$('hub-news-time');status.classList.toggle('hub-warn',bad);status.textContent=(bad?'這份快照已超過更新檢視期限，請以官網最新公告為準。 ':'')+'查核：'+new Date(news.checkedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false})+'（臺北）。'+news.coverage+' 每週六 02:30 排程查核。';
  const list=$('hub-news');list.replaceChildren();const rows=news.news.filter(r=>$('hub-news-filter').value==='all'||r.category===$('hub-news-filter').value);
- rows.forEach(r=>{const c=node('article',undefined,'card hub-card');c.append(node('div',categories[r.category]+' · 公告 '+r.publishedAt,'hub-tag'),node('h3',r.title),node('p','下一步查核：'+r.prompt,'hub-note'));const a=node('div',undefined,'hub-action');a.append(link('證交所原公告 ↗',r.source));const b=node('button','帶入決策筆記');b.type='button';b.addEventListener('click',()=>useTopic(r.title,`公告日期：${r.publishedAt}\n來源：${r.source}\n待確認：${r.prompt}`));a.append(node('br'),b);c.append(a);list.append(c);});if(!rows.length)list.append(node('p','目前快照沒有此主題的公告。','muted'));
+ rows.forEach(r=>{const c=node('article',undefined,'card hub-card');c.append(node('div',categories[r.category]+' · 公告 '+r.publishedAt,'hub-tag'),node('h3',r.title),node('p','下一步查核：'+r.prompt,'hub-note'));const a=node('div',undefined,'hub-action');a.append(link('證交所原公告 ↗',r.source));c.append(a);list.append(c);});if(!rows.length)list.append(node('p','目前快照沒有此主題的公告。','muted'));
 }
 function renderConcepts(){const q=$('hub-search').value.trim().toLowerCase(),cat=$('hub-concept-filter').value;const rows=knowledge.concepts.filter(r=>(cat==='all'||r.category===cat)&&[r.title,r.meaning,r.misconception,r.action].join(' ').toLowerCase().includes(q));const list=$('hub-concepts');list.replaceChildren();$('hub-concept-count').textContent=`顯示 ${rows.length} / ${knowledge.concepts.length} 個概念`;
  rows.forEach(r=>{const a=node('article',undefined,'card hub-card');a.append(node('small',categories[r.category],'hub-tag'),node('h3',r.title),node('p',r.meaning));const d=node('details');d.append(node('summary','常見誤解與查核行動'),node('p','容易誤解：'+r.misconception,'hub-meta'),node('p','實作：'+r.action,'hub-note'));a.append(d);const f=node('div',undefined,'hub-source hub-action');f.append(link(r.sourceLabel+' ↗',knowledge.sources[r.sourceKey]));a.append(f);list.append(a);});if(!rows.length)list.append(node('p','找不到符合的概念，請調整搜尋文字或主題。','muted'));
 }
 function renderCase(){const list=$('hub-questions');list.replaceChildren();knowledge.cases[$('hub-case').value].forEach(t=>list.append(node('li',t)));}
-knowledge.masters.forEach(r=>{const a=node('article',undefined,'card hub-card');a.append(node('div',r.name,'hub-tag'),node('h3',r.topic),node('small',r.year,'hub-meta'),node('p',r.summary),node('p','問自己：'+r.question,'hub-note'));const d=node('details');d.append(node('summary','適用邊界'),node('p',r.boundary,'hub-meta'));a.append(d);const f=node('div',undefined,'hub-source hub-action');f.append(link(r.label+' ↗',r.source));const b=node('button','用這個問題寫筆記');b.type='button';b.addEventListener('click',()=>useTopic(r.question));f.append(node('br'),b);a.append(f);$('hub-masters').append(a);});
+const situations={company:'公司重大訊息／財報',allocation:'集中曝險／配置',rates:'利率與匯率',volatility:'漲跌與情緒',valuation:'題材與估值',cost:'成本與績效'};
+const holdings=JSON.parse($('holdings-data').textContent);
+let holdingsContext=null;
+const ageNote=v=>{const t=Date.parse(v);return !Number.isFinite(t)||t>Date.now()+300000||Date.now()-t>8*86400000?'（舊快照，待重新查核）':'';};
+function application(r,key){const item=r.applications[key],block=node('div',undefined,'master-application');block.append(node('p',situations[key],'master-label'),node('p','視角問題：'+item.question,'hub-note'),node('p','查核建議：'+item.action,'hub-meta'));return block;}
+function renderMasters(){const selected=$('master-situation').value,rows=knowledge.masters.filter(r=>selected==='all'||r.applications[selected]);$('hub-masters').replaceChildren();$('master-count').textContent='顯示 '+rows.length+' / '+knowledge.masters.length+' 種研究視角；情境提問為本頁应用。';
+ rows.forEach(r=>{const card=node('article',undefined,'card hub-card');card.append(node('div',r.name,'hub-tag'),node('h3',r.topic),node('small',r.year,'hub-meta'),node('p',r.summary),node('p','核心問題：'+r.question,'hub-note'));
+ if(selected==='all'){const d=node('details');d.append(node('summary','查看 '+Object.keys(r.applications).length+' 種市場情境問題'));Object.keys(r.applications).forEach(key=>d.append(application(r,key)));card.append(d);}else card.append(application(r,selected));
+ const bound=node('details');bound.append(node('summary','適用邊界'),node('p',r.boundary,'hub-meta'));card.append(bound);const foot=node('div',undefined,'hub-source');foot.append(link(r.label+' ↗',r.source));if(r.extraSource)foot.append(node('br'),link('預測限制原始備忘錄 ↗',r.extraSource));card.append(foot);$('hub-masters').append(card);});renderMasterContext();}
+function snapshotRows(){return holdings.sourceRows.map(raw=>{const original=String(raw['股票代號']),name=String(raw['股票名稱']),ov=holdings.overrides.find(x=>x.sourceCode===original&&x.sourceName===name),code=ov?ov.code:original,spec=holdings.registry[code];return {code,name:spec?.name||name,sheet:Number(String(raw['目前價']).replaceAll(',','')),qty:Number(String(raw['庫存股數']).replaceAll(',','')),verified:!!spec&&(!!ov||spec.aliases.includes(name))};});}
+function renderMasterContext(){
+ const selected=$('master-situation').value,rows=(holdingsContext?.rows||snapshotRows()).filter(r=>r.qty>0),checkedAt=holdingsContext?.loadedAt||holdings.csvCheckedAt,valid=rows.filter(r=>Number.isFinite(r.sheet)&&Number.isFinite(r.qty)&&r.sheet>=0&&r.qty>=0),total=valid.reduce((s,r)=>s+r.sheet*r.qty,0),cases=[];
+ const time=new Date(checkedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei',hour12:false});$('master-context-status').textContent='持股 CSV 讀取：'+time+ageNote(checkedAt)+'；原表未提供估值日期。官方事件查核：'+new Date(holdings.eventsCheckedAt).toLocaleString('zh-TW',{timeZone:'Asia/Taipei'})+ageNote(holdings.eventsCheckedAt)+'。原始理論年份與事件日期分開列示。';
+ const tw=valid.filter(r=>r.verified&&['0050','006208'].includes(r.code));if(tw.length&&total>0)cases.push({kind:'allocation',title:'臺灣50共同曝險',fact:tw.map(r=>r.code).join('＋')+' 合計占所列持股 '+(tw.reduce((s,r)=>s+r.sheet*r.qty,0)/total*100).toFixed(2)+'%；非全資產占比，也非底層重疊率。',source:holdings.registry['006208'].source,lenses:['markowitz','marks']});
+ rows.filter(r=>r.verified&&['3293','6023'].includes(r.code)).forEach(r=>{const events=holdings.events[r.code]||[];events.forEach(event=>cases.push({kind:'company',title:r.code+' '+r.name+'｜'+event.date+' 公告',fact:event.title.replace(/\s+/g,' ')+'。'+(event.summary||'應核對官方原文及後續揭露。')+ageNote(event.checkedAt),source:event.source,lenses:['buffett','marks','kahneman']}));});
+ if(rows.some(r=>r.verified&&r.code==='00679B'))cases.push({kind:'rates',title:'00679B｜利率與匯率情境',fact:'已持有長天期美國公債ETF。此處提出利率與匯率走向相反的假設問題，未宣稱近期政策已轉向。',source:holdings.registry['00679B'].source,lenses:['marks','markowitz']});
+ if(['volatility','valuation','cost'].includes(selected))cases.push({kind:selected,title:situations[selected]+'｜待驗證情境',fact:'這是條件式研究問題，並非已確認今日大盤大漲大跌、出現泡沫，或特定策略已勝出。',source:knowledge.masters.find(r=>selected==='cost'?r.id==='sharpe':r.id==='shiller').source,lenses:selected==='cost'?['sharpe']:['buffett','kahneman','shiller']});
+ const filtered=cases.filter(c=>selected==='all'||selected===c.kind),list=$('master-context');list.replaceChildren();filtered.forEach(c=>{const card=node('article',undefined,'card hub-card');card.append(node('div',situations[c.kind],'hub-tag'),node('h3',c.title),node('p',c.fact,'master-context-fact'));const ul=node('ul',undefined,'master-questions');c.lenses.slice(0,2).forEach(id=>{const m=knowledge.masters.find(m=>m.id===id),a=m?.applications[c.kind];if(a)ul.append(node('li',m.name+'：'+a.question));});card.append(ul,link('核對原始來源 ↗',c.source));list.append(card);});if(!filtered.length)list.append(node('p','目前已查核持股快照沒有此類事件；可用下方情境提問研究，不推定事件已發生。','muted'));
+}
+$('master-situation').addEventListener('change',renderMasters);
+window.addEventListener('wealth:holdings',event=>{holdingsContext=event.detail;renderMasterContext();});
+renderMasters();
+
 function costPath(principal,annual,fee,years){return Array.from({length:years+1},(_,i)=>principal*Math.pow((1+annual)*(1-fee),i));}
 function recoveryPct(loss){return 100*loss/(100-loss);}
 const currency=n=>new Intl.NumberFormat('zh-TW',{maximumFractionDigits:0}).format(n);
@@ -1032,14 +241,11 @@ function renderCosts(){
  $('lab-values').textContent=`本金 ${currency(p)} 元；A（年費 ${a}%）期末 ${currency(A[y])} 元，B（年費 ${b}%）期末 ${currency(B[y])} 元。固定報酬情境，不代表能達成此報酬。`;
 }
 function renderLoss(){const n=Number($('lab-loss').value);$('lab-loss-label').textContent=n+'%';$('lab-loss-bar').style.width=n+'%';$('lab-recovery').textContent='需上漲 '+recoveryPct(n).toFixed(1)+'% 才回本';}
-$('hub-export').addEventListener('click',()=>{const topic=$('hub-topic').value.trim();if(!topic){$('hub-export-status').textContent='請先填寫研究問題／標的。';$('hub-topic').focus();return;}const t=['投資決策筆記｜'+new Date().toLocaleString('zh-TW',{timeZone:'Asia/Taipei'}),'問題：'+topic,'事實／來源／日期：\n'+$('hub-evidence').value,'解讀與反證：\n'+$('hub-thesis').value,'下一步與重看條件：\n'+$('hub-next').value].join('\n\n');const url=URL.createObjectURL(new Blob(['\ufeff'+t],{type:'text/plain;charset=utf-8'}));const a=node('a');a.href=url;a.download='投資決策筆記-'+new Date().toISOString().slice(0,10)+'.txt';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);$('hub-export-status').textContent='已建立下載；未自動寫入試算表。';});
 $('hub-news-filter').addEventListener('change',renderNews);$('hub-case').addEventListener('change',renderCase);$('hub-search').addEventListener('input',renderConcepts);$('hub-concept-filter').addEventListener('change',renderConcepts);['lab-principal','lab-return','lab-years','lab-fee-a','lab-fee-b'].forEach(id=>$(id).addEventListener('input',renderCosts));$('lab-loss').addEventListener('input',renderLoss);
 renderNews();renderCase();renderConcepts();renderCosts();renderLoss();setInterval(renderNews,60000);
 })();
 </script>
-<!-- HOLDINGS_DATA_START -->
-<script id="holdings-data" type="application/json">{"schemaVersion": 1, "updatedAt": "2026-10-01T08:05:41+08:00", "csvCheckedAt": "2026-10-01T08:05:41+08:00", "csvSource": "https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pub?gid=840076836&single=true&output=csv", "sheetSource": "https://docs.google.com/spreadsheets/d/e/2PACX-1vS6T5m87sEPBaESEySrmLlspvI_mc2RjZmq5u5XPLueW1fynwb57_N8bBUF8IvfSpB0d1oeQby_qkOx/pubhtml?gid=840076836&single=true", "sourceRows": [{"股票代號": "006208", "股票名稱": "富邦台50", "買入價": "225.83", "目前價": "256.30", "庫存股數": "308"}, {"股票代號": "0050", "股票名稱": "元大台灣50", "買入價": "105.05", "目前價": "112.05", "庫存股數": "1,456"}, {"股票代號": "00679B", "股票名稱": "元大美債20年", "買入價": "26.42", "目前價": "24.77", "庫存股數": "700"}, {"股票代號": "006023", "股票名稱": "元大期", "買入價": "83.33", "目前價": "85.00", "庫存股數": "131"}, {"股票代號": "3029", "股票名稱": "鈊象3293", "買入價": "741.37", "目前價": "788.00", "庫存股數": "30"}], "registry": {"006208": {"name": "富邦台50", "aliases": ["富邦台50"], "type": "台灣50股票ETF", "source": "https://www.twse.com.tw/zh/ETFortune-institute/etfInfo/006208", "facts": "追蹤臺灣50指數；與0050屬同一指數曝險。", "review": "核對基金費用、追蹤落差、折溢價及前十大持股；兩檔合計檢視，避免把基金檔數當成市場分散。"}, "0050": {"name": "元大台灣50", "aliases": ["元大台灣50"], "type": "台灣50股票ETF", "source": "https://www.yuantaetfs.com/product/detail/0050/Basic_information", "facts": "追蹤臺灣50指數；與006208屬同一指數曝險。", "review": "以相同日期比較0050與006208的費用及交易價差；賣出整併前計入稅費，不能只因費率差就換股。"}, "00679B": {"name": "元大美債20年", "aliases": ["元大美債20年"], "type": "長天期美國公債ETF", "source": "https://www.yuantaetfs.com/product/detail/00679B/Basic_information", "facts": "追蹤20年以上美國公債相關指數；台幣交易仍應留意債券利率及匯率曝險。", "review": "核對最新存續期間、殖利率、匯率與基金配息來源；殖利率上升可能壓低長債價格，不能視為現金替代品或保本資產。"}, "6023": {"name": "元大期貨", "aliases": ["元大期", "元大期貨"], "type": "期貨商個股", "source": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap04_O", "facts": "持有期貨公司股票，並非直接持有期貨合約。", "review": "留意交易量與手續費收入、利息收入、淨資本及增資後每股指標；資產負債表的客戶資金不可直接當成公司可支配現金。"}, "3293": {"name": "鈊象", "aliases": ["鈊象", "鈊象3293"], "type": "遊戲公司個股", "source": "https://www.igs.com.tw/investors/reports/", "facts": "現金流研究需使用合併現金流量表；本次未取得可核實的完整現金流量表，不提供現金流數值或估值結論。", "review": "跨期核對營業現金流與淨利、應收帳款、資本支出及股利支付；留意資安事件後續公告、營運中斷與額外成本有無實際證據。"}}, "quotes": {"0050": {"name": "元大台灣50", "close": 112.05, "change": 0.75, "date": "2026-09-30", "source": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL", "checkedAt": "2026-10-01T08:05:41+08:00"}, "006208": {"name": "富邦台50", "close": 256.3, "change": 1.1, "date": "2026-09-30", "source": "https://openapi.twse.com.tw/v1/exchangeReport/STOCK_DAY_ALL", "checkedAt": "2026-10-01T08:05:41+08:00"}, "00679B": {"name": "元大美債20年", "close": 24.77, "change": 0.05, "date": "2026-09-30", "source": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes", "checkedAt": "2026-10-01T08:05:41+08:00"}, "3293": {"name": "鈊象", "close": 788.0, "change": 9.0, "date": "2026-09-30", "source": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes", "checkedAt": "2026-10-01T08:05:41+08:00"}, "6023": {"name": "元大期", "close": 85.0, "change": -1.0, "date": "2026-09-30", "source": "https://www.tpex.org.tw/openapi/v1/tpex_mainboard_quotes", "checkedAt": "2026-10-01T08:05:41+08:00"}}, "events": {"6023": [{"date": "2026-09-29", "title": "元大期貨公告115年現金增資催繳股款期間屆滿暨\r\n催繳股份發放公告", "statement": "1.事實發生日:115/09/29\n2.公司名稱:元大期貨股份有限公司\n3.與公司關係(請輸入本公司或子公司):本公司\n4.相互持股比例:不適用\n5.發生緣由:本公司115年現金增資催繳股款期間自115年08月28日\n至115年09月29日下午3點30分止。\n6.因應措施:\n(1)未於催繳期間繳納股款之原股東即喪失認股權利。\n(2)於催繳期間繳納股款之原股東，所認購之股數將於115年10月\n07日劃撥至股東指定之集保帳戶。\n(3)若股東有任何疑問，請洽詢本公司股務代理機構元大證券股份\n有限公司股務代理部(臺北市大安區敦化南路2段67號地下1樓，\n電話：(02)2586-5859)。\n7.其他應敘明事項(若事件發生或決議之主體係屬公開發行以上公司，\n本則重大訊息同時符合證券交易法施行細則第7條第9款所定\n對股東權益或證券價格有重大影響之事項):無。", "source": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap04_O", "checkedAt": "2026-10-01T08:05:41+08:00", "summary": "公告涉及現金增資股款及新股發放；請核對認股權利與股數變化。股數更新前，勿假設原表已反映增資。"}], "3293": [{"date": "2026-09-29", "title": "本公司網路資安事件說明", "statement": "1.事實發生日:115/09/29\n2.發生緣由:本公司於115年9月29日發現不明IP異常侵入公司營運資訊設備。\n3.處理過程:本公司資安團隊於當日偵測發現後，隨即啟動資安緊急應變機制。\n4.預計可能損失或影響:目前評估對公司營運尚無重大影響。\n5.可能獲得保險理賠之金額:不適用。\n6.改善情形及未來因應措施:持續提升資安防禦，強化監控與防護層級。\n7.其他應敘明事項:無。", "source": "https://www.tpex.org.tw/openapi/v1/mopsfin_t187ap04_O", "checkedAt": "2026-10-01T08:05:41+08:00", "summary": "公司於2026-09-29公告發現異常IP侵入並啟動應變；當時評估營運尚無重大影響。這是公司當時的說明，後續仍需查核。"}]}, "eventsCheckedAt": "2026-10-01T08:05:41+08:00", "eventsCoverage": "本次上市／上櫃重大訊息日資料快照；不是歷史全量搜尋，也不是盤中推播。無匹配不代表期間內無事件。", "overrides": [{"sourceCode": "006023", "sourceName": "元大期", "code": "6023", "name": "元大期貨", "confirmedBy": "使用者於2026-10-01確認6023.TWO；僅套用相同原始代號及名稱"}, {"sourceCode": "3029", "sourceName": "鈊象3293", "code": "3293", "name": "鈊象", "confirmedBy": "使用者於2026-10-01確認3293；僅套用相同原始代號及名稱"}], "financialCoverage": "本次未取得可核實的公司現金流量表；研究問題不代表已確認財務異常。", "reviewCheckedAt": "2026-10-01T08:05:41+08:00"}</script>
-<!-- HOLDINGS_DATA_END -->
+
 <script>
 (()=>{
 'use strict';
@@ -1101,10 +307,11 @@ function render(){
  if(q){const diff=r.sheet>0?(q.close-r.sheet)/r.sheet*100:null;appendNote(card,'價格判讀',r.sheet===q.close?'試算表價格與 '+q.date+' 收盤相同；單日漲跌不足以判定企業價值或決定加減碼。':diff===null?'試算表價格為0，無法計算與收盤價的差距。':'官方 '+q.date+' 收盤與原表價相差 '+pc(diff)+'；先核對估值日、除權息及成本欄位。'+(Math.abs(diff)>=2?'達本頁2%資料核對門檻，並非買賣訊號。':''));}
  if(r.code==='3293'||r.code==='6023')appendNote(card,'財務資料邊界',H.financialCoverage);
  card.append(link('研究原始來源 ↗',r.spec.source),mk('small','研究查核 '+time(H.reviewCheckedAt),'muted'));
- const b=mk('button','加入決策筆記');b.type='button';b.addEventListener('click',()=>{const topic=el('hub-topic'),evidence=el('hub-evidence');topic.value=(topic.value?topic.value+'；':'')+r.code+' '+r.name+'：'+r.spec.review;evidence.value+=(evidence.value?'\n':'')+'持股資料：'+H.csvSource+'\nCSV讀取：'+time(loadedAt)+'（原表未提供估值日）\n研究查核：'+time(H.reviewCheckedAt)+'\n研究來源：'+r.spec.source+(q?'\n官方收盤：'+q.date+' NT$ '+q.close+' '+q.source:'')+events.map(e=>'\n公告：'+e.date+' '+e.title+' '+e.source).join('');el('decision').scrollIntoView({behavior:'smooth'});topic.focus({preventScroll:true});});card.append(mk('br'),b);notes.append(card);
+ notes.append(card);
  });
  const audit=el('holdings-audit');audit.replaceChildren(mk('p','持股來源：'+origin+'；讀取／核實 '+time(loadedAt)+'。原表沒有行情時間欄位。'),link('公開 CSV ↗',H.csvSource),mk('p','代號對應：006023／元大期 → 6023 元大期貨；3029／鈊象3293 → 3293 鈊象，依您於2026-10-01的確認，僅套用完全相同原始代號及名稱；新標的不猜測。'),mk('p',H.financialCoverage));
  issues.forEach(x=>audit.append(mk('p',x,'holdings-unavailable')));
+ window.dispatchEvent(new CustomEvent('wealth:holdings',{detail:{rows,loadedAt,origin}}));
  if(issues.length)el('holdings-status').textContent='有 '+issues.length+' 筆未納入加總，請展開資料來源查看原因。';
 }
 async function refresh(){if(busy)return;busy=true;const button=el('holdings-refresh');button.disabled=true;el('holdings-status').textContent='正在讀取公開持股 CSV…';const controller=new AbortController(),timer=setTimeout(()=>controller.abort(),15000);try{const u=new URL(H.csvSource);u.searchParams.set('_ts',Date.now());const res=await fetch(u,{cache:'no-store',signal:controller.signal});if(!res.ok)throw Error('HTTP '+res.status);const next=parseCSV(await res.text()),check=normalize(next);if(check.issues.length)throw Error('有 '+check.issues.length+' 筆欄位或數值異常');raw=next;loadedAt=new Date().toISOString();origin='Google Sheets 最新公開 CSV';el('holdings-status').textContent='CSV 同步成功：'+time(loadedAt)+'。配置與提醒已重算；官方行情／公告仍使用下列已發布快照日期。';render();}catch(e){el('holdings-status').textContent='同步失敗，保留原持股與日期：'+(e.name==='AbortError'?'讀取逾時':e.message)+'。可另開 SHEET 核對。';}finally{clearTimeout(timer);busy=false;button.disabled=false;}}
