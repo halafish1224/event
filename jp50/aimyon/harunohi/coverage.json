@@ -5,33 +5,16 @@
   "source_of_truth": "content.mjs",
   "content_schema_version": "unchanged",
   "coverage": {
-    "structure": {
-      "status": "verified",
-      "source_rows": 58,
-      "stable_sentence_ids": 58
-    },
-    "sentence_analysis": {
-      "status": "verified",
-      "covered": 58,
-      "total": 58
-    },
-    "grammar": {
-      "status": "verified",
-      "items": 29
-    },
-    "vocabulary": {
-      "status": "verified",
-      "items": 48
-    },
-    "retrieval_practice": {
-      "status": "verified",
-      "items": 16
-    },
+    "structure": {"status": "verified", "source_rows": 58, "stable_sentence_ids": 58},
+    "sentence_analysis": {"status": "verified", "covered": 58, "total": 58},
+    "grammar": {"status": "verified", "items": 29},
+    "vocabulary": {"status": "verified", "items": 48},
+    "retrieval_practice": {"status": "verified", "items": 16},
     "cross_song_links": {
       "status": "partial",
-      "source": "map-extension.mjs",
-      "audited_concepts": 20,
-      "audit_scope": "17 existing learning-map concepts receive a Harunohi reference; 3 Harunohi concepts each include Harunohi plus another-song references.",
+      "source": "map-extension.mjs + downstream extensions",
+      "audited_concepts": 21,
+      "audit_scope": "17 existing learning-map concepts receive a Harunohi reference; 3 Harunohi concepts each include Harunohi plus another-song reference; the downstream あなたのために tabini concept reciprocally links back to Harunohi g-toki.",
       "note": "This is an audited concept count, not a completion percentage. Keep status partial until the full learning-map is audited for reciprocal navigation and missing concepts."
     }
   },
