@@ -22,7 +22,6 @@
     ]
   },
   "next_batch": [
-    "L11",
     "L12",
     "L13",
     "L14",
@@ -35,7 +34,8 @@
     "Retrieval pauses are production defaults and may be tuned after pilot listening.",
     "No full copyrighted lyrics are included.",
     "Unit 1 track MD and listen HTML are complete; per-lesson Aurader TXT for L01–L05 and UR1 are not yet published.",
-    "Unit 2 Aurader TXT is complete for L06–L10 and UR2; corresponding listen HTML and track MD are not yet published."
+    "Unit 2 Aurader TXT is complete for L06–L10 and UR2; corresponding listen HTML and track MD are not yet published.",
+    "Unit 3 Aurader TXT production has started with L11."
   ],
   "aurader_txt_completed": [
     "L06",
@@ -43,7 +43,8 @@
     "L08",
     "L09",
     "L10",
-    "UR2"
+    "UR2",
+    "L11"
   ],
-  "aurader_txt_next": "L11"
+  "aurader_txt_next": "L12"
 }
