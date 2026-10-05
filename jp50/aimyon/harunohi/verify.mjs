@@ -46,6 +46,7 @@ assert.equal(coverage.coverage.grammar.items,grammar.split('\n').length);
 assert.equal(coverage.coverage.vocabulary.items,words.split('\n').length);
 assert.equal(coverage.coverage.retrieval_practice.items,practice.length);
 assert.equal(coverage.coverage.cross_song_links.status,'partial');
+assert.equal(coverage.coverage.cross_song_links.audited_concepts,own.length);
 assert.equal(coverage.sentence_ids.length,lines.length);
 assert.equal(new Set(coverage.sentence_ids).size,coverage.sentence_ids.length);
 coverage.sentence_ids.forEach((id,i)=>assert.equal(id,`harunohi-s${String(i+1).padStart(3,'0')}`));
