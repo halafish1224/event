@@ -22,7 +22,7 @@
     ]
   },
   "next_batch": [
-    "L16"
+    "L17"
   ],
   "audio_render_status": "not_started",
   "notes": [
@@ -31,7 +31,7 @@
     "No full copyrighted lyrics are included.",
     "Unit 1 track MD and listen HTML are complete; per-lesson Aurader TXT for L01–L05 and UR1 are not yet published.",
     "Unit 2 Aurader TXT is complete for L06–L10 and UR2; corresponding listen HTML and track MD are not yet published.",
-    "Unit 3 Aurader TXT is complete for L11–L15 and UR3; L16 is next."
+    "Unit 3 Aurader TXT is complete for L11–L15 and UR3; Unit 4 has started with L16, and L17 is next."
   ],
   "aurader_txt_completed": [
     "L06",
@@ -45,7 +45,8 @@
     "L13",
     "L14",
     "L15",
-    "UR3"
+    "UR3",
+    "L16"
   ],
-  "aurader_txt_next": "L16"
+  "aurader_txt_next": "L17"
 }
