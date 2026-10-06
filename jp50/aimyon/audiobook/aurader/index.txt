@@ -1,5 +1,5 @@
 AIMYON Japanese｜Aurader 純文字教材製作索引
-更新：2026-10-05
+更新：2026-10-06
 
 規格：UTF-8 純文字／繁體中文＋日文／Audio First＋Retrieval Practice
 
@@ -18,13 +18,14 @@ L14：lesson-14.txt｜ナ形容詞｜完成。
 L15：lesson-15.txt｜～すぎる｜完成。
 UR3：unit-review-03.txt｜Unit 3 Adjective Review｜完成。
 L16：lesson-16.txt｜～ながら｜完成。
+L17：lesson-17.txt｜～たり～たりする｜完成。
 
 下一個目標：
-L17｜～たり～たりする
-重點：列舉代表性動作、た形＋り、句尾する的時態，並回接 L09 た形。
+L18｜～てみる
+重點：て形＋みる表示嘗試，回接 L08，並辨析實義動詞 見る 與補助用法 ～てみる。
 
 後續順序：
-L17～L20 → UR4 → L21～L25 → UR5 → L26～L30 → UR6
+L18～L20 → UR4 → L21～L25 → UR5 → L26～L30 → UR6
 
 版權原則：
 不建立可重組的完整 AIMYON 歌詞全文資料庫。歌曲僅作語意、文法與聽力任務索引；教學例句採原創內容。
