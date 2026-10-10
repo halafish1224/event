@@ -26,11 +26,28 @@ document.getElementById('clear-search').addEventListener('click', () => {
   filterWords();
   search.focus();
 });
+// Progressive enhancement: expose the audited stable IDs without changing #l-* links.
+// Only bind when the original 58 cards are present in their expected order.
+function bindHarunohiStableAnchors() {
+  if (!/\/harunohi\/(?:index\.html)?$/.test(location.pathname)) return;
+  const cards = [...document.querySelectorAll('article.line')];
+  if (cards.length !== 58 || cards.some((card, i) =>
+    card.id !== `l-${i + 1}` || !card.querySelector('.meta'))) return;
+  cards.forEach((card, i) => {
+    const meta = card.querySelector('.meta');
+    if (!meta.id) meta.id = `harunohi-s${String(i + 1).padStart(3, '0')}`;
+  });
+}
+bindHarunohiStableAnchors();
+
 function revealTarget() {
   let id;
   try { id = decodeURIComponent(location.hash.slice(1)); } catch { return; }
   const target = document.getElementById(id);
   if (!target) return;
+  if (/^harunohi-s\d{3}$/.test(id) && /\/harunohi\/(?:index\.html)?$/.test(location.pathname)) {
+    target.scrollIntoView({ block: 'start' });
+  }
   if (target.classList.contains('word') && target.hidden) {
     search.value = '';
     filterWords();
