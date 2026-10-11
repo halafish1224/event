@@ -1,6 +1,6 @@
 # Tae Kim 對照速學
 
-版本 1.1.0，2026-10-12。先採 Tae Kim 首頁推薦的 Complete Guide，以原創繁中短句、回想題與本站單課對照補強基礎；不鏡像或逐字翻譯原站。
+版本 1.2.0，2026-10-12。先採 Tae Kim 首頁推薦的 Complete Guide，以原創繁中短句、回想題與本站單課對照補強基礎；不鏡像或逐字翻譯原站。
 
 ## 已完成範圍
 
@@ -12,12 +12,15 @@
 | TK01 | adjectives：い／ナ名詞修飾 | L11、L14、形容詞總覽 |
 | TK02 | noun-links：名詞之間的 の | L01、L04、心詞彙 |
 | TK02 | noun-lists：名詞列舉 と／や | L02、L17、歌曲清單 |
+| TK03 | verb-types：動詞分類與辭書形 | L06、L07 |
+| TK03 | verb-object：動作對象 を | L04、の速學卡 |
+| TK03 | verb-place：到達點 に／動作場所 で | L06、L18 |
 
 每組有一句規則、兩個帶假名的原創例句、一題可展開答案的回想及歌曲拆讀任務。依原站適合短例句的範圍選材，不宣稱完整移植其章節或 JLPT 等級認證。原站原文連結保留在每張卡。
 
 ## 建置與串連
 
-以 batch-01.json、batch-02.json 為內容來源：
+以 batch-01.json、batch-02.json、batch-03.json 為內容來源：
 
     node jp50/tae-kim/build.mjs
 
@@ -35,11 +38,14 @@ JP50 主入口、AIMYON 字卡首頁、30 課列表、聽讀首頁與集中下�
 - https://guidetojapanese.org/learn/complete/adjectives
 - https://guidetojapanese.org/learn/complete/no_particle
 - https://guidetojapanese.org/learn/complete/multiple_nouns
+- https://guidetojapanese.org/learn/complete/verbs
+- https://guidetojapanese.org/learn/complete/negativeverbs
+- https://guidetojapanese.org/learn/complete/verb_particles
 
 ## 下次更新
 
-TK03：先核對動詞分類、辭書形及動作助詞 を／に／で，銜接既有 L06～L10；較長的活用解釋以現有課程為主。未核對的內容維持 pending，不預先標記完成。
+TK03 已完成動詞分類、を與に／で三卡，銜接 L04、L06、L07、L18。下一批 TK04 核對ある／いる及存在位置。未核對的內容維持 pending，不預先標記完成。
 
 import-state.json 記錄本功能進度。Aurader 生產進度保持獨立，下一課仍為 L20；新增速學卡不代表完成該課。
 
-使用者預設要求每批約算力 10%；無法量測時單次主動作業最多 420 秒，先保存材料及下一步，等使用者說「繼續」再恢復。本次使用者明確授權今晚任務可執行 21 分鐘，故本次上限為 1260 秒，後續未另行授權的批次仍沿用 7 分鐘規則。
+使用者預設要求每批約算力 10%；無法量測時單次主動作業最多 420 秒，先保存材料及下一步，等使用者說「繼續」再恢復。前次 21 分鐘授權已結束；本次與後續未另行授權的批次沿用 7 分鐘規則。

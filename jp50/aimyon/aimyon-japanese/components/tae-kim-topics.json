@@ -27,6 +27,10 @@
     {
       "id": "noun-links",
       "title": "名詞關係｜の"
+    },
+    {
+      "id": "verb-object",
+      "title": "動作對象｜を"
     }
   ],
   "lesson_11": [
@@ -49,6 +53,28 @@
     {
       "id": "noun-lists",
       "title": "名詞列舉｜と・や"
+    }
+  ],
+  "lesson_06": [
+    {
+      "id": "verb-types",
+      "title": "動詞分類｜先認辭書形"
+    },
+    {
+      "id": "verb-place",
+      "title": "到達點與動作場所｜に・で"
+    }
+  ],
+  "lesson_07": [
+    {
+      "id": "verb-types",
+      "title": "動詞分類｜先認辭書形"
+    }
+  ],
+  "lesson_18": [
+    {
+      "id": "verb-place",
+      "title": "到達點與動作場所｜に・で"
     }
   ]
 }

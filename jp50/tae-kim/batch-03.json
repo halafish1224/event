@@ -1,0 +1,49 @@
+{
+  "version": "1.0.0", "batch": "TK03", "date": "2026-10-12",
+  "source_guide": "https://guidetojapanese.org/learn/complete/",
+  "adaptation": "原創繁中短句與回想練習；非原站翻譯。",
+  "topics": [
+    {
+      "id": "verb-types", "title": "動詞分類｜先認辭書形", "tag": "る結尾不等於一段", "color": "#356b75",
+      "source": "https://guidetojapanese.org/learn/complete/negativeverbs", "source_title": "Negative Form · Verb Types",
+      "rule": "先記辭書形與類別：五段、一段，以及不規則的 する／来る。Tae Kim 的 u-verb 對應五段，ru-verb 對應一段。",
+      "examples": [
+        {"jp":"窓から空を見る。","kana":"まどから そらを みる。","zh":"從窗戶看天空。見る是一段動詞。","ruby":[["窓","まど"],["空","そら"],["見","み"]]},
+        {"jp":"夕方、家に帰る。","kana":"ゆうがた、いえに かえる。","zh":"傍晚回家。帰る是五段動詞。","ruby":[["夕方","ゆうがた"],["家","いえ"],["帰","かえ"]]}
+      ],
+      "tip":"見る和帰る都以る結尾，類別卻不同。い／え段＋る只能初步猜測；不確定就查字典的動詞分類。",
+      "question":"見る／帰る都能直接去る加ます嗎？",
+      "answer":"不能。見る→見ます（みます）；帰る→帰ります（かえります）。先分類，再變形。",
+      "song_task":"遇到變形的動詞，先追回辭書形、確認類別，再回 L06／L07 看變化；不要只靠最後一個字猜。",
+      "links":[["L06｜五段／一段與ます形","/jp50/aimyon/aimyon-japanese/learn/lesson_06/"],["L07｜ない形","/jp50/aimyon/aimyon-japanese/learn/lesson_07/"]]
+    },
+    {
+      "id":"verb-object", "title":"動作對象｜を", "tag":"先問動作作用在什麼上", "color":"#8a6531",
+      "source":"https://guidetojapanese.org/learn/complete/verb_particles", "source_title":"Particles used with verbs · を",
+      "rule":"「名詞＋を＋動詞」常標出動作的直接對象；助詞を通常讀作お。先找動詞，再問「聽什麼、寫什麼」。",
+      "examples":[
+        {"jp":"帰り道に、この曲を聴く。","kana":"かえりみちに、このきょくを きく。","zh":"在回家的路上聽這首歌。","ruby":[["帰","かえ"],["道","みち"],["曲","きょく"],["聴","き"]]},
+        {"jp":"今日の気持ちをノートに書く。","kana":"きょうの きもちを ノートに かく。","zh":"把今天的心情寫在筆記本上。","ruby":[["今日","きょう"],["気持","きも"],["書","か"]]}
+      ],
+      "tip":"を不只一種用法，例如道を歩く表示經過的路徑；本卡先練直接對象。好き常用「この曲が好き」，不要套成動詞句。",
+      "question":"「この曲を聴く」中，聴く的動作對象是哪一部分？",
+      "answer":"この曲（このきょく）。を把「這首歌」接成聽的對象。",
+      "song_task":"先圈出を前面的名詞組，再找對應動詞；例如「今日の気持ち」要整組讀完，不只抓最後一個名詞。",
+      "links":[["L04｜聽見與傳達","/jp50/aimyon/aimyon-japanese/learn/lesson_04/"],["名詞關係｜の","/jp50/tae-kim/#noun-links"]]
+    },
+    {
+      "id":"verb-place", "title":"到達點與動作場所｜に・で", "tag":"去那裡，還是在那裡做", "color":"#6b5882",
+      "source":"https://guidetojapanese.org/learn/complete/verb_particles", "source_title":"Particles used with verbs · に／で",
+      "rule":"移動的到達點常用に；動作進行的場所常用で。不要只看到中文「在」，就直接選同一個助詞。",
+      "examples":[
+        {"jp":"小さな公園に行く。","kana":"ちいさな こうえんに いく。","zh":"去一座小公園。公園是到達點。","ruby":[["小","ちい"],["公園","こうえん"],["行","い"]]},
+        {"jp":"小さな公園で歌う。","kana":"ちいさな こうえんで うたう。","zh":"在一座小公園唱歌。公園是唱歌的場所。","ruby":[["小","ちい"],["公園","こうえん"],["歌","うた"]]}
+      ],
+      "tip":"這不是全部用法：に也可標時間或對象，で也可標工具。存在句如「公園にいる」另用に，留待下一批。",
+      "question":"想說「在公園試著唱歌」：公園（に／で）歌ってみる。",
+      "answer":"で。公園で歌ってみる（こうえんで うたってみる）。唱歌在公園進行；てみる的嘗試語氣回到 L18。",
+      "song_task":"先問地點是移動終點，還是事件舞台，再連回動詞。用同一個場所換兩種動作，練習選に或で。",
+      "links":[["L18｜試著做：～てみる","/jp50/aimyon/aimyon-japanese/learn/lesson_18/"],["L06｜動詞基本分類","/jp50/aimyon/aimyon-japanese/learn/lesson_06/"]]
+    }
+  ]
+}

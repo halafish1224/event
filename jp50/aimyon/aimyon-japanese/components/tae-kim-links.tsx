@@ -21,7 +21,7 @@ export function TaeKimLinks({ lessonId }: { lessonId?: string }) {
         )) : (
           <a href="https://event.itigre.com/jp50/tae-kim/"
             className="rounded-xl border border-border px-3 py-2 text-sm font-semibold text-primary hover:underline focus-visible:outline-offset-4">
-            開啟六組基礎速學卡 →
+            開啟基礎速學卡 →
           </a>
         )}
       </div>

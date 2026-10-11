@@ -1,6 +1,6 @@
 {
-  "version": 2,
-  "last_batch": "TK02",
+  "version": 3,
+  "last_batch": "TK03",
   "updated_date": "2026-10-12",
   "completed": [
     "state",
@@ -8,21 +8,20 @@
     "ending",
     "adjectives",
     "noun-links",
-    "noun-lists"
+    "noun-lists",
+    "verb-types",
+    "verb-object",
+    "verb-place"
   ],
   "next_batch": {
-    "id": "TK03",
+    "id": "TK04",
     "scope": [
-      "動詞分類與辭書形",
-      "動作助詞：を・に・で"
+      "存在動詞：ある／いる",
+      "存在位置に與動作場所で"
     ],
     "status": "pending_source_review"
   },
   "later": [
-    {
-      "scope": "動詞與動作助詞",
-      "status": "pending_source_review"
-    },
     {
       "scope": "否定、過去、て形與子句",
       "status": "pending_source_review"
@@ -38,9 +37,7 @@
     "compute_percentage_measurable": false,
     "fallback_max_active_seconds": 420,
     "pause_and_checkpoint_when_budget_reached": true,
-    "resume_only_after_user_continue": true,
-    "current_session_override_max_active_seconds": 1260,
-    "current_session_override_reason": "使用者明確授權今晚本次任務可執行21分鐘；未另行授權的後續更新維持7分鐘暫存規則。"
+    "resume_only_after_user_continue": true
   },
   "existing_aurader_next": "L20",
   "reviewed_sources": [
@@ -51,21 +48,28 @@
     "https://guidetojapanese.org/learn/complete/ending_particles",
     "https://guidetojapanese.org/learn/complete/adjectives",
     "https://guidetojapanese.org/learn/complete/no_particle",
-    "https://guidetojapanese.org/learn/complete/multiple_nouns"
+    "https://guidetojapanese.org/learn/complete/multiple_nouns",
+    "https://guidetojapanese.org/learn/complete/verbs",
+    "https://guidetojapanese.org/learn/complete/negativeverbs",
+    "https://guidetojapanese.org/learn/complete/verb_particles"
   ],
-  "release": "1.1.0",
+  "release": "1.2.0",
   "completed_batches": [
     "TK01",
-    "TK02"
+    "TK02",
+    "TK03"
   ],
   "integration": {
     "lesson_ids": [
       "lesson_01",
       "lesson_02",
       "lesson_04",
+      "lesson_06",
+      "lesson_07",
       "lesson_11",
       "lesson_14",
-      "lesson_17"
+      "lesson_17",
+      "lesson_18"
     ],
     "download_index": "/jp50/downloads/#tae-kim",
     "source_check_date": "2026-10-12"

@@ -1,0 +1,30 @@
+JP50｜Tae Kim 對照速學 TK03
+版本 1.2.0｜2026-10-12
+
+動詞分類｜先認辭書形
+
+一句規則：先記辭書形與類別：五段、一段，以及不規則的 する／来る。Tae Kim 的 u-verb 對應五段，ru-verb 對應一段。
+
+窓から空を見る。
+讀音：まどから そらを みる。
+意思：從窗戶看天空。見る是一段動詞。
+
+夕方、家に帰る。
+讀音：ゆうがた、いえに かえる。
+意思：傍晚回家。帰る是五段動詞。
+
+易錯提醒：見る和帰る都以る結尾，類別卻不同。い／え段＋る只能初步猜測；不確定就查字典的動詞分類。
+
+回想：見る／帰る都能直接去る加ます嗎？
+請先想五秒，再繼續。
+答案：不能。見る→見ます（みます）；帰る→帰ります（かえります）。先分類，再變形。
+
+歌曲拆讀：遇到變形的動詞，先追回辭書形、確認類別，再回 L06／L07 看變化；不要只靠最後一個字猜。
+
+本站對照：
+L06｜五段／一段與ます形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_06/
+L07｜ない形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_07/
+參考章節：Tae Kim · Negative Form · Verb Types
+https://guidetojapanese.org/learn/complete/negativeverbs
+
+本卡使用原創例句，非原站翻譯。

@@ -1,5 +1,5 @@
-JP50｜Tae Kim 對照速學 TK01–TK02
-版本 1.1.0｜2026-10-12
+JP50｜Tae Kim 對照速學 TK01–TK03
+版本 1.2.0｜2026-10-12
 
 句尾狀態｜だ・です
 
@@ -182,3 +182,92 @@ https://guidetojapanese.org/learn/complete/multiple_nouns
 
 本卡使用原創例句，非原站翻譯。
 
+==========
+
+動詞分類｜先認辭書形
+
+一句規則：先記辭書形與類別：五段、一段，以及不規則的 する／来る。Tae Kim 的 u-verb 對應五段，ru-verb 對應一段。
+
+窓から空を見る。
+讀音：まどから そらを みる。
+意思：從窗戶看天空。見る是一段動詞。
+
+夕方、家に帰る。
+讀音：ゆうがた、いえに かえる。
+意思：傍晚回家。帰る是五段動詞。
+
+易錯提醒：見る和帰る都以る結尾，類別卻不同。い／え段＋る只能初步猜測；不確定就查字典的動詞分類。
+
+回想：見る／帰る都能直接去る加ます嗎？
+請先想五秒，再繼續。
+答案：不能。見る→見ます（みます）；帰る→帰ります（かえります）。先分類，再變形。
+
+歌曲拆讀：遇到變形的動詞，先追回辭書形、確認類別，再回 L06／L07 看變化；不要只靠最後一個字猜。
+
+本站對照：
+L06｜五段／一段與ます形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_06/
+L07｜ない形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_07/
+參考章節：Tae Kim · Negative Form · Verb Types
+https://guidetojapanese.org/learn/complete/negativeverbs
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+動作對象｜を
+
+一句規則：「名詞＋を＋動詞」常標出動作的直接對象；助詞を通常讀作お。先找動詞，再問「聽什麼、寫什麼」。
+
+帰り道に、この曲を聴く。
+讀音：かえりみちに、このきょくを きく。
+意思：在回家的路上聽這首歌。
+
+今日の気持ちをノートに書く。
+讀音：きょうの きもちを ノートに かく。
+意思：把今天的心情寫在筆記本上。
+
+易錯提醒：を不只一種用法，例如道を歩く表示經過的路徑；本卡先練直接對象。好き常用「この曲が好き」，不要套成動詞句。
+
+回想：「この曲を聴く」中，聴く的動作對象是哪一部分？
+請先想五秒，再繼續。
+答案：この曲（このきょく）。を把「這首歌」接成聽的對象。
+
+歌曲拆讀：先圈出を前面的名詞組，再找對應動詞；例如「今日の気持ち」要整組讀完，不只抓最後一個名詞。
+
+本站對照：
+L04｜聽見與傳達 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_04/
+名詞關係｜の https://event.itigre.com/jp50/tae-kim/#noun-links
+參考章節：Tae Kim · Particles used with verbs · を
+https://guidetojapanese.org/learn/complete/verb_particles
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+到達點與動作場所｜に・で
+
+一句規則：移動的到達點常用に；動作進行的場所常用で。不要只看到中文「在」，就直接選同一個助詞。
+
+小さな公園に行く。
+讀音：ちいさな こうえんに いく。
+意思：去一座小公園。公園是到達點。
+
+小さな公園で歌う。
+讀音：ちいさな こうえんで うたう。
+意思：在一座小公園唱歌。公園是唱歌的場所。
+
+易錯提醒：這不是全部用法：に也可標時間或對象，で也可標工具。存在句如「公園にいる」另用に，留待下一批。
+
+回想：想說「在公園試著唱歌」：公園（に／で）歌ってみる。
+請先想五秒，再繼續。
+答案：で。公園で歌ってみる（こうえんで うたってみる）。唱歌在公園進行；てみる的嘗試語氣回到 L18。
+
+歌曲拆讀：先問地點是移動終點，還是事件舞台，再連回動詞。用同一個場所換兩種動作，練習選に或で。
+
+本站對照：
+L18｜試著做：～てみる https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_18/
+L06｜動詞基本分類 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_06/
+參考章節：Tae Kim · Particles used with verbs · に／で
+https://guidetojapanese.org/learn/complete/verb_particles
+
+本卡使用原創例句，非原站翻譯。
