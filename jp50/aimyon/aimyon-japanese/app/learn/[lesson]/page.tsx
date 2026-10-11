@@ -14,6 +14,7 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { buttonVariants } from '@/components/ui/button';
 import { content, contentMaps } from '@/lib/content/data';
 import { cn } from '@/lib/utils';
+import { TaeKimLinks } from '@/components/tae-kim-links';
 
 interface LessonPageProps {
   params: Promise<{ lesson: string }>;
@@ -95,6 +96,8 @@ export default async function LessonPage({ params }: LessonPageProps) {
             {lesson.objective}
           </p>
         </header>
+
+        <TaeKimLinks lessonId={lesson.id} />
 
         <div className="grid gap-4 md:grid-cols-2">
           <LearningPrompt

@@ -1,0 +1,250 @@
+{
+  "version": "1.0.0",
+  "batch": "TK01",
+  "date": "2026-10-12",
+  "source_guide": "https://guidetojapanese.org/learn/complete/",
+  "adaptation": "原創繁中速學卡，依來源概念建立對照；不是原站逐字翻譯或整站鏡像。",
+  "topics": [
+    {
+      "id": "state",
+      "title": "句尾狀態｜だ・です",
+      "tag": "先說現在的狀態",
+      "color": "#276653",
+      "source": "https://guidetojapanese.org/learn/complete/stateofbeing",
+      "source_title": "State-of-Being",
+      "rule": "名詞／ナ形容詞可用「だ」作普通形陳述，用「です」表達禮貌；熟悉的對話也會省略句尾或主體。",
+      "examples": [
+        {
+          "jp": "今日は休みだ。",
+          "kana": "きょうは やすみだ。",
+          "zh": "今天休息。",
+          "ruby": [
+            [
+              "今日",
+              "きょう"
+            ],
+            [
+              "休",
+              "やす"
+            ]
+          ]
+        },
+        {
+          "jp": "今日は休みです。",
+          "kana": "きょうは やすみです。",
+          "zh": "今天休息。（禮貌說法）",
+          "ruby": [
+            [
+              "今日",
+              "きょう"
+            ],
+            [
+              "休",
+              "やす"
+            ]
+          ]
+        }
+      ],
+      "tip": "い形容詞直接結句：寂しい／寂しいです；不要寫成「寂しいだ」。",
+      "question": "「安靜。」改成禮貌說法：静かだ → ？",
+      "answer": "静かです（しずかです）。只換句尾，狀態沒有改變。",
+      "song_task": "讀歌曲時，先找句尾表達的狀態，再依前後文確認是誰；省略「我」不等於換了說話的人。",
+      "links": [
+        [
+          "L14｜ナ形容詞",
+          "/jp50/aimyon/aimyon-japanese/learn/lesson_14/"
+        ],
+        [
+          "好き的語意",
+          "/jp50/aimyon/aimyon-japanese/vocabulary/v_suki/"
+        ]
+      ]
+    },
+    {
+      "id": "topic",
+      "title": "話題與追加｜は・も",
+      "tag": "抓住在談什麼",
+      "color": "#315e8c",
+      "source": "https://guidetojapanese.org/learn/complete/topic_particles",
+      "source_title": "Topic Particles",
+      "rule": "「は」提出或對比話題，助詞讀作 wa；「も」把另一項加入相同敘述，意思是「也」。",
+      "examples": [
+        {
+          "jp": "私はこの曲が好き。",
+          "kana": "わたしは このきょくが すき。",
+          "zh": "我喜歡這首歌。",
+          "ruby": [
+            [
+              "私",
+              "わたし"
+            ],
+            [
+              "曲",
+              "きょく"
+            ],
+            [
+              "好",
+              "す"
+            ]
+          ]
+        },
+        {
+          "jp": "妹もこの曲が好き。",
+          "kana": "いもうとも このきょくが すき。",
+          "zh": "妹妹也喜歡這首歌。",
+          "ruby": [
+            [
+              "妹",
+              "いもうと"
+            ],
+            [
+              "曲",
+              "きょく"
+            ],
+            [
+              "好",
+              "す"
+            ]
+          ]
+        }
+      ],
+      "tip": "は標記話題，不能每次都直接當成主詞；「も」的「也」要找前文在追加哪一項。",
+      "question": "前文說我喜歡這首歌。「妹妹也喜歡」：妹（は／も）この曲が好き。",
+      "answer": "も。把妹妹加入「喜歡這首歌」的人。",
+      "song_task": "看到「君は／僕も」時，圈出話題和追加對象，沿前後句追蹤敘事視角。",
+      "links": [
+        [
+          "L02｜情感距離",
+          "/jp50/aimyon/aimyon-japanese/learn/lesson_02/"
+        ],
+        [
+          "歌曲清單｜選一首練視角",
+          "/jp50/aimyon/songs/"
+        ]
+      ]
+    },
+    {
+      "id": "ending",
+      "title": "句尾語氣｜ね・よ・よね",
+      "tag": "聽懂話是說給誰",
+      "color": "#87573b",
+      "source": "https://guidetojapanese.org/learn/complete/ending_particles",
+      "source_title": "Sentence-Ending Particles",
+      "rule": "「ね」尋求認同或共享感受；「よ」把訊息告訴對方、加以提醒；「よね」可一邊提出看法，一邊確認共識。",
+      "examples": [
+        {
+          "jp": "この声、優しいね。",
+          "kana": "このこえ、やさしいね。",
+          "zh": "這個聲音好溫柔呢。",
+          "ruby": [
+            [
+              "声",
+              "こえ"
+            ],
+            [
+              "優",
+              "やさ"
+            ]
+          ]
+        },
+        {
+          "jp": "この曲、知っているよ。",
+          "kana": "このきょく、しっているよ。",
+          "zh": "這首歌，我知道喔。",
+          "ruby": [
+            [
+              "曲",
+              "きょく"
+            ],
+            [
+              "知",
+              "し"
+            ]
+          ]
+        }
+      ],
+      "tip": "ね／よ影響互動語氣，不會把動詞改成過去式；中文翻成「呢／喔」仍要看情境。",
+      "question": "想和對方確認「這首歌很棒，對吧？」：この曲、いい（よ／よね）。",
+      "answer": "よね。提出「很棒」的看法，同時尋求對方認同。",
+      "song_task": "保留句尾的互動感：它可能是在向對方訴說、確認，或分享感受；別只留下中文事件摘要。",
+      "links": [
+        [
+          "L04｜聽見與傳達",
+          "/jp50/aimyon/aimyon-japanese/learn/lesson_04/"
+        ],
+        [
+          "L11｜い形容詞",
+          "/jp50/aimyon/aimyon-japanese/learn/lesson_11/"
+        ]
+      ]
+    },
+    {
+      "id": "adjectives",
+      "title": "修飾名詞｜い・な",
+      "tag": "把情緒接回畫面",
+      "color": "#775681",
+      "source": "https://guidetojapanese.org/learn/complete/adjectives",
+      "source_title": "Adjectives",
+      "rule": "い形容詞直接放在名詞前；ナ形容詞加「な」再接名詞。先辨認詞類，再決定接法。",
+      "examples": [
+        {
+          "jp": "優しい声が聞こえる。",
+          "kana": "やさしいこえが きこえる。",
+          "zh": "聽得見溫柔的聲音。",
+          "ruby": [
+            [
+              "優",
+              "やさ"
+            ],
+            [
+              "声",
+              "こえ"
+            ],
+            [
+              "聞",
+              "き"
+            ]
+          ]
+        },
+        {
+          "jp": "静かな夜が好きだ。",
+          "kana": "しずかなよるが すきだ。",
+          "zh": "我喜歡安靜的夜晚。",
+          "ruby": [
+            [
+              "静",
+              "しず"
+            ],
+            [
+              "夜",
+              "よる"
+            ],
+            [
+              "好",
+              "す"
+            ]
+          ]
+        }
+      ],
+      "tip": "きれい・嫌い是ナ形容詞；不要只看最後的「い」。好き也不是「好きい」。",
+      "question": "「漂亮的聲音」應寫成「きれい声」還是「きれいな声」？",
+      "answer": "きれいな声（きれいなこえ）。きれい屬ナ形容詞。",
+      "song_task": "先把「形容詞＋名詞」讀成一個畫面單位，再接後面的動作；例如溫柔的聲音 → 聽得見。",
+      "links": [
+        [
+          "L11｜い形容詞",
+          "/jp50/aimyon/aimyon-japanese/learn/lesson_11/"
+        ],
+        [
+          "L14｜ナ形容詞",
+          "/jp50/aimyon/aimyon-japanese/learn/lesson_14/"
+        ],
+        [
+          "形容詞總覽",
+          "/jp50/aimyon/aimyon-japanese/adjectives/"
+        ]
+      ]
+    }
+  ]
+}
+

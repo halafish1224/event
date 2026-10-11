@@ -5,6 +5,7 @@ import { Badge } from '@/components/ui/badge';
 import { Card, CardContent } from '@/components/ui/card';
 import { PageIntro } from '@/components/page-intro';
 import { content } from '@/lib/content/data';
+import { TaeKimLinks } from '@/components/tae-kim-links';
 
 export const metadata: Metadata = {
   title: '30 課學習路徑',
@@ -33,6 +34,8 @@ export default function LearnPage() {
           title="不是照表背誦，而是一路練到能選、能說。"
           description="每課先建立一個可理解的概念，再透過檢索、形態變化、近義對比與原創產出反覆取用。歌曲只作為語意與聆聽線索，不重製完整歌詞。"
         />
+
+        <TaeKimLinks />
 
         <div className="grid gap-8">
           {units.map((unit, unitIndex) => (

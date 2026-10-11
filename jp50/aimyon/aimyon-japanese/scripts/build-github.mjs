@@ -41,6 +41,7 @@ const build = spawnSync(process.execPath, [vinextCli, 'build'], {
     AIMYON_GITHUB_EXPORT: '1',
     NEXT_PUBLIC_BASE_PATH: basePath,
     NEXT_PUBLIC_SITE_URL: siteUrl,
+    NEXT_PUBLIC_KANA_QUICK_SRC: 'https://event.itigre.com/jp50/kana-quick.js',
   },
 });
 

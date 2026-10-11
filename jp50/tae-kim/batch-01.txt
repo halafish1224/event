@@ -1,0 +1,122 @@
+JP50｜Tae Kim 對照速學 TK01
+版本 1.1.0｜2026-10-12
+
+句尾狀態｜だ・です
+
+一句規則：名詞／ナ形容詞可用「だ」作普通形陳述，用「です」表達禮貌；熟悉的對話也會省略句尾或主體。
+
+今日は休みだ。
+讀音：きょうは やすみだ。
+意思：今天休息。
+
+今日は休みです。
+讀音：きょうは やすみです。
+意思：今天休息。（禮貌說法）
+
+易錯提醒：い形容詞直接結句：寂しい／寂しいです；不要寫成「寂しいだ」。
+
+回想：「安靜。」改成禮貌說法：静かだ → ？
+請先想五秒，再繼續。
+答案：静かです（しずかです）。只換句尾，狀態沒有改變。
+
+歌曲拆讀：讀歌曲時，先找句尾表達的狀態，再依前後文確認是誰；省略「我」不等於換了說話的人。
+
+本站對照：
+L14｜ナ形容詞 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_14/
+好き的語意 https://event.itigre.com/jp50/aimyon/aimyon-japanese/vocabulary/v_suki/
+參考章節：Tae Kim · State-of-Being
+https://guidetojapanese.org/learn/complete/stateofbeing
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+話題與追加｜は・も
+
+一句規則：「は」提出或對比話題，助詞讀作 wa；「も」把另一項加入相同敘述，意思是「也」。
+
+私はこの曲が好き。
+讀音：わたしは このきょくが すき。
+意思：我喜歡這首歌。
+
+妹もこの曲が好き。
+讀音：いもうとも このきょくが すき。
+意思：妹妹也喜歡這首歌。
+
+易錯提醒：は標記話題，不能每次都直接當成主詞；「も」的「也」要找前文在追加哪一項。
+
+回想：前文說我喜歡這首歌。「妹妹也喜歡」：妹（は／も）この曲が好き。
+請先想五秒，再繼續。
+答案：も。把妹妹加入「喜歡這首歌」的人。
+
+歌曲拆讀：看到「君は／僕も」時，圈出話題和追加對象，沿前後句追蹤敘事視角。
+
+本站對照：
+L02｜情感距離 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_02/
+歌曲清單｜選一首練視角 https://event.itigre.com/jp50/aimyon/songs/
+參考章節：Tae Kim · Topic Particles
+https://guidetojapanese.org/learn/complete/topic_particles
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+句尾語氣｜ね・よ・よね
+
+一句規則：「ね」尋求認同或共享感受；「よ」把訊息告訴對方、加以提醒；「よね」可一邊提出看法，一邊確認共識。
+
+この声、優しいね。
+讀音：このこえ、やさしいね。
+意思：這個聲音好溫柔呢。
+
+この曲、知っているよ。
+讀音：このきょく、しっているよ。
+意思：這首歌，我知道喔。
+
+易錯提醒：ね／よ影響互動語氣，不會把動詞改成過去式；中文翻成「呢／喔」仍要看情境。
+
+回想：想和對方確認「這首歌很棒，對吧？」：この曲、いい（よ／よね）。
+請先想五秒，再繼續。
+答案：よね。提出「很棒」的看法，同時尋求對方認同。
+
+歌曲拆讀：保留句尾的互動感：它可能是在向對方訴說、確認，或分享感受；別只留下中文事件摘要。
+
+本站對照：
+L04｜聽見與傳達 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_04/
+L11｜い形容詞 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_11/
+參考章節：Tae Kim · Sentence-Ending Particles
+https://guidetojapanese.org/learn/complete/ending_particles
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+修飾名詞｜い・な
+
+一句規則：い形容詞直接放在名詞前；ナ形容詞加「な」再接名詞。先辨認詞類，再決定接法。
+
+優しい声が聞こえる。
+讀音：やさしいこえが きこえる。
+意思：聽得見溫柔的聲音。
+
+静かな夜が好きだ。
+讀音：しずかなよるが すきだ。
+意思：我喜歡安靜的夜晚。
+
+易錯提醒：きれい・嫌い是ナ形容詞；不要只看最後的「い」。好き也不是「好きい」。
+
+回想：「漂亮的聲音」應寫成「きれい声」還是「きれいな声」？
+請先想五秒，再繼續。
+答案：きれいな声（きれいなこえ）。きれい屬ナ形容詞。
+
+歌曲拆讀：先把「形容詞＋名詞」讀成一個畫面單位，再接後面的動作；例如溫柔的聲音 → 聽得見。
+
+本站對照：
+L11｜い形容詞 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_11/
+L14｜ナ形容詞 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_14/
+形容詞總覽 https://event.itigre.com/jp50/aimyon/aimyon-japanese/adjectives/
+參考章節：Tae Kim · Adjectives
+https://guidetojapanese.org/learn/complete/adjectives
+
+本卡使用原創例句，非原站翻譯。
+

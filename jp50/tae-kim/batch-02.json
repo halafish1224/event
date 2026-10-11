@@ -1,0 +1,73 @@
+{
+  "version": "1.0.0",
+  "batch": "TK02",
+  "date": "2026-10-12",
+  "source_guide": "https://guidetojapanese.org/learn/complete/",
+  "adaptation": "原創繁中速學卡，依來源概念建立對照；不是原站逐字翻譯或整站鏡像。",
+  "topics": [
+    {
+      "id": "noun-links",
+      "title": "名詞關係｜の",
+      "tag": "先找真正的中心詞",
+      "color": "#7b4b4b",
+      "source": "https://guidetojapanese.org/learn/complete/no_particle",
+      "source_title": "Noun properties",
+      "rule": "「AのB」以 B 為中心，A 說明 B 的歸屬、種類或關係；先把這一組讀完，再接動作。",
+      "examples": [
+        {
+          "jp": "心の声を聞く。",
+          "kana": "こころの こえを きく。",
+          "zh": "聽內心的聲音。",
+          "ruby": [["心", "こころ"], ["声", "こえ"], ["聞", "き"]]
+        },
+        {
+          "jp": "夜の街を歩く。",
+          "kana": "よるの まちを あるく。",
+          "zh": "走在夜晚的街頭。",
+          "ruby": [["夜", "よる"], ["街", "まち"], ["歩", "ある"]]
+        }
+      ],
+      "tip": "這張卡只看名詞間的 の；ナ形容詞修飾仍用 な，例如「好きな声」，不是「好きの声」。",
+      "question": "「君の声」的中心詞是 君，還是 声？",
+      "answer": "声（こえ）。整組指「你的聲音」，君說明聲音與誰有關。",
+      "song_task": "遇到名詞＋の＋名詞，先標出最後的中心詞。把「誰的／什麼樣的」關係抓住，再追回說話者與動作。",
+      "links": [
+        ["L01｜心與感受", "/jp50/aimyon/aimyon-japanese/learn/lesson_01/"],
+        ["L04｜聲音與傳達", "/jp50/aimyon/aimyon-japanese/learn/lesson_04/"],
+        ["心的語意", "/jp50/aimyon/aimyon-japanese/vocabulary/v_kokoro/"]
+      ]
+    },
+    {
+      "id": "noun-lists",
+      "title": "名詞列舉｜と・や",
+      "tag": "列一組，還是舉幾個例子",
+      "color": "#526633",
+      "source": "https://guidetojapanese.org/learn/complete/multiple_nouns",
+      "source_title": "Listing multiple nouns",
+      "rule": "「と」把列出的名詞並列為一組；「や」只舉幾個代表例，仍可能有其他項目。",
+      "examples": [
+        {
+          "jp": "好きな物は本と音楽です。",
+          "kana": "すきなものは ほんと おんがくです。",
+          "zh": "喜歡的東西是書和音樂。（列出這一組）",
+          "ruby": [["好", "す"], ["物", "もの"], ["本", "ほん"], ["音楽", "おんがく"]]
+        },
+        {
+          "jp": "好きな物は本や音楽です。",
+          "kana": "すきなものは ほんや おんがくです。",
+          "zh": "喜歡書、音樂等東西。（舉例，還可能有其他）",
+          "ruby": [["好", "す"], ["物", "もの"], ["本", "ほん"], ["音楽", "おんがく"]]
+        }
+      ],
+      "tip": "と並不等於強調「只有」。本卡只看名詞列舉；と另有同行、引用等用法，動作的代表性列舉則回到 L17 的 ～たり。",
+      "question": "想說「書、音樂等等」，並保留其他項目的可能：本（と／や）音楽。",
+      "answer": "や。本や音楽（ほんや おんがく）是在舉例，不把清單封閉。",
+      "song_task": "把並列名詞先讀成同一組畫面。接著問：這是列出一組，還是只舉例？若列的是動作，再和 L17 比較。",
+      "links": [
+        ["L17｜動作的代表性列舉", "/jp50/aimyon/aimyon-japanese/learn/lesson_17/"],
+        ["L02｜喜歡與情感距離", "/jp50/aimyon/aimyon-japanese/learn/lesson_02/"],
+        ["歌曲清單｜選一首練列舉", "/jp50/aimyon/songs/"]
+      ]
+    }
+  ]
+}
