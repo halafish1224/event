@@ -1,0 +1,35 @@
+{
+  "version":"1.0.0", "batch":"TK04", "date":"2026-10-12",
+  "source_guide":"https://guidetojapanese.org/learn/complete/",
+  "adaptation":"原創繁中短句與回想練習；非原站翻譯。",
+  "topics":[
+    {
+      "id":"existence-verbs", "title":"存在動詞｜ある／いる", "tag":"有什麼，或有誰", "color":"#356b75",
+      "source":"https://guidetojapanese.org/learn/complete/existence", "source_title":"Existence Verbs",
+      "rule":"說明事物存在，物品、時間等通常用ある；人、動物通常用いる。「有什麼／有誰」可用「名詞＋が＋ある／いる」。",
+      "examples":[
+        {"jp":"まだ時間がある。","kana":"まだ じかんが ある。","zh":"還有時間。抽象的時間也用ある。","ruby":[["時間","じかん"]]},
+        {"jp":"庭に猫がいる。","kana":"にわに ねこが いる。","zh":"院子裡有一隻貓。動物用いる。","ruby":[["庭","にわ"],["猫","ねこ"]]}
+      ],
+      "tip":"ある是五段、いる是一段。です說明身分或狀態；不能把「猫がいる」的いる直接換成です來表示有貓。",
+      "question":"想說「還有時間」：まだ時間が（ある／いる）。",
+      "answer":"ある。時間不是人或動物；まだ時間がある表示還有時間。",
+      "song_task":"遇到ある或いる，先找存在的是什麼或誰，再找地點；歌詞省略名詞時，回到前句尋找線索。",
+      "links":[["L06｜五段／一段與ます形","/jp50/aimyon/aimyon-japanese/learn/lesson_06/"],["狀態與身分｜だ／です","/jp50/tae-kim/#state"],["存在位置｜に","/jp50/tae-kim/#existence-place"]]
+    },
+    {
+      "id":"existence-place", "title":"存在位置與動作場所｜に・で", "tag":"在哪裡，或在哪裡做事", "color":"#6b5882",
+      "source":"https://guidetojapanese.org/learn/complete/existence", "source_title":"Existence Verbs · Location",
+      "rule":"ある／いる表示存在時，位置用に；描述唱歌等動作進行的場所，常用で。先看句尾的動詞，再決定地點後面的助詞。",
+      "examples":[
+        {"jp":"友達は公園にいる。","kana":"ともだちは こうえんに いる。","zh":"朋友在公園。公園是朋友所在的位置。","ruby":[["友達","ともだち"],["公園","こうえん"]]},
+        {"jp":"友達は公園で歌う。","kana":"ともだちは こうえんで うたう。","zh":"朋友在公園唱歌。公園是唱歌的場所。","ruby":[["友達","ともだち"],["公園","こうえん"],["歌","うた"]]}
+      ],
+      "tip":"「公園に行く」的に標到達點，「公園にいる」的に標存在位置。中文都可能出現「在」，日文仍要依動詞的意思判斷。",
+      "question":"補入に或で：友達は公園（　）いる。友達は公園（　）歌ってみる。",
+      "answer":"依序是に、で。いる描述所在位置；歌ってみる描述在某處試著唱歌。",
+      "song_task":"把一句拆成「誰／在哪裡／存在或做什麼」，比較人物停留的位置與事件發生的場所，再回 L18 練習改寫動作。",
+      "links":[["到達點與動作場所｜に・で","/jp50/tae-kim/#verb-place"],["存在動詞｜ある／いる","/jp50/tae-kim/#existence-verbs"],["L18｜試著做：～てみる","/jp50/aimyon/aimyon-japanese/learn/lesson_18/"]]
+    }
+  ]
+}

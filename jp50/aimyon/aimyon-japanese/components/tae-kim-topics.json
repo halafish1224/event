@@ -63,6 +63,10 @@
     {
       "id": "verb-place",
       "title": "到達點與動作場所｜に・で"
+    },
+    {
+      "id": "existence-verbs",
+      "title": "存在動詞｜ある／いる"
     }
   ],
   "lesson_07": [
@@ -75,6 +79,10 @@
     {
       "id": "verb-place",
       "title": "到達點與動作場所｜に・で"
+    },
+    {
+      "id": "existence-place",
+      "title": "存在位置與動作場所｜に・で"
     }
   ]
 }

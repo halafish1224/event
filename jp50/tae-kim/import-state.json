@@ -1,6 +1,6 @@
 {
-  "version": 3,
-  "last_batch": "TK03",
+  "version": 4,
+  "last_batch": "TK04",
   "updated_date": "2026-10-12",
   "completed": [
     "state",
@@ -11,13 +11,15 @@
     "noun-lists",
     "verb-types",
     "verb-object",
-    "verb-place"
+    "verb-place",
+    "existence-verbs",
+    "existence-place"
   ],
   "next_batch": {
-    "id": "TK04",
+    "id": "TK05",
     "scope": [
-      "存在動詞：ある／いる",
-      "存在位置に與動作場所で"
+      "動詞否定：五段／一段／不規則",
+      "ある的否定：ない"
     ],
     "status": "pending_source_review"
   },
@@ -51,13 +53,15 @@
     "https://guidetojapanese.org/learn/complete/multiple_nouns",
     "https://guidetojapanese.org/learn/complete/verbs",
     "https://guidetojapanese.org/learn/complete/negativeverbs",
-    "https://guidetojapanese.org/learn/complete/verb_particles"
+    "https://guidetojapanese.org/learn/complete/verb_particles",
+    "https://guidetojapanese.org/learn/complete/existence"
   ],
-  "release": "1.2.0",
+  "release": "1.3.0",
   "completed_batches": [
     "TK01",
     "TK02",
-    "TK03"
+    "TK03",
+    "TK04"
   ],
   "integration": {
     "lesson_ids": [

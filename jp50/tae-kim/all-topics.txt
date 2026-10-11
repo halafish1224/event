@@ -1,5 +1,5 @@
-JP50｜Tae Kim 對照速學 TK01–TK03
-版本 1.2.0｜2026-10-12
+JP50｜Tae Kim 對照速學 TK01–TK04
+版本 1.3.0｜2026-10-12
 
 句尾狀態｜だ・です
 
@@ -256,7 +256,7 @@ https://guidetojapanese.org/learn/complete/verb_particles
 讀音：ちいさな こうえんで うたう。
 意思：在一座小公園唱歌。公園是唱歌的場所。
 
-易錯提醒：這不是全部用法：に也可標時間或對象，で也可標工具。存在句如「公園にいる」另用に，留待下一批。
+易錯提醒：這不是全部用法：に也可標時間或對象，で也可標工具。存在句如「公園にいる」另用に，可接著看存在位置卡。
 
 回想：想說「在公園試著唱歌」：公園（に／で）歌ってみる。
 請先想五秒，再繼續。
@@ -267,7 +267,70 @@ https://guidetojapanese.org/learn/complete/verb_particles
 本站對照：
 L18｜試著做：～てみる https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_18/
 L06｜動詞基本分類 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_06/
+存在位置｜に https://event.itigre.com/jp50/tae-kim/#existence-place
 參考章節：Tae Kim · Particles used with verbs · に／で
 https://guidetojapanese.org/learn/complete/verb_particles
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+存在動詞｜ある／いる
+
+一句規則：說明事物存在，物品、時間等通常用ある；人、動物通常用いる。「有什麼／有誰」可用「名詞＋が＋ある／いる」。
+
+まだ時間がある。
+讀音：まだ じかんが ある。
+意思：還有時間。抽象的時間也用ある。
+
+庭に猫がいる。
+讀音：にわに ねこが いる。
+意思：院子裡有一隻貓。動物用いる。
+
+易錯提醒：ある是五段、いる是一段。です說明身分或狀態；不能把「猫がいる」的いる直接換成です來表示有貓。
+
+回想：想說「還有時間」：まだ時間が（ある／いる）。
+請先想五秒，再繼續。
+答案：ある。時間不是人或動物；まだ時間がある表示還有時間。
+
+歌曲拆讀：遇到ある或いる，先找存在的是什麼或誰，再找地點；歌詞省略名詞時，回到前句尋找線索。
+
+本站對照：
+L06｜五段／一段與ます形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_06/
+狀態與身分｜だ／です https://event.itigre.com/jp50/tae-kim/#state
+存在位置｜に https://event.itigre.com/jp50/tae-kim/#existence-place
+參考章節：Tae Kim · Existence Verbs
+https://guidetojapanese.org/learn/complete/existence
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+存在位置與動作場所｜に・で
+
+一句規則：ある／いる表示存在時，位置用に；描述唱歌等動作進行的場所，常用で。先看句尾的動詞，再決定地點後面的助詞。
+
+友達は公園にいる。
+讀音：ともだちは こうえんに いる。
+意思：朋友在公園。公園是朋友所在的位置。
+
+友達は公園で歌う。
+讀音：ともだちは こうえんで うたう。
+意思：朋友在公園唱歌。公園是唱歌的場所。
+
+易錯提醒：「公園に行く」的に標到達點，「公園にいる」的に標存在位置。中文都可能出現「在」，日文仍要依動詞的意思判斷。
+
+回想：補入に或で：友達は公園（　）いる。友達は公園（　）歌ってみる。
+請先想五秒，再繼續。
+答案：依序是に、で。いる描述所在位置；歌ってみる描述在某處試著唱歌。
+
+歌曲拆讀：把一句拆成「誰／在哪裡／存在或做什麼」，比較人物停留的位置與事件發生的場所，再回 L18 練習改寫動作。
+
+本站對照：
+到達點與動作場所｜に・で https://event.itigre.com/jp50/tae-kim/#verb-place
+存在動詞｜ある／いる https://event.itigre.com/jp50/tae-kim/#existence-verbs
+L18｜試著做：～てみる https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_18/
+參考章節：Tae Kim · Existence Verbs · Location
+https://guidetojapanese.org/learn/complete/existence
 
 本卡使用原創例句，非原站翻譯。
