@@ -1,5 +1,5 @@
 JP50｜Tae Kim 對照速學 TK04
-版本 1.3.0｜2026-10-12
+版本 1.4.0｜2026-10-13
 
 存在動詞｜ある／いる
 
@@ -25,6 +25,7 @@ JP50｜Tae Kim 對照速學 TK04
 L06｜五段／一段與ます形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_06/
 狀態與身分｜だ／です https://event.itigre.com/jp50/tae-kim/#state
 存在位置｜に https://event.itigre.com/jp50/tae-kim/#existence-place
+存在的否定｜ない／いない https://event.itigre.com/jp50/tae-kim/#existence-negative
 參考章節：Tae Kim · Existence Verbs
 https://guidetojapanese.org/learn/complete/existence
 

@@ -67,12 +67,28 @@
     {
       "id": "existence-verbs",
       "title": "存在動詞｜ある／いる"
+    },
+    {
+      "id": "negative-irregular",
+      "title": "不規則否定｜しない／来ない"
     }
   ],
   "lesson_07": [
     {
       "id": "verb-types",
       "title": "動詞分類｜先認辭書形"
+    },
+    {
+      "id": "verb-negative",
+      "title": "動詞否定｜先分類，再接ない"
+    },
+    {
+      "id": "negative-irregular",
+      "title": "不規則否定｜しない／来ない"
+    },
+    {
+      "id": "existence-negative",
+      "title": "存在的否定｜ない／いない"
     }
   ],
   "lesson_18": [

@@ -1,5 +1,5 @@
-JP50｜Tae Kim 對照速學 TK01–TK04
-版本 1.3.0｜2026-10-12
+JP50｜Tae Kim 對照速學 TK01–TK05
+版本 1.4.0｜2026-10-13
 
 句尾狀態｜だ・です
 
@@ -207,6 +207,7 @@ https://guidetojapanese.org/learn/complete/multiple_nouns
 本站對照：
 L06｜五段／一段與ます形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_06/
 L07｜ない形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_07/
+動詞否定｜ない形 https://event.itigre.com/jp50/tae-kim/#verb-negative
 參考章節：Tae Kim · Negative Form · Verb Types
 https://guidetojapanese.org/learn/complete/negativeverbs
 
@@ -299,6 +300,7 @@ https://guidetojapanese.org/learn/complete/verb_particles
 L06｜五段／一段與ます形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_06/
 狀態與身分｜だ／です https://event.itigre.com/jp50/tae-kim/#state
 存在位置｜に https://event.itigre.com/jp50/tae-kim/#existence-place
+存在的否定｜ない／いない https://event.itigre.com/jp50/tae-kim/#existence-negative
 參考章節：Tae Kim · Existence Verbs
 https://guidetojapanese.org/learn/complete/existence
 
@@ -332,5 +334,98 @@ https://guidetojapanese.org/learn/complete/existence
 L18｜試著做：～てみる https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_18/
 參考章節：Tae Kim · Existence Verbs · Location
 https://guidetojapanese.org/learn/complete/existence
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+動詞否定｜先分類，再接ない
+
+一句規則：一段動詞去掉る加ない；五段動詞把最後一個假名改成同列あ段再加ない。以う結尾時改成わない，例如買う→買わない。
+
+今夜は映画を見ない。
+讀音：こんやは えいがを みない。
+意思：今晚不看電影。見る是一段：見る→見ない。
+
+今日はまだ帰らない。
+讀音：きょうは まだ かえらない。
+意思：今天還不回去。帰る是五段：帰る→帰らない。
+
+易錯提醒：先查類別，不能看到る就刪掉。五段可對照：く→か、ぐ→が、す→さ、つ→た、ぬ→な、ぶ→ば、む→ま、る→ら；う→わ。ある另看例外卡。
+
+回想：把見る、帰る、買う改成ない形。
+請先想五秒，再繼續。
+答案：見ない（みない）、帰らない（かえらない）、買わない（かわない）。不是帰ない，也不是買あない。
+
+歌曲拆讀：看到ない，先還原動詞辭書形並確認類別，再理解「不做什麼」。ない形本身不等於「不能」，能力要看其他表達。
+
+本站對照：
+L07｜ない形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_07/
+先認辭書形與分類 https://event.itigre.com/jp50/tae-kim/#verb-types
+不規則否定｜する／来る https://event.itigre.com/jp50/tae-kim/#negative-irregular
+參考章節：Tae Kim · Negative Form · Regular verbs
+https://guidetojapanese.org/learn/complete/negativeverbs
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+不規則否定｜しない／来ない
+
+一句規則：する的否定是しない；来る（くる）的否定是来ない（こない）。這兩個要整組記，不能套一般動詞的變形規則。
+
+今日は練習しない。
+讀音：きょうは れんしゅうしない。
+意思：今天不練習。練習する→練習しない。
+
+友達は明日ここに来ない。
+讀音：ともだちは あした ここに こない。
+意思：朋友明天不來這裡。来る→来ない，讀音也改變。
+
+易錯提醒：「名詞＋する」如練習する、勉強する，也把する改成しない。来ない的来讀こ，不讀く或き。
+
+回想：「来ない」怎麼讀？「勉強する」如何改成否定？
+請先想五秒，再繼續。
+答案：こない；勉強しない（べんきょうしない）。
+
+歌曲拆讀：遇到漢字「来」，連同後面的語尾一起確認讀音；看到しない，找前面是否接著表示活動的名詞。
+
+本站對照：
+L06｜動詞分類 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_06/
+L07｜ない形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_07/
+一般動詞否定 https://event.itigre.com/jp50/tae-kim/#verb-negative
+參考章節：Tae Kim · Negative Form · Exceptions
+https://guidetojapanese.org/learn/complete/negativeverbs
+
+本卡使用原創例句，非原站翻譯。
+
+==========
+
+存在的否定｜ない／いない
+
+一句規則：ある雖是五段動詞，否定卻特別變成ない；いる依一段規則變成いない。先分清存在的是物品、時間，還是人、動物。
+
+今日は練習の時間がない。
+讀音：きょうは れんしゅうの じかんが ない。
+意思：今天沒有練習的時間。時間がある→時間がない。
+
+今、庭に猫はいない。
+讀音：いま、にわに ねこは いない。
+意思：現在院子裡沒有貓。猫がいる的存在改為否定；這裡用は把貓提出來談。
+
+易錯提醒：現代標準日語的基本否定用ない，不用あらない。先前的「まだ時間がある」與「時間がない」，只換句尾就會翻轉是否有時間。
+
+回想：填入ない或いない：時間が（　）。友達がここに（　）。
+請先想五秒，再繼續。
+答案：時間がない；友達がここにいない。人不在用いない，時間沒有用ない。
+
+歌曲拆讀：找出ない前面是否其實沒有動詞詞幹：例如時間がない，是「沒有時間」。再和見ない等「不做某事」分開理解。
+
+本站對照：
+存在動詞｜ある／いる https://event.itigre.com/jp50/tae-kim/#existence-verbs
+存在位置｜に https://event.itigre.com/jp50/tae-kim/#existence-place
+L07｜ない形 https://event.itigre.com/jp50/aimyon/aimyon-japanese/learn/lesson_07/
+參考章節：Tae Kim · Negative Form · ある exception
+https://guidetojapanese.org/learn/complete/negativeverbs
 
 本卡使用原創例句，非原站翻譯。

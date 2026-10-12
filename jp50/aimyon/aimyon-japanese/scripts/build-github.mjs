@@ -62,7 +62,9 @@ mkdirSync(exportOutput, { recursive: true });
 cpSync(buildOutput, exportOutput, { recursive: true });
 
 function listFiles(directory) {
-  return readdirSync(directory).flatMap((entry) => {
+  // Workspace sync files can disappear while the export is being scanned.
+  // They are not application routes or assets.
+  return readdirSync(directory).filter((entry) => entry !== '.rsync-tmp').flatMap((entry) => {
     const entryPath = path.join(directory, entry);
     return statSync(entryPath).isDirectory() ? listFiles(entryPath) : entryPath;
   });

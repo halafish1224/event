@@ -15,7 +15,7 @@
       "question":"見る／帰る都能直接去る加ます嗎？",
       "answer":"不能。見る→見ます（みます）；帰る→帰ります（かえります）。先分類，再變形。",
       "song_task":"遇到變形的動詞，先追回辭書形、確認類別，再回 L06／L07 看變化；不要只靠最後一個字猜。",
-      "links":[["L06｜五段／一段與ます形","/jp50/aimyon/aimyon-japanese/learn/lesson_06/"],["L07｜ない形","/jp50/aimyon/aimyon-japanese/learn/lesson_07/"]]
+      "links":[["L06｜五段／一段與ます形","/jp50/aimyon/aimyon-japanese/learn/lesson_06/"],["L07｜ない形","/jp50/aimyon/aimyon-japanese/learn/lesson_07/"],["動詞否定｜ない形","/jp50/tae-kim/#verb-negative"]]
     },
     {
       "id":"verb-object", "title":"動作對象｜を", "tag":"先問動作作用在什麼上", "color":"#8a6531",

@@ -1,6 +1,6 @@
 # Tae Kim 對照速學
 
-版本 1.3.0，2026-10-12。先採 Tae Kim 首頁推薦的 Complete Guide，以原創繁中短句、回想題與本站單課對照補強基礎；不鏡像或逐字翻譯原站。
+版本 1.4.0，2026-10-13。先採 Tae Kim 首頁推薦的 Complete Guide，以原創繁中短句、回想題與本站單課對照補強基礎；不鏡像或逐字翻譯原站。
 
 ## 已完成範圍
 
@@ -17,12 +17,15 @@
 | TK03 | verb-place：到達點 に／動作場所 で | L06、L18 |
 | TK04 | existence-verbs：ある／いる | L06、狀態速學卡 |
 | TK04 | existence-place：存在位置 に／動作場所 で | L18、助詞速學卡 |
+| TK05 | verb-negative：一段／五段ない形 | L07、動詞分類卡 |
+| TK05 | negative-irregular：しない／来ない | L06、L07 |
+| TK05 | existence-negative：ない／いない | L07、存在速學卡 |
 
 每組有一句規則、兩個帶假名的原創例句、一題可展開答案的回想及歌曲拆讀任務。依原站適合短例句的範圍選材，不宣稱完整移植其章節或 JLPT 等級認證。原站原文連結保留在每張卡。
 
 ## 建置與串連
 
-以 batch-01.json、batch-02.json、batch-03.json、batch-04.json 為內容來源：
+以 batch-01.json、batch-02.json、batch-03.json、batch-04.json、batch-05.json 為內容來源：
 
     node jp50/tae-kim/build.mjs
 
@@ -48,7 +51,7 @@ JP50 主入口、AIMYON 字卡首頁、30 課列表、聽讀首頁與集中下�
 
 ## 下次更新
 
-TK04 已完成ある／いる與存在位置兩卡，銜接 L06、L18 及既有狀態、助詞卡。下一批 TK05 核對動詞否定與ある→ない。未核對的內容維持 pending，不預先標記完成。
+TK05 已完成一般動詞否定、不規則否定及存在否定三卡，銜接 L06、L07 及既有分類、存在卡。下一批 TK06 核對ます／ません與普通形、禮貌形的對照。未核對的內容維持 pending，不預先標記完成。
 
 import-state.json 記錄本功能進度。Aurader 生產進度保持獨立，下一課仍為 L20；新增速學卡不代表完成該課。
 
