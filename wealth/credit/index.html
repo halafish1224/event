@@ -1,0 +1,1490 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 信用卡權益與商店刷卡決策儀表板（含樂天卡與各通路登錄比較）</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #cbd5e1;
+      --primary: #1e3a8a;
+      --primary-light: #eff6ff;
+      --accent: #d97706;
+      --accent-bg: #fffbeb;
+      --accent-border: #f59e0b;
+      --danger-bg: #fef2f2;
+      --danger-text: #b91c1c;
+      --danger-border: #ef4444;
+      --app-btn: #059669;
+      --app-btn-hover: #047857;
+      --web-btn: #2563eb;
+      --web-btn-hover: #1d4ed8;
+      --radius: 12px;
+      --shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 16px 12px 64px;
+    }
+    .container { max-width: 1280px; margin: 0 auto; }
+
+    /* Header */
+    header {
+      background: linear-gradient(135deg, #0b132b 0%, #1c2541 60%, #1e3a8a 100%);
+      color: #fff;
+      padding: 24px 20px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+    header h1 { font-size: 1.55rem; font-weight: 800; margin-bottom: 8px; }
+    header p { color: #cbd5e1; font-size: 0.92rem; }
+    .status-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+    .tag { background: rgba(255,255,255,0.15); padding: 4px 12px; border-radius: 999px; font-size: 0.8rem; }
+
+    /* Selector Section */
+    .selector-panel {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+    .panel-title {
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.2fr;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+    @media (max-width: 820px) {
+      .controls-grid { grid-template-columns: 1fr; }
+    }
+    .form-group label {
+      display: block;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      margin-bottom: 6px;
+    }
+    select, input[type="text"] {
+      width: 100%;
+      padding: 10px 14px;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      color: var(--text-main);
+      background: #fff;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+    select:focus, input[type="text"]:focus {
+      border-color: var(--web-btn);
+      box-shadow: 0 0 0 3px rgba(37,99,235,0.15);
+    }
+
+    /* Result Card */
+    .result-section { margin-bottom: 32px; }
+    .store-header-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 18px 20px;
+      margin-bottom: 16px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+    .store-title-area h2 { font-size: 1.35rem; font-weight: 800; color: #0f172a; }
+    .store-category-badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      margin-top: 4px;
+    }
+
+    /* Champion Recommendation Callout */
+    .champion-callout {
+      background: var(--accent-bg);
+      border: 2px solid var(--accent-border);
+      border-radius: var(--radius);
+      padding: 18px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    .champion-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
+    }
+    .champion-title {
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #78350f;
+      margin-bottom: 6px;
+    }
+    .champion-body { font-size: 0.92rem; color: #78350f; }
+
+    /* Comparison Table */
+    .table-container {
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow-x: auto;
+      box-shadow: var(--shadow);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 1020px;
+      font-size: 0.9rem;
+    }
+    th {
+      background: #0f172a;
+      color: #fff;
+      text-align: left;
+      padding: 13px 16px;
+      font-weight: 600;
+      font-size: 0.86rem;
+    }
+    td {
+      padding: 14px 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:hover td { background: #f8fafc; }
+    tr.is-champion td { background: #fffdf5; }
+    tr.is-champion td:first-child { border-left: 5px solid var(--accent-border); }
+
+    /* Comparison Box within Table */
+    .compare-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+      margin: 6px 0;
+    }
+    @media (max-width: 600px) {
+      .compare-grid { grid-template-columns: 1fr; }
+    }
+    .box-unregistered {
+      background: #f1f5f9;
+      border: 1px solid #cbd5e1;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 0.84rem;
+    }
+    .box-registered {
+      background: #eff6ff;
+      border: 1.5px solid #93c5fd;
+      border-radius: 6px;
+      padding: 8px 10px;
+      font-size: 0.84rem;
+      color: #1e3a8a;
+    }
+    .badge-unreg {
+      display: inline-block;
+      background: #64748b;
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+    .badge-reg {
+      display: inline-block;
+      background: #2563eb;
+      color: #fff;
+      font-size: 0.72rem;
+      padding: 1px 6px;
+      border-radius: 4px;
+      font-weight: 700;
+      margin-bottom: 3px;
+    }
+
+    .urgent-date {
+      display: inline-block;
+      background: var(--danger-bg);
+      color: var(--danger-text);
+      border: 1px solid var(--danger-border);
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.8rem;
+      margin-top: 3px;
+    }
+
+    /* Buttons */
+    .btn-wrap { display: flex; flex-direction: column; gap: 6px; }
+    .btn-action {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      padding: 6px 10px;
+      border-radius: 6px;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s;
+    }
+    .btn-web { background: var(--web-btn); color: #fff; }
+    .btn-web:hover { background: var(--web-btn-hover); }
+    .btn-app { background: var(--app-btn); color: #fff; }
+    .btn-app:hover { background: var(--app-btn-hover); }
+
+    .note-text {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+      line-height: 1.4;
+    }
+    .empty-state {
+      padding: 40px;
+      text-align: center;
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px dashed var(--border);
+      color: var(--text-muted);
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>🛍️ 2026 全通路＆日本商店刷卡智能決策庫（含樂天卡四卡整合）</h1>
+    <p>支援以「通路／商店名稱」連動快選，詳列各卡優惠、登錄與未登錄完整比較，附最新驗證之銀行官方登錄頁與一鍵喚醒 APP 腳本</p>
+    <div class="status-tags">
+      <span class="tag">📌 資料版本：2026 Q4（含雙11檔期）</span>
+      <span class="tag">🏦 涵蓋銀行：中信、玉山、聯邦、渣打、台新、國泰、星展、富邦、一銀、永豐、台灣樂天</span>
+      <span class="tag">🇯🇵 日本藥妝／百貨／電器／餐廳完整對應</span>
+    </div>
+  </header>
+
+  <!-- ==================== 商店與類別連動選單 ==================== -->
+  <section class="selector-panel">
+    <div class="panel-title">🎯 請選擇想消費的商店或通路：</div>
+    <div class="controls-grid">
+      <div class="form-group">
+        <label for="catSelect">1. 通路屬性類別</label>
+        <select id="catSelect" onchange="onCategorySelectChange()">
+          <option value="ALL">全部類別（所有特店）</option>
+          <option value="JP_DRUG">🇯🇵 日本藥妝・美妝綜合</option>
+          <option value="JP_ELEC">🇯🇵 日本家電・3C與綜合量販</option>
+          <option value="JP_DEPT">🇯🇵 日本百貨・Outlet・免稅店</option>
+          <option value="JP_FOOD">🇯🇵 日本餐廳・名店與預約</option>
+          <option value="JP_TRANS">🇯🇵 日本交通卡儲值與行動感應</option>
+          <option value="TW_EC">📦 台灣與跨境主流電商（淘寶/酷澎/momo等）</option>
+          <option value="TW_LIFE">🛒 台灣實體量販・商場・生活</option>
+          <option value="TRAVEL">✈️ 航空機票・旅遊與外送</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="storeSelect">2. 商店／通路名稱</label>
+        <select id="storeSelect" onchange="onStoreSelectChange()">
+          <!-- 動態注入商店選項 -->
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="searchInput">3. 或直接關鍵字快搜</label>
+        <input type="text" id="searchInput" placeholder="輸入：松本清、BicCamera、淘寶、酷澎、全聯、虎航..." oninput="onSearchInput(this.value)" />
+      </div>
+    </div>
+  </section>
+
+  <!-- ==================== 篩選結果展示區 ==================== -->
+  <main class="result-section" id="resultArea">
+    <!-- 動態生成商店分析卡片與比較總表 -->
+  </main>
+</div>
+
+<script>
+/**
+ * 完整各銀行官方活動登錄真實網址（已逐一校正更新）與 APP Scheme 註冊表
+ */
+const BANK_LINKS = {
+  "玉山": {
+    web: "https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity",
+    app: "esunwallet://",
+    appName: "玉山 Wallet"
+  },
+  "聯邦": {
+    web: "https://card.ubot.com.tw/eCard/activity_login/register_activity.aspx",
+    app: "ubotmobile://",
+    appName: "聯邦行動銀行"
+  },
+  "永豐": {
+    web: "https://bank.sinopac.com/sinopacBT/personal/credit-card/card-right/activity-login.html",
+    app: "sinopacdawho://",
+    appName: "DAWHO App"
+  },
+  "樂天": {
+    web: "https://www.card.rakuten.com.tw/corp/campaign/list.xhtml?code=1806",
+    coupon: "https://www.card.rakuten.com.tw/corp/japan-benefit/",
+    app: "rakutencard://",
+    appName: "樂天信用卡 App"
+  },
+  "台新": {
+    web: "https://mkpcard.taishinbank.com.tw/tscccms/signin",
+    app: "richartlife://",
+    appName: "Richart Life"
+  },
+  "富邦": {
+    web: "https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces",
+    app: "fubonplus://",
+    appName: "Fubon+"
+  },
+  "國泰": {
+    web: "https://www.cathaybk.com.tw/promotion/",
+    app: "cathaycube://",
+    appName: "國泰 CUBE App"
+  },
+  "中信": {
+    web: "https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_offer/cc_event_reg.html",
+    app: "ctbcmobile://",
+    appName: "中信 Home Bank"
+  },
+  "星展": {
+    web: "https://www.dbs.com.tw/personal-zh/cards/offer/campaign-registration.page",
+    app: "dbscardplus://",
+    appName: "DBS Card+"
+  },
+  "第一": {
+    web: "https://ccard.firstbank.com.tw/caweb/act/index",
+    app: "firstbankileo://",
+    appName: "第e行動 / iLEO"
+  },
+  "渣打": {
+    web: "https://www.sc.com/tw/credit-cards/linebank-coband-card/",
+    app: "scbreeze://",
+    appName: "渣打行動銀行"
+  }
+};
+
+/**
+ * 通路/商店與各卡種權益數據庫（包含未登錄 vs 已登錄比較）
+ */
+const STORE_DATA = [
+  // ---------------- 日本藥妝 ----------------
+  {
+    id: "daikoku",
+    name: "大國藥妝（Daikoku Drug）",
+    category: "JP_DRUG",
+    categoryLabel: "🇯🇵 日本藥妝",
+    championCard: "聯邦吉鶴卡 / 玉山熊本熊卡 / 樂天 Panda J 卡",
+    championSummary: "現場出示優惠券享免稅 10% ＋ 5%~8% 折扣；刷聯邦吉鶴卡（最高11%）或玉山熊本熊（8.5%）回饋最頂；若搶不到登錄，樂天 Panda J 卡免登錄直拿 4% 現金回饋最無腦！",
+    cards: [
+      {
+        bank: "聯邦",
+        cardName: "聯邦吉鶴卡",
+        isChampion: true,
+        unreg: "日幣實體 2.5% 現金回饋無上限（免登錄保底）",
+        reg: "日本 Apple Pay 感應加碼 2.5%（月上限1,000）＋ 11大名店加碼 3%（上限600）＝ 合計最高 8%～11%",
+        dateNotice: "即日起～2026/12/31（感應與名店需於聯邦官網登錄）",
+        verdict: "搶得到登錄的首選神卡！若沒搶到登錄仍有 2.5% 兜底。",
+        note: "支援日本實體店 Apple Pay 感應 (QUICPay)。"
+      },
+      {
+        bank: "玉山",
+        cardName: "熊本熊卡",
+        isChampion: true,
+        unreg: "日本一般消費 2.5% 無上限（日圓雙幣卡免 1.5% 海外手續費）",
+        reg: "大國藥妝為指定商店，加碼 6% ＝ 合計 8.5% 回饋（需登錄，每期上限 500 元，約刷 NT$8,333 封頂）",
+        dateNotice: "現行檔期至 2026/12/31（每期於玉山 Wallet 登錄）",
+        verdict: "小額（8千台幣內）採買首選！免收 1.5% 手續費極具優勢。",
+        note: "超過 8,333 元後仍享 2.5% 回饋無上限。"
+      },
+      {
+        bank: "樂天",
+        cardName: "Panda J 卡",
+        isChampion: false,
+        unreg: "免登錄！日本實體直接給 1.5% 基本 ＋ 2.5% 加碼 ＝ 4.0% 現金回饋無上限/上限高（加碼每期上限300元）",
+        reg: "免登錄即可拿滿 4%！可搭配樂天大國藥妝專屬優惠券（現場出示最高再折 8%）",
+        dateNotice: "權益效期：2026/07/01～2026/12/31（完全免登錄、免切換）",
+        verdict: "【未登錄首選】不想搶登錄名額、厭倦切換權益的旅客最佳主力！",
+        note: "出示樂天信用卡官方優惠券享免稅10%＋最高8%折抵。"
+      },
+      {
+        bank: "國泰",
+        cardName: "CUBE 卡",
+        isChampion: false,
+        unreg: "未領券或未切換僅 0.3% 基本回饋",
+        reg: "切換「趣旅行」享 3.0%～3.3% 小樹點無上限；CUBE App 領《秋日遊》券指定通路最高達 8%",
+        dateNotice: "《秋日遊》加碼檔期：2026/10/01～2026/11/30（須至App領券）",
+        verdict: "適合超過萬元的大額採買，回饋無上限且免擔心封頂。",
+        note: "限一次付清，分期僅 0.3%。"
+      }
+    ]
+  },
+  {
+    id: "matsukiyo",
+    name: "松本清（Matsumoto KiYoshi）/ COCOKARA FINE",
+    category: "JP_DRUG",
+    categoryLabel: "🇯🇵 日本藥妝",
+    championCard: "玉山熊本熊卡（8.5%）／樂天 Panda J 卡（4%＋7%券）",
+    championSummary: "玉山熊本熊卡登錄後享 8.5% 封頂回饋；樂天卡出示優惠券現折最高 7%，搭配 Panda J 卡免登錄拿 4% 現金回饋，雙重省最多！",
+    cards: [
+      {
+        bank: "玉山",
+        cardName: "熊本熊卡",
+        isChampion: true,
+        unreg: "日本 2.5% 無上限（免 1.5% 手續費）",
+        reg: "登錄指定商店加碼 6% ＝ 8.5%（每期上限 500 元）",
+        dateNotice: "至 2026/12/31（需於玉山 Wallet 登錄）",
+        verdict: "登錄後 8.5% 為實質回饋最高，需注意每期刷 NT$8,333 封頂。",
+        note: "松本清為官方明列指定店。"
+      },
+      {
+        bank: "樂天",
+        cardName: "Panda J 卡",
+        isChampion: true,
+        unreg: "免登錄 4.0% 現金回饋（基本1.5%無上限＋日韓實體加碼2.5%）",
+        reg: "免登錄！於櫃台出示樂天專屬松本清折價券享免稅10%＋3%～7% OFF",
+        dateNotice: "權益效期至 2026/12/31（免登錄）",
+        verdict: "免搶登錄最穩卡！現折 7% ＋ 刷卡金 4% 複合效益超過 11%。",
+        note: "折價券可直接於樂天信用卡官網出示條碼。"
+      },
+      {
+        bank: "台新",
+        cardName: "Richart 卡",
+        isChampion: false,
+        unreg: "未切換或未設自扣僅 0.3% 基本回饋",
+        reg: "App 切換至「玩旅刷」享海外實體 3.3% 台新 Point 無上限",
+        dateNotice: "切換方案效期至 2027/03/31（每日23:59前切換生效）",
+        verdict: "買破萬大量化妝品/藥品的大額無上限保底推薦。",
+        note: "需設定台新帳戶自動扣繳。"
+      }
+    ]
+  },
+  {
+    id: "donki",
+    name: "唐吉訶德（Don Quijote 驚安之殿堂）",
+    category: "JP_DRUG",
+    categoryLabel: "🇯🇵 日本藥妝・量販",
+    championCard: "玉山熊本熊卡（8.5%）／聯邦吉鶴卡（8%~11%）／樂天 Panda J 卡（4%+7%券）",
+    championSummary: "唐吉訶德三強鼎立！玉山熊本熊與聯邦吉鶴登錄後均超過 8.5%；出示樂天折價券滿額享免稅10%＋額外 5%~7% 折扣，再刷 Panda J 卡享 4% 回饋！",
+    cards: [
+      {
+        bank: "玉山",
+        cardName: "熊本熊卡",
+        isChampion: true,
+        unreg: "日本 2.5% 無上限（免手續費）",
+        reg: "唐吉訶德屬指定特店，加碼 6% ＝ 8.5%（每期上限 500 元）",
+        dateNotice: "2026/07/01～2026/12/31（需登錄）",
+        verdict: "買零食、藥妝 8,000 元內首選！",
+        note: "日本全門市適用。"
+      },
+      {
+        bank: "聯邦",
+        cardName: "聯邦吉鶴卡",
+        isChampion: true,
+        unreg: "日本一般消費 2.5% 無上限",
+        reg: "唐吉訶德為 11 大特店加碼 3% ＋ Apple Pay 感應加碼 2.5% ＝ 最高 8%～11%",
+        dateNotice: "至 2026/12/31（需官網登錄）",
+        verdict: "名店加碼名額相對多，適合採買主力。",
+        note: "實體刷卡或感應均可。"
+      },
+      {
+        bank: "樂天",
+        cardName: "Panda J 卡",
+        isChampion: false,
+        unreg: "免登錄 4.0% 刷卡金回饋（每期加碼上限 300 元）",
+        reg: "出示樂天唐吉訶德專屬優惠券（消費滿 10,000 日圓享免稅 10% ＋ 5%~7% OFF）",
+        dateNotice: "優惠券效期至 2027/02/28；卡片回饋至 2026/12/31",
+        verdict: "免登錄第一名！現折券搭配 4% 刷卡金極度划算。",
+        note: "需於結帳前出示樂天優惠券條碼。"
+      }
+    ]
+  },
+  {
+    id: "tsuruha",
+    name: "鶴羽藥妝（TSURUHA Drug）/ 札幌藥妝 / DRUG ELEVEN",
+    category: "JP_DRUG",
+    categoryLabel: "🇯🇵 日本藥妝",
+    championCard: "樂天 Panda J 卡（4%＋最高8%券）／永豐幣倍卡（6%~8%）",
+    championSummary: "這三家日本連鎖藥妝皆為樂天官方長期合作特店，出示樂天折價券現折最高 7%～8%，刷 Panda J 卡免登錄再賺 4% 刷卡金！",
+    cards: [
+      {
+        bank: "樂天",
+        cardName: "Panda J 卡",
+        isChampion: true,
+        unreg: "免登錄日本實體 4.0% 現金回饋（基本1.5%＋加碼2.5%）",
+        reg: "出示樂天專屬優惠券享免稅10%＋7%～8% OFF（DRUG ELEVEN 8% / 鶴羽 7% / 札幌藥妝 7%）",
+        dateNotice: "DRUG ELEVEN至2027/06/30；鶴羽至2027/08/31；札幌至2027/01/31",
+        verdict: "此三大藥妝最佳專武！現場折抵最有感。",
+        note: "於結帳櫃台出示手機畫面即可折抵。"
+      },
+      {
+        bank: "永豐",
+        cardName: "幣倍卡",
+        isChampion: true,
+        unreg: "國外消費基本 2% 無上限",
+        reg: "完成任務（自扣＋資產10萬）享精選海外實體加碼 4% ＝ 6.0%（上限 800 元/期＝可刷 NT$20,000）",
+        dateNotice: "精選加碼至 2026/12/31；海外每滿5千抽2萬刷卡金至 12/31",
+        verdict: "不論哪家藥妝皆享 6% 現金回饋，額度高達 2 萬台幣！",
+        note: "新辦卡綁 Apple Pay 加碼 2% 直衝 8%。"
+      }
+    ]
+  },
+
+  // ---------------- 日本電器與量販 ----------------
+  {
+    id: "biccamera",
+    name: "BicCamera 集團（BicCamera / Kojima / Sofmap）",
+    category: "JP_ELEC",
+    categoryLabel: "🇯🇵 日本電器・3C量販",
+    championCard: "玉山熊本熊卡（8.5%）／聯邦吉鶴卡（8%~11%）／樂天 Panda J 卡（4%+7%券）",
+    championSummary: "買相機、吹風機、電鍋！8,000 元內小家電刷玉山熊本熊（8.5%）或吉鶴卡（8%~11%）；大額電器免登錄出示樂天券現折 7% 搭配 Panda J 卡 4% 或台新 Richart 玩旅刷 3.3% 無上限！",
+    cards: [
+      {
+        bank: "玉山",
+        cardName: "熊本熊卡",
+        isChampion: true,
+        unreg: "日本一般消費 2.5% 無上限（免手續費）",
+        reg: "BicCamera 指定特店加碼 6% ＝ 8.5%（每期上限 500 元＝刷 NT$8,333 封頂）",
+        dateNotice: "至 2026/12/31（需玉山 Wallet 登錄）",
+        verdict: "買單價在 8,333 台幣以內之小家電首選！",
+        note: "日本各 BicCamera 及 Kojima 門市適用。"
+      },
+      {
+        bank: "樂天",
+        cardName: "Panda J 卡",
+        isChampion: true,
+        unreg: "免登錄 4.0% 現金回饋（加碼上限 300 元/期）",
+        reg: "出示樂天 BicCamera 優惠券享免稅 10% ＋ 最高 7% OFF（電器7%/藥妝5%）",
+        dateNotice: "優惠券效期至 2027/04/30（卡片回饋至 2026/12/31）",
+        verdict: "現折 7% ＋ 免登錄 4% 刷卡金，免去搶登錄煩惱！",
+        note: "免稅 10% 需滿 5,000 日圓以上退稅門檻。"
+      },
+      {
+        bank: "台新",
+        cardName: "Richart 卡",
+        isChampion: false,
+        unreg: "未切換僅 0.3% 基本回饋",
+        reg: "切換「玩旅刷」享日本實體 3.3% 台新 Point 無上限",
+        dateNotice: "至 2027/03/31（每日於 App 切換）",
+        verdict: "買高階單眼、Dyson 吸塵器、冷暖氣機等破 2 萬大額神卡！",
+        note: "回饋無上限，不用怕被額度卡死。"
+      }
+    ]
+  },
+  {
+    id: "yamada_edion",
+    name: "山田電機 (YAMADA) / 愛電王 (EDION) / 多慶屋 (Takeya)",
+    category: "JP_ELEC",
+    categoryLabel: "🇯🇵 日本電器・3C量販",
+    championCard: "樂天 Panda J 卡（多慶屋10%券/電器7%券＋4%回饋）／永豐幣倍卡（6%~8%）",
+    championSummary: "樂天卡在多慶屋滿 5,000 日圓出示折價券現享 10% OFF，愛電王現折 8%、山田電機現折 7%，再刷 Panda J 卡免登錄拿 4% 現金回饋！",
+    cards: [
+      {
+        bank: "樂天",
+        cardName: "Panda J 卡",
+        isChampion: true,
+        unreg: "免登錄 4.0% 現金回饋",
+        reg: "多慶屋滿 5,000 日圓現折 10%（最高折 1 萬日圓）；愛電王現折 8%；山田電機現折 7%",
+        dateNotice: "多慶屋與山田電機優惠券至 2027/04/30",
+        verdict: "上野多慶屋與這兩大電器行的絕對專武！",
+        note: "需於結帳前手機出示樂天官網優惠券。"
+      },
+      {
+        bank: "永豐",
+        cardName: "幣倍卡",
+        isChampion: true,
+        unreg: "國外 2% 無上限",
+        reg: "完成自扣＋資產任務享精選海外實體加碼 4% ＝ 6.0%（每期上限 800 元，可刷 2 萬）",
+        dateNotice: "至 2026/12/31",
+        verdict: "無特定折價券時的 6% 保底主力卡。",
+        note: "需設定台外幣帳戶自動扣繳。"
+      }
+    ]
+  },
+
+  // ---------------- 日本百貨與 Outlet ----------------
+  {
+    id: "mitsui_outlet_jp",
+    name: "日本三井 Outlet（MITSUI OUTLET PARK）/ LaLaport / DiverCity",
+    category: "JP_DEPT",
+    categoryLabel: "🇯🇵 日本百貨・Outlet",
+    championCard: "永豐 MITSUI OUTLET PARK 聯名卡／樂天標準卡與 Panda J 卡",
+    championSummary: "日本三井 Outlet 必備永豐三井聯名卡或樂天卡！於綜合服務台出示直接免費換 500～1,000 日圓購物券與最高 10% 品牌折扣券！",
+    cards: [
+      {
+        bank: "永豐",
+        cardName: "MITSUI OUTLET PARK 聯名卡",
+        isChampion: true,
+        unreg: "海外 1.5%～2% 現金回饋；出示聯名卡換 1,000 日圓抵用券（兩張 500 日圓）＋最高 10% 折扣",
+        reg: "JCB 卡限定：登錄後每季於日韓泰實體滿 NT$30,000 加碼 2% 刷卡金（每季上限 1,000 元）",
+        dateNotice: "三井日幣抵用券至 2027/01/31；JCB 加碼每季登錄至 2026/12/31",
+        verdict: "台日三井暢行專用卡！在日本現場換 1,000 日圓禮券超實用。",
+        note: "木更津、幕張、北廣島、大阪門真等三井門市皆適用。"
+      },
+      {
+        bank: "樂天",
+        cardName: "Panda J 卡 / 樂天標準卡",
+        isChampion: true,
+        unreg: "Panda J 卡享 4.0% 免登錄回饋；出示樂天信用卡換 500 日圓折價券＋最高 10% 優惠券",
+        reg: "標準卡需於樂天活動頁登錄當季滿額回饋活動",
+        dateNotice: "日本三井/LaLaport 專屬禮遇至 2027/01/31",
+        verdict: "前往台場 DiverCity、COREDO室町、川崎廣場或三井皆享 500 日圓現折＋4% 刷卡金。",
+        note: "至商場旅客諮詢櫃台 (Tourist Information) 出示樂天卡領取。"
+      }
+    ]
+  },
+  {
+    id: "tokyu_odakyu",
+    name: "新宿小田急百貨 (Odakyu) / 東急百貨 (Tokyu) / 銀座 LOTTE / KOMEHYO",
+    category: "JP_DEPT",
+    categoryLabel: "🇯🇵 日本百貨・精品",
+    championCard: "樂天 Panda J 卡（出示優惠券免稅+8%~92折＋4%回饋）／國泰 CUBE 卡",
+    championSummary: "小田急、東急與銀座 LOTTE 皆為樂天深度合作特店，出示樂天卡享最高 92 折~95 折＋滿額送日式小包或 2,000 日圓現折！",
+    cards: [
+      {
+        bank: "樂天",
+        cardName: "Panda J 卡",
+        isChampion: true,
+        unreg: "免登錄 4.0% 現金回饋",
+        reg: "新宿小田急免稅10%＋8%優惠；銀座LOTTE最高92折＋2,000日圓券；KOMEHYO滿額折3,000日圓",
+        dateNotice: "KOMEHYO至2026/11/30；LOTTE至2027/03/31；東急至2027/01/31",
+        verdict: "東京逛街血拚專武，現打折再拿 4% 現金回饋！",
+        note: "需於結帳前至免稅櫃台或收銀機出示優惠券。"
+      },
+      {
+        bank: "國泰",
+        cardName: "CUBE 卡",
+        isChampion: false,
+        unreg: "未切換 0.3%",
+        reg: "切換「趣旅行」享 3.3% 小樹點無上限；秋日遊加碼領券享最高 3.5%~8%",
+        dateNotice: "秋日遊領券至 2026/11/30",
+        verdict: "精品大額消費無上限首選。",
+        note: "限一次付清。"
+      }
+    ]
+  },
+  {
+    id: "isetan_amu",
+    name: "東京三越伊勢丹 / 九州 AMU PLAZA",
+    category: "JP_DEPT",
+    categoryLabel: "🇯🇵 日本百貨・商場",
+    championCard: "玉山熊本熊卡（伊勢丹最高3萬日圓/AMU現折5%）／聯邦吉鶴卡（11大特店）",
+    championSummary: "三越伊勢丹 3 店刷玉山熊本熊卡滿額最高贈 3 萬日圓；九州 AMU PLAZA 滿 2,000 日圓現折 5%！聯邦吉鶴亦將三越伊勢丹列為 11 大加碼名店。",
+    cards: [
+      {
+        bank: "玉山",
+        cardName: "熊本熊卡",
+        isChampion: true,
+        unreg: "日本 2.5% 無上限（免手續費）",
+        reg: "東京三越伊勢丹 3 店滿額最高贈 30,000 日圓；九州 AMU PLAZA 滿 2,000 日圓現折 5%",
+        dateNotice: "三越伊勢丹活動：2026/07/01～2026/12/31；AMU PLAZA至 2027/08/31",
+        verdict: "去東京逛伊勢丹或九州自由行必備第一神卡！",
+        note: "三越伊勢丹含伊勢丹新宿店、三越日本橋本店、三越銀座店。"
+      },
+      {
+        bank: "聯邦",
+        cardName: "聯邦吉鶴卡",
+        isChampion: false,
+        unreg: "日幣 2.5% 無上限",
+        reg: "三越與伊勢丹屬 11 大特店加碼 3% ＋ 登錄 Apple Pay 感應加碼 2.5% ＝ 最高 8%～11%",
+        dateNotice: "至 2026/12/31（需官網登錄）",
+        verdict: "搶得到名額時回饋率最高。",
+        note: "限日幣交易。"
+      }
+    ]
+  },
+
+  // ---------------- 日本餐廳美食 ----------------
+  {
+    id: "gurunavi_food",
+    name: "Gurunavi 日本餐廳預約 / 山形酒菜一 / 東京江戶屋形船",
+    category: "JP_FOOD",
+    categoryLabel: "🇯🇵 日本餐廳・美食指南",
+    championCard: "台灣樂天信用卡全卡友（最高 20% OFF）／樂天 Panda J 卡",
+    championSummary: "出國前想預約日本熱門餐廳？透過樂天信用卡專屬 Gurunavi 平台預約指定餐廳享最高 20% OFF！山形酒菜一低消滿 5,000 日圓現折 5%！",
+    cards: [
+      {
+        bank: "樂天",
+        cardName: "樂天全卡（Panda J / 樂虎卡 / 標準卡）",
+        isChampion: true,
+        unreg: "透過樂天 Gurunavi 專屬連結預約直接享最高 20% 折扣優惠",
+        reg: "刷 Panda J 卡現場再享 4% 現金回饋（免登錄）",
+        dateNotice: "Gurunavi 預約優惠至 2026/12/31；山形酒菜一至 2027/02/28；屋形船至 2027/07/31",
+        verdict: "日本特色餐廳預訂專武，免排隊還現省 10%～20%！",
+        note: "需透過樂天信用卡活動專頁指定之 Gurunavi 繁體中文網頁預訂。"
+      },
+      {
+        bank: "台新",
+        cardName: "Richart 卡",
+        isChampion: false,
+        unreg: "未切換 0.3%",
+        reg: "切換「好饗刷」或「玩旅刷」享國外餐飲實體 3.3% 台新 Point 無上限",
+        dateNotice: "至 2027/03/31",
+        verdict: "現場隨意吃餐廳、居酒屋無腦刷。",
+        note: "需綁定台新帳戶自動扣繳。"
+      }
+    ]
+  },
+  {
+    id: "jojien_ichiran",
+    name: "敘敘苑燒肉 / 一蘭拉麵",
+    category: "JP_FOOD",
+    categoryLabel: "🇯🇵 日本餐廳・名店",
+    championCard: "玉山熊本熊卡（8.5%）／聯邦吉鶴卡（8%）／樂天 Panda J 卡（4% 免登錄）",
+    championSummary: "國人旅日必吃兩大美食！玉山熊本熊卡將敘敘苑與一蘭列為指定特店，登錄後獨享 8.5%！不想搶登錄者刷樂天 Panda J 卡現拿 4% 回饋！",
+    cards: [
+      {
+        bank: "玉山",
+        cardName: "熊本熊卡",
+        isChampion: true,
+        unreg: "日本一般 2.5% 無上限（免手續費）",
+        reg: "敘敘苑與一蘭拉麵為指定加碼特店，加碼 6% ＝ 8.5%（每期上限 500 元）",
+        dateNotice: "2026/07/01～2026/12/31（玉山 Wallet 登錄）",
+        verdict: "吃燒肉與拉麵首選！8,333 元額度很夠吃兩頓大餐。",
+        note: "需於日本實體門市刷卡結帳。"
+      },
+      {
+        bank: "樂天",
+        cardName: "Panda J 卡",
+        isChampion: true,
+        unreg: "免登錄！日本實體直接 4.0% 現金回饋（每期加碼上限 300 元）",
+        reg: "無需繁瑣登錄，任何日本拉麵店、居酒屋、餐廳均一價 4%",
+        dateNotice: "權益效期至 2026/12/31",
+        verdict: "未登錄冠軍！去一蘭投幣機或刷卡機直接刷最省事。",
+        note: "每期可刷 NT$12,000。"
+      },
+      {
+        bank: "聯邦",
+        cardName: "聯邦吉鶴卡",
+        isChampion: false,
+        unreg: "日幣 2.5% 無上限",
+        reg: "登錄日本 Apple Pay 感應加碼 2.5% ＝ 5.0%～8.0%",
+        dateNotice: "至 2026/12/31",
+        verdict: "支援 Apple Pay 感應付款時非常順暢。",
+        note: "需完成當期登錄。"
+      }
+    ]
+  },
+
+  // ---------------- 日本交通與感應支付 ----------------
+  {
+    id: "suica_ic",
+    name: "日本三大交通卡（Suica / PASMO / ICOCA）手機儲值",
+    category: "JP_TRANS",
+    categoryLabel: "🇯🇵 日本交通與感應",
+    championCard: "富邦 J 卡（登錄 10%）／玉山熊本熊卡（登錄 8.5%）／永豐幣倍卡（6%~8% 可刷2萬）",
+    championSummary: "iPhone 手機點兩下加值交通卡！富邦 J 卡每月 18 日搶登錄拿 10%（上限200）；玉山熊本熊登錄拿 8.5%（上限500）；永豐幣倍卡完成任務享 6%～8% 且額度高達 2 萬台幣！",
+    cards: [
+      {
+        bank: "富邦",
+        cardName: "J卡",
+        isChampion: true,
+        unreg: "未登錄僅日韓基本 3.0% 回饋無上限",
+        reg: "每月 18 日 16:00 登錄日本交通卡儲值加碼 7% ＝ 合計 10.0%（加碼上限 200 元＝可加值約 NT$2,857）",
+        dateNotice: "⏰ 每月 18 日 16:00 於 Fubon+ 搶登錄（至 2026/12/31）",
+        verdict: "【小額加值冠軍】搶得到登錄 10% 回饋率最高！",
+        note: "限 Apple Pay 綁定 J卡 直接在手機錢包加值。"
+      },
+      {
+        bank: "玉山",
+        cardName: "熊本熊卡",
+        isChampion: true,
+        unreg: "日幣 2.5% 無上限（免手續費）",
+        reg: "登錄指定商店加碼 6% ＝ 8.5%（每期上限 500 元＝可加值 NT$8,333）",
+        dateNotice: "至 2026/12/31（玉山 Wallet 登錄）",
+        verdict: "【實用加值冠軍】加值額度高達 8,300 元，不用搶破頭！",
+        note: "日本 Apple Pay 加值 Suica / PASMO / ICOCA 皆計入指定店。"
+      },
+      {
+        bank: "永豐",
+        cardName: "幣倍卡",
+        isChampion: false,
+        unreg: "國外 2% 無上限",
+        reg: "完成任務精選加碼 4% ＝ 6.0%（上限 800 元/期＝可儲值 NT$20,000！）；新戶加辦 AP 達 8.0%",
+        dateNotice: "至 2026/12/31",
+        verdict: "【大額加值推薦】搭乘新幹線或全家交通費儲值首選。",
+        note: "儲值 2 萬以內通通拿滿 6% 現金回饋。"
+      }
+    ]
+  },
+
+  // ---------------- 台灣與跨境主流電商 ----------------
+  {
+    id: "taobao",
+    name: "淘寶 (Taobao) 跨境網購",
+    category: "TW_EC",
+    categoryLabel: "📦 跨境與台灣電商",
+    championCard: "永豐 幣倍卡（6%~8% 可刷2萬）／玉山 Unicard（4.5% 可刷5.7萬）",
+    championSummary: "淘寶買家具、集運與雙11！永豐幣倍卡以 6%～8% 高回饋奪冠（可刷2萬）；玉山 Unicard 訂閱 UP選 享 4.5%（可刷 5.7 萬）；大額破 6 萬刷台新 Richart 或國泰 CUBE 3.3% 無上限！",
+    cards: [
+      {
+        bank: "永豐",
+        cardName: "幣倍卡",
+        isChampion: true,
+        unreg: "未達任務僅 2% 國外回饋",
+        reg: "完成自扣＋資產任務，精選海外網購加碼 4% ＝ 6.0%（上限 800 元/期＝可刷 NT$20,000！）；新申辦/AP加碼達 8.0%",
+        dateNotice: "⏰ 現行檔期至 2026/12/31；雙11前夕記得確認資產任務",
+        verdict: "【淘寶最強神卡】扣除 1.5% 手續費後淨賺 4.5%～6.5%！",
+        note: "結帳幣別選台幣計價即可認列精選通路。"
+      },
+      {
+        bank: "玉山",
+        cardName: "Unicard",
+        isChampion: true,
+        unreg: "簡單選（免切換）最高 3.0%",
+        reg: "玉山 Wallet「任意選」將淘寶列為特店享 3.5%；以 149 點升級「UP選」享 4.5% 玉山 e point（上限 2,000 點/月＝可刷 NT$57,142！）",
+        dateNotice: "至 2026/12/31（每月可於玉山 Wallet 訂閱 UP選）",
+        verdict: "【中大額採買首選】雙11買家具、集運大包裹必備！",
+        note: "加碼點數 1 點＝1 元可折抵帳單。"
+      },
+      {
+        bank: "聯邦",
+        cardName: "LINE Bank 聯名卡",
+        isChampion: false,
+        unreg: "免登錄！淘寶屬指定網購加碼 3% ＋ 基本 1% ＝ 4.0% 現金回饋（月上限 300 元，可刷 1 萬）",
+        reg: "無需搶登錄、免切換權益，直接於次期帳單折抵現金 4%",
+        dateNotice: "至 2026/12/31（免登錄）",
+        verdict: "【小額免動腦首選】萬元內日常採買最穩。",
+        note: "小額購物免傷腦筋。"
+      },
+      {
+        bank: "台新",
+        cardName: "Richart 卡",
+        isChampion: false,
+        unreg: "未切換僅 0.3%",
+        reg: "App 切換至「數趣刷」享淘寶 3.3% 台新 Point 回饋無上限",
+        dateNotice: "方案效期至 2027/03/31（每日可切換）",
+        verdict: "【超大額無上限】超過 6 萬元的裝潢/家具尾款無腦刷。",
+        note: "需設定台新帳戶自動扣繳。"
+      }
+    ]
+  },
+  {
+    id: "coupang",
+    name: "酷澎 Coupang（火箭速配）",
+    category: "TW_EC",
+    categoryLabel: "📦 台灣電商",
+    championCard: "永豐 DAWAY 卡（週三最高 13%）／玉山 Unicard（4.5%）",
+    championSummary: "每週三刷酷澎用永豐 DAWAY 綁 LINE Pay 享加碼 5%，疊加新戶最高達 13%（舊戶亦有 7%）！其他日子刷玉山 Unicard 4.5% 或台新 Richart 數趣刷 3.3% 無上限！",
+    cards: [
+      {
+        bank: "永豐",
+        cardName: "DAWAY 卡",
+        isChampion: true,
+        unreg: "一般國內消費 0.5% LINE POINTS",
+        reg: "完成 DAWAY GO（自扣+電子帳單）升級 2%；每週三於酷澎以 LINE Pay 結帳加碼 5%（上限75點/月），新戶合計最高直衝 13%（舊戶 7%）",
+        dateNotice: "⏰ 每週三限定加碼：2026/10/01～2026/12/31",
+        verdict: "【週三酷澎專武】買日用品、尿布奶粉折上折！",
+        note: "僅適用台灣火箭速配，不適用跨境商品與會員訂閱費。"
+      },
+      {
+        bank: "玉山",
+        cardName: "Unicard",
+        isChampion: false,
+        unreg: "簡單選最高 3.0%",
+        reg: "任意選酷澎享 3.5%；升級「UP選」享 4.5% 玉山 e point（上限 2,000 點/月）",
+        dateNotice: "至 2026/12/31",
+        verdict: "週一到週日天天採買的最高穩定回饋卡。",
+        note: "酷澎明列百大特店名單。"
+      },
+      {
+        bank: "玉山",
+        cardName: "U Bear 卡",
+        isChampion: false,
+        unreg: "未綁自扣僅 0.5%～2.5%",
+        reg: "綁定電子帳單＋玉山自扣享全網購 3.0% 現金回饋（加碼 2% 每期上限 150 元＝刷 NT$7,500 封頂，當期折抵）",
+        dateNotice: "權益效期：2026/09/01～2027/02/28（免登錄）",
+        verdict: "免切換、免看日子、現金直接扣帳單。",
+        note: "日常小額必備。"
+      }
+    ]
+  },
+  {
+    id: "momo_shop",
+    name: "momo 購物網",
+    category: "TW_EC",
+    categoryLabel: "📦 台灣電商",
+    championCard: "台北富邦 momo 卡（3%～7% 雙11加碼上限提高至 2,000）",
+    championSummary: "momo 唯一霸主富邦 momo 卡！雙11檔期結帳帳單筆筆 3% 上限調高至 2,000 mo幣（可刷 NT$66,666！），千大品牌免登錄最高 7%！分期大額可改搶玉山/台新/星展分期登錄。",
+    cards: [
+      {
+        bank: "富邦",
+        cardName: "momo 卡",
+        isChampion: true,
+        unreg: "免登錄！站內筆筆 3.0% mo幣；千大品牌單筆滿 300 享 5%～7% 免登錄無上限",
+        reg: "雙11專案：2026/10～2027/01 結帳帳單 3% 上限拉高至 2,000 mo幣（可刷 NT$66,666）！富邦全卡友滿額登錄於 11/11、11/20 14:00 開放",
+        dateNotice: "🔥 雙11檔期上限升級至 2027/01 帳單結算止",
+        verdict: "【momo 專武無庸置疑】一次付清直接刷，免搶登錄最划算！",
+        note: "注意：分期訂單不享 3% 與品牌加碼；勿透過 LINE Pay 結帳（僅算店外 1%）。"
+      },
+      {
+        bank: "玉山",
+        cardName: "Unicard / U Bear",
+        isChampion: false,
+        unreg: "U Bear 全網購免登錄 3.0%（上限150元/期）；Unicard 簡單選 3.0%",
+        reg: "Unicard UP選享 4.5%（上限 2,000 點/月）；雙11期間可疊加玉山電商滿額登錄禮",
+        dateNotice: "玉山雙11電商滿額登錄依玉山官網公告",
+        verdict: "無 momo 卡或額度用盡時的第二主力。",
+        note: "Unicard 加碼額度高達 5.7 萬。"
+      },
+      {
+        bank: "台新",
+        cardName: "Richart 卡",
+        isChampion: false,
+        unreg: "未切換 0.3%",
+        reg: "切換「數趣刷」享 3.3% 台新 Point 無上限",
+        dateNotice: "至 2027/03/31",
+        verdict: "破 7 萬元超大額 3C 家電首選（無上限）。",
+        note: "需台新帳戶自動扣繳。"
+      }
+    ]
+  },
+  {
+    id: "pchome_shop",
+    name: "PChome 24h 購物",
+    category: "TW_EC",
+    categoryLabel: "📦 台灣電商",
+    championCard: "星展 PChome Prime 聯名卡（週四 6% / 平日 4% 分期同享）",
+    championSummary: "PChome 站內星展聯名卡週四最高 6%，且是全台灣唯一「辦理分期付款仍同享 4%～6% 原點數回饋」的神卡！疊加雙11分期滿額登錄突破 15%！",
+    cards: [
+      {
+        bank: "星展",
+        cardName: "PCHOME 聯名卡",
+        isChampion: true,
+        unreg: "免登錄！站內筆筆 4.0%（2%聯名點+2% P幣）；每週四加碼 2% ＝ 合計 6.0%",
+        reg: "雙11分期滿額活動於 DBS Card+ 搶登錄，疊加原權益最高享 15% 以上回饋！",
+        dateNotice: "站內權益至 2026/12/31；雙11分期登錄於 11/1～11/13 指定日開放",
+        verdict: "【PChome 絕對專武】分期買 iPhone 18 / 電競筆電唯一推薦！",
+        note: "分期付款仍享有原卡 4%～6% 點數回饋。"
+      },
+      {
+        bank: "玉山",
+        cardName: "Unicard",
+        isChampion: false,
+        unreg: "簡單選 3.0%",
+        reg: "任意選 3.5%；UP選享 4.5% 玉山 e point（上限 2,000 點/月）",
+        dateNotice: "至 2026/12/31",
+        verdict: "週五至週三非聯名卡加碼日之最優備卡。",
+        note: "UP選回饋率 4.5% 勝過平日 4%。"
+      }
+    ]
+  },
+  {
+    id: "shopee",
+    name: "蝦皮購物 (Shopee)",
+    category: "TW_EC",
+    categoryLabel: "📦 台灣電商",
+    championCard: "中信 LINE Pay 卡（5%）／玉山 Unicard（4.5%）／台新 Richart 數趣刷（3.3%無上限）",
+    championSummary: "小額採買每月搶登錄刷中信 LINE Pay Visa 卡（5%）；中額刷玉山 Unicard（4.5%）或聯邦 LINE Bank 卡（4%）；大額刷台新 Richart 數趣刷或國泰 CUBE 3.3% 無上限！",
+    cards: [
+      {
+        bank: "中信",
+        cardName: "LINEPAY 信用卡",
+        isChampion: true,
+        unreg: "國內一般消費 1.0% LINE POINTS 無上限",
+        reg: "限 LINE Pay Visa 信用卡，於中信活動專區登錄享蝦皮購物 5.0% 回饋（加碼 4% 每季上限 100 點，每月限量 8,000 名）",
+        dateNotice: "⏰ 每月開放 8,000 名登錄（至 2026/12/31）",
+        verdict: "每季 2,500 元以內小額採買回饋率最高！",
+        note: "限 Visa 卡別適用。"
+      },
+      {
+        bank: "玉山",
+        cardName: "Unicard",
+        isChampion: true,
+        unreg: "簡單選 3.0%",
+        reg: "UP選享 4.5% 玉山 e point（加碼上限 2,000 點/月，可刷 NT$57,142！）",
+        dateNotice: "至 2026/12/31",
+        verdict: "買 3,000～50,000 元高單價商品最佳主力。",
+        note: "免搶名額，權益設定即享。"
+      },
+      {
+        bank: "國泰",
+        cardName: "CUBE 卡",
+        isChampion: false,
+        unreg: "未切換僅 0.3%",
+        reg: "切換「玩數位」享 3.0%～3.3% 小樹點無上限；雙11領蝦皮滿額加碼券",
+        dateNotice: "至 2026/12/31（雙11加碼券 11/1～11/11 領取）",
+        verdict: "大額一次付清無上限保底推薦。",
+        note: "限一次付清，分期僅 0.3%。"
+      }
+    ]
+  },
+
+  // ---------------- 台灣實體量販與商場生活 ----------------
+  {
+    id: "rt_mart",
+    name: "大全聯（原大潤發）",
+    category: "TW_LIFE",
+    categoryLabel: "🛒 台灣量販超市",
+    championCard: "台新 大全聯信用卡（最高 12% 福利點）",
+    championSummary: "改名大全聯後信用卡優惠大洗牌！台新大全聯聯名卡 JCB 限定綁全支付消費，疊加自助結帳滿額等效最高 12% 福利點回饋！",
+    cards: [
+      {
+        bank: "台新",
+        cardName: "大全聯信用卡",
+        isChampion: true,
+        unreg: "店內一般消費 0.8% ＋ 專案 0.4% ＝ 1.2% 福利點無上限",
+        reg: "免登錄！JCB 聯名卡綁全支付滿 NT$1,000 加碼 4%（上限 3,000 點）＋ 週年加碼 1.8% ＋ 週末自助結帳滿 2,000 送百元抵用券 ＝ 合計最高 12%！",
+        dateNotice: "🔥 超級週年慶至 2026/11/19；天天卡友日至 12/03；店內最高 12% 至 2026/12/31",
+        verdict: "【大全聯絕對專武】其他卡在大全聯幾乎皆被列為非一般消費！",
+        note: "結帳前務必出示福利卡或 PX Pay 會員條碼。"
+      }
+    ]
+  },
+  {
+    id: "px_mart",
+    name: "全聯福利中心 (PX Mart)",
+    category: "TW_LIFE",
+    categoryLabel: "🛒 台灣量販超市",
+    championCard: "玉山 Unicard（每週三領券最高 10%）／國泰 CUBE 卡（集精選 2%）",
+    championSummary: "全聯日常採買！每週三於玉山 Wallet 領券，綁 PX Pay 或全支付滿 NT$1,000 送 100 點（等效 10%）；平日無腦刷切換國泰 CUBE 卡「集精選」享 2% 小樹點無上限！",
+    cards: [
+      {
+        bank: "玉山",
+        cardName: "Unicard",
+        isChampion: true,
+        unreg: "全聯一般消費無基本回饋",
+        reg: "每週三於玉山 Wallet App 領券，綁定 PX Pay / 全支付單筆滿 NT$1,000 贈 100 點 e point ＝ 10.0% 回饋（每週三限量領券，上限 100 點）",
+        dateNotice: "⏰ 每週三限定活動：2026/09/01～2026/12/31（務必結帳前先領券）",
+        verdict: "【週三買菜神卡】10% 回饋力壓全場！",
+        note: "需透過玉山 Wallet 點選優惠券領取。"
+      },
+      {
+        bank: "國泰",
+        cardName: "CUBE 卡",
+        isChampion: true,
+        unreg: "未切換僅 0.3%",
+        reg: "切換「集精選」方案，全聯實體門市（含實體卡或 PX Pay 綁定）享 2.0% 小樹點無上限",
+        dateNotice: "至 2026/12/31（天天可切換）",
+        verdict: "【非週三日常保底】全聯難得有 2% 無上限回饋！",
+        note: "注意：大全聯與全支付不適用集精選 2%。"
+      }
+    ]
+  },
+  {
+    id: "costco",
+    name: "好市多（Costco）賣場與線上購物",
+    category: "TW_LIFE",
+    categoryLabel: "🛒 台灣量販超市",
+    championCard: "台北富邦 Costco 聯名卡（2%～3% 好多金無上限）",
+    championSummary: "好市多全台唯一指定刷卡！賣場內 2%、Costco 線上購物 3%、自助加油站 3% 好多金無上限！好多金於每年 1～2 月折抵賣場消費！",
+    cards: [
+      {
+        bank: "富邦",
+        cardName: "Costco 聯名卡",
+        isChampion: true,
+        unreg: "免登錄！賣場內 2.0% 好多金無上限；線上購物 3.0% 無上限；Costco 加油站 3.0%",
+        reg: "店外指定國外實體/精選旅遊每月 1 日於 Fubon+ 登錄享加碼最高 5%（上限 800 好多金）",
+        dateNotice: "賣場/線上/加油權益至 2027/12/31",
+        verdict: "進 Costco 的唯一通行證與刷卡卡別！",
+        note: "累積好多金於次年 1～2 月於賣場折抵使用。"
+      }
+    ]
+  },
+  {
+    id: "taoyuan_mall",
+    name: "桃園三大商場（大江購物中心 / 台茂購物中心 / 華泰名品城）",
+    category: "TW_LIFE",
+    categoryLabel: "🛒 台灣生活商場",
+    championCard: "玉山大江聯名卡（大江餐飲12%）／富邦台茂聯名卡（免費停車6小時）／一銀桃園市民卡（滿300享5%）",
+    championSummary: "桃園在地專屬優惠！大江刷玉山大江卡享餐飲 12%；台茂刷富邦台茂卡天天免費停車 6 小時；一銀桃園市民卡於大江、台茂、華泰名品城單筆滿 300 登錄全享 5% 刷卡金！",
+    cards: [
+      {
+        bank: "第一",
+        cardName: "桃園市民聯名卡",
+        isChampion: true,
+        unreg: "一般消費 0.5%",
+        reg: "電子帳單＋登錄活動，於精選商場（大江、台茂、華泰名品城、Xpark）單筆滿 NT$300 享 5.0% 刷卡金（每期上限 300 元，可刷 6,000 元）",
+        dateNotice: "⏰ 精選通路 5% 檔期至 2026/12/31（需於一銀官網登錄）",
+        verdict: "【桃園最強全能卡】逛華泰 Outlet、大江、台茂通通有 5%！",
+        note: "認同卡為 3%，市民聯名卡為 5%。"
+      },
+      {
+        bank: "玉山",
+        cardName: "大江聯名卡",
+        isChampion: true,
+        unreg: "館內點數 3 倍送；免費停車",
+        reg: "玉山 Wallet 登錄後，大江館內指定餐飲單筆滿額享最高 12% 回饋；星橋影城購票現場 9 折",
+        dateNotice: "餐飲 12% 需於玉山 Wallet 登錄（至 2026/12/31）",
+        verdict: "大江購物中心專用卡，聚餐看電影必備。",
+        note: "館內全年免費停車。"
+      },
+      {
+        bank: "富邦",
+        cardName: "台茂聯名卡",
+        isChampion: false,
+        unreg: "不分平假日館內免費停車最高 6 小時；週四 MORE 利卡點數 4 倍送；餐飲專櫃 88 折起",
+        reg: "免登錄即可享有館內專屬停車與折扣禮遇",
+        dateNotice: "至 2026/12/31（免登錄）",
+        verdict: "台茂購物中心專用卡，停車省超大。",
+        note: "限實體卡直刷享受優惠。"
+      }
+    ]
+  },
+
+  // ---------------- 航空機票與旅遊生活 ----------------
+  {
+    id: "tigerair",
+    name: "台灣虎航 (Tigerair Taiwan) 機票與機上",
+    category: "TRAVEL",
+    categoryLabel: "✈️ 航空旅遊",
+    championCard: "台灣樂天 樂虎卡（購票最優 85 折＋生日 8 折＋國內虎航 3%）",
+    championSummary: "搶虎航特價機票必備樂天樂虎卡！專屬網頁訂票全航線享最優 85 折起＋優先登機；生日當月享最優 8 折＋優先行李出關；國內通路刷卡再贈 3% tigerpoints！",
+    cards: [
+      {
+        bank: "樂天",
+        cardName: "台灣樂天樂虎卡",
+        isChampion: true,
+        unreg: "免登錄！透過樂虎卡專屬購票網頁享全航線 85 折起；當月壽星專屬網頁享 8 折起＋優先行李出關",
+        reg: "國內指定通路（含虎航官網/APP/機上購物/LINE Pay/街口）加碼 2.5% tigerpoints（合計 3.0%，上限 500 點/期＝可刷 2 萬）",
+        dateNotice: "專屬購票優惠至 2026/12/31（免登錄）",
+        verdict: "【虎航絕對專武】日韓航點機票現折最有感！",
+        note: "滿額還享封館購票與尊榮虎會籍升等資格。"
+      },
+      {
+        bank: "中信",
+        cardName: "LINEPAY 信用卡",
+        isChampion: false,
+        unreg: "基本 1.0% LINE POINTS",
+        reg: "每月 6 日下午 1:00 開放登錄，以 LINE Pay JCB 卡於台灣虎航官網支付享 10.0% LINE POINTS",
+        dateNotice: "⏰ 每月 6 日下午 1:00 於中信登錄（至 2026/12/31）",
+        verdict: "每月 6 日搶到登錄有 10% 點數回饋。",
+        note: "限 JCB 卡別適用。"
+      }
+    ]
+  },
+  {
+    id: "starlux",
+    name: "星宇航空 (STARLUX Airlines)",
+    category: "TRAVEL",
+    categoryLabel: "✈️ 航空旅遊",
+    championCard: "玉山 星宇航空聯名卡（官網購票哩程 2 倍＋機票最優 9 折）",
+    championSummary: "搭星宇出國必備！星宇官網與 APP 購票哩程 2 倍加速累積，指定航線機票最優 9 折起，生日當月登錄享國外實體哩程 2 倍！",
+    cards: [
+      {
+        bank: "玉山",
+        cardName: "星宇航空聯名卡",
+        isChampion: true,
+        unreg: "官網購票/機上免稅享哩程 2 倍送（國內 20～25元/哩，國外 10～15元/哩）；指定票價 9 折起",
+        reg: "正卡人生日當月前於玉山 Wallet 登錄，享生日當月國外實體消費哩程 2 倍回饋（鈦金卡除外）",
+        dateNotice: "生日登錄需於生日當月底前完成（效期至 2026/12/31）",
+        verdict: "【星宇專武】快速累積星宇哩程換免費機票！",
+        note: "出國機上免稅品享專屬折扣。"
+      },
+      {
+        bank: "台新",
+        cardName: "Richart 卡",
+        isChampion: false,
+        unreg: "未切換 0.3%",
+        reg: "切換「玩旅刷」享星宇、華航、長榮官網購票 3.3% 台新 Point 無上限",
+        dateNotice: "至 2027/03/31",
+        verdict: "不想辦哩程卡時的 3.3% 現金等值無上限首選。",
+        note: "航空公司官網刷卡皆符合。"
+      }
+    ]
+  },
+  {
+    id: "delivery_food",
+    name: "外送平台（Uber Eats / foodpanda）",
+    category: "TRAVEL",
+    categoryLabel: "🛵 生活外送",
+    championCard: "第一 桃園市民聯名卡（5%）／台新 Richart 卡（3.3%無上限）／中信 foodpanda 卡（5%）",
+    championSummary: "每天叫外送！一銀桃園市民卡單筆滿 300 登錄拿 5% 刷卡金；中信 foodpanda 卡平台滿 288 享 5% 胖達幣；常態無腦刷切換台新 Richart 卡「好饗刷」享 3.3% 無上限！",
+    cards: [
+      {
+        bank: "第一",
+        cardName: "桃園市民聯名卡",
+        isChampion: true,
+        unreg: "一般消費 0.5%",
+        reg: "電子帳單＋登錄活動，外送平台單筆滿 NT$300 享 5.0% 刷卡金（每期上限 300 元）",
+        dateNotice: "至 2026/12/31（需官網登錄）",
+        verdict: "訂單滿 300 元回饋率最高！",
+        note: "Uber Eats 與 foodpanda 均適用。"
+      },
+      {
+        bank: "中信",
+        cardName: "FOODPANDA 聯名卡",
+        isChampion: true,
+        unreg: "基本 1.0% 胖達幣",
+        reg: "免登錄！foodpanda 平台消費單筆滿 NT$288 享最高 5.0% 胖達幣（月上限 200 點）",
+        dateNotice: "平台加碼至 2026/12/31",
+        verdict: "foodpanda 常客專武，1點折1元。",
+        note: "限正卡人 pandapay 錢包入帳。"
+      },
+      {
+        bank: "台新",
+        cardName: "Richart 卡",
+        isChampion: false,
+        unreg: "未切換 0.3%",
+        reg: "切換「好饗刷」享 Uber Eats / foodpanda 3.3% 台新 Point 無上限",
+        dateNotice: "至 2027/03/31",
+        verdict: "外送大戶每月免被 200～300 元上限卡死的無上限神器。",
+        note: "每日可切換方案。"
+      }
+    ]
+  }
+];
+
+// 初始化全域變數
+let currentCategory = "ALL";
+let currentSelectedStoreId = STORE_DATA[0].id;
+
+/**
+ * 頁面加載初始化
+ */
+window.addEventListener('DOMContentLoaded', () => {
+  populateStoreDropdown("ALL");
+  renderStoreDetails(currentSelectedStoreId);
+});
+
+/**
+ * 類別選單變更
+ */
+function onCategorySelectChange() {
+  const cat = document.getElementById("catSelect").value;
+  currentCategory = cat;
+  document.getElementById("searchInput").value = "";
+  populateStoreDropdown(cat);
+  // 自動選取第一個可用的商店
+  const storeSelect = document.getElementById("storeSelect");
+  if (storeSelect.options.length > 0) {
+    currentSelectedStoreId = storeSelect.value;
+    renderStoreDetails(currentSelectedStoreId);
+  } else {
+    renderEmpty();
+  }
+}
+
+/**
+ * 商店選單變更
+ */
+function onStoreSelectChange() {
+  const storeId = document.getElementById("storeSelect").value;
+  currentSelectedStoreId = storeId;
+  document.getElementById("searchInput").value = "";
+  renderStoreDetails(storeId);
+}
+
+/**
+ * 關鍵字即時搜尋
+ */
+function onSearchInput(query) {
+  const q = query.trim().toLowerCase();
+  if (!q) {
+    onCategorySelectChange();
+    return;
+  }
+  const matched = STORE_DATA.filter(s => 
+    s.name.toLowerCase().includes(q) || 
+    s.categoryLabel.toLowerCase().includes(q) ||
+    s.cards.some(c => c.cardName.toLowerCase().includes(q) || c.bank.includes(q))
+  );
+
+  const storeSelect = document.getElementById("storeSelect");
+  storeSelect.innerHTML = "";
+  if (matched.length > 0) {
+    matched.forEach(s => {
+      const opt = document.createElement("option");
+      opt.value = s.id;
+      opt.textContent = `${s.name} (${s.categoryLabel})`;
+      storeSelect.appendChild(opt);
+    });
+    currentSelectedStoreId = matched[0].id;
+    renderStoreDetails(currentSelectedStoreId);
+  } else {
+    renderEmpty();
+  }
+}
+
+/**
+ * 動態注入商店下拉選項
+ */
+function populateStoreDropdown(category) {
+  const storeSelect = document.getElementById("storeSelect");
+  storeSelect.innerHTML = "";
+
+  const filtered = (category === "ALL") 
+    ? STORE_DATA 
+    : STORE_DATA.filter(item => item.category === category);
+
+  filtered.forEach(item => {
+    const opt = document.createElement("option");
+    opt.value = item.id;
+    opt.textContent = item.name;
+    storeSelect.appendChild(opt);
+  });
+}
+
+/**
+ * 渲染所選商店詳細內容與卡片比較表
+ */
+function renderStoreDetails(storeId) {
+  const store = STORE_DATA.find(s => s.id === storeId);
+  const resultArea = document.getElementById("resultArea");
+  if (!store) {
+    renderEmpty();
+    return;
+  }
+
+  // 排序：推薦卡排在最前
+  const sortedCards = [...store.cards].sort((a, b) => (b.isChampion ? 1 : 0) - (a.isChampion ? 1 : 0));
+
+  let html = `
+    <div class="store-header-card">
+      <div class="store-title-area">
+        <h2>${store.name}</h2>
+        <span class="store-category-badge">${store.categoryLabel}</span>
+      </div>
+      <div style="font-size: 0.88rem; color: var(--text-muted);">
+        共匹配 <strong>${store.cards.length}</strong> 張優惠卡片
+      </div>
+    </div>
+
+    <!-- 推薦用卡冠軍 Callout -->
+    <div class="champion-callout">
+      <span class="champion-badge">👑 本店刷卡推薦首選（HIGH LIGHT）</span>
+      <div class="champion-title">${store.championCard}</div>
+      <div class="champion-body">
+        ${store.championSummary}
+      </div>
+    </div>
+
+    <!-- 優惠與登錄比較總表 -->
+    <div class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th style="width: 140px;">推薦等級 / 銀行</th>
+            <th style="width: 160px;">卡種名稱</th>
+            <th style="width: 440px;">優惠詳細比較：【未登錄保底】vs【完成登錄極限】</th>
+            <th style="width: 250px;">活動/登錄日期強調 ＆ 判定建議</th>
+            <th style="width: 170px;">官方登錄 / APP 入口</th>
+          </tr>
+        </thead>
+        <tbody>
+  `;
+
+  sortedCards.forEach(card => {
+    const bankInfo = BANK_LINKS[card.bank] || { web: "#", app: "#", appName: "行動銀行" };
+    const rowClass = card.isChampion ? "is-champion" : "";
+    const champBadge = card.isChampion ? `<span class="champion-badge" style="font-size:0.7rem; padding:1px 6px;">首選 👑</span>` : `<span style="font-size:0.75rem; color:#64748b; font-weight:600;">備選推薦</span>`;
+
+    html += `
+      <tr class="${rowClass}">
+        <td>
+          ${champBadge}<br/>
+          <strong style="font-size:1.02rem; color:var(--primary);">${card.bank}銀行</strong>
+        </td>
+        <td>
+          <strong style="font-size:0.98rem;">${card.cardName}</strong>
+        </td>
+        <td>
+          <div class="compare-grid">
+            <div class="box-unregistered">
+              <span class="badge-unreg">🛡️ 未登錄／免登錄</span><br/>
+              ${card.unreg}
+            </div>
+            <div class="box-registered">
+              <span class="badge-reg">⚡ 完成登錄／切換後</span><br/>
+              ${card.reg}
+            </div>
+          </div>
+          <div class="note-text">📌 <strong>細節與限制：</strong>${card.note}</div>
+        </td>
+        <td>
+          <span class="urgent-date">${card.dateNotice}</span><br/>
+          <div style="margin-top:6px; font-weight:600; color:#334155; font-size:0.86rem;">
+            💡 <strong>決策建議：</strong>${card.verdict}
+          </div>
+        </td>
+        <td>
+          <div class="btn-wrap">
+            <a class="btn-action btn-web" href="${bankInfo.web}" target="_blank" rel="noopener">
+              🌐 官方登錄入口
+            </a>
+            ${bankInfo.coupon ? `
+              <a class="btn-action" style="background:#e11d48; color:#fff;" href="${bankInfo.coupon}" target="_blank" rel="noopener">
+                🏷️ 日本特店折價券
+              </a>
+            ` : ''}
+            <button class="btn-action btn-app" onclick="openBankApp('${bankInfo.app}', '${bankInfo.web}')">
+              📱 開啟 ${bankInfo.appName}
+            </button>
+          </div>
+        </td>
+      </tr>
+    `;
+  });
+
+  html += `
+        </tbody>
+      </table>
+    </div>
+  `;
+
+  resultArea.innerHTML = html;
+}
+
+function renderEmpty() {
+  document.getElementById("resultArea").innerHTML = `
+    <div class="empty-state">
+      <h3>🔍 找不到符合條件的商店或通路</h3>
+      <p style="margin-top: 8px;">請嘗試更換類別或輸入其他關鍵字（如：大國藥妝、BicCamera、淘寶、momo、全聯、虎航）。</p>
+    </div>
+  `;
+}
+
+/**
+ * 智慧開啟銀行官方 APP / 網頁登錄
+ */
+function openBankApp(appScheme, webUrl) {
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  if (!isMobile) {
+    window.open(webUrl, '_blank', 'noopener');
+    return;
+  }
+  const start = Date.now();
+  window.location.href = appScheme;
+  setTimeout(function () {
+    if (Date.now() - start < 1600) {
+      window.open(webUrl, '_blank', 'noopener');
+    }
+  }, 1200);
+}
+</script>
+
+</body>
+</html>
