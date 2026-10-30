@@ -1,0 +1,1539 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>2026 Q4 個人持有信用卡權益暨雙11／旅日／電商刷卡決策總表</title>
+  <style>
+    :root {
+      --bg: #f8fafc;
+      --surface: #ffffff;
+      --surface-alt: #f1f5f9;
+      --text-main: #0f172a;
+      --text-muted: #475569;
+      --border: #e2e8f0;
+      --primary: #1e40af;
+      --primary-light: #dbeafe;
+      --highlight-bg: #fffbeb;
+      --highlight-border: #f59e0b;
+      --highlight-badge: #d97706;
+      --urgent-bg: #fef2f2;
+      --urgent-border: #ef4444;
+      --urgent-text: #b91c1c;
+      --app-btn: #059669;
+      --app-btn-hover: #047857;
+      --web-btn: #2563eb;
+      --web-btn-hover: #1d4ed8;
+      --radius: 10px;
+      --shadow: 0 4px 12px rgba(15, 23, 42, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding: 24px 16px 64px;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 100%);
+      color: #ffffff;
+      padding: 28px 24px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+    }
+
+    header h1 {
+      font-size: 1.65rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.02em;
+    }
+
+    header p {
+      color: #cbd5e1;
+      font-size: 0.95rem;
+    }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .meta-tag {
+      background: rgba(255, 255, 255, 0.14);
+      padding: 4px 12px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      color: #f8fafc;
+    }
+
+    /* Section Headings */
+    .section-title {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 32px 0 16px;
+      padding-left: 12px;
+      border-left: 5px solid var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    /* Three Scenarios Grid */
+    .scenario-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 20px;
+      margin-bottom: 36px;
+    }
+
+    .scenario-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: var(--shadow);
+    }
+
+    .scenario-card h3 {
+      font-size: 1.18rem;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid var(--surface-alt);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    /* Highlight Champion Box */
+    .champion-box {
+      background: var(--highlight-bg);
+      border: 2px solid var(--highlight-border);
+      border-radius: 8px;
+      padding: 14px 16px;
+      margin-bottom: 14px;
+      position: relative;
+    }
+
+    .champion-badge {
+      display: inline-block;
+      background: var(--highlight-badge);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.78rem;
+      padding: 2px 10px;
+      border-radius: 4px;
+      margin-bottom: 6px;
+      letter-spacing: 0.03em;
+    }
+
+    .champion-title {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #92400e;
+      margin-bottom: 4px;
+    }
+
+    .champion-desc {
+      font-size: 0.9rem;
+      color: #78350f;
+    }
+
+    .runner-up-list {
+      list-style: none;
+      font-size: 0.9rem;
+    }
+
+    .runner-up-list li {
+      padding: 10px 0;
+      border-bottom: 1px dashed var(--border);
+    }
+
+    .runner-up-list li:last-child {
+      border-bottom: none;
+    }
+
+    /* Date & Urgent Badges */
+    .date-highlight {
+      display: inline-block;
+      background: var(--urgent-bg);
+      color: var(--urgent-text);
+      border: 1px solid var(--urgent-border);
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      margin: 2px 4px 2px 0;
+    }
+
+    .period-badge {
+      display: inline-block;
+      background: #eff6ff;
+      color: #1e40af;
+      border: 1px solid #bfdbfe;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.82rem;
+      margin: 2px 4px 2px 0;
+    }
+
+    .status-stop {
+      display: inline-block;
+      background: #334155;
+      color: #f8fafc;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+    }
+
+    /* Action Buttons (Web + App Deep Link) */
+    .btn-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 8px;
+    }
+
+    .btn-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      text-decoration: none;
+      font-size: 0.82rem;
+      font-weight: 600;
+      padding: 6px 11px;
+      border-radius: 6px;
+      transition: all 0.15s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-web {
+      background-color: var(--web-btn);
+      color: #ffffff;
+    }
+
+    .btn-web:hover {
+      background-color: var(--web-btn-hover);
+    }
+
+    .btn-app {
+      background-color: var(--app-btn);
+      color: #ffffff;
+    }
+
+    .btn-app:hover {
+      background-color: var(--app-btn-hover);
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+      background: var(--surface);
+      padding: 14px;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+    }
+
+    .filter-btn {
+      background: var(--surface-alt);
+      border: 1px solid var(--border);
+      color: var(--text-main);
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .filter-btn.active,
+    .filter-btn:hover {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Table Styles */
+    .table-wrapper {
+      overflow-x: auto;
+      background: var(--surface);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 980px;
+    }
+
+    th {
+      background: #1e293b;
+      color: #ffffff;
+      font-weight: 600;
+      text-align: left;
+      padding: 14px 16px;
+      font-size: 0.9rem;
+    }
+
+    td {
+      padding: 16px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+      font-size: 0.9rem;
+    }
+
+    tr:hover td {
+      background-color: #f8fafc;
+    }
+
+    tr.highlight-row td {
+      background-color: #fffdf5;
+    }
+
+    tr.highlight-row td:first-child {
+      border-left: 4px solid var(--highlight-border);
+    }
+
+    .bank-tag {
+      display: inline-block;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      background: var(--primary-light);
+      color: var(--primary);
+    }
+
+    .card-name {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--text-main);
+      margin-bottom: 4px;
+    }
+
+    .detail-list {
+      padding-left: 18px;
+      margin: 4px 0;
+    }
+
+    .detail-list li {
+      margin-bottom: 4px;
+    }
+
+    .note-box {
+      background: #f8fafc;
+      border-left: 3px solid #94a3b8;
+      padding: 8px 12px;
+      font-size: 0.84rem;
+      color: var(--text-muted);
+      margin-top: 6px;
+      border-radius: 0 4px 4px 0;
+    }
+
+    @media (max-width: 768px) {
+      .scenario-grid {
+        grid-template-columns: 1fr;
+      }
+      header h1 {
+        font-size: 1.35rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <h1>💳 2026 下半年＆雙11 個人信用卡權益與登錄決策中心</h1>
+    <p>涵蓋筆記本登錄之 10 大銀行、32 張信用卡現行有效優惠、活動登錄關鍵日期強調與一鍵喚醒銀行 APP 登錄入口</p>
+    <div class="meta-bar">
+      <span class="meta-tag">📌 基準更新日：2026/10/30</span>
+      <span class="meta-tag">🔥 適用區間：2026 Q4（含雙11檔期）～ 2027 Q1</span>
+      <span class="meta-tag">📱 支援手機點擊直接開啟銀行 APP 登錄頁</span>
+    </div>
+  </header>
+
+  <!-- ==================== PART 1: 三大主力場景決策專區 ==================== -->
+  <h2 class="section-title">🏆 三大主力消費場景：最優刷卡攻略（HIGH LIGHT 決策區）</h2>
+
+  <div class="scenario-grid">
+    <!-- 1. 遊日本刷哪張卡 -->
+    <div class="scenario-card">
+      <h3>
+        <span>🇯🇵 遊日本刷哪張卡？</span>
+        <span class="period-badge">2026 秋冬旅日必備</span>
+      </h3>
+
+      <div class="champion-box">
+        <span class="champion-badge">👑 最優惠首選 HIGH LIGHT（果粉感應＋名店最高 11%）</span>
+        <div class="champion-title">聯邦銀行｜聯邦吉鶴卡（最高 11% 回饋）</div>
+        <div class="champion-desc">
+          • <strong>日幣一般消費 2.5% 無上限</strong>（免切權益、免登錄保底）<br/>
+          • <strong>日本 Apple Pay / Google Pay 感應加碼最高 2.5%</strong>（月上限 1,000 元，需登錄）<br/>
+          • <strong>日本 11 大熱門商店加碼 3%</strong>（BicCamera、唐吉訶德、三越、東京迪士尼、日本亞馬遜等，上限 600 元）<br/>
+          • <strong>聯邦新戶日本實體再加碼 3%</strong>（上限 600 元）<br/>
+          <span class="date-highlight">⏰ 活動效期：即日起～2026/12/31（行動支付加碼需每月登錄）</span>
+        </div>
+      </div>
+
+      <div class="champion-box">
+        <span class="champion-badge">👑 指定日本通路／藥妝百貨並列最強 HIGH LIGHT</span>
+        <div class="champion-title">玉山銀行｜熊本熊卡（日本指定商店 8.5% / 名古屋 10%）</div>
+        <div class="champion-desc">
+          • <strong>日本一般消費 2.5% 無上限</strong>（免收 1.5% 海外手續費雙幣卡更划算）<br/>
+          • <strong>日本指定商店加碼 6%（合計 8.5%）</strong>：含 Suica/PASMO/ICOCA 儲值、松本清、唐吉訶德、BicCamera、大國藥妝、敘敘苑、一蘭等（<strong>需登錄</strong>，每期上限 500 元＝刷 NT$8,333 封頂）<br/>
+          • <strong>名古屋指定特店再加碼 1.5%（合計最高 10%）</strong>：累積滿 NT$10,000 登錄享回饋（<span class="date-highlight">⏰ 名古屋加碼至 2026/10/31 止</span>）<br/>
+          • <strong>東京三越伊勢丹 3 店滿額最高回饋 3 萬日圓</strong>（<span class="date-highlight">⏰ 2026/07/01～2026/12/31</span>）
+        </div>
+      </div>
+
+      <ul class="runner-up-list">
+        <li>
+          <strong>🥉 永豐銀行｜幣倍卡（海外實體最高 6%～8%）</strong><br/>
+          基本國外 2% 無上限 ＋ 完成任務（電子帳單＋台外幣自扣＋大戶等級或 10 萬月均資產）享<strong>國外實體／日本交通卡儲值加碼 4%（合計 6%，上限 800 元/期＝可刷 2 萬）</strong>；2026 下半年新申辦/加辦新幣別綁定 Apple Pay / Google Pay 再加碼 2%（合計 <strong>8%</strong>，上限 200 元/月）。<span class="date-highlight">⏰ 效期至 2026/12/31</span>
+        </li>
+        <li>
+          <strong>🏅 台北富邦｜J 卡（日韓泰實體最高 6% / 日本交通卡 10%）</strong><br/>
+          日韓一般消費 3% 無上限；日韓泰實體單筆滿額<strong>登錄享最高 6%</strong>；日本 Suica/PASMO/ICOCA 儲值滿額登錄最高 10%（<span class="date-highlight">⏰ 每季/每月 18 日 16:00 限量登錄，至 2026/12/31</span>）。
+        </li>
+        <li>
+          <strong>🏅 中國信託｜uniopen 聯名卡（國外實體最高 11%）</strong><br/>
+          國外實體基本 3% 無上限 ＋ 登錄活動加碼 8%（每月上限 500 點 OPENPOINT，約刷 NT$6,250 封頂）。<span class="date-highlight">⏰ 2026/09/01～2026/12/31</span>
+        </li>
+        <li>
+          <strong>🛡️ 大額無腦保底首選：台新 Richart 卡（含原玫瑰/太陽卡）＆ 國泰 CUBE 卡</strong><br/>
+          • <strong>台新 Richart 卡</strong>：於 Richart Life App 切換<strong>「玩旅刷」享海外實體與線上 3.3% 台新 Point 無上限</strong>（需台新帳戶自扣）。<br/>
+          • <strong>國泰 CUBE 卡</strong>：切換<strong>「趣旅行」享 3%～3.3% 小樹點無上限</strong>；10/1～11/30 領取<strong>《秋日遊》指定日本通路優惠券最高享 3.5%～8%</strong>。
+        </li>
+      </ul>
+    </div>
+
+    <!-- 2. 雙11刷哪張卡 -->
+    <div class="scenario-card">
+      <h3>
+        <span>🛍️ 雙11檔期刷哪張卡？</span>
+        <span class="date-highlight">🔥 2026/11/01～11/13 決戰期</span>
+      </h3>
+
+      <div class="champion-box">
+        <span class="champion-badge">👑 雙11 momo 大額主力王 HIGH LIGHT</span>
+        <div class="champion-title">台北富邦｜momo 卡（千大品牌 7% 無上限＋雙11上限拉高至 2,000）</div>
+        <div class="champion-desc">
+          • <strong>雙11檔期專屬升級（2026/10～2027/01 結帳帳單）</strong>：momo 站內一次付清 <strong>3% mo幣回饋上限提高至每期 2,000 mo幣</strong>（可刷達 NT$66,666！）<br/>
+          • <strong>千大指定品牌免登錄加碼 2%～4% mo點</strong>：單筆滿 300 元享合計 <strong>5%～7% 回饋</strong>（每筆訂單上限 9,999 點，若疊加 moPro 會員最高達 <strong>11%</strong>）<br/>
+          • <strong>注意</strong>：分期訂單不享 3% 基本與品牌加碼，若刷大額分期請改搶富邦雙11滿額分期登錄活動。<br/>
+          <span class="date-highlight">⏰ 雙11主活動：2026/11/01～11/13（富邦全卡友滿額登錄於 11/11、11/20 14:00 開放）</span>
+        </div>
+      </div>
+
+      <div class="champion-box">
+        <span class="champion-badge">👑 雙11 跨平台高回饋／統一集團＆PChome HIGH LIGHT</span>
+        <div class="champion-title">中信 uniopen 卡（最高 24%）／玉山 U Bear（新戶最高 23%）／星展 PChome 卡（最高 15%+）</div>
+        <div class="champion-desc">
+          • <strong>中信 uniopen 聯名卡</strong>：<span class="date-highlight">⏰ 2026/11/01～11/12</span> 雙11檔期於康是美、統一集團電商與指定通路消費疊加滿額活動，<strong>最高享 24% OPENPOINT 回饋</strong>，再抽黃金與 10 萬點數。<br/>
+          • <strong>玉山 U Bear 卡</strong>：網購免切權益 <strong>3% 現金回饋</strong>（加碼 2% 上限 150 元/期，可刷 NT$7,500），新戶首刷疊加指定網購最高享 <strong>13%～23%</strong>；可再疊加玉山雙11全月滿額登錄活動。<br/>
+          • <strong>星展 PChome Prime 聯名卡</strong>：PChome 站內<strong>週四最高 6%（平日 4%，分期同享原權益）</strong>，疊加 PChome 雙11星展分期滿額登錄最高突破 <strong>15%</strong>。
+        </div>
+      </div>
+
+      <ul class="runner-up-list">
+        <li>
+          <strong>🔥 玉山 Unicard（momo / 蝦皮 / 酷澎 / 淘寶 最高 4.5%＋雙11滿額登錄）</strong><br/>
+          百大指定特店含四大電商，切換或訂閱「UP選」享 <strong>4.5% 玉山 e point</strong>（加碼上限 2,000 點/月，可刷達 NT$57,142），適合雙11跨平台買高單價 3C 家電！
+        </li>
+        <li>
+          <strong>🔥 國泰 CUBE 卡 ＆ 台新 Richart 卡（雙11破萬大額無上限神卡）</strong><br/>
+          • <strong>國泰 CUBE 卡</strong>：切換<strong>「玩數位」享 3%～3.3% 小樹點無上限</strong>（限一次付清），務必於 11/1～11/11 先至 CUBE App 領取「雙11蝦皮/momo/PChome 滿額加碼券」。<br/>
+          • <strong>台新 Richart 卡</strong>：切換<strong>「數趣刷」享蝦皮、momo、酷澎、PChome、淘寶 3.3% 台新 Point 無上限</strong>（需台新自扣）。
+        </li>
+      </ul>
+    </div>
+
+    <!-- 3. 台灣電商刷哪張卡 -->
+    <div class="scenario-card">
+      <h3>
+        <span>📦 台灣電商日常刷哪張卡？</span>
+        <span class="period-badge">依電商平台精準配對</span>
+      </h3>
+
+      <div class="champion-box">
+        <span class="champion-badge">👑 四大台灣電商平台「專武級」最優 HIGH LIGHT</span>
+        <div class="champion-title">依平台對號入座，拿滿 4.5% ～ 13% 最高回饋</div>
+        <div class="champion-desc">
+          1. <strong>【Coupang 酷澎】最優 👉 永豐 DAWAY 卡（最高 13%）</strong><br/>
+             <span class="date-highlight">⏰ 2026/10/01～12/31 每週三</span> LINE Pay 綁定永豐 DAWAY 卡於酷澎台灣火箭速配消費，加碼 5%（上限 75 點/月），搭配新戶 DAWAY GO 等級 8% <strong>合計最高 13% LINE POINTS</strong>（舊戶最高 7%）。<br/>
+          2. <strong>【momo 購物網】最優 👉 富邦 momo 卡（3%～7% 無腦免切換）</strong><br/>
+             站內筆筆 3%（上限 2,000 mo幣/期）＋ 千大品牌 5%～7% 免登錄。<br/>
+          3. <strong>【PChome 24h】最優 👉 星展 PChome Prime 聯名卡（最高 6%）</strong><br/>
+             站內一般消費 4%（2% 聯名點數＋2% P幣）＋ <strong>每週四加碼 2% P幣＝合計 6%</strong>，分期付款同享回饋。<br/>
+          4. <strong>【蝦皮購物 / 綜合網購】最優 👉 中信 LINE Pay 卡（5%）＆ 玉山 Unicard（4.5%）</strong><br/>
+             中信 LINE Pay Visa 卡刷蝦皮登錄享 <strong>5% LINE POINTS</strong>（每季上限 100 點，每月限登 8,000 名）；中大額刷 <strong>玉山 Unicard（UP選 4.5%）</strong> 或 <strong>聯邦 LINE Bank 聯名卡（指定網購 4%）</strong>。
+        </div>
+      </div>
+
+      <ul class="runner-up-list">
+        <li>
+          <strong>💳 聯邦 LINE Bank 聯名卡（指定網購 4% 現金回饋）</strong><br/>
+          國內一般 1% 無上限 ＋ 指定網購（momo、PChome、蝦皮、Yahoo、淘寶、博客來）加碼 3% ＝ <strong>4%</strong>（加碼上限 300 元/月，月刷 1 萬封頂）。
+        </li>
+        <li>
+          <strong>💳 玉山 U Bear 卡（全網購與行動支付 3% 免燒腦）</strong><br/>
+          綁定電子帳單＋玉山自扣享國內外 1% 無上限 ＋ 網購/行動支付加碼 2%（上限 150 元/期，月刷 7,500 元封頂）＝ <strong>3% 現金折抵當期帳單</strong>。<span class="date-highlight">⏰ 2026/09/01～2027/02/28</span>
+        </li>
+        <li>
+          <strong>💳 台新 Richart 卡「數趣刷」3.3% ＆ 國泰 CUBE 卡「玩數位」3.3%</strong><br/>
+          兩張皆為<strong>回饋無上限</strong>，當上面有上限的卡片額度刷滿後，直接用這兩張接手所有電商尾款。
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ==================== PART 2: 筆記本 32 張信用卡極詳細權益與登錄總表 ==================== -->
+  <h2 class="section-title">📋 筆記本登錄 10 大銀行・32 張信用卡現行有效優惠＆一鍵開啟 APP 登錄總表</h2>
+
+  <!-- Bank Filter Buttons -->
+  <div class="filter-bar" id="bankFilter">
+    <button class="filter-btn active" onclick="filterBank('ALL', this)">全部顯示 (32張)</button>
+    <button class="filter-btn" onclick="filterBank('中信', this)">中國信託 (4)</button>
+    <button class="filter-btn" onclick="filterBank('玉山', this)">玉山銀行 (6)</button>
+    <button class="filter-btn" onclick="filterBank('聯邦', this)">聯邦銀行 (2)</button>
+    <button class="filter-btn" onclick="filterBank('渣打', this)">渣打銀行 (1)</button>
+    <button class="filter-btn" onclick="filterBank('台新', this)">台新銀行 (6)</button>
+    <button class="filter-btn" onclick="filterBank('國泰', this)">國泰世華 (1)</button>
+    <button class="filter-btn" onclick="filterBank('星展', this)">星展銀行 (2)</button>
+    <button class="filter-btn" onclick="filterBank('富邦', this)">台北富邦 (5)</button>
+    <button class="filter-btn" onclick="filterBank('第一', this)">第一銀行 (1)</button>
+    <button class="filter-btn" onclick="filterBank('永豐', this)">永豐銀行 (4)</button>
+  </div>
+
+  <div class="table-wrapper">
+    <table id="cardTable">
+      <thead>
+        <tr>
+          <th style="width: 90px;">銀行</th>
+          <th style="width: 175px;">卡種名稱</th>
+          <th style="width: 360px;">2026 下半年現行有效優惠（極詳盡拆解）</th>
+          <th style="width: 240px;">相關備註／門檻與排除條款</th>
+          <th style="width: 240px;">活動/登錄日期強調 ＆ 網頁/APP 登錄入口</th>
+        </tr>
+      </thead>
+      <tbody>
+
+        <!-- ==================== 中國信託 (4張) ==================== -->
+        <tr data-bank="中信">
+          <td><span class="bank-tag">中信</span></td>
+          <td>
+            <div class="card-name">現金回饋卡</div>
+            <small style="color:var(--text-muted);">鈦金卡 / 御璽卡</small>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>國內一般消費</strong>：0.8% 現金回饋無上限。</li>
+              <li><strong>國外一般消費</strong>：2.5% 現金回饋無上限。</li>
+              <li><strong>指定保費回饋</strong>：扣繳指定保險享最高 1.2% 現金回饋。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 使用電子或行動帳單享終身免年費（否則次年需刷滿 8 萬或 12 次）。<br/>
+              • 回饋金自動折抵次期帳單，無複雜切換門檻。
+            </div>
+          </td>
+          <td>
+            <span class="period-badge">📅 權益效期：2026/01/01～2026/12/31</span><br/>
+            <span class="date-highlight">⏰ 雙11/節慶分期滿額：每月 1 日及雙11檔期開放登錄</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_offer/cc_event_reg.html" target="_blank" rel="noopener">🌐 網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('ctbcmobile://', 'https://www.ctbcbank.com/content/dam/minisite/long/nb/app/index.html', 'https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_offer/cc_event_reg.html')">📱 開啟 Home Bank 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="中信" class="highlight-row">
+          <td><span class="bank-tag">中信</span></td>
+          <td>
+            <div class="card-name">UNIOPEN</div>
+            <span class="champion-badge">👑 雙11最高24% / 旅日11%</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>基本回饋</strong>：國內 1%、國外網購 2%、國外實體 3% OPENPOINT 無上限。</li>
+              <li><strong>統一集團通路</strong>：基本 3% ＋ 跨品牌踩點加碼最高 <strong>11%</strong>。</li>
+              <li><strong>icash Pay 加碼</strong>：指定通路綁定 icash Pay 享 <strong>4% 加碼</strong>（月上限約可刷 NT$3,750）。</li>
+              <li><strong>國外實體加碼 8%</strong>：搭配基本 3% <strong>合計最高 11%</strong>（加碼 8% 每月上限 500 點）。</li>
+              <li><strong>雙11狂歡加碼</strong>：11/1～11/12 指定電商與集團通路最高享 <strong>24% 回饋</strong>，再抽黃金與 10 萬點。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 國外實體加碼 8% 限使用實體卡或 Apple Pay / Google Pay / Samsung Pay，不適用綁定行動錢包。<br/>
+              • icash Pay 每月總額度約於每月 10 日左右額滿，建議月初儘早消費。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 國內/國外實體8%/icash Pay：2026/09/01～2026/12/31</span><br/>
+            <span class="date-highlight">🔥 雙11檔期：2026/11/01～2026/11/12</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_offer/cc_event_reg.html" target="_blank" rel="noopener">🌐 網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('ctbcmobile://', 'https://www.ctbcbank.com/content/dam/minisite/long/nb/app/index.html', 'https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_offer/cc_event_reg.html')">📱 開啟 Home Bank 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="中信">
+          <td><span class="bank-tag">中信</span></td>
+          <td>
+            <div class="card-name">LINEPAY</div>
+            <small style="color:var(--text-muted);">LINE Pay 信用卡</small>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>一般消費</strong>：國內 1%、國外實體 2.8% LINE POINTS 無上限。</li>
+              <li><strong>國外實體登錄最高 5%</strong>：含基本 2.8% ＋ 登錄加碼 2.2%（加碼每季上限 450 點）。</li>
+              <li><strong>蝦皮購物 / Uber Eats 最高 5%</strong>：限 LINE Pay Visa 卡，<strong>須登錄</strong>（每季每戶上限 100 點，每月限量 8,000 名）。</li>
+              <li><strong>指定夥伴最高 16%</strong>：大樹藥局週三/六最高 6%、易遊網 3%、指定毛孩/慢活官網 LINE Pay 支付享 5%。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 2026/12/31 前成功綁定 LINE Pay 期間享免年費。<br/>
+              • LINE POINTS 點數效期為最後一次獲點後 180 天，持續刷卡即可自動展延。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 國外實體5%加碼：2026/10/01～2026/12/31（需登錄）</span><br/>
+            <span class="date-highlight">⏰ 蝦皮/Uber Eats 5%：每月限量 8,000 名登錄（至 2026/12/31）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_offer/cc_event_reg.html" target="_blank" rel="noopener">🌐 網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('ctbcmobile://', 'https://www.ctbcbank.com/content/dam/minisite/long/nb/app/index.html', 'https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_offer/cc_event_reg.html')">📱 開啟 Home Bank 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="中信">
+          <td><span class="bank-tag">中信</span></td>
+          <td>
+            <div class="card-name">FOODPANDA</div>
+            <small style="color:var(--text-muted);">foodpanda 聯名卡</small>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>基本回饋無上限</strong>：國內外一般消費 1%、國外實體商店 2% 胖達幣無上限。</li>
+              <li><strong>台灣 foodpanda 平台加碼</strong>：單筆滿 NT$288 享最高 <strong>5% 胖達幣</strong>（未滿 NT$288 享最高 2%）。</li>
+              <li><strong>指定餐廳/外帶自取優惠</strong>：搭配聯名卡專屬優惠碼享折抵。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 平台加碼 4%（或 1%）每月回饋上限 200 胖達幣（全行每月總上限 250 萬元）。<br/>
+              • 1 胖達幣＝NT$1，自動入帳至正卡人 pandapay 錢包，效期 2 年。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 平台最高 5% 檔期：2026/10/01～2026/12/31</span><br/>
+            <span class="period-badge">📅 基本回饋：2026/01/01～2026/12/31</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_offer/cc_event_reg.html" target="_blank" rel="noopener">🌐 網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('ctbcmobile://', 'https://www.ctbcbank.com/content/dam/minisite/long/nb/app/index.html', 'https://www.ctbcbank.com/twrbo/zh_tw/cc_index/cc_offer/cc_event_reg.html')">📱 開啟 Home Bank 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ==================== 玉山銀行 (6張) ==================== -->
+        <tr data-bank="玉山">
+          <td><span class="bank-tag">玉山</span></td>
+          <td>
+            <div class="card-name">Pi 拍錢包信用卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>一般消費基本</strong>：國內外 1% P幣無上限；當月累積滿 3 萬登錄加碼 2%（最高 <strong>3% P幣</strong>，上限 3,000 P）。</li>
+              <li><strong>Pi 拍錢包指定通路最高 5%</strong>：綁定 Pi APP 單筆滿 NT$499，完成<strong>活動登錄＋申辦玉山台幣帳戶自扣</strong>享最高 5% P幣（含基本 1%，加碼上限 300 P/月）。</li>
+              <li><strong>保費優惠</strong>：一次付清享 1.2% P幣無上限，或單筆滿 1.5 萬登錄享 12 期 0 利率。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 2026/02/28～2026/08/31 已登錄過一般消費滿額加碼者無須重複登錄；新參加者務必先至玉山 Wallet 登錄。<br/>
+              • 新戶 2026/09/01～11/30 申辦享核卡 3 個月內最高 10% P幣。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 現行檔期：2026/09/01～2027/02/28（5%與滿額3%皆需登錄）</span><br/>
+            <span class="date-highlight">⏰ 玉山自扣加碼5%（上限250元）：2026/10/01～12/31</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity" target="_blank" rel="noopener">🌐 網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('esunwallet://', 'https://www.esunbank.com/zh-tw/personal/credit-card/tools/esun-wallet', 'https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity')">📱 開啟玉山 Wallet 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="玉山" class="highlight-row">
+          <td><span class="bank-tag">玉山</span></td>
+          <td>
+            <div class="card-name">U Bear</div>
+            <span class="champion-badge">👑 網購3%免切換 / 雙11神卡</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>國內外一般消費 1% 無上限</strong>：需同時綁定帳單 e 化＋玉山臺幣帳戶自動扣繳（僅辦一項為 0.5%）。</li>
+              <li><strong>網路消費最高 3% 現金回饋</strong>：含基本 1% ＋ 網購加碼 2%（需綁定帳單 e 化，加碼 2% 每期上限 150 元＝每期刷 NT$7,500 封頂，當期帳單直接折抵）。</li>
+              <li><strong>指定數位訂閱 10%</strong>：Netflix、Disney+、Spotify、Nintendo 等每期上限 100 元。</li>
+              <li><strong>新戶/新卡雙11衝刺</strong>：新戶最高 23%、新卡友指定三大通路（含網購）核卡 60 天內加碼 10%（上限 1,200 元）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 涵蓋各大電商（蝦皮、momo、PChome、酷澎）與行動支付（LINE Pay、街口支付線上交易）。<br/>
+              • 特店分期交易不享基本 1% 回饋，但計入網購加碼 2%（以分期總額計算 1 次）。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 權益期間：2026/09/01～2027/02/28</span><br/>
+            <span class="date-highlight">🔥 新戶/新卡加碼：2026/09/01～2026/11/30</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity" target="_blank" rel="noopener">🌐 網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('esunwallet://', 'https://www.esunbank.com/zh-tw/personal/credit-card/tools/esun-wallet', 'https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity')">📱 開啟玉山 Wallet 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="玉山">
+          <td><span class="bank-tag">玉山</span></td>
+          <td>
+            <div class="card-name">大江聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>大江購物中心餐飲最高 12% 回饋</strong>：館內指定餐飲單筆滿額享刷卡金回饋（需登錄）。</li>
+              <li><strong>館內消費會員點數 3 倍送</strong>：折合最高約 1% 回饋。</li>
+              <li><strong>影城與停車禮遇</strong>：SBC 星橋國際影城現場購票 9 折；大江館內全年免費停車優惠。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 桃園中壢大江購物中心在地神卡，館內週年慶與雙11檔期另有滿額贈電子現金券活動。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 餐飲12%需於玉山 Wallet 登錄（2026 下半年檔期至 2026/12/31）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity" target="_blank" rel="noopener">🌐 網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('esunwallet://', 'https://www.esunbank.com/zh-tw/personal/credit-card/tools/esun-wallet', 'https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity')">📱 開啟玉山 Wallet 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="玉山" class="highlight-row">
+          <td><span class="bank-tag">玉山</span></td>
+          <td>
+            <div class="card-name">Unicard</div>
+            <span class="champion-badge">👑 電商/百大特店 4.5% ＆ 週三全聯10%</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>百大指定消費（含 momo、蝦皮、淘寶、酷澎、LINE Pay、日韓、百貨、航空）</strong>：
+                <br/>① <strong>簡單選</strong>（免切換）：最高 <strong>3%</strong>（加碼上限 500 點/月）
+                <br/>② <strong>任意選</strong>（玉山 Wallet 任選 8 家）：最高 <strong>3.5%</strong>（加碼上限 500 點/月）
+                <br/>③ <strong>UP 選</strong>（完成任務或以 149 點 e point 訂閱）：最高 <strong>4.5% 玉山 e point</strong>（加碼上限 2,000 點/月＝可刷 NT$57,142！）
+              </li>
+              <li><strong>每週三全聯 / 大全聯最高 10%</strong>：週三先於玉山 Wallet 領券，綁定 PX Pay 或全支付單筆滿 NT$1,000 贈 100 點（每週三上限 100 點）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 1 點玉山 e point ＝ NT$1，可折抵帳單或兌換哩程。<br/>
+              • 雙11當月若要刷超過 NT$14,285，直接花 149 點升級「UP選」即可多拿 1%～1.5% 且上限拉高至 2,000 點！
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 百大特店＆週三全聯領券：2026/09/01～2026/12/31</span><br/>
+            <span class="date-highlight">🔥 每週三全聯/大全聯務必先於 APP 領券再結帳</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity" target="_blank" rel="noopener">🌐 網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('esunwallet://', 'https://www.esunbank.com/zh-tw/personal/credit-card/tools/esun-wallet', 'https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity')">📱 開啟玉山 Wallet 切換/領券</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="玉山" class="highlight-row">
+          <td><span class="bank-tag">玉山</span></td>
+          <td>
+            <div class="card-name">熊本熊卡</div>
+            <span class="champion-badge">👑 旅日神卡 最高 8.5%～10%</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>日本一般消費</strong>：享 <strong>2.5% 回饋無上限</strong>（日圓雙幣卡免收 1.5% 海外交易手續費）。</li>
+              <li><strong>日本指定商店加碼 6%（合計 8.5%）</strong>：Suica/PASMO/ICOCA 儲值、BicCamera、Yodobashi、松本清、唐吉訶德、大國藥妝、Uniqlo、GU、敘敘苑、一蘭拉麵等（<strong>需登錄</strong>，每期加碼上限 500 元）。</li>
+              <li><strong>名古屋指定商店再加碼 1.5%（合計 10%）</strong>：累積滿 NT$10,000 登錄享回饋（上限 500 元）。</li>
+              <li><strong>秋楓冬雪漫遊趣</strong>：指定旅遊通路滿額登錄最高享 2,000 點 e point ＋ 2,000 元即享券。</li>
+              <li><strong>國內中油直營加油 3%</strong>：當月累積滿 3,000 元登錄享 3% e point（上限 100 點/月）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 日本指定商店 6% 加碼每期帳單上限 NT$500（約刷 NT$8,333 達上限），超過部分仍享日本 2.5% 無上限。<br/>
+              • 九州 AMU PLAZA 滿 2,000 日圓享 5% 現金回饋（至 2027/08/31）。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 名古屋1.5%加碼：2026/09/01～2026/10/31（今日最後一天！）</span><br/>
+            <span class="date-highlight">⏰ 秋楓冬雪登錄日：2026/10/23、11/23、12/23 17:00 ＆ 12/30 15:00</span><br/>
+            <span class="date-highlight">⏰ 中油加油3%：2026/10/01～2026/12/31（每月限量2萬名登錄）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://event.esunbank.com.tw/credit/kumamon-card/campaign.html" target="_blank" rel="noopener">🌐 熊本熊專區登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('esunwallet://', 'https://www.esunbank.com/zh-tw/personal/credit-card/tools/esun-wallet', 'https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity')">📱 開啟玉山 Wallet 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="玉山">
+          <td><span class="bank-tag">玉山</span></td>
+          <td>
+            <div class="card-name">星宇航空聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>基本哩程回饋</strong>：國內 NT$20～25/哩、國外實體 NT$10～15/哩（依卡等：鈦金/商務鈦金/世界/世界之極）。</li>
+              <li><strong>星宇航空指定通路哩程 2 倍送</strong>：星宇官網/App購票、形象門市、機上免稅品（含基本回饋）＆指定票價最高 9 折。</li>
+              <li><strong>生日當月國外實體哩程 2 倍</strong>：正卡人生日當月前<strong>完成登錄</strong>享國外實體消費哩程 2 倍（鈦金卡除外）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 生日禮活動期間內僅需登錄一次，但<strong>務必於生日當月月底前完成登錄</strong>方享資格。<br/>
+              • 2026/09/01～12/31 新申辦正卡且辦玉山自扣加贈 1,000 哩。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 生日哩程2倍＆指定通路加碼：2026/01/01～2026/12/31（生日當月前須登錄）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity" target="_blank" rel="noopener">🌐 網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('esunwallet://', 'https://www.esunbank.com/zh-tw/personal/credit-card/tools/esun-wallet', 'https://card.esunbank.com.tw/EsunCreditweb/txnservice/Activity')">📱 開啟玉山 Wallet 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ==================== 聯邦銀行 (2張) ==================== -->
+        <tr data-bank="聯邦" class="highlight-row">
+          <td><span class="bank-tag">聯邦</span></td>
+          <td>
+            <div class="card-name">聯邦吉鶴卡</div>
+            <span class="champion-badge">👑 遊日本最優首選 最高 11%</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>日幣一般消費 2.5% 無上限</strong>（免登錄）。</li>
+              <li><strong>日本 Apple Pay / Google Pay 感應加碼最高 2.5%</strong>（<strong>需登錄</strong>，月上限 1,000 元）。</li>
+              <li><strong>日本 11 大熱門商店加碼 3%</strong>：BicCamera、唐吉訶德、三越、伊勢丹、東京迪士尼、日本樂天、日本亞馬遜等（活動期間上限 600 元）。</li>
+              <li><strong>國內一般消費 1% 無上限</strong>（綁定聯邦自扣＋電子帳單）；國內日系名店加碼最高 4%。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 日本 QUICPay（Apple Pay 綁 JCB 吉鶴卡）在全日本超商、藥妝、百貨感應極度順暢，務必每月完成活動登錄！
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 日本旅遊祭最高 11%：即日起～2026/12/31（行動支付加碼須完成線上登錄）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://activity.ubot.com.tw/aws_act/" target="_blank" rel="noopener">🌐 聯邦活動登錄網</a>
+              <button class="btn-link btn-app" onclick="openBankApp('ubotmobile://', 'https://card.ubot.com.tw/eCard/activity_login/index.aspx', 'https://activity.ubot.com.tw/aws_act/')">📱 開啟聯邦行動銀行登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="聯邦">
+          <td><span class="bank-tag">聯邦</span></td>
+          <td>
+            <div class="card-name">LINE Bank 聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>基本回饋無上限</strong>：國內一般消費 <strong>1%</strong>、國外一般消費 <strong>2.5%</strong> 現金回饋無上限。</li>
+              <li><strong>指定網購／影音／遊戲加碼 3%（合計最高 4%）</strong>：含 momo、PChome、蝦皮、Yahoo、淘寶、博客來及指定影音遊戲（加碼上限 300 元/月＝月刷 NT$10,000 封頂）。</li>
+              <li><strong>LINE Bank 帳戶自扣加碼</strong>：享最多 3 期 5% 扣繳金額回饋（上限 200 元/月）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 無低消門檻、免切換權益，直接折抵次期帳單，是極佳的日常網購備用卡。
+            </div>
+          </td>
+          <td>
+            <span class="period-badge">📅 現行網購與國內外權益：延續至 2026/12/31</span><br/>
+            <span class="date-highlight">⏰ 雙11電商滿額加碼：每月指定日於聯邦官網開放登錄</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://activity.ubot.com.tw/aws_act/" target="_blank" rel="noopener">🌐 聯邦活動登錄網</a>
+              <button class="btn-link btn-app" onclick="openBankApp('ubotmobile://', 'https://card.ubot.com.tw/eCard/activity_login/index.aspx', 'https://activity.ubot.com.tw/aws_act/')">📱 開啟聯邦行動銀行登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ==================== 渣打銀行 (1張) ==================== -->
+        <tr data-bank="渣打">
+          <td><span class="bank-tag">渣打</span></td>
+          <td>
+            <div class="card-name">LINE Bank 聯名卡</div>
+            <span class="status-stop">2026/10/01 起停發新卡（既有卡友權益照常）</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>國內 1% / 國外 1% 現金回饋無上限</strong>（不含學費）。</li>
+              <li><strong>單筆滿 NT$1,000 享 3 期 0 利率不限次數、免手續費</strong>（需於結帳日前 3 個營業日線上申請）。</li>
+              <li><strong>LINE Bank 自動扣款禮</strong>：每次自扣成功享 5% 加碼（每次上限 200 元，限回饋 3 次共 600 元）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 渣打已於 2026/10/01 停止受理新申辦，但<strong>既有持卡人權益完整延續至 2027/07/31</strong>。<br/>
+              • 現金點數效期 2 年，需登入渣打網銀/APP 兌換折抵。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 既有卡友權益期間：2026/08/01～2027/07/31</span><br/>
+            <span class="period-badge">📌 3期0利率須於結帳日前3個營業日於 APP/官網申請</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://www.sc.com/tw/credit-cards/linebank-coband-card/" target="_blank" rel="noopener">🌐 渣打專案與分期頁</a>
+              <button class="btn-link btn-app" onclick="openBankApp('scbreeze://', 'https://www.sc.com/tw/bank-with-us/mobile-banking-services/', 'https://www.sc.com/tw/credit-cards/linebank-coband-card/')">📱 開啟渣打行動銀行申請</button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ==================== 台新銀行 (6張) ==================== -->
+        <tr data-bank="台新" class="highlight-row">
+          <td><span class="bank-tag">台新</span></td>
+          <td>
+            <div class="card-name">Richart 卡</div>
+            <span class="champion-badge">👑 7大刷 3.3%～3.8% 無上限</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>7 大切換刷方案（需設定台新帳戶自動扣繳＝Level 2）</strong>：
+                <br/>• <strong>Pay 著刷</strong>：<strong>台新 Pay 3.8%</strong>、<strong>LINE Pay / 全盈+Pay 2.3%</strong> 無上限
+                <br/>• <strong>數趣刷</strong>：蝦皮、momo、酷澎、PChome、淘寶、Amazon <strong>3.3% 無上限</strong>
+                <br/>• <strong>玩旅刷</strong>：海外實體與線上、航空公司、旅行社、訂房網 <strong>3.3% 無上限</strong>
+                <br/>• <strong>天天刷 / 大筆刷 / 好饗刷</strong>：超商量販交通 / 百貨Outlet / 全台餐飲外送 <strong>3.3% 無上限</strong>
+                <br/>• <strong>假日刷</strong>：國內節假日不限通路（含實體/AP/GP/LINE Pay/街口/台新Pay）<strong>2% 無上限</strong>
+              </li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 每日 23:59 前於 Richart Life App 切換，以當日最後一次選擇為準。<br/>
+              • <strong>重要備註</strong>：2026/02 起台新 Point 折抵帳單上限改為「單筆消費 30% 折抵」，建議於 Richart Life App 兌換即享券或折抵消費。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 7大刷權益期間：2026/07/01～2027/03/31（每日23:59前於APP切換）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://mkpcard.taishinbank.com.tw/tscccms/signin" target="_blank" rel="noopener">🌐 台新網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('richartlife://', 'https://richartlife.taishinbank.com.tw/', 'https://mkpcard.taishinbank.com.tw/tscccms/signin')">📱 開啟 Richart Life 切換/登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="台新" class="highlight-row">
+          <td><span class="bank-tag">台新</span></td>
+          <td>
+            <div class="card-name">大全聯信用卡</div>
+            <small style="color:var(--text-muted);">原大潤發聯名卡升級</small>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>大全聯店內最高 12% 福利點回饋（JCB 卡限定）</strong>：
+                <br/>① 基本 0.8% ＋ 加碼 0.4% ＝ <strong>1.2% 無上限</strong>
+                <br/>② 週年加碼：單筆滿 NT$1,000 享 <strong>1.8%</strong>（月上限 1,000 福利點）
+                <br/>③ 全支付加碼：綁全支付單筆滿 NT$1,000 享 <strong>4%</strong>（月上限 3,000 福利點）
+                <br/>④ 週六/日自助結帳：用全支付單筆滿 NT$2,000 送 <strong>NT$100 抵用券（等效 5%）</strong>
+              </li>
+              <li><strong>店外全支付消費最高 1.5%</strong>（需設定台新帳戶自扣，每期上限 15,000 福利點）。</li>
+              <li><strong>生日專屬回饋</strong>：生日當月於大全聯店內累積滿 4,500 元贈 1,500 福利點（<strong>需登錄</strong>）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 大潤發改名「大全聯」後多數信用卡不予回饋，此卡為唯一回饋福利點（10點＝1元）的量販專武！<br/>
+              • <strong>注意</strong>：12% 加碼限 2025～2026 申辦之大全聯 JCB 卡友，且結帳前須出示福利卡或 PX Pay / 全支付會員條碼。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 最高12%檔期：2026/07/01～2026/12/31</span><br/>
+            <span class="date-highlight">🔥 超級週年慶：2026/10/30～11/19｜天天卡友日：2026/10/16～12/03</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://mkpcard.taishinbank.com.tw/tscccms/signin" target="_blank" rel="noopener">🌐 台新網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('richartlife://', 'https://richartlife.taishinbank.com.tw/', 'https://mkpcard.taishinbank.com.tw/tscccms/signin')">📱 開啟 Richart Life 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="台新">
+          <td><span class="bank-tag">台新</span></td>
+          <td>
+            <div class="card-name">玫瑰卡 / 太陽卡</div>
+            <small style="color:var(--text-muted);">已整合為 Richart 卡切換刷</small>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>切換刷版本（主流）</strong>：自 2025/09/01 起全面升級納入「台新 Richart 卡切換刷平台」，免換卡直接享上述 <strong>7 大刷最高 3.3%～3.8% 台新 Point 無上限</strong>。</li>
+              <li><strong>經典自由選版本（舊卡未轉切換刷者）</strong>：指定類別最高 1.2%～1.5% 及每年 83 玫瑰女生節專屬加碼。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 若同時持有玫瑰/太陽卡與 @GoGo/FlyGo 卡，系統依序以「太陽/玫瑰卡選擇之方案」為優先，統一於 Richart Life App 切換。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 切換刷效期：2026/07/01～2027/03/31</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://mkpcard.taishinbank.com.tw/tscccms/signin" target="_blank" rel="noopener">🌐 台新網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('richartlife://', 'https://richartlife.taishinbank.com.tw/', 'https://mkpcard.taishinbank.com.tw/tscccms/signin')">📱 開啟 Richart Life 切換/登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="台新">
+          <td><span class="bank-tag">台新</span></td>
+          <td>
+            <div class="card-name">遠傳 friDay 聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>遠傳電信帳單代扣繳</strong>：最高享 <strong>5% 遠傳幣回饋</strong>。</li>
+              <li><strong>每週二、週五會員日最高 8%～10%</strong>：於遠傳門市、friDay 購物、friDay 影音等指定通路消費，疊加會員日享最高 <strong>8%～10% 遠傳幣</strong>（需綁定台新帳戶自扣）。</li>
+              <li><strong>一般消費</strong>：國內外 1% 遠傳幣無上限。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 遠傳用戶必備繳費與週二/五採買卡，遠傳幣可折抵電信費或於 friDay 購物折抵。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 現行權益檔期：2026/06/01～2027/01/31 結帳帳單適用</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://mkpcard.taishinbank.com.tw/tscccms/signin" target="_blank" rel="noopener">🌐 台新網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('richartlife://', 'https://richartlife.taishinbank.com.tw/', 'https://mkpcard.taishinbank.com.tw/tscccms/signin')">📱 開啟 Richart Life 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="台新">
+          <td><span class="bank-tag">台新</span></td>
+          <td>
+            <div class="card-name">Gogoro Rewards 聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>電池資費最高 4% 無上限</strong>：綁定自動扣繳或 App 繳納每月電池資費享 4% Gogoro Smart Points。</li>
+              <li><strong>超強夥伴通路最高 4%</strong>：7-11、全家、高鐵、北捷、Uber、Uber Eats、foodpanda、KKday、Klook、易遊網、IKEA、康是美（含基本 0.3%＋任務加碼 3.7%）。</li>
+              <li><strong>海外消費最高 4% 無上限</strong>（含基本 0.3%＋任務加碼 3.7%）。</li>
+              <li><strong>購車與延長保固</strong>：實體門市購車一次付清 2% 無上限＋綁 Wallet 2%（上限 500 點）＋新購車 600 點；加購延長保固享 <strong>40% 點數無上限</strong>。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • <strong>必備條件</strong>：須將聯名卡歸戶綁定至 Gogoro Wallet，且完成「台新帳戶自扣＋數位帳單」方享 3.7% 任務加碼！
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 資費/海外/超強通路 4%：2026/07/01～2026/12/31</span><br/>
+            <span class="date-highlight">⏰ 門市分期滿6萬加碼1,000點：2026/10/15～2026/12/31</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://mkpcard.taishinbank.com.tw/tscccms/signin" target="_blank" rel="noopener">🌐 台新網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('richartlife://', 'https://richartlife.taishinbank.com.tw/', 'https://mkpcard.taishinbank.com.tw/tscccms/signin')">📱 開啟 Richart Life 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="台新">
+          <td><span class="bank-tag">台新</span></td>
+          <td>
+            <div class="card-name">昇恆昌聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>昇恆昌免稅店折扣</strong>：免稅品最優 <strong>9 折起</strong>（部分精品/菸酒除外），再享現金回饋。</li>
+              <li><strong>國外消費 1.5% 現金回饋</strong>（每月上限 2,500 元）；國內一般消費 0.5%。</li>
+              <li><strong>飯店餐飲禮遇</strong>：台北/台南遠東香格里拉、裕元花園酒店等指定餐廳最優 85 折。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 普卡/白金卡已停止新申辦，御璽卡/無限卡既有卡友出國於機場昇恆昌免稅店現場出示刷卡即享折扣。
+            </div>
+          </td>
+          <td>
+            <span class="period-badge">📅 免稅店與餐飲權益：2026/01/01～2026/12/31</span><br/>
+            <span class="date-highlight">⏰ 新戶首刷禮申辦期：2026/07/01～2026/10/31（11/15前核卡）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://mkpcard.taishinbank.com.tw/tscccms/signin" target="_blank" rel="noopener">🌐 台新網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('richartlife://', 'https://richartlife.taishinbank.com.tw/', 'https://mkpcard.taishinbank.com.tw/tscccms/signin')">📱 開啟 Richart Life 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ==================== 國泰世華 (1張) ==================== -->
+        <tr data-bank="國泰" class="highlight-row">
+          <td><span class="bank-tag">國泰</span></td>
+          <td>
+            <div class="card-name">CUBE</div>
+            <span class="champion-badge">👑 全方位 3%～10% 無上限切換王</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>常駐權益天天切換（Level 1 享 2% / Level 2 持有國泰帳戶且透過 CUBE App 繳卡費或自扣享 3% / Level 3 財管享 3.3% 無上限）</strong>：
+                <br/>• <strong>玩數位</strong>：蝦皮、momo、PChome、酷澎、淘寶、Netflix、YouTube、AI 工具 <strong>3%～3.3% 無上限</strong>
+                <br/>• <strong>樂饗購</strong>：國內餐飲（含聯卡中心小額支付早餐/手搖飲）、百貨、外送、藥妝 <strong>3%～3.3% 無上限</strong>
+                <br/>• <strong>趣旅行</strong>：海外實體消費、全球航空、訂房網、高鐵、Uber、指定日本遊樂園 <strong>3%～3.3% 無上限</strong>
+                <br/>• <strong>集精選</strong>：全聯實體（含 PX Pay，不含大全聯/全支付）、超商、中油、IKEA 享 <strong>2% 無上限</strong>
+                <br/>• <strong>來支付</strong>：LINE Pay 綁定消費享 <strong>2% 無上限</strong>（需開通國泰數位帳戶）
+              </li>
+              <li><strong>Q4 季節限定權益</strong>：
+                <br/>• <strong>《秋日遊》</strong>：日本指定通路領券享 <strong>3%～8%</strong>（2026/10/01～11/30）
+                <br/>• <strong>《慶生月》</strong>：當季壽星切換享指定餐廳/遊樂園/KTV/百貨外送最高 <strong>3.5%～10%</strong>（2026/10/01～12/31）
+              </li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • <strong>鐵則</strong>：特約商店分期付款（含提前結清）僅享 0.3% 基本回饋！刷 CUBE 請務必選擇「一次付清」。<br/>
+              • 加碼優惠券須先至 CUBE App「優惠券專區」點選領取後刷卡才算數。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 常駐6大權益＆慶生月：至 2026/12/31</span><br/>
+            <span class="date-highlight">🔥 《秋日遊》日本加碼：2026/10/01～2026/11/30（須於APP領券）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://www.cathaybk.com.tw/cathaybk/personal/product/credit-card/events/" target="_blank" rel="noopener">🌐 國泰活動網頁</a>
+              <button class="btn-link btn-app" onclick="openBankApp('cathaycube://', 'https://www.cathaybk.com.tw/cathaybk/promo/ebanking/cube-app/', 'https://www.cathaybk.com.tw/cathaybk/personal/product/credit-card/events/')">📱 開啟 CUBE App 切換/領券</button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ==================== 星展銀行 (2張) ==================== -->
+        <tr data-bank="星展" class="highlight-row">
+          <td><span class="bank-tag">星展</span></td>
+          <td>
+            <div class="card-name">PCHOME聯名卡</div>
+            <span class="champion-badge">👑 PChome 站內最優 最高 6%+</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>PChome 24h 站內消費最高 6%</strong>：
+                <br/>• 站內筆筆享 <strong>4% 回饋</strong>（2% 聯名點數＋2% P幣）
+                <br/>• <strong>每週四加碼 2% P幣 ＝ 合計最高 6%</strong>
+              </li>
+              <li><strong>分期同享原權益</strong>：PChome 站內分期付款依然享有 4%～6% 基本回饋，再疊加星展雙11分期滿額登錄活動最高可達 <strong>15% 以上</strong>！</li>
+              <li><strong>國外消費</strong>：享 1.5% 聯名點數回饋；国内一般消費 0.5%。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 大多數銀行信用卡在電商分期會被取消基本回饋，但星展 PChome Prime 聯名卡在站內分期仍保留點數回饋，買 iPhone 18 或大件家電首選！
+            </div>
+          </td>
+          <td>
+            <span class="period-badge">📅 站內6%權益：2026/01/01～2026/12/31</span><br/>
+            <span class="date-highlight">🔥 雙11 PChome 滿額分期加碼：須於 DBS Card+ APP 搶登錄</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://www.dbs.com.tw/personal-zh/cards/cards-offers/index.page" target="_blank" rel="noopener">🌐 星展優惠網頁</a>
+              <button class="btn-link btn-app" onclick="openBankApp('dbscardplus://', 'https://www.dbs.com.tw/personal-zh/cards/dbs-card-plus/index.page', 'https://www.dbs.com.tw/personal-zh/cards/cards-offers/index.page')">📱 開啟 DBS Card+ 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="星展">
+          <td><span class="bank-tag">星展</span></td>
+          <td>
+            <div class="card-name">EVERYDAY卡</div>
+            <small style="color:var(--text-muted);">Everyday 威士御璽卡</small>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>活利積分回饋</strong>：國內外一般消費每滿 NT$25 累積 1 點活利積分（折合現金回饋約 0.4%～兌換哩程更划算）。</li>
+              <li><strong>威秀影城天天 6 折起</strong>：週一～週四現場/網路購票 6 折，週五～週日及國定假日 85 折（需出示當月或前月同卡號單筆滿 NT$1,000 簽單）。</li>
+              <li><strong>台灣大車隊 / 指定通路點數折抵</strong>：最高可折抵 100%。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 看電影神卡（平日威秀 6 折），且可參加星展全卡友「雙11電商滿額分期登錄」與「日本旅遊滿額登錄」活動。
+            </div>
+          </td>
+          <td>
+            <span class="period-badge">📅 影城與積分權益：2026/01/01～2026/12/31</span><br/>
+            <span class="date-highlight">⏰ 星展全卡電商/旅遊滿額：於 DBS Card+ APP 登錄</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://www.dbs.com.tw/personal-zh/cards/cards-offers/index.page" target="_blank" rel="noopener">🌐 星展優惠網頁</a>
+              <button class="btn-link btn-app" onclick="openBankApp('dbscardplus://', 'https://www.dbs.com.tw/personal-zh/cards/dbs-card-plus/index.page', 'https://www.dbs.com.tw/personal-zh/cards/cards-offers/index.page')">📱 開啟 DBS Card+ 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ==================== 台北富邦 (5張) ==================== -->
+        <tr data-bank="富邦" class="highlight-row">
+          <td><span class="bank-tag">富邦</span></td>
+          <td>
+            <div class="card-name">J卡</div>
+            <span class="champion-badge">👑 日韓泰實體 6% / 日本交通卡 10%</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>日韓一般消費 3% 無上限</strong>（免登錄，含實體與線上）。</li>
+              <li><strong>日韓泰實體消費最高 6%</strong>：含基本 3% ＋ 單筆滿額<strong>登錄加碼 3%</strong>。</li>
+              <li><strong>日本三大交通卡（Suica / PASMO / ICOCA）最高 10%</strong>：Apple Pay 儲值滿額<strong>完成登錄享最高 10% 回饋</strong>（額外 7% 部分每戶上限 NT$200，可儲值約 NT$2,857）。</li>
+              <li><strong>國內一般消費 1% 無上限</strong>。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 加碼活動<strong>必須每月/每季搶登錄</strong>！若未搶到登錄名額，日韓仍保底 3% 無上限。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 活動效期：即日起～2026/12/31</span><br/>
+            <span class="date-highlight">🔥 日本交通卡10%：每月 18 日開放登錄（限量 30,000 名）</span><br/>
+            <span class="date-highlight">🔥 日韓泰實體加碼：10/20、11/20、12/18 14:00 開放登錄</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces" target="_blank" rel="noopener">🌐 富邦網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('fubonplus://', 'https://www.fubon.com/banking/personal/electronic/mobile/index.htm', 'https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces')">📱 開啟 Fubon+ 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="富邦" class="highlight-row">
+          <td><span class="bank-tag">富邦</span></td>
+          <td>
+            <div class="card-name">momo卡</div>
+            <span class="champion-badge">👑 momo 雙11與日常最優 3%～7%</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>momo 站內一次付清 3% mo幣</strong>：<strong>2026/10～2027/01 結帳帳單每期上限提高至 2,000 mo幣</strong>（每期可刷 NT$66,666！）。</li>
+              <li><strong>千大指定品牌免登錄最高 7%</strong>：站內 3% mo幣 ＋ 品牌加碼 2%～4% mo點（單筆滿 300 元即享，每筆訂單上限 9,999 點，免登記！）。</li>
+              <li><strong>店外一般消費 1% mo幣無上限</strong>；海外指定旅遊最高 5%～16%。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • <strong>避坑重點</strong>：momo 卡綁定 Apple Pay / Google Pay / Samsung Pay 於 momo 結帳視同店內消費（享 3%～7%）；但<strong>若綁定 LINE Pay / 街口支付 / 悠遊付結帳則視同店外消費（僅 1%）</strong>，且<strong>分期訂單不回饋 3% 與品牌加碼</strong>！
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 雙11上限升級 2,000 mo幣：2026/10～2027/01 結帳帳單</span><br/>
+            <span class="date-highlight">⏰ 千大品牌最高 7%：2026/10/01～2026/12/31（免登錄）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces" target="_blank" rel="noopener">🌐 富邦網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('fubonplus://', 'https://www.fubon.com/banking/personal/electronic/mobile/index.htm', 'https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces')">📱 開啟 Fubon+ 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="富邦">
+          <td><span class="bank-tag">富邦</span></td>
+          <td>
+            <div class="card-name">Costco聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>Costco 賣場內 2% 好多金無上限</strong>。</li>
+              <li><strong>Costco 線上購物 3% 好多金無上限</strong>。</li>
+              <li><strong>Costco 自助加油站 3% 好多金</strong>（加碼上限月刷 NT$20,000）。</li>
+              <li><strong>店外精選旅遊／國外實體登錄最高 5% 好多金</strong>：含基本 1% 無上限 ＋ <strong>登錄加碼 2%～4%</strong>（國外實體 5%、航空/旅行社/高鐵 3%，每月加碼上限 800 好多金）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 好多金僅可於<strong>每年 1～2 月</strong>在好市多賣場折抵消費（折抵會員年費則不限期間），當年度累積之好多金於次年 3/31 到期。
+            </div>
+          </td>
+          <td>
+            <span class="period-badge">📅 賣場/線上/加油 2%～3%：至 2027/12/31</span><br/>
+            <span class="date-highlight">⏰ 國外實體/旅遊最高 5%：每月 1 日 00:00 開放登錄（限量 50,000 名/月）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces" target="_blank" rel="noopener">🌐 富邦網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('fubonplus://', 'https://www.fubon.com/banking/personal/electronic/mobile/index.htm', 'https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces')">📱 開啟 Fubon+ 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="富邦">
+          <td><span class="bank-tag">富邦</span></td>
+          <td>
+            <div class="card-name">悍將勇士聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>主場門票與周邊最優 5 折起</strong>：富邦悍將棒球隊、臺北富邦勇士籃球隊例行賽主場購票享預購與最低 5 折優惠，商品部 9 折。</li>
+              <li><strong>外送平台最高 5% 回饋</strong>：Uber Eats、foodpanda 消費<strong>完成登錄享最高 5% 刷卡金</strong>。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 觀賽球迷與外送族實用卡，新/舊戶首次申辦滿額登錄再贈聯名保溫杯。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 外送 5% 及球季優惠：即日起～2026/12/31（外送加碼需於 Fubon+ 登錄）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces" target="_blank" rel="noopener">🌐 富邦網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('fubonplus://', 'https://www.fubon.com/banking/personal/electronic/mobile/index.htm', 'https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces')">📱 開啟 Fubon+ 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="富邦">
+          <td><span class="bank-tag">富邦</span></td>
+          <td>
+            <div class="card-name">台茂聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>台茂館內免費停車最高 6 小時</strong>（不分平假日）。</li>
+              <li><strong>週四台茂館內 MORE 利卡點數 4 倍送</strong>（限實體卡直刷，不適用綁定 LINE Pay / 全支付 / 街口）。</li>
+              <li><strong>館內購物餐飲折扣</strong>：專櫃購物 9 折起、特色餐飲平日 9 折起 / 週五 88 折起；紅利每 1,000 點折抵館內消費 NT$30（最高折抵 100%）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 桃園蘆竹台茂購物中心必備卡，申辦電子帳單或綁定富邦 LINE 官方帳號即免年費。
+            </div>
+          </td>
+          <td>
+            <span class="period-badge">📅 館內停車/週四4倍點數/餐飲88折：2026/01/01～2026/12/31（免登錄）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces" target="_blank" rel="noopener">🌐 富邦網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('fubonplus://', 'https://www.fubon.com/banking/personal/electronic/mobile/index.htm', 'https://ebank.taipeifubon.com.tw/B2C/cfhqu/cfhqu009/CFHQU009_Home.faces')">📱 開啟 Fubon+ 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ==================== 第一銀行 (1張) ==================== -->
+        <tr data-bank="第一">
+          <td><span class="bank-tag">第一</span></td>
+          <td>
+            <div class="card-name">桃園市民聯名卡</div>
+            <small style="color:var(--text-muted);">桃園市市民卡聯名卡/認同卡</small>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>五大精選通路最高 5% 刷卡金（認同卡 3%）</strong>：
+                <br/>• <strong>外送平台</strong>：Uber Eats、foodpanda
+                <br/>• <strong>家居生活</strong>：IKEA、特力屋(HOLA)、宜得利
+                <br/>• <strong>連鎖餐飲</strong>：麥當勞、肯德基、必勝客、達美樂、星巴克、路易莎
+                <br/>• <strong>商場樂園</strong>：華泰名品城、大江購物中心、台茂購物中心、Xpark
+                <br/>• <strong>加油通路</strong>：享 <strong>3% 刷卡金</strong>
+              </li>
+              <li><strong>桃園機捷 8 折 / 桃捷點數累點與市民卡市政優惠</strong>。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • <strong>必備條件</strong>：申請電子帳單 ＋ <strong>完成活動登錄</strong> ＋ 精選通路<strong>單筆滿 NT$300（含）以上</strong>，每戶每期帳單回饋上限 300 元（約刷 NT$6,000 封頂）。<br/>
+              • <strong>桃園在地亮點</strong>：華泰、大江、台茂三大桃園商場單筆滿 300 就有 5%，非常適合在桃園日常消費！
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 精選通路 5% 檔期：2026/07/01～2026/12/31（務必先完成線上登錄！）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://card.firstbank.com.tw/sites/card/touch/1565690685368" target="_blank" rel="noopener">🌐 一銀活動登錄頁</a>
+              <button class="btn-link btn-app" onclick="openBankApp('firstbankileo://', 'https://www.firstbank.com.tw/sites/fbweb/MobileBanking', 'https://card.firstbank.com.tw/sites/card/touch/1565690685368')">📱 開啟 iLEO / 第e行動登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <!-- ==================== 永豐銀行 (4張) ==================== -->
+        <tr data-bank="永豐" class="highlight-row">
+          <td><span class="bank-tag">永豐</span></td>
+          <td>
+            <div class="card-name">DAWAY卡</div>
+            <span class="champion-badge">👑 週三酷澎 13% / 新戶 LINE Pay 8%</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>基本回饋</strong>：國內 0.5%、國外 2.5% LINE POINTS 無上限。</li>
+              <li><strong>升等 DAWAY GO 等級（綁永豐自扣＋電子帳單）</strong>：
+                <br/>• 既有卡友國內外一般消費加碼 <strong>1.5%</strong>（上限 300 點/月＝國內合計 2%、國外 4%）
+                <br/>• 2026 下半年新戶綁定 LINE Pay 再加碼 <strong>6%</strong>（上限 500 點/月＝<strong>國內 LINE Pay 8%、國外最高 10%</strong>）
+              </li>
+              <li><strong>每週三酷澎 Coupang 最高 13% LINE POINTS</strong>：LINE Pay 綁定 DAWAY 卡每週三於酷澎消費加碼 <strong>5%</strong>（每帳號上限 75 點/月，總限量 20 萬點/月），疊加新戶 8% 達 <strong>13%</strong>（舊戶亦享 <strong>7%</strong>）！</li>
+              <li><strong>路易莎咖啡最高 13%</strong>；指定夜市商圈單月滿 5 筆百元抽最高 555 點。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 週三酷澎加碼 5% <strong>排除「火箭跨境」商品及「WOW 會員訂閱」</strong>，僅限台灣火箭速配一般商品適用。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ DAWAY GO 權益：2026/07/01～2026/12/31</span><br/>
+            <span class="date-highlight">🔥 酷澎每週三加碼 5%：2026/10/01～2026/12/31（每週三限定）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://bank.sinopac.com/sinopacBT/personal/credit-card/card-right/activity-login.html" target="_blank" rel="noopener">🌐 永豐網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('sinopacdawho://', 'https://dawho.tw/', 'https://bank.sinopac.com/sinopacBT/personal/credit-card/card-right/activity-login.html')">📱 開啟 DAWHO App 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="永豐">
+          <td><span class="bank-tag">永豐</span></td>
+          <td>
+            <div class="card-name">DAWHO現金回饋信用卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>基本回饋</strong>：國內 1%、國外 2% 現金回饋無上限。</li>
+              <li><strong>【大戶等級】加碼 +2.5%（國內 3.5% / 國外 4.5%）</strong>：每期帳單加碼上限 400 元（約刷 NT$16,000 封頂）；悠遊卡自動加值享 <strong>3%</strong>（上限 100 元/期）。</li>
+              <li><strong>【大戶 Plus 等級】加碼 +4%（國內 5% / 國外 6%）</strong>：每期帳單加碼上限 1,000 元（約刷 NT$25,000 封頂）；悠遊卡自動加值享 <strong>5%</strong>（上限 500 元/期）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • <strong>2026 下半年門檻新規</strong>：「大戶等級」需當月平均財富達 30 萬元（或完成指定換匯/台股交易任務）；「大戶 Plus」需平均財富達 100 萬元＋單筆換匯滿 NT$5,000 或台股現貨成交 1 筆。<br/>
+              • 2026 年已取消舊版七大指定通路 5%，改為「全通路無腦加碼 3.5%～6%」！
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 國內3.5%~5% / 國外4.5%~6%：2026/07/01～2026/12/31</span><br/>
+            <span class="date-highlight">⏰ 刷8千抽8千大戶屋餐券：2026/10/01～2026/12/31（需登錄）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://bank.sinopac.com/sinopacBT/personal/credit-card/card-right/activity-login.html" target="_blank" rel="noopener">🌐 永豐網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('sinopacdawho://', 'https://dawho.tw/', 'https://bank.sinopac.com/sinopacBT/personal/credit-card/card-right/activity-login.html')">📱 開啟 DAWHO App 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="永豐" class="highlight-row">
+          <td><span class="bank-tag">永豐</span></td>
+          <td>
+            <div class="card-name">幣倍卡</div>
+            <span class="champion-badge">👑 國外/機票/訂房/海外網購 6%～8%</span>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>基本回饋無上限</strong>：國內 1%、國外 2% 現金回饋無上限（國外回饋存入外幣帳戶）。</li>
+              <li><strong>精選通路加碼 +4%（國外達 6% / 國內精選達 5%）</strong>：涵蓋<strong>海外實體消費、日本交通卡儲值、航空公司機票、旅行社、訂房網（Agoda/Booking/Trip.com）、海外網購（淘寶/Amazon/iHerb）</strong>，每期帳單加碼上限 <strong>800 元</strong>（可刷 NT$20,000！）。</li>
+              <li><strong>2026 下半年新申辦/加辦新幣別加碼 +2%（最高 8%）</strong>：綁定 Apple Pay / Google Pay 消費月月加碼 2%（上限 200 元/月）。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • <strong>必備兩大任務</strong>：① 綁定永豐台外幣帳戶自扣＋電子帳單；② 前月永豐往來資產月均達 10 萬以上 <strong>或</strong> 當月為 DAWHO 大戶/大戶 Plus 等級。<br/>
+              • <strong>注意</strong>：2026 年取消「國內外實體飯店櫃台/官網」之旅遊加碼（但若在日本實體飯店刷卡仍屬「海外實體消費」享 6%～8%！）。
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 精選通路+4%＆行動支付+2%：2026/07/01～2026/12/31</span><br/>
+            <span class="date-highlight">🔥 海外每滿5千抽2萬刷卡金：2026/09/01～2026/12/31（需登錄）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://bank.sinopac.com/sinopacBT/personal/credit-card/card-right/activity-login.html" target="_blank" rel="noopener">🌐 永豐網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('sinopacdawho://', 'https://dawho.tw/', 'https://bank.sinopac.com/sinopacBT/personal/credit-card/card-right/activity-login.html')">📱 開啟 DAWHO App 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+        <tr data-bank="永豐">
+          <td><span class="bank-tag">永豐</span></td>
+          <td>
+            <div class="card-name">MITSUI OUTLET PARK聯名卡</div>
+          </td>
+          <td>
+            <ul class="detail-list">
+              <li><strong>館內免費停車與折扣</strong>：林口、台南館每日免費停車 2 小時（台中港天天免費）；館內購物餐飲 85 折起。</li>
+              <li><strong>館外餐飲 / 全盈+PAY 享 7% 刷卡金</strong>：完成指定任務並<strong>登錄</strong>享 7% 回饋（每期帳單上限 100 元）。</li>
+              <li><strong>【JCB 卡限定】日韓泰實體 2% 加碼</strong>：設定永豐自扣且每季於日韓泰實體累計滿 NT$30,000，<strong>登錄</strong>享 2% 刷卡金（每季上限 1,000 元，每季限登 3,000 名）。</li>
+              <li><strong>日本三井 Outlet 專屬禮遇</strong>：出示聯名卡與 QR Code 享最高 10% 折扣＋免稅 10%＋兩張 500 日圓購物券。</li>
+            </ul>
+          </td>
+          <td>
+            <div class="note-box">
+              • 逛台灣林口/台中港/台南三井 Outlet 與日本三井 Outlet（木更津、幕張、札幌北廣島、大阪門真等）必備神卡，日本現場直接換 1,000 日圓購物券！
+            </div>
+          </td>
+          <td>
+            <span class="date-highlight">⏰ 館外餐飲7% ＆ JCB日韓泰2%：2026/07/01～2026/12/31（皆須完成登錄）</span>
+            <div class="btn-group">
+              <a class="btn-link btn-web" href="https://bank.sinopac.com/sinopacBT/personal/credit-card/card-right/activity-login.html" target="_blank" rel="noopener">🌐 永豐網頁登錄</a>
+              <button class="btn-link btn-app" onclick="openBankApp('sinopacdawho://', 'https://dawho.tw/', 'https://bank.sinopac.com/sinopacBT/personal/credit-card/card-right/activity-login.html')">📱 開啟 DAWHO App 登錄</button>
+            </div>
+          </td>
+        </tr>
+
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  /**
+   * 銀行分類快速篩選器
+   */
+  function filterBank(bankName, btnElement) {
+    const buttons = document.querySelectorAll('#bankFilter .filter-btn');
+    buttons.forEach(btn => btn.classList.remove('active'));
+    btnElement.classList.add('active');
+
+    const rows = document.querySelectorAll('#cardTable tbody tr');
+    rows.forEach(row => {
+      if (bankName === 'ALL' || row.getAttribute('data-bank') === bankName) {
+        row.style.display = '';
+      } else {
+        row.style.display = 'none';
+      }
+    });
+  }
+
+  /**
+   * 智慧喚醒銀行 APP 登錄頁面（支援 iOS / Android URL Scheme 與 Universal Link 自動降級跳轉）
+   * - 在手機端點擊時：優先嘗試喚醒該銀行官方 APP；若 1.2 秒內未成功喚醒（如未安裝 APP），自動導向行動版登錄網頁。
+   * - 在電腦端點擊時：直接在新分頁開啟該銀行官方登錄專區或行動銀行引導頁。
+   */
+  function openBankApp(appScheme, appUniversalUrl, webFallbackUrl) {
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (!isMobile) {
+      window.open(webFallbackUrl, '_blank', 'noopener');
+      return;
+    }
+
+    const start = Date.now();
+    // 嘗試觸發 Custom URL Scheme 喚醒銀行 APP
+    window.location.href = appScheme;
+
+    // 若裝置未安裝該銀行 APP 或攔截 Scheme，於 1200ms 後自動無縫開啟網頁版登錄頁面
+    setTimeout(function () {
+      if (Date.now() - start < 1600) {
+        window.open(webFallbackUrl || appUniversalUrl, '_blank', 'noopener');
+      }
+    }, 1200);
+  }
+</script>
+
+</body>
+</html>
